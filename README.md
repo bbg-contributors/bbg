@@ -39,3 +39,7 @@ cnpm run package_linux
 cnpm run package_mas
 cnpm run package_darwin
 ```
+
+## License
+
+GPL 3.0 Licensed.
