@@ -15,6 +15,8 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 [在 Gitee Releases 下载它们](https://gitee.com/baiyang-lzy/bbg/releases)
 
+或[在 Github 上下载 macOS 构建](https://github.com/scientificworld/bbg_mac_build)
+
 ## 开发环境搭建
 
 首先确保计算机上已经安装：
