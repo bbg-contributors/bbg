@@ -9,7 +9,7 @@ BBG
 
 BBG 是一个基于 Electron 开发的静态博客生成器。
 
-## 下载地址
+## 程序包下载地址
 
 本软件支持 macOS、Windows、Linux 平台。
 
@@ -17,30 +17,15 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 或[在 Github 上下载 macOS 构建](https://github.com/scientificworld/bbg_mac_build)
 
-## 开发环境搭建
+## 文档
 
-首先确保计算机上已经安装：
+如果你想使用 BBG 作为静态博客生成工具，请查阅以下文档：
 
-* Node v16.6.1
-* **cnpm@7.0.0**（请不要使用npm，否则可能会造成冲突）
+* [快速使用教程](./Docs/Quick_Start.md)
 
-然后在项目根目录下执行：
+如果你需要调试和开发 BBG，请查阅以下文档：
 
-```
-cnpm install
-```
-
-启动一个 BBG 实例：
-```
-cnpm start
-```
-生成针对不同平台的软件包：
-```
-cnpm run package_windows
-cnpm run package_linux
-cnpm run package_mas
-cnpm run package_darwin
-```
+* [为本项目搭建开发环境](./Docs/Developer_Guide.md)
 
 ## License
 
