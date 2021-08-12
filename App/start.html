@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <title></title>
+</head>
+
+<body class=" text-center">
+  <style>
+    body:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: .4;
+      z-index: -1;
+      content: "";
+      position: fixed;
+      background: url(https://api.paugram.com/wallpaper/) center/cover;
+    }
+
+    .cover-container {
+      max-width: 100%;
+    }
+
+    .nav-masthead .nav-link {
+      padding: .25rem 0;
+      font-weight: 700;
+      color: rgb(0, 0, 0);
+      background-color: transparent;
+      border-bottom: .25rem solid transparent;
+    }
+
+    .nav-masthead .nav-link:hover,
+    .nav-masthead .nav-link:focus {
+      border-bottom-color: rgba(75, 69, 69, 0.808);
+    }
+
+    .nav-masthead .nav-link+.nav-link {
+      margin-left: 1rem;
+    }
+
+    .nav-masthead .active {
+      color: rgb(70, 62, 62);
+      border-bottom-color: rgb(5, 5, 5);
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0" id="app_title"></h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">版本：<span id="currentProgramVersion"></span></a>
+        </nav>
+      </div>
+    </header>
+    <br /><br />
+    <main class="px-3">
+      <br />
+      <div id="interface_title">
+
+      </div>
+      <div id="poem">
+
+      </div>
+
+
+
+
+     
+      
+      <p>
+        <a href="#" class="btn btn-primary" onclick="open_site()">打开已有站点</a>
+        <a href="#" class="btn btn-primary" onclick="create_new_site_dialog_show()">创建一个站点</a>
+
+      </p>
+      <p id="last_managed_site" style="display:none">
+        <a href="#">你最近管理过：<span style="font-weight: bold;"  id="last_managed_site_title"></span></a>
+      </p>
+      <p><b>本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意<a href="#" onclick="shell.openExternal('https://www.gnu.org/licenses/gpl-3.0-standalone.html')">GPL 3.0 协议文本</a>的所有内容。</b></p>
+      
+
+    </main>
+    <hr />
+    <p></p>
+    
+    <br />
+    <div id="staff_list">
+      <h1>STAFF 名单</h1>
+    </div>
+    <h3>版权声明 </h3>
+    <p>本软件开始界面的背景图片来自奇趣保罗提供的二次元随机图像 API；应用图标由 science0101 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成；滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： 1102116021@qq.com 。我会第一时间做出处理。</p>
+  </div>
+
+
+  <div class="modal" tabindex="-1" id="create-new-site-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">创建一个新的博客站点</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>请选择博客站点的根目录。当你选择好之后，会在你选定的根目录下构建博客的相关文件。</p>
+          <p><b>请确保博客根目录为空，否则有可能导致文件冲突。</b></p>
+          <button type="button" class="btn btn-primary"
+            onclick="create_new_site_choose_root_dir();">选择博客站点的根目录，并开始构建。</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="err-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="err-dialog-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="err-dialog-content">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确定</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./start.js"></script>
+</body>
+
+</html>

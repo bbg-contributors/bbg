@@ -1,0 +1,28 @@
+{
+    "currentProgramVersion": 20210812,
+    "AppName":"Baiyang-lzy's Blog Generator",
+    "StartPageInterface":{
+        "title":"笔耕不辍，钟情翰墨",
+        "poem":[
+            "金黄色的树林里分出两条小路",
+            "很遗憾我无法同时选择两者",
+            "身在旅途的我久久站立",
+            "对着其中一条极目眺望"
+        ]
+    },
+    "contributers":{
+        "图标设计": [
+            ["science0101","https://space.bilibili.com/295004837/"]
+        ],
+        "开发":[
+            ["白羊李志远","https://www.zhihu.com/people/popcorn17"]
+        ],
+        "参与测试人员":[
+            ["science0101","https://space.bilibili.com/295004837/"],
+            ["mzwing","https://space.bilibili.com/439246138/"],
+            ["淡泊远烟","https://littlesunnybear.com/"],
+            ["喂，前面可是地狱","https://margaret-zhang.github.io/"],
+            ["我是XXX","https://tieba.baidu.com/home/main?un=zzjzxq33"]
+        ]
+    }
+}
