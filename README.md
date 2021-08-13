@@ -26,6 +26,7 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 如果你需要调试和开发 BBG，请查阅以下文档：
 
 * [为本项目搭建开发环境](./Docs/Developer_Guide.md)
+* [第三方主题开发文档](./Docs/Theme_Developing.md)
 
 ## License
 
