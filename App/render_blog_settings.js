@@ -33,6 +33,15 @@ module.exports = function(){
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
 
+<div class="mb-3">
+  <h3>为此站点使用第三方主题</h3>
+  <p>BBG 建议使用默认的官方主题，因为它有着最良好的兼容性和安全性，总是包含最新的功能和改进。尽管官方主题比较单调，但目前官方主题已经提供了部分自定义功能，允许你更改部分模块的颜色和样式，而以后将提供更多自定义功能。</p>
+  <p>然而，你也可以选择使用第三方主题以获得更加丰富和美观的体验，并且当你改变主意的时候，你可以随时切换回官方主题。</p>
+  <p>目前此站点正在使用：<b><span id="isUsingThirdPartyTheme"></span> </b></p>
+  <button class="btn btn-primary btn-sm" href="#" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
+  <button class="btn btn-success btn-sm" href="#" onclick="apply_thirdparty_theme();">为此站点应用第三方主题（来自文件 *.bbgtheme）</button>
+</div>
+
 
 
 <h2>评论设置</h2>
@@ -67,4 +76,11 @@ module.exports = function(){
 if (blog["全局评论设置"]["启用valine评论"] === true) {
   document.getElementById("blog_settings_is_valine_enabled").checked = true;
 }
+
+if(blog["全局主题设置"]["是否使用第三方主题"] === true){
+  document.getElementById("isUsingThirdPartyTheme").innerHTML = "第三方主题";
+}else{
+  document.getElementById("isUsingThirdPartyTheme").innerHTML = "官方主题";
+}
+
 }

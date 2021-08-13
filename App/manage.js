@@ -30,6 +30,8 @@ let add_a_page = require("./add_a_page.js");
 let delete_article = require("./delete_article.js");
 let delete_page = require("./delete_page.js");
 let save_blog_settings = require("./save_blog_settings.js");
+let reset_official_theme = require("./reset_official_theme.js");
+let apply_thirdparty_theme = require("./apply_thirdparty_theme.js")
 
 
 // goto and menu functions

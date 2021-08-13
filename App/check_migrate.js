@@ -20,7 +20,7 @@ module.exports =  function () {
 
     
 
-    if (currentBlogVersion === 20210720 || currentBlogVersion === "20210715" || currentBlogVersion === 20210727) {
+    if (currentBlogVersion === 20210720 || currentBlogVersion === "20210715" || currentBlogVersion === 20210727 || currentBlogVersion === 20210812) {
         let submitDialog = dialog.showMessageBoxSync({
             message: "此站点是由旧版的 BBG 所创建的。因此，你必须更新博客数据文件才能继续管理它。所有的文章、页面和设定都将保留。",
             type: "question",
@@ -36,6 +36,7 @@ module.exports =  function () {
 
         if (submitDialog === 0) {
             blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"] = currentProgramVersion;
+            blog["全局主题设置"]["是否使用第三方主题"] = false;
             fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));
             fs.rmSync(`${rootDir}/index.html`);
             fs.copyFileSync(__dirname + "/blog_source/index.html", rootDir + "/index.html", constants.COPYFILE_EXCL);
