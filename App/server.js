@@ -14,14 +14,13 @@ ipcRenderer.send('isLiveServerRunning', true);
 function exit_preview() {
     LiveServer.stop();
     ipcRenderer.send('isLiveServerRunning', false);
-    window.location.href = `./article_manager.html?rootdir=${rootDir}`;
+    window.history.back();
 }
 
 function openInBrowser() {
     shell.openExternal(`http://localhost:41701`);
 }
 
-setTimeout(openInBrowser, 800);
 ipcRenderer.on('requestRendererProcess', (event, message) => {
     if (message === "closeServer") {
         LiveServer.stop();
@@ -30,3 +29,7 @@ ipcRenderer.on('requestRendererProcess', (event, message) => {
 
     }
 })
+
+function open_blog_dir() {
+    shell.openPath(rootDir);
+}

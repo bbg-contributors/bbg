@@ -8,6 +8,7 @@ const storage = require("electron-json-storage");
 const getAppInfo = require("./getAppInfo.js");
 const AppInfo = getAppInfo();
 const currentProgramVersion = require("./currentProgramVersion.js");
+const check_update = require("./check_update.js");
 
 document.getElementsByTagName("title")[0].innerHTML = "开始使用 Baiyang-lzy's Blog Generator";
 
@@ -104,9 +105,14 @@ for(let i=0;i<AppInfo.StartPageInterface.poem.length;i++){
     document.getElementById("poem").innerHTML += `<p>${AppInfo.StartPageInterface.poem[i]}</p>`;
 }
 
-document.getElementById("currentProgramVersion").innerHTML = `${currentProgramVersion}`;
-
 // 渲染贡献者列表
+
+document.getElementById("staff_list").innerHTML += `<h3>开发</h3>`
+
+for(let i=0;i< AppInfo["contributers"]["开发"].length;i++){
+    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["开发"][i][1]}')">${AppInfo["contributers"]["开发"][i][0]}</a></p>`;
+}
+
 
 document.getElementById("staff_list").innerHTML += `<h3>图标设计</h3>`
 
@@ -114,10 +120,10 @@ for(let i=0;i< AppInfo["contributers"]["图标设计"].length;i++){
     document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["图标设计"][i][1]}')">${AppInfo["contributers"]["图标设计"][i][0]}</a></p>`;
 }
 
-document.getElementById("staff_list").innerHTML += `<h3>开发</h3>`
+document.getElementById("staff_list").innerHTML += `<h3>macOS 打包</h3>`
 
-for(let i=0;i< AppInfo["contributers"]["开发"].length;i++){
-    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["开发"][i][1]}')">${AppInfo["contributers"]["开发"][i][0]}</a></p>`;
+for(let i=0;i< AppInfo["contributers"]["macOS 打包"].length;i++){
+    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["macOS 打包"][i][1]}')">${AppInfo["contributers"]["macOS 打包"][i][0]}</a></p>`;
 }
 
 document.getElementById("staff_list").innerHTML += `<h3>参与测试人员</h3>`
@@ -126,7 +132,7 @@ for(let i=0;i< AppInfo["contributers"]["参与测试人员"].length;i++){
     document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["参与测试人员"][i][1]}')">${AppInfo["contributers"]["参与测试人员"][i][0]}</a></p>`;
 }
 
-document.getElementById("app_title").innerHTML = `${AppInfo.AppName}`;
+
 
 
 storage.has("last_managed_site", function (error, hasKey) {
@@ -143,3 +149,4 @@ storage.has("last_managed_site", function (error, hasKey) {
 });
 
 
+document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
