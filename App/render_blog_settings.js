@@ -42,7 +42,7 @@ module.exports = function(){
   <button class="btn btn-primary btn-sm" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
   <button class="btn btn-success btn-sm" onclick="apply_thirdparty_theme();">为此站点应用第三方主题（来自文件 *.bbgtheme）</button>
   <br /><br />
-  <button class="btn btn-sm btn-link" onclick="open_online_theme_dialog()">从主题商店下载第三方主题</button>
+  <button class="btn btn-link btn-sm" onclick="open_online_theme_dialog()">从主题商店获取第三方主题</button>
   <br /><br />
 
 

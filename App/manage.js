@@ -32,7 +32,10 @@ let delete_page = require("./delete_page.js");
 let save_blog_settings = require("./save_blog_settings.js");
 let reset_official_theme = require("./reset_official_theme.js");
 let apply_thirdparty_theme = require("./apply_thirdparty_theme.js");
-let open_online_theme_dialog = require("./online_theme.js");
+let open_online_theme_dialog = require("./online_theme.js").open_online_theme_dialog;
+let render_theme_detail = require("./online_theme.js").render_theme_detail;
+let render_online_theme_list =  require("./online_theme.js").render_online_theme_list;
+let install_theme = require("./online_theme.js").install_theme;
 
 
 // goto and menu functions
