@@ -62,7 +62,6 @@ function generateNewBlog(rootDir) {
     try {
 
         fs.mkdirSync(rootDir + "/data");
-        fs.mkdirSync(rootDir + "/static");
         fs.mkdirSync(rootDir + "/data/articles");
         fs.mkdirSync(rootDir + "/data/pages");
 
