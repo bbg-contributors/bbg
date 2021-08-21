@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "electron-json-storage": "^4.5.0",
-    "html-pages": "^3.1.0"
+    "express": "^4.17.1"
   }
 }
