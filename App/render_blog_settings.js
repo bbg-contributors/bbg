@@ -36,13 +36,16 @@ module.exports = function(){
 
   <h2>为此站点使用第三方主题</h2>
   <hr />
-  <p>BBG 建议使用默认的官方主题，因为它有着最良好的兼容性和安全性，总是包含最新的功能和改进。尽管官方主题比较单调，但目前官方主题已经提供了部分自定义功能，允许你更改部分模块的颜色和样式，而以后将提供更多自定义功能。</p>
-  <p>然而，你也可以选择使用第三方主题以获得更加丰富和美观的体验，并且当你改变主意的时候，你可以随时切换回官方主题。</p>
+  <p>你可以选择使用第三方主题以获得更加丰富和美观的体验。当你改变主意的时候，你也可以随时切换回官方主题。</p>
+
   <p>目前此站点正在使用：<b><span id="isUsingThirdPartyTheme"></span> </b></p>
-  <button class="btn btn-primary btn-sm" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
-  <button class="btn btn-success btn-sm" onclick="apply_thirdparty_theme();">为此站点应用第三方主题（来自文件 *.bbgtheme）</button>
+  <button class="btn btn-outline-primary" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
+
   <br /><br />
-  <button class="btn btn-link btn-sm" onclick="open_online_theme_dialog()">从主题商店获取第三方主题</button>
+  <button class="btn btn-link" onclick="open_online_theme_dialog()">从主题商店获取第三方主题</button>
+  <br />
+  <button class="btn btn-link" onclick="apply_thirdparty_theme();">为此站点使用来自文件的第三方主题（不建议）</button>
+
   <br /><br />
 
 

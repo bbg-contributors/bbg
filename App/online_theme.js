@@ -51,7 +51,6 @@ function render_online_theme_list() {
     document.getElementById("download_online_theme_dialog_content").innerHTML = "";
     // todo
 
-    window.alert("主题商店功能基于 Gitee API 实现，因此存在用量限制。\n\n请不要频繁地使用主题商店的各个功能，包括查看主题列表、查看主题简介、下载和安装主题等等。\n\n如果弹出访问错误的提示一般都是用量超限，此时需要等候24小时后再试。\n\n感谢你的理解。")
 
     document.getElementById("download_online_theme_dialog_content").innerHTML += `<h2>主题列表</h2><p>以下列出了主题商店中的主题。</p><hr />`;
 
@@ -62,7 +61,7 @@ function render_online_theme_list() {
             let theme_list = data["tree"];
             for(let i=0;i<theme_list.length;i++){
                 if(theme_list[i]["type"] === "tree"){
-                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p><button class="btn btn-link" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button><button class="btn btn-link" onclick="install_theme('${theme_list[i]["path"]}')">下载此主题并在本站点应用</button></p><br />`;
+                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p style="color:grey;">${theme_list[i]["sha"]}</p><p><button class="btn btn-primary btn-sm" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button> <button class="btn btn-success btn-sm" onclick="install_theme('${theme_list[i]["path"]}')">为此站点安装该主题</button></p><br />`;
                 }
             }
         })
@@ -74,6 +73,7 @@ function render_online_theme_list() {
 }
 
 function open_online_theme_dialog() {
+    window.alert("主题商店功能基于 Gitee API 实现，因此存在用量限制。\n\n请不要频繁地使用主题商店的各个功能，包括查看主题列表、查看主题简介、下载和安装主题等等。\n\n如果弹出访问错误的提示一般都是用量超限，此时需要等候24小时后再试。\n\n感谢你的理解。")
     let online_theme_modal = new bootstrap.Modal(document.getElementById('download_online_theme_dialog'));
     online_theme_modal.toggle();
     render_online_theme_list();

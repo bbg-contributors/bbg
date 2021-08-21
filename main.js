@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 
-//Menu.setApplicationMenu(null)
+Menu.setApplicationMenu(null)
 
 function createWindow() {
     win = new BrowserWindow({
