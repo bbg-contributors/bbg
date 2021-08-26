@@ -32,7 +32,28 @@ module.exports = function(){
 <label class="form-label">博客标题栏文字颜色</label>
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
+<h2>网页图标（Favicon）</h2>
+<hr />
+<p>网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。</p>
+<p>图标的横纵比建议为1:1，以确保正确的显示效果。</p>
+<p>添加网页图标后，预览站点可能还是不能立刻看到效果。这是由于浏览器缓存导致的。如果遇到这种情况请尝试在浏览器中使用 Ctrl+F5 或 Fn+Ctrl+F5 强制刷新站点。</p>
+<button class="btn btn-success" onclick="select_a_favicon()">从文件选择一个网页图标以使用</button>
+<button class="btn btn-primary" onclick="view_current_icon()">查看当前图标</button>
+<button class="btn btn-danger" onclick="delete_current_icon()">删除当前图标</button>
+<br /><br />
 
+<h2>网页背景图像</h2>
+
+<hr />
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="blog_settings_is_using_acg_bg">
+<label class="form-check-label" for="blog_settings_is_using_acg_bg">
+  使用随机二次元壁纸作为网页背景（若不勾选此项则为空白背景）
+</label>
+</div>
+
+<br /><br />
 
   <h2>为此站点使用第三方主题</h2>
   <hr />
@@ -40,10 +61,8 @@ module.exports = function(){
 
   <p>目前此站点正在使用：<b><span id="isUsingThirdPartyTheme"></span> </b></p>
   <button class="btn btn-outline-primary" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
-
+  <button class="btn btn-outline-success" onclick="open_online_theme_dialog()">打开主题商店</button>
   <br /><br />
-  <button class="btn btn-link" onclick="open_online_theme_dialog()">从主题商店获取第三方主题</button>
-  <br />
   <button class="btn btn-link" onclick="apply_thirdparty_theme();">为此站点使用来自文件的第三方主题（不建议）</button>
 
   <br /><br />
@@ -86,6 +105,11 @@ if(blog["全局主题设置"]["是否使用第三方主题"] === true){
   document.getElementById("isUsingThirdPartyTheme").innerHTML = "第三方主题";
 }else{
   document.getElementById("isUsingThirdPartyTheme").innerHTML = "官方主题";
-}
+    }
+
+if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"]) {
+        document.getElementById("blog_settings_is_using_acg_bg").checked = true;
+    }
 
 }
+

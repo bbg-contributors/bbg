@@ -36,6 +36,7 @@ let open_online_theme_dialog = require("./online_theme.js").open_online_theme_di
 let render_theme_detail = require("./online_theme.js").render_theme_detail;
 let render_online_theme_list =  require("./online_theme.js").render_online_theme_list;
 let install_theme = require("./online_theme.js").install_theme;
+let { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
 
 
 // goto and menu functions

@@ -10,6 +10,8 @@ module.exports = function () {
     let blog_settings_valine_appid = document.getElementById("blog_settings_valine_appid").value;
     let blog_settings_valine_appkey = document.getElementById("blog_settings_valine_appkey").value;
     let blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value;
+    let blog_settings_is_using_acg_bg = document.getElementById("blog_settings_is_using_acg_bg").checked;
+
 
     blog["博客标题"] = blog_settings_title;
     blog["博客描述（副标题）"] = blog_settings_description;
@@ -23,6 +25,15 @@ module.exports = function () {
     blog["全局评论设置"]["valine设置"]["leancloud_appid"] = blog_settings_valine_appid;
     blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = blog_settings_valine_appkey;
     blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
+
+    if (blog_settings_is_using_acg_bg === true) {
+        blog["全局主题设置"]["是否使用背景图像"] = true;
+        blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"] = true;
+    } else {
+        blog["全局主题设置"]["是否使用背景图像"] = false;
+        blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"] = false;
+
+    }
 
 
     BlogInstance.writeBlogData();

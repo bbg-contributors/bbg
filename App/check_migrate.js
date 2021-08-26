@@ -60,8 +60,13 @@ module.exports = function () {
                     }
                 }
 
-                if (parseInt(currentBlogVersion, 10) === 20210819) {
+                if (parseInt(currentBlogVersion, 10) === 20210819 || parseInt(currentBlogVersion,10) === 20210822) {
+                    if (blog["全局主题设置"]["是否使用第三方主题"] === false) {
+                        fs.rmSync(`${rootDir}/index.html`);
+                        fs.copyFileSync(__dirname + "/blog_source/index.html", rootDir + "/index.html", constants.COPYFILE_EXCL);
+                    } else {
 
+                    }
 
                 }
 
