@@ -2,6 +2,8 @@ const { app, BrowserWindow, Menu } = require('electron');
 
 Menu.setApplicationMenu(null)
 
+let win
+
 function createWindow() {
     win = new BrowserWindow({
         width: 1200,
@@ -14,6 +16,7 @@ function createWindow() {
     })
 
     win.loadFile('./App/start.html');
+    win.webContents.openDevTools();
 }
 
 
