@@ -584,6 +584,19 @@
                 .then(function (response) {
                     document.querySelector("#article-content").innerHTML += markdown.toHTML(response.data);
 
+                    if(window.location.href.indexOf("?") === -1){
+                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","")}?type=article&filename=${blog["文章列表"][article_id]["文件名"]}`;
+                    }
+
+                    if(window.location.href.indexOf("?") !== -1){
+                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","").replaceAll("type=article","").replaceAll("type=page","").replaceAll("?","").replaceAll("&","").replaceAll("filename=","").replaceAll(getUrlArgs("filename"),"")}?type=article&filename=${blog["文章列表"][article_id]["文件名"]}`;
+
+                    }
+
+                    document.querySelector("#container").innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
+
+
+
                     if (blog["全局评论设置"]["启用valine评论"] && blog["文章列表"][article_id]["启用评论"]) {
 
 
@@ -596,6 +609,8 @@
                             path: "article=" + blog["文章列表"][article_id]["文件名"]
                         })
                     }
+
+                    render_bottom_information();
 
                 });
 
@@ -684,6 +699,19 @@
             axios.get('./data/pages/' + blog["页面列表"][page_id]["文件名"] + "?timestamp=" + Date.parse(new Date()))
                 .then(function (response) {
                     document.querySelector("#container").innerHTML += markdown.toHTML(response.data);
+
+                    // 
+                    if(window.location.href.indexOf("?") === -1){
+                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","")}?type=page&filename=${blog["页面列表"][page_id]["文件名"]}`;
+                    }
+
+                    if(window.location.href.indexOf("?") !== -1){
+                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","").replaceAll("type=article","").replaceAll("type=page","").replaceAll("?","").replaceAll("&","").replaceAll("filename=","").replaceAll(getUrlArgs("filename"),"")}?type=page&filename=${blog["页面列表"][page_id]["文件名"]}`;
+
+                    }
+
+                    document.querySelector("#container").innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
+
 
                     // 评论
 
@@ -817,8 +845,19 @@
             render_nav(false);
             render_container();
             render_article_content(article_id);
-            render_bottom_information();
+
         }
+
+        function getUrlArgs(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
 
 
         axios.get('./data/index.json?timestamp=' + Date.parse(new Date()))
@@ -846,9 +885,29 @@
                 }
 
 
-
-                //todo: get parametre
                 enter_indexPage();
+
+                if(getUrlArgs("type") === "article"){
+                    let article_filename = getUrlArgs("filename");
+                    for(let i=0;i<blog["文章列表"].length;i++){
+                        if(blog["文章列表"][i]["文件名"] === article_filename){
+                            enter_article(i);
+                        }
+                    }
+                }
+
+
+                if(getUrlArgs("type") === "page"){
+                    let page_filename = getUrlArgs("filename");
+                    for(let i=0;i<blog["页面列表"].length;i++){
+                        if(blog["页面列表"][i]["文件名"] === page_filename){
+                            enter_page(i);
+                        }
+                    }
+
+                }
+
+                
                 document.getElementsByTagName("title")[0].innerHTML = blog["博客标题"];
             });
 

@@ -2,22 +2,67 @@ const path = require("path");
 const { remote } = require("electron");
 const app = remote.app;
 const currentProgramVersion = require("./currentProgramVersion.js").toString();
-const download_link = require("./download_link.js");
-const download_file = require("./download_file.js")
+const download_update = require("./download_update.js");
+const os = require("os");
+	
+progress_modal =  new bootstrap.Modal(document.getElementById('update-progress-dialog'));
 
-module.exports = function(){
-    fetch('https://gitee.com/api/v5/repos/baiyang-lzy/bbg/releases')
-  .then(response => response.json())
-  .then(function(data){
-    if(currentProgramVersion !== data[data.length - 1]["tag_name"]){
-        if(window.confirm(`当前版本不是最新版本。 \n \n 当前版本：${currentProgramVersion}\n 最新版本：${data[data.length - 1]["tag_name"]} \n \n 要从 ${download_link[0]} 下载更新吗？`)) {
-		download_file(download_link[0], path.join(app.getPath('downloads'), download_link[1]));
-	}
-    }else{
-        window.alert(`当前已经是最新版本！`)
-    }
-  })
-  .catch(function(err){
-      window.alert("检查更新失败："+err);
-  }); 
-}
+module.exports = function () {
+  fetch("https://gitee.com/api/v5/repos/baiyang-lzy/bbg/releases/latest")
+    .then((response) => response.json())
+    .then(function (data) {
+      if (currentProgramVersion !== data["tag_name"]) {
+        if (
+          window.confirm(`检测到新版本 ${data["tag_name"]}，要下载并安装更新吗？`)
+        ) {
+
+          darwin_updateInfo = [
+            `https://gh.api.99988866.xyz/https://github.com/scientificworld/bbg_mac_build/releases/download/${data["tag_name"]}/bbg-darwin-x64.zip`,
+            "bbg-darwin-x64.zip",
+          ];
+
+          for (let i = 0; i < data.assets.length; i++) {
+            if(data.assets[i]["name"] !== undefined && data.assets[i]["name"] !== null){
+              if (data.assets[i]["name"].indexOf("windows") != -1) {
+                windows_updateInfo = [
+                  data.assets[i]["browser_download_url"],
+                  data.assets[i]["name"],
+                ];
+              }
+  
+              if (data.assets[i]["name"].indexOf("linux") != -1) {
+                linux_updateInfo = [
+                  data.assets[i]["browser_download_url"],
+                  data.assets[i]["name"],
+                ];
+              }
+            }
+           
+          }
+
+          if (os.platform() === "win32") {
+            download_url = windows_updateInfo[0];
+            download_filename = windows_updateInfo[1];
+          }
+
+          if (os.platform() === "linux") {
+            download_url = linux_updateInfo[0];
+            download_filename = linux_updateInfo[1];
+          }
+
+          if (os.platform() === "darwin") {
+            download_url = darwin_updateInfo[0];
+            download_filename = darwin_updateInfo[1];
+          }
+
+          download_update();
+        }
+      } else {
+        window.alert(`当前已经是最新版本！`);
+      }
+    })
+    .catch(function (err) {
+      window.alert("检查更新失败：" + err);
+    });
+    
+};

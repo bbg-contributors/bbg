@@ -82,15 +82,15 @@
      
       
       <p>
-        <a href="#" class="btn btn-primary" onclick="open_site()">打开已有站点</a>
-        <a href="#" class="btn btn-primary" onclick="create_new_site_dialog_show()">创建一个站点</a>
+        <a href="#" class="btn btn-primary" id="open_site_btn" onclick="open_site()">打开已有站点</a>
+        <a href="#" class="btn btn-primary" id="create_site_btn" onclick="create_new_site_dialog_show()">创建一个站点</a>
 
       </p>
       <p id="last_managed_site" style="display:none">
         <a href="#">你最近管理过：<span style="font-weight: bold;"  id="last_managed_site_title"></span></a>
       </p>
       <br />
-      <p>软件版本号：<b><span id="current_program_version"></span></b>（<a href="#" onclick="check_update()">检查更新</a>）</p>
+      <p>软件版本号：<b><span id="current_program_version"></span></b>（<a href="#" id="check_update_btn" onclick="check_update()">检查更新</a>）</p>
       <p><b>本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意<a href="#" onclick="shell.openExternal('https://www.gnu.org/licenses/gpl-3.0-standalone.html')">GPL 3.0 协议文本</a>的所有内容。</b></p>
       
 
@@ -141,6 +141,26 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确定</button>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="update-progress-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">下载更新</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <p>下载进度：<span id="download_progress_text">0%</span></p>
+          <p>关闭此对话框后，更新仍会在后台继续下载。</p>
+          <br />
+          <div class="progress">
+            <div class="progress-bar"  id="update-progress-bar" style="width:0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
         </div>
       </div>
     </div>
