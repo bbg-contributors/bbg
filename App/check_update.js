@@ -43,19 +43,25 @@ module.exports = function () {
           if (os.platform() === "win32") {
             download_url = windows_updateInfo[0];
             download_filename = windows_updateInfo[1];
+            download_update();
           }
 
           if (os.platform() === "linux") {
             download_url = linux_updateInfo[0];
             download_filename = linux_updateInfo[1];
+            download_update();
           }
 
           if (os.platform() === "darwin") {
             download_url = darwin_updateInfo[0];
             download_filename = darwin_updateInfo[1];
+            download_update();
           }
 
-          download_update();
+          if(os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin"){
+              window.alert("你使用的是不受支持的操作系统。请自行前往 https://gitee.com/baiyang-lzy/bbg 编译安装新版本。")
+          }
+
         }
       } else {
         window.alert(`当前已经是最新版本！`);
