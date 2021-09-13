@@ -1,5 +1,9 @@
 # 开发环境搭建
 
+**建议使用 [Visual Studio Code](https://code.visualstudio.com/) 开发此项目，尽管并不是必须的。**
+
+---
+
 首先确保计算机上已经安装：
 
 * Git
