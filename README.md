@@ -28,6 +28,11 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 * [为本项目搭建开发环境](./Docs/Developer_Guide.md)
 * [第三方主题开发文档](./Docs/Theme_Developing.md)
 
+## 使用 BBG 构建的站点展示
+
+* [白羊李志远のBlog](https://baiyang-lzy.gitee.io/blog/)
+* [洛仙璃の幻梦](https://mzwing.eu.org/)
+
 ## License
 
 GPL 3.0 Licensed.
