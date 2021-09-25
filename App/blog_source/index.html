@@ -1,418 +1,422 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
     <link rel="shortcut icon" href="./favicon.ico" />
     <title></title>
 
     <style id="blogcss">
-        .article-item,
-        .article-content {
-            background-color: white;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding: 16px;
-            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-            opacity: 0.8;
+      .article-item,
+      .article-content {
+        background-color: white;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 16px;
+        box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
+          0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        opacity: 0.8;
+      }
+
+      .article-item-sub,
+      .article-content-sub {
+        color: lightslategray;
+      }
+
+      nav {
+        opacity: 0.9;
+        box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
+          0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+      }
+
+      .nav-link {
+        font-weight: bolder;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
         }
 
-        .article-item-sub,
-        .article-content-sub {
-            color: lightslategray;
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fade-in {
+        from {
+          opacity: 0;
         }
 
-        nav {
-            opacity: 0.9;
-            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade-off {
+        from {
+          opacity: 1;
         }
 
-        .nav-link {
-            font-weight: bolder;
+        to {
+          opacity: 0;
+        }
+      }
+
+      @-webkit-keyframes fade-off {
+        from {
+          opacity: 1;
         }
 
+        to {
+          opacity: 0;
+        }
+      }
 
-        @keyframes fade-in {
-            from {
-                opacity: 0
-            }
-
-            to {
-                opacity: 1
-            }
+      @keyframes fade-in-top {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
 
-        @-webkit-keyframes fade-in {
-            from {
-                opacity: 0
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            to {
-                opacity: 1
-            }
+      @-webkit-keyframes fade-in-top {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
 
-        @keyframes fade-off {
-            from {
-                opacity: 1
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            to {
-                opacity: 0
-            }
+      @keyframes fade-in-bottom {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
 
-        @-webkit-keyframes fade-off {
-            from {
-                opacity: 1
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            to {
-                opacity: 0
-            }
+      @-webkit-keyframes fade-in-bottom {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
 
-        @keyframes fade-in-top {
-            from {
-                opacity: 0;
-                transform: translateY(20px)
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
+      @keyframes fade-in-left {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
         }
 
-        @-webkit-keyframes fade-in-top {
-            from {
-                opacity: 0;
-                transform: translateY(20px)
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
+      @-webkit-keyframes fade-in-left {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
         }
 
-        @keyframes fade-in-bottom {
-            from {
-                opacity: 0;
-                transform: translateY(-20px)
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
+      @keyframes fade-in-right {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
         }
 
-        @-webkit-keyframes fade-in-bottom {
-            from {
-                opacity: 0;
-                transform: translateY(-20px)
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
+      @-webkit-keyframes fade-in-right {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
         }
 
-        @keyframes fade-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(20px)
-            }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
+      /* - 淡入缩放 */
+      @keyframes fade-small-large {
+        from {
+          opacity: 0;
+          transform: scale(0.5, 0.5);
         }
 
-        @-webkit-keyframes fade-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(20px)
-            }
+        to {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
+      @-webkit-keyframes fade-small-large {
+        from {
+          opacity: 0;
+          transform: scale(0.5, 0.5);
         }
 
-        @keyframes fade-in-right {
-            from {
-                opacity: 0;
-                transform: translateX(-20px)
-            }
+        to {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
+      @keyframes fade-large-small {
+        from {
+          opacity: 1;
+          transform: scale(1, 1);
         }
 
-        @-webkit-keyframes fade-in-right {
-            from {
-                opacity: 0;
-                transform: translateX(-20px)
-            }
+        to {
+          opacity: 0;
+          transform: scale(0.5, 0.5);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
+      @-webkit-keyframes fade-large-small {
+        from {
+          opacity: 1;
+          transform: scale(1, 1);
         }
 
-        /* - 淡入缩放 */
-        @keyframes fade-small-large {
-            from {
-                opacity: 0;
-                transform: scale(.5, .5)
-            }
+        to {
+          opacity: 0;
+          transform: scale(0.5, 0.5);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+      @keyframes fade-larger-small {
+        from {
+          opacity: 0;
+          transform: scale(1.5, 1.5);
         }
 
-        @-webkit-keyframes fade-small-large {
-            from {
-                opacity: 0;
-                transform: scale(.5, .5)
-            }
+        to {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+      @-webkit-keyframes fade-larger-small {
+        from {
+          opacity: 0;
+          transform: scale(1.5, 1.5);
         }
 
-        @keyframes fade-large-small {
-            from {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+        to {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 0;
-                transform: scale(.5, .5)
-            }
+      @keyframes fade-small-larger {
+        from {
+          opacity: 1;
+          transform: scale(1, 1);
         }
 
-        @-webkit-keyframes fade-large-small {
-            from {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+        to {
+          opacity: 0;
+          transform: scale(1.5, 1.5);
+        }
+      }
 
-            to {
-                opacity: 0;
-                transform: scale(.5, .5)
-            }
+      @-webkit-keyframes fade-small-larger {
+        from {
+          opacity: 1;
+          transform: scale(1, 1);
         }
 
-        @keyframes fade-larger-small {
-            from {
-                opacity: 0;
-                transform: scale(1.5, 1.5)
-            }
+        to {
+          opacity: 0;
+          transform: scale(1.5, 1.5);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+      @keyframes scale-small-large {
+        from {
+          transform: scale(0, 0);
         }
 
-        @-webkit-keyframes fade-larger-small {
-            from {
-                opacity: 0;
-                transform: scale(1.5, 1.5)
-            }
+        to {
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+      @-webkit-keyframes scale-small-large {
+        from {
+          transform: scale(0, 0);
         }
 
-        @keyframes fade-small-larger {
-            from {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+        to {
+          transform: scale(1, 1);
+        }
+      }
 
-            to {
-                opacity: 0;
-                transform: scale(1.5, 1.5)
-            }
+      @keyframes scale-large-small {
+        from {
+          transform: scale(1, 1);
         }
 
-        @-webkit-keyframes fade-small-larger {
-            from {
-                opacity: 1;
-                transform: scale(1, 1)
-            }
+        to {
+          transform: scale(0, 0);
+        }
+      }
 
-            to {
-                opacity: 0;
-                transform: scale(1.5, 1.5)
-            }
+      @-webkit-keyframes scale-large-small {
+        from {
+          transform: scale(1, 1);
         }
 
-        @keyframes scale-small-large {
-            from {
-                transform: scale(0, 0)
-            }
+        to {
+          transform: scale(0, 0);
+        }
+      }
 
-            to {
-                transform: scale(1, 1)
-            }
+      /* - 平移 */
+      @keyframes up-and-down {
+        from {
+          transform: translateY(-20px);
         }
 
-        @-webkit-keyframes scale-small-large {
-            from {
-                transform: scale(0, 0)
-            }
+        to {
+          transform: translateY(20px);
+        }
+      }
 
-            to {
-                transform: scale(1, 1)
-            }
+      @-webkit-keyframes up-and-down {
+        from {
+          transform: translateY(-20px);
         }
 
-        @keyframes scale-large-small {
-            from {
-                transform: scale(1, 1)
-            }
+        to {
+          transform: translateY(20px);
+        }
+      }
 
-            to {
-                transform: scale(0, 0)
-            }
+      @keyframes left-and-right {
+        from {
+          transform: translateX(-20px);
         }
 
-        @-webkit-keyframes scale-large-small {
-            from {
-                transform: scale(1, 1)
-            }
+        to {
+          transform: translateX(20px);
+        }
+      }
 
-            to {
-                transform: scale(0, 0)
-            }
+      @-webkit-keyframes left-and-right {
+        from {
+          transform: translateX(-20px);
         }
 
-        /* - 平移 */
-        @keyframes up-and-down {
-            from {
-                transform: translateY(-20px)
-            }
+        to {
+          transform: translateX(20px);
+        }
+      }
 
-            to {
-                transform: translateY(20px)
-            }
+      /* - 旋转 */
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
         }
 
-        @-webkit-keyframes up-and-down {
-            from {
-                transform: translateY(-20px)
-            }
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-            to {
-                transform: translateY(20px)
-            }
+      @-webkit-keyframes rotate {
+        from {
+          transform: rotate(0deg);
         }
 
-        @keyframes left-and-right {
-            from {
-                transform: translateX(-20px)
-            }
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-            to {
-                transform: translateX(20px)
-            }
+      /* - 弹跳 */
+      @keyframes jump {
+        0% {
+          transform: translateY(0) scale(1.15, 0.8);
         }
 
-        @-webkit-keyframes left-and-right {
-            from {
-                transform: translateX(-20px)
-            }
-
-            to {
-                transform: translateX(20px)
-            }
+        20% {
+          transform: translateY(-35px) scaleY(1.1);
         }
 
-        /* - 旋转 */
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg)
-            }
-
-            to {
-                transform: rotate(360deg)
-            }
+        50% {
+          transform: translateY(-50px) scale(1);
         }
 
-        @-webkit-keyframes rotate {
-            from {
-                transform: rotate(0deg)
-            }
-
-            to {
-                transform: rotate(360deg)
-            }
+        80% {
+          transform: translateY(-35px) scale(1);
         }
 
-        /* - 弹跳 */
-        @keyframes jump {
-            0% {
-                transform: translateY(0) scale(1.15,.8)
-            }
-
-            20% {
-                transform: translateY(-35px) scaleY(1.1)
-            }
-
-            50% {
-                transform: translateY(-50px) scale(1)
-            }
-
-            80% {
-                transform: translateY(-35px) scale(1)
-            }
-
-            to {
-                transform: translateY(0) scale(1.15,.8)
-            }
+        to {
+          transform: translateY(0) scale(1.15, 0.8);
         }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="top"></div>
-    <div id="root">
-
-    </div>
+    <div id="root"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/markdown@0.5.0/lib/markdown.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
     <script>
-        function resetPage() {
-            document.querySelector("#root").innerHTML = "";
-            console.log("reset ok");
-        }
-        function render_nav(isIndexPage) {
-            let nav_base = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navbar">
+      function resetPage() {
+        document.querySelector("#root").innerHTML = "";
+        console.log("reset ok");
+      }
+      function render_nav(isIndexPage) {
+        let nav_base = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" id="navbar_title" href="#top" onclick="enter_indexPage();">${blog["博客标题"]}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -430,132 +434,144 @@
     </div>
   </div>
 </nav>`;
-            document.querySelector("#root").innerHTML += nav_base;
+        document.querySelector("#root").innerHTML += nav_base;
 
-            document.querySelector("#navbar_title").setAttribute("style", "color:" + blog["全局主题设置"]["标题栏文字颜色"] + "!important");
+        document
+          .querySelector("#navbar_title")
+          .setAttribute(
+            "style",
+            "color:" + blog["全局主题设置"]["标题栏文字颜色"] + "!important"
+          );
 
-            if (isIndexPage) {
-                document.querySelector("#navbar_title").innerHTML = "";
-            }
+        if (isIndexPage) {
+          document.querySelector("#navbar_title").innerHTML = "";
+        }
 
-            if (blog["页面列表"].length === 0) {
-
-            } else {
-                for (let i = 0; i < blog["页面列表"].length; i++) {
-                    if (blog["页面列表"][i]["是否显示在菜单中"]) {
-                        document.querySelector("#navbar_items").innerHTML += `
+        if (blog["页面列表"].length === 0) {
+        } else {
+          for (let i = 0; i < blog["页面列表"].length; i++) {
+            if (blog["页面列表"][i]["是否显示在菜单中"]) {
+              document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item">
                             <a class="nav-link" href="#top" onclick="enter_page(${i});">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
                         </li>
-                        `
-                    }
-                }
+                        `;
             }
+          }
+        }
 
-            if (blog["菜单中的外部链接"].length === 0) {
-
-            } else {
-                for (let i = 0; i < blog["菜单中的外部链接"].length; i++) {
-                    if (blog["菜单中的外部链接"][i]["是否在新标签页打开"]) {
-                        document.querySelector("#navbar_items").innerHTML += `
+        if (blog["菜单中的外部链接"].length === 0) {
+        } else {
+          for (let i = 0; i < blog["菜单中的外部链接"].length; i++) {
+            if (blog["菜单中的外部链接"][i]["是否在新标签页打开"]) {
+              document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item">
                             <a class="nav-link" target="_blank" href="${blog["菜单中的外部链接"][i]["url"]}">${blog["菜单中的外部链接"][i]["显示名称"]}</a>
                         </li>
-                        `
-                    } else {
-                        document.querySelector("#navbar_items").innerHTML += `
+                        `;
+            } else {
+              document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item">
                             <a class="nav-link" href="${blog["菜单中的外部链接"][i]["url"]}">${blog["菜单中的外部链接"][i]["显示名称"]}</a>
                         </li>
-                        `
-                    }
-                }
+                        `;
             }
-
-            document.querySelector("#navbar").setAttribute("style", "background-color:" + blog["全局主题设置"]["标题栏背景颜色"] + "!important");
-
-            for (let i = 0; i < document.getElementsByClassName("nav-link").length; i++) {
-                document.getElementsByClassName("nav-link")[i].setAttribute("style", "color:" + blog["全局主题设置"]["标题栏文字颜色"] + "!important");
-            }
+          }
         }
 
-        function render_container() {
-            document.querySelector("#root").innerHTML += `<div id="container" class="container" style="animation: fade-in-right alternate 0.8s;"><br /><br /><br /></div>`
-        }
+        document
+          .querySelector("#navbar")
+          .setAttribute(
+            "style",
+            "background-color:" +
+              blog["全局主题设置"]["标题栏背景颜色"] +
+              "!important"
+          );
 
-        function render_index_title_info() {
-            document.querySelector("#container").innerHTML += `<br /><h1>${blog["博客标题"]}</h1><p>${blog["博客描述（副标题）"]}</p><hr />`;
+        for (
+          let i = 0;
+          i < document.getElementsByClassName("nav-link").length;
+          i++
+        ) {
+          document
+            .getElementsByClassName("nav-link")
+            [i].setAttribute(
+              "style",
+              "color:" + blog["全局主题设置"]["标题栏文字颜色"] + "!important"
+            );
         }
+      }
 
-        function render_article_list() {
-            for (let i = 0; i < blog["文章列表"].length; i++) {
-                if (blog["文章列表"][i]["是否置顶"]) {
-                    document.querySelector("#container").innerHTML += `
+      function render_container() {
+        document.querySelector(
+          "#root"
+        ).innerHTML += `<div id="container" class="container" style="animation: fade-in-right alternate 0.8s;"><br /><br /><br /></div>`;
+      }
+
+      function render_index_title_info() {
+        document.querySelector(
+          "#container"
+        ).innerHTML += `<br /><h1>${blog["博客标题"]}</h1><p>${blog["博客描述（副标题）"]}</p><hr />`;
+      }
+
+      function render_article_list() {
+        for (let i = 0; i < blog["文章列表"].length; i++) {
+          if (blog["文章列表"][i]["是否置顶"]) {
+            document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
                         <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> 置顶文章</div>
                         <h2><a href="#" onclick="enter_article(${i});">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
-                        `
+                        `;
+          }
+        }
 
-                }
-
-
-            }
-
-
-            for (let i = 0; i < blog["文章列表"].length; i++) {
-                if (blog["文章列表"][i]["是否隐藏"] || blog["文章列表"][i]["是否置顶"]) {
-
-                } else {
-
-
-
-                    document.querySelector("#container").innerHTML += `
+        for (let i = 0; i < blog["文章列表"].length; i++) {
+          if (
+            blog["文章列表"][i]["是否隐藏"] ||
+            blog["文章列表"][i]["是否置顶"]
+          ) {
+          } else {
+            document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
                         <h2><a href="#" onclick="enter_article(${i});">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
-                        `
+                        `;
 
-                    document.querySelector("#article-item-" + i).innerHTML += `
+            document.querySelector("#article-item-" + i).innerHTML += `
                             <div class="article-item-sub" id="article-item-sub-${i}"></div>
                             `;
 
-
-                    document.querySelector("#article-item-sub-" + i).innerHTML += `
+            document.querySelector("#article-item-sub-" + i).innerHTML += `
                             <i class="fa fa-calendar"></i> 此文章编写于${blog["文章列表"][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 最近修改于${blog["文章列表"][i]["修改日期"]}<br />
                         `;
 
-                    if (blog["文章列表"][i]["标签"].length === 0) {
-
-                    } else {
-                        document.querySelector("#article-item-sub-" + i).innerHTML += `
+            if (blog["文章列表"][i]["标签"].length === 0) {
+            } else {
+              document.querySelector("#article-item-sub-" + i).innerHTML += `
                             <i class="fa fa-tags"></i> 标签：
                             `;
 
-                        for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
-                            document.querySelector("#article-item-sub-" + i).innerHTML += `
+              for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
+                document.querySelector("#article-item-sub-" + i).innerHTML += `
                                 <button class="btn btn-light btn-sm" onclick="enter_tag('${blog["文章列表"][i]["标签"][k]}')">${blog["文章列表"][i]["标签"][k]}</button>
-                                `
-                        }
-                    }
+                                `;
+              }
+            }
 
-
-
-                    document.querySelector("#article-item-" + i).innerHTML += `
+            document.querySelector("#article-item-" + i).innerHTML += `
                         <br /><p>${blog["文章列表"][i]["摘要"]}</p>
                             `;
-                }
-            }
+          }
         }
+      }
 
-        function render_article_content(article_id) {
-
-
-            document.querySelector("#container").innerHTML += `
+      function render_article_content(article_id) {
+        document.querySelector("#container").innerHTML += `
             <div class="article-content" id="article-content">
                 <h2> ${blog["文章列表"][article_id]["文章标题"]}</h2>
                 <div id="article-content-sub" class="article-content-sub">
@@ -564,313 +580,382 @@
             </div>
             `;
 
-            if (blog["文章列表"][article_id]["标签"].length === 0) {
-
-            } else {
-                document.querySelector("#article-content-sub").innerHTML += `
+        if (blog["文章列表"][article_id]["标签"].length === 0) {
+        } else {
+          document.querySelector("#article-content-sub").innerHTML += `
         <br /><i class="fa fa-tags"></i> 标签：
         `;
 
-                for (let k = 0; k < blog["文章列表"][article_id]["标签"].length; k++) {
-                    document.querySelector("#article-content-sub").innerHTML += `
+          for (
+            let k = 0;
+            k < blog["文章列表"][article_id]["标签"].length;
+            k++
+          ) {
+            document.querySelector("#article-content-sub").innerHTML += `
             <button class="btn btn-light btn-sm" onclick="enter_tag('${blog["文章列表"][article_id]["标签"][k]}')">${blog["文章列表"][article_id]["标签"][k]}</button>
-            `
-                }
+            `;
+          }
+        }
+
+        document.querySelector(
+          "#article-content-sub"
+        ).innerHTML += `<br /><br />`;
+
+        axios
+          .get(
+            "./data/articles/" +
+              blog["文章列表"][article_id]["文件名"] +
+              "?timestamp=" +
+              Date.parse(new Date())
+          )
+          .then(function (response) {
+            document.querySelector("#article-content").innerHTML +=
+              markdown.toHTML(response.data);
+
+            if (window.location.href.indexOf("?") === -1) {
+              forever_url = `${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")}?type=article&filename=${
+                blog["文章列表"][article_id]["文件名"]
+              }`;
             }
 
-            document.querySelector("#article-content-sub").innerHTML += `<br /><br />`
-
-            axios.get('./data/articles/' + blog["文章列表"][article_id]["文件名"] + "?timestamp=" + Date.parse(new Date()))
-                .then(function (response) {
-                    document.querySelector("#article-content").innerHTML += markdown.toHTML(response.data);
-
-                    if(window.location.href.indexOf("?") === -1){
-                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","")}?type=article&filename=${blog["文章列表"][article_id]["文件名"]}`;
-                    }
-
-                    if(window.location.href.indexOf("?") !== -1){
-                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","").replaceAll("type=article","").replaceAll("type=page","").replaceAll("?","").replaceAll("&","").replaceAll("filename=","").replaceAll(getUrlArgs("filename"),"")}?type=article&filename=${blog["文章列表"][article_id]["文件名"]}`;
-
-                    }
-
-                    document.querySelector("#container").innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
-
-
-
-                    if (blog["全局评论设置"]["启用valine评论"] && blog["文章列表"][article_id]["启用评论"]) {
-
-
-
-                        document.querySelector("#article-content").innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此文章 《${blog["文章列表"][article_id]["文章标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`
-                        new Valine({
-                            el: '#vcomments',
-                            appId: blog["全局评论设置"]["valine设置"]["leancloud_appid"],
-                            appKey: blog["全局评论设置"]["valine设置"]["leancloud_appkey"],
-                            path: "article=" + blog["文章列表"][article_id]["文件名"]
-                        })
-                    }
-
-                    render_bottom_information();
-
-                });
-
-
-
-        }
-
-        function getTagTree() {
-            let tagtree = new Object();
-
-            //todo:考虑隐藏文章不应该纳入到标签树中
-
-            for (let i = 0; i < blog["文章列表"].length; i++) {
-                if (blog["文章列表"][i]["标签"].length === 0) {
-
-                } else {
-                    for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
-                        if (typeof tagtree[blog["文章列表"][i]["标签"][k]] === "undefined") {
-                            tagtree[blog["文章列表"][i]["标签"][k]] = new Array();
-                        } else {
-
-                        }
-                        tagtree[blog["文章列表"][i]["标签"][k]].push(blog["文章列表"][i]);
-
-                    }
-                }
-
+            if (window.location.href.indexOf("?") !== -1) {
+              forever_url = `${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")
+                .replaceAll("type=article", "")
+                .replaceAll("type=page", "")
+                .replaceAll("?", "")
+                .replaceAll("&", "")
+                .replaceAll("filename=", "")
+                .replaceAll(
+                  getUrlArgs("filename"),
+                  ""
+                )}?type=article&filename=${
+                blog["文章列表"][article_id]["文件名"]
+              }`;
             }
 
-            return tagtree;
-        }
+            document.querySelector(
+              "#container"
+            ).innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
 
-        function getTagTreeLength() {
-            return Object.keys(getTagTree()).length;
-        }
-
-        function render_tag_tree() {
-            //todo：考虑没有任何标签的情况
-
-
-            let tagtree = getTagTree();
-
-            //分析标签树
-
-            for (let i = 0; i < getTagTreeLength(); i++) {
-
-                // 遍历所有标签
-
-                // 渲染标签名字
-                document.querySelector("#container").innerHTML += `<h2><i class="fa fa-tags"></i> ${Object.keys(tagtree)[i]}</h2>`;
-                for (let k = 0; k < tagtree[Object.keys(tagtree)[i]].length; k++) {
-                    // 遍历某个标签中的所有文章
-                    for (let j = 0; j < blog["文章列表"].length; j++) {
-                        // 遍历index.json中的所有文章object，与标签中的文章object相比较，
-                        // 这是为了取得标签中的文章object在index.json中的文章列表array中对应的下标。
-                        // 因为 enter_article函数的参数是index.json中的文章列表array的下标，因此必须要获取到。
-                        if (tagtree[Object.keys(tagtree)[i]][k] === blog["文章列表"][j]) {
-                            document.querySelector("#container").innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[Object.keys(tagtree)[i]][k]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[Object.keys(tagtree)[i]][k]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[Object.keys(tagtree)[i]][k]["修改日期"]}）</p>`
-                        }
-                    }
-
-
-                }
-
-            }
-        }
-
-        function render_tag(tagname) {
-            document.querySelector("#container").innerHTML += `<h2><i class="fa fa-tags"></i> 标签为 ${tagname} 下的文章</h2>`;
-            let tagtree = getTagTree();
-            for (let i = 0; i < tagtree[tagname].length; i++) {
-                for (let j = 0; j < blog["文章列表"].length; j++) {
-
-                    if (tagtree[tagname][i] === blog["文章列表"][j]) {
-                        document.querySelector("#container").innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`
-                    }
-                }
-            }
-        }
-
-        function render_page(page_id) {
-
-            document.querySelector("#container").innerHTML += `<h2>${blog["页面列表"][page_id]["页面标题"]}</h2><hr />`;
-
-
-            axios.get('./data/pages/' + blog["页面列表"][page_id]["文件名"] + "?timestamp=" + Date.parse(new Date()))
-                .then(function (response) {
-                    document.querySelector("#container").innerHTML += markdown.toHTML(response.data);
-
-                    // 
-                    if(window.location.href.indexOf("?") === -1){
-                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","")}?type=page&filename=${blog["页面列表"][page_id]["文件名"]}`;
-                    }
-
-                    if(window.location.href.indexOf("?") !== -1){
-                        forever_url = `${window.location.href.replaceAll("#top","").replaceAll("#","").replaceAll("type=article","").replaceAll("type=page","").replaceAll("?","").replaceAll("&","").replaceAll("filename=","").replaceAll(getUrlArgs("filename"),"")}?type=page&filename=${blog["页面列表"][page_id]["文件名"]}`;
-
-                    }
-
-                    document.querySelector("#container").innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
-
-
-                    // 评论
-
-                    if (blog["全局评论设置"]["启用valine评论"] && blog["页面列表"][page_id]["启用评论"]) {
-
-
-
-                        document.querySelector("#container").innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此页面 《${blog["页面列表"][page_id]["页面标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`
-                        new Valine({
-                            el: '#vcomments',
-                            appId: blog["全局评论设置"]["valine设置"]["leancloud_appid"],
-                            appKey: blog["全局评论设置"]["valine设置"]["leancloud_appkey"],
-                            path: "page=" + blog["页面列表"][page_id]["文件名"]
-                        })
-                    }
-                    render_bottom_information();
-
-
-                });
-
-
-
-
-
-        }
-
-        function enter_page(page_id) {
-
-            if (blog["页面列表"][page_id]["是否在新标签页打开"]) {
-
-                if (blog["页面列表"][page_id]["这是一个完整的html"]) {
-                    // 在新标签页打开，是完整的html
-
-                    window.open('./data/pages/' + blog["页面列表"][page_id]["文件名"]);
-
-
-                } else {
-
-                    //在新标签页打开，是markdown
-
-                    window.open("./index.html?page_id=" + page_id);
-                }
-
-            } else {
-
-
-
-                if (blog["页面列表"][page_id]["这是一个完整的html"]) {
-
-                    // 当前标签页打开，是完整的html
-
-
-                    window.location.href = './data/pages/' + blog["页面列表"][page_id]["文件名"];
-
-
-                } else {
-
-                    // 当前标签页打开，是markdown
-
-                    resetPage();
-                    render_nav(false);
-                    render_container();
-                    render_page(page_id);
-                }
-
-
+            if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["文章列表"][article_id]["启用评论"]
+            ) {
+              document.querySelector(
+                "#article-content"
+              ).innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此文章 《${blog["文章列表"][article_id]["文章标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`;
             }
 
+            render_bottom_information();
 
-
-
-
-
-        }
-
-
-        function render_hitokoto() {
-            if (blog["一言设置"]["启用一言"]) {
-                //todo:一言
-                document.querySelector("#container").innerHTML += ``;
-                fetch('https://v1.hitokoto.cn')
-                    .then(response => response.json())
-                    .then(data => {
-                        const hitokoto = document.getElementById('hitokoto_text')
-                        hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-                        hitokoto.innerText = data.hitokoto
-                    })
+            if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["文章列表"][article_id]["启用评论"]
+            ) {
+              new Valine({
+                el: "#vcomments",
+                appId: blog["全局评论设置"]["valine设置"]["leancloud_appid"],
+                appKey: blog["全局评论设置"]["valine设置"]["leancloud_appkey"],
+                path:
+                  comment_authcode +
+                  "article=" +
+                  blog["文章列表"][article_id]["文件名"],
+              });
             }
+          });
+      }
+
+      function getTagTree() {
+        let tagtree = new Object();
+
+        //todo:考虑隐藏文章不应该纳入到标签树中
+
+        for (let i = 0; i < blog["文章列表"].length; i++) {
+          if (blog["文章列表"][i]["标签"].length === 0) {
+          } else {
+            for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
+              if (
+                typeof tagtree[blog["文章列表"][i]["标签"][k]] === "undefined"
+              ) {
+                tagtree[blog["文章列表"][i]["标签"][k]] = new Array();
+              } else {
+              }
+              tagtree[blog["文章列表"][i]["标签"][k]].push(blog["文章列表"][i]);
+            }
+          }
         }
 
-        function render_bottom_information(){
-            document.getElementById("container").innerHTML += `
+        return tagtree;
+      }
+
+      function getTagTreeLength() {
+        return Object.keys(getTagTree()).length;
+      }
+
+      function render_tag_tree() {
+        //todo：考虑没有任何标签的情况
+
+        let tagtree = getTagTree();
+
+        //分析标签树
+
+        for (let i = 0; i < getTagTreeLength(); i++) {
+          // 遍历所有标签
+
+          // 渲染标签名字
+          document.querySelector(
+            "#container"
+          ).innerHTML += `<h2><i class="fa fa-tags"></i> ${
+            Object.keys(tagtree)[i]
+          }</h2>`;
+          for (let k = 0; k < tagtree[Object.keys(tagtree)[i]].length; k++) {
+            // 遍历某个标签中的所有文章
+            for (let j = 0; j < blog["文章列表"].length; j++) {
+              // 遍历index.json中的所有文章object，与标签中的文章object相比较，
+              // 这是为了取得标签中的文章object在index.json中的文章列表array中对应的下标。
+              // 因为 enter_article函数的参数是index.json中的文章列表array的下标，因此必须要获取到。
+              if (tagtree[Object.keys(tagtree)[i]][k] === blog["文章列表"][j]) {
+                document.querySelector(
+                  "#container"
+                ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${
+                  tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
+                }</a>（<i class="fa fa-calendar"></i> 创建于${
+                  tagtree[Object.keys(tagtree)[i]][k]["创建日期"]
+                }，<i class="fa fa-clock-o"></i> 修改于${
+                  tagtree[Object.keys(tagtree)[i]][k]["修改日期"]
+                }）</p>`;
+              }
+            }
+          }
+        }
+      }
+
+      function render_tag(tagname) {
+        document.querySelector(
+          "#container"
+        ).innerHTML += `<h2><i class="fa fa-tags"></i> 标签为 ${tagname} 下的文章</h2>`;
+        let tagtree = getTagTree();
+        for (let i = 0; i < tagtree[tagname].length; i++) {
+          for (let j = 0; j < blog["文章列表"].length; j++) {
+            if (tagtree[tagname][i] === blog["文章列表"][j]) {
+              document.querySelector(
+                "#container"
+              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`;
+            }
+          }
+        }
+      }
+
+      function render_page(page_id) {
+        document.querySelector(
+          "#container"
+        ).innerHTML += `<h2>${blog["页面列表"][page_id]["页面标题"]}</h2><hr />`;
+
+        axios
+          .get(
+            "./data/pages/" +
+              blog["页面列表"][page_id]["文件名"] +
+              "?timestamp=" +
+              Date.parse(new Date())
+          )
+          .then(function (response) {
+            document.querySelector("#container").innerHTML += markdown.toHTML(
+              response.data
+            );
+
+            //
+            if (window.location.href.indexOf("?") === -1) {
+              forever_url = `${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")}?type=page&filename=${
+                blog["页面列表"][page_id]["文件名"]
+              }`;
+            }
+
+            if (window.location.href.indexOf("?") !== -1) {
+              forever_url = `${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")
+                .replaceAll("type=article", "")
+                .replaceAll("type=page", "")
+                .replaceAll("?", "")
+                .replaceAll("&", "")
+                .replaceAll("filename=", "")
+                .replaceAll(getUrlArgs("filename"), "")}?type=page&filename=${
+                blog["页面列表"][page_id]["文件名"]
+              }`;
+            }
+
+            document.querySelector(
+              "#container"
+            ).innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
+
+            // 评论
+
+            if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["页面列表"][page_id]["启用评论"]
+            ) {
+              document.querySelector(
+                "#container"
+              ).innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此页面 《${blog["页面列表"][page_id]["页面标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`;
+            }
+            render_bottom_information();
+            if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["页面列表"][page_id]["启用评论"]
+            ) {
+              new Valine({
+                el: "#vcomments",
+                appId: blog["全局评论设置"]["valine设置"]["leancloud_appid"],
+                appKey: blog["全局评论设置"]["valine设置"]["leancloud_appkey"],
+                path:
+                  comment_authcode +
+                  "page=" +
+                  blog["页面列表"][page_id]["文件名"],
+              });
+            }
+          });
+      }
+
+      function enter_page(page_id) {
+        if (blog["页面列表"][page_id]["是否在新标签页打开"]) {
+          if (blog["页面列表"][page_id]["这是一个完整的html"]) {
+            // 在新标签页打开，是完整的html
+
+            window.open("./data/pages/" + blog["页面列表"][page_id]["文件名"]);
+          } else {
+            //在新标签页打开，是markdown
+
+            window.open("./index.html?page_id=" + page_id);
+          }
+        } else {
+          if (blog["页面列表"][page_id]["这是一个完整的html"]) {
+            // 当前标签页打开，是完整的html
+
+            window.location.href =
+              "./data/pages/" + blog["页面列表"][page_id]["文件名"];
+          } else {
+            // 当前标签页打开，是markdown
+
+            resetPage();
+            render_nav(false);
+            render_container();
+            render_page(page_id);
+          }
+        }
+      }
+
+      function render_hitokoto() {
+        if (blog["一言设置"]["启用一言"]) {
+          //todo:一言
+          document.querySelector("#container").innerHTML += ``;
+          fetch("https://v1.hitokoto.cn")
+            .then((response) => response.json())
+            .then((data) => {
+              const hitokoto = document.getElementById("hitokoto_text");
+              hitokoto.href = "https://hitokoto.cn/?uuid=" + data.uuid;
+              hitokoto.innerText = data.hitokoto;
+            });
+        }
+      }
+
+      function render_bottom_information() {
+        document.getElementById("container").innerHTML += `
             <hr />
             <div style="color:grey">
                 ${markdown.toHTML(blog["底部信息（格式为markdown）"])}
             </div>
             
             `;
+      }
+
+      function enter_tag(tagname) {
+        resetPage();
+        render_nav(false);
+        render_container();
+        render_tag(tagname);
+        render_bottom_information();
+      }
+
+      function enter_archive_and_tags() {
+        resetPage();
+        render_nav(false);
+        render_container();
+        render_tag_tree();
+        render_bottom_information();
+      }
+
+      function enter_indexPage() {
+        resetPage();
+        render_nav(true);
+        render_container();
+        render_index_title_info();
+        render_article_list();
+        render_bottom_information();
+      }
+
+      function enter_article(article_id) {
+        resetPage();
+        render_nav(false);
+        render_container();
+        render_article_content(article_id);
+      }
+
+      function getUrlArgs(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split("=");
+          if (pair[0] == variable) {
+            return pair[1];
+          }
         }
+        return false;
+      }
 
+      axios
+        .get("./data/index.json?timestamp=" + Date.parse(new Date()))
+        .then(function (response) {
+          blog = response.data;
 
-        function enter_tag(tagname) {
-            resetPage();
-            render_nav(false);
-            render_container();
-            render_tag(tagname);
-            render_bottom_information();
-        }
+          if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
+            if (window.location.href.indexOf("?") === -1) {
+              comment_authcode = `domain=${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")};`;
+            }
 
-        function enter_archive_and_tags() {
-            resetPage();
-            render_nav(false);
-            render_container();
-            render_tag_tree();
-            render_bottom_information();
-        }
+            if (window.location.href.indexOf("?") !== -1) {
+              comment_authcode = `domain=${window.location.href
+                .replaceAll("#top", "")
+                .replaceAll("#", "")
+                .replaceAll("type=article", "")
+                .replaceAll("type=page", "")
+                .replaceAll("?", "")
+                .replaceAll("&", "")
+                .replaceAll("filename=", "")
+                .replaceAll(getUrlArgs("filename"), "")};`;
+            }
+          } else {
+            comment_authcode = "";
+          }
 
+          // 背景图片载入
 
+          if (blog["全局主题设置"]["是否使用背景图像"]) {
+            //todo:支持更多方式
 
-        function enter_indexPage() {
-            resetPage();
-            render_nav(true);
-            render_container();
-            render_index_title_info();
-            render_article_list();
-            render_bottom_information();
-        }
-
-        function enter_article(article_id) {
-            resetPage();
-            render_nav(false);
-            render_container();
-            render_article_content(article_id);
-
-        }
-
-        function getUrlArgs(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-}
-
-
-        axios.get('./data/index.json?timestamp=' + Date.parse(new Date()))
-            .then(function (response) {
-                blog = response.data;
-
-                // 背景图片载入
-
-                if (blog["全局主题设置"]["是否使用背景图像"]) {
-                    //todo:支持更多方式
-
-                    if (blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"]) {
-                        document.querySelector("#blogcss").innerHTML += `body:before{
+            if (
+              blog["全局主题设置"]["若使用背景图像，设置为"][
+                "使用随机二次元图片作为背景图像（浅色背景）"
+              ]
+            ) {
+              document.querySelector("#blogcss").innerHTML += `body:before{
     top: 0;
     left: 0;
     right: 0;
@@ -880,41 +965,33 @@
     content: "";
     position: fixed;
     background: url(https://api.paugram.com/wallpaper/) center/cover;
-}`
-                    }
-                }
+}`;
+            }
+          }
 
+          enter_indexPage();
 
-                enter_indexPage();
+          if (getUrlArgs("type") === "article") {
+            let article_filename = getUrlArgs("filename");
+            for (let i = 0; i < blog["文章列表"].length; i++) {
+              if (blog["文章列表"][i]["文件名"] === article_filename) {
+                enter_article(i);
+              }
+            }
+          }
 
-                if(getUrlArgs("type") === "article"){
-                    let article_filename = getUrlArgs("filename");
-                    for(let i=0;i<blog["文章列表"].length;i++){
-                        if(blog["文章列表"][i]["文件名"] === article_filename){
-                            enter_article(i);
-                        }
-                    }
-                }
+          if (getUrlArgs("type") === "page") {
+            let page_filename = getUrlArgs("filename");
+            for (let i = 0; i < blog["页面列表"].length; i++) {
+              if (blog["页面列表"][i]["文件名"] === page_filename) {
+                enter_page(i);
+              }
+            }
+          }
 
-
-                if(getUrlArgs("type") === "page"){
-                    let page_filename = getUrlArgs("filename");
-                    for(let i=0;i<blog["页面列表"].length;i++){
-                        if(blog["页面列表"][i]["文件名"] === page_filename){
-                            enter_page(i);
-                        }
-                    }
-
-                }
-
-                
-                document.getElementsByTagName("title")[0].innerHTML = blog["博客标题"];
-            });
-
-           
-
-
+          document.getElementsByTagName("title")[0].innerHTML =
+            blog["博客标题"];
+        });
     </script>
-</body>
-
+  </body>
 </html>

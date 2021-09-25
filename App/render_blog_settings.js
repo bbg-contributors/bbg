@@ -70,8 +70,20 @@ module.exports = function(){
 
 <h2>评论设置</h2>
 <hr />
-<p style="color:grey">valine评论需要leancloud账号，如果勾选启用valine评论，请填入可在leancloud
-获取到的appid和appkey。如不勾选启用valine评论，所填写的appid和appkey都不会生效。</p>
+
+<div id="hint_of_use_public_comment_service">
+目前有两种方式来在博客站点中启用评论功能。
+<br /><br />
+<li>方法一：最简单，你可以<a href="#" onclick="use_public_comment_service_offered_by_bbg();">点击这里直接使用 BBG 提供的免费公共评论服务</a>。<b>此方式不需要你拥有 LeanCloud 账户</b>，但是注意在你站点上的评论数据将由我们统一控制和管理，并且我们不提供任何数据完整性和可靠性的担保。</li>
+<br />
+<li>方法二：操作复杂，但是你将拥有对评论数据的完整控制权。使用自己的 LeanCloud 账号创建一个新应用，然后将该应用的 AppID、AppKey填入下面的表单中并保存。<b>注意此方式要求你必须拥有已经实名认证过的 LeanCloud 账户。</b></li>
+<br />
+</div>
+
+<div id="leancloud_settings_detail">
+
+<p>如果你选择方法二，请勾选下方的“启用valine评论”，并在下方的表单填入应用的相关信息，然后点击保存。选择方法一的用户无需操作下方的内容。</p>
+
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="blog_settings_is_valine_enabled">
 <label class="form-check-label" for="blog_settings_is_valine_enabled">
@@ -87,6 +99,8 @@ module.exports = function(){
 <div class="mb-3">
 <label class="form-label">AppKey（不启用valine评论则可不填）</label>
 <input class="form-control" value="${blog["全局评论设置"]["valine设置"]["leancloud_appkey"]}" id="blog_settings_valine_appkey">
+</div>
+
 </div>
 
 <hr />
@@ -111,5 +125,13 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
         document.getElementById("blog_settings_is_using_acg_bg").checked = true;
     }
 
+    if(blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]){
+      document.getElementById("leancloud_settings_detail").innerHTML= `你正在使用公共评论服务，所以不能手动设置此项。<a href="#" onclick="disable_puclic_comment_service()">如果你不想继续使用公共评论服务了，请点击这里</a>`;
+      document.getElementById("hint_of_use_public_comment_service").innerHTML="";
+    
+    }
+
 }
+
+
 

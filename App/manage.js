@@ -37,6 +37,8 @@ let render_theme_detail = require("./online_theme.js").render_theme_detail;
 let render_online_theme_list =  require("./online_theme.js").render_online_theme_list;
 let install_theme = require("./online_theme.js").install_theme;
 let { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
+let use_public_comment_service_offered_by_bbg = require("./public_comment_srv.js");
+let disable_puclic_comment_service = require("./disable_public_comment_service.js");
 
 
 // goto and menu functions
