@@ -411,6 +411,14 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
     <script>
+
+      function preview_env_public_comment_fix(){
+        if(window.location.href.indexOf("localhost") !== -1 || window.location.href.indexOf("127.0.0.1") !== -1){
+          if(blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]){
+            document.getElementById("vcomments").innerHTML = `<p style="color:red;">由于你目前正在预览环境之中，评论功能暂时被禁用了。当你的站点被从互联网访问时，评论系统会正常地显示在这里。</p>`;
+          }
+        }
+      }
       function resetPage() {
         document.querySelector("#root").innerHTML = "";
         console.log("reset ok");
@@ -665,7 +673,12 @@
                   "article=" +
                   blog["文章列表"][article_id]["文件名"],
               });
+
+              preview_env_public_comment_fix();
+
             }
+
+
           });
       }
 
@@ -818,6 +831,8 @@
                   "page=" +
                   blog["页面列表"][page_id]["文件名"],
               });
+
+              preview_env_public_comment_fix();
             }
           });
       }

@@ -32,6 +32,13 @@ function addSupportForPublicCommentService(){
     blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
 }
 
+function thirdPartyThemeReset(){
+  blog["全局主题设置"]["是否使用第三方主题"] = false;
+  blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
+  blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = "";
+  blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = "";
+}
+
 module.exports = function () {
   let currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -66,14 +73,14 @@ module.exports = function () {
           currentProgramVersion;
 
         if (currentBlogVersion <= 20210812) {
-          blog["全局主题设置"]["是否使用第三方主题"] = false;
-
+          thirdPartyThemeReset();
           updateBlogIndexHtml();
           cleanStaticRes();
           addSupportForPublicCommentService();
         }
 
         if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
+          thirdPartyThemeReset();
           updateBlogIndexHtml();
 
           cleanStaticRes();
@@ -87,8 +94,14 @@ module.exports = function () {
           currentBlogVersion === 20210825 ||
           currentBlogVersion === 20210828
         ) {
+          thirdPartyThemeReset();
           updateBlogIndexHtml();
           addSupportForPublicCommentService();
+        }
+
+        if(currentBlogVersion === 20210925){
+          thirdPartyThemeReset();
+          updateBlogIndexHtml();
         }
 
         fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));

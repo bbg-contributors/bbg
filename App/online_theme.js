@@ -1,7 +1,7 @@
 
 const { writeFileSync } = require("fs");
 
-function install_theme(theme_name){
+function install_theme(theme_name,theme_updateDate){
 
     fetch("https://gitee.com/api/v5/repos/baiyang-lzy/BBG_Themes/contents/"+theme_name + "/latest.bbgtheme")
     .then(response => response.json())
@@ -9,6 +9,11 @@ function install_theme(theme_name){
         let data = decodeURIComponent( escape( window.atob(responseData.content) ));
         writeFileSync(`${rootDir}/index.html`, data);
         blog["全局主题设置"]["是否使用第三方主题"] = true;
+        blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
+        blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = theme_name;
+        blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = theme_updateDate;
+        
+
         BlogInstance.writeBlogData();
         window.alert("已经成功为此站点应用该第三方主题！");
         window.location.reload();
@@ -34,12 +39,18 @@ function render_theme_detail(theme_name){
             <p>主题作者：${data["作者"]}</p>
             <p>主题作者主页：${data["作者主页"]}</p>
             <p>主题介绍：${data["介绍"]}</p>
+            <p>主题更新日期：${data["更新日期"]}</p>
+            <p id="is_compatible_with_bbg"></p>
             <hr />
-            <button class="btn btn-primary" onclick="install_theme('${theme_name}')">为此站点安装该主题</button>
+            <button id="install_theme_btn_detail" class="btn btn-primary" onclick="install_theme('${theme_name}',${data["更新日期"]})">为此站点安装该主题</button>
             <button class="btn btn-primary" onclick="render_online_theme_list()">返回主题列表</button>
 
         `;
-
+        if(data["更新日期"] < 20211002){
+            document.getElementById("install_theme_btn_detail").setAttribute("style","display:none");
+            document.getElementById("is_compatible_with_bbg").innerHTML="<b><span style='color:red;'>此主题版本过旧，不再支持安装。请等待主题作者更新！</span></b>"
+            window.alert("此主题版本过旧，不再支持安装。请等待主题作者更新！");
+        }
     })
     .catch(function(err){
         window.alert("主题信息加载失败，可能是网络原因，或者api用量超限。请重试：" + err);
@@ -61,7 +72,7 @@ function render_online_theme_list() {
             let theme_list = data["tree"];
             for(let i=0;i<theme_list.length;i++){
                 if(theme_list[i]["type"] === "tree"){
-                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p style="color:grey;">${theme_list[i]["sha"]}</p><p><button class="btn btn-primary btn-sm" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button> <button class="btn btn-success btn-sm" onclick="install_theme('${theme_list[i]["path"]}')">为此站点安装该主题</button></p><br />`;
+                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p style="color:grey;">${theme_list[i]["sha"]}</p><p><button class="btn btn-primary btn-sm" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button></p><br />`;
                 }
             }
         })

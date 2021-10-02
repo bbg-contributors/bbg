@@ -57,9 +57,9 @@ module.exports = function(){
 
   <h2>为此站点使用第三方主题</h2>
   <hr />
-  <p>你可以选择使用第三方主题以获得更加丰富和美观的体验。当你改变主意的时候，你也可以随时切换回官方主题。</p>
+  <p id="isUsingThirdPartyTheme"></p>
 
-  <p>目前此站点正在使用：<b><span id="isUsingThirdPartyTheme"></span> </b></p>
+
   <button class="btn btn-outline-primary" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
   <button class="btn btn-outline-success" onclick="open_online_theme_dialog()">打开主题商店</button>
   <br /><br />
@@ -106,6 +106,8 @@ module.exports = function(){
 <hr />
 
 <button class="btn btn-primary" onclick="save_blog_settings();">保存配置</button>
+
+<br /><br />
   
   
   
@@ -116,9 +118,28 @@ if (blog["全局评论设置"]["启用valine评论"] === true) {
 }
 
 if(blog["全局主题设置"]["是否使用第三方主题"] === true){
-  document.getElementById("isUsingThirdPartyTheme").innerHTML = "第三方主题";
+
+  if(blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === true){
+    document.getElementById("isUsingThirdPartyTheme").innerHTML = `
+  目前此站点正在使用<b>从文件安装的第三方主题</b>，如果可能的话建议你从主题商店安装，因为主题商店的主题通常都有更好的支持。
+  
+  `;
+  }
+
+  if(blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false){
+    document.getElementById("isUsingThirdPartyTheme").innerHTML = `
+  目前此站点正在使用 <b>来自主题商店的第三方主题。</b>该主题的相关信息如下：<br /><br />主题名称：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</b><br />
+  主题版本：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]}</b>
+  
+  `;
+  }
+
+  
 }else{
-  document.getElementById("isUsingThirdPartyTheme").innerHTML = "官方主题";
+  document.getElementById("isUsingThirdPartyTheme").innerHTML = `
+  
+  目前此站点正在使用 <b>官方主题。</b>
+  `;
     }
 
 if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"]) {
