@@ -42,8 +42,8 @@ function render_theme_detail(theme_name){
             <p>主题更新日期：${data["更新日期"]}</p>
             <p id="is_compatible_with_bbg"></p>
             <hr />
-            <button id="install_theme_btn_detail" class="btn btn-primary" onclick="install_theme('${theme_name}',${data["更新日期"]})">为此站点安装该主题</button>
-            <button class="btn btn-primary" onclick="render_online_theme_list()">返回主题列表</button>
+            <button id="install_theme_btn_detail" class="fluentbtn fluentbtn-blue" onclick="install_theme('${theme_name}',${data["更新日期"]})">为此站点安装该主题</button>
+            <button class="fluentbtn" onclick="render_online_theme_list()">返回主题列表</button>
 
         `;
         if(data["更新日期"] < 20211002){
@@ -72,7 +72,7 @@ function render_online_theme_list() {
             let theme_list = data["tree"];
             for(let i=0;i<theme_list.length;i++){
                 if(theme_list[i]["type"] === "tree"){
-                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p style="color:grey;">${theme_list[i]["sha"]}</p><p><button class="btn btn-primary btn-sm" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button></p><br />`;
+                    document.getElementById("download_online_theme_dialog_content").innerHTML += `<h4>${theme_list[i]["path"]}</h4><p style="color:grey;">${theme_list[i]["sha"]}</p><p><button class="fluentbtn fluentbtn-blue" onclick="render_theme_detail('${theme_list[i]["path"]}')">查看此主题的详情</button></p><br />`;
                 }
             }
         })

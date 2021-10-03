@@ -4,13 +4,27 @@ const dialog = require("electron").remote.dialog;
 const currentProgramVersion = require("./currentProgramVersion.js");
 
 function updateBlogIndexHtml() {
-  if (blog["全局主题设置"]["是否使用第三方主题"] === false) {
+  if (
+    blog["全局主题设置"]["是否使用第三方主题"] === false
+  ) {
     fs.rmSync(`${rootDir}/index.html`);
     fs.copyFileSync(
       __dirname + "/blog_source/index.html",
       rootDir + "/index.html",
       constants.COPYFILE_EXCL
     );
+  }
+}
+
+function check_third_party_theme_compatiblity(){
+  if(
+    blog["全局主题设置"]["是否使用第三方主题"] === true &&
+    blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false &&
+    blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] !== "" &&
+    blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] < 20211002
+  ){
+    window.alert("由于你正在使用不受支持的第三方主题，已经重置为官方主题。");
+    thirdPartyThemeReset();
   }
 }
 
@@ -28,15 +42,17 @@ function cleanStaticRes() {
   }
 }
 
-function addSupportForPublicCommentService(){
-    blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
+function addSupportForPublicCommentService() {
+  blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
 }
 
-function thirdPartyThemeReset(){
+function thirdPartyThemeReset() {
   blog["全局主题设置"]["是否使用第三方主题"] = false;
   blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
   blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = "";
-  blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = "";
+  blog["全局主题设置"][
+    "若使用来自主题商店的第三方主题，则主题的更新发布日期为"
+  ] = "";
 }
 
 module.exports = function () {
@@ -99,8 +115,13 @@ module.exports = function () {
           addSupportForPublicCommentService();
         }
 
-        if(currentBlogVersion === 20210925){
+        if (currentBlogVersion === 20210925) {
           thirdPartyThemeReset();
+          updateBlogIndexHtml();
+        }
+
+        if (currentBlogVersion === 20211002) {
+          check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
         }
 

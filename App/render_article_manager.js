@@ -1,5 +1,5 @@
 module.exports = function(){
-    document.getElementById("container").innerHTML += `<h2>文章管理</h2><button onclick="add_a_article();" class="btn btn-primary">添加一篇文章</button>
+    document.getElementById("container").innerHTML += `<h2>文章管理</h2><button onclick="add_a_article();" class="fluentbtn">添加一篇文章</button>
   <br /> <br />
   <p style="color:grey">小提示：你可以使用 Markdown 书写文章。</p>
   
@@ -68,9 +68,9 @@ module.exports = function(){
 
     document.querySelector("#article-item-" + i).innerHTML += `
     
-    <button class="btn btn-sm btn-primary" onclick="edit_article('${blog["文章列表"][i]["文件名"]}')">使用系统默认编辑器编辑文章内容</button>
-    <button class="btn btn-sm btn-primary" onclick="edit_article_meta(${i})">修改文章元信息</button>
-    <button class="btn btn-sm btn-danger" onclick="delete_article(${i})">删除此文章</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="edit_article('${blog["文章列表"][i]["文件名"]}')">使用系统默认编辑器编辑文章内容</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="edit_article_meta(${i})">修改文章元信息</button>
+    <button class="fluentbtn" onclick="delete_article(${i})">删除此文章</button>
 
     `
 

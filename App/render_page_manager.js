@@ -3,7 +3,7 @@ module.exports = function () {
     document.getElementById("container").innerHTML += `
     
     <h2>管理页面</h2>
-    <button class="btn btn-primary" onclick="add_a_page()"> 新建一张页面 </button>
+    <button class="fluentbtn" onclick="add_a_page()"> 新建一张页面 </button>
     <hr />
     
     `
@@ -15,9 +15,9 @@ module.exports = function () {
       <h2>${blog["页面列表"][i]["页面标题"]}</h2>
       <p id="if_view_in_menu_${i}"  class="page-item-sub"></p>
       <p>
-      <button class="btn btn-sm btn-primary" onclick="edit_page('${blog["页面列表"][i]["文件名"]}')">使用系统默认编辑器编辑页面内容</button>
-      <button class="btn btn-sm btn-primary" onclick="edit_page_meta(${i})">页面设置</button>
-      <button class="btn btn-sm btn-danger" onclick="delete_page(${i})">删除此页面</button>
+      <button class="fluentbtn fluentbtn-blue" onclick="edit_page('${blog["页面列表"][i]["文件名"]}')">使用系统默认编辑器编辑页面内容</button>
+      <button class="fluentbtn fluentbtn-blue" onclick="edit_page_meta(${i})">页面设置</button>
+      <button class="fluentbtn" onclick="delete_page(${i})">删除此页面</button>
       </p>
   
       </div>

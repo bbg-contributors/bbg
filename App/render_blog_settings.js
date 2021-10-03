@@ -37,9 +37,9 @@ module.exports = function(){
 <p>网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。</p>
 <p>图标的横纵比建议为1:1，以确保正确的显示效果。</p>
 <p>添加网页图标后，预览站点可能还是不能立刻看到效果。这是由于浏览器缓存导致的。如果遇到这种情况请尝试在浏览器中使用 Ctrl+F5 或 Fn+Ctrl+F5 强制刷新站点。</p>
-<button class="btn btn-success" onclick="select_a_favicon()">从文件选择一个网页图标以使用</button>
-<button class="btn btn-primary" onclick="view_current_icon()">查看当前图标</button>
-<button class="btn btn-danger" onclick="delete_current_icon()">删除当前图标</button>
+<button class="fluentbtn fluentbtn-blue" onclick="select_a_favicon()">从文件选择一个网页图标以使用</button>
+<button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">查看当前图标</button>
+<button class="fluentbtn" onclick="delete_current_icon()">删除当前图标</button>
 <br /><br />
 
 <h2>网页背景图像</h2>
@@ -60,8 +60,8 @@ module.exports = function(){
   <p id="isUsingThirdPartyTheme"></p>
 
 
-  <button class="btn btn-outline-primary" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
-  <button class="btn btn-outline-success" onclick="open_online_theme_dialog()">打开主题商店</button>
+  <button class="fluentbtn" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
+  <button class="fluentbtn" onclick="open_online_theme_dialog()">打开主题商店</button>
   <br /><br />
   <button class="btn btn-link" onclick="apply_thirdparty_theme();">为此站点使用来自文件的第三方主题（不建议）</button>
 
@@ -105,7 +105,7 @@ module.exports = function(){
 
 <hr />
 
-<button class="btn btn-primary" onclick="save_blog_settings();">保存配置</button>
+<button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存配置</button>
 
 <br /><br />
   
