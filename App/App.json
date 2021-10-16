@@ -1,14 +1,8 @@
 {
-    "currentProgramVersion": 20211003,
+    "currentProgramVersion": 20211016,
     "AppName":"Baiyang-lzy's Blog Generator",
     "StartPageInterface":{
-        "title":"笔耕不辍，钟情翰墨",
-        "poem":[
-            "金黄色的树林里分出两条小路",
-            "很遗憾我无法同时选择两者",
-            "身在旅途的我久久站立",
-            "对着其中一条极目眺望"
-        ]
+        "title":"开始使用 BBG"
     },
     "contributers":{
         "图标设计": [

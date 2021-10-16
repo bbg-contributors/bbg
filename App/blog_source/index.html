@@ -647,7 +647,11 @@
 
             document.querySelector(
               "#container"
-            ).innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
+            ).innerHTML += `<br />
+
+            <div class="alert alert-info" role="alert">
+              <i class="fa fa-smile-o"></i> 本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。
+            </div>`;
 
             if (
               blog["全局评论设置"]["启用valine评论"] &&
@@ -805,7 +809,9 @@
 
             document.querySelector(
               "#container"
-            ).innerHTML += `<br /><br /><hr /><p style="color:grey;">本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。</p>`;
+            ).innerHTML += `<br /><div class="alert alert-info" role="alert">
+              <i class="fa fa-smile-o"></i> 本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。
+            </div>`;
 
             // 评论
 

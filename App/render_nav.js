@@ -1,9 +1,9 @@
 module.exports = function () {
     let nav_base = `
     <div class="fixed-top">
-                   <a class="fluentbtn" href="#" onclick="window.history.back()"><b>← 后退到上一个页面</b></a>
+                   <a class="fluentbtn fluentbtn-blue" href="#" onclick="window.history.back()"><b>← 后退到上一个页面</b></a>
 
-                <a class="fluentbtn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="fluentbtn fluentbtn-blue dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   管理菜单
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

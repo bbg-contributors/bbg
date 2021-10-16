@@ -100,10 +100,6 @@ function manageSiteByRootDir(rootDir) {
 
 document.getElementById("interface_title").innerHTML = `<h1>${AppInfo.StartPageInterface.title}</h1><br />`
 
-for(let i=0;i<AppInfo.StartPageInterface.poem.length;i++){
-    document.getElementById("poem").innerHTML += `<p>${AppInfo.StartPageInterface.poem[i]}</p>`;
-}
-
 // 渲染贡献者列表
 
 document.getElementById("staff_list").innerHTML += `<h3>开发</h3>`

@@ -1,9 +1,9 @@
 module.exports = function(){
 
   document.getElementById("container").innerHTML += `
-  <h1>博客设置</h1>
+  <h1><i class="fa fa-cogs"></i> 博客设置</h1>
   <br />
-  <h2>基本信息与主题配置</h2>
+  <h2><i class="fa fa-paint-brush"></i> 基本信息与主题配置</h2>
   <hr />
   <div class="mb-3">
 <label class="form-label">博客标题</label>
@@ -16,12 +16,15 @@ module.exports = function(){
 </div>
 
 <div class="mb-3">
-<label class="form-label">底部信息（格式为markdown，不支持html）</label>
+<label class="form-label">底部信息</label>
 <input class="form-control"  value="${blog["底部信息（格式为markdown）"]}" id="blog_settings_bottom_information">
 </div>
 
+<div class="alert alert-info" role="alert">
+<i class="fa fa-smile-o"></i> 注意底部信息的格式为 Markdown，请不要尝试在其中添加 html 元素。
+</div>
+
 <hr />
-<p style="color:grey">颜色格式：可以填写HTML颜色名或十六进制颜色，如#66CCFF、cyan都是可选的颜色</p>
 
 <div class="mb-3">
 <label class="form-label">博客标题栏背景颜色</label>
@@ -32,7 +35,12 @@ module.exports = function(){
 <label class="form-label">博客标题栏文字颜色</label>
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
-<h2>网页图标（Favicon）</h2>
+
+<div class="alert alert-info" role="alert">
+<i class="fa fa-smile-o"></i> 上述两项颜色设置可以填写 HTML 颜色名或十六进制颜色，如#66CCFF、cyan都是可选的颜色
+</div>
+
+<h2><i class="fa fa-smile-o"></i> 网页图标（Favicon）</h2>
 <hr />
 <p>网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。</p>
 <p>图标的横纵比建议为1:1，以确保正确的显示效果。</p>
@@ -42,7 +50,7 @@ module.exports = function(){
 <button class="fluentbtn" onclick="delete_current_icon()">删除当前图标</button>
 <br /><br />
 
-<h2>网页背景图像</h2>
+<h2><i class="fa fa-file-image-o"></i> 网页背景图像</h2>
 
 <hr />
 
@@ -55,7 +63,7 @@ module.exports = function(){
 
 <br /><br />
 
-  <h2>为此站点使用第三方主题</h2>
+  <h2><i class="fa fa-paint-brush"></i> 为此站点使用第三方主题</h2>
   <hr />
   <p id="isUsingThirdPartyTheme"></p>
 
@@ -68,7 +76,7 @@ module.exports = function(){
   <br /><br />
 
 
-<h2>评论设置</h2>
+<h2><i class="fa fa-comments-o"></i> 评论设置</h2>
 <hr />
 
 <div id="hint_of_use_public_comment_service">

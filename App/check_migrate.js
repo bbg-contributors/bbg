@@ -120,10 +120,13 @@ module.exports = function () {
           updateBlogIndexHtml();
         }
 
-        if (currentBlogVersion === 20211002) {
+        if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003) {
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
         }
+
+
+        
 
         fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));
 
