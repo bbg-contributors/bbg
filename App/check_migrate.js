@@ -120,7 +120,7 @@ module.exports = function () {
           updateBlogIndexHtml();
         }
 
-        if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003) {
+        if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016) {
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
         }
