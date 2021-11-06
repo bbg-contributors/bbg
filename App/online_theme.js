@@ -49,7 +49,6 @@ function render_theme_detail(theme_name){
         if(data["更新日期"] < 20211002){
             document.getElementById("install_theme_btn_detail").setAttribute("style","display:none");
             document.getElementById("is_compatible_with_bbg").innerHTML="<b><span style='color:red;'>此主题版本过旧，不再支持安装。请等待主题作者更新！</span></b>"
-            window.alert("此主题版本过旧，不再支持安装。请等待主题作者更新！");
         }
     })
     .catch(function(err){

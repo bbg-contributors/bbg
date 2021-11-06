@@ -17,14 +17,18 @@
 
     <style id="blogcss">
       .article-item,
-      .article-content {
+      .article-content,
+      .bbg-comment-area,
+      .page-content,
+      .tag-content {
         background-color: white;
         margin-top: 30px;
         margin-bottom: 30px;
         padding: 16px;
-        box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
-          0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        box-shadow: 0 3px 1px -2px rgb(0 0 0 / 60%),
+          0 2px 2px 0 rgb(0 0 0 / 36%), 0 1px 5px 0 rgb(0 0 0 / 32%);
         opacity: 0.8;
+        border-radius: 12px;
       }
 
       .article-item-sub,
@@ -38,8 +42,21 @@
           0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
       }
 
-      .nav-link {
+      .nav-link{
+        padding-top: 4px;
+        padding-bottom: 4px;
+        
+      }
+
+      .navbar-brand{
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-size: 16px;
         font-weight: bolder;
+      }
+
+      a{
+        text-decoration: none;
       }
 
       @keyframes fade-in {
@@ -400,17 +417,107 @@
         }
       }
     </style>
+    <style id="whether_nightmode">
+
+    </style>
+    <style>
+      
+blockquote {
+  color: #666666;
+  margin: 0;
+  padding-left: 12px;
+  border-left: 4px #eee solid;
+}
+
+hr {
+  display: block;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  margin: 1em 0;
+  padding: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  border-radius: 4px;
+  background-color: #f2f5f8;
+  padding-top:4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  color:#0550ae;
+  display: inline-block;
+}
+
+#night_mode_btn{
+  position: fixed;
+  z-index: 99;
+  right: 20px;
+  bottom: 20px;
+}
+#back_to_top_btn{
+  position: fixed;
+  z-index: 99;
+  right: 20px;
+  bottom: 60px;
+}
+
+    </style>
   </head>
 
   <body>
     <div id="top"></div>
     <div id="root"></div>
+    <div id="back_to_top_btn">
+      <a href="#top" class="btn btn-secondary"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <div id="night_mode_btn">
+      <button class="btn btn-secondary" onclick="switch_night_mode()"><i class="fa fa-moon-o"></i></button>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/markdown@0.5.0/lib/markdown.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
     <script>
+
+      if(localStorage.getItem("is_nightmode") === null || localStorage.getItem("is_nightmode") === undefined){
+        localStorage.setItem("is_nightmode","off");
+      }
+
+      if(localStorage.getItem("is_nightmode") === "on"){
+        switch_to_night_mode();
+      }
+
+      function switch_to_night_mode(){
+            document.getElementById("whether_nightmode").innerHTML = `
+          body{
+            background-color:black;
+            
+          }
+          #blog_index_title,#blog_index_subtitle{
+            color:white;
+          }
+          `;
+          localStorage.setItem("is_nightmode","on");
+        }
+
+        function switch_to_light_mode(){
+          document.getElementById("whether_nightmode").innerHTML ="";
+          localStorage.setItem("is_nightmode","off");
+        }
+
+        function switch_night_mode(){
+          if(localStorage.getItem("is_nightmode") === "off"){
+            switch_to_night_mode();
+          }else if(localStorage.getItem("is_nightmode") === "on"){
+            switch_to_light_mode();
+          }
+        }
 
       function preview_env_public_comment_fix(){
         if(window.location.href.indexOf("localhost") !== -1 || window.location.href.indexOf("127.0.0.1") !== -1){
@@ -519,7 +626,7 @@
       function render_index_title_info() {
         document.querySelector(
           "#container"
-        ).innerHTML += `<br /><h1>${blog["博客标题"]}</h1><p>${blog["博客描述（副标题）"]}</p><hr />`;
+        ).innerHTML += `<br /><h1 id="blog_index_title">${blog["博客标题"]}</h1><p id="blog_index_subtitle">${blog["博客描述（副标题）"]}</p><hr />`;
       }
 
       function render_article_list() {
@@ -646,7 +753,7 @@
             }
 
             document.querySelector(
-              "#container"
+              "#article-content"
             ).innerHTML += `<br />
 
             <div class="alert alert-info" role="alert">
@@ -658,8 +765,8 @@
               blog["文章列表"][article_id]["启用评论"]
             ) {
               document.querySelector(
-                "#article-content"
-              ).innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此文章 《${blog["文章列表"][article_id]["文章标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`;
+                "#container"
+              ).innerHTML += `<div class="bbg-comment-area"><h3><i class="fa fa-comments-o"></i> 在此文章 《${blog["文章列表"][article_id]["文章标题"]}》 下评论：</h3><br /><div id="vcomments"></div></div>`;
             }
 
             render_bottom_information();
@@ -718,6 +825,7 @@
 
         let tagtree = getTagTree();
 
+        document.getElementById("container").innerHTML+= `<div class="tag-content" id="tag-content"></div>`;
         //分析标签树
 
         for (let i = 0; i < getTagTreeLength(); i++) {
@@ -725,7 +833,7 @@
 
           // 渲染标签名字
           document.querySelector(
-            "#container"
+            "#tag-content"
           ).innerHTML += `<h2><i class="fa fa-tags"></i> ${
             Object.keys(tagtree)[i]
           }</h2>`;
@@ -737,7 +845,7 @@
               // 因为 enter_article函数的参数是index.json中的文章列表array的下标，因此必须要获取到。
               if (tagtree[Object.keys(tagtree)[i]][k] === blog["文章列表"][j]) {
                 document.querySelector(
-                  "#container"
+                  "#tag-content"
                 ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${
                   tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
                 }</a>（<i class="fa fa-calendar"></i> 创建于${
@@ -752,15 +860,17 @@
       }
 
       function render_tag(tagname) {
+
+        document.getElementById("container").innerHTML+=`<div class="tag-content" id="tag-content"></div>`;
         document.querySelector(
-          "#container"
+          "#tag-content"
         ).innerHTML += `<h2><i class="fa fa-tags"></i> 标签为 ${tagname} 下的文章</h2>`;
         let tagtree = getTagTree();
         for (let i = 0; i < tagtree[tagname].length; i++) {
           for (let j = 0; j < blog["文章列表"].length; j++) {
             if (tagtree[tagname][i] === blog["文章列表"][j]) {
               document.querySelector(
-                "#container"
+                "#tag-content"
               ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`;
             }
           }
@@ -768,8 +878,13 @@
       }
 
       function render_page(page_id) {
+
         document.querySelector(
           "#container"
+        ).innerHTML += `<div class="page-content" id="page-content"></div>`
+
+        document.querySelector(
+          "#page-content"
         ).innerHTML += `<h2>${blog["页面列表"][page_id]["页面标题"]}</h2><hr />`;
 
         axios
@@ -780,7 +895,7 @@
               Date.parse(new Date())
           )
           .then(function (response) {
-            document.querySelector("#container").innerHTML += markdown.toHTML(
+            document.querySelector("#page-content").innerHTML += markdown.toHTML(
               response.data
             );
 
@@ -821,7 +936,7 @@
             ) {
               document.querySelector(
                 "#container"
-              ).innerHTML += `<br /><br /><hr /><h3><i class="fa fa-comments-o"></i> 在此页面 《${blog["页面列表"][page_id]["页面标题"]}》 下评论：</h3><br /><div id="vcomments"></div>`;
+              ).innerHTML += `<div class="bbg-comment-area"><h3><i class="fa fa-comments-o"></i> 在此页面 《${blog["页面列表"][page_id]["页面标题"]}》 下评论：</h3><br /><div id="vcomments"></div></div>`;
             }
             render_bottom_information();
             if (
@@ -1013,6 +1128,8 @@
           document.getElementsByTagName("title")[0].innerHTML =
             blog["博客标题"];
         });
+
+        
     </script>
   </body>
 </html>
