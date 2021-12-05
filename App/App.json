@@ -1,5 +1,5 @@
 {
-    "currentProgramVersion": 20211106,
+    "currentProgramVersion": 20211205,
     "AppName":"Baiyang-lzy's Blog Generator",
     "StartPageInterface":{
         "title":"开始使用 BBG"
@@ -12,8 +12,9 @@
             ["白羊李志远","https://www.zhihu.com/people/popcorn17"],
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"]
         ],
-        "macOS 打包":[
-            ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"]
+        "打包":[
+            ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
+            ["我是XXX","https://tieba.baidu.com/home/main?un=zzjzxq33"]
         ],
         "参与测试人员":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],

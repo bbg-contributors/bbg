@@ -1,14 +1,5 @@
 module.exports = function () {
     document.getElementById("uniform").innerHTML = `
-.article-item,
-        .article-content {
-            background-color: white;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding: 16px;
-            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-            opacity: 0.8;
-        }
 
         .article-item-sub,
         .article-content-sub,
@@ -16,17 +7,18 @@ module.exports = function () {
             color: lightslategray;
         }
 
-        .page-item,.article-item{
-          background-color: white;
-          margin-top: 30px;
-          margin-bottom: 30px;
-          padding-top:24px;
-          padding-bottom:24px;
-          padding-left:36px;
-          padding-right:36px;
-          box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-          opacity: 0.8;
-          border-radius: 12px;
+        .page-item,.article-item, .fluentinterface{
+          background-color: rgb(253, 253, 253);
+      padding: 24px;
+      margin-bottom:8px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgb(227, 229, 234);
+border-radius: 8px; 
+      }
+
+      .fluenthint{
+        background-color: #cff4fc!important;
       }
 
       .nav-item .nav-link{

@@ -44,12 +44,6 @@ npm run package_mas
 npm run package_darwin
 ```
 
-## 解决 npm 下载过慢的问题
-
-```
-npm config set registry http://registry.npm.taobao.org/
-```
-
 ## 解决 Electron 无法启动
 
 有时 Electron 可能无法启动并报错（信息如下）

@@ -531,19 +531,20 @@ samp {
         console.log("reset ok");
       }
       function render_nav(isIndexPage) {
+        //todo: fix router
         let nav_base = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" id="navbar_title" href="#top" onclick="enter_indexPage();">${blog["博客标题"]}</a>
+    <a class="navbar-brand" id="navbar_title" href="./index.html">${blog["博客标题"]}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_items">
         <li class="nav-item">
-          <a class="nav-link" href="#top" onclick="enter_indexPage();">文章列表</a>
+          <a class="nav-link" href="./index.html?type=internal&function=article_list">文章列表</a>
         </li>
-        <li class="nav-item" id="navbar_archive_and_tags" onclick="enter_archive_and_tags()">
-          <a class="nav-link" href="#top">归档和标签</a>
+        <li class="nav-item" id="navbar_archive_and_tags">
+          <a class="nav-link" href="./index.html?type=internal&function=archive_and_tags">归档和标签</a>
         </li>
       </ul>
     </div>
@@ -568,7 +569,7 @@ samp {
             if (blog["页面列表"][i]["是否显示在菜单中"]) {
               document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item">
-                            <a class="nav-link" href="#top" onclick="enter_page(${i});">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
+                            <a class="nav-link" href="./index.html?type=page&filename=${blog["页面列表"][i]["文件名"]}">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
                         </li>
                         `;
             }
@@ -635,7 +636,7 @@ samp {
             document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
                         <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> 置顶文章</div>
-                        <h2><a href="#" onclick="enter_article(${i});">${blog["文章列表"][i]["文章标题"]}</a></h2>
+                        <h2><a href="./index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
@@ -651,7 +652,7 @@ samp {
           } else {
             document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
-                        <h2><a href="#" onclick="enter_article(${i});">${blog["文章列表"][i]["文章标题"]}</a></h2>
+                        <h2><a href="./index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
@@ -673,7 +674,7 @@ samp {
 
               for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
                 document.querySelector("#article-item-sub-" + i).innerHTML += `
-                                <button class="btn btn-light btn-sm" onclick="enter_tag('${blog["文章列表"][i]["标签"][k]}')">${blog["文章列表"][i]["标签"][k]}</button>
+                                <a class="btn btn-light btn-sm" href="./index.html?type=internal&function=tag&argument=${blog["文章列表"][i]["标签"][k]}">${blog["文章列表"][i]["标签"][k]}</a>
                                 `;
               }
             }
@@ -706,8 +707,9 @@ samp {
             k < blog["文章列表"][article_id]["标签"].length;
             k++
           ) {
+            //todo:fix router 2
             document.querySelector("#article-content-sub").innerHTML += `
-            <button class="btn btn-light btn-sm" onclick="enter_tag('${blog["文章列表"][article_id]["标签"][k]}')">${blog["文章列表"][article_id]["标签"][k]}</button>
+            <a class="btn btn-light btn-sm" href="./index.html?type=internal&function=tag&argument=${blog["文章列表"][article_id]["标签"][k]}">${blog["文章列表"][article_id]["标签"][k]}</a>
             `;
           }
         }
@@ -846,7 +848,7 @@ samp {
               if (tagtree[Object.keys(tagtree)[i]][k] === blog["文章列表"][j]) {
                 document.querySelector(
                   "#tag-content"
-                ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${
+                ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][j]["文件名"]}">${
                   tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
                 }</a>（<i class="fa fa-calendar"></i> 创建于${
                   tagtree[Object.keys(tagtree)[i]][k]["创建日期"]
@@ -871,7 +873,7 @@ samp {
             if (tagtree[tagname][i] === blog["文章列表"][j]) {
               document.querySelector(
                 "#tag-content"
-              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`;
+              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][j]["文件名"]}">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`;
             }
           }
         }
@@ -1014,7 +1016,7 @@ samp {
         resetPage();
         render_nav(false);
         render_container();
-        render_tag(tagname);
+        render_tag(decodeURIComponent(tagname));
         render_bottom_information();
       }
 
@@ -1122,6 +1124,22 @@ samp {
               if (blog["页面列表"][i]["文件名"] === page_filename) {
                 enter_page(i);
               }
+            }
+          }
+
+          if (getUrlArgs("type") === "internal") {
+            let internal_function = getUrlArgs("function");
+            let internal_function_argument = getUrlArgs("argument");
+
+            if(internal_function === "article_list"){
+              enter_indexPage();
+            }
+            if(internal_function === "archive_and_tags"){
+              enter_archive_and_tags();
+            }
+
+            if(internal_function === "tag"){
+              enter_tag(internal_function_argument);
             }
           }
 

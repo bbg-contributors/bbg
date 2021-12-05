@@ -13,9 +13,9 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 本软件支持 macOS、Windows、Linux 平台。
 
-[在 Gitee Releases 下载它们](https://gitee.com/baiyang-lzy/bbg/releases)
+程序包可以在 [Gitee Releases](https://gitee.com/baiyang-lzy/bbg/releases) 或者 [GitHub Releases](https://github.com/baiyang-lzy/bbg/releases) 下载到。
 
-或[在 Github 上下载 macOS 构建](https://github.com/scientificworld/bbg_mac_build)
+> 特别提醒：如果你是 Arch Linux 用户，现在可以使用[这个 AUR 包](https://aur.archlinux.org/packages/bbg/) 来安装和使用 BBG。对于 macOS 用户， scientificworld 提供的 [macOS 下载源](https://github.com/scientificworld/bbg_mac_build) 或许能提供更好的安装体验（注意：这两个渠道的版本可能相比最新版本略微过时）。
 
 ## 文档
 
@@ -27,6 +27,10 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 * [为本项目搭建开发环境](./Docs/Developer_Guide.md)
 * [第三方主题开发文档](./Docs/Theme_Developing.md)
+
+如果想要查看本项目的更新日志，请查阅
+
+* [BBG 版本更新日志](./CHANGELOG.md)
 
 ## 使用 BBG 构建的站点展示
 

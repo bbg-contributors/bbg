@@ -16,13 +16,13 @@ function updateBlogIndexHtml() {
   }
 }
 
-function check_third_party_theme_compatiblity(){
-  if(
+function check_third_party_theme_compatiblity() {
+  if (
     blog["全局主题设置"]["是否使用第三方主题"] === true &&
     blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false &&
     blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] !== "" &&
     blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] < 20211002
-  ){
+  ) {
     window.alert("由于你正在使用不受支持的第三方主题，已经重置为官方主题。");
     thirdPartyThemeReset();
   }
@@ -120,13 +120,13 @@ module.exports = function () {
           updateBlogIndexHtml();
         }
 
-        if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016) {
+        if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
         }
 
 
-        
+
 
         fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));
 

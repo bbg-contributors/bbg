@@ -26,3 +26,44 @@
 3. 当你觉得满意的时候，把你创建的```index.html```修改为```主题的名字.bbgtheme```，这样你就创建了一个有效的第三方主题文件。
 
 注意：```*.bbgtheme```的文件编码必须为 UTF-8。如果不是UTF-8 编码格式，则必须转换为 UTF-8 编码格式。如果需要转换编码格式的话，可以使用[@scientificworld](https://gitee.com/scientificworld)开发的[pyenconv](https://gitee.com/scientificworld/pyenconv)来转换，```pyenconv```可以自动识别输入文件的编码格式，并且可以将转换后的结果重新写到原文件，非常的方便。
+
+## 需要注意的地方
+
+为了保证兼容性，对于部分实现在此进行说明：
+
+### 对公共评论服务的支持
+
+实际上就是内置了一个公共的 Leancloud 密钥，实现上仍然是 Valine 实现的。这个公共 API 密钥的信息如下：注意，此密钥仅限开发 BBG 第三方主题使用。
+
+```
+appid: SykuVs4qcWMkl4RUtKEUlmog-gzGzoHsz
+appkey: 0jowkR4ct0lJbWcvocymEkKw
+```
+
+除此之外为了避免不同站点之间的信息产生混淆，对于 valine 的 path 应该单独设置如下：
+（如果是文章评论）
+```
+domain=xxx;article=xxx.md
+```
+（如果是页面评论）
+```
+domain=xxx;page=xxx.md
+```
+
+关于domain=xxx中的这个xxx的值怎样获取，实际上它应该是通过将window.location.href去除所有url中#xxx和?xxx=xxx的部分来生成。
+
+### 对于路由方式和永久链接
+
+官方主题目前不使用 hash 进行路由，各个页面的转入是使用url参数（如index.html?type=article&filename=first.md）来完成的。
+
+无论你的第三方主题使用何种路由方式，它最好要支持以下链接能够对应到正确的页面：
+
+```
+index.html?type=internal&function=article_list 对应文章列表
+index.html?type=internal&function=archive_and_tags 对应归档和标签
+index.html?type=internal&function=tag&argument=xxxxx 对应浏览xxx标签下的文章
+
+index.html?type=article&filename=xxx.md 对应某个文章
+index.html?type=page&filename=xxx.md 对应某个页面
+
+```

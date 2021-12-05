@@ -1,10 +1,11 @@
 module.exports = function(){
 
   document.getElementById("container").innerHTML += `
+  
   <h1><i class="fa fa-cogs"></i> 博客设置</h1>
   <br />
-  <h2><i class="fa fa-paint-brush"></i> 基本信息与主题配置</h2>
-  <hr />
+  <div class="fluentinterface">
+  <h2><i class="fa fa-paint-brush"></i> 基本信息与主题配置</h2><br />
   <div class="mb-3">
 <label class="form-label">博客标题</label>
 <input class="form-control" value="${blog["博客标题"]}" id="blog_settings_title">
@@ -20,11 +21,11 @@ module.exports = function(){
 <input class="form-control"  value="${blog["底部信息（格式为markdown）"]}" id="blog_settings_bottom_information">
 </div>
 
-<div class="alert alert-info" role="alert">
+<div class="fluentinterface fluenthint" role="alert">
 <i class="fa fa-smile-o"></i> 注意底部信息的格式为 Markdown，请不要尝试在其中添加 html 元素。
 </div>
 
-<hr />
+<br />
 
 <div class="mb-3">
 <label class="form-label">博客标题栏背景颜色</label>
@@ -36,23 +37,23 @@ module.exports = function(){
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
 
-<div class="alert alert-info" role="alert">
+<div class="fluentinterface fluenthint" role="alert">
 <i class="fa fa-smile-o"></i> 上述两项颜色设置可以填写 HTML 颜色名或十六进制颜色，如#66CCFF、cyan都是可选的颜色
 </div>
+</div>
 
+<div class="fluentinterface">
 <h2><i class="fa fa-smile-o"></i> 网页图标（Favicon）</h2>
-<hr />
+<br />
 <p>网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。</p>
 <p>图标的横纵比建议为1:1，以确保正确的显示效果。</p>
 <p>添加网页图标后，预览站点可能还是不能立刻看到效果。这是由于浏览器缓存导致的。如果遇到这种情况请尝试在浏览器中使用 Ctrl+F5 或 Fn+Ctrl+F5 强制刷新站点。</p>
 <button class="fluentbtn fluentbtn-blue" onclick="select_a_favicon()">从文件选择一个网页图标以使用</button>
 <button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">查看当前图标</button>
 <button class="fluentbtn" onclick="delete_current_icon()">删除当前图标</button>
-<br /><br />
-
-<h2><i class="fa fa-file-image-o"></i> 网页背景图像</h2>
-
-<hr />
+</div>
+<div class="fluentinterface">
+<h2><i class="fa fa-file-image-o"></i> 网页背景图像</h2><br />
 
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="blog_settings_is_using_acg_bg">
@@ -60,11 +61,10 @@ module.exports = function(){
   使用随机二次元壁纸作为网页背景（若不勾选此项则为空白背景）
 </label>
 </div>
-
-<br /><br />
-
+</div>
+<div class="fluentinterface">
   <h2><i class="fa fa-paint-brush"></i> 为此站点使用第三方主题</h2>
-  <hr />
+  <br />
   <p id="isUsingThirdPartyTheme"></p>
 
 
@@ -72,12 +72,11 @@ module.exports = function(){
   <button class="fluentbtn" onclick="open_online_theme_dialog()">打开主题商店</button>
   <br /><br />
   <button class="btn btn-link" onclick="apply_thirdparty_theme();">为此站点使用来自文件的第三方主题（不建议）</button>
+  </div>
 
-  <br /><br />
-
-
+<div class="fluentinterface">
 <h2><i class="fa fa-comments-o"></i> 评论设置</h2>
-<hr />
+<br />
 
 <div id="hint_of_use_public_comment_service">
 目前有两种方式来在博客站点中启用评论功能。
@@ -108,7 +107,7 @@ module.exports = function(){
 <label class="form-label">AppKey（不启用valine评论则可不填）</label>
 <input class="form-control" value="${blog["全局评论设置"]["valine设置"]["leancloud_appkey"]}" id="blog_settings_valine_appkey">
 </div>
-
+</div>
 </div>
 
 <hr />

@@ -14,6 +14,7 @@ document.getElementsByTagName("title")[0].innerHTML = "开始使用 Baiyang-lzy'
 
 let create_new_site_dialog = new bootstrap.Modal(document.getElementById('create-new-site-dialog'));
 let err_dialog = new bootstrap.Modal(document.getElementById('err-dialog'));
+let info_dialog = new bootstrap.Modal(document.getElementById('info-dialog'));
 
 function create_new_site_dialog_show() {
 
@@ -29,6 +30,13 @@ function createErrDialog(title, content) {
     err_dialog.show();
     document.getElementById("err-dialog-title").innerHTML = title;
     document.getElementById("err-dialog-content").innerHTML = content;
+}
+
+function createInfoDialog(title, content) {
+
+    info_dialog.show();
+    document.getElementById("info-dialog-title").innerHTML = title;
+    document.getElementById("info-dialog-content").innerHTML = content;
 }
 
 function create_new_site_choose_root_dir() {
@@ -100,36 +108,6 @@ function manageSiteByRootDir(rootDir) {
 
 document.getElementById("interface_title").innerHTML = `<h1>${AppInfo.StartPageInterface.title}</h1><br />`
 
-// 渲染贡献者列表
-
-document.getElementById("staff_list").innerHTML += `<h3>开发</h3>`
-
-for(let i=0;i< AppInfo["contributers"]["开发"].length;i++){
-    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["开发"][i][1]}')">${AppInfo["contributers"]["开发"][i][0]}</a></p>`;
-}
-
-
-document.getElementById("staff_list").innerHTML += `<h3>图标设计</h3>`
-
-for(let i=0;i< AppInfo["contributers"]["图标设计"].length;i++){
-    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["图标设计"][i][1]}')">${AppInfo["contributers"]["图标设计"][i][0]}</a></p>`;
-}
-
-document.getElementById("staff_list").innerHTML += `<h3>macOS 打包</h3>`
-
-for(let i=0;i< AppInfo["contributers"]["macOS 打包"].length;i++){
-    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["macOS 打包"][i][1]}')">${AppInfo["contributers"]["macOS 打包"][i][0]}</a></p>`;
-}
-
-document.getElementById("staff_list").innerHTML += `<h3>参与测试人员</h3>`
-
-for(let i=0;i< AppInfo["contributers"]["参与测试人员"].length;i++){
-    document.getElementById("staff_list").innerHTML += `<p><a href="#staff_list" onclick="shell.openExternal('${AppInfo["contributers"]["参与测试人员"][i][1]}')">${AppInfo["contributers"]["参与测试人员"][i][0]}</a></p>`;
-}
-
-
-
-
 storage.has("last_managed_site", function (error, hasKey) {
     if (hasKey) {
         storage.get("last_managed_site", function (error, data) {
@@ -145,3 +123,43 @@ storage.has("last_managed_site", function (error, hasKey) {
 
 
 document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
+
+function openStaffDialog(){
+
+    let staff_string = "";
+    staff_string+="<h3>图标设计</h3>";
+    for(let i=0;i<AppInfo.contributers["图标设计"].length;i++){
+        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["图标设计"][i][1]}')">${AppInfo.contributers["图标设计"][i][0]}</a></p>`
+    }
+
+    staff_string+="<h3>开发</h3>";
+    for(let i=0;i<AppInfo.contributers["开发"].length;i++){
+        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["开发"][i][1]}')">${AppInfo.contributers["开发"][i][0]}</a></p>`
+    }
+
+    staff_string+="<h3>打包</h3>";
+    for(let i=0;i<AppInfo.contributers["打包"].length;i++){
+        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["打包"][i][1]}')">${AppInfo.contributers["打包"][i][0]}</a></p>`
+    }
+
+    staff_string+="<h3>参与测试人员</h3>";
+    for(let i=0;i<AppInfo.contributers["参与测试人员"].length;i++){
+        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["参与测试人员"][i][1]}')">${AppInfo.contributers["参与测试人员"][i][0]}</a></p>`
+    }
+
+    createInfoDialog("Staff 名单",staff_string)
+}
+
+function openGroupDialog(){
+    createInfoDialog("加入我们的群组",`
+    
+    <p>QQ 群：983538695</p>
+    <p>本群组的讨论范围包括计算机、生活、ACGN文化和体验等等，欢迎感兴趣者加入。有 BBG 使用相关建议和问题亦可在此群组中提出。</p>
+    `);
+}
+
+function openCopyrightDialog(){
+    createInfoDialog("关于应用图标的版权声明",`
+    <p>应用图标由 scientificworld 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成。滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。</p><p>本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： baiyang-lzy@outlook.com 。我会第一时间做出处理。</p>
+    `)
+}

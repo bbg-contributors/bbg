@@ -39,6 +39,9 @@
       text-decoration: none;
       color: black;
       font-size: 92%;
+      border-color: rgb(227, 229, 234);
+      border-style: solid;
+      border-width: 2px;
     
     }
 
@@ -71,6 +74,15 @@
       color: grey;
 
     }
+
+    .fluentinterface{
+      background-color: rgb(253, 253, 253);
+      padding: 24px;
+      margin-bottom:8px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgb(227, 229, 234);
+border-radius: 8px;    }
   </style>
   <div class="container">
     
@@ -79,7 +91,7 @@
       <br />
       
 
-      <div class="alert alert-primary" role="alert">
+      <div class="fluentinterface">
         <div id="interface_title">
 
         </div>
@@ -92,41 +104,33 @@
           <a href="#" class="fluentbtn fluentbtn-blue" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> 创建一个站点</a>
   
         </p>
-        <br />
-        <hr />
-        <i class="fa fa-smile-o"></i> 软件版本号：<b><span id="current_program_version"></span></b>（<a href="#" id="check_update_btn" onclick="check_update()">检查更新</a>）
-      </div>
-     
-      <div class="alert alert-info" role="alert" id="last_managed_site" style="display:none">
+        
+        <div id="last_managed_site" style="display:none">
+          <br />
           <a href="#">你最近管理过：<span style="font-weight: bold;"  id="last_managed_site_title"></span></a>
       </div>
+      </div>
+     
       
-      <div class="alert alert-warning" role="alert">
-        <span><b>本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意<a href="#" onclick="shell.openExternal('https://www.gnu.org/licenses/gpl-3.0-standalone.html')">GPL 3.0 协议文本</a>的所有内容。</b></span>
+      
+      <div class="fluentinterface">
+        <h2>BBG 版本设置和反馈</h2>
+        <br />
+        <i class="fa fa-smile-o"></i> 软件版本号：<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">检查更新</a><br />
+      <br />
+        <span>本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意<a href="#" onclick="shell.openExternal('https://www.gnu.org/licenses/gpl-3.0-standalone.html')">GPL 3.0 协议文本</a>的所有内容。</span><br />
+        <br />
+        <p>如果你是 Arch Linux 用户，现在推荐使用<a href="#" onclick="shell.openExternal('https://aur.archlinux.org/packages/bbg/')">这个 AUR 包</a>来安装和更新 BBG。</p>
+        <button class="fluentbtn" onclick="openStaffDialog()">查看 staff 名单</button>
+        <button class="fluentbtn" onclick="openGroupDialog()">加入我们的群组</button>
+        <button class="fluentbtn" onclick="openCopyrightDialog()">关于应用图标的版权声明</button>
 
       </div>
-      
-      
+
+      <br /><br /><br />
 
     </main>
-    <hr />
-    <p></p>
-    
-   
-    <div class="alert alert-info text-center" role="alert">
-      <br />
-      <div id="staff_list">
-      
-        <h1>STAFF 名单</h1>
-      </div>
-    </div>
-    
-    <div class="alert alert-info text-center" role="alert">
-      <br />
-      <h3>版权声明 </h3>
-    <p>应用图标由 scientificworld 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成；滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： 1102116021@qq.com 。我会第一时间做出处理。</p>
 
-    </div>
   </div>
 
 
@@ -159,6 +163,24 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="err-dialog-content">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确定</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="info-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="info-dialog-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="info-dialog-content">
 
         </div>
         <div class="modal-footer">
