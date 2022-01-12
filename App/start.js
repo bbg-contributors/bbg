@@ -1,14 +1,19 @@
 
 const fs = require("fs");
 
-const dialog = require("electron").remote.dialog;
-const shell = require("electron").remote.shell;
+const dialog = require('@electron/remote').dialog;
+const shell = require('@electron/remote').shell;
+const AppPath = require('@electron/remote').app.getPath('userData');
 const { copyFileSync, constants, readFileSync } = require('fs');
 const storage = require("electron-json-storage");
+
+storage.setDataPath(AppPath);
+
 const getAppInfo = require("./getAppInfo.js");
 const AppInfo = getAppInfo();
 const currentProgramVersion = require("./currentProgramVersion.js");
 const check_update = require("./check_update.js");
+
 
 document.getElementsByTagName("title")[0].innerHTML = "开始使用 Baiyang-lzy's Blog Generator";
 
@@ -107,6 +112,8 @@ function manageSiteByRootDir(rootDir) {
 // 渲染标题和诗歌
 
 document.getElementById("interface_title").innerHTML = `<h1>${AppInfo.StartPageInterface.title}</h1><br />`
+
+
 
 storage.has("last_managed_site", function (error, hasKey) {
     if (hasKey) {

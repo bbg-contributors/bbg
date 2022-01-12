@@ -1,9 +1,9 @@
 const request = require('request');
 const fs = require('fs');
-const dialog = require('electron').remote.dialog;
-const win = require('electron').remote.getCurrentWindow();
+const dialog = require('@electron/remote').dialog;
+const win = require('@electron/remote').getCurrentWindow();
 const path = require("path");
-const app = require("electron").remote.app;
+const app = require('@electron/remote').app;
 const os = require("os");
 const { shell } = require('electron');
 

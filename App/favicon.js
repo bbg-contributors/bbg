@@ -1,6 +1,6 @@
 ﻿const {existsSync,rmSync,copyFileSync,constants} = require("fs");
-const shell = require("electron").remote.shell;
-const dialog = require("electron").remote.dialog;
+const shell = require('@electron/remote').shell;
+const dialog = require('@electron/remote').dialog;
 
 function view_current_icon() {
 	if (existsSync(`${rootDir}/favicon.ico`)) {

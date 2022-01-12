@@ -1,5 +1,5 @@
 
-const dialog = require("electron").remote.dialog;
+const dialog = require('@electron/remote').dialog;
 
 module.exports = function () {
     let blog_settings_description = document.getElementById("blog_settings_description").value;

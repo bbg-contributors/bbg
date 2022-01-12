@@ -1,4 +1,4 @@
-const dialog = require("electron").remote.dialog;
+const dialog = require('@electron/remote').dialog;
 const { readFileSync, writeFileSync } = require("fs");
 
 module.exports= function() {

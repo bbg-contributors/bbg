@@ -1,5 +1,5 @@
 
-const shell = require("electron").remote.shell;
+const shell = require('@electron/remote').shell;
 
 function exitThisSite() {
     window.location.href = "./start.html";

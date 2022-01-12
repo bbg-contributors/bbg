@@ -1,5 +1,7 @@
 const { app, BrowserWindow, Menu } = require('electron');
 
+require('@electron/remote/main').initialize();
+
 Menu.setApplicationMenu(null)
 
 function createWindow() {
@@ -8,12 +10,15 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true,
-            enableRemoteModule: true,
             contextIsolation: false
         }
     })
 
+    
+    require("@electron/remote/main").enable(win.webContents);
     win.loadFile('./App/start.html');
+
+    
 }
 
 

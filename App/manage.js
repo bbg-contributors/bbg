@@ -1,4 +1,7 @@
+const AppPath = require('@electron/remote').app.getPath('userData');
+
 const storage = require("electron-json-storage");
+storage.setDataPath(AppPath);
 
 const getUrlArgs = require("./getUrlArgs.js");
 const BlogData = require("./BlogData.js");

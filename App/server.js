@@ -1,7 +1,7 @@
 
 const getUrlArgs = require("./getUrlArgs.js");
 const rootDir = decodeURIComponent(getUrlArgs("rootdir"));
-const shell = require("electron").remote.shell;
+const shell = require('@electron/remote').shell;
 const express = require('express');
 const loadUniStyle = require("./loadUniStyle.js");
 

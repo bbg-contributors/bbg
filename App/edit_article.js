@@ -1,6 +1,6 @@
 
-const dialog = require("electron").remote.dialog;
-const shell = require("electron").remote.shell;
+const dialog = require('@electron/remote').dialog;
+const shell = require('@electron/remote').shell;
 
 module.exports = function(filename){
     try {

@@ -1,6 +1,5 @@
 const path = require("path");
-const { remote } = require("electron");
-const app = remote.app;
+const app = require('@electron/remote').app;
 const currentProgramVersion = require("./currentProgramVersion.js").toString();
 const download_update = require("./download_update.js");
 const os = require("os");
