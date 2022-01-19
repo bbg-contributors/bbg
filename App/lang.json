@@ -1,0 +1,242 @@
+{
+    "EDIT_ARTICLE_META": {
+        "简体中文": "修改文章元信息",
+        "English": "Edit meta information of this article"
+    },
+    "EDIT_ARTICLE_CONTENT": {
+        "简体中文": "使用系统默认编辑器编辑文章内容",
+        "English": "Edit the content of this article with the default editor of your system"
+    },
+    "DELETE_ARTICLE": {
+        "简体中文": "删除文章",
+        "English": "Delete this article"
+    },
+    "HINT_USING_MD_IN_ARTICLES": {
+        "简体中文": "小提示：你可以使用 Markdown 格式来书写文章",
+        "English": "Tips: You can write your article with Markdown Format."
+    },
+    "ARTICLE_MANAGEMENT": {
+        "简体中文": "文章管理",
+        "English": "Article management"
+    },
+    "ADD_AN_ARTICLE": {
+        "简体中文": "添加一篇文章",
+        "English": "Add an article"
+    },
+    "ARTICLE_CREATEDAT": {
+        "简体中文": "此文章编写于",
+        "English": "This article is written at "
+    },
+    "LASTMODIFIEDAT": {
+        "简体中文": "最近修改于",
+        "English": "Last modified at"
+    },
+    "TAGS": {
+        "简体中文": "标签：",
+        "English": "Tags: "
+    },
+    "PAGE_MANAGEMENT": {
+        "简体中文": "页面管理",
+        "English": "Page management"
+    },
+    "ADD_A_PAGE": {
+        "简体中文": "新建一个页面",
+        "English": "Add a page"
+    },
+    "HINT_USING_MD_IN_PAGES": {
+        "简体中文": "小提示：你可以使用 Markdown 格式来编写页面内容",
+        "English": "Tips: You can write your page with Markdown Format."
+    },
+    "PAGE_VIEWNAME": {
+        "简体中文": "此页面在菜单中显示为：",
+        "English": "In the navigation bar, the page is viewed as: "
+    },
+    "EDIT_PAGE_META": {
+        "简体中文": "页面设置",
+        "English": "Settings for this page"
+    },
+    "EDIT_PAGE_CONTENT": {
+        "简体中文": "使用系统默认编辑器编辑页面内容",
+        "English": "Edit the content of this page with the default editor of your system"
+    },
+    "DELETE_PAGE": {
+        "简体中文": "删除此页面",
+        "English": "Delete this page"
+    },
+    "BLOG_SETTINGS": {
+        "简体中文": "博客设置",
+        "English": "Settings of the blog"
+    },
+    "BASIC_INFO_THEME_CONFIG": {
+        "简体中文": "基本信息与主题配置",
+        "English": "Basic Information and theme configuration"
+    },
+    "BLOG_TITLE": {
+        "简体中文": "博客标题",
+        "English": "The title of this blog"
+    },
+    "BLOG_DESCRIPTION": {
+        "简体中文": "博客描述（副标题）",
+        "English": "The description or the sub-title of this blog"
+    },
+    "BOTTOM_INFORMATION": {
+        "简体中文": "底部信息",
+        "English": "The bottom information"
+    },
+    "HINT_BTMINFO_MD": {
+        "简体中文": "注意底部信息的格式为 Markdown，请不要尝试在其中添加 html 元素。",
+        "English": "Notice that the format of the bottom information is Markdown. Don't try adding HTML elements into it."
+    },
+    "BLOG_NAVBAR_BGCOLOR": {
+        "简体中文": "博客标题栏背景颜色",
+        "English": "The background color of the blog title bar"
+    },
+    "BLOG_NAVBAR_TEXTCOLOR": {
+        "简体中文": "博客标题栏文字颜色",
+        "English": "The text color of the blog title bar"
+    },
+    "HINT_NAVBAR_COLOR": {
+        "简体中文": "上述两项颜色设置可以填写 HTML 颜色名或十六进制颜色，如#66CCFF、cyan都是可选的颜色",
+        "English": "You can fill the blank with HTML Colour Name or HEX color code, e.g, #66ccff or cyan."
+    },
+    "FAVICON": {
+        "简体中文": "网页图标（Favicon）",
+        "English": "The icon of the website (a.k.a Favicon)"
+    },
+    "FAVICON_DESCRIPTION": [
+        {
+            "简体中文": "网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。",
+            "English": "It may not be necessary to add a favicon, which refers to the icon which is displayed at the browser tab and defaults to the favicon.ico which located at the root directory of the site."
+        },
+        {
+            "简体中文": "图标的横纵比建议为1:1，以确保正确的显示效果。",
+            "English": "The Horizontal and vertical ratio the icon is recommended to be 1:1, in order to make a comfortable display effect."
+        },
+        {
+            "简体中文": "添加网页图标后，预览站点可能还是不能立刻看到效果。这是由于浏览器缓存导致的。如果遇到这种情况请尝试在浏览器中使用 Ctrl+F5 或 Fn+Ctrl+F5 强制刷新站点。",
+            "English": "After adding the icon, you may not see the effect immediately while previewing the site due to the browser cache. If you meet such issues, try using Ctrl+F5 or Fn+Ctrl+F5 to refresh the site by force."
+        }
+    ],
+    "SELECT_FAVICON": {
+        "简体中文": "从文件中选择一个图标文件以使用",
+        "English": "Select an image file as favicon"
+    },
+    "VIEW_FAVICON": {
+        "简体中文": "查看当前图标",
+        "English": "View the current icon"
+    },
+    "DELETE_FAVICON": {
+        "简体中文": "删除当前图标",
+        "English": "Delete the current favicon"
+    },
+    "STARTPAGE_TITLE": {
+        "简体中文": "开始使用 BBG",
+        "English": "Welcome to BBG"
+    },
+    "STARTPAGE_DESCRIPTION": [
+        {
+            "简体中文": "BBG 是 Baiyang-lzy's Blog Generator 的简写，也是一个基于 Electron 技术开发的静态博客生成器。",
+            "English": "BBG, also known as Baiyang-lzy's Blog Generator, which is a static blog generator based on Electron Technology."
+        },
+        {
+            "简体中文": "点击下方的按钮即可开始管理/创建博客了。",
+            "English": "Want to manage or create a blog? Just click the button below."
+        }
+    ],
+    "OPEN_EXISTING_SITE": {
+        "简体中文": "打开已有站点",
+        "English": "Open an existing site"
+    },
+    "CREATE_NEW_SITE": {
+        "简体中文": "创建一个新站点",
+        "English": "Create a new site"
+    },
+    "BBG_SETTINGS": {
+        "简体中文": "BBG 版本设置与反馈",
+        "English": "Application Settings and Feedback"
+    },
+    "LAST_MANAGED_SITE": {
+        "简体中文": "你最近管理过：",
+        "English": "Last managed site: "
+    },
+    "SOFTWARE_VERSION": {
+        "简体中文": "软件版本号：",
+        "English": "Version: "
+    },
+    "CHECK_UPDATE": {
+        "简体中文": "检查更新",
+        "English": "Check for updates"
+    },
+    "LICENSE_GPLV3": {
+        "简体中文": "本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意GPL 3.0 协议文本的所有内容。",
+        "English": "The software follows GPL 3.0. Continue using the software means that you have read and agree with all the contents of GPL 3.0."
+    },
+    "VIEW_STAFF": {
+        "简体中文": "查看 STAFF 名单",
+        "English": "Staff List"
+    },
+    "JOIN_OUR_GROUP": {
+        "简体中文": "加入我们的群组",
+        "English": "Join our group"
+    },
+    "ANNOUNCEMENT_OF_APPLICATION_ICON": {
+        "简体中文": "关于应用图标的版权声明",
+        "English": "About the copyright of the application icon"
+    },
+    "ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT": [
+        {
+            "简体中文": "应用图标由 scientificworld 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成。滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。",
+            "English": "This image contains two elements. One is Tieba's Huaji Emoji, another is the image of Aenbyou Rin. The copyright of Tieba's Huaji Emoji is belonged to Baidu. The copyright of the image of Aenbyou is belonged to 乃菜香【2日目東ヒ-49a】(Pixiv User ID: 28850). The pixiv id of this artwork is 20274893. "
+        },
+        {
+            "简体中文": "本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： baiyang-lzy@outlook.com 。我会第一时间做出处理。",
+            "English": "Notice that this project is an open source project that do NOT have commercial purpose, so We don't want to infringe anyone's copyright. If you think this image infringed your copyright, please send an email to baiyang-lzy@outlook.com and we will process it.        "
+        }
+    ],
+    "QQ_GROUP_NUMBER": {
+        "简体中文": "QQ 群：983538695",
+        "English": "QQ Group Number: 983538695"
+    },
+    "QQ_GROUP_DESCRIPTION": {
+        "简体中文": "本群组的讨论范围包括计算机、生活、ACGN文化和体验等等，欢迎感兴趣者加入。有 BBG 使用相关建议和问题亦可在此群组中提出。",
+        "English": "The Group mainly talks about Computer, Life, ACGN Culture and experiences, and we welcome people who uses Chinese and takes interest of the group. If you have suggestions about BBG, can also join the group and talk about them."
+    },
+    "ICON_DESIGN": {
+        "简体中文": "图标设计",
+        "English": "Icon designers"
+    },
+    "DEVELOPER": {
+        "简体中文": "开发人员",
+        "English": "Developers"
+    },
+    "PACKAGER": {
+        "简体中文": "打包者",
+        "English": "Packagers"
+    },
+    "TESTER": {
+        "简体中文": "测试人员",
+        "English": "Testers"
+    },
+    "OK": {
+        "简体中文": "确定",
+        "English": "OK"
+    },
+    "CREATE_NEW_SITE_DESCRIPTION": [
+        {
+            "简体中文": "请选择博客站点的根目录。当你选择好之后，会在你选定的根目录下构建博客的相关文件。",
+            "English": "Select the root directory of the blog site, and then BBG will initize basic files at the directory where you selected."
+        },
+        {
+            "简体中文": "请确保博客根目录为空，否则有可能导致文件冲突。",
+            "English": "Notice that you must ensure that the root directory you selected is empty, or file confliction can occur."
+        }
+    ],
+    "SELECT_SITE_ROOT_DIRECTORY": {
+        "简体中文": "选择博客站点的根目录，并开始构建。",
+        "English": "Click here to select the root directory of the site and then start initization."
+    },
+    "CANCEL": {
+        "简体中文": "取消",
+        "English": "cancel"
+    }
+}

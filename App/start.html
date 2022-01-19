@@ -92,38 +92,23 @@ border-radius: 8px;    }
       
 
       <div class="fluentinterface">
-        <div id="interface_title">
+        <div id="interface_firstpart">
+
 
         </div>
-        <p>BBG 是 Baiyang-lzy's Blog Generator 的简写，也是一个基于 Electron 技术开发的静态博客生成器。</p>
-        <p>点击下方的按钮即可开始管理/创建博客了。</p>
         
-        <br />
-        <p>
-          <a href="#" class="fluentbtn fluentbtn-blue" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> 打开已有站点</a>
-          <a href="#" class="fluentbtn fluentbtn-blue" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> 创建一个站点</a>
-  
-        </p>
+        
         
         <div id="last_managed_site" style="display:none">
           <br />
-          <a href="#">你最近管理过：<span style="font-weight: bold;"  id="last_managed_site_title"></span></a>
+          <a href="#" id="last_managed_site_link"></a>
       </div>
       </div>
      
       
       
-      <div class="fluentinterface">
-        <h2>BBG 版本设置和反馈</h2>
-        <br />
-        <i class="fa fa-smile-o"></i> 软件版本号：<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">检查更新</a><br />
-      <br />
-        <span>本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意<a href="#" onclick="shell.openExternal('https://www.gnu.org/licenses/gpl-3.0-standalone.html')">GPL 3.0 协议文本</a>的所有内容。</span><br />
-        <br />
-        <p>如果你是 Arch Linux 用户，现在推荐使用<a href="#" onclick="shell.openExternal('https://aur.archlinux.org/packages/bbg/')">这个 AUR 包</a>来安装和更新 BBG。</p>
-        <button class="fluentbtn" onclick="openStaffDialog()">查看 staff 名单</button>
-        <button class="fluentbtn" onclick="openGroupDialog()">加入我们的群组</button>
-        <button class="fluentbtn" onclick="openCopyrightDialog()">关于应用图标的版权声明</button>
+      <div class="fluentinterface" id="bbg_settings">
+        
 
       </div>
 
@@ -138,17 +123,14 @@ border-radius: 8px;    }
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">创建一个新的博客站点</h5>
+          <h5 class="modal-title" id="create-new-site-dialog-title">创建一个新的博客站点</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <p>请选择博客站点的根目录。当你选择好之后，会在你选定的根目录下构建博客的相关文件。</p>
-          <p><b>请确保博客根目录为空，否则有可能导致文件冲突。</b></p>
-          <button type="button" class="btn btn-primary"
-            onclick="create_new_site_choose_root_dir();">选择博客站点的根目录，并开始构建。</button>
+        <div class="modal-body"  id="create-new-site-dialog-content">
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="fluentbtn" data-bs-dismiss="modal">取消</button>
 
         </div>
       </div>
@@ -184,7 +166,7 @@ border-radius: 8px;    }
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确定</button>
+          <button type="button" class="fluentbtn fluentbtn-blue" data-bs-dismiss="modal" id="info-dialog-ok"></button>
 
         </div>
       </div>
@@ -211,6 +193,25 @@ border-radius: 8px;    }
     </div>
   </div>
 
+  <div class="modal" tabindex="-1" id="language-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="language-dialog-title">Select language / 语言设定</h5>
+        </div>
+        <div class="modal-body" id="language-dialog-content">
+          <p>Select a language of the application from the list below. Later you can still change it at the application settings.</p>
+          <p>请从下面的列表中选择一个语言作为本程序的显示语言。你也可以稍后在应用设置中更改它。</p>
+          <p>
+            <a href="#" onclick="select_language('简体中文')">简体中文</a>
+          </p>
+          <p>
+          <a href="#" onclick="select_language('English')">English</a>
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./start.js"></script>

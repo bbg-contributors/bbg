@@ -3,6 +3,8 @@ const AppPath = require('@electron/remote').app.getPath('userData');
 const storage = require("electron-json-storage");
 storage.setDataPath(AppPath);
 
+const langdata = require("./LangData.js");
+
 const getUrlArgs = require("./getUrlArgs.js");
 const BlogData = require("./BlogData.js");
 const check_migrate = require("./check_migrate.js");
@@ -54,14 +56,42 @@ let preview_site = require("./menuFx.js").preview_site;
 let open_blog_dir = require("./menuFx.js").open_blog_dir;
 
 let loadUniStyle = require("./loadUniStyle.js");
+const e = require('express');
 
 storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir }, function (err) {
 
 });
 
+
+
+
 // 初始化界面
 
-check_migrate();
-render_nav();
-render_container();
-loadUniStyle();
+storage.has("language", function (error, hasKey) {
+    if (hasKey) {
+        storage.get("language", function (error, data) {
+           lang_name = data["name"];
+           check_migrate();
+            render_nav();
+            render_container();
+            loadUniStyle();
+
+
+            if(window.location.href.indexOf("article_manager.html") !== -1){
+                renderArticleManager();
+            }else{
+                if(window.location.href.indexOf("page_manager.html") !== -1){
+                    render_page_manager();
+                }else{
+                    if(window.location.href.indexOf("blog_settings.html") !== -1){
+                        render_blog_settings();
+                    }
+                }
+            }
+
+        }
+        )
+    }else{
+        lang_name = "English";
+    }
+})

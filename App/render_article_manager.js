@@ -1,9 +1,9 @@
 module.exports = function(){
-    document.getElementById("container").innerHTML += `<h2 style="display:inline"><i class="fa fa-file-text"></i> 文章管理</h2>
-     <button onclick="add_a_article();" class="fluentbtn"><i class="fa fa-plus"></i> 添加一篇文章</button>
+    document.getElementById("container").innerHTML += `<h2 style="display:inline"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</h2>
+     <button onclick="add_a_article();" class="fluentbtn"><i class="fa fa-plus"></i> ${langdata["ADD_AN_ARTICLE"][lang_name]}</button>
      <hr />
   <div class="alert alert-info" role="alert">
-  <i class="fa fa-smile-o"></i> 小提示：使用 Markdown 格式来书写文章。
+  <i class="fa fa-smile-o"></i> ${langdata["HINT_USING_MD_IN_ARTICLES"][lang_name]}
 </div>
   
   `;
@@ -45,14 +45,14 @@ module.exports = function(){
 
 
       document.querySelector("#article-item-sub-" + i).innerHTML += `
-      <i class="fa fa-calendar"></i> 此文章编写于${blog["文章列表"][i]["创建日期"]}，最近修改于${blog["文章列表"][i]["修改日期"]}<br />
+      <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${blog["文章列表"][i]["创建日期"]}，${langdata["LASTMODIFIEDAT"][lang_name]} ${blog["文章列表"][i]["修改日期"]}<br />
             `;
 
       if (blog["文章列表"][i]["标签"].length === 0) {
 
       } else {
         document.querySelector("#article-item-sub-" + i).innerHTML += `
-        <i class="fa fa-tags"></i> 标签：
+        <i class="fa fa-tags"></i> ${langdata["TAGS"][lang_name]}
                 `;
 
         for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
@@ -71,9 +71,9 @@ module.exports = function(){
 
     document.querySelector("#article-item-" + i).innerHTML += `
     
-    <button class="fluentbtn fluentbtn-blue" onclick="edit_article('${blog["文章列表"][i]["文件名"]}')"><i class="fa fa-edit"></i> 使用系统默认编辑器编辑文章内容</button>
-    <button class="fluentbtn fluentbtn-blue" onclick="edit_article_meta(${i})"><i class="fa fa-info-circle"></i> 修改文章元信息</button>
-    <button class="fluentbtn" onclick="delete_article(${i})"><i class="fa fa-trash-o"></i> 删除此文章</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="edit_article('${blog["文章列表"][i]["文件名"]}')"><i class="fa fa-edit"></i> ${langdata["EDIT_ARTICLE_CONTENT"][lang_name]}</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="edit_article_meta(${i})"><i class="fa fa-info-circle"></i> ${langdata["EDIT_ARTICLE_META"][lang_name]}</button>
+    <button class="fluentbtn" onclick="delete_article(${i})"><i class="fa fa-trash-o"></i> ${langdata["DELETE_ARTICLE"][lang_name]}</button>
 
     `
 

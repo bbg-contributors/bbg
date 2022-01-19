@@ -2,55 +2,55 @@ module.exports = function(){
 
   document.getElementById("container").innerHTML += `
   
-  <h1><i class="fa fa-cogs"></i> 博客设置</h1>
+  <h1><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</h1>
   <br />
   <div class="fluentinterface">
-  <h2><i class="fa fa-paint-brush"></i> 基本信息与主题配置</h2><br />
+  <h2><i class="fa fa-paint-brush"></i> ${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</h2><br />
   <div class="mb-3">
-<label class="form-label">博客标题</label>
+<label class="form-label">${langdata["BLOG_TITLE"][lang_name]}</label>
 <input class="form-control" value="${blog["博客标题"]}" id="blog_settings_title">
 </div>
 
 <div class="mb-3">
-<label class="form-label">博客描述（副标题）</label>
+<label class="form-label">${langdata["BLOG_DESCRIPTION"][lang_name]}</label>
 <input class="form-control" value="${blog["博客描述（副标题）"]}"  id="blog_settings_description">
 </div>
 
 <div class="mb-3">
-<label class="form-label">底部信息</label>
+<label class="form-label">${langdata["BOTTOM_INFORMATION"][lang_name]}</label>
 <input class="form-control"  value="${blog["底部信息（格式为markdown）"]}" id="blog_settings_bottom_information">
 </div>
 
 <div class="fluentinterface fluenthint" role="alert">
-<i class="fa fa-smile-o"></i> 注意底部信息的格式为 Markdown，请不要尝试在其中添加 html 元素。
+<i class="fa fa-smile-o"></i> ${langdata["HINT_BTMINFO_MD"][lang_name]}
 </div>
 
 <br />
 
 <div class="mb-3">
-<label class="form-label">博客标题栏背景颜色</label>
+<label class="form-label">${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label>
 <input class="form-control" value="${blog["全局主题设置"]["标题栏背景颜色"]}"  id="blog_settings_titlebar_bgcolor">
 </div>
 
 <div class="mb-3">
-<label class="form-label">博客标题栏文字颜色</label>
+<label class="form-label">${langdata["BLOG_NAVBAR_TEXTCOLOR"][lang_name]}</label>
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
 
 <div class="fluentinterface fluenthint" role="alert">
-<i class="fa fa-smile-o"></i> 上述两项颜色设置可以填写 HTML 颜色名或十六进制颜色，如#66CCFF、cyan都是可选的颜色
+<i class="fa fa-smile-o"></i> ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
 </div>
 </div>
 
 <div class="fluentinterface">
-<h2><i class="fa fa-smile-o"></i> 网页图标（Favicon）</h2>
+<h2><i class="fa fa-smile-o"></i> ${langdata["FAVICON"][lang_name]}</h2>
 <br />
-<p>网页图标不是必须的，它指的是在浏览器标签页上所显示的图标，默认来说是站点根目录下的favicon.ico。</p>
-<p>图标的横纵比建议为1:1，以确保正确的显示效果。</p>
-<p>添加网页图标后，预览站点可能还是不能立刻看到效果。这是由于浏览器缓存导致的。如果遇到这种情况请尝试在浏览器中使用 Ctrl+F5 或 Fn+Ctrl+F5 强制刷新站点。</p>
-<button class="fluentbtn fluentbtn-blue" onclick="select_a_favicon()">从文件选择一个网页图标以使用</button>
-<button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">查看当前图标</button>
-<button class="fluentbtn" onclick="delete_current_icon()">删除当前图标</button>
+<p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
+<p>${langdata["FAVICON_DESCRIPTION"][1][lang_name]}</p>
+<p>${langdata["FAVICON_DESCRIPTION"][2][lang_name]}</p>
+<button class="fluentbtn fluentbtn-blue" onclick="select_a_favicon()">${langdata["SELECT_FAVICON"][lang_name]}</button>
+<button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">${langdata["VIEW_FAVICON"][lang_name]}</button>
+<button class="fluentbtn" onclick="delete_current_icon()">${langdata["DELETE_FAVICON"][lang_name]}</button>
 </div>
 <div class="fluentinterface">
 <h2><i class="fa fa-file-image-o"></i> 网页背景图像</h2><br />

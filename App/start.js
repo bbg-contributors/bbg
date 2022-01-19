@@ -7,6 +7,8 @@ const AppPath = require('@electron/remote').app.getPath('userData');
 const { copyFileSync, constants, readFileSync } = require('fs');
 const storage = require("electron-json-storage");
 
+const langdata = require("./LangData.js");
+
 storage.setDataPath(AppPath);
 
 const getAppInfo = require("./getAppInfo.js");
@@ -15,11 +17,17 @@ const currentProgramVersion = require("./currentProgramVersion.js");
 const check_update = require("./check_update.js");
 
 
-document.getElementsByTagName("title")[0].innerHTML = "开始使用 Baiyang-lzy's Blog Generator";
+
 
 let create_new_site_dialog = new bootstrap.Modal(document.getElementById('create-new-site-dialog'));
 let err_dialog = new bootstrap.Modal(document.getElementById('err-dialog'));
 let info_dialog = new bootstrap.Modal(document.getElementById('info-dialog'));
+let language_dialog = new bootstrap.Modal(document.getElementById('language-dialog'),{
+    backdrop:"static",
+    keyboard:false
+});
+
+
 
 function create_new_site_dialog_show() {
 
@@ -78,11 +86,25 @@ function generateNewBlog(rootDir) {
         fs.mkdirSync(rootDir + "/data/articles");
         fs.mkdirSync(rootDir + "/data/pages");
 
-        copyFileSync(__dirname + "/blog_source/data/articles/first.md", rootDir + "/data/articles/first.md", constants.COPYFILE_EXCL);
         copyFileSync(__dirname + "/blog_source/index.html", rootDir + "/index.html", constants.COPYFILE_EXCL);
-        copyFileSync(__dirname + "/blog_source/data/index.json", rootDir + "/data/index.json", constants.COPYFILE_EXCL);
-        copyFileSync(__dirname + "/blog_source/data/pages/about.md", rootDir + "/data/pages/about.md", constants.COPYFILE_EXCL);
-        copyFileSync(__dirname + "/blog_source/data/pages/friends.md", rootDir + "/data/pages/friends.md", constants.COPYFILE_EXCL);
+
+        if(lang_name === "English"){
+            copyFileSync(__dirname + "/blog_source/data/articles/first.english.md", rootDir + "/data/articles/first.md", constants.COPYFILE_EXCL);
+
+            copyFileSync(__dirname + "/blog_source/data/index.english.json", rootDir + "/data/index.json", constants.COPYFILE_EXCL);
+            copyFileSync(__dirname + "/blog_source/data/pages/about.english.md", rootDir + "/data/pages/about.md", constants.COPYFILE_EXCL);
+            copyFileSync(__dirname + "/blog_source/data/pages/friends.english.md", rootDir + "/data/pages/friends.md", constants.COPYFILE_EXCL);
+    
+        }
+
+        if(lang_name === "简体中文"){
+            copyFileSync(__dirname + "/blog_source/data/articles/first.zhcn.md", rootDir + "/data/articles/first.md", constants.COPYFILE_EXCL);
+
+            copyFileSync(__dirname + "/blog_source/data/index.zhcn.json", rootDir + "/data/index.json", constants.COPYFILE_EXCL);
+            copyFileSync(__dirname + "/blog_source/data/pages/about.zhcn.md", rootDir + "/data/pages/about.md", constants.COPYFILE_EXCL);
+            copyFileSync(__dirname + "/blog_source/data/pages/friends.zhcn.md", rootDir + "/data/pages/friends.md", constants.COPYFILE_EXCL);
+    
+        }
 
 
 
@@ -109,64 +131,127 @@ function manageSiteByRootDir(rootDir) {
     }
 }
 
-// 渲染标题和诗歌
-
-document.getElementById("interface_title").innerHTML = `<h1>${AppInfo.StartPageInterface.title}</h1><br />`
-
-
-
-storage.has("last_managed_site", function (error, hasKey) {
-    if (hasKey) {
-        storage.get("last_managed_site", function (error, data) {
-            document.getElementById("last_managed_site").setAttribute("style", "display:block");
-            document.getElementById("last_managed_site_title").innerHTML = data["title"];
-            document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data["rootdir"].replace(/\\/g, "/")}')`);
-        });
-
-    } else {
-
-    }
-});
-
-
-document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
 
 function openStaffDialog(){
 
     let staff_string = "";
-    staff_string+="<h3>图标设计</h3>";
+    staff_string+=`<h3>${langdata["ICON_DESIGN"][lang_name]}</h3>`;
     for(let i=0;i<AppInfo.contributers["图标设计"].length;i++){
         staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["图标设计"][i][1]}')">${AppInfo.contributers["图标设计"][i][0]}</a></p>`
     }
 
-    staff_string+="<h3>开发</h3>";
+    staff_string+=`<h3>${langdata["DEVELOPER"][lang_name]}</h3>`;
     for(let i=0;i<AppInfo.contributers["开发"].length;i++){
         staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["开发"][i][1]}')">${AppInfo.contributers["开发"][i][0]}</a></p>`
     }
 
-    staff_string+="<h3>打包</h3>";
+    staff_string+=`<h3>${langdata["PACKAGER"][lang_name]}</h3>`;
     for(let i=0;i<AppInfo.contributers["打包"].length;i++){
         staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["打包"][i][1]}')">${AppInfo.contributers["打包"][i][0]}</a></p>`
     }
 
-    staff_string+="<h3>参与测试人员</h3>";
+    staff_string+=`<h3>${langdata["TESTER"][lang_name]}</h3>`;
     for(let i=0;i<AppInfo.contributers["参与测试人员"].length;i++){
         staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["参与测试人员"][i][1]}')">${AppInfo.contributers["参与测试人员"][i][0]}</a></p>`
     }
 
-    createInfoDialog("Staff 名单",staff_string)
+    createInfoDialog(langdata["VIEW_STAFF"][lang_name],staff_string)
 }
 
 function openGroupDialog(){
-    createInfoDialog("加入我们的群组",`
+    createInfoDialog(langdata["JOIN_OUR_GROUP"][lang_name],`
     
-    <p>QQ 群：983538695</p>
-    <p>本群组的讨论范围包括计算机、生活、ACGN文化和体验等等，欢迎感兴趣者加入。有 BBG 使用相关建议和问题亦可在此群组中提出。</p>
+    <p>${langdata["QQ_GROUP_NUMBER"][lang_name]}</p>
+    <p>${langdata["QQ_GROUP_DESCRIPTION"][lang_name]}</p>
     `);
 }
 
 function openCopyrightDialog(){
-    createInfoDialog("关于应用图标的版权声明",`
-    <p>应用图标由 scientificworld 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成。滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。</p><p>本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： baiyang-lzy@outlook.com 。我会第一时间做出处理。</p>
+    createInfoDialog(langdata["ANNOUNCEMENT_OF_APPLICATION_ICON"][lang_name],`
+    <p>${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT"][0][lang_name]}</p>
+    <p>${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT"][1][lang_name]}</p>
     `)
+}
+
+storage.has("language", function (error, hasKey) {
+    if (hasKey) {
+        storage.get("language", function (error, data) {
+           lang_name = data["name"];
+           document.getElementById("info-dialog-ok").innerHTML = langdata["OK"][lang_name];
+           document.getElementById("create-new-site-dialog-title").innerHTML = langdata["CREATE_NEW_SITE"][lang_name];
+
+           document.getElementById("create-new-site-dialog-content").innerHTML = `
+           
+           <p>${langdata["CREATE_NEW_SITE_DESCRIPTION"][0][lang_name]}</p>
+           <p><b>${langdata["CREATE_NEW_SITE_DESCRIPTION"][1][lang_name]}</b></p>
+           <button type="button" class="fluentbtn fluentbtn-blue"
+             onclick="create_new_site_choose_root_dir();">${langdata["SELECT_SITE_ROOT_DIRECTORY"][lang_name]}</button>
+           
+           `
+
+           document.getElementsByTagName("title")[0].innerHTML = `${langdata["STARTPAGE_TITLE"][lang_name]}`;
+
+           document.getElementById("interface_firstpart").innerHTML = `
+           <h1>${langdata["STARTPAGE_TITLE"][lang_name]}</h1><br />
+           <p>${langdata["STARTPAGE_DESCRIPTION"][0][lang_name]}</p>
+           <p>${langdata["STARTPAGE_DESCRIPTION"][1][lang_name]}</p>
+
+           <br />
+        <p>
+          <a href="#" class="fluentbtn fluentbtn-blue" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata["OPEN_EXISTING_SITE"][lang_name]}</a>
+          <a href="#" class="fluentbtn fluentbtn-blue" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata["CREATE_NEW_SITE"][lang_name]}</a>
+  
+        </p>
+
+           `
+
+           document.getElementById("last_managed_site_link").innerHTML=`
+           ${langdata["LAST_MANAGED_SITE"][lang_name]}<span style="font-weight: bold;"  id="last_managed_site_title"></span>`
+   
+            document.getElementById("bbg_settings").innerHTML = `
+            <h2>${langdata["BBG_SETTINGS"][lang_name]}</h2>
+        <br />
+        <i class="fa fa-smile-o"></i> ${langdata["SOFTWARE_VERSION"][lang_name]}<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">${langdata["CHECK_UPDATE"][lang_name]}</a><br />
+      <br />
+        <span>${langdata["LICENSE_GPLV3"][lang_name]}</span><br />
+        <br />
+        <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();">Language Settings / 语言设定</button>
+
+        <br /><br />
+        <button class="fluentbtn" onclick="openStaffDialog()">${langdata["VIEW_STAFF"][lang_name]}</button>
+        <button class="fluentbtn" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
+        <button class="fluentbtn" onclick="openCopyrightDialog()">${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON"][lang_name]}</button>
+        <br /><hr />
+        
+            
+            `
+
+           document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
+   
+           storage.has("last_managed_site", function (error, hasKey) {
+               if (hasKey) {
+                   storage.get("last_managed_site", function (error, data) {
+                       document.getElementById("last_managed_site").setAttribute("style", "display:block");
+                       document.getElementById("last_managed_site_title").innerHTML = data["title"];
+                       document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data["rootdir"].replace(/\\/g, "/")}')`);
+                   });
+           
+               } else {
+           
+               }
+           });
+        });
+
+
+        
+
+    } else {
+        language_dialog.show();
+    }
+});
+
+function select_language(language_name){
+    storage.set("language", { name: language_name }, function (err) {
+        window.location.reload();
+    });
 }
