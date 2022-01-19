@@ -519,10 +519,45 @@ samp {
           }
         }
 
+        const langdata = {
+          "ARCHIVE_AND_TAGS":{
+            "简体中文": "归档和标签",
+            "English": "Archive and tags"
+          },
+          "ARTICLE_LIST":{
+            "简体中文": "文章列表",
+            "English": "Article List"
+          },
+          "ARTICLE_CREATEDAT":{
+            "简体中文": "此文章编写于",
+            "English": "This article is written at "
+          },
+          "LASTMODIFIEDAT":{
+            "简体中文": "最近修改于",
+            "English": "Last modified at "
+          },
+          "TAGS":{
+            "简体中文": "标签",
+            "English": "Tags: "
+          },
+          "FOREVER_LINK_PART1":{
+            "简体中文": "本页面的永久链接是：",
+            "English": "The Forever link of this page is "
+          },
+          "FOREVER_LINK_PART2":{
+            "简体中文": "，你可以使用此链接将本页面分享给其它人。",
+            "English": ", you can share the link to others."
+          },
+          "COMMENT_UNAVAILABLE_DUE_TO_PREVIEW":{
+            "简体中文": "由于你目前正在预览环境之中，评论功能暂时被禁用了。当你的站点被从互联网访问时，评论系统会正常地显示在这里。",
+            "English": "Comment function banned because you are now in the preview environment. When the site is visited from the Internet, the comment system will be available here."
+          }
+        }
+
       function preview_env_public_comment_fix(){
         if(window.location.href.indexOf("localhost") !== -1 || window.location.href.indexOf("127.0.0.1") !== -1){
           if(blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]){
-            document.getElementById("vcomments").innerHTML = `<p style="color:red;">由于你目前正在预览环境之中，评论功能暂时被禁用了。当你的站点被从互联网访问时，评论系统会正常地显示在这里。</p>`;
+            document.getElementById("vcomments").innerHTML = `<p style="color:red;">${langdata["COMMENT_UNAVAILABLE_DUE_TO_PREVIEW"][lang_name]}</p>`;
           }
         }
       }
@@ -541,10 +576,10 @@ samp {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_items">
         <li class="nav-item">
-          <a class="nav-link" href="./index.html?type=internal&function=article_list">文章列表</a>
+          <a class="nav-link" href="./index.html?type=internal&function=article_list">${langdata["ARTICLE_LIST"][lang_name]}</a>
         </li>
         <li class="nav-item" id="navbar_archive_and_tags">
-          <a class="nav-link" href="./index.html?type=internal&function=archive_and_tags">归档和标签</a>
+          <a class="nav-link" href="./index.html?type=internal&function=archive_and_tags">${langdata["ARCHIVE_AND_TAGS"][lang_name]}</a>
         </li>
       </ul>
     </div>
@@ -663,13 +698,13 @@ samp {
                             `;
 
             document.querySelector("#article-item-sub-" + i).innerHTML += `
-                            <i class="fa fa-calendar"></i> 此文章编写于${blog["文章列表"][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 最近修改于${blog["文章列表"][i]["修改日期"]}<br />
+                            <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${blog["文章列表"][i]["创建日期"]}，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${blog["文章列表"][i]["修改日期"]}<br />
                         `;
 
             if (blog["文章列表"][i]["标签"].length === 0) {
             } else {
               document.querySelector("#article-item-sub-" + i).innerHTML += `
-                            <i class="fa fa-tags"></i> 标签：
+                            <i class="fa fa-tags"></i> ${langdata["TAGS"][lang_name]}
                             `;
 
               for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
@@ -691,7 +726,7 @@ samp {
             <div class="article-content" id="article-content">
                 <h2> ${blog["文章列表"][article_id]["文章标题"]}</h2>
                 <div id="article-content-sub" class="article-content-sub">
-                    <i class="fa fa-calendar"></i> 此文章编写于${blog["文章列表"][article_id]["创建日期"]}，<i class="fa fa-clock-o"></i> 最近修改于${blog["文章列表"][article_id]["修改日期"]}
+                    <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${blog["文章列表"][article_id]["创建日期"]}，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${blog["文章列表"][article_id]["修改日期"]}
                 </div>
             </div>
             `;
@@ -699,7 +734,7 @@ samp {
         if (blog["文章列表"][article_id]["标签"].length === 0) {
         } else {
           document.querySelector("#article-content-sub").innerHTML += `
-        <br /><i class="fa fa-tags"></i> 标签：
+        <br /><i class="fa fa-tags"></i> ${langdata["TAGS"][lang_name]}
         `;
 
           for (
@@ -759,7 +794,7 @@ samp {
             ).innerHTML += `<br />
 
             <div class="alert alert-info" role="alert">
-              <i class="fa fa-smile-o"></i> 本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。
+              <i class="fa fa-smile-o"></i> ${langdata["FOREVER_LINK_PART1"][lang_name]}<a href="${forever_url}">${forever_url}</a>${langdata["FOREVER_LINK_PART2"][lang_name]}
             </div>`;
 
             if (
@@ -850,9 +885,9 @@ samp {
                   "#tag-content"
                 ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][j]["文件名"]}">${
                   tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
-                }</a>（<i class="fa fa-calendar"></i> 创建于${
+                }</a>（<i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${
                   tagtree[Object.keys(tagtree)[i]][k]["创建日期"]
-                }，<i class="fa fa-clock-o"></i> 修改于${
+                }，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${
                   tagtree[Object.keys(tagtree)[i]][k]["修改日期"]
                 }）</p>`;
               }
@@ -873,7 +908,7 @@ samp {
             if (tagtree[tagname][i] === blog["文章列表"][j]) {
               document.querySelector(
                 "#tag-content"
-              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][j]["文件名"]}">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> 创建于${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> 修改于${tagtree[tagname][i]["修改日期"]}）</p>`;
+              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][j]["文件名"]}">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${tagtree[tagname][i]["修改日期"]}）</p>`;
             }
           }
         }
@@ -927,7 +962,7 @@ samp {
             document.querySelector(
               "#container"
             ).innerHTML += `<br /><div class="alert alert-info" role="alert">
-              <i class="fa fa-smile-o"></i> 本页面的永久链接是：<a href="${forever_url}">${forever_url}</a>，你可以使用此链接将本页面分享给其它人。
+              <i class="fa fa-smile-o"></i> ${langdata["FOREVER_LINK_PART1"][lang_name]}<a href="${forever_url}">${forever_url}</a>${langdata["FOREVER_LINK_PART2"][lang_name]}
             </div>`;
 
             // 评论
@@ -1060,6 +1095,8 @@ samp {
         .get("./data/index.json?timestamp=" + Date.parse(new Date()))
         .then(function (response) {
           blog = response.data;
+
+          lang_name = blog["网站语言"];
 
           if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
             if (window.location.href.indexOf("?") === -1) {

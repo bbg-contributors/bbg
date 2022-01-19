@@ -16,6 +16,10 @@ function updateBlogIndexHtml() {
   }
 }
 
+function addSupportOfMultiLanguage(){
+  blog["网站语言"] = "简体中文";
+}
+
 function check_third_party_theme_compatiblity() {
   if (
     blog["全局主题设置"]["是否使用第三方主题"] === true &&
@@ -93,6 +97,7 @@ module.exports = function () {
           updateBlogIndexHtml();
           cleanStaticRes();
           addSupportForPublicCommentService();
+          addSupportOfMultiLanguage();
         }
 
         if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -101,6 +106,7 @@ module.exports = function () {
 
           cleanStaticRes();
           addSupportForPublicCommentService();
+          addSupportOfMultiLanguage();
         }
 
         if (
@@ -113,16 +119,25 @@ module.exports = function () {
           thirdPartyThemeReset();
           updateBlogIndexHtml();
           addSupportForPublicCommentService();
+          addSupportOfMultiLanguage();
         }
 
         if (currentBlogVersion === 20210925) {
           thirdPartyThemeReset();
           updateBlogIndexHtml();
+          addSupportOfMultiLanguage();
         }
 
         if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
+          addSupportOfMultiLanguage();
+        }
+
+        if(currentBlogVersion === 20211205){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+          addSupportOfMultiLanguage();
         }
 
 

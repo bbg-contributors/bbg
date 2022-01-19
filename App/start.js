@@ -188,6 +188,11 @@ storage.has("language", function (error, hasKey) {
              onclick="create_new_site_choose_root_dir();">${langdata["SELECT_SITE_ROOT_DIRECTORY"][lang_name]}</button>
            
            `
+           
+           document.getElementById("create-new-site-dialog-footer").innerHTML = `
+           
+           <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+           `;
 
            document.getElementsByTagName("title")[0].innerHTML = `${langdata["STARTPAGE_TITLE"][lang_name]}`;
 

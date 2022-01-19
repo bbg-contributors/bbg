@@ -17,27 +17,13 @@
     <style id="uniform"></style>
 <div class="container">
     <br /><br />
-    <h2>预览你的站点</h2>
-    <hr />
-    <p>目前你已进入预览模式。在预览站点时，你不能进行站点管理等操作。</p>
-    <p>你可以在<a class="btn btn-sm btn-link" onclick="shell.openExternal('http://localhost:41701')">http://localhost:41701</a>预览你的站点。</p>
-    
-    <button class="fluentbtn fluentbtn-blue" onclick="openInBrowser()">在浏览器中预览此站点</button>
-    <button class="fluentbtn" onclick="exit_preview()">退出预览模式</button>
+    <div id="preview_site_content">
 
-    <br /><br /><br />
-    <h2>发布你的站点</h2>
-    <hr />
+        
+    </div>
+   
 
-    <h4>手动上传和发布</h4>
-    <hr />
-    <p>由 BBG 创建的站点，全站都为静态站点，你可以直接把它上传到你的服务器/静态站点托管平台上。</p>
-    <p>目前，各种代码平台提供的 Pages 服务是最常见的（而且免费的）静态站点托管平台。而这些 Pages 服务通常都使用 Git。所以一种可行的方案是，把站点根目录初始化为 Git 仓库，然后添加 Pages 仓库作为远程存储库，并在需要发布站点的时候执行相关 Git 命令（Add、Commit、Push...）。</p>
-    <p>有些 Pages 服务的提供者（如 GitHub Pages）也支持在 Web 端直接上传网站文件的功能，所以不会使用 Git 也没有关系。</p>
-    <p>或者，如果你拥有自己的网站服务器，则直接将站点内的所有文件上传到服务器上的站点根目录即可。</p>
-    <button class="fluentbtn" onclick="open_blog_dir()">打开站点根目录</button>
-
-    <br /><br />
+   
 
     <h4>参考：Pages 服务提供者名单</h4>
     <hr />

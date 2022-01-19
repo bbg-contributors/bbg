@@ -10,6 +10,13 @@ module.exports = function () {
     </div>
     `
 
+    document.getElementById("edit_page_meta_dialog_footer").innerHTML = `
+
+    <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+    <button type="button" class="fluentbtn fluentbtn-blue" id="save_page_meta_btn">${langdata["SAVE_CONFIGURATION"][lang_name]}</button>
+
+    `;
+
     for (let i = 0; i < blog["页面列表"].length; i++) {
 
         document.getElementById("container").innerHTML += `

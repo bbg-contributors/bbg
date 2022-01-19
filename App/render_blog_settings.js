@@ -28,6 +28,16 @@ module.exports = function(){
 <br />
 
 <div class="mb-3">
+<label class="form-label">${langdata["SITE_LANG"][lang_name]}</label>
+<br />
+<select>
+  <option value="simplified_chinese" id="sitelang_simplified_chinese">简体中文</option>
+  <option value="english" id="sitelang_english">English</option>
+</select>
+
+</div>
+
+<div class="mb-3">
 <label class="form-label">${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label>
 <input class="form-control" value="${blog["全局主题设置"]["标题栏背景颜色"]}"  id="blog_settings_titlebar_bgcolor">
 </div>
@@ -53,58 +63,58 @@ module.exports = function(){
 <button class="fluentbtn" onclick="delete_current_icon()">${langdata["DELETE_FAVICON"][lang_name]}</button>
 </div>
 <div class="fluentinterface">
-<h2><i class="fa fa-file-image-o"></i> 网页背景图像</h2><br />
+<h2><i class="fa fa-file-image-o"></i> ${langdata["SITE_BGIMAGE"][lang_name]}</h2><br />
 
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="blog_settings_is_using_acg_bg">
 <label class="form-check-label" for="blog_settings_is_using_acg_bg">
-  使用随机二次元壁纸作为网页背景（若不勾选此项则为空白背景）
+${langdata["USE_RANDOM_ACG_PIC_AS_BGIMG"][lang_name]}
 </label>
 </div>
 </div>
 <div class="fluentinterface">
-  <h2><i class="fa fa-paint-brush"></i> 为此站点使用第三方主题</h2>
+  <h2><i class="fa fa-paint-brush"></i> ${langdata["USE_3RD_THEME"][lang_name]}</h2>
   <br />
   <p id="isUsingThirdPartyTheme"></p>
 
 
-  <button class="fluentbtn" onclick="reset_official_theme();">将此站点的主题重置为官方主题</button>
-  <button class="fluentbtn" onclick="open_online_theme_dialog()">打开主题商店</button>
+  <button class="fluentbtn" onclick="reset_official_theme();">${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}</button>
+  <button class="fluentbtn" onclick="open_online_theme_dialog()">${langdata["OPEN_THEME_STORE"][lang_name]}</button>
   <br /><br />
-  <button class="btn btn-link" onclick="apply_thirdparty_theme();">为此站点使用来自文件的第三方主题（不建议）</button>
+  <button class="btn btn-link" onclick="apply_thirdparty_theme();">${langdata["USE_3RD_THEME_FROM_FILE"][lang_name]}</button>
   </div>
 
 <div class="fluentinterface">
-<h2><i class="fa fa-comments-o"></i> 评论设置</h2>
+<h2><i class="fa fa-comments-o"></i>  ${langdata["COMMENT_SETTINGS"][lang_name]}</h2>
 <br />
 
 <div id="hint_of_use_public_comment_service">
-目前有两种方式来在博客站点中启用评论功能。
+${langdata["COMMENT_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}
 <br /><br />
-<li>方法一：最简单，你可以<a href="#" onclick="use_public_comment_service_offered_by_bbg();">点击这里直接使用 BBG 提供的免费公共评论服务</a>。<b>此方式不需要你拥有 LeanCloud 账户</b>，但是注意在你站点上的评论数据将由我们统一控制和管理，并且我们不提供任何数据完整性和可靠性的担保。</li>
+<li> ${langdata["COMMENT_SETTINGS_WAY1_PART1"][lang_name]}<a href="#" onclick="use_public_comment_service_offered_by_bbg();"> ${langdata["COMMENT_SETTINGS_WAY1_PART2"][lang_name]}</a>${langdata["COMMENT_SETTINGS_WAY1_PART3"][lang_name]}</li>
 <br />
-<li>方法二：操作复杂，但是你将拥有对评论数据的完整控制权。使用自己的 LeanCloud 账号创建一个新应用，然后将该应用的 AppID、AppKey填入下面的表单中并保存。<b>注意此方式要求你必须拥有已经实名认证过的 LeanCloud 账户。</b></li>
+<li>${langdata["COMMENT_SETTINGS_WAY2"][lang_name]}</li>
 <br />
 </div>
 
 <div id="leancloud_settings_detail">
 
-<p>如果你选择方法二，请勾选下方的“启用valine评论”，并在下方的表单填入应用的相关信息，然后点击保存。选择方法一的用户无需操作下方的内容。</p>
+<p>${langdata["COMMENT_SETTINGS_FORM_HINT"][lang_name]}</p>
 
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="blog_settings_is_valine_enabled">
 <label class="form-check-label" for="blog_settings_is_valine_enabled">
-  启用valine评论
+${langdata["ENABLE_VALINE"][lang_name]}
 </label>
 </div>
 <br />
 <div class="mb-3">
-<label class="form-label">AppID（不启用valine评论则可不填）</label>
+<label class="form-label">${langdata["VALINE_APPID"][lang_name]}</label>
 <input class="form-control"  value="${blog["全局评论设置"]["valine设置"]["leancloud_appid"]}"  id="blog_settings_valine_appid">
 </div>
 
 <div class="mb-3">
-<label class="form-label">AppKey（不启用valine评论则可不填）</label>
+<label class="form-label">${langdata["VALINE_APPKEY"][lang_name]}</label>
 <input class="form-control" value="${blog["全局评论设置"]["valine设置"]["leancloud_appkey"]}" id="blog_settings_valine_appkey">
 </div>
 </div>
@@ -144,8 +154,8 @@ if(blog["全局主题设置"]["是否使用第三方主题"] === true){
   
 }else{
   document.getElementById("isUsingThirdPartyTheme").innerHTML = `
+  ${langdata["STATUS_USING_OFFICIAL_THEME"][lang_name]}
   
-  目前此站点正在使用 <b>官方主题。</b>
   `;
     }
 
@@ -157,6 +167,14 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
       document.getElementById("leancloud_settings_detail").innerHTML= `你正在使用公共评论服务，所以不能手动设置此项。<a href="#" onclick="disable_puclic_comment_service()">如果你不想继续使用公共评论服务了，请点击这里</a>`;
       document.getElementById("hint_of_use_public_comment_service").innerHTML="";
     
+    }
+
+    if(blog["网站语言"] === "简体中文"){
+      document.getElementById("sitelang_simplified_chinese").selected = true;
+    }
+    
+    if(blog["网站语言"] === "English"){
+      document.getElementById("sitelang_english").selected = true;
     }
 
 }

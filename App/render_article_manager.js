@@ -7,11 +7,19 @@ module.exports = function(){
 </div>
   
   `;
+
+  document.getElementById("edit_article_meta_dialog_footer").innerHTML = `
+  <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+  <button type="button" class="fluentbtn fluentbtn-blue" id="save_article_meta_btn">${langdata["SAVE_CONFIGURATION"][lang_name]}</button>
+  
+  
+  `
+
   for (let i = 0; i < blog["文章列表"].length; i++) {
     if (blog["文章列表"][i]["是否置顶"]) {
       document.querySelector("#container").innerHTML += `
         <div class="article-item" id="article-item-${i}">
-            <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> 置顶文章</div>
+            <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> ${langdata["ARTICLE_IS_TOP"][lang_name]}</div>
             <h2>${blog["文章列表"][i]["文章标题"]}</h2>
            
             

@@ -1,9 +1,6 @@
 {
-    "currentProgramVersion": 20211205,
+    "currentProgramVersion": 20220119,
     "AppName":"Baiyang-lzy's Blog Generator",
-    "StartPageInterface":{
-        "title":"开始使用 BBG"
-    },
     "contributers":{
         "图标设计": [
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"]

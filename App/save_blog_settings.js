@@ -52,6 +52,13 @@ module.exports = function () {
 
     }
 
+    if(document.getElementById("sitelang_simplified_chinese").selected === true){
+        blog["网站语言"] = "简体中文";
+    }
+    if(document.getElementById("sitelang_english").selected === true){
+        blog["网站语言"] = "English";
+    }
+
 
     BlogInstance.writeBlogData();
     dialog.showMessageBoxSync({ message: "配置已经成功地保存！", type: "info" });
