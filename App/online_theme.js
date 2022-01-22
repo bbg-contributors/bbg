@@ -6,6 +6,7 @@ function install_theme(theme_name,theme_updateDate){
     fetch("https://gitee.com/api/v5/repos/baiyang-lzy/BBG_Themes/contents/"+theme_name + "/latest.bbgtheme")
     .then(response => response.json())
     .then(function(responseData){
+        save_blog_settings();
         let data = decodeURIComponent( escape( window.atob(responseData.content) ));
         writeFileSync(`${rootDir}/index.html`, data);
         blog["全局主题设置"]["是否使用第三方主题"] = true;

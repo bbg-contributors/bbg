@@ -61,5 +61,4 @@ module.exports = function () {
 
 
     BlogInstance.writeBlogData();
-    dialog.showMessageBoxSync({ message: "配置已经成功地保存！", type: "info" });
 }

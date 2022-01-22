@@ -1,10 +1,6 @@
 BBG
 ===
 
-![](https://img.shields.io/badge/开发环境-Node.js-blue)
-![](https://img.shields.io/badge/开发框架-Electron_v13.1.6-green)
-
-
 ## 功能简介
 
 BBG 是一个基于 Electron 开发的静态博客生成器。

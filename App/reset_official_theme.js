@@ -1,6 +1,7 @@
 const {copyFileSync,rmSync,constants} =require("fs");
 
 module.exports = function(){
+    save_blog_settings();
     rmSync(`${rootDir}/index.html`);
     copyFileSync(__dirname + "/blog_source/index.html", rootDir + "/index.html", constants.COPYFILE_EXCL);
     blog["全局主题设置"]["是否使用第三方主题"] = false;

@@ -14,7 +14,8 @@ module.exports = function () {
       border-style: solid;
       border-width: 1px;
       border-color: rgb(227, 229, 234);
-border-radius: 8px; 
+border-radius: 16px; 
+box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
       }
 
       .fluenthint{

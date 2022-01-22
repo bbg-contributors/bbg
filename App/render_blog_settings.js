@@ -18,11 +18,9 @@ module.exports = function(){
 
 <div class="mb-3">
 <label class="form-label">${langdata["BOTTOM_INFORMATION"][lang_name]}</label>
-<input class="form-control"  value="${blog["底部信息（格式为markdown）"]}" id="blog_settings_bottom_information">
-</div>
-
-<div class="fluentinterface fluenthint" role="alert">
-<i class="fa fa-smile-o"></i> ${langdata["HINT_BTMINFO_MD"][lang_name]}
+<textarea class="form-control" id="blog_settings_bottom_information">
+${blog["底部信息（格式为markdown）"]}
+</textarea>
 </div>
 
 <br />
@@ -30,7 +28,7 @@ module.exports = function(){
 <div class="mb-3">
 <label class="form-label">${langdata["SITE_LANG"][lang_name]}</label>
 <br />
-<select>
+<select class="form-select">
   <option value="simplified_chinese" id="sitelang_simplified_chinese">简体中文</option>
   <option value="english" id="sitelang_english">English</option>
 </select>
@@ -47,7 +45,7 @@ module.exports = function(){
 <input class="form-control"  value="${blog["全局主题设置"]["标题栏文字颜色"]}" id="blog_settings_titlebar_textcolor">
 </div>
 
-<div class="fluentinterface fluenthint" role="alert">
+<div class="alert alert-primary" role="alert">
 <i class="fa fa-smile-o"></i> ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
 </div>
 </div>
@@ -64,6 +62,13 @@ module.exports = function(){
 </div>
 <div class="fluentinterface">
 <h2><i class="fa fa-file-image-o"></i> ${langdata["SITE_BGIMAGE"][lang_name]}</h2><br />
+
+<select class="form-select" style="display:none">
+  <option value="bgimg_use_random_acgnpic">使用随机的 ACGN 插画作为网页背景</option>
+  <option value="bgimg_use_blank">空白背景</option>
+  <option value="bgimg_use_url">将某个URL作为网页背景图像</option>
+  <option value="bgimg_use_file">选择一个图片文件作为网页背景图像</option>
+</select>
 
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="blog_settings_is_using_acg_bg">
@@ -121,10 +126,11 @@ ${langdata["ENABLE_VALINE"][lang_name]}
 </div>
 
 <hr />
-
-<button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存配置</button>
-
-<br /><br />
+<div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
+<button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
+<button class="fluentbtn" onclick="window.location.reload()">放弃本次对网站设置所作的更改</button>
+</div>
+<br /><br /><br /><br /><br />
   
   
   
