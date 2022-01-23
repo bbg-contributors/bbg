@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
-    "package_windows": "electron-packager ./ bbg --platform=win32  --icon=./icons/icon.ico  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_linux": "electron-packager ./ bbg --platform=linux --icon=./icons/icon.png  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_darwin": "electron-packager ./ bbg --platform=darwin  --icon=./icons/icon.icns  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_mas": "electron-packager ./ bbg --platform=mas  --icon=./icons/icon.icns --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/"
+    "package_windows": "electron-packager ./ bbg --asar --platform=win32  --icon=./icons/icon.ico  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
+    "package_linux": "electron-packager ./ bbg --asar --platform=linux --icon=./icons/icon.png  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
+    "package_darwin": "electron-packager ./ bbg --asar --platform=darwin  --icon=./icons/icon.icns  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
+    "package_mas": "electron-packager ./ bbg --asar --platform=mas  --icon=./icons/icon.icns --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/"
   },
   "author": "baiyang-lzy",
   "license": "GPL-3.0-or-later",

@@ -16,6 +16,9 @@ module.exports = function () {
 
     let blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value;
     let blog_settings_is_using_acg_bg = document.getElementById("blog_settings_is_using_acg_bg").checked;
+    let website_announcement_enabled = document.getElementById("website_announcement_enabled").checked;
+    let website_announcement_indexonly = document.getElementById("website_announcement_indexonly").checked;
+    let website_announcement_content = document.getElementById("website_announcement_content").value;
 
 
     blog["博客标题"] = blog_settings_title;
@@ -58,6 +61,10 @@ module.exports = function () {
     if(document.getElementById("sitelang_english").selected === true){
         blog["网站语言"] = "English";
     }
+
+    blog["启用网站公告"] = website_announcement_enabled;
+    blog["网站公告仅在首页显示"] = website_announcement_indexonly;
+    blog["网站公告"] = website_announcement_content;
 
 
     BlogInstance.writeBlogData();

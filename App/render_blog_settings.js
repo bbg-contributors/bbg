@@ -51,6 +51,39 @@ ${blog["底部信息（格式为markdown）"]}
 </div>
 
 <div class="fluentinterface">
+
+<h3>网站公告板</h3>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="website_announcement_enabled">
+<label class="form-check-label" for="website_announcement_enabled">
+启用网站公告板功能
+</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="website_announcement_indexonly">
+<label class="form-check-label" for="website_announcement_indexonly">
+若启用网站公告板，公告板内容仅在网站首页显示
+</label>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">如果启用了网站公告板，其内容是：（内容将按照html格式解析）</label>
+<br />
+<textarea class="form-control" id="website_announcement_content">
+${blog["网站公告"]}
+
+</textarea>
+<br />
+
+
+</div>
+
+</div>
+
+<div class="fluentinterface">
 <h2><i class="fa fa-smile-o"></i> ${langdata["FAVICON"][lang_name]}</h2>
 <br />
 <p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
@@ -181,6 +214,15 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
     
     if(blog["网站语言"] === "English"){
       document.getElementById("sitelang_english").selected = true;
+    }
+
+    if(blog["启用网站公告"] === true){
+      document.getElementById("website_announcement_enabled").checked = true;
+    }
+
+    if(blog["网站公告仅在首页显示"] === true){
+      document.getElementById("website_announcement_indexonly").checked = true;
+
     }
 
 }

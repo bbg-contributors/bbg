@@ -50,6 +50,12 @@ function addSupportForPublicCommentService() {
   blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
 }
 
+function addSupportForAnnouncementBoard(){
+  blog["启用网站公告"] = false;
+  blog["网站公告仅在首页显示"] = true;
+  blog["网站公告"] = "";
+}
+
 function thirdPartyThemeReset() {
   blog["全局主题设置"]["是否使用第三方主题"] = false;
   blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
@@ -98,6 +104,7 @@ module.exports = function () {
           cleanStaticRes();
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
         }
 
         if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -107,6 +114,7 @@ module.exports = function () {
           cleanStaticRes();
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
         }
 
         if (
@@ -120,24 +128,34 @@ module.exports = function () {
           updateBlogIndexHtml();
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
         }
 
         if (currentBlogVersion === 20210925) {
           thirdPartyThemeReset();
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
         }
 
         if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
         }
 
         if(currentBlogVersion === 20211205){
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
+          addSupportForAnnouncementBoard();
+        }
+
+        if(currentBlogVersion === 20220119){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+          addSupportForAnnouncementBoard();
         }
 
 

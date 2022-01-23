@@ -662,7 +662,19 @@ samp {
       function render_index_title_info() {
         document.querySelector(
           "#container"
-        ).innerHTML += `<br /><h1 id="blog_index_title">${blog["博客标题"]}</h1><p id="blog_index_subtitle">${blog["博客描述（副标题）"]}</p><hr />`;
+        ).innerHTML += `<br /><h1 id="blog_index_title">${blog["博客标题"]}</h1><p id="blog_index_subtitle">${blog["博客描述（副标题）"]}</p><hr />
+        `;
+
+        if(blog["启用网站公告"] === true){
+          document.querySelector("#container").innerHTML +=`
+          
+          <div class="article-item">
+          <h3><i class="fa fa-bullhorn" aria-hidden="true"></i> 网站公告</h3>
+          ${blog["网站公告"]}
+        
+        </div>
+          `
+        }
       }
 
       function render_article_list() {
@@ -722,7 +734,19 @@ samp {
       }
 
       function render_article_content(article_id) {
+
+        if(blog["启用网站公告"] === true && blog["网站公告仅在首页显示"] === false){
+          document.querySelector("#container").innerHTML += `
+          <div class="alert alert-primary">
+
+            <i class="fa fa-bullhorn" aria-hidden="true"></i> 公告： ${blog["网站公告"]}
+</div>
+          `
+        }
+
         document.querySelector("#container").innerHTML += `
+        
+        
             <div class="article-content" id="article-content">
                 <h2> ${blog["文章列表"][article_id]["文章标题"]}</h2>
                 <div id="article-content-sub" class="article-content-sub">
@@ -860,6 +884,8 @@ samp {
       function render_tag_tree() {
         //todo：考虑没有任何标签的情况
 
+        totalTagTreeArticleLength = 0;
+
         let tagtree = getTagTree();
 
         document.getElementById("container").innerHTML+= `<div class="tag-content" id="tag-content"></div>`;
@@ -890,10 +916,62 @@ samp {
                 }，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${
                   tagtree[Object.keys(tagtree)[i]][k]["修改日期"]
                 }）</p>`;
+
+                totalTagTreeArticleLength = totalTagTreeArticleLength + 1;
               }
             }
           }
         }
+
+        if(getTagTreeLength() === 0){
+          document.querySelector("#tag-content").innerHTML += `
+          <h3><i class="fa fa-tags"></i> 未分类文章</h3>
+
+          `;
+
+          for(let i=0;i<blog["文章列表"].length;i++){
+            document.querySelector("#tag-content").innerHTML += `
+            <p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}">${blog["文章列表"][i]["文章标题"]}</a>
+              
+              （
+              <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}
+              ${blog["文章列表"][i]["创建日期"]}，
+              <i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}
+              ${blog["文章列表"][i]["修改日期"]}
+              
+              ）
+              
+              </p>
+
+          `;
+          }
+        }else{
+          if(totalTagTreeArticleLength < blog["文章列表"].length){
+            document.getElementById("tag-content").innerHTML += `
+            <h3><i class="fa fa-tags"></i> 未分类文章</h3>
+            `;
+
+            for(let i=0;i<blog["文章列表"].length;i++){
+              if(blog["文章列表"][i]["标签"].length === 0 || blog["文章列表"][i]["标签"] === false ||blog["文章列表"][i]["标签"] === "" || blog["文章列表"][i]["标签"] === undefined || blog["文章列表"][i]["标签"] === null){
+                document.querySelector("#tag-content").innerHTML += `
+            <p><i class="fa fa-file-text-o"></i> <a href="./index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}">${blog["文章列表"][i]["文章标题"]}</a>
+              
+              （
+              <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}
+              ${blog["文章列表"][i]["创建日期"]}，
+              <i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}
+              ${blog["文章列表"][i]["修改日期"]}
+              
+              ）
+              
+              </p>
+
+          `;
+              }
+            }
+          }
+        }
+
       }
 
       function render_tag(tagname) {
@@ -915,6 +993,15 @@ samp {
       }
 
       function render_page(page_id) {
+
+        if(blog["启用网站公告"] === true && blog["网站公告仅在首页显示"] === false){
+          document.querySelector("#container").innerHTML += `
+          <div class="alert alert-primary">
+
+            <i class="fa fa-bullhorn" aria-hidden="true"></i> 公告： ${blog["网站公告"]}
+</div>
+          `
+        }
 
         document.querySelector(
           "#container"
