@@ -10,7 +10,7 @@ module.exports = function () {
   fetch("https://gitee.com/api/v5/repos/baiyang-lzy/bbg/releases/latest")
     .then((response) => response.json())
     .then(function (data) {
-      if (currentProgramVersion !== data["tag_name"]) {
+      if (parseInt(currentProgramVersion) < parseInt(data["tag_name"])) {
         if (
           window.confirm(`检测到新版本 ${data["tag_name"]}，要下载并安装更新吗？`)
         ) {
