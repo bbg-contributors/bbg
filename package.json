@@ -7,16 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
-    "package_windows": "electron-packager ./ bbg --asar --platform=win32  --icon=./icons/icon.ico  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_linux": "electron-packager ./ bbg --asar --platform=linux --icon=./icons/icon.png  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_darwin": "electron-packager ./ bbg --asar --platform=darwin  --icon=./icons/icon.icns  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/",
-    "package_mas": "electron-packager ./ bbg --asar --platform=mas  --icon=./icons/icon.icns --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/"
+    "package_all": "electron-packager ./ bbg --asar --overwrite --platform=win32,linux,darwin,mas  --icon=./icons/icon.ico  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=16.0.6",
+    "package_windows": "electron-packager ./ bbg --asar --overwrite --platform=win32  --icon=./icons/icon.ico  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=16.0.6",
+    "package_linux": "electron-packager ./ bbg --asar --overwrite --platform=linux --icon=./icons/icon.png  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6",
+    "package_darwin": "electron-packager ./ bbg --asar --overwrite --platform=darwin  --icon=./icons/icon.icns  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6",
+    "package_mas": "electron-packager ./ bbg --asar --overwrite --platform=mas  --icon=./icons/icon.icns --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6"
   },
   "author": "baiyang-lzy",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "electron": "^16.0.6",
-    "electron-packager": "^15.2.0"
+    "electron-packager": "^15.4.0"
   },
   "dependencies": {
     "@electron/remote": "^2.0.1",

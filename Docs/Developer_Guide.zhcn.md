@@ -40,6 +40,8 @@ cnpm run start
 
 ## 生成针对不同平台的软件包
 
+> 如果你在 Windows 平台生成适用于 macOS 的软件包，必须使用管理员权限运行相关命令，以创建正确的软链接。
+
 ```
 cnpm run package_windows
 cnpm run package_linux
