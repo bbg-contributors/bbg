@@ -4,6 +4,9 @@ module.exports = function () {
     
     <h2 style="display:inline;"><i class="fa fa-files-o"></i> ${langdata["PAGE_MANAGEMENT"][lang_name]}</h2>
     <button class="fluentbtn" onclick="add_a_page()"><i class="fa fa-plus"></i>  ${langdata["ADD_A_PAGE"][lang_name]} </button>
+    <br /><br />
+    
+    <button class="fluentbtn" onclick="edit_friend_book();" ><i class="fa fa-cogs"></i>  管理网站友人帐页面 </button>
     <hr />
     <div class="alert alert-info" role="alert">
     <i class="fa fa-smile-o"></i> ${langdata["HINT_USING_MD_IN_PAGES"][lang_name]}

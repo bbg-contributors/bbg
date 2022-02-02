@@ -93,7 +93,6 @@ function generateNewBlog(rootDir) {
 
             copyFileSync(__dirname + "/blog_source/data/index.english.json", rootDir + "/data/index.json", constants.COPYFILE_EXCL);
             copyFileSync(__dirname + "/blog_source/data/pages/about.english.md", rootDir + "/data/pages/about.md", constants.COPYFILE_EXCL);
-            copyFileSync(__dirname + "/blog_source/data/pages/friends.english.md", rootDir + "/data/pages/friends.md", constants.COPYFILE_EXCL);
     
         }
 
@@ -102,7 +101,6 @@ function generateNewBlog(rootDir) {
 
             copyFileSync(__dirname + "/blog_source/data/index.zhcn.json", rootDir + "/data/index.json", constants.COPYFILE_EXCL);
             copyFileSync(__dirname + "/blog_source/data/pages/about.zhcn.md", rootDir + "/data/pages/about.md", constants.COPYFILE_EXCL);
-            copyFileSync(__dirname + "/blog_source/data/pages/friends.zhcn.md", rootDir + "/data/pages/friends.md", constants.COPYFILE_EXCL);
     
         }
 

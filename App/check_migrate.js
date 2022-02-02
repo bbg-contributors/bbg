@@ -56,6 +56,13 @@ function addSupportForAnnouncementBoard(){
   blog["网站公告"] = "";
 }
 
+function addSupportOfFriendBook(){
+    blog["启用内建友人帐页面"] = true;
+    blog["友人帐页面附加信息"] = "";
+    blog["友人帐"] = [];
+    blog["友人帐页面允许评论"] =true;
+}
+
 function thirdPartyThemeReset() {
   blog["全局主题设置"]["是否使用第三方主题"] = false;
   blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
@@ -105,6 +112,7 @@ module.exports = function () {
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -115,6 +123,7 @@ module.exports = function () {
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if (
@@ -129,6 +138,7 @@ module.exports = function () {
           addSupportForPublicCommentService();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if (currentBlogVersion === 20210925) {
@@ -136,6 +146,7 @@ module.exports = function () {
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
@@ -143,6 +154,7 @@ module.exports = function () {
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if(currentBlogVersion === 20211205){
@@ -150,12 +162,19 @@ module.exports = function () {
           updateBlogIndexHtml();
           addSupportOfMultiLanguage();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
         }
 
         if(currentBlogVersion === 20220119){
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportForAnnouncementBoard();
+          addSupportOfFriendBook();
+        }
+        if(currentBlogVersion === 20220123){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+          addSupportOfFriendBook();
         }
 
 

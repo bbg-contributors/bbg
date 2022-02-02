@@ -30,6 +30,28 @@
         opacity: 0.8;
         border-radius: 12px;
       }
+      
+      .friend-card{
+      box-shadow: 0 3px 1px -2px rgb(0 0 0 / 60%),
+          0 2px 2px 0 rgb(0 0 0 / 36%), 0 1px 5px 0 rgb(0 0 0 / 32%);
+          border-radius: 12px;
+      
+      }
+      
+      @media (max-width: 1050px) { 
+      
+      #empty_friend_book_list{
+      
+      display:none;
+
+      
+      }
+      
+      
+      
+      }
+      
+      
 
       .article-item-sub,
       .article-content-sub {
@@ -479,7 +501,7 @@ samp {
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/markdown@0.5.0/lib/markdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
@@ -609,6 +631,15 @@ samp {
                         `;
             }
           }
+        }
+
+        if(blog["启用内建友人帐页面"] === true){
+            document.querySelector("#navbar_items").innerHTML += `
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html?type=internal&function=friendbook">友人帐</a>
+                        </li>
+            `;
+
         }
 
         if (blog["菜单中的外部链接"].length === 0) {
@@ -786,7 +817,7 @@ samp {
           )
           .then(function (response) {
             document.querySelector("#article-content").innerHTML +=
-              markdown.toHTML(response.data);
+              marked.parse(response.data);
 
             if (window.location.href.indexOf("?") === -1) {
               forever_url = `${window.location.href
@@ -852,6 +883,88 @@ samp {
 
 
           });
+      }
+      
+      function render_friend_book_friend(listid,name,url,icon,description){
+            document.getElementById(listid).innerHTML +=`
+                <div class="card friend-card mb-3">
+                
+                <div class="row">
+    <div class="col-md-4" >
+      <img src="${icon}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8" >
+      <div class="card-body">
+        <h5 class="card-title"><a target="_blank" href="${url}">${name}</a></h5>
+        <p class="card-text">${description}</p>
+      </div>
+    </div>
+    
+  </div>
+<br />
+                
+                `;
+      }
+
+      function render_friend_book(){
+            document.querySelector("#container").innerHTML += `
+            <div class="page-content">
+                <h2>友人帐</h2>
+                <hr />
+                <p>${blog["友人帐页面附加信息"]}</p>
+                
+                  <div class="row">
+    <div class="col" id="friend_book_list1">
+      
+    </div>
+    <div class="col" id="friend_book_list2">
+      
+    </div>
+    <div class="col" id="empty_friend_book_list">
+      
+    </div>
+
+  </div>
+  </div>
+            `;
+            
+            
+            let numberInFriendListOne = Math.ceil(blog["友人帐"].length/2);
+            
+            
+            
+            for(let i=0;i<numberInFriendListOne;i++){
+                render_friend_book_friend("friend_book_list1",blog["友人帐"][i]["名称"],blog["友人帐"][i]["链接"],blog["友人帐"][i]["图标"],blog["友人帐"][i]["简介"])
+            }
+            
+            for(let i=numberInFriendListOne;i<blog["友人帐"].length;i++){
+            render_friend_book_friend("friend_book_list2",blog["友人帐"][i]["名称"],blog["友人帐"][i]["链接"],blog["友人帐"][i]["图标"],blog["友人帐"][i]["简介"])
+            }
+            
+                        if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["友人帐页面允许评论"]
+            ) {
+              document.querySelector(
+                "#container"
+              ).innerHTML += `<div class="bbg-comment-area"><h3><i class="fa fa-comments-o"></i> 在友人帐中评论：</h3><br /><div id="vcomments"></div></div>`;
+            }
+            render_bottom_information();
+            if (
+              blog["全局评论设置"]["启用valine评论"] &&
+              blog["友人帐页面允许评论"]
+            ) {
+              new Valine({
+                el: "#vcomments",
+                appId: blog["全局评论设置"]["valine设置"]["leancloud_appid"],
+                appKey: blog["全局评论设置"]["valine设置"]["leancloud_appkey"],
+                path:
+                  comment_authcode +
+                  "internal=friendbook"
+              });
+
+              preview_env_public_comment_fix();
+            }
       }
 
       function getTagTree() {
@@ -1019,7 +1132,7 @@ samp {
               Date.parse(new Date())
           )
           .then(function (response) {
-            document.querySelector("#page-content").innerHTML += markdown.toHTML(
+            document.querySelector("#page-content").innerHTML += marked.parse(
               response.data
             );
 
@@ -1128,7 +1241,7 @@ samp {
         document.getElementById("container").innerHTML += `
             <hr />
             <div style="color:grey">
-                ${markdown.toHTML(blog["底部信息（格式为markdown）"])}
+                ${marked.parse(blog["底部信息（格式为markdown）"])}
             </div>
             
             `;
@@ -1140,6 +1253,13 @@ samp {
         render_container();
         render_tag(decodeURIComponent(tagname));
         render_bottom_information();
+      }
+
+      function enter_friend_book(){
+        resetPage();
+        render_nav(false);
+        render_container();
+        render_friend_book();
       }
 
       function enter_archive_and_tags() {
@@ -1264,6 +1384,10 @@ samp {
 
             if(internal_function === "tag"){
               enter_tag(internal_function_argument);
+            }
+
+            if(internal_function === "friendbook"){
+                enter_friend_book();
             }
           }
 
