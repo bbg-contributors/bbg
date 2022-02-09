@@ -170,7 +170,7 @@ ${langdata["ENABLE_VALINE"][lang_name]}
     <div id="cdn_cho" style="display:none">
       <select name="cdn_path" class="form-control" id="blog_setting_cdn_frm_1">
         <option value="https://unpkg.com">${langdata["CDN_SETTINGS_OFFICAL"][lang_name]} </option>
-        <option value="https://cdn.jsdelivr.net/npm">${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
+        <option value="https://cdn.jsdelivr.net/npm" selected>${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
         <option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>
         <option value="https://unpkg.chicdn.cn">${langdata["CDN_SETTINGS_CHICDN"][lang_name]} </option>
       </select>      
@@ -247,13 +247,26 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
 
     }
 
-    document.getElementById("blog_setting_cdn_frm_1").value = blog["CDN路径"];
-    document.getElementById("blog_setting_cdn_frm_2").value = blog["CDN路径"];
-    
     if(blog["CDN选择"] === 1){
       document.getElementById("cdn_cho_1").checked = true;
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+        document.getElementById("blog_setting_cdn_frm_1").value = blog["CDN路径"];
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
     }else{
       document.getElementById("cdn_cho_2").checked = true;
+      document.getElementById("blog_setting_cdn_frm_2").value = blog["CDN路径"];
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
     }
 
     document.getElementById("cdn_cho_1").onchange = function(){

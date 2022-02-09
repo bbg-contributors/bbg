@@ -93,5 +93,7 @@
             "是否隐藏": false,
             "启用评论": true
         }
-    ]
+    ],
+    "CDN选择":1,
+    "CDN路径":"https://cdn.jsdelivr.net/npm"
 }

@@ -460,8 +460,8 @@
         "English": "Offical CDN.Not recommend in China Mainland."
     },
     "CDN_SETTINGS_JSD": {
-        "简体中文": "JSD CDN(cdn.jsdelivr.net)，大陆内不推荐",
-        "English": "Jsdelivr cdn.Not recommend in China Mainland."
+        "简体中文": "JSD CDN(cdn.jsdelivr.net)，大陆内不推荐(默认选择)",
+        "English": "Jsdelivr cdn.Not recommend in China Mainland.(Default selection)"
     },
     "CDN_SETTINGS_ZHIMG": {
         "简体中文": "知乎CDN(unpkg.zhimg.com)，大陆推荐",

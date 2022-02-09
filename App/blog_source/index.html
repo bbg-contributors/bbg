@@ -3,15 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
-    />
+    /> -->
     <link rel="shortcut icon" href="./favicon.ico" />
     <title></title>
 
@@ -501,10 +500,10 @@ samp {
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script> -->
     <script>
 
       if(localStorage.getItem("is_nightmode") === null || localStorage.getItem("is_nightmode") === undefined){
@@ -1298,13 +1297,36 @@ samp {
         return false;
       }
 
+      function importJSFile (uri) {
+        let script = document.createElement('script')
+        script.setAttribute('type','text/javascript')
+        script.setAttribute("src",uri)
+        document.getElementsByTagName('head')[0].appendChild(script)
+      }
+
+      function importCSSFile(uri) {
+        let css = document.createElement('link')
+        css.setAttribute('rel','stylesheet')
+        css.setAttribute('href',uri)
+        document.getElementsByTagName('head')[0].appendChild(css)
+      }
       axios
         .get("./data/index.json?timestamp=" + Date.parse(new Date()))
         .then(function (response) {
           blog = response.data;
-
+          
+    //       <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    // <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    // <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    // <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+          let cdn = blog["CDN路径"]
+          // importJSFile(cdn + "/marked@latest/marked.min.js")
+          importJSFile(cdn + "/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js")
+          importJSFile(cdn + "/valine@1.4.14/dist/Valine.min.js")
+          importCSSFile(cdn + "/bootstrap@5.0.2/dist/css/bootstrap.min.css")
+          importCSSFile(cdn + "/font-awesome@4.7.0/css/font-awesome.min.css")
           lang_name = blog["网站语言"];
-
+          
           if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
             if (window.location.href.indexOf("?") === -1) {
               comment_authcode = `domain=${window.location.href
