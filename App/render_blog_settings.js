@@ -158,12 +158,37 @@ ${langdata["ENABLE_VALINE"][lang_name]}
 </div>
 </div>
 
+<!--<div class="fluentinterface">
+  <h2><i class="fa fa-bolt"></i>  ${langdata["CDN_SETTINGS"][lang_name]}</h2>
+  <br/>
+  <div id="cdn_settings_desc"> ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}</div>
+  <div class="mb-3">
+    <label class="form-label"> ${langdata["CDN_SETTINGS_METHOD"][lang_name]} </label>
+    <br/>
+    <input type="radio" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br/>
+    <input type="radio" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
+    <div id="cdn_cho">
+      <select name="cdn_path" class="form-control">
+        <option value="https://unpkg.com">${langdata["CDN_SETTINGS_OFFICAL"][lang_name]} </option>
+        <option value="https://cdn.jsdelivr.net/npm">${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
+        <option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>
+        <option value="https://unpkg.chicdn.cn">${langdata["CDN_SETTINGS_CHICDN"][lang_name]} </option>
+      </select>      
+    </div>
+    <div id="cdn_manual">
+    <br>
+    <label class="form-label" for="cdn_path"> ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label><br>
+    <input name="cdn_path" class="form-control" type="text">
+    </div>
+  </div>
+</div>-->
+
 <hr />
 <div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
 <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
 <button class="fluentbtn" onclick="window.location.reload()">放弃本次对网站设置所作的更改</button>
 </div>
-<br /><br /><br /><br /><br />
+<!--<br /><br /><br /><br /><br />-->
   
   
   
