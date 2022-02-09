@@ -6,12 +6,21 @@ module.exports = function () {
     let blog_settings_title = document.getElementById("blog_settings_title").value;
     let blog_settings_titlebar_bgcolor = document.getElementById("blog_settings_titlebar_bgcolor").value;
     let blog_settings_titlebar_textcolor = document.getElementById("blog_settings_titlebar_textcolor").value;
+    let blog_settings_cdn_path;
+    let blog_settings_cdn_mode;
     try {
          blog_settings_is_valine_enabled = document.getElementById("blog_settings_is_valine_enabled").checked;
          blog_settings_valine_appid = document.getElementById("blog_settings_valine_appid").value;
          blog_settings_valine_appkey = document.getElementById("blog_settings_valine_appkey").value;
-    } catch (error) {
-        
+         if(document.getElementById("cdn_cho_1").checked === true){
+            blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
+            blog_settings_cdn_mode = 1;
+          } else {
+            blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_2").value;
+            blog_settings_cdn_mode = 2;
+          }
+    } catch (e) {
+        console.log(e)
     }
 
     let blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value;
@@ -66,6 +75,7 @@ module.exports = function () {
     blog["网站公告仅在首页显示"] = website_announcement_indexonly;
     blog["网站公告"] = website_announcement_content;
 
-
+    blog["CDN选择"] = blog_settings_cdn_mode;
+    blog["CDN路径"] = blog_settings_cdn_path;
     BlogInstance.writeBlogData();
 }

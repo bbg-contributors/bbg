@@ -158,41 +158,38 @@ ${langdata["ENABLE_VALINE"][lang_name]}
 </div>
 </div>
 
-<!--<div class="fluentinterface">
+<div class="fluentinterface">
   <h2><i class="fa fa-bolt"></i>  ${langdata["CDN_SETTINGS"][lang_name]}</h2>
   <br/>
   <div id="cdn_settings_desc"> ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}</div>
   <div class="mb-3">
     <label class="form-label"> ${langdata["CDN_SETTINGS_METHOD"][lang_name]} </label>
     <br/>
-    <input type="radio" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br/>
-    <input type="radio" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
-    <div id="cdn_cho">
-      <select name="cdn_path" class="form-control">
+    <input type="radio" id="cdn_cho_1" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br/>
+    <input type="radio" id="cdn_cho_2" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
+    <div id="cdn_cho" style="display:none">
+      <select name="cdn_path" class="form-control" id="blog_setting_cdn_frm_1">
         <option value="https://unpkg.com">${langdata["CDN_SETTINGS_OFFICAL"][lang_name]} </option>
-        <option value="https://cdn.jsdelivr.net/npm">${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
-        <option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>
+        <option value="https://cdn.jsdelivr.net/npm" selected>${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
+        <!--<option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>-->
         <option value="https://unpkg.chicdn.cn">${langdata["CDN_SETTINGS_CHICDN"][lang_name]} </option>
       </select>      
     </div>
-    <div id="cdn_manual">
+    <div id="cdn_manual" style="display:none">
     <br>
     <label class="form-label" for="cdn_path"> ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label><br>
-    <input name="cdn_path" class="form-control" type="text">
+    <input name="cdn_path" class="form-control" type="text" id="blog_setting_cdn_frm_2">
     </div>
   </div>
-</div>-->
+</div>
 
 <hr />
 <div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
 <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
 <button class="fluentbtn" onclick="window.location.reload()">放弃本次对网站设置所作的更改</button>
 </div>
-<!--<br /><br /><br /><br /><br />-->
-  
-  
-  
   `
+
 
 if (blog["全局评论设置"]["启用valine评论"] === true) {
   document.getElementById("blog_settings_is_valine_enabled").checked = true;
@@ -250,6 +247,47 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
 
     }
 
+    if(blog["CDN选择"] === 1){
+      document.getElementById("cdn_cho_1").checked = true;
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+        document.getElementById("blog_setting_cdn_frm_1").value = blog["CDN路径"];
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
+    }else{
+      document.getElementById("cdn_cho_2").checked = true;
+      document.getElementById("blog_setting_cdn_frm_2").value = blog["CDN路径"];
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
+    }
+
+    document.getElementById("cdn_cho_1").onchange = function(){
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
+    }
+
+    document.getElementById("cdn_cho_2").onchange = function(){
+      if(document.getElementById("cdn_cho_1").checked === true){
+        document.getElementById("cdn_cho").style.display = "block";
+        document.getElementById("cdn_manual").style.display = "none";
+      } else {
+        document.getElementById("cdn_cho").style.display = "none";
+        document.getElementById("cdn_manual").style.display = "block";
+      }
+    }
 }
 
 
