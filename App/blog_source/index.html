@@ -484,6 +484,7 @@
     }
     
         </style>
+        <style id="custom_css"></style>
     <div id="top"></div>
     <div id="root"></div>
     <div id="back_to_top_btn">
@@ -855,6 +856,7 @@
             }
 
             render_bottom_information();
+            execute_custom_js();
 
             if (
               blog["全局评论设置"]["启用valine评论"] &&
@@ -943,6 +945,7 @@
               ).innerHTML += `<div class="bbg-comment-area"><h3><i class="fa fa-comments-o"></i> 在友人帐中评论：</h3><br /><div id="vcomments"></div></div>`;
             }
             render_bottom_information();
+            execute_custom_js();
             if (
               blog["全局评论设置"]["启用valine评论"] &&
               blog["友人帐页面允许评论"]
@@ -1169,6 +1172,7 @@
               ).innerHTML += `<div class="bbg-comment-area"><h3><i class="fa fa-comments-o"></i> 在此页面 《${blog["页面列表"][page_id]["页面标题"]}》 下评论：</h3><br /><div id="vcomments"></div></div>`;
             }
             render_bottom_information();
+            execute_custom_js();
             if (
               blog["全局评论设置"]["启用valine评论"] &&
               blog["页面列表"][page_id]["启用评论"]
@@ -1240,12 +1244,19 @@
             `;
       }
 
+      function execute_custom_js(){
+        if(blog["启用自定义JS"] === true){
+          eval(blog["自定义JS"]);
+        }
+      }
+
       function enter_tag(tagname) {
         resetPage();
         render_nav(false);
         render_container();
         render_tag(decodeURIComponent(tagname));
         render_bottom_information();
+        execute_custom_js();
       }
 
       function enter_friend_book(){
@@ -1261,6 +1272,7 @@
         render_container();
         render_tag_tree();
         render_bottom_information();
+        execute_custom_js();
       }
 
       function enter_indexPage() {
@@ -1270,6 +1282,7 @@
         render_index_title_info();
         render_article_list();
         render_bottom_information();
+        execute_custom_js();
       }
 
       function enter_article(article_id) {
@@ -1357,7 +1370,15 @@
             }
           }
 
-          enter_indexPage();
+          // 自定义css载入
+
+          if(blog["启用自定义CSS"] === true){
+            document.getElementById("custom_css").innerHTML= blog["自定义CSS"];
+          }
+
+          if(getUrlArgs("type") === false){
+            enter_indexPage();
+          }
 
           if (getUrlArgs("type") === "article") {
             let article_filename = getUrlArgs("filename");

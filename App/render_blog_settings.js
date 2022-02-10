@@ -184,6 +184,55 @@ ${langdata["ENABLE_VALINE"][lang_name]}
   </div>
 </div>
 
+<div class="fluentinterface">
+<h3>高级自定义</h3>
+<p>以下选项仅供有能力的用户使用。</p>
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="blog_settings_enable_custom_css">
+<label class="form-check-label" for="blog_settings_enable_custom_css">
+启用网站的自定义CSS支持
+</label>
+</div>
+
+<p>你可以为网站编写自定义 CSS 来改变其样式。如果这一项不打勾，自定义 CSS 样式将不会被解析。</p>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="blog_settings_enable_custom_js">
+<label class="form-check-label" for="blog_settings_enable_custom_js">
+启用网站的自定义JavaScript支持
+</label>
+</div>
+
+<p>你可以为网站编写自定义 JavaScript 代码。这些 JavaScript 代码将在整个博客被渲染完成之后执行，所以你有很大的自主权。如果这一项不打勾，自定义 JavaScript 代码将不会被解析。</p>
+
+<div class="mb-3">
+<label class="form-label">自定义 CSS 代码</label>
+<br />
+<textarea class="form-control" id="blog_settings_custom_css">
+${blog["自定义CSS"]}
+
+</textarea>
+<br />
+
+
+</div>
+
+<div class="mb-3">
+<label class="form-label">自定义 JavaScript 代码</label>
+<br />
+<textarea class="form-control" id="blog_settings_custom_js">
+${blog["自定义JS"]}
+
+</textarea>
+<br />
+
+
+</div>
+
+
+
+</div>
+
 <hr />
 <div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
 <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
@@ -246,6 +295,14 @@ if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题
     if(blog["网站公告仅在首页显示"] === true){
       document.getElementById("website_announcement_indexonly").checked = true;
 
+    }
+
+    if(blog["启用自定义CSS"] === true){
+      document.getElementById("blog_settings_enable_custom_css").checked = true;
+    }
+
+    if(blog["启用自定义JS"] === true){
+      document.getElementById("blog_settings_enable_custom_js").checked = true;
     }
 
     if(blog["CDN选择"] === 1){

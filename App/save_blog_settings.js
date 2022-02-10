@@ -21,6 +21,11 @@ module.exports = function () {
     let website_announcement_enabled = document.getElementById("website_announcement_enabled").checked;
     let website_announcement_indexonly = document.getElementById("website_announcement_indexonly").checked;
     let website_announcement_content = document.getElementById("website_announcement_content").value;
+    let blog_settings_enable_custom_css = document.getElementById("blog_settings_enable_custom_css").checked;
+    let blog_settings_enable_custom_js = document.getElementById("blog_settings_enable_custom_js").checked;
+    let blog_settings_custom_css = document.getElementById("blog_settings_custom_css").value;
+    let blog_settings_custom_js = document.getElementById("blog_settings_custom_js").value;
+
 
     if(document.getElementById("cdn_cho_1").checked === true){
         blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
@@ -77,5 +82,12 @@ module.exports = function () {
 
     blog["CDN选择"] = blog_settings_cdn_mode;
     blog["CDN路径"] = blog_settings_cdn_path;
+
+
+    blog["启用自定义CSS"] = blog_settings_enable_custom_css;
+    blog["启用自定义JS"] = blog_settings_enable_custom_js;
+    blog["自定义CSS"] = blog_settings_custom_css;
+    blog["自定义JS"] = blog_settings_custom_js;
+
     BlogInstance.writeBlogData();
 }
