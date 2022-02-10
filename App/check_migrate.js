@@ -216,6 +216,11 @@ module.exports = function () {
           updateBlogIndexHtml();
           addSupportForCustomCJ();
         }
+        if(currentBlogVersion === 20220211){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+        }
+
 
 
 

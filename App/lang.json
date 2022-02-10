@@ -436,23 +436,23 @@
         "English": "Save the configuration"
     },
     "CDN_SETTINGS": {
-        "简体中文": "CDN设置",
-        "English": "CDN Settings"
+        "简体中文": "Unpkg 源设置",
+        "English": "Unpkg Source Settings"
     },
     "CDN_SETTINGS_SIMPLE_DESCRIPTION": {
-        "简体中文": "您的CDN设置取决您的用户面向哪一区域。CDN可能会影响您blog的加载速度。如果您是自己填写CDN，您要确保该CDN的目录结构与unpkg相似，<b>此处的CDN设置只会影响博客CSS资源文件的加载（包括Bootstrap和Font Awesome）。</b>",
-        "English": "It is used to set the CDN address of your blog.It depends on where your visitor from.CDN may influence the loading speed of your blog.You should be sure about this cdn path structure is like unpkg. This setting only affects the loading of CSS resource files."
+        "简体中文": "Unpkg 源设置决定了你站点使用的前端库的 CSS 资源文件从哪里调用。此设置不会影响 JavaScript 资源的调用来源。<b>如果你不知道这是什么，请仅从列表中选择一个选项来使用或者保持默认。</b>",
+        "English": "Unpkg source settings decide where to load the CSS resource file of the frontend libraries used by your site. The setting won't affect the JavaScript resource files. If you don't know what it is, please keep default or just select a selection from the list."
     },
     "CDN_SETTINGS_METHOD": {
-        "简体中文": "在这里选择CDN加速的方式",
-        "English": "You can choose CDN here."
+        "简体中文": "在这里选择一个 Unpkg 源",
+        "English": "Choose an Unpkg source here."
     },
     "CDN_SETTINGS_LIST": {
-        "简体中文": "在给出的列表中选择CDN",
-        "English": "Choose CDN in the list given below."
+        "简体中文": "在给出的列表中选择 Unpkg 源",
+        "English": "Choose Unpkg source from the list given below."
     },
     "CDN_SETTINGS_MANUAL": {
-        "简体中文": "我要自己填写CDN地址",
+        "简体中文": "我要自己填写Unpkg 源地址",
         "English": "I want to choose CDN manually"
     },
     "CDN_SETTINGS_OFFICAL": {
@@ -460,19 +460,19 @@
         "English": "UNPKG (https://unpkg.com)"
     },
     "CDN_SETTINGS_JSD": {
-        "简体中文": "JSDelivr CDN (https://cdn.jsdelivr.net/npm)",
-        "English": "JSDelivr CDN (https://cdn.jsdelivr.net/npm)"
+        "简体中文": "JSDelivr Unpkg CDN (https://cdn.jsdelivr.net/npm)",
+        "English": "JSDelivr Unpkg CDN (https://cdn.jsdelivr.net/npm)"
     },
     "CDN_SETTINGS_ZHIMG": {
-        "简体中文": "知乎 CDN (https://unpkg.zhimg.com)",
-        "English": "Zhihu CDN (https://unpkg.zhimg.com)"
+        "简体中文": "知乎 Unpkg 源(https://unpkg.zhimg.com)",
+        "English": "Zhihu Unpkg Source (https://unpkg.zhimg.com)"
     },
     "CDN_SETTINGS_CHICDN": {
         "简体中文": "chicdn (https://unpkg.chicdn.cn) (由某人友情提供)",
         "English": "chicdn (https://unpkg.chicdn.cn) (Operated by someone)"
     },
     "CDN_SETTINGS_MANUAL_SET": {
-        "简体中文": "您的CDN地址(需要带'https://'，结尾不含斜杠'/')",
-        "English": "Your own cdn address(should with 'https://')"
+        "简体中文": "您的Unpkg 源地址(需要带'https://'，结尾不含斜杠'/')",
+        "English": "Your own unpkg source address(should with 'https://')"
     }
 }
