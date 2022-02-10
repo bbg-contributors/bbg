@@ -4,7 +4,10 @@ const currentProgramVersion = require("./currentProgramVersion.js").toString();
 const download_update = require("./download_update.js");
 const os = require("os");
 	
-progress_modal =  new bootstrap.Modal(document.getElementById('update-progress-dialog'));
+progress_modal =  new bootstrap.Modal(document.getElementById('update-progress-dialog'),{
+  backdrop:"static",
+  keyboard:false
+});
 
 module.exports = function () {
   fetch("https://gitee.com/api/v5/repos/baiyang-lzy/bbg/releases/latest")

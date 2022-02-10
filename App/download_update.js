@@ -13,14 +13,6 @@ module.exports =  function() {
 
 	progress_modal.show();
 
-	document.getElementById("check_update_btn").setAttribute("onclick","progress_modal.show();");
-	document.getElementById("check_update_btn").setAttribute("style","color:red;");
-	document.getElementById("check_update_btn").innerHTML = "正在下载更新，点击这里来查看更新下载进度";
-	document.getElementById("open_site_btn").setAttribute("onclick","progress_modal.show();alert('请等待更新下载完成后再继续操作')");
-	document.getElementById("create_site_btn").setAttribute("onclick","progress_modal.show();alert('请等待更新下载完成后再继续操作')");
-	document.getElementById("last_managed_site").setAttribute("onclick", "progress_modal.show();alert('请等待更新下载完成后再继续操作')");
-
-
 	var rec = 0, tot;
 	var req = request({
 		method: 'GET', uri: download_url

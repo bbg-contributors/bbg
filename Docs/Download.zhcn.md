@@ -7,7 +7,6 @@
 | 下载通道 | 备注 |
 | --- | --- |
 | [GitHub 官方下载源](https://github.com/baiyang-lzy/bbg/releases) | 版本最新 |
-| [Gitee 官方下载源](https://gitee.com/baiyang-lzy/bbg/releases) | 国内下载速度较快 |
 
 ## 非官方下载源
 

@@ -440,8 +440,8 @@
         "English": "CDN Settings"
     },
     "CDN_SETTINGS_SIMPLE_DESCRIPTION": {
-        "简体中文": "用于设置您的cdn，您的CDN设置取决您的用户面向哪一区域。CDN可能会影响您blog的加载速度。如果您是自己填写CDN，您要确保该CDN的目录与unpkg相似，如 CDN地址/vue/README.md",
-        "English": "It is used for setting your blog's CDN address.It depends on where your visitor from.CDN may influence the loading speed of your blog.You should be sure about this cdn path is the same as unpkg such as CDN_PATH/vue/README.md"
+        "简体中文": "您的CDN设置取决您的用户面向哪一区域。CDN可能会影响您blog的加载速度。如果您是自己填写CDN，您要确保该CDN的目录结构与unpkg相似，<b>此处的CDN设置只会影响博客CSS资源文件的加载（包括Bootstrap和Font Awesome）。</b>",
+        "English": "It is used to set the CDN address of your blog.It depends on where your visitor from.CDN may influence the loading speed of your blog.You should be sure about this cdn path structure is like unpkg. This setting only affects the loading of CSS resource files."
     },
     "CDN_SETTINGS_METHOD": {
         "简体中文": "在这里选择CDN加速的方式",
@@ -449,30 +449,30 @@
     },
     "CDN_SETTINGS_LIST": {
         "简体中文": "在给出的列表中选择CDN",
-        "English": "Choose CDN in given list below."
+        "English": "Choose CDN in the list given below."
     },
     "CDN_SETTINGS_MANUAL": {
         "简体中文": "我要自己填写CDN地址",
         "English": "I want to choose CDN manually"
     },
     "CDN_SETTINGS_OFFICAL": {
-        "简体中文": "官方CDN(unpkg.com)，大陆内不推荐",
-        "English": "Offical CDN.Not recommend in China Mainland."
+        "简体中文": "UNPKG (https://unpkg.com)",
+        "English": "UNPKG (https://unpkg.com)"
     },
     "CDN_SETTINGS_JSD": {
-        "简体中文": "JSD CDN(cdn.jsdelivr.net)，大陆内不推荐(默认选择)",
-        "English": "Jsdelivr cdn.Not recommend in China Mainland.(Default selection)"
+        "简体中文": "JSDelivr CDN (https://cdn.jsdelivr.net/npm)",
+        "English": "JSDelivr CDN (https://cdn.jsdelivr.net/npm)"
     },
     "CDN_SETTINGS_ZHIMG": {
-        "简体中文": "知乎CDN(unpkg.zhimg.com)，大陆推荐",
-        "English": "Zhihu cdn.Recommend in China Mainland."
+        "简体中文": "知乎 CDN (https://unpkg.zhimg.com)",
+        "English": "Zhihu CDN (https://unpkg.zhimg.com)"
     },
     "CDN_SETTINGS_CHICDN": {
-        "简体中文": "chicdn(unpkg.chicdn.cn)，由某人友情提供，可能不稳定",
-        "English": "chicdn cdn.Provided by someone.It may be unstable."
+        "简体中文": "chicdn (https://unpkg.chicdn.cn) (由某人友情提供)",
+        "English": "chicdn (https://unpkg.chicdn.cn) (Operated by someone)"
     },
     "CDN_SETTINGS_MANUAL_SET": {
-        "简体中文": "您的CDN地址(需要带'https://')",
+        "简体中文": "您的CDN地址(需要带'https://'，结尾不含斜杠'/')",
         "English": "Your own cdn address(should with 'https://')"
     }
 }

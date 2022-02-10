@@ -1,5 +1,5 @@
 {
-    "currentProgramVersion": 20220202,
+    "currentProgramVersion": 20220210,
     "AppName":"Baiyang-lzy's Blog Generator",
     "contributers":{
         "图标设计": [
@@ -7,7 +7,9 @@
         ],
         "开发":[
             ["白羊李志远","https://www.zhihu.com/people/popcorn17"],
-            ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"]
+            ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
+            ["mzwing","https://mzwing.eu.org"],
+            ["chihuo2104","https://im.chihuo2104.dev/"]
         ],
         "打包":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
@@ -15,7 +17,7 @@
         ],
         "参与测试人员":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
-            ["mzwing","https://space.bilibili.com/439246138/"],
+            ["mzwing","https://mzwing.eu.org"],
             ["淡泊远烟","https://littlesunnybear.com/"],
             ["喂，前面可是地狱","https://margaret-zhang.github.io/"],
             ["我是XXX","https://tieba.baidu.com/home/main?un=zzjzxq33"]
