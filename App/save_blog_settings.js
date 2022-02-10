@@ -12,13 +12,6 @@ module.exports = function () {
          blog_settings_is_valine_enabled = document.getElementById("blog_settings_is_valine_enabled").checked;
          blog_settings_valine_appid = document.getElementById("blog_settings_valine_appid").value;
          blog_settings_valine_appkey = document.getElementById("blog_settings_valine_appkey").value;
-         if(document.getElementById("cdn_cho_1").checked === true){
-            blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
-            blog_settings_cdn_mode = 1;
-          } else {
-            blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_2").value;
-            blog_settings_cdn_mode = 2;
-          }
     } catch (e) {
         console.log(e)
     }
@@ -29,6 +22,13 @@ module.exports = function () {
     let website_announcement_indexonly = document.getElementById("website_announcement_indexonly").checked;
     let website_announcement_content = document.getElementById("website_announcement_content").value;
 
+    if(document.getElementById("cdn_cho_1").checked === true){
+        blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
+        blog_settings_cdn_mode = 1;
+      } else {
+        blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_2").value;
+        blog_settings_cdn_mode = 2;
+      }
 
     blog["博客标题"] = blog_settings_title;
     blog["博客描述（副标题）"] = blog_settings_description;
