@@ -9,6 +9,12 @@ Hello here, this is the official code repository of BBG (Baiyang-lzy's Blog Gene
 
 [English](./README.english.md) 
 
+---
+
+[安全提示：请更新到 BBG 20220213 版本](./Security_20220213.zhcn.md)
+
+[Announcement: Please update to BBG 20220213 for security reasons](./Security_20220213.english.md)
+
 ## License
 
 GPL 3.0 Licensed.

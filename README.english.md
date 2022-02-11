@@ -1,6 +1,8 @@
 BBG
 ===
 
+[Announcement: Please update to BBG 20220213 for security reasons](./Security_20220213.english.md)
+
 ## Introduction
 
 BBG is a static blog generator based on Electron Technology.
