@@ -1,5 +1,5 @@
 {
-    "currentProgramVersion": 20220212,
+    "currentProgramVersion": 20220213,
     "AppName":"Baiyang-lzy's Blog Generator",
     "contributers":{
         "图标设计": [
@@ -9,7 +9,8 @@
             ["白羊李志远","https://www.zhihu.com/people/popcorn17"],
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
             ["mzwing","https://mzwing.eu.org"],
-            ["chihuo2104","https://im.chihuo2104.dev/"]
+            ["chihuo2104","https://im.chihuo2104.dev/"],
+            ["Misaka13514","https://atri.tk/"]
         ],
         "打包":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
