@@ -31,4 +31,4 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 ## License
 
-GPL 3.0 Licensed.
+此项目属于公有领域。

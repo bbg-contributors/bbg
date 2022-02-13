@@ -21,4 +21,4 @@ It's a pity that at the moment we don't offer docs in English due to the time co
 
 ## License
 
-GPL 3.0 Licensed.
+This project is released into the public domain.

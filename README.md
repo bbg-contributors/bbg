@@ -17,4 +17,6 @@ Hello here, this is the official code repository of BBG (Baiyang-lzy's Blog Gene
 
 ## License
 
-GPL 3.0 Licensed.
+This project is released into the public domain.
+
+此项目属于公有领域。

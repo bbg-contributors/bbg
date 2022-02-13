@@ -164,13 +164,6 @@ function openGroupDialog(){
     `);
 }
 
-function openCopyrightDialog(){
-    createInfoDialog(langdata["ANNOUNCEMENT_OF_APPLICATION_ICON"][lang_name],`
-    <p>${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT"][0][lang_name]}</p>
-    <p>${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT"][1][lang_name]}</p>
-    `)
-}
-
 storage.has("language", function (error, hasKey) {
     if (hasKey) {
         storage.get("language", function (error, data) {
@@ -216,14 +209,13 @@ storage.has("language", function (error, hasKey) {
         <br />
         <i class="fa fa-smile-o"></i> ${langdata["SOFTWARE_VERSION"][lang_name]}<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">${langdata["CHECK_UPDATE"][lang_name]}</a><br />
       <br />
-        <span>${langdata["LICENSE_GPLV3"][lang_name]}</span><br />
+        <span>${langdata["UNLICENSED"][lang_name]}</span><br />
         <br />
         <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();">Language Settings / 语言设定</button>
 
         <br /><br />
         <button class="fluentbtn" onclick="openStaffDialog()">${langdata["VIEW_STAFF"][lang_name]}</button>
         <button class="fluentbtn" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
-        <button class="fluentbtn" onclick="openCopyrightDialog()">${langdata["ANNOUNCEMENT_OF_APPLICATION_ICON"][lang_name]}</button>
         <br /><hr />
         
             

@@ -167,9 +167,9 @@
         "简体中文": "检查更新",
         "English": "Check for updates"
     },
-    "LICENSE_GPLV3": {
-        "简体中文": "本软件使用 GPL 3.0 协议授权。继续使用则表示你已经阅读并同意GPL 3.0 协议文本的所有内容。",
-        "English": "The software follows GPL 3.0. Continue using the software means that you have read and agree with all the contents of GPL 3.0."
+    "UNLICENSED": {
+        "简体中文": "此软件的源代码属于公有领域。本软件不含任何担保。",
+        "English": "The source code of this software is released into the public domain. The software doesn't have warranty of any kind."
     },
     "VIEW_STAFF": {
         "简体中文": "查看 STAFF 名单",
@@ -179,20 +179,6 @@
         "简体中文": "加入我们的群组",
         "English": "Join our group"
     },
-    "ANNOUNCEMENT_OF_APPLICATION_ICON": {
-        "简体中文": "关于应用图标的版权声明",
-        "English": "About the copyright of the application icon"
-    },
-    "ANNOUNCEMENT_OF_APPLICATION_ICON_CONTENT": [
-        {
-            "简体中文": "应用图标由 scientificworld 设计，由贴吧的滑稽表情图像和火焰猫燐图像拼合而成。滑稽表情图像版权归百度网讯公司所有、火焰猫燐图像版权归 Pixiv 画师乃菜香【2日目東ヒ-49a】（Pixiv 用户ID：28850）所有。",
-            "English": "This image contains two elements. One is Tieba's Huaji Emoji, another is the image of Aenbyou Rin. The copyright of Tieba's Huaji Emoji is belonged to Baidu. The copyright of the image of Aenbyou is belonged to 乃菜香【2日目東ヒ-49a】(Pixiv User ID: 28850). The pixiv id of this artwork is 20274893. "
-        },
-        {
-            "简体中文": "本项目是非商业用途的开源项目，无意侵犯任何人的版权。如果你认为相关图像侵犯了你的权益，请投递电子邮件到开发者的邮箱： baiyang-lzy@outlook.com 。我会第一时间做出处理。",
-            "English": "Notice that this project is an open source project that do NOT have commercial purpose, so We don't want to infringe anyone's copyright. If you think this image infringed your copyright, please send an email to baiyang-lzy@outlook.com and we will process it.        "
-        }
-    ],
     "QQ_GROUP_NUMBER": {
         "简体中文": "QQ 群：983538695",
         "English": "QQ Group Number: 983538695"
