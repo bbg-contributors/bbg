@@ -95,7 +95,7 @@
         }
     ],
     "CDN选择":1,
-    "CDN路径":"https://cdn.jsdelivr.net/npm",
+    "CDN路径":"https://unpkg.com",
     "启用自定义CSS":false,
     "启用自定义JS":false,
     "自定义CSS":"",
