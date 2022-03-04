@@ -15,10 +15,6 @@ Notice that the support of English language or Multi-language is experimental. B
 
 Click [here](./Docs/Download.english.md) to display the download URL that available.
 
-## Docs
-
-It's a pity that at the moment we don't offer docs in English due to the time cost.
-
 ## License
 
 This project is released into the public domain.

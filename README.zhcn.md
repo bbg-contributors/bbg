@@ -13,21 +13,27 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 点击[这里](./Docs/Download.zhcn.md)以查看可用的程序包下载地址。下载后双击可执行文件即可开始使用 BBG。
 
-## 文档
+## 如何使用
 
-如果你需要调试和开发 BBG，请查阅以下文档：
-
-* [为本项目搭建开发环境](./Docs/Developer_Guide.zhcn.md)
-* [第三方主题开发文档](./Docs/Theme_Developing.zhcn.md)
-
-如果想要查看本项目的更新日志，请查阅
-
-* [BBG 版本更新日志](./CHANGELOG.zhcn.md)
+下载程序包后解压，然后双击 ```bbg``` 可执行文件即可开始使用。
 
 ## 使用 BBG 构建的站点展示
 
 * [白羊李志远のBlog](https://baiyang-lzy.gitee.io/blog/)
 * [洛仙璃の幻梦](https://mzwing.eu.org/)
+* [季风](https://littlesunnybear.com/)
+
+---
+
+## 开发者参考文档
+
+**以下文档仅供开发者和打包者参考使用。一般用户无需查阅。**
+
+* [为本项目搭建开发环境](./Docs/Developer_Guide.zhcn.md)
+* [第三方主题开发文档](./Docs/Theme_Developing.zhcn.md)
+* [Changelog](./CHANGELOG.zhcn.md)
+
+---
 
 ## License
 
