@@ -11,10 +11,7 @@
 ## 非官方下载源
 
 来自非官方下载源的 BBG 版本由社区用户贡献，为某些发行版 / OS 环境提供了更好的集成，但是版本可能不是最新的。
-| 下载通道 | 提供者 | 最近更新 |
-| --- | --- | --- |
-| [AUR](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 | 2021 年 11 月 23 日 |
-| [Debian 安装包](https://pan.baidu.com/s/1qaTrryGN-IEdPlqthqqhgw) | 洛仙璃 | 2021 年 12 月 26 日 |
-| [非官方 macOS 下载源](https://github.com/scientificworld/bbg_mac_build) | scientificworld | 2021 年 8 月 19 日 |
-
-注：Debian 安装包的下载提取码为 ```b9l4```。
+| 下载通道 | 提供者 |
+| --- | --- |
+| [AUR (Binary)](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 |
+| [AUR (VCS Package)](https://aur.archlinux.org/packages/bbg-git/) | Misaka13514 |

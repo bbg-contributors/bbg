@@ -14,4 +14,5 @@ Contributed by our community, which offers better integration for some specific 
 
 | Download Channel | Offerer |
 | --- | --- |
-| [AUR](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 |
+| [AUR (Binary)](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 |
+| [AUR (VCS Package)](https://aur.archlinux.org/packages/bbg-git/) | Misaka13514 |
