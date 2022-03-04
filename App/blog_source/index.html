@@ -501,6 +501,9 @@
     <script src="https://unpkg.com/valine@1.4.16/dist/Valine.min.js"></script>
     <script>
 
+
+      currentArticleListPageOrder = 1; //这个变量表示目前在显示文章列表中的第几页，是从1开始数的
+
       if(localStorage.getItem("is_nightmode") === null || localStorage.getItem("is_nightmode") === undefined){
         localStorage.setItem("is_nightmode","off");
       }
@@ -702,6 +705,11 @@
         }
       }
 
+      function changeArticleListPageOrderTo(page_order){
+        currentArticleListPageOrder = page_order;
+        enter_indexPage();
+      }
+
       function render_article_list() {
         for (let i = 0; i < blog["文章列表"].length; i++) {
           if (blog["文章列表"][i]["是否置顶"]) {
@@ -716,7 +724,12 @@
           }
         }
 
-        for (let i = 0; i < blog["文章列表"].length; i++) {
+        // 注意：这里的两个 order 变量都是从1开始数的
+
+        let currentArticleListFromOrder = (currentArticleListPageOrder - 1) * blog["文章列表中每页的文章数为"] + 1;
+        let currentArticleListToOrder = currentArticleListPageOrder * blog["文章列表中每页的文章数为"];
+
+        for (let i = currentArticleListFromOrder - 1; i < currentArticleListToOrder && i<blog["文章列表"].length; i++) {
           if (
             blog["文章列表"][i]["是否隐藏"] ||
             blog["文章列表"][i]["是否置顶"]
@@ -755,6 +768,33 @@
                         <br /><p>${blog["文章列表"][i]["摘要"]}</p>
                             `;
           }
+        }
+
+        if(articleListPageLength !== 1){
+
+          for(let i=0;i<articleListPageLength;i++){
+          if(i+1 === currentArticleListPageOrder){
+            document.getElementById("container").innerHTML += `
+          <button class="btn btn-primary btn-sm" onclick="changeArticleListPageOrderTo(${i+1})">${i+1}</button>
+          
+          `;
+          }else{
+            document.getElementById("container").innerHTML +=`
+            
+            <button class="btn btn-secondary btn-sm" onclick="changeArticleListPageOrderTo(${i+1})">${i+1}</button>
+            
+            `;
+          }
+        }
+
+        document.getElementById("container").innerHTML += `
+        <br /><br />
+        <p style="color:grey;">你当前正在浏览文章列表的第${currentArticleListPageOrder}页（共${articleListPageLength}页）。
+</p>
+        
+        
+        `;
+
         }
       }
 
@@ -1220,6 +1260,7 @@
         }
       }
 
+
       function render_hitokoto() {
         if (blog["一言设置"]["启用一言"]) {
           //todo:一言
@@ -1323,6 +1364,7 @@
           importCSSFile(cdn_path + "/font-awesome@4.7.0/css/font-awesome.min.css");
           
           lang_name = blog["网站语言"];
+          articleListPageLength = Math.ceil(blog["文章列表"].length/blog["文章列表中每页的文章数为"]); // 从1开始数
           
           if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
             if (window.location.href.indexOf("?") === -1) {

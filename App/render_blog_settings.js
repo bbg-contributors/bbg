@@ -36,6 +36,15 @@ ${blog["底部信息（格式为markdown）"]}
 </div>
 
 <div class="mb-3">
+<label class="form-label">文章列表每页文章数（此项必须是一个大于等于5的整数）</label>
+<input class="form-control" value="${blog["文章列表中每页的文章数为"]}" type="number" min="5" id="blog_settings_howmany_article_in_a_page">
+<br />
+<div class="alert alert-primary" role="alert">
+置顶文章的显示不受“文章列表每页文章数”约束。实际的每页文章数不会少于你设置的这个数字，也不会超过“置顶文章数”和“你设置的每页文章数”数量的总和。无论如何，最终的文章列表中不会有文章被遗漏。
+</div>
+</div>
+
+<div class="mb-3">
 <label class="form-label">${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label>
 <input class="form-control" value="${blog["全局主题设置"]["标题栏背景颜色"]}"  id="blog_settings_titlebar_bgcolor">
 </div>
