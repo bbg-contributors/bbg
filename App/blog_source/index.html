@@ -713,7 +713,7 @@
 
       function render_article_list() {
         for (let i = 0; i < blog["文章列表"].length; i++) {
-          if (blog["文章列表"][i]["是否置顶"]) {
+          if (blog["文章列表"][i]["是否置顶"] && currentArticleListPageOrder === 1) {
             document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
                         <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> 置顶文章</div>
@@ -857,6 +857,7 @@
             if (window.location.href.indexOf("?") === -1) {
               forever_url = `${window.location.href
                 .replaceAll("#top", "")
+                .replaceAll("index.html", "")
                 .replaceAll("#", "")}?type=article&filename=${
                 blog["文章列表"][article_id]["文件名"]
               }`;
@@ -865,6 +866,7 @@
             if (window.location.href.indexOf("?") !== -1) {
               forever_url = `${window.location.href
                 .replaceAll("#top", "")
+                .replaceAll("index.html", "")
                 .replaceAll("#", "")
                 .replaceAll("type=article", "")
                 .replaceAll("type=page", "")
@@ -1177,6 +1179,7 @@
             if (window.location.href.indexOf("?") === -1) {
               forever_url = `${window.location.href
                 .replaceAll("#top", "")
+                .replaceAll("index.html", "")
                 .replaceAll("#", "")}?type=page&filename=${
                 blog["页面列表"][page_id]["文件名"]
               }`;
@@ -1186,6 +1189,7 @@
               forever_url = `${window.location.href
                 .replaceAll("#top", "")
                 .replaceAll("#", "")
+                .replaceAll("index.html", "")
                 .replaceAll("type=article", "")
                 .replaceAll("type=page", "")
                 .replaceAll("?", "")
@@ -1371,12 +1375,14 @@
             if (window.location.href.indexOf("?") === -1) {
               comment_authcode = `domain=${window.location.href
                 .replaceAll("#top", "")
+                .replaceAll("index.html", "")
                 .replaceAll("#", "")};`;
             }
 
             if (window.location.href.indexOf("?") !== -1) {
               comment_authcode = `domain=${window.location.href
                 .replaceAll("#top", "")
+                .replaceAll("index.html", "")
                 .replaceAll("#", "")
                 .replaceAll("type=article", "")
                 .replaceAll("type=page", "")

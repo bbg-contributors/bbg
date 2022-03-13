@@ -6,6 +6,7 @@ module.exports = function () {
     let blog_settings_title = document.getElementById("blog_settings_title").value;
     let blog_settings_titlebar_bgcolor = document.getElementById("blog_settings_titlebar_bgcolor").value;
     let blog_settings_titlebar_textcolor = document.getElementById("blog_settings_titlebar_textcolor").value;
+    let blog_settings_howmany_article_in_a_page = document.getElementById("blog_settings_howmany_article_in_a_page").value;
     let blog_settings_cdn_path;
     let blog_settings_cdn_mode;
     try {
@@ -39,7 +40,7 @@ module.exports = function () {
     blog["博客描述（副标题）"] = blog_settings_description;
     blog["全局主题设置"]["标题栏背景颜色"] = blog_settings_titlebar_bgcolor;
     blog["全局主题设置"]["标题栏文字颜色"] = blog_settings_titlebar_textcolor;
-    
+    blog["文章列表中每页的文章数为"] = blog_settings_howmany_article_in_a_page;
 
     
     blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
