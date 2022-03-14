@@ -240,9 +240,9 @@ storage.has("language", function (error, hasKey) {
            });
 
            if(os.platform() === "linux"){
-            if(existsSync("/etc/bbgvertype")){
+            if(existsSync("/usr/share/bbg/bbgvertype")){
                 
-                bbgvertype = readFileSync("/etc/bbgvertype", "utf8").replace("\n","");
+                bbgvertype = readFileSync("/usr/share/bbg/bbgvertype", "utf8").replace("\n","");
                 switch (bbgvertype) {
                     case "aur-bbg-git-misaka13514":
                         document.getElementById("check_update_interface").innerHTML = `

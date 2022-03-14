@@ -1,5 +1,5 @@
 {
-    "currentProgramVersion": 20220314,
+    "currentProgramVersion": 20220315,
     "AppName":"Baiyang-lzy's Blog Generator",
     "contributers":{
         "图标设计": [
@@ -14,7 +14,8 @@
         ],
         "打包":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],
-            ["我是XXX","https://tieba.baidu.com/home/main?un=zzjzxq33"]
+            ["我是XXX","https://tieba.baidu.com/home/main?un=zzjzxq33"],
+            ["Misaka13514","https://atri.tk/"]
         ],
         "参与测试人员":[
             ["scientificworld","https://www.zhihu.com/people/liu-zi-han-81-16"],

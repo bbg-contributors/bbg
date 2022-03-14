@@ -265,6 +265,10 @@ module.exports = function () {
           addSupportForContentLicense();
         }
 
+        if(currentBlogVersion === 20220314){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+        }
 
 
 
