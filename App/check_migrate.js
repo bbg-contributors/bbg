@@ -88,6 +88,11 @@ function addSupportOfArticlePageOrder(){
   blog["文章列表中每页的文章数为"] = 10;
 }
 
+function addSupportForContentLicense(){
+  blog["全站内容授权协议"] = "reserved";
+  blog["不使用全站内容授权协议"] = false;
+}
+
 module.exports = function () {
   let currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -132,6 +137,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -146,6 +152,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if (
@@ -164,6 +171,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if (currentBlogVersion === 20210925) {
@@ -175,6 +183,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
@@ -186,6 +195,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if(currentBlogVersion === 20211205){
@@ -197,6 +207,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if(currentBlogVersion === 20220119){
@@ -207,6 +218,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
         if(currentBlogVersion === 20220123){
           check_third_party_theme_compatiblity();
@@ -215,6 +227,7 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if(currentBlogVersion === 20220202){
@@ -223,23 +236,33 @@ module.exports = function () {
           addSupportForCDNSetting();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
         if(currentBlogVersion === 20220210){
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportForCustomCJ();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
         if(currentBlogVersion === 20220211 || currentBlogVersion === 20220212){
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
         }
 
         if(currentBlogVersion === 20220213){
           check_third_party_theme_compatiblity();
           updateBlogIndexHtml();
           addSupportOfArticlePageOrder();
+          addSupportForContentLicense();
+        }
+
+        if(currentBlogVersion === 20220304){
+          check_third_party_theme_compatiblity();
+          updateBlogIndexHtml();
+          addSupportForContentLicense();
         }
 
 

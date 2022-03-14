@@ -559,14 +559,6 @@
             "简体中文": "标签",
             "English": "Tags: "
           },
-          "FOREVER_LINK_PART1":{
-            "简体中文": "本页面的永久链接是：",
-            "English": "The Forever link of this page is "
-          },
-          "FOREVER_LINK_PART2":{
-            "简体中文": "，你可以使用此链接将本页面分享给其它人。",
-            "English": ", you can share the link to others."
-          },
           "COMMENT_UNAVAILABLE_DUE_TO_PREVIEW":{
             "简体中文": "由于你目前正在预览环境之中，评论功能暂时被禁用了。当你的站点被从互联网访问时，评论系统会正常地显示在这里。",
             "English": "Comment function banned because you are now in the preview environment. When the site is visited from the Internet, the comment system will be available here."
@@ -853,41 +845,20 @@
           .then(function (response) {
             document.querySelector("#article-content").innerHTML +=
               marked.parse(response.data);
-
-            if (window.location.href.indexOf("?") === -1) {
-              forever_url = `${window.location.href
-                .replaceAll("#top", "")
-                .replaceAll("index.html", "")
-                .replaceAll("#", "")}?type=article&filename=${
-                blog["文章列表"][article_id]["文件名"]
-              }`;
-            }
-
-            if (window.location.href.indexOf("?") !== -1) {
-              forever_url = `${window.location.href
-                .replaceAll("#top", "")
-                .replaceAll("index.html", "")
-                .replaceAll("#", "")
-                .replaceAll("type=article", "")
-                .replaceAll("type=page", "")
-                .replaceAll("?", "")
-                .replaceAll("&", "")
-                .replaceAll("filename=", "")
-                .replaceAll(
-                  getUrlArgs("filename"),
-                  ""
-                )}?type=article&filename=${
-                blog["文章列表"][article_id]["文件名"]
-              }`;
-            }
-
-            document.querySelector(
+            if(blog["不使用全站内容授权协议"] === false){
+              document.querySelector(
               "#article-content"
             ).innerHTML += `<br />
-
             <div class="alert alert-info" role="alert">
-              <i class="fa fa-smile-o"></i> ${langdata["FOREVER_LINK_PART1"][lang_name]}<a href="${forever_url}">${forever_url}</a>${langdata["FOREVER_LINK_PART2"][lang_name]}
-            </div>`;
+              <h5 class="alert-heading">版权声明</h5>
+            <p class="mb-0">${blogContentLicenseText}</p>
+            </div>
+            
+            `;
+            }
+            
+
+            
 
             if (
               blog["全局评论设置"]["启用valine评论"] &&
@@ -1174,37 +1145,14 @@
             document.querySelector("#page-content").innerHTML += marked.parse(
               response.data
             );
-
-            //
-            if (window.location.href.indexOf("?") === -1) {
-              forever_url = `${window.location.href
-                .replaceAll("#top", "")
-                .replaceAll("index.html", "")
-                .replaceAll("#", "")}?type=page&filename=${
-                blog["页面列表"][page_id]["文件名"]
-              }`;
-            }
-
-            if (window.location.href.indexOf("?") !== -1) {
-              forever_url = `${window.location.href
-                .replaceAll("#top", "")
-                .replaceAll("#", "")
-                .replaceAll("index.html", "")
-                .replaceAll("type=article", "")
-                .replaceAll("type=page", "")
-                .replaceAll("?", "")
-                .replaceAll("&", "")
-                .replaceAll("filename=", "")
-                .replaceAll(getUrlArgs("filename"), "")}?type=page&filename=${
-                blog["页面列表"][page_id]["文件名"]
-              }`;
-            }
-
-            document.querySelector(
-              "#container"
-            ).innerHTML += `<br /><div class="alert alert-info" role="alert">
-              <i class="fa fa-smile-o"></i> ${langdata["FOREVER_LINK_PART1"][lang_name]}<a href="${forever_url}">${forever_url}</a>${langdata["FOREVER_LINK_PART2"][lang_name]}
-            </div>`;
+            if(blog["不使用全站内容授权协议"] === false){
+            document.getElementById("page-content").innerHTML +=`<br />
+            <div class="alert alert-info" role="alert">
+              <h5 class="alert-heading">版权声明</h5>
+              <p class="mb-0">${blogContentLicenseText}</p>
+            </div>
+            
+            `;}
 
             // 评论
 
@@ -1360,6 +1308,20 @@
         .get("./data/index.json?timestamp=" + Date.parse(new Date()))
         .then(function (response) {
           blog = response.data;
+
+          switch (blog["全站内容授权协议"]) {
+            case "reserved":
+              blogContentLicenseText = `除特别声明外，本博客上的内容由博主保留所有权利，进行转载前需先获得博主同意。`
+              break;
+            case "unlicensed":
+              blogContentLicenseText = `除特别声明外，本博客上的内容属于公有领域，这意味着你可以不受限制地使用和加工它们。`
+              break;
+            case "cc-by-nc-sa-4.0":
+              blogContentLicenseText = `除特别声明外，本博客上的内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0 许可协议</a> 授权。转载请注明出处！ `
+              break;
+            default:
+              blogContentLicenseText = `${blog["全站内容授权协议"]}`;
+          }
           
           let cdn_path = blog["CDN路径"];
 

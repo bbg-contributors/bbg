@@ -1,10 +1,11 @@
 
 const fs = require("fs");
+const os = require("os");
 
 const dialog = require('@electron/remote').dialog;
 const shell = require('@electron/remote').shell;
 const AppPath = require('@electron/remote').app.getPath('userData');
-const { copyFileSync, constants, readFileSync } = require('fs');
+const { copyFileSync, constants, readFileSync, existsSync } = require('fs');
 const storage = require("electron-json-storage");
 
 const langdata = require("./LangData.js");
@@ -207,8 +208,10 @@ storage.has("language", function (error, hasKey) {
             document.getElementById("bbg_settings").innerHTML = `
             <h2>${langdata["BBG_SETTINGS"][lang_name]}</h2>
         <br />
+        <div id="check_update_interface">
         <i class="fa fa-smile-o"></i> ${langdata["SOFTWARE_VERSION"][lang_name]}<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">${langdata["CHECK_UPDATE"][lang_name]}</a><br />
-      <br />
+        </div>
+        <br />
         <span>${langdata["UNLICENSED"][lang_name]}</span><br />
         <br />
         <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();">Language Settings / 语言设定</button>
@@ -235,6 +238,45 @@ storage.has("language", function (error, hasKey) {
            
                }
            });
+
+           if(os.platform() === "linux"){
+            if(existsSync("/etc/bbgvertype")){
+                
+                bbgvertype = readFileSync("/etc/bbgvertype", "utf8").replace("\n","");
+                switch (bbgvertype) {
+                    case "aur-bbg-git-misaka13514":
+                        document.getElementById("check_update_interface").innerHTML = `
+                        <h5>版本信息</h5>
+                        安装通道：AUR（bbg-git）<br />
+                        打包者：Misaka13514<br />
+                        内部版本号：${currentProgramVersion}<br />
+
+                        `;
+                        break;
+                    case "aur-bbg-zzjzxq33-misaka13514":
+                        document.getElementById("check_update_interface").innerHTML = `
+                        <h5>版本信息</h5>
+                        安装通道：AUR（bbg）<br />
+                        打包者：zzjzxq33 和 Misaka13514<br />
+                        内部版本号：${currentProgramVersion}<br />
+
+                        `;
+                        break;
+                    case "debpkg-mzwing":
+                        document.getElementById("check_update_interface").innerHTML = `
+                        <h5>版本信息</h5>
+                        安装通道：DEB 包<br />
+                        打包者：mzwing<br />
+                        内部版本号：${currentProgramVersion}<br />
+
+                        `;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         });
 
 
@@ -250,3 +292,4 @@ function select_language(language_name){
         window.location.reload();
     });
 }
+

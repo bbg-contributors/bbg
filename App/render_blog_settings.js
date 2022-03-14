@@ -23,6 +23,24 @@ ${blog["底部信息（格式为markdown）"]}
 </textarea>
 </div>
 
+
+
+<div class="mb-3">
+<label class="form-label">全站内容授权协议</label>
+<input class="form-control" value="${blog["全站内容授权协议"]}"  id="blog_settings_content_license">
+</div>
+
+<div class="alert alert-primary" role="alert">
+全站内容授权协议的可填项为 reserved，unlicensed，cc-by-nc-sa-4.0 这三项中的任意一项，默认为reserved。reserved 表示博主保留所有权利；cc-by-nc-sa-4.0 表示博客内容使用 CC BY-NC-SA 4.0 作为授权协议；unlicensed 表示博客内容属于公有领域。如果填写其它内容，会将你所填写的内容作为博客的版权声明。
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="blog_content_license_enabled">
+<label class="form-check-label" for="blog_content_license_enabled">
+关闭“全站内容授权协议”功能
+</label>
+</div>
+
 <br />
 
 <div class="mb-3">
@@ -252,6 +270,11 @@ ${blog["自定义JS"]}
 
 if (blog["全局评论设置"]["启用valine评论"] === true) {
   document.getElementById("blog_settings_is_valine_enabled").checked = true;
+}
+
+if(blog["不使用全站内容授权协议"] === true){
+  document.getElementById("blog_content_license_enabled").checked = true;
+
 }
 
 if(blog["全局主题设置"]["是否使用第三方主题"] === true){

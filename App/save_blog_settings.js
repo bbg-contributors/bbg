@@ -26,7 +26,8 @@ module.exports = function () {
     let blog_settings_enable_custom_js = document.getElementById("blog_settings_enable_custom_js").checked;
     let blog_settings_custom_css = document.getElementById("blog_settings_custom_css").value;
     let blog_settings_custom_js = document.getElementById("blog_settings_custom_js").value;
-
+    let blog_settings_content_license =  document.getElementById("blog_settings_content_license").value;
+    let blog_content_license_enabled = document.getElementById("blog_content_license_enabled").checked;
 
     if(document.getElementById("cdn_cho_1").checked === true){
         blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
@@ -41,7 +42,8 @@ module.exports = function () {
     blog["全局主题设置"]["标题栏背景颜色"] = blog_settings_titlebar_bgcolor;
     blog["全局主题设置"]["标题栏文字颜色"] = blog_settings_titlebar_textcolor;
     blog["文章列表中每页的文章数为"] = blog_settings_howmany_article_in_a_page;
-
+    blog["全站内容授权协议"] = blog_settings_content_license;
+    blog["不使用全站内容授权协议"] = blog_content_license_enabled;
     
     blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
 
