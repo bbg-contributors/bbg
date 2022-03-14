@@ -42,12 +42,24 @@ cnpm run start
 
 > 如果你在 Windows 平台生成适用于 macOS 的软件包，必须使用管理员权限运行相关命令，以创建正确的软链接。
 
+> 如果你在 Linux 平台生成适用于 Windows 的软件包，需要提前安装 Wine。
+
 ```
 cnpm run package_windows
 cnpm run package_linux
 cnpm run package_mas
 cnpm run package_darwin
 ```
+
+由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 ```Unsupported `GLOBAL_AGENT.HTTP_PROXY` configuration```的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
+
+```
+export GLOBAL_AGENT_HTTPS_PROXY=http://host:port
+export GLOBAL_AGENT_HTTP_PROXY=http://host:port
+```
+
+其中，host:port 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
+
 
 ## 解决 Electron 无法启动并报错
 
