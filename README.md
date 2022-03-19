@@ -20,3 +20,5 @@ Hello here, this is the official code repository of BBG (Baiyang-lzy's Blog Gene
 This project is released into the public domain.
 
 此项目属于公有领域。
+
+![Alt](https://repobeats.axiom.co/api/embed/867874b0e0263127ca6448651d4bc9358256bd4e.svg "Repobeats analytics image")
