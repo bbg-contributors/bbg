@@ -26,6 +26,14 @@
         opacity: 0.8;
         border-radius: 12px;
       }
+
+      .nav-item-active{
+        border-bottom: 2px solid white;
+      }
+
+      .nav-item:hover{
+        border-bottom: 2px dashed white;
+      }
       
       .friend-card{
       box-shadow: 0 3px 1px -2px rgb(0 0 0 / 60%),
@@ -58,17 +66,18 @@
         opacity: 0.9;
         box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
           0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+          padding: 0!important;
       }
 
       .nav-link{
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         
       }
 
       .navbar-brand{
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         font-size: 16px;
         font-weight: bolder;
       }
@@ -586,7 +595,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_items">
-        <li class="nav-item">
+        <li class="nav-item" id="navbar_article_list">
           <a class="nav-link" href="./index.html?type=internal&function=article_list">${langdata["ARTICLE_LIST"][lang_name]}</a>
         </li>
         <li class="nav-item" id="navbar_archive_and_tags">
@@ -614,7 +623,7 @@
           for (let i = 0; i < blog["页面列表"].length; i++) {
             if (blog["页面列表"][i]["是否显示在菜单中"]) {
               document.querySelector("#navbar_items").innerHTML += `
-                        <li class="nav-item">
+                        <li class="nav-item" id="navbar_page_${i}">
                             <a class="nav-link" href="./index.html?type=page&filename=${blog["页面列表"][i]["文件名"]}">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
                         </li>
                         `;
@@ -624,7 +633,7 @@
 
         if(blog["启用内建友人帐页面"] === true){
             document.querySelector("#navbar_items").innerHTML += `
-                        <li class="nav-item">
+                        <li class="nav-item" id="navbar_friendbook">
                             <a class="nav-link" href="./index.html?type=internal&function=friendbook">友人帐</a>
                         </li>
             `;
@@ -1209,6 +1218,7 @@
             render_nav(false);
             render_container();
             render_page(page_id);
+            document.getElementById(`navbar_page_${page_id}`).classList.add("nav-item-active");
           }
         }
       }
@@ -1250,6 +1260,7 @@
         render_container();
         render_tag(decodeURIComponent(tagname));
         render_bottom_information();
+        document.getElementById("navbar_archive_and_tags").classList.add("nav-item-active");
         execute_custom_js();
       }
 
@@ -1258,6 +1269,8 @@
         render_nav(false);
         render_container();
         render_friend_book();
+        document.getElementById("navbar_friendbook").classList.add("nav-item-active");
+
       }
 
       function enter_archive_and_tags() {
@@ -1266,6 +1279,7 @@
         render_container();
         render_tag_tree();
         render_bottom_information();
+        document.getElementById("navbar_archive_and_tags").classList.add("nav-item-active");
         execute_custom_js();
       }
 
@@ -1276,6 +1290,8 @@
         render_index_title_info();
         render_article_list();
         render_bottom_information();
+        document.getElementById("navbar_article_list").classList.add("nav-item-active");
+
         execute_custom_js();
       }
 
