@@ -7,21 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
-    "package_all": "electron-packager ./ bbg --asar --overwrite --platform=win32,linux,darwin,mas  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=16.0.6",
-    "package_windows": "electron-packager ./ bbg --asar --overwrite --platform=win32  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=16.0.6",
-    "package_linux": "electron-packager ./ bbg --asar --overwrite --platform=linux  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6",
-    "package_darwin": "electron-packager ./ bbg --asar --overwrite --platform=darwin  --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6",
-    "package_mas": "electron-packager ./ bbg --asar --overwrite --platform=mas --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/  --electron-version=16.0.6"
+    "package_all": "electron-packager ./ bbg --asar --overwrite --platform=win32,linux,darwin,mas  --arch=x64 --download.mirrorOptions.mirror=https://registry.npmmirror.com/electron/ --electron-version=16.2.2",
+    "package_windows": "electron-packager ./ bbg --asar --overwrite --platform=win32  --arch=x64 --download.mirrorOptions.mirror=https://registry.npmmirror.com/electron/ --electron-version=16.2.2",
+    "package_linux": "electron-packager ./ bbg --asar --overwrite --platform=linux  --arch=x64 --download.mirrorOptions.mirror=https://registry.npmmirror.com/electron/  --electron-version=16.2.2",
+    "package_darwin": "electron-packager ./ bbg --asar --overwrite --platform=darwin  --arch=x64 --download.mirrorOptions.mirror=https://registry.npmmirror.com/electron/  --electron-version=16.2.2",
+    "package_mas": "electron-packager ./ bbg --asar --overwrite --platform=mas --arch=x64 --download.mirrorOptions.mirror=https://registry.npmmirror.com/electron/  --electron-version=16.2.2"
   },
   "author": "baiyang-lzy",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^16.2.1",
+    "electron": "^16.2.2",
     "electron-packager": "^15.4.0"
   },
   "dependencies": {
     "@electron/remote": "^2.0.8",
-    "@popperjs/core": "^2.11.4",
+    "@popperjs/core": "^2.11.5",
     "bootstrap": "5.0.2",
     "electron-json-storage": "^4.5.0",
     "express": "^4.17.3",
