@@ -31,6 +31,6 @@
 const path = require('path')
 const express = require('express')
 let app = express()
-app.use('/', express.static(path.join(__dirname, '/docs/')))
+app.use('/', express.static(path.join(__dirname, '/Docs/')))
 app.listen('23941')
 console.log('App listening on http://localhost:23941')
