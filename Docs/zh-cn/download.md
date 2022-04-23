@@ -11,6 +11,7 @@
 ## 非官方下载源
 
 来自非官方下载源的 BBG 版本由社区用户贡献，为某些发行版 / OS 环境提供了更好的集成，但是版本可能不是最新的。
+
 | 下载通道 | 提供者 |
 | --- | --- |
 | [AUR (Binary)](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 |
