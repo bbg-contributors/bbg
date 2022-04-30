@@ -171,9 +171,9 @@
         "简体中文": "此软件的源代码属于公有领域。本软件不含任何担保。",
         "English": "The source code of this software is released into the public domain. The software doesn't have warranty of any kind."
     },
-    "VIEW_STAFF": {
-        "简体中文": "查看 STAFF 名单",
-        "English": "Staff List"
+    "DISPLAY_CONTRIBUTERS": {
+        "简体中文": "查看贡献者名单",
+        "English": "Display contributers"
     },
     "JOIN_OUR_GROUP": {
         "简体中文": "加入我们的群组",
