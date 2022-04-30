@@ -1,7 +1,5 @@
 # BBG
 
-[安全提示：请更新到 BBG 20220213 版本](/zh-cn/Security_20220213.md)
-
 ## 功能简介
 
 BBG 是一个基于 Electron 开发的静态博客生成器。
@@ -31,6 +29,10 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 * [为本项目搭建开发环境](/zh-cn/developer-guide/CONTRIBUTING.md)
 * [第三方主题开发文档](/zh-cn/developer-guide/theme.md)
 * [更新日志](/zh-cn/CHANGELOG.md)
+
+## Repobeats Data
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/867874b0e0263127ca6448651d4bc9358256bd4e.svg)
 
 ---
 

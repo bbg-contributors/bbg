@@ -1,7 +1,5 @@
 # BBG
 
-[Announcement: Please update to BBG 20220213 for security reasons](/en/Security_20220213.md)
-
 ## Introduction
 
 BBG is a static blog generator based on Electron Technology.
@@ -25,6 +23,10 @@ After downloading the package, unzip it and double-click the `bbg` executable to
 * [季风](https://littlesunnybear.com/)
 
 ---
+
+## Repobeats Data
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/867874b0e0263127ca6448651d4bc9358256bd4e.svg)
 
 ## License
 
