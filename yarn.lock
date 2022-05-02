@@ -65,10 +65,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.16.tgz#e3733f46797b9df9e853ca9f719c8a6f7b84cd26"
   integrity sha512-ydLaGVfQOQ6hI1xK2A5nVh8bl0OGoIfYMxPWHqqYe9bTkWCfqiVvZoh2I/QF2sNSkZzZyROBoTefIEI+PB6iIA==
 
-"@types/node@^14.6.2":
-  version "14.18.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.10.tgz#774f43868964f3cfe4ced1f5417fe15818a4eaea"
-  integrity sha512-6iihJ/Pp5fsFJ/aEDGyvT4pHGmCpq7ToQ/yf4bl5SbVAvwpspYJ+v3jO7n8UyjhQVHTy+KNszOozDdv+O6sovQ==
+"@types/node@^16.11.26":
+  version "16.11.33"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.33.tgz#566713b1b626f781c5c58fe3531307283e00720c"
+  integrity sha512-0PJ0vg+JyU0MIan58IOIFRtSvsb7Ri+7Wltx2qAg94eMOrpg4+uuP3aUHCpxXc1i0jCXiC+zIamSZh3l9AbcQA==
 
 "@types/yauzl@^2.9.1":
   version "2.9.2"
@@ -84,6 +84,11 @@ accepts@~1.3.8:
   dependencies:
     mime-types "~2.1.34"
     negotiator "0.6.3"
+
+adm-zip@^0.5.9:
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.9.tgz#b33691028333821c0cf95c31374c5462f2905a83"
+  integrity sha512-s+3fXLkeeLjZ2kLjCBwQufpI5fuN+kIGBxu6530nVQZGVol0d7Y/M88/xw9HGGUcJjKf8LutN3VPRUBq6N7Ajg==
 
 ajv@^6.12.3:
   version "6.12.6"
@@ -525,13 +530,13 @@ electron-packager@^15.4.0:
     semver "^7.1.3"
     yargs-parser "^20.0.0"
 
-electron@^16.2.2:
-  version "16.2.3"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-16.2.3.tgz#ca2eec7fae6a2c591e9ea620a04edea836f861ac"
-  integrity sha512-4Tzz1YjE99eSqyqmaPVMpKFH+vyyPENdZsnJHtPHcRP76U87DI2HFd53w9GiSAElueqRe4iw/AqmIBROpjQDNQ==
+electron@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-18.2.0.tgz#a0cbf8d5d1a1e9d1c195d86cd6937e721ed60fec"
+  integrity sha512-AN+CKalzA57beuvuI90PVgW/yj6zjw7rpb1h8FvIwBJ3toDC3x0Plfzbzh4Ondecbjci7pSg/NA5ngOk804WIQ==
   dependencies:
     "@electron/get" "^1.13.0"
-    "@types/node" "^14.6.2"
+    "@types/node" "^16.11.26"
     extract-zip "^1.0.3"
 
 encodeurl@^1.0.2, encodeurl@~1.0.2:
