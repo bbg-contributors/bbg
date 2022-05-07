@@ -82,6 +82,6 @@ jobs:
             
             本项目支持 macOS、Windows、Linux 等常见桌面平台。目前应用程序支持设定为英语和简体中文，但对英语的支持目前仍是实验性的，因而可能会出现 Bug。如果你有任何意见或建议，请将它们发送到 GitHub Issues 中。我们会在空余时间处理这些问题。
 
-            更新日志详见[链接](https://baiyang-lzy.github.io/bbg/#/zh-cn/CHANGELOG)。
+            更新日志详见[链接](https://bbg.nekomoe.xyz/#/zh-cn/CHANGELOG)。
           files: |
             dist/*
