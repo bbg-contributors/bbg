@@ -28,6 +28,7 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 * [为本项目搭建开发环境](/zh-cn/developer-guide/CONTRIBUTING.md)
 * [第三方主题开发文档](/zh-cn/developer-guide/theme.md)
+* [离线查看参考文档](/zh-cn/developer-guide/docsify_guide.md)
 * [更新日志](/zh-cn/CHANGELOG.md)
 
 ## Repobeats Data
