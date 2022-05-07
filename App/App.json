@@ -13,6 +13,10 @@
         {
             "name":"青叶 / Cyan",
             "stylesheet":"cyan.css"
+        },
+        {
+            "name":"暗黑 / Dark",
+            "stylesheet":"dark.css"
         }
     ]
 }

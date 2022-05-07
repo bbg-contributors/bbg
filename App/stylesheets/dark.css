@@ -1,0 +1,476 @@
+.article-item-sub,
+.article-content-sub,
+.page-item-sub {
+  color: white;
+}
+
+.page-item,
+.article-item,
+.fluentinterface {
+  background-color: rgb(50, 50, 50);
+  padding: 24px;
+  margin-bottom: 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(79, 83, 92);
+  border-radius: 16px;
+  color:white;
+}
+
+h1,h2,h3,h4,h5,h6,p, #check_update_interface, #bbg_settings span, label{
+    color:white
+}
+
+.fluenthint {
+  background-color: #cff4fc !important;
+}
+
+.nav-item .nav-link {
+  color: grey !important;
+}
+
+body{
+    background-color: rgb(100,100,100,0.95);
+}
+
+body:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .8;
+  z-index: -1;
+  content: "";
+  position: fixed;
+  background-color: rgb(45,45,45);
+}
+
+.fluentbtn {
+  border-radius: 6px;
+  background-color: rgb(0, 0, 0);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(126, 133, 136);
+  padding-top: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 92%;
+}
+
+.fluentbtn-blue {
+  background-color: #131414 !important;
+  color: white !important
+}
+
+.fluentbtn-blue:hover {
+  background-color: #262b2ac7 !important;
+  color: white !important
+}
+
+.fluentbtn-blue:active {
+  background-color: #040505 !important;
+  color: white !important
+}
+
+.fluentbtn:hover {
+  background-color: rgb(88, 92, 92);
+  text-decoration: none;
+  color: white;
+
+}
+
+.fluentbtn:active {
+  background-color: rgb(17, 19, 19);
+  text-decoration: none;
+  color: white;
+
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fade-off {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
+@-webkit-keyframes fade-off {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
+@keyframes fade-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@-webkit-keyframes fade-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes fade-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(-20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@-webkit-keyframes fade-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(-20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@-webkit-keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@-webkit-keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes fade-small-large {
+  from {
+    opacity: 0;
+    transform: scale(.5, .5)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+}
+
+@-webkit-keyframes fade-small-large {
+  from {
+    opacity: 0;
+    transform: scale(.5, .5)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+}
+
+@keyframes fade-large-small {
+  from {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(.5, .5)
+  }
+}
+
+@-webkit-keyframes fade-large-small {
+  from {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(.5, .5)
+  }
+}
+
+@keyframes fade-larger-small {
+  from {
+    opacity: 0;
+    transform: scale(1.5, 1.5)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+}
+
+@-webkit-keyframes fade-larger-small {
+  from {
+    opacity: 0;
+    transform: scale(1.5, 1.5)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+}
+
+@keyframes fade-small-larger {
+  from {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.5, 1.5)
+  }
+}
+
+@-webkit-keyframes fade-small-larger {
+  from {
+    opacity: 1;
+    transform: scale(1, 1)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.5, 1.5)
+  }
+}
+
+@keyframes scale-small-large {
+  from {
+    transform: scale(0, 0)
+  }
+
+  to {
+    transform: scale(1, 1)
+  }
+}
+
+@-webkit-keyframes scale-small-large {
+  from {
+    transform: scale(0, 0)
+  }
+
+  to {
+    transform: scale(1, 1)
+  }
+}
+
+@keyframes scale-large-small {
+  from {
+    transform: scale(1, 1)
+  }
+
+  to {
+    transform: scale(0, 0)
+  }
+}
+
+@-webkit-keyframes scale-large-small {
+  from {
+    transform: scale(1, 1)
+  }
+
+  to {
+    transform: scale(0, 0)
+  }
+}
+
+@keyframes up-and-down {
+  from {
+    transform: translateY(-20px)
+  }
+
+  to {
+    transform: translateY(20px)
+  }
+}
+
+@-webkit-keyframes up-and-down {
+  from {
+    transform: translateY(-20px)
+  }
+
+  to {
+    transform: translateY(20px)
+  }
+}
+
+@keyframes left-and-right {
+  from {
+    transform: translateX(-20px)
+  }
+
+  to {
+    transform: translateX(20px)
+  }
+}
+
+@-webkit-keyframes left-and-right {
+  from {
+    transform: translateX(-20px)
+  }
+
+  to {
+    transform: translateX(20px)
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0) scale(1.15, .8)
+  }
+
+  20% {
+    transform: translateY(-35px) scaleY(1.1)
+  }
+
+  50% {
+    transform: translateY(-50px) scale(1)
+  }
+
+  80% {
+    transform: translateY(-35px) scale(1)
+  }
+
+  to {
+    transform: translateY(0) scale(1.15, .8)
+  }
+}
+
+#root {
+  padding-bottom: 80px;
+}
+
+a{
+  color:lightskyblue
+}
+
+.alert-info, .alert-primary{
+    background-color: #445a5a;
+    color:white
+}
+
+.modal-body,.modal-footer{
+    background-color: #040505b7;
+
+}
+
+.modal-header{
+    background-color: #5d8181;
+}
+
+.btn-close, .btn-link{
+    color:white
+}
+
+.form-control, .form-control:hover, .form-control:active, .form-select, .dropdown-menu,.dropdown-item{
+    background-color: #04050588!important;
+    color: white!important;
+}
