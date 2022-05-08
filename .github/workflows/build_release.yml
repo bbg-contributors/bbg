@@ -1,0 +1,87 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+env:
+  RELEASE_VERSION: ${{ github.ref_name }}
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: 'Checkout source'
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: 'Install cnpm and dependencies'
+        run: |
+          npm install -g cnpm
+          cnpm install
+      - name: 'Build darwin, linux, mas'
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cnpm run package_darwin
+          cnpm run package_linux
+          cnpm run package_mas
+          mkdir -p dist
+          tar -czf dist/bbg-${RELEASE_VERSION}-darwin-x64.tar.gz bbg-darwin-x64
+          tar -czf dist/bbg-${RELEASE_VERSION}-linux-x64.tar.gz bbg-linux-x64
+          tar -czf dist/bbg-${RELEASE_VERSION}-macos-x64.tar.gz bbg-mas-x64
+          cp bbg-linux-x64/resources/app.asar dist/app.asar
+      - name: 'Build windows'
+        if: matrix.os == 'windows-latest'
+        run: |
+          cnpm run package_windows
+          mkdir -p dist
+          Compress-Archive -Path bbg-win32-x64 -Destination dist/bbg-win32-x64.zip
+      - name: 'Upload artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: |
+            dist/
+          retention-days: 1
+  release:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Download artifacts'
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: |
+            dist/
+      - name: Display structure of downloaded files
+        run: ls -R
+      - name: 'Prepare release'
+        run: |
+          mv dist/bbg-win32-x64.zip dist/bbg-${RELEASE_VERSION}-win32-x64.zip
+          cd dist && shasum -a 256 * > SHA256SUMS && cd ..
+      - name: 'Release'
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Version ${{ github.ref_name }} / 版本 ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          body: |
+            The program package supports most desktop operating systems e.g, macOS, Windows and Linux. The current version supports English and Simplified Chinese as application language, despite the support for English language is currently experimental, so bugs may occur. If you have any suggestions or feedbacks, please send them to GitHub Issues. We will process them in our spare time.
+            
+            ---
+            
+            本项目支持 macOS、Windows、Linux 等常见桌面平台。目前应用程序支持设定为英语和简体中文，但对英语的支持目前仍是实验性的，因而可能会出现 Bug。如果你有任何意见或建议，请将它们发送到 GitHub Issues 中。我们会在空余时间处理这些问题。
+
+            更新日志详见[链接](https://bbg.nekomoe.xyz/#/zh-cn/CHANGELOG)。
+          files: |
+            dist/*

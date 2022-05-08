@@ -2,11 +2,11 @@
 
 ## 官方下载源
 
-官方下载源提供最新版本的 BBG 程序包下载，支持常见的桌面平台，包括 Windows x64、macOS 和 Linux x64。
+官方下载源提供最新版本的 BBG 程序包，支持常见的桌面平台，包括 Windows x64、macOS 和 Linux x64。
 
 | 下载通道 | 备注 |
 | --- | --- |
-| [GitHub 官方下载源](https://github.com/baiyang-lzy/bbg/releases) | 版本最新 |
+| [GitHub Releases](https://github.com/baiyang-lzy/bbg/releases) | 版本最新 |
 
 ## 非官方下载源
 

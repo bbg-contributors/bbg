@@ -10,7 +10,7 @@ progress_modal =  new bootstrap.Modal(document.getElementById('update-progress-d
 });
 
 module.exports = function () {
-  fetch("https://gitee.com/api/v5/repos/baiyang-lzy/bbg/releases/latest")
+  fetch("https://api.github.com/repos/baiyang-lzy/bbg/releases/latest")
     .then((response) => response.json())
     .then(function (data) {
       if (parseInt(currentProgramVersion) < parseInt(data["tag_name"])) {
@@ -18,14 +18,9 @@ module.exports = function () {
           window.confirm(`检测到新版本 ${data["tag_name"]}，要下载并安装更新吗？`)
         ) {
 
-          darwin_updateInfo = [
-            `https://gh.api.99988866.xyz/https://github.com/scientificworld/bbg_mac_build/releases/download/${data["tag_name"]}/bbg-darwin-x64.zip`,
-            "bbg-darwin-x64.zip",
-          ];
-
           for (let i = 0; i < data.assets.length; i++) {
             if(data.assets[i]["name"] !== undefined && data.assets[i]["name"] !== null){
-              if (data.assets[i]["name"].indexOf("windows") != -1) {
+              if (data.assets[i]["name"].indexOf("win32") != -1) {
                 windows_updateInfo = [
                   data.assets[i]["browser_download_url"],
                   data.assets[i]["name"],
@@ -34,6 +29,13 @@ module.exports = function () {
   
               if (data.assets[i]["name"].indexOf("linux") != -1) {
                 linux_updateInfo = [
+                  data.assets[i]["browser_download_url"],
+                  data.assets[i]["name"],
+                ];
+              }
+
+              if (data.assets[i]["name"].indexOf("darwin") != -1) {
+                darwin_updateInfo = [
                   data.assets[i]["browser_download_url"],
                   data.assets[i]["name"],
                 ];
@@ -61,7 +63,7 @@ module.exports = function () {
           }
 
           if(os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin"){
-              window.alert("你使用的是不受支持的操作系统。请自行前往 https://gitee.com/baiyang-lzy/bbg 编译安装新版本。")
+              window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。")
           }
 
         }

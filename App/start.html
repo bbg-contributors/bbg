@@ -14,76 +14,7 @@
 </head>
 
 <body>
-  <style>
-    body:before {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: .4;
-      z-index: -1;
-      content: "";
-      position: fixed;
-      background-color: rgb(240, 244, 249);
-    }
-
-
-    .fluentbtn{
-      border-radius: 6px;
-      background-color: rgb(254, 254, 254);
-
-      padding-top: 8px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 8px;
-      text-decoration: none;
-      color: black;
-      font-size: 92%;
-      border-color: rgb(227, 229, 234);
-      border-style: solid;
-      border-width: 2px;
-    
-    }
-
-    .fluentbtn-blue{
-        background-color: rgb(101, 145, 255)!important;
-        color:white!important
-      }
-  
-      .fluentbtn-blue:hover{
-        background-color: rgb(116, 156, 255)!important;
-        color:white!important
-      }
-  
-      .fluentbtn-blue:active{
-        background-color: rgb(130, 166, 255)!important;
-        color:rbg(218,228,255)!important
-      }
-
-
-    .fluentbtn:hover{
-      background-color: rgb(250,251,251);
-      text-decoration: none;
-      color: black;
-
-    }
-
-    .fluentbtn:active{
-      background-color: rgb(250,251,251);
-      text-decoration: none;
-      color: grey;
-
-    }
-
-    .fluentinterface{
-      background-color: rgb(253, 253, 253);
-      padding: 24px;
-      margin-bottom:8px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: rgb(227, 229, 234);
-border-radius: 8px;    }
-  </style>
+  <style id="uniform"></style>
   <div class="container">
     
     <br />
@@ -207,6 +138,21 @@ border-radius: 8px;    }
           <p>
           <a href="#" onclick="select_language('English')">English</a>
         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="stylesheet-dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="stylesheet-dialog-title">应用程序风格设置</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+        <div class="modal-body" id="stylesheet-dialog-content">
+
         </div>
       </div>
     </div>

@@ -12,6 +12,8 @@ const langdata = require("./LangData.js");
 
 storage.setDataPath(AppPath);
 
+const loadUniStyle = require("./loadUniStyle.js");
+
 const getAppInfo = require("./getAppInfo.js");
 const AppInfo = getAppInfo();
 const currentProgramVersion = require("./currentProgramVersion.js");
@@ -27,7 +29,9 @@ let language_dialog = new bootstrap.Modal(document.getElementById('language-dial
     backdrop:"static",
     keyboard:false
 });
-
+let stylesheet_dialog = new bootstrap.Modal(document.getElementById('stylesheet-dialog'),{
+    keyboard:false
+});
 
 
 function create_new_site_dialog_show() {
@@ -131,30 +135,8 @@ function manageSiteByRootDir(rootDir) {
 }
 
 
-function openStaffDialog(){
-
-    let staff_string = "";
-    staff_string+=`<h3>${langdata["ICON_DESIGN"][lang_name]}</h3>`;
-    for(let i=0;i<AppInfo.contributers["图标设计"].length;i++){
-        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["图标设计"][i][1]}')">${AppInfo.contributers["图标设计"][i][0]}</a></p>`
-    }
-
-    staff_string+=`<h3>${langdata["DEVELOPER"][lang_name]}</h3>`;
-    for(let i=0;i<AppInfo.contributers["开发"].length;i++){
-        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["开发"][i][1]}')">${AppInfo.contributers["开发"][i][0]}</a></p>`
-    }
-
-    staff_string+=`<h3>${langdata["PACKAGER"][lang_name]}</h3>`;
-    for(let i=0;i<AppInfo.contributers["打包"].length;i++){
-        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["打包"][i][1]}')">${AppInfo.contributers["打包"][i][0]}</a></p>`
-    }
-
-    staff_string+=`<h3>${langdata["TESTER"][lang_name]}</h3>`;
-    for(let i=0;i<AppInfo.contributers["参与测试人员"].length;i++){
-        staff_string += `<p><a href="#" onclick="shell.openExternal('${AppInfo.contributers["参与测试人员"][i][1]}')">${AppInfo.contributers["参与测试人员"][i][0]}</a></p>`
-    }
-
-    createInfoDialog(langdata["VIEW_STAFF"][lang_name],staff_string)
+function displayContributers(){
+    shell.openExternal("https://github.com/baiyang-lzy/bbg/graphs/contributors");
 }
 
 function openGroupDialog(){
@@ -168,6 +150,20 @@ function openGroupDialog(){
 storage.has("language", function (error, hasKey) {
     if (hasKey) {
         storage.get("language", function (error, data) {
+
+            storage.has("stylesheet", function(error, hasKey){
+                if(hasKey){
+                    storage.get("stylesheet",function(error, data){
+                        loadUniStyle();
+                    })
+                    
+                }else{
+                    storage.set("stylesheet", { file: "default.css" }, function (err) {
+                        window.location.reload();
+                    });
+                }
+            });
+
            lang_name = data["name"];
            document.getElementById("info-dialog-ok").innerHTML = langdata["OK"][lang_name];
            document.getElementById("create-new-site-dialog-title").innerHTML = langdata["CREATE_NEW_SITE"][lang_name];
@@ -215,11 +211,12 @@ storage.has("language", function (error, hasKey) {
         <span>${langdata["UNLICENSED"][lang_name]}</span><br />
         <br />
         <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();">Language Settings / 语言设定</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openStylesheetDialog()">应用程序风格设置</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="displayContributers()">${langdata["DISPLAY_CONTRIBUTERS"][lang_name]}</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
 
-        <br /><br />
-        <button class="fluentbtn" onclick="openStaffDialog()">${langdata["VIEW_STAFF"][lang_name]}</button>
-        <button class="fluentbtn" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
-        <br /><hr />
+
+        <br />
         
             
             `
@@ -293,3 +290,24 @@ function select_language(language_name){
     });
 }
 
+function changeStylesheet(css_filename){
+    storage.set("stylesheet", { file: css_filename }, function (err) {
+        window.location.reload();
+    });
+}
+
+function openStylesheetDialog(){
+    stylesheet_dialog.show();
+    document.getElementById("stylesheet-dialog-content").innerHTML = `
+    <p>你可以从下面的风格中选择一个作为应用程序风格。</p>
+
+    `;
+
+    for(let i=0;i<AppInfo["appStylesheet"].length;i++){
+        document.getElementById("stylesheet-dialog-content").innerHTML +=`
+        
+        <li><a href="#" onclick="changeStylesheet('${AppInfo["appStylesheet"][i].stylesheet}')">${AppInfo["appStylesheet"][i].name}</a></li>
+
+        `
+    }
+}

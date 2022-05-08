@@ -1,8 +1,0 @@
-- [简体中文](/zh-cn/)
-  - [更新日志(仅简体中文)](/zh-cn/changelog)
-  - [下载指南](/zh-cn/download)
-  - 开发指南
-    - [第三方主题](/zh-cn/developer-guide/theme)
-    - [代码贡献指南](/zh-cn/developer-guide/contribute)
-- [English](/en/)
-  - [Download Guide](/en/download)

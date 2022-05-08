@@ -14,13 +14,13 @@
 
 然后获取源代码。
 
-```
+```sh
 git clone https://github.com/baiyang-lzy/bbg.git
 ```
 
 然后转到项目根目录下执行：
 
-```
+```sh
 cnpm install
 ```
 
@@ -28,13 +28,13 @@ cnpm install
 
 ## 启动一个 BBG 实例（带有调试工具）
 
-```
+```sh
 cnpm run dev
 ```
 
 ## 启动一个 BBG 实例（不带有调试工具，同生产环境一致）
 
-```
+```sh
 cnpm run start
 ```
 
@@ -44,7 +44,7 @@ cnpm run start
 
 > 如果你在 Linux 平台生成适用于 Windows 的软件包，需要提前安装 Wine。
 
-```
+```sh
 cnpm run package_windows
 cnpm run package_linux
 cnpm run package_mas
@@ -53,18 +53,16 @@ cnpm run package_darwin
 
 由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 ```Unsupported `GLOBAL_AGENT.HTTP_PROXY` configuration```的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
 
-```
+```sh
 export GLOBAL_AGENT_HTTPS_PROXY=http://host:port
 export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 ```
 
 其中，host:port 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
 
-
 ## 解决 Electron 无法启动并报错
 
 此问题是由于网络原因导致的。如果遇到了请换用 CNPM 作为包管理器，删除项目根目录下的 node_modules 目录并重新使用 CNPM 为本项目补齐依赖（```cnpm install```）。
-
 
 ## 不使用 NPM 或 CNPM 作为包管理器
 

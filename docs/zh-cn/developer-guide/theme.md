@@ -1,6 +1,6 @@
 # 第三方主题开发文档
 
-!> 这里的内容将会过时，下一版本的第三方主题文件'.bbgtheme2'已经提上TODO,预计三个月内实现，详见[#11](https://github.com/baiyang-lzy/bbg/issues/11/)
+!> 这里的内容将会过时，下一版本的第三方主题文件'.bbgtheme2'已经提上TODO,预计三个月内实现，详见[Discussion #13](https://github.com/baiyang-lzy/bbg/discussions/13)
 
 第三方主题文件实际上是一个```html```文件，并且需要完整地实现原有的```站点根目录/index.html```的功能，即：
 
@@ -15,9 +15,9 @@
 
 2. 将```example/index.html```替换为你自己编写的新的```index.html```文件，它可以：
 
-* 请求并解析```自己所在目录/data/index.json```的内容，并且能够把解析出的内容渲染到网页中。
+   * 请求并解析```自己所在目录/data/index.json```的内容，并且能够把解析出的内容渲染到网页中。
 
-* 请求并解析```自己所在目录/data/articles/*.md```和```自己所在目录/data/pages/*.md```的内容，并能够在用户需要访问它们时，把这些内容渲染到网页上。
+   * 请求并解析```自己所在目录/data/articles/*.md```和```自己所在目录/data/pages/*.md```的内容，并能够在用户需要访问它们时，把这些内容渲染到网页上。
 
 3. 当你觉得满意的时候，把你创建的```index.html```修改为```主题的名字.bbgtheme```，这样你就创建了一个有效的第三方主题文件。
 
