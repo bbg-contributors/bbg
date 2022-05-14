@@ -5,7 +5,7 @@
   "files": [
     "dist/electron/**/*",
     "./main.js",
-    "App/*"
+    "App/**/*"
   ],
   "electronDownload": {
     "version": "16.2.4"

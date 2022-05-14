@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest,macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: "Checkout source"
@@ -32,14 +32,22 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           yarn run build:linux
+          mv dist/linux-unpacked/resources/app.asar dist/app.asar
+          rm -rf dist/linux-unpacked
       - name: "Build windows"
         if: matrix.os == 'windows-latest'
         run: |
           yarn run build:win
+          rm -r dist/win-unpacked
+          rm -r dist/win-ia32-unpacked
+          rm dist/bbg-ia32.exe
+          rm dist/bbg-ia32.exe.blockmap
       - name: "Build macos"
         if: matrix.os == 'macos-latest'
         run: |
           yarn run build:mac
+          rm -rf dist/mac
+          rm -rf dist/mac-arm64
       - name: "Upload artifacts"
         uses: actions/upload-artifact@v3
         with:
@@ -60,27 +68,24 @@ jobs:
             dist/
       - name: "Prepare release"
         run: |
-          mv dist/linux-unpacked/resources/app.asar dist/app.asar
-          rm -rf dist/linux-unpacked
-          rm -rf dist/win-unpacked
-          rm -rf dist/win-ia32-unpacked
-          rm -rf dist/mac
-          rm -rf dist/mac-arm64
-          rm -f dist/builder-debug.yml
-          rm -f dist/bbg-ia32.exe
-          rm -f dist/bbg-ia32.exe.blockmap
-          mv dist/bbg-amd64.deb dist/bbg-${RELEASE_VERSION}-amd64.deb
-          mv dist/bbg-arm64.dmg dist/bbg-${RELEASE_VERSION}-arm64.dmg
-          mv dist/bbg-x64.dmg dist/bbg-${RELEASE_VERSION}-x64.dmg
-          mv dist/bbg-x64.exe dist/bbg-${RELEASE_VERSION}-setup-x64.exe
-          mv dist/bbg.exe dist/bbg-${RELEASE_VERSION}-setup-x86.exe
-          mv dist/bbg-x64.tar.gz dist/bbg-${RELEASE_VERSION}-x64-linux.tar.gz
-          mv dist/bbg-x86_64.AppImage dist/bbg-${RELEASE_VERSION}-x86_64.AppImage
-          mv dist/bbg-arm64.dmg.blockmap dist/bbg-${RELEASE_VERSION}-arm64.dmg.blockmap
-          mv dist/bbg.exe.blockmap dist/bbg-${RELEASE_VERSION}-x86.exe.blockmap
-          mv dist/bbg-x64.dmg.blockmap dist/bbg-${RELEASE_VERSION}-x64.dmg.blockmap
-          mv dist/bbg-x64.exe.blockmap dist/bbg-${RELEASE_VERSION}-x64.exe.blockmap
-          cd dist && shasum -a 256 * > SHA256SUMS && cd ..
+          cd dist
+          rm -f builder-debug.yml
+          mv bbg-amd64.deb bbg-${RELEASE_VERSION}-amd64.deb
+          mv bbg-arm64.dmg bbg-${RELEASE_VERSION}-arm64.dmg
+          mv bbg-x64.dmg bbg-${RELEASE_VERSION}-x64.dmg
+          mv bbg-x64.exe bbg-${RELEASE_VERSION}-setup-x64.exe
+          mv bbg.exe bbg-${RELEASE_VERSION}-setup-x86.exe
+          mv bbg-x64.tar.gz bbg-${RELEASE_VERSION}-x64-linux.tar.gz
+          mv bbg-x86_64.AppImage bbg-${RELEASE_VERSION}-x86_64.AppImage
+          mv bbg-arm64.dmg.blockmap bbg-${RELEASE_VERSION}-arm64.dmg.blockmap
+          mv bbg.exe.blockmap bbg-${RELEASE_VERSION}-x86.exe.blockmap
+          mv bbg-x64.dmg.blockmap bbg-${RELEASE_VERSION}-x64.dmg.blockmap
+          mv bbg-x64.exe.blockmap bbg-${RELEASE_VERSION}-x64.exe.blockmap
+          shasum -a 256 * > SHA256SUMS
+          cd ..
+      - name: "Show file structure"
+        run: |
+          tree -a
       - name: "Release"
         uses: softprops/action-gh-release@v1
         with:
