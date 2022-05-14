@@ -1,6 +1,6 @@
 # 更新日志
 
-## 20220514
+## 20220515
 * 支持深色模式
 * 从此版本开始提供安装包下载。听我说谢谢你，[mzwing](https://mzwing.eu.org/)和[Misaka13514](https://blog.atri.tk).
 
