@@ -1,5 +1,9 @@
 # 更新日志
 
+## 20220514
+* 支持深色模式
+* 从此版本开始提供安装包下载。听我说谢谢你，[mzwing](https://mzwing.eu.org/)和[Misaka13514](https://blgo.atri.tk).
+
 ## 20220507
 * 主题商店源仓库改为 GitHub
 * 软件更新获取源改为 GitHub
