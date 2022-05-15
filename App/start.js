@@ -147,6 +147,10 @@ function openGroupDialog(){
     `);
 }
 
+function openImageCopyrightDialog(){
+    createInfoDialog(langdata["ABOUT_IMAGE_COPYRIGHT"][lang_name],langdata["ABOUT_IMAGE_COPYRIGHT_DESCRIPTION"][lang_name]);
+}
+
 storage.has("language", function (error, hasKey) {
     if (hasKey) {
         storage.get("language", function (error, data) {
@@ -214,6 +218,7 @@ storage.has("language", function (error, hasKey) {
         <button class="fluentbtn fluentbtn-blue" onclick="openStylesheetDialog()">应用程序风格设置</button>
         <button class="fluentbtn fluentbtn-blue" onclick="displayContributers()">${langdata["DISPLAY_CONTRIBUTERS"][lang_name]}</button>
         <button class="fluentbtn fluentbtn-blue" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openImageCopyrightDialog()">${langdata["ABOUT_IMAGE_COPYRIGHT"][lang_name]}</button>
 
 
         <br />
