@@ -5,7 +5,8 @@
   "files": [
     "dist/electron/**/*",
     "./main.js",
-    "App/**/*"
+    "App/**/*",
+    "resources/**/*"
   ],
   "electronDownload": {
     "version": "16.2.4"
@@ -87,5 +88,8 @@
     ],
     "type": "distribution",
     "darkModeSupport": true
+  },
+  "directories": {
+    "buildResources": "resources"
   }
 }
