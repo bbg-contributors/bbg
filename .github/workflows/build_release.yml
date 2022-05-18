@@ -2,8 +2,7 @@ name: Build Release
 
 on:
   push:
-    tags:
-      - "*"
+  pull_request:
   workflow_dispatch:
 
 env:
@@ -27,14 +26,14 @@ jobs:
       - name: "Install yarn and dependencies"
         run: |
           npm install -g yarn
-          yarn install
-      - name: "Build linux"
+          yarn install --frozen-lockfile
+      - name: "Build Linux"
         if: matrix.os == 'ubuntu-latest'
         run: |
           yarn run build:linux
           mv dist/linux-unpacked/resources/app.asar dist/app.asar
           rm -rf dist/linux-unpacked
-      - name: "Build windows"
+      - name: "Build Windows"
         if: matrix.os == 'windows-latest'
         run: |
           yarn run build:win
@@ -42,34 +41,54 @@ jobs:
           rm -r dist/win-ia32-unpacked
           rm dist/bbg-ia32.exe
           rm dist/bbg-ia32.exe.blockmap
-      - name: "Build macos"
+      - name: "Build macOS"
         if: matrix.os == 'macos-latest'
         run: |
           yarn run build:mac
           rm -rf dist/mac
           rm -rf dist/mac-arm64
-      - name: "Upload artifacts"
+      - name: "Show build files"
+        run: |
+          ls dist
+      - name: "Upload Linux artifacts"
+        if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: linux-artifact
           path: |
             dist/
-          retention-days: 1
+      - name: "Upload Windows artifacts"
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-artifact
+          path: |
+            dist/
+      - name: "Upload macOS artifacts"
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-artifact
+          path: |
+            dist/
   release:
     needs:
       - build
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: "Download artifacts"
         uses: actions/download-artifact@v3
         with:
-          name: my-artifact
           path: |
             dist/
       - name: "Prepare release"
         run: |
           cd dist
-          rm -f builder-debug.yml
+          mv -f linux-artifact/* .
+          mv -f windows-artifact/* .
+          mv -f macos-artifact/* .
+          rm -rf builder-debug.yml linux-artifact windows-artifact macos-artifact
           mv bbg-amd64.deb bbg-${RELEASE_VERSION}-amd64.deb
           mv bbg-arm64.dmg bbg-${RELEASE_VERSION}-arm64.dmg
           mv bbg-x64.dmg bbg-${RELEASE_VERSION}-x64.dmg
