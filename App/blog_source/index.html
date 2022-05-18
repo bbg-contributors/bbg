@@ -39,7 +39,14 @@
       box-shadow: 0 3px 1px -2px rgb(0 0 0 / 60%),
           0 2px 2px 0 rgb(0 0 0 / 36%), 0 1px 5px 0 rgb(0 0 0 / 32%);
           border-radius: 12px;
-      
+        flex-direction: row;
+      }
+
+      .friend-card-img{
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        max-width: 100%;
+        height: 100%;
       }
       
       @media (max-width: 1050px) { 
@@ -909,7 +916,7 @@
                 
                 <div class="row">
     <div class="col-md-4" >
-      <img src="${icon}" class="img-fluid rounded-start">
+      <img src="${icon}" class="friend-card-img">
     </div>
     <div class="col-md-8" >
       <div class="card-body">
