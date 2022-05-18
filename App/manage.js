@@ -46,7 +46,7 @@ let reset_official_theme = require("./reset_official_theme.js");
 let apply_thirdparty_theme = require("./apply_thirdparty_theme.js");
 let open_online_theme_dialog = require("./online_theme.js").open_online_theme_dialog;
 let render_theme_detail = require("./online_theme.js").render_theme_detail;
-let render_online_theme_list =  require("./online_theme.js").render_online_theme_list;
+let render_online_theme_list = require("./online_theme.js").render_online_theme_list;
 let install_theme = require("./online_theme.js").install_theme;
 let { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
 let use_public_comment_service_offered_by_bbg = require("./public_comment_srv.js");
@@ -75,30 +75,30 @@ storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir
 // 初始化界面
 
 storage.has("language", function (error, hasKey) {
-    if (hasKey) {
-        storage.get("language", function (error, data) {
-           lang_name = data["name"];
-           check_migrate();
-            render_nav();
-            render_container();
-            loadUniStyle();
+  if (hasKey) {
+    storage.get("language", function (error, data) {
+      lang_name = data["name"];
+      check_migrate();
+      render_nav();
+      render_container();
+      loadUniStyle();
 
 
-            if(window.location.href.indexOf("article_manager.html") !== -1){
-                renderArticleManager();
-            }else{
-                if(window.location.href.indexOf("page_manager.html") !== -1){
-                    render_page_manager();
-                }else{
-                    if(window.location.href.indexOf("blog_settings.html") !== -1){
-                        render_blog_settings();
-                    }
-                }
-            }
-
+      if (window.location.href.indexOf("article_manager.html") !== -1) {
+        renderArticleManager();
+      } else {
+        if (window.location.href.indexOf("page_manager.html") !== -1) {
+          render_page_manager();
+        } else {
+          if (window.location.href.indexOf("blog_settings.html") !== -1) {
+            render_blog_settings();
+          }
         }
-        )
-    }else{
-        lang_name = "English";
+      }
+
     }
+    )
+  } else {
+    lang_name = "English";
+  }
 })

@@ -1,13 +1,13 @@
 module.exports = function (i) {
-    let metaModal = new bootstrap.Modal(document.getElementById('edit_page_meta_dialog'));
-    metaModal.toggle();
+  let metaModal = new bootstrap.Modal(document.getElementById('edit_page_meta_dialog'));
+  metaModal.toggle();
 
-    document.getElementById("edit_page_meta_dialog_title").innerHTML = langdata["EDIT_PAGE_META"][lang_name];
-    document.getElementById("save_page_meta_btn").setAttribute("onclick", `save_page_meta(${i})`)
+  document.getElementById("edit_page_meta_dialog_title").innerHTML = langdata["EDIT_PAGE_META"][lang_name];
+  document.getElementById("save_page_meta_btn").setAttribute("onclick", `save_page_meta(${i})`)
 
-    document.getElementById("page_meta_content").innerHTML = "";
+  document.getElementById("page_meta_content").innerHTML = "";
 
-    document.getElementById("page_meta_content").innerHTML += `
+  document.getElementById("page_meta_content").innerHTML += `
     <div class="mb-3">
     <label class="form-label">${langdata["PAGE_TITLE"][lang_name]}</label>
     <input class="form-control" placeholder="请输入页面标题" value="${blog["页面列表"][i]["页面标题"]}" id="meta_page_title">
@@ -42,15 +42,15 @@ module.exports = function (i) {
   </div>
   
   `
-    if (blog["页面列表"][i]["是否显示在菜单中"] === true) {
-        document.getElementById("meta_page_isviewinmenu").checked = true;
-    }
-    if (blog["页面列表"][i]["是否在新标签页打开"] === true) {
-        document.getElementById("meta_page_openinnewtab").checked = true;
-    }
+  if (blog["页面列表"][i]["是否显示在菜单中"] === true) {
+    document.getElementById("meta_page_isviewinmenu").checked = true;
+  }
+  if (blog["页面列表"][i]["是否在新标签页打开"] === true) {
+    document.getElementById("meta_page_openinnewtab").checked = true;
+  }
 
-    if (blog["页面列表"][i]["启用评论"] === true) {
-        document.getElementById("meta_page_iscommentenabled").checked = true;
-    }
+  if (blog["页面列表"][i]["启用评论"] === true) {
+    document.getElementById("meta_page_iscommentenabled").checked = true;
+  }
 
 }

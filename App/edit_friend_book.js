@@ -1,8 +1,8 @@
-module.exports = function(){
-        let friendModal = new bootstrap.Modal(document.getElementById('edit_friend_book_dialog'));
-    friendModal.toggle();
-    
-    document.getElementById("friend_book_content").innerHTML=`
+module.exports = function () {
+  let friendModal = new bootstrap.Modal(document.getElementById('edit_friend_book_dialog'));
+  friendModal.toggle();
+
+  document.getElementById("friend_book_content").innerHTML = `
     
     <p>友人帐是一个独立页面，组织和显示了友人帐中的友人信息。</p>
     <div class="form-check">
@@ -51,14 +51,14 @@ ${blog["友人帐页面附加信息"]}
 
     
     `;
-    
-   render_friend_book_list();
-    
-    if(blog["启用内建友人帐页面"] === true){
-        document.getElementById("enableFriendBookFunction").checked = true;
-    }
-    if(blog["友人帐页面允许评论"] === true){
-        document.getElementById("enableFriendBookComment").checked = true;
-  
-    }
+
+  render_friend_book_list();
+
+  if (blog["启用内建友人帐页面"] === true) {
+    document.getElementById("enableFriendBookFunction").checked = true;
+  }
+  if (blog["友人帐页面允许评论"] === true) {
+    document.getElementById("enableFriendBookComment").checked = true;
+
+  }
 }

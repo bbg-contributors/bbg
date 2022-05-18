@@ -1,8 +1,8 @@
-module.exports = function(){
-    
-    document.getElementById("friend_book_list").innerHTML = "";
-     for(let i=0;i<blog["友人帐"].length;i++){
-        document.getElementById("friend_book_list").innerHTML += `
+module.exports = function () {
+
+  document.getElementById("friend_book_list").innerHTML = "";
+  for (let i = 0; i < blog["友人帐"].length; i++) {
+    document.getElementById("friend_book_list").innerHTML += `
         
         <tr>
       <td><input class="form-control" placeholder="名称" id="friend_book_list_${i}_name" value="${blog['友人帐'][i]['名称']}"></input></td>
@@ -12,5 +12,5 @@ module.exports = function(){
       <td><button class="fluentbtn" onclick="delete_friend(${i})"><i class="fa fa-close" ></i></button></td>
     </tr>
         `;
-    }
+  }
 }

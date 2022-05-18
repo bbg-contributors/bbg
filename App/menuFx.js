@@ -2,16 +2,16 @@
 const shell = require('@electron/remote').shell;
 
 function exitThisSite() {
-    window.location.href = "./start.html";
+  window.location.href = "./start.html";
 }
 
 function preview_site() {
-    window.location.href = `./server.html?rootdir=${rootDir}`;
+  window.location.href = `./server.html?rootdir=${rootDir}`;
 
 }
 
 function open_blog_dir() {
-    shell.openPath(rootDir);
+  shell.openPath(rootDir);
 }
 
 module.exports.exitThisSite = exitThisSite;

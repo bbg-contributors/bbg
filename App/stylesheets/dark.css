@@ -14,11 +14,20 @@
   border-width: 1px;
   border-color: rgb(79, 83, 92);
   border-radius: 16px;
-  color:white;
+  color: white;
 }
 
-h1,h2,h3,h4,h5,h6,p, #check_update_interface, #bbg_settings span, label{
-    color:white
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+#check_update_interface,
+#bbg_settings span,
+label {
+  color: white
 }
 
 .fluenthint {
@@ -29,8 +38,8 @@ h1,h2,h3,h4,h5,h6,p, #check_update_interface, #bbg_settings span, label{
   color: grey !important;
 }
 
-body{
-    background-color: rgb(100,100,100,0.95);
+body {
+  background-color: rgb(100, 100, 100, 0.95);
 }
 
 body:before {
@@ -42,7 +51,7 @@ body:before {
   z-index: -1;
   content: "";
   position: fixed;
-  background-color: rgb(45,45,45);
+  background-color: rgb(45, 45, 45);
 }
 
 .fluentbtn {
@@ -448,29 +457,37 @@ body:before {
   padding-bottom: 80px;
 }
 
-a{
-  color:lightskyblue
+a {
+  color: lightskyblue
 }
 
-.alert-info, .alert-primary{
-    background-color: #445a5a;
-    color:white
+.alert-info,
+.alert-primary {
+  background-color: #445a5a;
+  color: white
 }
 
-.modal-body,.modal-footer{
-    background-color: #040505b7;
+.modal-body,
+.modal-footer {
+  background-color: #040505b7;
 
 }
 
-.modal-header{
-    background-color: #5d8181;
+.modal-header {
+  background-color: #5d8181;
 }
 
-.btn-close, .btn-link{
-    color:white
+.btn-close,
+.btn-link {
+  color: white
 }
 
-.form-control, .form-control:hover, .form-control:active, .form-select, .dropdown-menu,.dropdown-item{
-    background-color: #04050588!important;
-    color: white!important;
+.form-control,
+.form-control:hover,
+.form-control:active,
+.form-select,
+.dropdown-menu,
+.dropdown-item {
+  background-color: #04050588 !important;
+  color: white !important;
 }

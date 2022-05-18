@@ -1,15 +1,15 @@
 module.exports = function (i) {
-    let metaModal = new bootstrap.Modal(document.getElementById('edit_article_meta_dialog'));
-    metaModal.toggle();
+  let metaModal = new bootstrap.Modal(document.getElementById('edit_article_meta_dialog'));
+  metaModal.toggle();
 
-    document.getElementById("edit_article_meta_dialog_title").innerHTML = langdata["EDIT_ARTICLE_META"][lang_name];
+  document.getElementById("edit_article_meta_dialog_title").innerHTML = langdata["EDIT_ARTICLE_META"][lang_name];
 
 
-    document.getElementById("save_article_meta_btn").setAttribute("onclick", `save_article_meta(${i})`)
+  document.getElementById("save_article_meta_btn").setAttribute("onclick", `save_article_meta(${i})`)
 
-    document.getElementById("article_meta_content").innerHTML = "";
+  document.getElementById("article_meta_content").innerHTML = "";
 
-    document.getElementById("article_meta_content").innerHTML += `
+  document.getElementById("article_meta_content").innerHTML += `
     <div class="mb-3">
     <label class="form-label">${langdata["ARTICLE_TITLE"][lang_name]}</label>
     <input class="form-control" placeholder="请输入文章标题" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
@@ -55,28 +55,28 @@ module.exports = function (i) {
   
     
     `
-    if (blog["文章列表"][i]["标签"].length !== 0) {
+  if (blog["文章列表"][i]["标签"].length !== 0) {
 
-        let tempTagString = "";
-        for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
-            tempTagString += blog["文章列表"][i]["标签"][k] + " ";
-        }
-
-        tempTagString = tempTagString.slice(0, tempTagString.length - 1);
-
-        document.getElementById("meta_article_tags").value = tempTagString;
-
+    let tempTagString = "";
+    for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
+      tempTagString += blog["文章列表"][i]["标签"][k] + " ";
     }
 
-    if (blog["文章列表"][i]["是否置顶"] === true) {
-        document.getElementById("meta_article_istop").checked = true;
-    }
+    tempTagString = tempTagString.slice(0, tempTagString.length - 1);
 
-    if (blog["文章列表"][i]["是否隐藏"] === true) {
-        document.getElementById("meta_article_ishidden").checked = true;
-    }
-    if (blog["文章列表"][i]["启用评论"] === true) {
-        document.getElementById("meta_article_is_comment_enabled").checked = true;
-    }
+    document.getElementById("meta_article_tags").value = tempTagString;
+
+  }
+
+  if (blog["文章列表"][i]["是否置顶"] === true) {
+    document.getElementById("meta_article_istop").checked = true;
+  }
+
+  if (blog["文章列表"][i]["是否隐藏"] === true) {
+    document.getElementById("meta_article_ishidden").checked = true;
+  }
+  if (blog["文章列表"][i]["启用评论"] === true) {
+    document.getElementById("meta_article_is_comment_enabled").checked = true;
+  }
 
 }

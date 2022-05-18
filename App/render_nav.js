@@ -1,5 +1,5 @@
 module.exports = function () {
-    let nav_base = `
+  let nav_base = `
     <div class="fixed-top">
                    <a class="fluentbtn" href="#" onclick="window.history.back()">← ${langdata["GO_BACK"][lang_name]}</a>
                    <a class="fluentbtn" href="./article_manager.html?rootdir=${rootDir}">${langdata["ARTICLE_MANAGEMENT"][lang_name]}</a>
@@ -18,5 +18,5 @@ module.exports = function () {
     </div>
     `
 
-    document.getElementById("root").innerHTML += nav_base;
+  document.getElementById("root").innerHTML += nav_base;
 }

@@ -1,5 +1,5 @@
-module.exports = function(){
-    document.getElementById("container").innerHTML += `<h2 style="display:inline"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</h2>
+module.exports = function () {
+  document.getElementById("container").innerHTML += `<h2 style="display:inline"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</h2>
      <button onclick="add_a_article();" class="fluentbtn"><i class="fa fa-plus"></i> ${langdata["ADD_AN_ARTICLE"][lang_name]}</button>
      <hr />
   <div class="alert alert-info" role="alert">
@@ -89,4 +89,3 @@ module.exports = function(){
 
   }
 }
-
