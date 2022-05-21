@@ -9,7 +9,8 @@
     "doc": "electron ./doc.js",
     "build:win": "electron-builder build --win --publish=never",
     "build:linux": "electron-builder build --linux --publish=never",
-    "build:mac": "electron-builder build --mac --publish=never"
+    "build:mac": "electron-builder build --mac --publish=never",
+    "panel":"electron ./developer_panel.js"
   },
   "author": {
     "name": "baiyang-lzy",

@@ -19,7 +19,7 @@ const AppInfo = getAppInfo();
 const currentProgramVersion = require("./currentProgramVersion.js");
 const check_update = require("./check_update.js");
 
-
+const BlogData = require("./BlogData.js");
 
 
 let create_new_site_dialog = new bootstrap.Modal(document.getElementById('create-new-site-dialog'));
@@ -109,6 +109,13 @@ function generateNewBlog(rootDir) {
 
     }
 
+    const BlogInstance = new BlogData(rootDir);
+
+    blog = BlogInstance.getBlogData();
+
+    blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"] = currentProgramVersion;
+
+    BlogInstance.writeBlogData();
 
 
     window.alert("博客站点初始化成功！接下来将进入博客设置页。");

@@ -270,6 +270,8 @@ module.exports = function () {
           updateBlogIndexHtml();
         }
 
+        check_third_party_theme_compatiblity();
+        updateBlogIndexHtml();
 
 
         fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));
