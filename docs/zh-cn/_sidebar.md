@@ -1,0 +1,5 @@
+- [更新日志](/zh-cn/CHANGELOG.md)
+- [下载指南](/zh-cn/download.md)
+- 开发指南
+  - [第三方主题](/zh-cn/developer-guide/theme.md)
+  - [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)

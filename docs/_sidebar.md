@@ -6,3 +6,5 @@
     - [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
 - [English](/en/)
   - [Download Guide](/en/download.md)
+  - Developer Guide
+    - [Contributing Guide](/en/developer-guide/CONTRIBUTING.md)
