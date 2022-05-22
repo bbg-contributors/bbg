@@ -68,7 +68,7 @@ You can also visit <http://localhost:23941>.
 
 ## What do these files mean? / I want to modify a function, where should I start?
 
-BBG is written in native JS. Of course, if you want to use frameworks such as Vue and React, you can also install it with the package manager and import and use it in the corresponding location of this project, as long as it does not break the operation of other functions.
+BBG is written in [Vanilla](https://en.wikipedia.org/wiki/Vanilla_software) JS. Of course, if you want to use frameworks such as Vue and React, you can also install it with the package manager and import and use it in the corresponding location of this project, as long as it does not break the operation of other functions.
 
 The `./main*.js` in the project root directory is the entry file of Electron.
 
