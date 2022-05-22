@@ -78,8 +78,8 @@
                         appjson["currentProgramVersion"] = newversion;
                         packagejson["version"] =`${getyyyymmdd()}.0.0`;
 
-                        writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson));
-                        writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson));
+                        writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
+                        writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson, null, 2), "utf8");
 
                         if(window.confirm("是否commit？")){
                           execSync(`cd ${__dirname}/../ && git add . `);
