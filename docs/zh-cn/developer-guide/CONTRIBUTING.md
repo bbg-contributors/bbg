@@ -81,3 +81,13 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 ```blog```是将博客的数据文件转换后的 JavaScript 对象。注意程序中对此对象的修改不会反映到文件中。
 
 ```BlogInstance.writeBlogData()```用于将 blog 对象的内容保存到文件中。
+
+## 使用开发者面板
+
+BBG 开发者面板目前可以用来帮助发布新版本。
+
+使用这个命令打开 BBG 开发者面板：
+
+```
+cnpm run panel
+```

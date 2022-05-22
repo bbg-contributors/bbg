@@ -20,6 +20,16 @@
       "runtimeArgs": ["run", "start"],
       "autoAttachChildProcesses": true,
       "stopOnEntry": false
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "打开开发者面板",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "panel"],
+      "autoAttachChildProcesses": true,
+      "stopOnEntry": false
     }
   ]
 }
