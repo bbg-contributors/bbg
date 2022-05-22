@@ -80,6 +80,23 @@
 
                         writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson));
                         writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson));
+
+                        if(window.confirm("是否commit？")){
+                          execSync(`cd ${__dirname}/../ && git add . `);
+                          execSync(`cd ${__dirname}/../ && git commit -m "bump to version ${getyyyymmdd()}" `);
+                        }
+
+                        if(window.confirm("是否尝试push到远程？")){
+                          execSync(`cd ${__dirname}/../ && git push `);
+                        }
+
+                        if(window.confirm("是否打标签？")){
+                          execSync(`cd ${__dirname}/../ && git tag -a ${getyyyymmdd()} -m "bump to version ${getyyyymmdd()}" `);
+                        }
+
+                        if(window.confirm("是否尝试将标签push到远程？（会触发GitHub Action 构建流程）")){
+                          execSync(`cd ${__dirname}/../ && git push origin --tags `);
+                        }
                     }
                 }
             }
