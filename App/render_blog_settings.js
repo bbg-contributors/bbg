@@ -1,12 +1,51 @@
 module.exports = function () {
 
   document.getElementById("container").innerHTML += `
-  
-  <h1><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</h1>
-  <br />
-  <div class="fluentinterface">
-  <h2><i class="fa fa-paint-brush"></i> ${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</h2><br />
-  <div class="mb-3">
+  <nav class="navbar navbar-toggler bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</a>
+
+  </div>
+</nav>
+<br />
+<div class="row">
+
+<div class="col-3">
+
+<ul class="list-group" id="blog_settings_list">
+<li class="list-group-item">
+<a href="#basic_info_theme_config_navhash">${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#announcement_board_navhash">网站公告板</a>
+</li>
+<li class="list-group-item">
+<a href="#favicon_navhash">${langdata["FAVICON"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#bgimage_navhash">${langdata["SITE_BGIMAGE"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#thirdpartytheme_navhash">${langdata["USE_3RD_THEME"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#comment_settings_navhash">${langdata["COMMENT_SETTINGS"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#cdn_settings_navhash">${langdata["CDN_SETTINGS"][lang_name]}</a>
+</li>
+<li class="list-group-item">
+<a href="#advanced_navhash">高级自定义</a>
+</li>
+</ul>
+
+
+</div>
+<div class="col-9">
+
+<div class="fluentinterface" id="basic_info_theme_config_navhash">
+<h2><i class="fa fa-paint-brush"></i> ${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</h2><br />
+<div class="mb-3">
 <label class="form-label">${langdata["BLOG_TITLE"][lang_name]}</label>
 <input class="form-control" value="${blog["博客标题"]}" id="blog_settings_title">
 </div>
@@ -47,8 +86,8 @@ ${blog["底部信息（格式为markdown）"]}
 <label class="form-label">${langdata["SITE_LANG"][lang_name]}</label>
 <br />
 <select class="form-select">
-  <option value="simplified_chinese" id="sitelang_simplified_chinese">简体中文</option>
-  <option value="english" id="sitelang_english">English</option>
+<option value="simplified_chinese" id="sitelang_simplified_chinese">简体中文</option>
+<option value="english" id="sitelang_english">English</option>
 </select>
 
 </div>
@@ -77,7 +116,7 @@ ${blog["底部信息（格式为markdown）"]}
 </div>
 </div>
 
-<div class="fluentinterface">
+<div class="fluentinterface" id="announcement_board_navhash">
 
 <h3>网站公告板</h3>
 
@@ -110,7 +149,7 @@ ${blog["网站公告"]}
 
 </div>
 
-<div class="fluentinterface">
+<div class="fluentinterface" id="favicon_navhash">
 <h2><i class="fa fa-smile-o"></i> ${langdata["FAVICON"][lang_name]}</h2>
 <br />
 <p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
@@ -120,14 +159,14 @@ ${blog["网站公告"]}
 <button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">${langdata["VIEW_FAVICON"][lang_name]}</button>
 <button class="fluentbtn" onclick="delete_current_icon()">${langdata["DELETE_FAVICON"][lang_name]}</button>
 </div>
-<div class="fluentinterface">
+<div class="fluentinterface" id="bgimage_navhash">
 <h2><i class="fa fa-file-image-o"></i> ${langdata["SITE_BGIMAGE"][lang_name]}</h2><br />
 
 <select class="form-select" style="display:none">
-  <option value="bgimg_use_random_acgnpic">使用随机的 ACGN 插画作为网页背景</option>
-  <option value="bgimg_use_blank">空白背景</option>
-  <option value="bgimg_use_url">将某个URL作为网页背景图像</option>
-  <option value="bgimg_use_file">选择一个图片文件作为网页背景图像</option>
+<option value="bgimg_use_random_acgnpic">使用随机的 ACGN 插画作为网页背景</option>
+<option value="bgimg_use_blank">空白背景</option>
+<option value="bgimg_use_url">将某个URL作为网页背景图像</option>
+<option value="bgimg_use_file">选择一个图片文件作为网页背景图像</option>
 </select>
 
 <div class="form-check">
@@ -137,19 +176,19 @@ ${langdata["USE_RANDOM_ACG_PIC_AS_BGIMG"][lang_name]}
 </label>
 </div>
 </div>
-<div class="fluentinterface">
-  <h2><i class="fa fa-paint-brush"></i> ${langdata["USE_3RD_THEME"][lang_name]}</h2>
-  <br />
-  <p id="isUsingThirdPartyTheme"></p>
+<div class="fluentinterface" id="thirdpartytheme_navhash">
+<h2><i class="fa fa-paint-brush"></i> ${langdata["USE_3RD_THEME"][lang_name]}</h2>
+<br />
+<p id="isUsingThirdPartyTheme"></p>
 
 
-  <button class="fluentbtn" onclick="reset_official_theme();">${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}</button>
-  <button class="fluentbtn" onclick="open_online_theme_dialog()">${langdata["OPEN_THEME_STORE"][lang_name]}</button>
-  <br /><br />
-  <button class="btn btn-link" onclick="apply_thirdparty_theme();">${langdata["USE_3RD_THEME_FROM_FILE"][lang_name]}</button>
-  </div>
+<button class="fluentbtn" onclick="reset_official_theme();">${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}</button>
+<button class="fluentbtn" onclick="open_online_theme_dialog()">${langdata["OPEN_THEME_STORE"][lang_name]}</button>
+<br /><br />
+<button class="btn btn-link" onclick="apply_thirdparty_theme();">${langdata["USE_3RD_THEME_FROM_FILE"][lang_name]}</button>
+</div>
 
-<div class="fluentinterface">
+<div class="fluentinterface" id="comment_settings_navhash">
 <h2><i class="fa fa-comments-o"></i>  ${langdata["COMMENT_SETTINGS"][lang_name]}</h2>
 <br />
 
@@ -185,33 +224,33 @@ ${langdata["ENABLE_VALINE"][lang_name]}
 </div>
 </div>
 
-<div class="fluentinterface">
-  <h2><i class="fa fa-bolt"></i>  ${langdata["CDN_SETTINGS"][lang_name]}</h2>
+<div class="fluentinterface" id="cdn_settings_navhash">
+<h2><i class="fa fa-bolt"></i>  ${langdata["CDN_SETTINGS"][lang_name]}</h2>
+<br/>
+<div id="cdn_settings_desc"> ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}</div>
+<div class="mb-3">
+<br />
+  <label class="form-label"> ${langdata["CDN_SETTINGS_METHOD"][lang_name]} </label>
   <br/>
-  <div id="cdn_settings_desc"> ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}</div>
-  <div class="mb-3">
-  <br />
-    <label class="form-label"> ${langdata["CDN_SETTINGS_METHOD"][lang_name]} </label>
-    <br/>
-    <input type="radio" id="cdn_cho_1" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br/>
-    <input type="radio" id="cdn_cho_2" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
-    <div id="cdn_cho" style="display:none">
-      <select name="cdn_path" class="form-control" id="blog_setting_cdn_frm_1">
-        <option value="https://unpkg.com">${langdata["CDN_SETTINGS_OFFICAL"][lang_name]} </option>
-        <option value="https://cdn.jsdelivr.net/npm" selected>${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
-        <option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>
-        <option value="https://unpkg.chicdn.cn">${langdata["CDN_SETTINGS_CHICDN"][lang_name]} </option>
-      </select>      
-    </div>
-    <div id="cdn_manual" style="display:none">
-    <br>
-    <label class="form-label" for="cdn_path"> ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label><br>
-    <input name="cdn_path" class="form-control" type="text" id="blog_setting_cdn_frm_2">
-    </div>
+  <input type="radio" id="cdn_cho_1" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br/>
+  <input type="radio" id="cdn_cho_2" name="cdn_choose">&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
+  <div id="cdn_cho" style="display:none">
+    <select name="cdn_path" class="form-control" id="blog_setting_cdn_frm_1">
+      <option value="https://unpkg.com">${langdata["CDN_SETTINGS_OFFICAL"][lang_name]} </option>
+      <option value="https://cdn.jsdelivr.net/npm" selected>${langdata["CDN_SETTINGS_JSD"][lang_name]}</option>
+      <option value="https://unpkg.zhimg.com">${langdata["CDN_SETTINGS_ZHIMG"][lang_name]} </option>
+      <option value="https://unpkg.chicdn.cn">${langdata["CDN_SETTINGS_CHICDN"][lang_name]} </option>
+    </select>      
+  </div>
+  <div id="cdn_manual" style="display:none">
+  <br>
+  <label class="form-label" for="cdn_path"> ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label><br>
+  <input name="cdn_path" class="form-control" type="text" id="blog_setting_cdn_frm_2">
   </div>
 </div>
+</div>
 
-<div class="fluentinterface">
+<div class="fluentinterface" id="advanced_navhash">
 <h3>高级自定义</h3>
 <p>以下选项仅供有能力的用户使用。</p>
 <div class="form-check">
@@ -259,12 +298,21 @@ ${blog["自定义JS"]}
 
 
 </div>
-
-<hr />
 <div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
 <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
 <button class="fluentbtn" onclick="window.location.reload()">放弃本次对网站设置所作的更改</button>
+<button class="fluentbtn fluentbtn-blue" onclick="window.location.href='#blog_settings_list'">返回顶部</button>
 </div>
+
+</div>
+
+</div>
+
+<br />
+ 
+
+<hr />
+
   `
 
 
