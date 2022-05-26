@@ -88,4 +88,6 @@ module.exports = function () {
     `
 
   }
+
+  document.getElementById("nav_to_article_manager").classList.add("active");
 }

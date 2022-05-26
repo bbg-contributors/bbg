@@ -43,4 +43,6 @@ module.exports = function () {
 
     }
   }
+
+  document.getElementById("nav_to_page_manager").classList.add("active");
 }

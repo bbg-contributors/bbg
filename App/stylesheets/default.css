@@ -445,3 +445,12 @@ body:before {
 a {
   text-decoration: none;
 }
+#nav_list button{
+  font-size: 120%;
+  border: none;
+}
+
+#nav_list button.active{
+  border-radius: 24px;
+  background-color: #009cfa;
+}

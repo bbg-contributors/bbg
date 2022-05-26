@@ -380,6 +380,8 @@ ${blog["自定义JS"]}
       document.getElementById("cdn_manual").style.display = "block";
     }
   }
+
+  document.getElementById("nav_to_blog_settings").classList.add("active");
 }
 
 

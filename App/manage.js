@@ -63,6 +63,7 @@ let preview_site = require("./menuFx.js").preview_site;
 let open_blog_dir = require("./menuFx.js").open_blog_dir;
 
 let loadUniStyle = require("./loadUniStyle.js");
+let ui_hook_load_finished = require("./ui_hook_load_finished.js")
 const e = require('express');
 
 storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir }, function (err) {
@@ -79,8 +80,8 @@ storage.has("language", function (error, hasKey) {
     storage.get("language", function (error, data) {
       lang_name = data["name"];
       check_migrate();
-      render_nav();
       render_container();
+      render_nav();
       loadUniStyle();
 
 
@@ -95,6 +96,8 @@ storage.has("language", function (error, hasKey) {
           }
         }
       }
+
+      ui_hook_load_finished();
 
     }
     )
