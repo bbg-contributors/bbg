@@ -1,11 +1,14 @@
 module.exports = function () {
 
   document.getElementById("container").innerHTML += `
-    
-    <h2 style="display:inline;"><i class="fa fa-files-o"></i> ${langdata["PAGE_MANAGEMENT"][lang_name]}</h2>
+  
+  <nav class="navbar navbar-toggler bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="fa fa-files-o"></i> ${langdata["PAGE_MANAGEMENT"][lang_name]}</a>
+  </div>
+</nav>
+<br />
     <button class="fluentbtn" onclick="add_a_page()"><i class="fa fa-plus"></i>  ${langdata["ADD_A_PAGE"][lang_name]} </button>
-    <br /><br />
-    
     <button class="fluentbtn" onclick="edit_friend_book();" ><i class="fa fa-cogs"></i>  管理网站友人帐页面 </button>
     <hr />
     <div class="alert alert-info" role="alert">

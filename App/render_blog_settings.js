@@ -2,17 +2,17 @@ module.exports = function () {
 
   document.getElementById("container").innerHTML += `
   <nav class="navbar navbar-toggler bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</a>
-
-  </div>
-</nav>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</a>
+    </div>
+  </nav>
 <br />
 <div class="row">
 
 <div class="col-3">
 
 <ul class="list-group" id="blog_settings_list">
+<h5>目录</h5>
 <li class="list-group-item">
 <a href="#basic_info_theme_config_navhash">${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a>
 </li>

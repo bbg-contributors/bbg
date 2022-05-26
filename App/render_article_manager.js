@@ -1,5 +1,12 @@
 module.exports = function () {
-  document.getElementById("container").innerHTML += `<h2 style="display:inline"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</h2>
+  document.getElementById("container").innerHTML += `
+  
+  <nav class="navbar navbar-toggler bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</a>
+  </div>
+</nav>
+<br />
      <button onclick="add_a_article();" class="fluentbtn"><i class="fa fa-plus"></i> ${langdata["ADD_AN_ARTICLE"][lang_name]}</button>
      <hr />
   <div class="alert alert-info" role="alert">

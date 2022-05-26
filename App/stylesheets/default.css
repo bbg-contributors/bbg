@@ -454,3 +454,15 @@ a {
   border-radius: 24px;
   background-color: #009cfa;
 }
+
+#nav_list{
+  position: fixed;
+}
+
+#blog_settings_list{
+  position: fixed;
+}
+
+.nav_title{
+  position: fixed;
+}
