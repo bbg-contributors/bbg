@@ -315,15 +315,34 @@ function changeStylesheet(css_filename) {
 function openStylesheetDialog() {
   stylesheet_dialog.show();
   document.getElementById("stylesheet-dialog-content").innerHTML = `
-    <p>你可以从下面的风格中选择一个作为应用程序风格。</p>
+    <div class="container-fluid">
+      <div class="row">
+      
+      <div class="col">
+      
+      <div class="card" onclick="changeStylesheet('default.css')">
+    <img src="./res/light_theme.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Default Blue</p>
+    </div>
+  </div>
+      </div>
+      <div class="col">
+      
+      <div class="card" onclick="changeStylesheet('dark.css')">
+  <img src="./res/dark_theme.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Dark</p>
+  </div>
+</div>
+      
+      </div>
+      </div>
+    
+    </div>
+    
 
+  
     `;
 
-  for (let i = 0; i < AppInfo["appStylesheet"].length; i++) {
-    document.getElementById("stylesheet-dialog-content").innerHTML += `
-        
-        <li><a href="#" onclick="changeStylesheet('${AppInfo["appStylesheet"][i].stylesheet}')">${AppInfo["appStylesheet"][i].name}</a></li>
-
-        `
-  }
 }
