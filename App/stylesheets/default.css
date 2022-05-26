@@ -33,11 +33,14 @@ body:before {
   z-index: -1;
   content: "";
   position: fixed;
-  background-color: rgb(240, 244, 249);
+}
+
+.modal-header, .modal-footer{
+  border: none;
 }
 
 .fluentbtn {
-  border-radius: 6px;
+  border-radius: 24px;
   background-color: rgb(254, 254, 254);
   border-style: solid;
   border-width: 2px;
@@ -48,21 +51,21 @@ body:before {
   padding-bottom: 8px;
   text-decoration: none;
   color: black;
-  font-size: 92%;
+  font-size: 110%;
 }
 
 .fluentbtn-blue {
-  background-color: rgb(101, 145, 255) !important;
+  background-color: #0199fa !important;
   color: white !important
 }
 
 .fluentbtn-blue:hover {
-  background-color: rgb(116, 156, 255) !important;
+  background-color: #168dd6 !important;
   color: white !important
 }
 
 .fluentbtn-blue:active {
-  background-color: rgb(130, 166, 255) !important;
+  background-color: rgb(39, 78, 175)!important;
   color: rbg(218, 228, 255) !important
 }
 

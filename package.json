@@ -1,1 +1,49 @@
-{"name":"bbg","version":"20220522.0.0","description":"A static blog generator based on Electron Technology.","main":"main.js","scripts":{"start":"electron ./main.js","dev":"electron ./main_dev.js","doc":"electron ./doc.js","build:win":"electron-builder build --win --publish=never","build:linux":"electron-builder build --linux --publish=never","build:mac":"electron-builder build --mac --publish=never","panel":"electron ./developer_panel.js"},"author":{"name":"baiyang-lzy","email":"baiyuanneko@protonmail.com"},"maintainers":["baiyang-lzy","chihuo2104","mzwing","Misaka13514","scientificworld"],"license":"UNLICENSED","devDependencies":{"electron":"^16.2.4","electron-builder":"^23.0.3"},"dependencies":{"@electron/remote":"^2.0.8","@popperjs/core":"^2.11.5","adm-zip":"^0.5.9","bootstrap":"5.0.2","docsify":"^4.12.2","electron-json-storage":"^4.5.0","express":"^4.18.1","font-awesome":"4.7.0","request":"^2.88.2"},"repository":{"type":"git","url":"git@github.com:baiyang-lzy/bbg.git"},"bugs":{"url":"https://github.com/baiyang-lzy/bbg/issues"}}
+{
+  "name": "bbg",
+  "version": "20220522.0.0",
+  "description": "A static blog generator based on Electron Technology.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ./main.js",
+    "dev": "electron ./main_dev.js",
+    "doc": "electron ./doc.js",
+    "build:win": "electron-builder build --win --publish=never",
+    "build:linux": "electron-builder build --linux --publish=never",
+    "build:mac": "electron-builder build --mac --publish=never",
+    "panel": "electron ./developer_panel.js"
+  },
+  "author": {
+    "name": "baiyang-lzy",
+    "email": "baiyuanneko@protonmail.com"
+  },
+  "maintainers": [
+    "baiyang-lzy",
+    "chihuo2104",
+    "mzwing",
+    "Misaka13514",
+    "scientificworld"
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^16.2.4",
+    "electron-builder": "^23.0.3"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "@popperjs/core": "^2.11.5",
+    "adm-zip": "^0.5.9",
+    "bootstrap": "^5.2.0-beta1",
+    "docsify": "^4.12.2",
+    "electron-json-storage": "^4.5.0",
+    "express": "^4.18.1",
+    "font-awesome": "4.7.0",
+    "request": "^2.88.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:baiyang-lzy/bbg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baiyang-lzy/bbg/issues"
+  }
+}

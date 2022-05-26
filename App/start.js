@@ -176,7 +176,7 @@ storage.has("language", function (error, hasKey) {
       });
 
       lang_name = data["name"];
-      document.getElementById("info-dialog-ok").innerHTML = langdata["OK"][lang_name];
+      document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> `+langdata["OK"][lang_name];
       document.getElementById("create-new-site-dialog-title").innerHTML = langdata["CREATE_NEW_SITE"][lang_name];
 
       document.getElementById("create-new-site-dialog-content").innerHTML = `
@@ -216,16 +216,16 @@ storage.has("language", function (error, hasKey) {
             <h2>${langdata["BBG_SETTINGS"][lang_name]}</h2>
         <br />
         <div id="check_update_interface">
-        <i class="fa fa-smile-o"></i> ${langdata["SOFTWARE_VERSION"][lang_name]}<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()">${langdata["CHECK_UPDATE"][lang_name]}</a><br />
+        <i class="fa fa-smile-o"></i> ${langdata["SOFTWARE_VERSION"][lang_name]}<b><span id="current_program_version"></span></b> <a href="#" class="fluentbtn fluentbtn-blue id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata["CHECK_UPDATE"][lang_name]}</a><br />
         </div>
         <br />
         <span>${langdata["UNLICENSED"][lang_name]}</span><br />
         <br />
-        <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();">Language Settings / 语言设定</button>
-        <button class="fluentbtn fluentbtn-blue" onclick="openStylesheetDialog()">应用程序风格设置</button>
-        <button class="fluentbtn fluentbtn-blue" onclick="displayContributers()">${langdata["DISPLAY_CONTRIBUTERS"][lang_name]}</button>
-        <button class="fluentbtn fluentbtn-blue" onclick="openGroupDialog()">${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
-        <button class="fluentbtn fluentbtn-blue" onclick="openImageCopyrightDialog()">${langdata["ABOUT_IMAGE_COPYRIGHT"][lang_name]}</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> 应用程序风格设置</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata["DISPLAY_CONTRIBUTERS"][lang_name]}</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata["JOIN_OUR_GROUP"][lang_name]}</button>
+        <button class="fluentbtn fluentbtn-blue" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata["ABOUT_IMAGE_COPYRIGHT"][lang_name]}</button>
 
 
         <br />
