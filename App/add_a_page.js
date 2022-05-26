@@ -23,8 +23,9 @@ module.exports = function () {
     appendFileSync(`${rootDir}/data/pages/${tempString}.md`, "");
 
     document.getElementById("root").innerHTML = "";
-    render_nav();
+    
     render_container();
+    render_nav();
     render_page_manager();
 
     edit_page_meta(0);
