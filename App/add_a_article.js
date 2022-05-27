@@ -28,7 +28,7 @@ module.exports = function () {
     appendFileSync(`${rootDir}/data/articles/${tempString}.md`, "");
 
     document.getElementById("root").innerHTML = "";
-    
+
     render_container();
     render_nav();
     renderArticleManager();

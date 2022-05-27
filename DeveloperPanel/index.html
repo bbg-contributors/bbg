@@ -1,32 +1,35 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BBG 开发者面板</title>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">BBG 开发者面板</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
 
-        </div>
-      </nav>
-    <div class="container">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BBG 开发者面板</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BBG 开发者面板</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </div>
+  </nav>
+  <div class="container">
+    <br />
+    <h3>版本信息</h3>
+    <div class="card">
+      <div class="card-body">
+        <h5>当前本地开发环境下的 BBG 版本号</h5>
+        <hr />
+        <p>版本号：<span id="current_program_version"></span></p>
+        <p style="color:grey">（此版本号信息读取自<code>App.json</code>和<code>package.json</code>）</p>
         <br />
-        <h3>版本信息</h3>
-        <div class="card">
-            <div class="card-body">
-                <h5>当前本地开发环境下的 BBG 版本号</h5>
-                <hr />
-                <p>版本号：<span id="current_program_version"></span></p>
-                <p style="color:grey">（此版本号信息读取自<code>App.json</code>和<code>package.json</code>）</p>
-                <br />
-                <!--
+        <!--
                 <h5>常用功能</h5>
                 <hr />
                 <button class="btn btn-primary" onclick="">打开该开发环境下的 BBG 实例（带有调试工具）</button>
@@ -36,81 +39,88 @@
                 <button class="btn btn-primary" onclick="">生成 macOS 平台安装包</button>
                 <br /><br /><br />
                 -->
-                <h5>快速创建新版本</h5>
-                <hr />
-                <p>BBG 生成的博客，其数据文件中记录了上次被打开编辑时使用的是哪一个版本的 BBG。在 BBG 尝试打开一个博客时，如果博客数据文件中的记录值比程序版本更新，为了避免损坏数据，BBG 会拒绝打开该博客；如果程序版本比博客数据文件中的记录值更新，BBG 会提示用户升级博客数据文件，从而使得博客数据文件中的记录值与程序版本相同。</p>
-                <p>升级博客数据文件的过程是通过<code>check_migrate.js</code>进行的。它包含了一系列条件判断代码，首先判断博客数据文件中的记录值具体是哪一个旧版本，并给出对应的升级策略。</p>
-                <p>升级分为“不影响index.json内容的升级”和“影响index.json内容的升级”。如果一次升级不会对index.json造成除了版本号记录值更新以外的影响，那么就属于“不影响index.json内容的升级”</p>
-                <p>如果你对 BBG 进行了开发和更改，并且想要就这些更改发布一个新版本，那么，如果这是一次“不影响index.json内容的升级”，你可以使用面板提供的快速创建新版本功能来帮助你修改<code>App.json</code>和<code>package.json</code>中的版本号，并且无需手动修改<code>check_migrate.js</code>即可直接进行后续的版本发布工作；如果这是一次“影响index.json内容的升级”，那么你需要手动在<code>check_migrate</code>中增加相关代码，并手动修改<code>App.json</code>和<code>package.json</code>中的版本号。</p>
-                <p>快速创建新版本功能会将当前日期转换为八位整数作为新的版本号，然后修改App.json和package.json中的版本号为新的版本号，接着会依次询问是否创建commit，是否提交到远程，是否创建标签，以及是否将标签提交到远程。</p>
-                <p>由于版本号规则，一天只能创建（发布）一次新版本。</p>
-                <button class="btn btn-primary" onclick="quick_bump_to_new_version()">快速创建新版本</button>
-            </div>
-        </div>
-
-
-
+        <h5>快速创建新版本</h5>
+        <hr />
+        <p>BBG 生成的博客，其数据文件中记录了上次被打开编辑时使用的是哪一个版本的 BBG。在 BBG 尝试打开一个博客时，如果博客数据文件中的记录值比程序版本更新，为了避免损坏数据，BBG
+          会拒绝打开该博客；如果程序版本比博客数据文件中的记录值更新，BBG 会提示用户升级博客数据文件，从而使得博客数据文件中的记录值与程序版本相同。</p>
+        <p>升级博客数据文件的过程是通过<code>check_migrate.js</code>进行的。它包含了一系列条件判断代码，首先判断博客数据文件中的记录值具体是哪一个旧版本，并给出对应的升级策略。</p>
+        <p>升级分为“不影响index.json内容的升级”和“影响index.json内容的升级”。如果一次升级不会对index.json造成除了版本号记录值更新以外的影响，那么就属于“不影响index.json内容的升级”
+        </p>
+        <p>如果你对 BBG
+          进行了开发和更改，并且想要就这些更改发布一个新版本，那么，如果这是一次“不影响index.json内容的升级”，你可以使用面板提供的快速创建新版本功能来帮助你修改<code>App.json</code>和<code>package.json</code>中的版本号，并且无需手动修改<code>check_migrate.js</code>即可直接进行后续的版本发布工作；如果这是一次“影响index.json内容的升级”，那么你需要手动在<code>check_migrate</code>中增加相关代码，并手动修改<code>App.json</code>和<code>package.json</code>中的版本号。
+        </p>
+        <p>
+          快速创建新版本功能会将当前日期转换为八位整数作为新的版本号，然后修改App.json和package.json中的版本号为新的版本号，接着会依次询问是否创建commit，是否提交到远程，是否创建标签，以及是否将标签提交到远程。
+        </p>
+        <p>由于版本号规则，一天只能创建（发布）一次新版本。</p>
+        <button class="btn btn-primary" onclick="quick_bump_to_new_version()">快速创建新版本</button>
+      </div>
     </div>
-    
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const { readFileSync, writeFileSync } = require("fs");
-        const execSync = require("child_process").execSync;
 
-        let appjson_version = JSON.parse(readFileSync(`${__dirname}/../App/App.json`), "utf8").currentProgramVersion;
-        let packagejson_version = JSON.parse(readFileSync(`${__dirname}/../package.json`), "utf8").version.substring(0,8);
-        if(appjson_version == packagejson_version){
-            document.getElementById("current_program_version").innerHTML = `<span style="color:green">${appjson_version}</span>`;
-        }else{
-            document.getElementById("current_program_version").innerHTML = `<span style="color:blue">App.json和package.json分别提供了不同的版本号（${appjson_version} ≠ ${packagejson_version}）</span>`;
 
-        }
-        function getyyyymmdd(){
-    var d = new Date();
-    var curr_date = d.getDate();
-    var curr_month = d.getMonth() + 1; 
-    var curr_year = d.getFullYear();
-    String(curr_month).length < 2 ? (curr_month = "0" + curr_month): curr_month;
-    String(curr_date).length < 2 ? (curr_date = "0" + curr_date): curr_date;
-    var yyyyMMdd = curr_year + "" + curr_month +""+ curr_date;
-    return yyyyMMdd;
-}    
 
-        function quick_bump_to_new_version(){
-            if(window.confirm("我已经阅读好说明文字，了解快速创建新版本功能的使用条件和执行内容")){
-                if(window.confirm(`请确认：今天的日期转化为8位整数(${getyyyymmdd()})后会被作为新版本的版本号。`)){
-                    if(window.confirm("“快速创建新版本”操作即将开始，中途请勿退出面板程序")){
-                        let appjson = JSON.parse(readFileSync(`${__dirname}/../App/App.json`), "utf8");
-                        let packagejson = JSON.parse(readFileSync(`${__dirname}/../package.json`), "utf8");
+  </div>
 
-                        let newversion = parseInt(getyyyymmdd(),10);
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const { readFileSync, writeFileSync } = require("fs");
+    const execSync = require("child_process").execSync;
 
-                        appjson["currentProgramVersion"] = newversion;
-                        packagejson["version"] =`${getyyyymmdd()}.0.0`;
+    let appjson_version = JSON.parse(readFileSync(`${__dirname}/../App/App.json`), "utf8").currentProgramVersion;
+    let packagejson_version = JSON.parse(readFileSync(`${__dirname}/../package.json`), "utf8").version.substring(0, 8);
+    if (appjson_version == packagejson_version) {
+      document.getElementById("current_program_version").innerHTML = `<span style="color:green">${appjson_version}</span>`;
+    } else {
+      document.getElementById("current_program_version").innerHTML = `<span style="color:blue">App.json和package.json分别提供了不同的版本号（${appjson_version} ≠ ${packagejson_version}）</span>`;
 
-                        writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
-                        writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson, null, 2), "utf8");
+    }
+    function getyyyymmdd() {
+      var d = new Date();
+      var curr_date = d.getDate();
+      var curr_month = d.getMonth() + 1;
+      var curr_year = d.getFullYear();
+      String(curr_month).length < 2 ? (curr_month = "0" + curr_month) : curr_month;
+      String(curr_date).length < 2 ? (curr_date = "0" + curr_date) : curr_date;
+      var yyyyMMdd = curr_year + "" + curr_month + "" + curr_date;
+      return yyyyMMdd;
+    }
 
-                        if(window.confirm("是否commit？")){
-                          execSync(`cd ${__dirname}/../ && git add . `);
-                          execSync(`cd ${__dirname}/../ && git commit -m "bump to version ${getyyyymmdd()}" `);
-                        }
+    function quick_bump_to_new_version() {
+      if (window.confirm("我已经阅读好说明文字，了解快速创建新版本功能的使用条件和执行内容")) {
+        if (window.confirm(`请确认：今天的日期转化为8位整数(${getyyyymmdd()})后会被作为新版本的版本号。`)) {
+          if (window.confirm("“快速创建新版本”操作即将开始，中途请勿退出面板程序")) {
+            let appjson = JSON.parse(readFileSync(`${__dirname}/../App/App.json`), "utf8");
+            let packagejson = JSON.parse(readFileSync(`${__dirname}/../package.json`), "utf8");
 
-                        if(window.confirm("是否尝试push到远程？")){
-                          execSync(`cd ${__dirname}/../ && git push `);
-                        }
+            let newversion = parseInt(getyyyymmdd(), 10);
 
-                        if(window.confirm("是否打标签？")){
-                          execSync(`cd ${__dirname}/../ && git tag -a ${getyyyymmdd()} -m "bump to version ${getyyyymmdd()}" `);
-                        }
+            appjson["currentProgramVersion"] = newversion;
+            packagejson["version"] = `${getyyyymmdd()}.0.0`;
 
-                        if(window.confirm("是否尝试将标签push到远程？（会触发GitHub Action 构建流程）")){
-                          execSync(`cd ${__dirname}/../ && git push origin --tags `);
-                        }
-                    }
-                }
+            writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
+            writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson, null, 2), "utf8");
+
+            if (window.confirm("是否commit？")) {
+              execSync(`cd ${__dirname}/../ && git add . `);
+              execSync(`cd ${__dirname}/../ && git commit -m "bump to version ${getyyyymmdd()}" `);
             }
+
+            if (window.confirm("是否尝试push到远程？")) {
+              execSync(`cd ${__dirname}/../ && git push `);
+            }
+
+            if (window.confirm("是否打标签？")) {
+              execSync(`cd ${__dirname}/../ && git tag -a ${getyyyymmdd()} -m "bump to version ${getyyyymmdd()}" `);
+            }
+
+            if (window.confirm("是否尝试将标签push到远程？（会触发GitHub Action 构建流程）")) {
+              execSync(`cd ${__dirname}/../ && git push origin --tags `);
+            }
+          }
         }
-    </script>
-  </body>
+      }
+    }
+  </script>
+</body>
+
 </html>

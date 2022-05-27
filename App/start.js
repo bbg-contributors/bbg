@@ -176,7 +176,7 @@ storage.has("language", function (error, hasKey) {
       });
 
       lang_name = data["name"];
-      document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> `+langdata["OK"][lang_name];
+      document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> ` + langdata["OK"][lang_name];
       document.getElementById("create-new-site-dialog-title").innerHTML = langdata["CREATE_NEW_SITE"][lang_name];
 
       document.getElementById("create-new-site-dialog-content").innerHTML = `
@@ -226,7 +226,7 @@ storage.has("language", function (error, hasKey) {
             
             `
 
-            document.getElementById("interface_secondpart").innerHTML = `
+      document.getElementById("interface_secondpart").innerHTML = `
             
             <button class="fluentbtn" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</button>
             <button class="fluentbtn" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> 应用程序风格设置</button>

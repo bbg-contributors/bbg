@@ -35,7 +35,8 @@ body:before {
   position: fixed;
 }
 
-.modal-header, .modal-footer{
+.modal-header,
+.modal-footer {
   border: none;
 }
 
@@ -65,7 +66,7 @@ body:before {
 }
 
 .fluentbtn-blue:active {
-  background-color: rgb(39, 78, 175)!important;
+  background-color: rgb(39, 78, 175) !important;
   color: rbg(218, 228, 255) !important
 }
 
@@ -445,24 +446,25 @@ body:before {
 a {
   text-decoration: none;
 }
-#nav_list button{
+
+#nav_list button {
   font-size: 120%;
   border: none;
 }
 
-#nav_list button.active{
+#nav_list button.active {
   border-radius: 24px;
   background-color: #009cfa;
 }
 
-#nav_list{
+#nav_list {
   position: fixed;
 }
 
-#blog_settings_list{
+#blog_settings_list {
   position: fixed;
 }
 
-.nav_title{
+.nav_title {
   position: fixed;
 }

@@ -36,15 +36,15 @@ body:before {
 }
 
 * {
-  color:white;
+  color: white;
 }
 
-.modal-header{
+.modal-header {
   border: none;
   background-color: rgb(0, 197, 171);
 }
 
-.modal-footer{
+.modal-footer {
   border: none;
   background-color: rgb(49, 49, 49);
 }
@@ -70,7 +70,7 @@ body:before {
 }
 
 .fluentbtn-blue:hover {
-  background-color: #006f77  !important;
+  background-color: #006f77 !important;
   color: white !important
 }
 
@@ -455,54 +455,60 @@ body:before {
 a {
   text-decoration: none;
 }
-#nav_list button{
+
+#nav_list button {
   font-size: 120%;
   border: none;
 }
 
-#nav_list button.active{
+#nav_list button.active {
   border-radius: 24px;
   background-color: #00a2ad;
 }
 
-#nav_list{
+#nav_list {
   position: fixed;
 }
 
-#blog_settings_list{
+#blog_settings_list {
   position: fixed;
 }
 
-.nav_title{
+.nav_title {
   position: fixed;
 }
 
-.modal-body, .card-body{
+.modal-body,
+.card-body {
   background-color: rgb(34, 34, 34);
 }
 
-.card-img-top{
+.card-img-top {
   filter: brightness(0.5);
 }
 
-nav.bg-light, .navbar-brand{
-  background-color: rgb(66, 66, 66)!important;
+nav.bg-light,
+.navbar-brand {
+  background-color: rgb(66, 66, 66) !important;
   color: white !important;
 }
 
-.list-group-item, .list-group-item:hover, .list-group-item:active{
-  background-color: rgb(20, 20, 20);;
-  border-radius: 24px!important;
+.list-group-item,
+.list-group-item:hover,
+.list-group-item:active {
+  background-color: rgb(20, 20, 20);
+  ;
+  border-radius: 24px !important;
 }
 
 .list-group-item a {
-  color:rgb(255, 205, 247);
+  color: rgb(255, 205, 247);
   text-decoration: none;
 }
 
 
 .btn-link {
-  color:#00d0ff;
+  color: #00d0ff;
 }
 
 .form-control,
@@ -521,25 +527,35 @@ nav.bg-light, .navbar-brand{
   color: white
 }
 
-#bbg_settings span, #bbg_settings div{
+#bbg_settings span,
+#bbg_settings div {
   color: aqua;
 }
 
-#last_managed_site_link, #last_managed_site_title, a, a:hover, a:active{
+#last_managed_site_link,
+#last_managed_site_title,
+a,
+a:hover,
+a:active {
   color: #00d0ff;
   text-decoration: none;
 }
 
-.btn-light,.btn-light:hover,.btn-light:active{
+.btn-light,
+.btn-light:hover,
+.btn-light:active {
   background-color: rgb(43, 39, 39);
   border-color: rgb(43, 39, 39);
-  color:rgb(255, 251, 0);
+  color: rgb(255, 251, 0);
 }
 
-.page-item-sub b,.article-item-sub b, #current_program_version{
-  color:rgb(255, 251, 0)!important
+.page-item-sub b,
+.article-item-sub b,
+#current_program_version {
+  color: rgb(255, 251, 0) !important
 }
 
-.page-item-sub i, .article-item-sub i{
-  color:rgb(159, 252, 255)!important
+.page-item-sub i,
+.article-item-sub i {
+  color: rgb(159, 252, 255) !important
 }
