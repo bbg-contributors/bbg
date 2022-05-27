@@ -301,7 +301,7 @@ ${blog["自定义JS"]}
 <div class="fluentinterface" style="position:fixed;bottom:4px;width:80%;box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);">
 <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">保存本次配置</button>
 <button class="fluentbtn" onclick="window.location.reload()">放弃本次对网站设置所作的更改</button>
-<button class="fluentbtn fluentbtn-blue" onclick="window.location.href='#blog_settings_list'">返回顶部</button>
+<button class="fluentbtn fluentbtn-blue" onclick="document.documentElement.scrollTop = 0;">返回顶部</button>
 </div>
 
 </div>
