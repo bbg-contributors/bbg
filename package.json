@@ -25,7 +25,7 @@
   ],
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^16.2.4",
+    "electron": "^19.0.2",
     "electron-builder": "^23.0.3"
   },
   "dependencies": {
