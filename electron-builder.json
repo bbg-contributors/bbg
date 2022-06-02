@@ -9,7 +9,7 @@
     "resources/**/*"
   ],
   "electronDownload": {
-    "version": "16.2.4"
+    "version": "19.0.2"
   },
   "extraFiles": [
     "LICENSE"
