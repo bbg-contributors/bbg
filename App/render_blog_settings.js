@@ -114,6 +114,13 @@ ${blog["底部信息（格式为markdown）"]}
 <div class="alert alert-primary" role="alert">
 <i class="fa fa-smile-o"></i> ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
 </div>
+<br />
+<h3>手动生成站点地图（sitemap.txt）</h3>
+<p>站点地图对于搜索引擎优化来说很有用，可以帮助搜索引擎索引站点上的内容。</p>
+<p>目前此功能是试验性的，请在需要进行的时候手动点击下方的生成按钮。</p>
+<p>站点地图会生成在网站根目录下的sitemap.txt中（如果已有会覆盖文件内容）。点击后，你需要在弹出的对话框中输入网站的域名（或者从互联网上访问时的站点目录地址）。</p>
+<button class="fluentbtn fluentbtn-blue" onclick="open_generate_sitemap_dialog()">手动生成一次当前的站点地图</button>
+
 </div>
 
 <div class="fluentinterface" id="announcement_board_navhash">

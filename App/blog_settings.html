@@ -36,6 +36,25 @@
       </div>
     </div>
   </div>
+  <div class="modal" tabindex="-1" id="sitemap_baseurl_dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">生成站点地图（sitemap.txt）</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="sitemap_baseurl_content">
+
+          请输入网站的域名（或者从互联网上访问时的站点目录地址），将根据此地址生成站点地图。输入时请以https://或http://开头
+          <input class="form-control" placeholder="例如：https://example.com/" id="sitemap_baseurl_input">
+
+          <br />
+          <button class="fluentbtn fluentbtn-blue" onclick="generate_sitemap()">确定，开始生成</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./manage.js"></script>
 </body>

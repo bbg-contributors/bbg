@@ -51,6 +51,8 @@ let install_theme = require("./online_theme.js").install_theme;
 let { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
 let use_public_comment_service_offered_by_bbg = require("./public_comment_srv.js");
 let disable_puclic_comment_service = require("./disable_public_comment_service.js");
+let generate_sitemap = require("./generate_sitemap.js").generate_sitemap;
+let open_generate_sitemap_dialog = require("./generate_sitemap.js").open_generate_sitemap_dialog;
 
 
 // goto and menu functions
