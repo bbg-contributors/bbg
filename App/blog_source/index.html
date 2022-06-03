@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./favicon.ico" />
   <title></title>
-
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -500,9 +500,17 @@
       bottom: 60px;
     }
   </style>
+  <style id="bootstrap_css">
+
+  </style>
   <style id="custom_css"></style>
+  <div id="loading" style="font-family: sans-serif">
+    <br /><br /><br />
+    <center><h2>Loading...</h2></center>
+  </div>
+  
   <div id="top"></div>
-  <div id="root"></div>
+  <div id="root" style="display:none;"></div>
   <div id="back_to_top_btn">
     <a href="#top" class="btn btn-secondary"><i class="fa fa-angle-up"></i></a>
   </div>
@@ -553,6 +561,16 @@
         switch_to_light_mode();
       }
     }
+
+    function detect_whether_ui_load_finished(){
+      if(bootstrap_css_import_finished === true && content_load_finished === true){
+        document.getElementById("root").setAttribute("style","");
+        document.getElementById("loading").setAttribute("style","display:none");
+      }
+    }
+
+    bootstrap_css_import_finished = false;
+    content_load_finished = false;
 
     const langdata = {
       "ARCHIVE_AND_TAGS": {
@@ -888,6 +906,9 @@
           render_bottom_information();
           execute_custom_js();
 
+          content_load_finished = true;
+          detect_whether_ui_load_finished();
+
           if (
             blog["全局评论设置"]["启用valine评论"] &&
             blog["文章列表"][article_id]["启用评论"]
@@ -1179,6 +1200,10 @@
           }
           render_bottom_information();
           execute_custom_js();
+
+          content_load_finished = true;
+          detect_whether_ui_load_finished();
+
           if (
             blog["全局评论设置"]["启用valine评论"] &&
             blog["页面列表"][page_id]["启用评论"]
@@ -1266,6 +1291,9 @@
       render_bottom_information();
       document.getElementById("navbar_archive_and_tags").classList.add("nav-item-active");
       execute_custom_js();
+
+      content_load_finished = true;
+      detect_whether_ui_load_finished();
     }
 
     function enter_friend_book() {
@@ -1274,6 +1302,9 @@
       render_container();
       render_friend_book();
       document.getElementById("navbar_friendbook").classList.add("nav-item-active");
+
+      content_load_finished = true;
+      detect_whether_ui_load_finished();
 
     }
 
@@ -1285,6 +1316,9 @@
       render_bottom_information();
       document.getElementById("navbar_archive_and_tags").classList.add("nav-item-active");
       execute_custom_js();
+
+      content_load_finished = true;
+      detect_whether_ui_load_finished();
     }
 
     function enter_indexPage() {
@@ -1297,6 +1331,9 @@
       document.getElementById("navbar_article_list").classList.add("nav-item-active");
 
       execute_custom_js();
+
+      content_load_finished = true;
+      detect_whether_ui_load_finished();
     }
 
     function enter_article(article_id) {
@@ -1318,11 +1355,14 @@
       return false;
     }
 
-    function importCSSFile(uri) {
-      let css = document.createElement('link');
-      css.setAttribute('rel', 'stylesheet');
-      css.setAttribute('href', uri);
-      document.getElementsByTagName('head')[0].appendChild(css);
+    function importBootstrapCSSFile(uri) {
+      axios
+      .get(uri)
+      .then(function (response) {
+        document.getElementById("bootstrap_css").innerHTML+=response.data;
+        bootstrap_css_import_finished = true;
+        detect_whether_ui_load_finished();
+      })
     }
     axios
       .get("./data/index.json?timestamp=" + Date.parse(new Date()))
@@ -1347,8 +1387,7 @@
 
         // js importing disabled due to execution order is inevitable, while css importing can safely operate.
 
-        importCSSFile(cdn_path + "/bootstrap@5.0.2/dist/css/bootstrap.min.css");
-        importCSSFile(cdn_path + "/font-awesome@4.7.0/css/font-awesome.min.css");
+        importBootstrapCSSFile(cdn_path + "/bootstrap@5.0.2/dist/css/bootstrap.min.css");
 
         lang_name = blog["网站语言"];
         articleListPageLength = Math.ceil(blog["文章列表"].length / blog["文章列表中每页的文章数为"]); // 从1开始数
