@@ -120,6 +120,10 @@ ${blog["底部信息（格式为markdown）"]}
 <p>目前此功能是试验性的，请在需要进行的时候手动点击下方的生成按钮。</p>
 <p>站点地图会生成在网站根目录下的sitemap.txt中（如果已有会覆盖文件内容）。点击后，你需要在弹出的对话框中输入网站的域名（或者从互联网上访问时的站点目录地址）。</p>
 <button class="fluentbtn fluentbtn-blue" onclick="open_generate_sitemap_dialog()">手动生成一次当前的站点地图</button>
+<br /><br />
+<h3>检查博客数据一致性</h3>
+<p>此功能用于检查博客文章列表/页面列表的文章/页面的内容文件是否存在（没有丢失）。如果发现丢失，会弹出一个说明情况的对话框，并引导你下一步操作。</p>
+<button class="fluentbtn fluentbtn-blue" onclick="check_data_consistency()">现在检查博客数据一致性</button>
 
 </div>
 
