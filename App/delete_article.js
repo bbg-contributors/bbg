@@ -19,7 +19,14 @@ module.exports = function (i) {
 
   if (submitDialog === 0) {
     //用户选择删除
-    rmSync(`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}`);
+
+    try {
+      rmSync(`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}`);
+    } catch (error) {
+      
+    }
+
+    
     blog["文章列表"].splice(i, 1);
     BlogInstance.writeBlogData();
     window.location.reload();
