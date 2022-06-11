@@ -1,6 +1,6 @@
 {
   "name": "bbg",
-  "version": "20220604.0.0",
+  "version": "20220611.0.0",
   "description": "A static blog generator based on Electron Technology.",
   "main": "main.js",
   "scripts": {

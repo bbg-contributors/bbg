@@ -1,27 +1,8 @@
 module.exports = function () {
 
-  document.getElementById("container").innerHTML += `
-  
-  <nav class="navbar navbar-toggler bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa fa-files-o"></i> ${langdata["PAGE_MANAGEMENT"][lang_name]}</a>
-  </div>
-</nav>
-<br />
-    <button class="fluentbtn" onclick="add_a_page()"><i class="fa fa-plus"></i>  ${langdata["ADD_A_PAGE"][lang_name]} </button>
-    <button class="fluentbtn" onclick="edit_friend_book();" ><i class="fa fa-cogs"></i>  管理网站友人帐页面 </button>
-    <hr />
-    <div class="alert alert-info" role="alert">
-    <i class="fa fa-smile-o"></i> ${langdata["HINT_USING_MD_IN_PAGES"][lang_name]}
-    </div>
-    `
+  document.getElementById("container").innerHTML += getUiFileContent("page_manager_titleui.html");
 
-  document.getElementById("edit_page_meta_dialog_footer").innerHTML = `
-
-    <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
-    <button type="button" class="fluentbtn fluentbtn-blue" id="save_page_meta_btn">${langdata["SAVE_CONFIGURATION"][lang_name]}</button>
-
-    `;
+  document.getElementById("edit_page_meta_dialog_footer").innerHTML = getUiFileContent("edit_page_meta_dialog_footer.html");
 
   for (let i = 0; i < blog["页面列表"].length; i++) {
 

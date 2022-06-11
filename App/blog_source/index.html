@@ -30,6 +30,14 @@
       border-radius: 12px;
     }
 
+    .articlebottomnav{
+      background-color: white;
+      box-shadow: 0 1px 1px -2px rgb(0 0 0 / 20%),
+        0 2px 2px 0 rgb(0 0 0 / 36%), 0 1px 5px 0 rgb(0 0 0 / 32%);
+      opacity: 0.8;
+      border-radius: 12px;
+    }
+
     .nav-item-active {
       border-bottom: 2px solid white;
     }
@@ -568,6 +576,11 @@
       }
     }
 
+    function copy_full_article_to_clipboard(){    
+      navigator.clipboard.writeText(document.querySelector("#article-content-html").innerText);
+      document.getElementById("copy_to_clipboard_button").innerHTML=`<i class="fa fa-check"></i> 已复制！`;
+    }
+
     bootstrap_css_import_finished = false;
     content_load_finished = false;
 
@@ -876,8 +889,32 @@
           Date.parse(new Date())
         )
         .then(function (response) {
-          document.querySelector("#article-content").innerHTML +=
-            marked.parse(response.data);
+          document.querySelector("#article-content").innerHTML +=`
+            <div id="article-content-html">${marked.parse(response.data)}</div>`;
+          
+            if(blog["提供文章文件下载"] || blog["提供复制全文到剪贴板的选项"]){
+            document.getElementById("article-content").innerHTML+=`
+            <br />
+            <div style="float:right;font-size:18px" id="article-bottom-bar">
+            
+              </div><br />
+            `
+          }
+            
+
+
+            if(blog["提供文章文件下载"]){
+            document.getElementById("article-bottom-bar").innerHTML+=`
+              <a class="btn btn-primary" href="./data/articles/${blog["文章列表"][article_id]["文件名"]}" download="${blog["文章列表"][article_id]["文章标题"]}.md"><i class="fa fa-download"></i> 将该文章下载到你的计算机上</a>
+            `;
+          }
+
+          if(blog["提供复制全文到剪贴板的选项"]){
+            document.getElementById("article-bottom-bar").innerHTML+=`
+              <a class="btn btn-primary" id="copy_to_clipboard_button" onclick="copy_full_article_to_clipboard();"><i class="fa fa-clipboard"></i> 复制全文到剪贴板</a>
+            `;
+          }
+
           if (blog["不使用全站内容授权协议"] === false) {
             document.querySelector(
               "#article-content"
@@ -890,7 +927,108 @@
             `;
           }
 
+          if(blog["文章页面显示上一篇下一篇文章导航按钮"]){
 
+
+            if(article_id === 0 && blog["文章列表"][article_id+1] != undefined && blog["文章列表"][article_id+1]["是否隐藏"] !== true){
+              document.getElementById("container").innerHTML += `
+              <div class="row">
+    <div class="col">
+      <div class="card articlebottomnav" style="float:left;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
+    <h5 class="card-title"><a href="./index.html?type=article&filename=${blog["文章列表"][article_id+1]["文件名"]}">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
+    <h5 class="card-title">没有了</h5>
+  </div>
+</div>
+    </div>
+  </div>
+     
+            `
+            }
+
+            if(article_id === 0 && blog["文章列表"][article_id+1] == undefined){
+              document.getElementById("container").innerHTML += `
+            <div class="row">
+    <div class="col">
+      <div class="card articlebottomnav" style="float:left;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
+    <h5 class="card-title">没有了</h5>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
+    <h5 class="card-title">没有了</h5>
+  </div>
+</div>
+    </div>
+  </div>
+     
+            `
+            }
+
+            if(article_id !== 0 && blog["文章列表"][article_id+1] == undefined && blog["文章列表"][article_id-1]["是否隐藏"] !== true){
+              document.getElementById("container").innerHTML += `
+              <div class="row">
+    <div class="col">
+      <div class="card articlebottomnav" style="float:left;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
+    <h5 class="card-title">没有了</h5>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
+    <h5 class="card-title"><a href="./index.html?type=article&filename=${blog["文章列表"][article_id-1]["文件名"]}">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
+  </div>
+</div>
+    </div>
+  </div>
+     
+            `
+            }
+
+            if(article_id !== 0 && blog["文章列表"][article_id+1] != undefined && blog["文章列表"][article_id+1]["是否隐藏"] !== true && blog["文章列表"][article_id-1]["是否隐藏"] !== true){
+              document.getElementById("container").innerHTML += `
+              <div class="row">
+    <div class="col">
+      <div class="card articlebottomnav" style="float:left;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
+    <h5 class="card-title"><a href="./index.html?type=article&filename=${blog["文章列表"][article_id+1]["文件名"]}">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
+    <h5 class="card-title"><a href="./index.html?type=article&filename=${blog["文章列表"][article_id-1]["文件名"]}">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
+  </div>
+</div>
+    </div>
+  </div>
+     
+            `
+            }
+            
+          }
+
+          
 
 
           if (
@@ -1241,7 +1379,7 @@
             "./data/pages/" + blog["页面列表"][page_id]["文件名"];
         } else {
           // 当前标签页打开，是markdown
-
+          document.getElementsByTagName("title")[0].innerHTML = `${blog["页面列表"][page_id]["页面标题"]} - ${blog["博客标题"]} `;
           resetPage();
           render_nav(false);
           render_container();
@@ -1283,6 +1421,7 @@
     }
 
     function enter_tag(tagname) {
+      document.getElementsByTagName("title")[0].innerHTML = `标签为 ${decodeURIComponent(tagname)} 下的文章 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1296,6 +1435,7 @@
     }
 
     function enter_friend_book() {
+      document.getElementsByTagName("title")[0].innerHTML = `友人帐 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1308,6 +1448,7 @@
     }
 
     function enter_archive_and_tags() {
+      document.getElementsByTagName("title")[0].innerHTML = `归档与标签 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1321,6 +1462,7 @@
     }
 
     function enter_indexPage() {
+      document.getElementsByTagName("title")[0].innerHTML = blog["博客标题"];
       resetPage();
       render_nav(true);
       render_container();
@@ -1336,6 +1478,7 @@
     }
 
     function enter_article(article_id) {
+      document.getElementsByTagName("title")[0].innerHTML = `${blog["文章列表"][article_id]["文章标题"]} - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1487,8 +1630,7 @@
           }
         }
 
-        document.getElementsByTagName("title")[0].innerHTML =
-          blog["博客标题"];
+        
       });
 
 
