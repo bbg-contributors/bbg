@@ -1,26 +1,10 @@
 module.exports = function () {
-  document.getElementById("container").innerHTML += `
-  
-  <nav class="navbar navbar-toggler bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa fa-file-text"></i> ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</a>
-  </div>
-</nav>
-<br />
-     <button onclick="add_a_article();" class="fluentbtn"><i class="fa fa-plus"></i> ${langdata["ADD_AN_ARTICLE"][lang_name]}</button>
-     <hr />
-  <div class="alert alert-info" role="alert">
-  <i class="fa fa-smile-o"></i> ${langdata["HINT_USING_MD_IN_ARTICLES"][lang_name]}
-</div>
-  
-  `;
+  document.getElementById("container").innerHTML += getUiFileContent(
+    "article_manager_title_ui.html"
+  );
 
-  document.getElementById("edit_article_meta_dialog_footer").innerHTML = `
-  <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
-  <button type="button" class="fluentbtn fluentbtn-blue" id="save_article_meta_btn">${langdata["SAVE_CONFIGURATION"][lang_name]}</button>
-  
-  
-  `
+  document.getElementById("edit_article_meta_dialog_footer").innerHTML =
+    getUiFileContent("edit_article_meta_dialog_footer_ui.html");
 
   for (let i = 0; i < blog["文章列表"].length; i++) {
     if (blog["文章列表"][i]["是否置顶"]) {
@@ -31,40 +15,30 @@ module.exports = function () {
            
             
         </div>
-            `
-
+            `;
     }
-
-
   }
-
 
   for (let i = 0; i < blog["文章列表"].length; i++) {
     if (blog["文章列表"][i]["是否置顶"]) {
-
     } else {
-
-
-
       document.querySelector("#container").innerHTML += `
         <div class="article-item" id="article-item-${i}">
             <h2>${blog["文章列表"][i]["文章标题"]}</h2>
            
             
         </div>
-            `
+            `;
 
       document.querySelector("#article-item-" + i).innerHTML += `
                 <div class="article-item-sub" id="article-item-sub-${i}"></div>
                 `;
-
 
       document.querySelector("#article-item-sub-" + i).innerHTML += `
       <i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${blog["文章列表"][i]["创建日期"]}，${langdata["LASTMODIFIEDAT"][lang_name]} ${blog["文章列表"][i]["修改日期"]}<br />
             `;
 
       if (blog["文章列表"][i]["标签"].length === 0) {
-
       } else {
         document.querySelector("#article-item-sub-" + i).innerHTML += `
         <i class="fa fa-tags"></i> ${langdata["TAGS"][lang_name]}
@@ -73,11 +47,9 @@ module.exports = function () {
         for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
           document.querySelector("#article-item-sub-" + i).innerHTML += `
                     <button class="btn btn-light btn-sm">${blog["文章列表"][i]["标签"][k]}</button>
-                    `
+                    `;
         }
       }
-
-
 
       document.querySelector("#article-item-" + i).innerHTML += `
             <br /><p>${blog["文章列表"][i]["摘要"]}</p>
@@ -92,9 +64,8 @@ module.exports = function () {
     <br /><br />
     <button class="fluentbtn" onclick="let_article_up(${i})">上移一格</button>
     <button class="fluentbtn" onclick="let_article_down(${i})">下移一格</button>
-    `
-
+    `;
   }
 
   document.getElementById("nav_to_article_manager").classList.add("active");
-}
+};

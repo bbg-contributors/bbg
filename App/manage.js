@@ -54,6 +54,7 @@ let disable_puclic_comment_service = require("./disable_public_comment_service.j
 let generate_sitemap = require("./generate_sitemap.js").generate_sitemap;
 let open_generate_sitemap_dialog = require("./generate_sitemap.js").open_generate_sitemap_dialog;
 let check_data_consistency = require("./check_data_consistency.js");
+let getUiFileContent = require("./getUiFileContent.js");
 
 // goto and menu functions
 let goto_article_manager = require("./gotoFx.js").goto_article_manager;
