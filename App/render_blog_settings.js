@@ -72,6 +72,18 @@ module.exports = function () {
     document.getElementById("blog_settings_enable_custom_js").checked = true;
   }
 
+  if (blog["文章页面显示上一篇下一篇文章导航按钮"] === true) {
+    document.getElementById("enable_article_bottom_nav").checked = true;
+  }
+
+  if (blog["提供文章文件下载"] === true) {
+    document.getElementById("enable_article_file_download").checked = true;
+  }
+
+  if (blog["提供复制全文到剪贴板的选项"] === true) {
+    document.getElementById("enable_copy_full_article_to_clipboard").checked = true;
+  }
+
   if (blog["CDN选择"] === 1) {
     // 从列表中选择cdn地址
     document.getElementById("cdn_cho_1").checked = true;

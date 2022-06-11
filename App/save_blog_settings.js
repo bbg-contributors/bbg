@@ -29,6 +29,11 @@ module.exports = function () {
   let blog_settings_content_license = document.getElementById("blog_settings_content_license").value;
   let blog_content_license_enabled = document.getElementById("blog_content_license_enabled").checked;
 
+  let enable_article_bottom_nav = document.getElementById("enable_article_bottom_nav").checked;
+  let enable_article_file_download = document.getElementById("enable_article_file_download").checked;
+  let enable_copy_full_article_to_clipboard = document.getElementById("enable_copy_full_article_to_clipboard").checked;
+
+
   if (document.getElementById("cdn_cho_1").checked === true) {
     blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
     blog_settings_cdn_mode = 1;
@@ -44,6 +49,9 @@ module.exports = function () {
   blog["文章列表中每页的文章数为"] = blog_settings_howmany_article_in_a_page;
   blog["全站内容授权协议"] = blog_settings_content_license;
   blog["不使用全站内容授权协议"] = blog_content_license_enabled;
+  blog["文章页面显示上一篇下一篇文章导航按钮"] = enable_article_bottom_nav;
+  blog["提供文章文件下载"] = enable_article_file_download;
+  blog["提供复制全文到剪贴板的选项"] = enable_copy_full_article_to_clipboard;
 
   blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
 
