@@ -1241,7 +1241,7 @@
             "./data/pages/" + blog["页面列表"][page_id]["文件名"];
         } else {
           // 当前标签页打开，是markdown
-
+          document.getElementsByTagName("title")[0].innerHTML = `${blog["页面列表"][page_id]["页面标题"]} - ${blog["博客标题"]} `;
           resetPage();
           render_nav(false);
           render_container();
@@ -1283,6 +1283,7 @@
     }
 
     function enter_tag(tagname) {
+      document.getElementsByTagName("title")[0].innerHTML = `标签为 ${decodeURIComponent(tagname)} 下的文章 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1296,6 +1297,7 @@
     }
 
     function enter_friend_book() {
+      document.getElementsByTagName("title")[0].innerHTML = `友人帐 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1308,6 +1310,7 @@
     }
 
     function enter_archive_and_tags() {
+      document.getElementsByTagName("title")[0].innerHTML = `归档与标签 - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1321,6 +1324,7 @@
     }
 
     function enter_indexPage() {
+      document.getElementsByTagName("title")[0].innerHTML = blog["博客标题"];
       resetPage();
       render_nav(true);
       render_container();
@@ -1336,6 +1340,7 @@
     }
 
     function enter_article(article_id) {
+      document.getElementsByTagName("title")[0].innerHTML = `${blog["文章列表"][article_id]["文章标题"]} - ${blog["博客标题"]} `;
       resetPage();
       render_nav(false);
       render_container();
@@ -1487,8 +1492,7 @@
           }
         }
 
-        document.getElementsByTagName("title")[0].innerHTML =
-          blog["博客标题"];
+        
       });
 
 
