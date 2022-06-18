@@ -1,6 +1,6 @@
 
 const getUrlArgs = require("./getUrlArgs.js");
-const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\","/");
+const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\", "/");
 const shell = require('@electron/remote').shell;
 const express = require('express');
 const loadUniStyle = require("./loadUniStyle.js");
@@ -14,9 +14,9 @@ const langdata = require("./LangData.js");
 storage.setDataPath(AppPath);
 
 storage.get("language", function (error, data) {
-    lang_name = data["name"];
-    
-    document.getElementById("preview_site_content").innerHTML = `
+  lang_name = data["name"];
+
+  document.getElementById("preview_site_content").innerHTML = `
     <h2>${langdata["PREVIEW_YOUR_SITE"][lang_name]}</h2>
     <hr />
     <p>${langdata["PREVIEW_SITE_CONTENT"][0][lang_name]}</p>
@@ -49,8 +49,8 @@ storage.get("language", function (error, data) {
 
 }
 
-    
-    )
+
+)
 
 
 loadUniStyle();
@@ -66,45 +66,45 @@ server.listen(41701, () => {
 
 
 function exit_preview() {
-    window.history.back();
+  window.history.back();
 }
 
 function openInBrowser() {
-    shell.openExternal(`http://localhost:41701`);
+  shell.openExternal(`http://localhost:41701`);
 }
 
 
 function open_blog_dir() {
-    shell.openPath(rootDir);
+  shell.openPath(rootDir);
 }
 
-function commit_and_push(){
-    if(window.confirm(`你选择了提交更改并推送到远程仓库，将要执行的指令如下，请确认：\n git add . \n git commit -m "site_update" \n git push `)){
-        try {
-            execSync(`cd ${rootDir} && git add . `);
-            execSync(`cd ${rootDir} && git commit -m "site_update" `);
-        } catch (error) {
-
-        }
-
-        try {
-            window.alert("操作完成。\n"+execSync(`cd ${rootDir} && git push`));
-        } catch (error) {
-            window.alert("操作失败。输出如下：\n"+error);
-        }
+function commit_and_push() {
+  if (window.confirm(`你选择了提交更改并推送到远程仓库，将要执行的指令如下，请确认：\n git add . \n git commit -m "site_update" \n git push `)) {
+    try {
+      execSync(`cd ${rootDir} && git add . `);
+      execSync(`cd ${rootDir} && git commit -m "site_update" `);
+    } catch (error) {
 
     }
+
+    try {
+      window.alert("操作完成。\n" + execSync(`cd ${rootDir} && git push`));
+    } catch (error) {
+      window.alert("操作失败。输出如下：\n" + error);
+    }
+
+  }
 }
 
-function commit_only(){
-    if(window.confirm(`你选择了仅提交更改但不推送，将要执行的指令如下，请确认：\n git add . \n git commit -m "site_update"`)){
-        try {
-            execSync(`cd ${rootDir} && git add . `);
-            execSync(`cd ${rootDir} && git commit -m "site_update" `);
-            
-        } catch (error) {
+function commit_only() {
+  if (window.confirm(`你选择了仅提交更改但不推送，将要执行的指令如下，请确认：\n git add . \n git commit -m "site_update"`)) {
+    try {
+      execSync(`cd ${rootDir} && git add . `);
+      execSync(`cd ${rootDir} && git commit -m "site_update" `);
 
-        }
-        window.alert("操作完成。");
+    } catch (error) {
+
     }
+    window.alert("操作完成。");
+  }
 }

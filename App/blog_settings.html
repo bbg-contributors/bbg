@@ -2,39 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link
-  href="../node_modules/font-awesome/css/font-awesome.min.css"
-  rel="stylesheet"
-/>
-    <title>Baiyang-lzy's Blog Generator</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <title>Baiyang-lzy's Blog Generator</title>
 </head>
 
 <body>
-    <div id="root"></div>
-    <style id="uniform"></style>
-    <div class="modal" tabindex="-1" id="download_online_theme_dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">从主题商店获取第三方主题</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="download_online_theme_dialog_content">
-
-
-
-
-
-                </div>
-            </div>
+  <div id="loading" class="text-center" style="font-size: 200%;">
+    <br />
+    <br />
+    <br />
+    Loading...
+  </div>
+  <div id="root" style="display:none;"></div>
+  <style id="uniform"></style>
+  <div class="modal" tabindex="-1" id="download_online_theme_dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">从主题商店获取第三方主题</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body" id="download_online_theme_dialog_content">
+
+
+
+
+
+        </div>
+      </div>
     </div>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./manage.js"></script>
+  </div>
+  <div class="modal" tabindex="-1" id="sitemap_baseurl_dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">生成站点地图（sitemap.txt）</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="sitemap_baseurl_content">
+
+          请输入网站的域名（或者从互联网上访问时的站点目录地址），将根据此地址生成站点地图。输入时请以https://或http://开头
+          <input class="form-control" placeholder="例如：https://example.com/" id="sitemap_baseurl_input">
+
+          <br />
+          <button class="fluentbtn fluentbtn-blue" onclick="generate_sitemap()">确定，开始生成</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./manage.js"></script>
 </body>
 
 </html>

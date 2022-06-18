@@ -3,10 +3,10 @@ const app = require('@electron/remote').app;
 const currentProgramVersion = require("./currentProgramVersion.js").toString();
 const download_update = require("./download_update.js");
 const os = require("os");
-	
-progress_modal =  new bootstrap.Modal(document.getElementById('update-progress-dialog'),{
-  backdrop:"static",
-  keyboard:false
+
+progress_modal = new bootstrap.Modal(document.getElementById('update-progress-dialog'), {
+  backdrop: "static",
+  keyboard: false
 });
 
 module.exports = function () {
@@ -19,14 +19,14 @@ module.exports = function () {
         ) {
 
           for (let i = 0; i < data.assets.length; i++) {
-            if(data.assets[i]["name"] !== undefined && data.assets[i]["name"] !== null){
+            if (data.assets[i]["name"] !== undefined && data.assets[i]["name"] !== null) {
               if (data.assets[i]["name"].indexOf("win32") != -1) {
                 windows_updateInfo = [
                   data.assets[i]["browser_download_url"],
                   data.assets[i]["name"],
                 ];
               }
-  
+
               if (data.assets[i]["name"].indexOf("linux") != -1) {
                 linux_updateInfo = [
                   data.assets[i]["browser_download_url"],
@@ -41,7 +41,7 @@ module.exports = function () {
                 ];
               }
             }
-           
+
           }
 
           if (os.platform() === "win32") {
@@ -62,8 +62,8 @@ module.exports = function () {
             download_update();
           }
 
-          if(os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin"){
-              window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。")
+          if (os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin") {
+            window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。")
           }
 
         }
@@ -74,5 +74,5 @@ module.exports = function () {
     .catch(function (err) {
       window.alert("检查更新失败：" + err);
     });
-    
+
 };

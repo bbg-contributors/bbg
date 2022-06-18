@@ -1,38 +1,39 @@
 
-const {existsSync,appendFileSync} = require("fs");
+const { existsSync, appendFileSync } = require("fs");
 
 module.exports = function () {
 
-    let tempString = randomString(12);
+  let tempString = randomString(12);
 
-    if (existsSync(rootDir + "/data/articles/" + tempString + ".md")) {
+  if (existsSync(rootDir + "/data/articles/" + tempString + ".md")) {
 
-    } else {
+  } else {
 
-        let dateobject = new Date;
-        let datenow = dateobject.toLocaleDateString();
+    let dateobject = new Date;
+    let datenow = dateobject.toLocaleDateString();
 
-        blog["文章列表"].unshift({
-            "文章标题": "",
-            "文件名": tempString + ".md",
-            "标签": [],
-            "摘要": "",
-            "创建日期": datenow,
-            "修改日期": datenow,
-            "是否置顶": false,
-            "是否隐藏": false,
-            "启用评论": true
-        });
+    blog["文章列表"].unshift({
+      "文章标题": "",
+      "文件名": tempString + ".md",
+      "标签": [],
+      "摘要": "",
+      "创建日期": datenow,
+      "修改日期": datenow,
+      "是否置顶": false,
+      "是否隐藏": false,
+      "启用评论": true
+    });
 
-        BlogInstance.writeBlogData();
-        appendFileSync(`${rootDir}/data/articles/${tempString}.md`, "");
+    BlogInstance.writeBlogData();
+    appendFileSync(`${rootDir}/data/articles/${tempString}.md`, "");
 
-        document.getElementById("root").innerHTML = "";
-        render_nav();
-        render_container();
-        renderArticleManager();
+    document.getElementById("root").innerHTML = "";
 
-        edit_article_meta(0);
+    render_container();
+    render_nav();
+    renderArticleManager();
 
-    }
+    edit_article_meta(0);
+
+  }
 }

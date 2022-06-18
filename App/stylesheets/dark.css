@@ -1,24 +1,19 @@
 .article-item-sub,
 .article-content-sub,
 .page-item-sub {
-  color: white;
+  color: rgb(0, 223, 253);
 }
 
 .page-item,
 .article-item,
 .fluentinterface {
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(43, 39, 39);
   padding: 24px;
   margin-bottom: 8px;
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(79, 83, 92);
+  border-color: rgb(227, 229, 234);
   border-radius: 16px;
-  color:white;
-}
-
-h1,h2,h3,h4,h5,h6,p, #check_update_interface, #bbg_settings span, label{
-    color:white
 }
 
 .fluenthint {
@@ -29,63 +24,72 @@ h1,h2,h3,h4,h5,h6,p, #check_update_interface, #bbg_settings span, label{
   color: grey !important;
 }
 
-body{
-    background-color: rgb(100,100,100,0.95);
-}
-
 body:before {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: .8;
   z-index: -1;
   content: "";
   position: fixed;
-  background-color: rgb(45,45,45);
+  background-color: rgb(20, 20, 20);
+}
+
+* {
+  color: white;
+}
+
+.modal-header {
+  border: none;
+  background-color: rgb(0, 197, 171);
+}
+
+.modal-footer {
+  border: none;
+  background-color: rgb(49, 49, 49);
 }
 
 .fluentbtn {
-  border-radius: 6px;
-  background-color: rgb(0, 0, 0);
+  border-radius: 24px;
+  background-color: rgb(71, 71, 71);
   border-style: solid;
   border-width: 2px;
-  border-color: rgb(126, 133, 136);
+  border-color: rgb(85, 85, 85);
   padding-top: 8px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 8px;
   text-decoration: none;
-  color: white;
-  font-size: 92%;
+  color: rgb(255, 255, 255);
+  font-size: 110%;
 }
 
 .fluentbtn-blue {
-  background-color: #131414 !important;
+  background-color: #01747c !important;
   color: white !important
 }
 
 .fluentbtn-blue:hover {
-  background-color: #262b2ac7 !important;
+  background-color: #006f77 !important;
   color: white !important
 }
 
 .fluentbtn-blue:active {
-  background-color: #040505 !important;
-  color: white !important
+  background-color: #004f55 !important;
+  color: rbg(218, 228, 255) !important
 }
 
 .fluentbtn:hover {
-  background-color: rgb(88, 92, 92);
+  background-color: rgb(61, 61, 61);
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 
 }
 
 .fluentbtn:active {
-  background-color: rgb(17, 19, 19);
+  background-color: rgb(43, 43, 43);
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 
 }
 
@@ -448,29 +452,110 @@ body:before {
   padding-bottom: 80px;
 }
 
-a{
-  color:lightskyblue
+a {
+  text-decoration: none;
 }
 
-.alert-info, .alert-primary{
-    background-color: #445a5a;
-    color:white
+#nav_list button {
+  font-size: 120%;
+  border: none;
 }
 
-.modal-body,.modal-footer{
-    background-color: #040505b7;
-
+#nav_list button.active {
+  border-radius: 24px;
+  background-color: #00a2ad;
 }
 
-.modal-header{
-    background-color: #5d8181;
+#nav_list {
+  position: fixed;
 }
 
-.btn-close, .btn-link{
-    color:white
+#blog_settings_list {
+  position: fixed;
 }
 
-.form-control, .form-control:hover, .form-control:active, .form-select, .dropdown-menu,.dropdown-item{
-    background-color: #04050588!important;
-    color: white!important;
+.nav_title {
+  position: fixed;
+}
+
+.modal-body,
+.card-body {
+  background-color: rgb(34, 34, 34);
+}
+
+.card-img-top {
+  filter: brightness(0.5);
+}
+
+nav.bg-light,
+.navbar-brand {
+  background-color: rgb(66, 66, 66) !important;
+  color: white !important;
+}
+
+.list-group-item,
+.list-group-item:hover,
+.list-group-item:active {
+  background-color: rgb(20, 20, 20);
+  ;
+  border-radius: 24px !important;
+}
+
+.list-group-item a {
+  color: rgb(255, 205, 247);
+  text-decoration: none;
+}
+
+
+.btn-link {
+  color: #00d0ff;
+}
+
+.form-control,
+.form-control:hover,
+.form-control:active,
+.form-select,
+.dropdown-menu,
+.dropdown-item {
+  background-color: #04050588 !important;
+  color: white !important;
+}
+
+.alert-info,
+.alert-primary {
+  background-color: #445a5a;
+  color: white
+}
+
+#bbg_settings span,
+#bbg_settings div {
+  color: aqua;
+}
+
+#last_managed_site_link,
+#last_managed_site_title,
+a,
+a:hover,
+a:active {
+  color: #00d0ff;
+  text-decoration: none;
+}
+
+.btn-light,
+.btn-light:hover,
+.btn-light:active {
+  background-color: rgb(43, 39, 39);
+  border-color: rgb(43, 39, 39);
+  color: rgb(255, 251, 0);
+}
+
+.page-item-sub b,
+.article-item-sub b,
+#current_program_version {
+  color: rgb(255, 251, 0) !important
+}
+
+.page-item-sub i,
+.article-item-sub i {
+  color: rgb(159, 252, 255) !important
 }

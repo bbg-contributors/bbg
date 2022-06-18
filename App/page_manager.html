@@ -2,70 +2,73 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link
-  href="../node_modules/font-awesome/css/font-awesome.min.css"
-  rel="stylesheet"
-/>
-    <title>Baiyang-lzy's Blog Generator</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <title>Baiyang-lzy's Blog Generator</title>
 </head>
 
 <body>
-    <style id="uniform">
-        
-    </style>
+  <style id="uniform">
 
-    <div id="root"></div>
+  </style>
 
-    <div class="modal" tabindex="-1" id="edit_page_meta_dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="edit_page_meta_dialog_title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="page_meta_content">
+  <div id="loading" class="text-center" style="font-size: 200%;">
+    <br />
+    <br />
+    <br />
+    Loading...
+  </div>
+  <div id="root" style="display:none;"></div>
 
-
-
-
-
-                </div>
-                <div class="modal-footer" id="edit_page_meta_dialog_footer">
-                </div>
-            </div>
+  <div class="modal" tabindex="-1" id="edit_page_meta_dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit_page_meta_dialog_title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-    
-        <div class="modal" tabindex="-1" id="edit_friend_book_dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="edit_friend_book_dialog_title">管理网站友人帐页面</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="friend_book_content">
+        <div class="modal-body" id="page_meta_content">
 
 
 
 
 
-                </div>
-                <div class="modal-footer" id="edit_friend_book_dialog_footer">
-                <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();">保存更改</button>
-                <button class="fluentbtn" onclick="window.location.reload();">放弃本次更改</button>
-                </div>
-            </div>
         </div>
+        <div class="modal-footer" id="edit_page_meta_dialog_footer">
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="edit_friend_book_dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit_friend_book_dialog_title">管理网站友人帐页面</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="friend_book_content">
 
 
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./manage.js"></script>
+
+
+        </div>
+        <div class="modal-footer" id="edit_friend_book_dialog_footer">
+          <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();">保存更改</button>
+          <button class="fluentbtn" onclick="window.location.reload();">放弃本次更改</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./manage.js"></script>
 </body>
 
 </html>
