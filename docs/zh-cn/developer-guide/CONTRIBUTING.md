@@ -73,10 +73,12 @@ export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 
 本项目使用 Docsify 来管理项目文档。
 
-你可以通过运行以下命令来打开 Web 服务器和 electron 窗口以查看文档。
+目前文档已经和 BBG 开发者面板 整合在一起，
+
+使用这个命令打开 BBG 开发者面板：
 
 ```sh
-cnpm run doc
+cnpm run devpanel
 ```
 
 你也可以访问 <http://localhost:23941>。
@@ -97,10 +99,10 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 
 ## 使用开发者面板
 
-BBG 开发者面板目前可以用来帮助发布新版本。
+BBG 开发者面板目前可以用来帮助发布新版本，里面也已经整合了开发文档。
 
 使用这个命令打开 BBG 开发者面板：
 
 ```sh
-cnpm run panel
+cnpm run devpanel
 ```
