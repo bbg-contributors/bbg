@@ -14,6 +14,19 @@
   <style id="bootstrap_css">
 
   </style>
+  <style id="body_opacity">
+    body:before{
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      content: "";
+      position: fixed;
+      background: rgba(0, 0, 0, 0.449) center/cover;
+      opacity: 0.3;
+    }
+  </style>
   <style id="blogcss">
     .article-item,
     .article-content,
@@ -547,11 +560,24 @@
     function switch_to_night_mode() {
       document.getElementById("whether_nightmode").innerHTML = `
           body{
-            background-color:black;
+            background-color:#000000c7;
             
           }
-          #blog_index_title,#blog_index_subtitle{
+          #blog_index_title,#blog_index_subtitle, .article-content h2,.page-content h2, #article-content-html *, #page-content-html *{
             color:white;
+          }
+          .article-item, .article-content, .page-content{
+            background-color:#000000a8
+          }
+          .article-item p, .article-item-sub, .article-content-sub, #page_order_html, #bottom_info_html{
+            color:lightgrey!important;
+          }
+          a{
+            color:#67a5ff
+          }
+          .card{
+            background-color:black;
+            color:white
           }
           `;
       localStorage.setItem("is_nightmode", "on");
@@ -829,7 +855,7 @@
 
         document.getElementById("container").innerHTML += `
         <br /><br />
-        <p style="color:grey;">你当前正在浏览文章列表的第${currentArticleListPageOrder}页（共${articleListPageLength}页）。
+        <p style="color:grey;" id="page_order_html">你当前正在浏览文章列表的第${currentArticleListPageOrder}页（共${articleListPageLength}页）。
 </p>
         
         
@@ -1313,9 +1339,7 @@
           Date.parse(new Date())
         )
         .then(function (response) {
-          document.querySelector("#page-content").innerHTML += marked.parse(
-            response.data
-          );
+          document.querySelector("#page-content").innerHTML += `<div id="page-content-html">${marked.parse(response.data)}</div>`;
           if (blog["不使用全站内容授权协议"] === false) {
             document.getElementById("page-content").innerHTML += `<br />
             <div class="alert alert-info" role="alert">
@@ -1408,7 +1432,7 @@
     function render_bottom_information() {
       document.getElementById("container").innerHTML += `
             <hr />
-            <div style="color:grey">
+            <div style="color:grey" id="bottom_info_html">
                 ${marked.parse(blog["底部信息（格式为markdown）"])}
             </div>
             
@@ -1570,14 +1594,7 @@
             ]
           ) {
             document.querySelector("#blogcss").innerHTML += `body:before{
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: .3;
-    z-index: -1;
-    content: "";
-    position: fixed;
+
     background: url(https://api.paugram.com/wallpaper/) center/cover;
 }`;
           }
