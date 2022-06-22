@@ -23,9 +23,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - name: "Install yarn and dependencies"
+          cache: "yarn"
+      - name: "Install dependencies"
         run: |
-          npm install -g yarn
           yarn install --frozen-lockfile
       - name: "Build Linux"
         if: matrix.os == 'ubuntu-latest'
