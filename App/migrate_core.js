@@ -252,6 +252,10 @@ module.exports = function () {
       addSupportForArticleBottomExternalOptions();
     }
 
+    if(currentBlogVersion === 20220611){
+      check_third_party_theme_compatiblity();
+    }
+
     check_third_party_theme_compatiblity();
     updateBlogIndexHtml();
 
