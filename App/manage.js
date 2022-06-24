@@ -7,6 +7,7 @@ const langdata = require("./LangData.js");
 
 const getUrlArgs = require("./getUrlArgs.js");
 const BlogData = require("./BlogData.js");
+const migrate = require("./migrate_core.js");
 const check_migrate = require("./check_migrate.js");
 const randomString = require("./randomString.js");
 

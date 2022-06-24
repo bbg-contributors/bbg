@@ -103,25 +103,8 @@ module.exports = function () {
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
     10
   );
-
+  
   // 如果不包含有效的博客数据文件
-
-  if (
-    currentBlogVersion === undefined ||
-    currentBlogVersion === null ||
-    currentBlogVersion === ""
-  ) {
-    console.error("博客数据文件不包含有效的版本号信息（ERR_NO_VERSION）");
-    console.error("博客数据文件可能已经损坏。");
-    process.exit(1);
-  } else {
-    if (
-      blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"] > currentProgramVersion
-    ) {
-      console.error("不兼容此版本的博客数据文件（ERR_BAD_VERSION）");
-      console.error("检测到新版数据文件。请使用新版 BBG 管理站点，以免损坏数据。");
-      process.exit(1);
-    }
 
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"] = currentProgramVersion;
 
@@ -276,5 +259,4 @@ module.exports = function () {
     fs.writeFileSync(rootDir + "/data/index.json", JSON.stringify(blog));
 
     console.log("博客数据更新成功。");
-  }
-};
+  };
