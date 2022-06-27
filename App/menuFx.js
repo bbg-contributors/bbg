@@ -11,7 +11,11 @@ function preview_site() {
 }
 
 function open_blog_dir() {
-  shell.openPath(rootDir);
+  if(process.platform === 'win32') { // fix windows error in '/'
+    shell.openPath(rootDir.replaceAll('/', '\\'))
+  } else {
+    shell.openPath(rootDir)
+  }
 }
 
 module.exports.exitThisSite = exitThisSite;
