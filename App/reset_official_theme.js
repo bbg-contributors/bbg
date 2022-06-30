@@ -2,7 +2,13 @@ const { copyFileSync, rmSync, constants } = require("fs");
 
 module.exports = function () {
   save_blog_settings();
-  rmSync(`${rootDir}/index.html`);
+  if (blog["全局主题设置"]["第三方主题版本"] === 'v2') {
+    for (i in blog["全局主题设置"]["第三方主题文件内容"]) {
+      rmSync(rootDir + '/' + blog["全局主题设置"]["第三方主题文件内容"][i])
+    }
+  } else {
+    rmSync(`${rootDir}/index.html`)
+  }
   copyFileSync(__dirname + "/blog_source/index.html", rootDir + "/index.html", constants.COPYFILE_EXCL);
   blog["全局主题设置"]["是否使用第三方主题"] = false;
   blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
