@@ -4,7 +4,7 @@ module.exports = function () {
   save_blog_settings();
   if (blog["全局主题设置"]["第三方主题版本"] === 'v2') {
     for (i in blog["全局主题设置"]["第三方主题文件内容"]) {
-      rmSync(rootDir + '/' + blog["全局主题设置"]["第三方主题文件内容"][i])
+      rmSync(`${rootDir}/${blog["全局主题设置"]["第三方主题文件内容"][i]}`);
     }
   } else {
     rmSync(`${rootDir}/index.html`)
