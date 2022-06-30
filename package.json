@@ -6,7 +6,6 @@
   "scripts": {
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
-    "doc": "electron ./doc.js",
     "build:win": "electron-builder build --win --publish=never",
     "build:linux": "electron-builder build --linux --publish=never",
     "build:mac": "electron-builder build --mac --publish=never",
