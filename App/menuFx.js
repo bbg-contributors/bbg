@@ -1,20 +1,19 @@
 
-const shell = require('@electron/remote').shell;
+const shell = require("@electron/remote").shell;
 
-function exitThisSite() {
+function exitThisSite () {
   window.location.href = "./start.html";
 }
 
-function preview_site() {
+function preview_site () {
   window.location.href = `./server.html?rootdir=${rootDir}`;
-
 }
 
-function open_blog_dir() {
-  if(process.platform === 'win32') { // fix windows error in '/'
-    shell.openPath(rootDir.replaceAll('/', '\\'))
+function open_blog_dir () {
+  if (process.platform === "win32") { // fix windows error in '/'
+    shell.openPath(rootDir.replaceAll("/", "\\"));
   } else {
-    shell.openPath(rootDir)
+    shell.openPath(rootDir);
   }
 }
 

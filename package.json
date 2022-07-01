@@ -2,6 +2,15 @@
   "name": "bbg",
   "version": "20220624.0.0",
   "description": "A static blog generator based on Electron Technology.",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "baiyang-lzy",
+    "email": "baiyuanneko@protonmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:baiyang-lzy/bbg.git"
+  },
   "main": "main.js",
   "scripts": {
     "start": "electron ./main.js",
@@ -9,24 +18,19 @@
     "build:win": "electron-builder build --win --publish=never",
     "build:linux": "electron-builder build --linux --publish=never",
     "build:mac": "electron-builder build --mac --publish=never",
-    "devpanel": "electron ./developer_panel.js"
-  },
-  "author": {
-    "name": "baiyang-lzy",
-    "email": "baiyuanneko@protonmail.com"
+    "devpanel": "electron ./developer_panel.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:html": "htmlhint \"**/*.html\""
   },
   "maintainers": [
     "baiyang-lzy",
     "chihuo2104",
     "mzwing",
     "Misaka13514",
-    "scientificworld"
+    "scientificworld",
+    "so1ve"
   ],
-  "license": "UNLICENSED",
-  "devDependencies": {
-    "electron": "^19.0.2",
-    "electron-builder": "^23.0.3"
-  },
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "@popperjs/core": "^2.11.5",
@@ -38,9 +42,12 @@
     "font-awesome": "4.7.0",
     "request": "^2.88.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:baiyang-lzy/bbg.git"
+  "devDependencies": {
+    "@so1ve/eslint-config": "^0.21.5",
+    "electron": "^19.0.2",
+    "electron-builder": "^23.0.3",
+    "eslint": "^8.18.0",
+    "htmlhint": "^1.1.4"
   },
   "bugs": {
     "url": "https://github.com/baiyang-lzy/bbg/issues"

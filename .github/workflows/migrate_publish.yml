@@ -10,12 +10,12 @@ jobs:
   migrate-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout source"
+      - name: Checkout source
         uses: actions/checkout@v3
         with:
           submodules: true
 
-      - name: "Checkout demo site"
+      - name: Checkout demo site
         uses: actions/checkout@v3
         with:
           repository: ${{ secrets.DEPLOY_REPO }}
@@ -23,28 +23,28 @@ jobs:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           path: demo-site
 
-      - name: "Setup Node.js"
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: 'yarn'
+          cache: yarn
 
-      - name: "Install dependencies"
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
 
-      - name: "Configure environment"
+      - name: Configure environment
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: "Migrate"
+      - name: Migrate
         run: |
           export ROOT_DIR="$(pwd)/demo-site"
           export COMMIT_SHA_SHORT="$(git rev-parse --short HEAD)"
           node App/migrate_ci.js
 
-      - name: "Publish"
+      - name: Publish
         run: |
           cd demo-site
           git add .

@@ -1,5 +1,4 @@
 module.exports = function (i) {
-
   save_friend_book();
 
   render_friend_book_list();
@@ -9,4 +8,4 @@ module.exports = function (i) {
   render_friend_book_list();
 
   save_friend_book();
-}
+};

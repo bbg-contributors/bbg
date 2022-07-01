@@ -1,17 +1,17 @@
 
-function goto_article_manager() {
+function goto_article_manager () {
   window.location.href = `./article_manager.html?rootdir=${rootDir}`;
 }
 
-function goto_manage_index() {
+function goto_manage_index () {
   window.location.href = `./manage.html?rootdir=${rootDir}`;
 }
 
-function goto_page_manager() {
+function goto_page_manager () {
   window.location.href = `./page_manager.html?rootdir=${rootDir}`;
 }
 
-function goto_blog_settings() {
+function goto_blog_settings () {
   window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
 }
 

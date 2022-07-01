@@ -1,47 +1,45 @@
 const path = require("path");
-const app = require('@electron/remote').app;
+const app = require("@electron/remote").app;
 const currentProgramVersion = require("./currentProgramVersion.js").toString();
 const download_update = require("./download_update.js");
 const os = require("os");
 
-progress_modal = new bootstrap.Modal(document.getElementById('update-progress-dialog'), {
+progress_modal = new bootstrap.Modal(document.getElementById("update-progress-dialog"), {
   backdrop: "static",
-  keyboard: false
+  keyboard: false,
 });
 
 module.exports = function () {
   fetch("https://api.github.com/repos/baiyang-lzy/bbg/releases/latest")
-    .then((response) => response.json())
-    .then(function (data) {
-      if (parseInt(currentProgramVersion) < parseInt(data["tag_name"])) {
+    .then(response => response.json())
+    .then((data) => {
+      if (parseInt(currentProgramVersion) < parseInt(data.tag_name)) {
         if (
-          window.confirm(`检测到新版本 ${data["tag_name"]}，要下载并安装更新吗？`)
+          window.confirm(`检测到新版本 ${data.tag_name}，要下载并安装更新吗？`)
         ) {
-
           for (let i = 0; i < data.assets.length; i++) {
-            if (data.assets[i]["name"] !== undefined && data.assets[i]["name"] !== null) {
-              if (data.assets[i]["name"].indexOf("win32") != -1) {
+            if (data.assets[i].name !== undefined && data.assets[i].name !== null) {
+              if (data.assets[i].name.includes("win32")) {
                 windows_updateInfo = [
-                  data.assets[i]["browser_download_url"],
-                  data.assets[i]["name"],
+                  data.assets[i].browser_download_url,
+                  data.assets[i].name,
                 ];
               }
 
-              if (data.assets[i]["name"].indexOf("linux") != -1) {
+              if (data.assets[i].name.includes("linux")) {
                 linux_updateInfo = [
-                  data.assets[i]["browser_download_url"],
-                  data.assets[i]["name"],
+                  data.assets[i].browser_download_url,
+                  data.assets[i].name,
                 ];
               }
 
-              if (data.assets[i]["name"].indexOf("darwin") != -1) {
+              if (data.assets[i].name.includes("darwin")) {
                 darwin_updateInfo = [
-                  data.assets[i]["browser_download_url"],
-                  data.assets[i]["name"],
+                  data.assets[i].browser_download_url,
+                  data.assets[i].name,
                 ];
               }
             }
-
           }
 
           if (os.platform() === "win32") {
@@ -62,17 +60,14 @@ module.exports = function () {
             download_update();
           }
 
-          if (os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin") {
-            window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。")
-          }
-
+          if (os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin")
+            window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。");
         }
       } else {
-        window.alert(`当前已经是最新版本！`);
+        window.alert("当前已经是最新版本！");
       }
     })
-    .catch(function (err) {
-      window.alert("检查更新失败：" + err);
+    .catch((err) => {
+      window.alert(`检查更新失败：${err}`);
     });
-
 };

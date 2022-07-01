@@ -1,27 +1,23 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu } = require("electron");
 
-require('@electron/remote/main').initialize();
+require("@electron/remote/main").initialize();
 
-Menu.setApplicationMenu(null)
+Menu.setApplicationMenu(null);
 
-function createWindow() {
+function createWindow () {
   win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
-  })
-
+      contextIsolation: false,
+    },
+  });
 
   require("@electron/remote/main").enable(win.webContents);
-  win.loadFile('./App/start.html');
-
-
+  win.loadFile("./App/start.html");
 }
-
 
 app.whenReady().then(() => {
   createWindow();
-})
+});

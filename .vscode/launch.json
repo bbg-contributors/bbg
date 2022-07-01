@@ -7,7 +7,10 @@
       "name": "带调试工具运行bbg",
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "autoAttachChildProcesses": true,
       "stopOnEntry": false
     },
@@ -17,7 +20,10 @@
       "name": "直接运行bbg",
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
       "autoAttachChildProcesses": true,
       "stopOnEntry": false
     },
@@ -27,7 +33,10 @@
       "name": "打开开发者面板",
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "devpanel"],
+      "runtimeArgs": [
+        "run",
+        "devpanel"
+      ],
       "autoAttachChildProcesses": true,
       "stopOnEntry": false
     }
