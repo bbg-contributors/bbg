@@ -1,13 +1,15 @@
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync } = require("fs");
 
 class BlogData {
-  constructor(rootDir) {
+  constructor (rootDir) {
     this.rootDir = rootDir;
   }
-  getBlogData() {
-    return JSON.parse(readFileSync(this.rootDir + "/data/index.json", "utf8"));
+
+  getBlogData () {
+    return JSON.parse(readFileSync(`${this.rootDir}/data/index.json`, "utf8"));
   }
-  writeBlogData() {
+
+  writeBlogData () {
     writeFileSync(`${this.rootDir}/data/index.json`, JSON.stringify(blog));
   }
 }

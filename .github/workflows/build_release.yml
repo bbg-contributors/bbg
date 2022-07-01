@@ -15,25 +15,25 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: "Checkout source"
+      - name: Checkout source
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: "Setup Node.js"
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-          cache: "yarn"
-      - name: "Install dependencies"
+          cache: yarn
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-      - name: "Build Linux"
+      - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
           yarn run build:linux
           mv dist/linux-unpacked/resources/app.asar dist/app.asar
           rm -rf dist/linux-unpacked
-      - name: "Build Windows"
+      - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
           yarn run build:win
@@ -41,30 +41,30 @@ jobs:
           rm -r dist/win-ia32-unpacked
           rm dist/bbg-ia32.exe
           rm dist/bbg-ia32.exe.blockmap
-      - name: "Build macOS"
+      - name: Build macOS
         if: matrix.os == 'macos-latest'
         run: |
           yarn run build:mac
           rm -rf dist/mac
           rm -rf dist/mac-arm64
-      - name: "Show build files"
+      - name: Show build files
         run: |
           ls dist
-      - name: "Upload Linux artifacts"
+      - name: Upload Linux artifacts
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
           name: linux-artifact
           path: |
             dist/
-      - name: "Upload Windows artifacts"
+      - name: Upload Windows artifacts
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: windows-artifact
           path: |
             dist/
-      - name: "Upload macOS artifacts"
+      - name: Upload macOS artifacts
         if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v3
         with:
@@ -77,12 +77,12 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-      - name: "Download artifacts"
+      - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           path: |
             dist/
-      - name: "Prepare release"
+      - name: Prepare release
         run: |
           cd dist
           mv -f linux-artifact/* .
@@ -102,10 +102,10 @@ jobs:
           mv bbg-x64.exe.blockmap bbg-${RELEASE_VERSION}-x64.exe.blockmap
           shasum -a 256 * > SHA256SUMS
           cd ..
-      - name: "Show file structure"
+      - name: Show file structure
         run: |
           tree -a
-      - name: "Release"
+      - name: Release
         uses: softprops/action-gh-release@v1
         with:
           name: Version ${{ github.ref_name }} / 版本 ${{ github.ref_name }}

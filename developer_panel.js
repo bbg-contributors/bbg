@@ -1,32 +1,28 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const path = require("path");
+const { app, BrowserWindow, Menu } = require("electron");
 
-const path = require('path')
-const express = require('express')
-let eapp = express()
-eapp.use('/', express.static(path.join(__dirname, '/docs/')))
-eapp.listen('23941')
-console.log('App listening on http://localhost:23941')
+const express = require("express");
+const eapp = express();
+eapp.use("/", express.static(path.join(__dirname, "/docs/")));
+eapp.listen("23941");
+console.log("App listening on http://localhost:23941");
 
-require('@electron/remote/main').initialize();
+require("@electron/remote/main").initialize();
 
-function createWindow() {
+function createWindow () {
   win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
-  })
-
+      contextIsolation: false,
+    },
+  });
 
   require("@electron/remote/main").enable(win.webContents);
-  win.loadFile('./DeveloperPanel/index.html');
-
-
+  win.loadFile("./DeveloperPanel/index.html");
 }
-
 
 app.whenReady().then(() => {
   createWindow();
-})
+});

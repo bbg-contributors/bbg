@@ -1,26 +1,24 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require("electron");
 
-require('@electron/remote/main').initialize();
+require("@electron/remote/main").initialize();
 
-function createWindow() {
+function createWindow () {
   win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
-  })
+      contextIsolation: false,
+    },
+  });
 
   require("@electron/remote/main").enable(win.webContents);
-  win.loadFile('./App/start.html');
+  win.loadFile("./App/start.html");
   win.webContents.openDevTools();
 
-
-  console.log(app.getPath('userData'));
+  console.log(app.getPath("userData"));
 }
-
 
 app.whenReady().then(() => {
   createWindow();
-})
+});

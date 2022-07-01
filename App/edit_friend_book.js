@@ -1,5 +1,5 @@
 module.exports = function () {
-  let friendModal = new bootstrap.Modal(document.getElementById('edit_friend_book_dialog'));
+  const friendModal = new bootstrap.Modal(document.getElementById("edit_friend_book_dialog"));
   friendModal.toggle();
 
   document.getElementById("friend_book_content").innerHTML = `
@@ -54,11 +54,9 @@ ${blog["友人帐页面附加信息"]}
 
   render_friend_book_list();
 
-  if (blog["启用内建友人帐页面"] === true) {
+  if (blog["启用内建友人帐页面"] === true)
     document.getElementById("enableFriendBookFunction").checked = true;
-  }
-  if (blog["友人帐页面允许评论"] === true) {
-    document.getElementById("enableFriendBookComment").checked = true;
 
-  }
-}
+  if (blog["友人帐页面允许评论"] === true)
+    document.getElementById("enableFriendBookComment").checked = true;
+};
