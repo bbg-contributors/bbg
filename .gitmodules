@@ -1,7 +1,6 @@
 [submodule "resources"]
 	path = resources
 	url = https://github.com/baiyang-lzy/bbg-resources.git
-
 [submodule "phpbbgadmin"]
 	path = phpbbgadmin
 	url = https://github.com/baiyang-lzy/phpbbgadmin.git
