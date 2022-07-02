@@ -13,5 +13,7 @@ module.exports = function (i) {
 
   BlogInstance.writeBlogData();
 
+  sitemap_hook();
+
   window.location.reload();
 };

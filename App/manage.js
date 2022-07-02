@@ -53,10 +53,12 @@ const install_theme = require("./online_theme.js").install_theme;
 const { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
 const use_public_comment_service_offered_by_bbg = require("./public_comment_srv.js");
 const disable_puclic_comment_service = require("./disable_public_comment_service.js");
-const generate_sitemap = require("./generate_sitemap.js").generate_sitemap;
-const open_generate_sitemap_dialog = require("./generate_sitemap.js").open_generate_sitemap_dialog;
+const generate_sitemap = require("./generate_sitemap.js");
 const check_data_consistency = require("./check_data_consistency.js");
 const getUiFileContent = require("./getUiFileContent.js");
+const generate_rss = require("./generate_rss.js");
+const rss_hook = require("./rss_hook.js");
+const sitemap_hook = require("./sitemap_hook.js");
 
 // goto and menu functions
 const goto_article_manager = require("./gotoFx.js").goto_article_manager;

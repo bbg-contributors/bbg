@@ -34,5 +34,8 @@ module.exports = function (i) {
 
   BlogInstance.writeBlogData();
 
+  rss_hook();
+  sitemap_hook();
+
   window.location.reload();
 };

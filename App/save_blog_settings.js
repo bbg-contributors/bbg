@@ -33,6 +33,10 @@ module.exports = function () {
   const enable_article_file_download = document.getElementById("enable_article_file_download").checked;
   const enable_copy_full_article_to_clipboard = document.getElementById("enable_copy_full_article_to_clipboard").checked;
 
+  const auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
+  const auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
+  const domain_string = document.getElementById("domain_string").value.replaceAll(" ","");
+
   if (document.getElementById("cdn_cho_1").checked === true) {
     blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
     blog_settings_cdn_mode = 1;
@@ -51,6 +55,10 @@ module.exports = function () {
   blog["文章页面显示上一篇下一篇文章导航按钮"] = enable_article_bottom_nav;
   blog["提供文章文件下载"] = enable_article_file_download;
   blog["提供复制全文到剪贴板的选项"] = enable_copy_full_article_to_clipboard;
+
+  blog["网站域名（包括https://）"] = domain_string;
+  blog["在对文章列表进行修改后触发rss生成"] = auto_rss_enabled;
+  blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
 
   blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
 
@@ -94,6 +102,14 @@ module.exports = function () {
   blog["启用自定义JS"] = blog_settings_enable_custom_js;
   blog["自定义CSS"] = blog_settings_custom_css;
   blog["自定义JS"] = blog_settings_custom_js;
+
+  if(domain_string !== "" && domain_string.indexOf("http") === -1){
+    window.alert("尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
+  }
+
+  if(domain_string !== "" && domain_string.charAt(domain_string.length-1) === "/"){
+    window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。")
+  }
 
   BlogInstance.writeBlogData();
 };

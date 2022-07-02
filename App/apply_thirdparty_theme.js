@@ -19,6 +19,7 @@ module.exports = function () {
     blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = "";
     blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = "";
     blog["全局主题设置"]["第三方主题版本"] = "v1";
+    blog["全局主题设置"]["第三方主题文件内容"] = [];
     BlogInstance.writeBlogData();
     window.alert("已经更换为第三方主题。");
     window.location.reload();

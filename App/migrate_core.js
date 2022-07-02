@@ -97,6 +97,25 @@ function addSupportForArticleBottomExternalOptions () {
   blog["提供复制全文到剪贴板的选项"] = false;
 }
 
+function addSupportForBBGthemev2(){
+  if(blog["全局主题设置"]["是否使用第三方主题"] === true && blog["全局主题设置"]["第三方主题版本"] !== "v2"){
+    // 在20220702版本发布前使用v1版本主题的用户
+    blog["全局主题设置"]["第三方主题版本"] = "v1";
+    blog["全局主题设置"]["第三方主题文件内容"] = [];
+  }
+  if(blog["全局主题设置"]["是否使用第三方主题"] === false){
+    // 在20220702版本发布前使用官方主题的用户
+    blog["全局主题设置"]["第三方主题版本"] = "";
+    blog["全局主题设置"]["第三方主题文件内容"] = [];
+  }
+}
+
+function addSupportForDomainRelatedFunctions(){
+  blog["网站域名（包括https://）"] = "";
+  blog["在对文章列表进行修改后触发rss生成"] = false;
+  blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = false;
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -119,6 +138,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -134,6 +155,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (
@@ -153,6 +176,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20210925) {
@@ -165,6 +190,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
@@ -177,6 +204,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20211205) {
@@ -189,6 +218,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20220119) {
@@ -200,6 +231,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
   if (currentBlogVersion === 20220123) {
     check_third_party_theme_compatiblity();
@@ -209,6 +242,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20220202) {
@@ -218,6 +253,8 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
   if (currentBlogVersion === 20220210) {
     check_third_party_theme_compatiblity();
@@ -225,12 +262,16 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
   if (currentBlogVersion === 20220211 || currentBlogVersion === 20220212) {
     check_third_party_theme_compatiblity();
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20220213) {
@@ -238,21 +279,30 @@ module.exports = function () {
     addSupportOfArticlePageOrder();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion === 20220304) {
     check_third_party_theme_compatiblity();
     addSupportForContentLicense();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
   if (currentBlogVersion >= 20220314 && currentBlogVersion <= 20220604) {
     check_third_party_theme_compatiblity();
     addSupportForArticleBottomExternalOptions();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
   }
 
-  if (currentBlogVersion === 20220611)
+  if (currentBlogVersion === 20220611 || currentBlogVersion === 20220624){
     check_third_party_theme_compatiblity();
+    addSupportForBBGthemev2();
+    addSupportForDomainRelatedFunctions();
+  }
 
   check_third_party_theme_compatiblity();
   updateBlogIndexHtml();
