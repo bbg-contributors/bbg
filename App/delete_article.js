@@ -24,6 +24,10 @@ module.exports = function (i) {
 
     blog["文章列表"].splice(i, 1);
     BlogInstance.writeBlogData();
+
+    rss_hook();
+    sitemap_hook();
+
     window.location.reload();
   } else {
 

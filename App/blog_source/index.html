@@ -476,9 +476,7 @@
       }
     }
   </style>
-  <style id="whether_nightmode">
-
-  </style>
+  
   <style>
     blockquote {
       color: #666666;
@@ -523,6 +521,9 @@
       right: 20px;
       bottom: 60px;
     }
+  </style>
+  <style id="whether_nightmode">
+
   </style>
   <style id="custom_css"></style>
   <div id="loading" style="font-family: sans-serif">
@@ -579,6 +580,20 @@
             background-color:black;
             color:white
           }
+
+          pre,
+    code,
+    kbd,
+    samp {
+      border-radius: 4px;
+      background-color: black;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: #0550ae;
+      display: inline-block;
+    }
           `;
       localStorage.setItem("is_nightmode", "on");
     }

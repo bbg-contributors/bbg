@@ -24,6 +24,9 @@ module.exports = function (i) {
 
     blog["页面列表"].splice(i, 1);
     BlogInstance.writeBlogData();
+
+    sitemap_hook();
+
     window.location.reload();
   } else {
 

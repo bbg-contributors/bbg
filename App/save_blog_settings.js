@@ -111,5 +111,15 @@ module.exports = function () {
     window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。")
   }
 
+  if(domain_string === "" && auto_rss_enabled === true){
+    window.alert("在没有填写域名的情况下不能使用rss功能");
+    auto_rss_enabled = false;
+  }
+
+  if(domain_string === "" && auto_sitemap_enabled === true){
+    window.alert("在没有填写域名的情况下不能使用站点地图生成功能");
+    auto_sitemap_enabled = false;
+  }
+
   BlogInstance.writeBlogData();
 };
