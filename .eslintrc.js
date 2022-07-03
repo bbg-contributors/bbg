@@ -109,6 +109,7 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": "off",
         "no-unused-vars": "off",
         "no-undef": "off",
+        "no-eval": "off",
       },
     },
     {
