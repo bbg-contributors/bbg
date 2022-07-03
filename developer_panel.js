@@ -1,5 +1,5 @@
 const path = require("path");
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow } = require("electron");
 
 const express = require("express");
 const eapp = express();
@@ -9,8 +9,8 @@ eapp.listen("23941");
 
 require("@electron/remote/main").initialize();
 
-function createWindow () {
-  win = new BrowserWindow({
+const createWindow = () => {
+  const win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
@@ -21,8 +21,6 @@ function createWindow () {
 
   require("@electron/remote/main").enable(win.webContents);
   win.loadFile("./DeveloperPanel/index.html");
-}
+};
 
-app.whenReady().then(() => {
-  createWindow();
-});
+app.whenReady().then(() => createWindow());
