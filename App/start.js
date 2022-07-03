@@ -57,7 +57,7 @@ function create_new_site_choose_root_dir () {
     properties: ["openDirectory"],
   });
   if (rootDir !== undefined) {
-    generateNewBlog(rootDir);
+    generateNewBlog(rootDir[0]);
   } else {
     // 用户放鸽子的情况
   }
@@ -74,24 +74,24 @@ function open_site () {
 
 function generateNewBlog (rootDir) {
   try {
-    fs.mkdirSync(`${rootDir}/data`);
-    fs.mkdirSync(`${rootDir}/data/articles`);
-    fs.mkdirSync(`${rootDir}/data/pages`);
+    fs.mkdirSync(path.join(rootDir, "data"));
+    fs.mkdirSync(path.join(rootDir, "data/articles"));
+    fs.mkdirSync(path.join(rootDir, "data/pages"));
 
-    copyFileSync(path.join(__dirname, "/blog_source/index.html"), `${rootDir}/index.html`, constants.COPYFILE_EXCL);
+    copyFileSync(path.join(__dirname, "blog_source/index.html"), path.join(rootDir, "index.html"), constants.COPYFILE_EXCL);
 
     if (lang_name === "English") {
-      copyFileSync(path.join(__dirname, "/blog_source/data/articles/first.english.md"), path.join(rootDir, "/data/articles/first.md"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/articles/first.english.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
 
-      copyFileSync(path.join(__dirname, "/blog_source/data/index.english.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
-      copyFileSync(path.join(__dirname, "/blog_source/data/pages/about.english.md"), path.join(rootDir, "/data/pages/about.md"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/index.english.json"), path.join(rootDir, "data/index.json"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/pages/about.english.md"), path.join(rootDir, "data/pages/about.md"), constants.COPYFILE_EXCL);
     }
 
     if (lang_name === "简体中文") {
-      copyFileSync(path.join(__dirname, "blog_source/data/articles/first.zhcn.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/articles/first.zhcn.md"), path.join(rootDir, "/data/articles/first.md"), constants.COPYFILE_EXCL);
 
-      copyFileSync(path.join(__dirname, "blog_source/data/index.zhcn.json"), path.join(rootDir, "data/index.json"), constants.COPYFILE_EXCL);
-      copyFileSync(path.join(__dirname, "blog_source/data/pages/about.zhcn.md"), path.join(rootDir, "data/pages/about.md"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/index.zhcn.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/pages/about.zhcn.md"), path.join(rootDir, "/data/pages/about.md"), constants.COPYFILE_EXCL);
     }
 
     const BlogInstance = new BlogData(rootDir);
@@ -107,6 +107,7 @@ function generateNewBlog (rootDir) {
     window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
   } catch (error) {
     create_new_site_dialog_hide();
+    console.error(error);
     createErrDialog("博客站点初始化错误（ERR_CANNOT_INIT）", `未能正确的初始化博客站点。<br />请确保你选择的文件夹是一个空目录，并且你有足够的访问权限，否则可能无法正常初始化。<br />已中止初始化操作，没有任何已有文件被覆盖。<br />以下是错误日志，请将此信息报告给开发者：<br /><br />${error}`);
   }
 }

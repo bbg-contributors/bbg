@@ -74,12 +74,11 @@ const open_blog_dir = require("./menuFx.js").open_blog_dir;
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
 
-storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir }, err => console.error(err));
+storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir });
 
 // 初始化界面
 
 storage.has("language", (error, hasKey) => {
-  if (error) console.error(error);
   if (hasKey) {
     storage.get("language", (error, data) => {
       if (error) console.error(error);
@@ -105,4 +104,5 @@ storage.has("language", (error, hasKey) => {
   } else {
     lang_name = "English";
   }
+  if (error) console.error(error);
 });
