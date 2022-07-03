@@ -43,12 +43,13 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "@so1ve/eslint-config": "^0.21.5",
     "electron": "^19.0.2",
     "electron-builder": "^23.0.3",
     "eslint": "^8.18.0",
-    "htmlhint": "^1.1.4",
-    "typescript": "^4.7.4"
+    "eslint-plugin-jsonc": "^2.3.1",
+    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-yml": "^1.0.0",
+    "htmlhint": "^1.1.4"
   },
   "bugs": {
     "url": "https://github.com/baiyang-lzy/bbg/issues"

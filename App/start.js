@@ -32,27 +32,27 @@ const stylesheet_dialog = new bootstrap.Modal(document.getElementById("styleshee
   keyboard: false,
 });
 
-function create_new_site_dialog_show () {
+function create_new_site_dialog_show() {
   create_new_site_dialog.show();
 }
 
-function create_new_site_dialog_hide () {
+function create_new_site_dialog_hide() {
   create_new_site_dialog.hide();
 }
 
-function createErrDialog (title, content) {
+function createErrDialog(title, content) {
   err_dialog.show();
   document.getElementById("err-dialog-title").innerHTML = title;
   document.getElementById("err-dialog-content").innerHTML = content;
 }
 
-function createInfoDialog (title, content) {
+function createInfoDialog(title, content) {
   info_dialog.show();
   document.getElementById("info-dialog-title").innerHTML = title;
   document.getElementById("info-dialog-content").innerHTML = content;
 }
 
-function create_new_site_choose_root_dir () {
+function create_new_site_choose_root_dir() {
   const rootDir = dialog.showOpenDialogSync({
     properties: ["openDirectory"],
   });
@@ -63,7 +63,7 @@ function create_new_site_choose_root_dir () {
   }
 }
 
-function open_site () {
+function open_site() {
   const rootDir = dialog.showOpenDialogSync({
     properties: ["openDirectory"],
   });
@@ -72,7 +72,7 @@ function open_site () {
     manageSiteByRootDir(rootDir);
 }
 
-function generateNewBlog (rootDir) {
+function generateNewBlog(rootDir) {
   try {
     fs.mkdirSync(path.join(rootDir, "data"));
     fs.mkdirSync(path.join(rootDir, "data/articles"));
@@ -112,7 +112,7 @@ function generateNewBlog (rootDir) {
   }
 }
 
-function manageSiteByRootDir (rootDir) {
+function manageSiteByRootDir(rootDir) {
   try {
     JSON.parse(readFileSync(`${rootDir}/data/index.json`, "utf8"));
     window.location.href = `./article_manager.html?rootdir=${rootDir}`;
@@ -121,11 +121,11 @@ function manageSiteByRootDir (rootDir) {
   }
 }
 
-function displayContributers () {
+function displayContributers() {
   shell.openExternal("https://github.com/baiyang-lzy/bbg/graphs/contributors");
 }
 
-function openGroupDialog () {
+function openGroupDialog() {
   createInfoDialog(langdata.JOIN_OUR_GROUP[lang_name], `
     
     <p>${langdata.QQ_GROUP_NUMBER[lang_name]}</p>
@@ -133,7 +133,7 @@ function openGroupDialog () {
     `);
 }
 
-function openImageCopyrightDialog () {
+function openImageCopyrightDialog() {
   createInfoDialog(langdata.ABOUT_IMAGE_COPYRIGHT[lang_name], langdata.ABOUT_IMAGE_COPYRIGHT_DESCRIPTION[lang_name]);
 }
 
@@ -231,7 +231,7 @@ storage.has("language", (error, hasKey) => {
             document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data.rootdir.replace(/\\/g, "/")}')`);
           });
         } else {
-          ;
+          
         }
       });
 
@@ -239,35 +239,35 @@ storage.has("language", (error, hasKey) => {
         if (existsSync("/usr/share/bbg/bbgvertype")) {
           bbgvertype = readFileSync("/usr/share/bbg/bbgvertype", "utf8").replace("\n", "");
           switch (bbgvertype) {
-            case "aur-bbg-git-misaka13514":
-              document.getElementById("check_update_interface").innerHTML = `
+          case "aur-bbg-git-misaka13514":
+            document.getElementById("check_update_interface").innerHTML = `
                         <h5>版本信息</h5>
                         安装通道：AUR（bbg-git）<br />
                         打包者：Misaka13514<br />
                         内部版本号：${currentProgramVersion}<br />
 
                         `;
-              break;
-            case "aur-bbg-zzjzxq33-misaka13514":
-              document.getElementById("check_update_interface").innerHTML = `
+            break;
+          case "aur-bbg-zzjzxq33-misaka13514":
+            document.getElementById("check_update_interface").innerHTML = `
                         <h5>版本信息</h5>
                         安装通道：AUR（bbg）<br />
                         打包者：zzjzxq33 和 Misaka13514<br />
                         内部版本号：${currentProgramVersion}<br />
 
                         `;
-              break;
-            case "debpkg-mzwing":
-              document.getElementById("check_update_interface").innerHTML = `
+            break;
+          case "debpkg-mzwing":
+            document.getElementById("check_update_interface").innerHTML = `
                         <h5>版本信息</h5>
                         安装通道：DEB 包<br />
                         打包者：mzwing<br />
                         内部版本号：${currentProgramVersion}<br />
 
                         `;
-              break;
-            default:
-              break;
+            break;
+          default:
+            break;
           }
         }
       }
@@ -277,21 +277,21 @@ storage.has("language", (error, hasKey) => {
   }
 });
 
-function select_language (language_name) {
+function select_language(language_name) {
   storage.set("language", { name: language_name }, (err) => {
     if (err) console.error(err);
     window.location.reload();
   });
 }
 
-function changeStylesheet (css_filename) {
+function changeStylesheet(css_filename) {
   storage.set("stylesheet", { file: css_filename }, (err) => {
     if (err) console.error(err);
     window.location.reload();
   });
 }
 
-function openStylesheetDialog () {
+function openStylesheetDialog() {
   stylesheet_dialog.show();
   document.getElementById("stylesheet-dialog-content").innerHTML = `
     <div class="container-fluid">
