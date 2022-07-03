@@ -1,7 +1,6 @@
 
-const { readFileSync, writeFileSync } = require("fs");
+const { writeFileSync } = require("fs");
 module.exports = function () {
- 
   sitemap_baseurl = blog["网站域名（包括https://）"];
 
   let sitemap_content = "";
@@ -22,5 +21,4 @@ module.exports = function () {
     sitemap_content += `${sitemap_baseurl}/index.html?type=internal&function=archive_and_tags\n`;
 
   writeFileSync(`${rootDir}/sitemap.txt`, sitemap_content);
-  
 };

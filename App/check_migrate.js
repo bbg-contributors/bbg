@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { constants } = require("fs");
+// const fs = require("fs");
+// const { constants } = require("fs");
 const dialog = require("@electron/remote").dialog;
 const currentProgramVersion = require("./currentProgramVersion.js");
 

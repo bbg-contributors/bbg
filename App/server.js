@@ -1,19 +1,19 @@
-
-const getUrlArgs = require("./getUrlArgs.js");
-const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\", "/");
+const execSync = require("child_process").execSync;
 const shell = require("@electron/remote").shell;
 const express = require("express");
-const loadUniStyle = require("./loadUniStyle.js");
-const AppPath = require("@electron/remote").app.getPath("userData");
-const execSync = require("child_process").execSync;
-
 const storage = require("electron-json-storage");
+const AppPath = require("@electron/remote").app.getPath("userData");
 
 const langdata = require("./LangData.js");
+const getUrlArgs = require("./getUrlArgs.js");
+const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\", "/");
+
+const loadUniStyle = require("./loadUniStyle.js");
 
 storage.setDataPath(AppPath);
 
 storage.get("language", (error, data) => {
+  if (error) console.error(error);
   lang_name = data.name;
 
   document.getElementById("preview_site_content").innerHTML = `
@@ -55,7 +55,7 @@ const server = express();
 server.use(express.static(rootDir));
 
 server.listen(41701, () => {
-  console.log("live server listening at http://localhost:41701");
+  // console.log("live server listening at http://localhost:41701");
 });
 
 function exit_preview () {

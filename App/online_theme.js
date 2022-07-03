@@ -111,7 +111,6 @@ function render_online_theme_list () {
   fetch("https://api.github.com/repos/baiyang-lzy/bbg-theme-collection/git/trees/main")
     .then(response => response.json())
     .then((data) => {
-      console.log(data);
       const theme_list = data.tree;
       for (let i = 0; i < theme_list.length; i++) {
         if (theme_list[i].type === "tree")

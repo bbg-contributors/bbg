@@ -5,7 +5,7 @@ module.exports = function () {
   const tempString = randomString(12);
 
   if (existsSync(`${rootDir}/data/pages/${tempString}.md`)) {
-
+    ;
   } else {
     blog["页面列表"].unshift({
       "页面标题": "",

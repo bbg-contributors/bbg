@@ -3,6 +3,8 @@ const AppPath = require("@electron/remote").app.getPath("userData");
 const storage = require("electron-json-storage");
 storage.setDataPath(AppPath);
 
+const e = require("express");
+
 const langdata = require("./LangData.js");
 
 const getUrlArgs = require("./getUrlArgs.js");
@@ -71,23 +73,21 @@ const open_blog_dir = require("./menuFx.js").open_blog_dir;
 
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
-const e = require("express");
 
-storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir }, (err) => {
-
-});
+storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir }, err => console.error(err));
 
 // 初始化界面
 
 storage.has("language", (error, hasKey) => {
+  if (error) console.error(error);
   if (hasKey) {
     storage.get("language", (error, data) => {
+      if (error) console.error(error);
       lang_name = data.name;
       check_migrate();
       render_container();
       render_nav();
       loadUniStyle();
-
       if (window.location.href.includes("article_manager.html")) {
         renderArticleManager();
       } else {

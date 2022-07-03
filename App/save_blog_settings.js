@@ -14,7 +14,7 @@ module.exports = function () {
     blog_settings_valine_appid = document.getElementById("blog_settings_valine_appid").value;
     blog_settings_valine_appkey = document.getElementById("blog_settings_valine_appkey").value;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 
   const blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value;
@@ -33,9 +33,9 @@ module.exports = function () {
   const enable_article_file_download = document.getElementById("enable_article_file_download").checked;
   const enable_copy_full_article_to_clipboard = document.getElementById("enable_copy_full_article_to_clipboard").checked;
 
-  const auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
-  const auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
-  const domain_string = document.getElementById("domain_string").value.replaceAll(" ","");
+  let auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
+  let auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
+  const domain_string = document.getElementById("domain_string").value.replaceAll(" ", "");
 
   if (document.getElementById("cdn_cho_1").checked === true) {
     blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
@@ -103,20 +103,16 @@ module.exports = function () {
   blog["自定义CSS"] = blog_settings_custom_css;
   blog["自定义JS"] = blog_settings_custom_js;
 
-  if(domain_string !== "" && domain_string.indexOf("http") === -1){
-    window.alert("尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
-  }
+  if (domain_string !== "" && (domain_string.includes("http") === -1)) window.alert("尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
 
-  if(domain_string !== "" && domain_string.charAt(domain_string.length-1) === "/"){
-    window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。")
-  }
+  if (domain_string !== "" && domain_string.charAt(domain_string.length - 1) === "/") window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。");
 
-  if(domain_string === "" && auto_rss_enabled === true){
+  if (domain_string === "" && auto_rss_enabled === true) {
     window.alert("在没有填写域名的情况下不能使用rss功能");
     auto_rss_enabled = false;
   }
 
-  if(domain_string === "" && auto_sitemap_enabled === true){
+  if (domain_string === "" && auto_sitemap_enabled === true) {
     window.alert("在没有填写域名的情况下不能使用站点地图生成功能");
     auto_sitemap_enabled = false;
   }

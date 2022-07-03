@@ -1,8 +1,8 @@
-const path = require("path");
-const app = require("@electron/remote").app;
+// const path = require("path");
+// const app = require("@electron/remote").app;
+const os = require("os");
 const currentProgramVersion = require("./currentProgramVersion.js").toString();
 const download_update = require("./download_update.js");
-const os = require("os");
 
 progress_modal = new bootstrap.Modal(document.getElementById("update-progress-dialog"), {
   backdrop: "static",

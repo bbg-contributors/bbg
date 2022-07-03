@@ -1,5 +1,5 @@
-const dialog = require("@electron/remote").dialog;
 const { rmSync } = require("fs");
+const dialog = require("@electron/remote").dialog;
 
 module.exports = function (i) {
   const submitDialog = dialog.showMessageBoxSync({
@@ -30,6 +30,6 @@ module.exports = function (i) {
 
     window.location.reload();
   } else {
-
+    ;
   }
 };

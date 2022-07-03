@@ -1,11 +1,11 @@
 
 const fs = require("fs");
 const os = require("os");
-
+const path = require("path");
+const { copyFileSync, constants, readFileSync, existsSync } = require("fs");
 const dialog = require("@electron/remote").dialog;
 const shell = require("@electron/remote").shell;
 const AppPath = require("@electron/remote").app.getPath("userData");
-const { copyFileSync, constants, readFileSync, existsSync } = require("fs");
 const storage = require("electron-json-storage");
 
 const langdata = require("./LangData.js");
@@ -78,20 +78,20 @@ function generateNewBlog (rootDir) {
     fs.mkdirSync(`${rootDir}/data/articles`);
     fs.mkdirSync(`${rootDir}/data/pages`);
 
-    copyFileSync(`${__dirname}/blog_source/index.html`, `${rootDir}/index.html`, constants.COPYFILE_EXCL);
+    copyFileSync(path.join(__dirname, "/blog_source/index.html"), `${rootDir}/index.html`, constants.COPYFILE_EXCL);
 
     if (lang_name === "English") {
-      copyFileSync(`${__dirname}/blog_source/data/articles/first.english.md`, `${rootDir}/data/articles/first.md`, constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/articles/first.english.md"), path.join(rootDir, "/data/articles/first.md"), constants.COPYFILE_EXCL);
 
-      copyFileSync(`${__dirname}/blog_source/data/index.english.json`, `${rootDir}/data/index.json`, constants.COPYFILE_EXCL);
-      copyFileSync(`${__dirname}/blog_source/data/pages/about.english.md`, `${rootDir}/data/pages/about.md`, constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/index.english.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/pages/about.english.md"), path.join(rootDir, "/data/pages/about.md"), constants.COPYFILE_EXCL);
     }
 
     if (lang_name === "简体中文") {
-      copyFileSync(`${__dirname}/blog_source/data/articles/first.zhcn.md`, `${rootDir}/data/articles/first.md`, constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/articles/first.zhcn.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
 
-      copyFileSync(`${__dirname}/blog_source/data/index.zhcn.json`, `${rootDir}/data/index.json`, constants.COPYFILE_EXCL);
-      copyFileSync(`${__dirname}/blog_source/data/pages/about.zhcn.md`, `${rootDir}/data/pages/about.md`, constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/index.zhcn.json"), path.join(rootDir, "data/index.json"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "blog_source/data/pages/about.zhcn.md"), path.join(rootDir, "data/pages/about.md"), constants.COPYFILE_EXCL);
     }
 
     const BlogInstance = new BlogData(rootDir);
@@ -137,15 +137,20 @@ function openImageCopyrightDialog () {
 }
 
 storage.has("language", (error, hasKey) => {
+  if (error) console.error(error);
   if (hasKey) {
     storage.get("language", (error, data) => {
+      if (error) console.error(error);
       storage.has("stylesheet", (error, hasKey) => {
+        if (error) console.error(error);
         if (hasKey) {
           storage.get("stylesheet", (error, data) => {
+            if (error) console.error(error);
             loadUniStyle();
           });
         } else {
           storage.set("stylesheet", { file: "default.css" }, (err) => {
+            if (err) console.error(err);
             window.location.reload();
           });
         }
@@ -216,14 +221,16 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
 
       storage.has("last_managed_site", (error, hasKey) => {
+        if (error) console.error(error);
         if (hasKey) {
           storage.get("last_managed_site", (error, data) => {
+            if (error) console.error(error);
             document.getElementById("last_managed_site").setAttribute("style", "display:block");
             document.getElementById("last_managed_site_title").innerHTML = data.title;
             document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data.rootdir.replace(/\\/g, "/")}')`);
           });
         } else {
-
+          ;
         }
       });
 
@@ -271,12 +278,14 @@ storage.has("language", (error, hasKey) => {
 
 function select_language (language_name) {
   storage.set("language", { name: language_name }, (err) => {
+    if (err) console.error(err);
     window.location.reload();
   });
 }
 
 function changeStylesheet (css_filename) {
   storage.set("stylesheet", { file: css_filename }, (err) => {
+    if (err) console.error(err);
     window.location.reload();
   });
 }

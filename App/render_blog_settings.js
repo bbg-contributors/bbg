@@ -11,15 +11,15 @@ module.exports = function () {
   if (blog["全局主题设置"]["是否使用第三方主题"] === true) {
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === true) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
-  目前此站点正在使用<b>从文件安装的第三方主题</b>，如果可能的话建议你从主题商店安装，因为主题商店的主题通常都有更好的支持。
+    目前此站点正在使用<b>从文件安装的第三方主题</b>，如果可能的话建议你从主题商店安装，因为主题商店的主题通常都有更好的支持。
   
   `;
     }
 
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
-  目前此站点正在使用 <b>来自主题商店的第三方主题。</b>该主题的相关信息如下：<br /><br />主题名称：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</b><br />
-  主题版本：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]}</b>
+    目前此站点正在使用 <b>来自主题商店的第三方主题。</b>该主题的相关信息如下：<br /><br />主题名称：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</b><br />
+    主题版本：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]}</b>
   
   `;
     }
@@ -65,8 +65,8 @@ module.exports = function () {
   if (blog["提供复制全文到剪贴板的选项"] === true)
     document.getElementById("enable_copy_full_article_to_clipboard").checked = true;
 
-    document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
-    document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
+  document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
+  document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
 
   if (blog["CDN选择"] === 1) {
     // 从列表中选择cdn地址
