@@ -277,4 +277,5 @@ module.exports = {
     "yml/quotes": ["warn", { prefer: "double", avoidEscape: false }],
     "yml/no-empty-document": "off",
   },
+  "parser": "babel-eslint",
 };
