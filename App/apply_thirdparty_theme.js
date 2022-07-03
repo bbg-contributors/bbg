@@ -1,5 +1,5 @@
-const dialog = require("@electron/remote").dialog;
 const { readFileSync, writeFileSync } = require("fs");
+const dialog = require("@electron/remote").dialog;
 
 module.exports = function () {
   const third_party_theme_path = dialog.showOpenDialogSync({

@@ -1,6 +1,6 @@
-const dialog = require("@electron/remote").dialog;
 const { readFileSync, writeFileSync } = require("fs");
-const admZip = require("adm-zip");
+const dialog = require("@electron/remote").dialog;
+const AdmZip = require("adm-zip");
 
 module.exports = function () {
   const third_party_theme_path = dialog.showOpenDialogSync({
@@ -13,7 +13,7 @@ module.exports = function () {
     window.alert("你没有选择任何主题文件。博客的主题将不会改变。");
     window.location.reload();
   } else {
-    const zip = new admZip(third_party_theme_path[0]);
+    const zip = new AdmZip(third_party_theme_path[0]);
     zip.extractAllTo(rootDir, true);
     const content = zip.getEntries();
     const wcontent = [];

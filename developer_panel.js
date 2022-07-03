@@ -5,7 +5,7 @@ const express = require("express");
 const eapp = express();
 eapp.use("/", express.static(path.join(__dirname, "/docs/")));
 eapp.listen("23941");
-console.log("App listening on http://localhost:23941");
+// console.log("App listening on http://localhost:23941");
 
 require("@electron/remote/main").initialize();
 

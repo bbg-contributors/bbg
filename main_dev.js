@@ -16,7 +16,7 @@ function createWindow () {
   win.loadFile("./App/start.html");
   win.webContents.openDevTools();
 
-  console.log(app.getPath("userData"));
+  // console.log(app.getPath("userData"));
 }
 
 app.whenReady().then(() => {

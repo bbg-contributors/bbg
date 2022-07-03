@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const { constants } = require("fs");
 const currentProgramVersion = require("./currentProgramVersion.js");
 
@@ -8,8 +9,8 @@ function updateBlogIndexHtml () {
   ) {
     fs.rmSync(`${rootDir}/index.html`);
     fs.copyFileSync(
-      `${__dirname}/blog_source/index.html`,
-      `${rootDir}/index.html`,
+      path.join(__dirname, "blog_source/index.html"),
+      path.join(rootDir, "index.html"),
       constants.COPYFILE_EXCL,
     );
   }
@@ -97,20 +98,20 @@ function addSupportForArticleBottomExternalOptions () {
   blog["提供复制全文到剪贴板的选项"] = false;
 }
 
-function addSupportForBBGthemev2(){
-  if(blog["全局主题设置"]["是否使用第三方主题"] === true && blog["全局主题设置"]["第三方主题版本"] !== "v2"){
+function addSupportForBBGthemev2 () {
+  if (blog["全局主题设置"]["是否使用第三方主题"] === true && blog["全局主题设置"]["第三方主题版本"] !== "v2") {
     // 在20220702版本发布前使用v1版本主题的用户
     blog["全局主题设置"]["第三方主题版本"] = "v1";
     blog["全局主题设置"]["第三方主题文件内容"] = [];
   }
-  if(blog["全局主题设置"]["是否使用第三方主题"] === false){
+  if (blog["全局主题设置"]["是否使用第三方主题"] === false) {
     // 在20220702版本发布前使用官方主题的用户
     blog["全局主题设置"]["第三方主题版本"] = "";
     blog["全局主题设置"]["第三方主题文件内容"] = [];
   }
 }
 
-function addSupportForDomainRelatedFunctions(){
+function addSupportForDomainRelatedFunctions () {
   blog["网站域名（包括https://）"] = "";
   blog["在对文章列表进行修改后触发rss生成"] = false;
   blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = false;
@@ -298,7 +299,7 @@ module.exports = function () {
     addSupportForDomainRelatedFunctions();
   }
 
-  if (currentBlogVersion === 20220611 || currentBlogVersion === 20220624){
+  if (currentBlogVersion === 20220611 || currentBlogVersion === 20220624) {
     check_third_party_theme_compatiblity();
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
@@ -309,5 +310,5 @@ module.exports = function () {
 
   fs.writeFileSync(`${rootDir}/data/index.json`, JSON.stringify(blog));
 
-  console.log("博客数据更新成功。");
+  // console.log("博客数据更新成功。");
 };
