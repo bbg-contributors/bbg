@@ -2,8 +2,8 @@ const { app, BrowserWindow } = require("electron");
 
 require("@electron/remote/main").initialize();
 
-function createWindow () {
-  win = new BrowserWindow({
+const createWindow = () => {
+  const win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
@@ -17,8 +17,6 @@ function createWindow () {
   win.webContents.openDevTools();
 
   // console.log(app.getPath("userData"));
-}
+};
 
-app.whenReady().then(() => {
-  createWindow();
-});
+app.whenReady().then(() => createWindow());
