@@ -2,7 +2,7 @@
 const { writeFileSync } = require("fs");
 
 function install_theme (theme_name, theme_updateDate) {
-  fetch(`https://api.github.com/repos/baiyang-lzy/bbg-theme-collection/contents/${theme_name}/index.html`)
+  fetch(`https://api.github.com/repos/bbg-contributors/bbg-theme-collection/contents/${theme_name}/index.html`)
     .then(response => response.json())
     .then((responseData) => {
       save_blog_settings();
@@ -23,7 +23,7 @@ function install_theme (theme_name, theme_updateDate) {
 }
 
 function render_theme_detail (theme_name) {
-  fetch(`https://api.github.com/repos/baiyang-lzy/bbg-theme-collection/contents/${theme_name}/index.json`)
+  fetch(`https://api.github.com/repos/bbg-contributors/bbg-theme-collection/contents/${theme_name}/index.json`)
     .then((response) => { return response.json(); })
     .then((responseData) => {
       const data = JSON.parse(decodeURIComponent(escape(window.atob(responseData.content.replaceAll("\n", "")))));
@@ -108,7 +108,7 @@ function render_online_theme_list () {
 
   document.getElementById("download_online_theme_dialog_content").innerHTML += "<h2>主题列表</h2><p>以下列出了主题商店中的主题。</p><hr />";
 
-  fetch("https://api.github.com/repos/baiyang-lzy/bbg-theme-collection/git/trees/main")
+  fetch("https://api.github.com/repos/bbg-contributors/bbg-theme-collection/git/trees/main")
     .then(response => response.json())
     .then((data) => {
       const theme_list = data.tree;

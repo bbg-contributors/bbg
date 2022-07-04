@@ -10,7 +10,7 @@ progress_modal = new bootstrap.Modal(document.getElementById("update-progress-di
 });
 
 module.exports = function () {
-  fetch("https://api.github.com/repos/baiyang-lzy/bbg/releases/latest")
+  fetch("https://api.github.com/repos/bbg-contributors/bbg/releases/latest")
     .then(response => response.json())
     .then((data) => {
       if (parseInt(currentProgramVersion) < parseInt(data.tag_name)) {
@@ -61,7 +61,7 @@ module.exports = function () {
           }
 
           if (os.platform() !== "win32" && os.platform() !== "linux" && os.platform() !== "darwin")
-            window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/baiyang-lzy/bbg 编译安装新版本。");
+            window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/bbg-contributors/bbg 编译安装新版本。");
         }
       } else {
         window.alert("当前已经是最新版本！");

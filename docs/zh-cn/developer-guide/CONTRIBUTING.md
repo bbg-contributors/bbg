@@ -17,7 +17,7 @@
 然后获取源代码。
 
 ```sh
-git clone --recursive https://github.com/baiyang-lzy/bbg.git
+git clone --recursive https://github.com/bbg-contributors/bbg.git
 ```
 
 然后转到项目根目录下执行以下命令安装依赖：

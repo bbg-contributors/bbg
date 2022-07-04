@@ -122,7 +122,7 @@ function manageSiteByRootDir(rootDir) {
 }
 
 function displayContributers() {
-  shell.openExternal("https://github.com/baiyang-lzy/bbg/graphs/contributors");
+  shell.openExternal("https://github.com/bbg-contributors/bbg/graphs/contributors");
 }
 
 function openGroupDialog() {

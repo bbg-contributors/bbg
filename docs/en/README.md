@@ -36,4 +36,4 @@ After downloading the package, install it and execute the `bbg` to get started.
 
 ## License
 
-This repository is released into the public domain. Notice that the icon of the application which located at another repository ( [baiyang-lzy/bbg-resources](https://github.com/baiyang-lzy/bbg-resources) ) is generated from Crypko AI and can only be used for non-commercial use.
+This repository is released into the public domain. Notice that the icon of the application which located at another repository ([bbg-contributors/bbg-resources](https://github.com/bbg-contributors/bbg-resources)) is generated from Crypko AI and can only be used for non-commercial use.

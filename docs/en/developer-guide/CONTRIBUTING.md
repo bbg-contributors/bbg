@@ -15,7 +15,7 @@ First make sure you have installed these below on your computer:
 Then get the source code.
 
 ```sh
-git clone --recursive https://github.com/baiyang-lzy/bbg.git
+git clone --recursive https://github.com/bbg-contributors/bbg.git
 ```
 
 Then go to the project root directory and execute command below to install dependencies:

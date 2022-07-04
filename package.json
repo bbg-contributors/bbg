@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:baiyang-lzy/bbg.git"
+    "url": "git@github.com:bbg-contributors/bbg.git"
   },
   "main": "main.js",
   "scripts": {
@@ -52,6 +52,6 @@
     "htmlhint": "^1.1.4"
   },
   "bugs": {
-    "url": "https://github.com/baiyang-lzy/bbg/issues"
+    "url": "https://github.com/bbg-contributors/bbg/issues"
   }
 }
