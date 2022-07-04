@@ -6,7 +6,7 @@
 
 | 下载通道 | 备注 |
 | --- | --- |
-| [GitHub Releases](https://github.com/baiyang-lzy/bbg/releases) | 版本最新 |
+| [GitHub Releases](https://github.com/bbg-contributors/bbg/releases) | 版本最新 |
 
 ## 非官方下载源
 

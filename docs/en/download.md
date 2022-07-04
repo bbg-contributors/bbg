@@ -6,7 +6,7 @@ The official download source provides the latest version of the BBG package, sup
 
 | Download Channel | Note |
 | --- | --- |
-| [GitHub Releases](https://github.com/baiyang-lzy/bbg/releases) | Latest |
+| [GitHub Releases](https://github.com/bbg-contributors/bbg/releases) | Latest |
 
 ## Unofficial download source
 
