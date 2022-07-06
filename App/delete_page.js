@@ -29,6 +29,6 @@ module.exports = function (i) {
 
     window.location.reload();
   } else {
-    ;
+    
   }
 };

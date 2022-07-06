@@ -2,17 +2,13 @@
 
 ## 开发环境搭建
 
-**建议使用 [Visual Studio Code](https://code.visualstudio.com/) 开发此项目，尽管并不是必须的。**
-
----
-
 首先确保计算机上已经安装：
 
 * Git
-* Node.js 运行时 版本 >= 16
-* CNPM
+* Node.js >= 16
+* Yarn (可选*)
 
-注意：**为了避免网络问题，BBG 项目自 2021 年 12 月 26 日起使用 CNPM 作为项目的包管理器。如果你还没有安装 CNPM ，请执行 ```npm install -g cnpm --registry=https://registry.npmmirror.com``` 进行安装（Linux 下可能需要添加环境变量）**
+> *你可以使用任何你喜欢的包管理器来代替 Yarn，你也无需将其它包管理器生成的文件（比如```pnpm-lock.yaml```）添加到 `.gitignore` 中。
 
 然后获取源代码。
 
@@ -23,29 +19,21 @@ git clone --recursive https://github.com/bbg-contributors/bbg.git
 然后转到项目根目录下执行以下命令安装依赖：
 
 ```sh
-cnpm install
+yarn install
 ```
-
-### 解决 Electron 无法启动并报错
-
-此问题是由于网络原因导致的。如果遇到了请换用 CNPM 作为包管理器，删除项目根目录下的 node_modules 目录并重新使用 CNPM 为本项目补齐依赖（```cnpm install```）。
-
-### 不使用 NPM 或 CNPM 作为包管理器
-
-你可以使用任何你喜欢的包管理器，只要它不影响 NPM 或 CNPM 的工作即可。你也无需将其它包管理器生成的文件（如 `yarn.lock`）添加到 `.gitignore` 中。
 
 ## 常用命令
 
 ### 启动一个 BBG 实例（带有调试工具）
 
 ```sh
-cnpm run dev
+yarn run dev
 ```
 
 ### 启动一个 BBG 实例（不带有调试工具，同生产环境一致）
 
 ```sh
-cnpm run start
+yarn run start
 ```
 
 ### 生成软件包
@@ -55,9 +43,9 @@ cnpm run start
 > 如果你在 Linux 平台生成适用于 Windows 的软件包，需要提前安装 Wine。
 
 ```sh
-cnpm run build:win
-cnpm run build:linux
-cnpm run build:mac
+yarn run build:win
+yarn run build:linux
+yarn run build:mac
 ```
 
 由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 ```Unsupported `GLOBAL_AGENT.HTTP_PROXY` configuration```的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
@@ -67,7 +55,7 @@ export GLOBAL_AGENT_HTTPS_PROXY=http://host:port
 export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 ```
 
-其中，`host:port` 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
+其中，```host:port``` 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
 
 ### 在本地查看文档
 
@@ -78,10 +66,20 @@ export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 使用这个命令打开 BBG 开发者面板：
 
 ```sh
-cnpm run devpanel
+yarn run devpanel
 ```
 
 你也可以访问 <http://localhost:23941>。
+
+## 语法检查和格式化
+
+你可以在本项目中使用 ESLint：
+
+```sh
+yarn run lint
+yarn run lint:fix
+yarn run lint:html
+```
 
 ## 这些文件都是什么意思？/我想修改XXX功能，应该从哪里开始？
 
@@ -96,13 +94,3 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 `blog` 是将博客的数据文件转换后的 JavaScript 对象。注意程序中对此对象的修改不会反映到文件中。
 
 `BlogInstance.writeBlogData()` 用于将 blog 对象的内容保存到文件中。
-
-## 使用开发者面板
-
-BBG 开发者面板目前可以用来帮助发布新版本，里面也已经整合了开发文档。
-
-使用这个命令打开 BBG 开发者面板：
-
-```sh
-cnpm run devpanel
-```

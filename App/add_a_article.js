@@ -4,7 +4,7 @@ module.exports = function () {
   const tempString = randomString(12);
 
   if (existsSync(`${rootDir}/data/articles/${tempString}.md`)) {
-    ;
+    
   } else {
     const dateobject = new Date();
     const datenow = dateobject.toLocaleDateString();
