@@ -14,7 +14,7 @@ const check_migrate = require("./check_migrate.js");
 const randomString = require("./randomString.js");
 
 // 创建 blog 对象
-const rootDir = decodeURIComponent(getUrlArgs("rootdir"));
+const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\","/");
 const BlogInstance = new BlogData(rootDir);
 
 const blog = BlogInstance.getBlogData();
