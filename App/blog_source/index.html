@@ -560,8 +560,8 @@
   <script>
 
 marked.setOptions({
-  highlight: function(code,lang) {
-    return hljs.highlight(code, {language:lang}).value;
+  highlight: function(code) {
+    return hljs.highlightAuto(code).value;
   }
 });
 
@@ -597,6 +597,10 @@ marked.setOptions({
           }
           .card{
             background-color:black;
+            color:white
+          }
+
+          ul,ol,li,h1,h2 ,h3,h4,h5,h6{
             color:white
           }
 
