@@ -512,8 +512,8 @@
       padding-right: 12px;
       color: #0550ae;
       display: inline-block;
-      word-break: break-all;
-      white-space: pre-line;
+      word-break: break-all!important;
+      white-space: pre-wrap;
     }
 
     #night_mode_btn {
@@ -533,6 +533,9 @@
   <style id="whether_nightmode">
 
   </style>
+    <style id="highlight_css">
+
+    </style>
   <style id="custom_css"></style>
   <div id="loading" style="font-family: sans-serif">
     <br /><br /><br />
@@ -553,7 +556,14 @@
   <script src="https://unpkg.com/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js"></script>
   <script src="https://unpkg.com/valine@1.4.18/dist/Valine.min.js"></script>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
   <script>
+
+marked.setOptions({
+  highlight: function(code,lang) {
+    return hljs.highlight(code, {language:lang}).value;
+  }
+});
 
 
     currentArticleListPageOrder = 1; //这个变量表示目前在显示文章列表中的第几页，是从1开始数的
@@ -572,9 +582,10 @@
             background-color:#000000c7;
             
           }
-          #blog_index_title,#blog_index_subtitle, .article-content h2,.page-content h2, #article-content-html *, #page-content-html *{
+          #blog_index_title,#blog_index_subtitle, .article-content h2,.page-content h2, #article-content-html p, #page-content-html p{
             color:white;
           }
+
           .article-item, .article-content, .page-content{
             background-color:#000000a8
           }
@@ -599,7 +610,6 @@
       padding-bottom: 4px;
       padding-left: 12px;
       padding-right: 12px;
-      color: #0550ae;
       display: inline-block;
     }
           `;
@@ -620,7 +630,7 @@
     }
 
     function detect_whether_ui_load_finished(){
-      if(bootstrap_css_import_finished === true && content_load_finished === true){
+      if(highlight_css_import_finished === true && bootstrap_css_import_finished === true && content_load_finished === true){
         document.getElementById("root").setAttribute("style","");
         document.getElementById("loading").setAttribute("style","display:none");
       }
@@ -633,6 +643,7 @@
 
     bootstrap_css_import_finished = false;
     content_load_finished = false;
+    highlight_css_import_finished = false;
 
     const langdata = {
       "ARCHIVE_AND_TAGS": {
@@ -1554,6 +1565,18 @@
         detect_whether_ui_load_finished();
       })
     }
+
+
+    function importHighlightCSSFile(uri) {
+      axios
+      .get(uri)
+      .then(function (response) {
+        document.getElementById("highlight_css").innerHTML+=response.data;
+        highlight_css_import_finished = true;
+        detect_whether_ui_load_finished();
+      })
+    }
+
     axios
       .get("./data/index.json?timestamp=" + Date.parse(new Date()))
       .then(function (response) {
@@ -1578,6 +1601,9 @@
         // js importing disabled due to execution order is inevitable, while css importing can safely operate.
 
         importBootstrapCSSFile(cdn_path + "/bootstrap@5.0.2/dist/css/bootstrap.min.css");
+
+        importHighlightCSSFile(cdn_path + "/highlight.js@9.12.0/styles/tomorrow.css");
+
 
         lang_name = blog["网站语言"];
         articleListPageLength = Math.ceil(blog["文章列表"].length / blog["文章列表中每页的文章数为"]); // 从1开始数
