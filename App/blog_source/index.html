@@ -565,6 +565,12 @@ marked.setOptions({
   }
 });
 
+window.onpopstate = function(){
+  if(window.location.href.indexOf("#top") === -1){
+    window.location.reload();
+  }
+}
+
 
     currentArticleListPageOrder = 1; //这个变量表示目前在显示文章列表中的第几页，是从1开始数的
 
@@ -696,17 +702,17 @@ marked.setOptions({
       //todo: fix router
       let nav_base = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" id="navbar_title" href="#" onclick="enter_indexPage()">${blog["博客标题"]}</a>
+    <a class="navbar-brand" id="navbar_title" href="javascript:void(0)" onclick="enter_indexPage()">${blog["博客标题"]}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_items">
         <li class="nav-item" id="navbar_article_list">
-          <a class="nav-link" href="#" onclick="enter_indexPage();">${langdata["ARTICLE_LIST"][lang_name]}</a>
+          <a class="nav-link" href="javascript:void(0)" onclick="enter_indexPage();">${langdata["ARTICLE_LIST"][lang_name]}</a>
         </li>
         <li class="nav-item" id="navbar_archive_and_tags">
-          <a class="nav-link" href="#" onclick="enter_archive_and_tags();">${langdata["ARCHIVE_AND_TAGS"][lang_name]}</a>
+          <a class="nav-link" href="javascript:void(0)" onclick="enter_archive_and_tags();">${langdata["ARCHIVE_AND_TAGS"][lang_name]}</a>
         </li>
       </ul>
     </div>
@@ -731,7 +737,7 @@ marked.setOptions({
           if (blog["页面列表"][i]["是否显示在菜单中"]) {
             document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item" id="navbar_page_${i}">
-                            <a class="nav-link" href="#" onclick="enter_page(${i});">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
+                            <a class="nav-link" href="javascript:void(0)" onclick="enter_page(${i});">${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</a>
                         </li>
                         `;
           }
@@ -741,7 +747,7 @@ marked.setOptions({
       if (blog["启用内建友人帐页面"] === true) {
         document.querySelector("#navbar_items").innerHTML += `
                         <li class="nav-item" id="navbar_friendbook">
-                            <a class="nav-link" href="#" onclick="enter_friend_book();">友人帐</a>
+                            <a class="nav-link" href="javascript:void(0)" onclick="enter_friend_book();">友人帐</a>
                         </li>
             `;
 
@@ -825,7 +831,7 @@ marked.setOptions({
           document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
                         <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> 置顶文章</div>
-                        <h2><a href="#" onclick="enter_article(${i})">${blog["文章列表"][i]["文章标题"]}</a></h2>
+                        <h2><a href="javascript:void(0)" onclick="enter_article(${i})">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
@@ -846,7 +852,7 @@ marked.setOptions({
         } else {
           document.querySelector("#container").innerHTML += `
                     <div class="article-item" id="article-item-${i}">
-                        <h2><a href="#" onclick="enter_article(${i})">${blog["文章列表"][i]["文章标题"]}</a></h2>
+                        <h2><a href="javascript:void(0)" onclick="enter_article(${i})">${blog["文章列表"][i]["文章标题"]}</a></h2>
                        
                         
                     </div>
@@ -868,7 +874,7 @@ marked.setOptions({
 
             for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
               document.querySelector("#article-item-sub-" + i).innerHTML += `
-                                <a class="btn btn-light btn-sm" href="#" onclick="enter_tag('${blog["文章列表"][i]["标签"][k]}')">${blog["文章列表"][i]["标签"][k]}</a>
+                                <a class="btn btn-light btn-sm" href="javascript:void(0)" onclick="enter_tag('${blog["文章列表"][i]["标签"][k]}')">${blog["文章列表"][i]["标签"][k]}</a>
                                 `;
             }
           }
@@ -942,7 +948,7 @@ marked.setOptions({
         ) {
           //todo:fix router 2
           document.querySelector("#article-content-sub").innerHTML += `
-            <a class="btn btn-light btn-sm" href="#" onclick="enter_tag('${blog["文章列表"][article_id]["标签"][k]}')">${blog["文章列表"][article_id]["标签"][k]}</a>
+            <a class="btn btn-light btn-sm" href="javascript:void(0)" onclick="enter_tag('${blog["文章列表"][article_id]["标签"][k]}')">${blog["文章列表"][article_id]["标签"][k]}</a>
             `;
         }
       }
@@ -1007,7 +1013,7 @@ marked.setOptions({
       <div class="card articlebottomnav" style="float:left;width:100%">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
-    <h5 class="card-title"><a href="#" onclick="enter_article(${article_id+1})">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
+    <h5 class="card-title"><a href="javascript:void(0)" onclick="enter_article(${article_id+1})">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
   </div>
 </div>
     </div>
@@ -1063,7 +1069,7 @@ marked.setOptions({
       <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
-    <h5 class="card-title"><a href="#" onclick="enter_article(${article_id-1})">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
+    <h5 class="card-title"><a href="javascript:void(0)" onclick="enter_article(${article_id-1})">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
   </div>
 </div>
     </div>
@@ -1079,7 +1085,7 @@ marked.setOptions({
       <div class="card articlebottomnav" style="float:left;width:100%">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-arrow-left"></i> 上一篇文章</h6>
-    <h5 class="card-title"><a href="#" onclick="enter_article(${article_id+1})">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
+    <h5 class="card-title"><a href="javascript:void(0)" onclick="enter_article(${article_id+1})">${blog["文章列表"][article_id+1]["文章标题"]}</a></h5>
   </div>
 </div>
     </div>
@@ -1087,7 +1093,7 @@ marked.setOptions({
       <div class="card articlebottomnav" style="float:right;text-align:right;width:100%">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted">下一篇文章 <i class="fa fa-arrow-right"></i></h6>
-    <h5 class="card-title"><a href="#" onclick="enter_article(${article_id-1})">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
+    <h5 class="card-title"><a href="javascript:void(0)" onclick="enter_article(${article_id-1})">${blog["文章列表"][article_id-1]["文章标题"]}</a></h5>
   </div>
 </div>
     </div>
@@ -1275,7 +1281,7 @@ marked.setOptions({
             if (tagtree[Object.keys(tagtree)[i]][k] === blog["文章列表"][j]) {
               document.querySelector(
                 "#tag-content"
-              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
+              ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="javascript:void(0)" onclick="enter_article(${j})">${tagtree[Object.keys(tagtree)[i]][k]["文章标题"]
               }</a>（<i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${tagtree[Object.keys(tagtree)[i]][k]["创建日期"]
                 }，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${tagtree[Object.keys(tagtree)[i]][k]["修改日期"]
                 }）</p>`;
@@ -1349,7 +1355,7 @@ marked.setOptions({
           if (tagtree[tagname][i] === blog["文章列表"][j]) {
             document.querySelector(
               "#tag-content"
-            ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="#" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${tagtree[tagname][i]["修改日期"]}）</p>`;
+            ).innerHTML += `<p><i class="fa fa-file-text-o"></i> <a href="javascript:void(0)" onclick="enter_article(${j})">${tagtree[tagname][i]["文章标题"]}</a>（<i class="fa fa-calendar"></i> ${langdata["ARTICLE_CREATEDAT"][lang_name]}${tagtree[tagname][i]["创建日期"]}，<i class="fa fa-clock-o"></i> ${langdata["LASTMODIFIEDAT"][lang_name]}${tagtree[tagname][i]["修改日期"]}）</p>`;
           }
         }
       }
