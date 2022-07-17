@@ -9,7 +9,7 @@ function updateBlogIndexHtml () {
   ) {
     fs.rmSync(`${rootDir}/index.html`);
     fs.copyFileSync(
-      path.join(__dirname, "blog_source/index.html"),
+      path.join(__dirname, "default_theme_src/index.html"),
       path.join(rootDir, "index.html"),
       constants.COPYFILE_EXCL,
     );
