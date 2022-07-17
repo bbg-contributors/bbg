@@ -1676,9 +1676,6 @@ window.onpopstate = function(){
           document.getElementById("custom_css").innerHTML = blog["自定义CSS"];
         }
 
-        if (getUrlArgs("type") === false) {
-          enter_indexPage();
-        }
 
         if (getUrlArgs("type") === "article") {
           let article_filename = getUrlArgs("filename");
@@ -1718,6 +1715,9 @@ window.onpopstate = function(){
           }
         }
 
+        if (getUrlArgs("type") === false) {
+          enter_indexPage();
+        }
         
       });
 
