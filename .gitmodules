@@ -4,3 +4,6 @@
 [submodule "App/blog_source"]
 	path = App/blog_source
 	url = https://github.com/bbg-contributors/blog_source
+[submodule "App/blog_indexjson_template"]
+	path = App/blog_indexjson_template
+	url = https://github.com/bbg-contributors/blog_indexjson_template
