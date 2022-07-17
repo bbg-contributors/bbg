@@ -78,7 +78,7 @@ function generateNewBlog(rootDir) {
     fs.mkdirSync(path.join(rootDir, "data/articles"));
     fs.mkdirSync(path.join(rootDir, "data/pages"));
 
-    copyFileSync(path.join(__dirname, "blog_source/index.html"), path.join(rootDir, "index.html"), constants.COPYFILE_EXCL);
+    copyFileSync(path.join(__dirname, "default_theme_src/index.html"), path.join(rootDir, "index.html"), constants.COPYFILE_EXCL);
 
     if (lang_name === "English") {
       copyFileSync(path.join(__dirname, "blog_source/data/articles/first.english.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
