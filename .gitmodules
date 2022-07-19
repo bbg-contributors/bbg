@@ -3,10 +3,10 @@
 	url = https://github.com/bbg-contributors/bbg-resources.git
 [submodule "App/blog_source"]
 	path = App/blog_source
-	url = https://github.com/bbg-contributors/blog_source
+	url = https://github.com/bbg-contributors/blog_source.git
 [submodule "App/blog_indexjson_template"]
 	path = App/blog_indexjson_template
-	url = https://github.com/bbg-contributors/blog_indexjson_template
+	url = https://github.com/bbg-contributors/blog_indexjson_template.git
 [submodule "App/default_theme_src"]
 	path = App/default_theme_src
-	url = https://github.com/bbg-contributors/default_theme_src
+	url = https://github.com/bbg-contributors/default_theme_src.git
