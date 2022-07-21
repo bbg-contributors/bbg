@@ -80,7 +80,8 @@ function generateNewBlog(rootDir) {
 
     copyFileSync(path.join(__dirname, "default_theme_src/index.html"), path.join(rootDir, "index.html"), constants.COPYFILE_EXCL);
 
-    if (lang_name === "English") {
+    if (lang_name !== "简体中文") {
+      // en_US or other languages.
       copyFileSync(path.join(__dirname, "blog_source/data/articles/first.english.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
 
       copyFileSync(path.join(__dirname, "blog_indexjson_template/index.english.json"), path.join(rootDir, "data/index.json"), constants.COPYFILE_EXCL);
@@ -88,6 +89,7 @@ function generateNewBlog(rootDir) {
     }
 
     if (lang_name === "简体中文") {
+      // zh_CN
       copyFileSync(path.join(__dirname, "/blog_source/data/articles/first.zhcn.md"), path.join(rootDir, "/data/articles/first.md"), constants.COPYFILE_EXCL);
 
       copyFileSync(path.join(__dirname, "/blog_indexjson_template/index.zhcn.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
@@ -136,6 +138,17 @@ function openGroupDialog() {
 function openImageCopyrightDialog() {
   createInfoDialog(langdata.ABOUT_IMAGE_COPYRIGHT[lang_name], langdata.ABOUT_IMAGE_COPYRIGHT_DESCRIPTION[lang_name]);
 }
+
+function render_language_selections() {
+  document.getElementById("language-selection-list").innerHTML = "";
+  for (let i = 0; i < lang_meta["名称与文件名之间的映射关系"].length; i++) {
+    document.getElementById("language-selection-list").innerHTML += `<p>
+    <a href="#" onclick="select_language('${lang_meta["名称与文件名之间的映射关系"][i]["name"]}')">${lang_meta["名称与文件名之间的映射关系"][i]["name"]}</a>
+  </p>`;
+  }
+}
+
+render_language_selections();
 
 storage.has("language", (error, hasKey) => {
   if (error) console.error(error);

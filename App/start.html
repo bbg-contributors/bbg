@@ -1,171 +1,199 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../node_modules/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <title></title>
+  </head>
 
-  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-  <title></title>
-</head>
-
-<body>
-  <style id="uniform"></style>
-  <div class="container">
-
-    <br /><br /><br />
-    <main class="px-3">
-      <br />
-
-
-      <div class="text-center">
-        <div id="interface_firstpart" class="text-center">
-
-
-        </div>
-
-
-
-        <div id="last_managed_site" style="display:none">
-          <br /><span class="badge bg-primary"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span>
-          <a href="#" id="last_managed_site_link"></a>
-        </div>
+  <body>
+    <style id="uniform"></style>
+    <div class="container">
+      <br /><br /><br />
+      <main class="px-3">
         <br />
 
-        <div id="bbg_settings" style="color:rgb(120, 129, 131)">
+        <div class="text-center">
+          <div id="interface_firstpart" class="text-center"></div>
 
-
-        </div>
-        <div id="interface_secondpart">
-
-        </div>
-      </div>
-
-      <br /><br />
-
-
-
-      <br /><br /><br />
-
-    </main>
-
-  </div>
-
-
-  <div class="modal" tabindex="-1" id="create-new-site-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="create-new-site-dialog-title">创建一个新的博客站点</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="create-new-site-dialog-content">
-
-        </div>
-        <div class="modal-footer" id="create-new-site-dialog-footer">
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" id="err-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="err-dialog-title"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="err-dialog-content">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fa fa-check"
-              aria-hidden="true"></i> 确定</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" id="info-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="info-dialog-title"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="info-dialog-content">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="fluentbtn fluentbtn-blue" data-bs-dismiss="modal" id="info-dialog-ok"></button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" id="update-progress-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">下载更新</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-          <p>下载进度：<span id="download_progress_text">0%</span></p>
+          <div id="last_managed_site" style="display: none">
+            <br /><span class="badge bg-primary"
+              ><i class="fa fa-lightbulb-o" aria-hidden="true"></i
+            ></span>
+            <a href="#" id="last_managed_site_link"></a>
+          </div>
           <br />
-          <div class="progress">
-            <div class="progress-bar" id="update-progress-bar" style="width:0%;" role="progressbar" aria-valuenow="0"
-              aria-valuemin="0" aria-valuemax="100"></div>
+
+          <div id="bbg_settings" style="color: rgb(120, 129, 131)"></div>
+          <div id="interface_secondpart"></div>
+        </div>
+
+        <br /><br />
+
+        <br /><br /><br />
+      </main>
+    </div>
+
+    <div class="modal" tabindex="-1" id="create-new-site-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="create-new-site-dialog-title">
+              创建一个新的博客站点
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="create-new-site-dialog-content"></div>
+          <div class="modal-footer" id="create-new-site-dialog-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="err-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="err-dialog-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="err-dialog-content"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              <i class="fa fa-check" aria-hidden="true"></i> 确定
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal" tabindex="-1" id="language-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="language-dialog-title">Select language / 语言设定</h5>
-        </div>
-        <div class="modal-body" id="language-dialog-content">
-          <p>Select a language of the application from the list below. Later you can still change it at the application
-            settings.</p>
-          <p>请从下面的列表中选择一个语言作为本程序的显示语言。你也可以稍后在应用设置中更改它。</p>
-          <p>
-            <a href="#" onclick="select_language('简体中文')">简体中文</a>
-          </p>
-          <p>
-            <a href="#" onclick="select_language('English')">English</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" id="stylesheet-dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="stylesheet-dialog-title">应用程序风格设置</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-        </div>
-        <div class="modal-body" id="stylesheet-dialog-content">
-
+    <div class="modal" tabindex="-1" id="info-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="info-dialog-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="info-dialog-content"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="fluentbtn fluentbtn-blue"
+              data-bs-dismiss="modal"
+              id="info-dialog-ok"
+            ></button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./start.js"></script>
-</body>
+    <div class="modal" tabindex="-1" id="update-progress-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">下载更新</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>下载进度：<span id="download_progress_text">0%</span></p>
+            <br />
+            <div class="progress">
+              <div
+                class="progress-bar"
+                id="update-progress-bar"
+                style="width: 0%"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="modal" tabindex="-1" id="language-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="language-dialog-title">
+              Select language / 语言设定
+            </h5>
+          </div>
+          <div class="modal-body" id="language-dialog-content">
+            <p>
+              Select a language of the application from the list below. Later
+              you can still change it at the application settings.
+            </p>
+            <p>
+              请从下面的列表中选择一个语言作为本程序的显示语言。你也可以稍后在应用设置中更改它。
+            </p>
+            <div id="language-selection-list">
+              <p>
+                <a href="#" onclick="select_language('简体中文')">简体中文</a>
+              </p>
+              <p>
+                <a href="#" onclick="select_language('English')">English</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="stylesheet-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="stylesheet-dialog-title">
+              应用程序风格设置
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="stylesheet-dialog-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./start.js"></script>
+  </body>
 </html>

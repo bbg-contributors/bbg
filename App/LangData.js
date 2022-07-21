@@ -1,7 +1,7 @@
 const { readFileSync } = require("fs");
 const path = require("path");
 
-const lang_meta = JSON.parse(
+lang_meta = JSON.parse(
   readFileSync(__dirname + "/i18n/meta.json", "utf8")
 );
 
