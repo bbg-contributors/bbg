@@ -8,15 +8,16 @@
 <br />
 <div class="row">
   <div class="col-3">
+    
     <ul class="list-group" id="blog_settings_list">
-      <h5>目录</h5>
+      <h6>目录 / Contents</h6>
       <li class="list-group-item">
         <a href="#basic_info_theme_config_navhash"
           >${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a
         >
       </li>
       <li class="list-group-item">
-        <a href="#announcement_board_navhash">网站公告板</a>
+        <a href="#announcement_board_navhash">${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</a>
       </li>
       <li class="list-group-item">
         <a href="#favicon_navhash">${langdata["FAVICON"][lang_name]}</a>
@@ -40,7 +41,7 @@
         >
       </li>
       <li class="list-group-item">
-        <a href="#advanced_navhash">高级自定义</a>
+        <a href="#advanced_navhash">${langdata.HIGH_ADVANCED[lang_name]}</a>
       </li>
     </ul>
   </div>
@@ -82,7 +83,7 @@ ${blog["底部信息（格式为markdown）"]}
       </div>
 
       <div class="mb-3">
-        <label class="form-label">全站内容授权协议</label>
+        <label class="form-label">${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]}</label>
         <input
           class="form-control"
           value="${blog['全站内容授权协议']}"
@@ -91,11 +92,7 @@ ${blog["底部信息（格式为markdown）"]}
       </div>
 
       <div class="alert alert-primary" role="alert">
-        全站内容授权协议的可填项为 reserved，unlicensed，cc-by-nc-sa-4.0
-        这三项中的任意一项，默认为reserved。reserved
-        表示博主保留所有权利；cc-by-nc-sa-4.0 表示博客内容使用 CC BY-NC-SA 4.0
-        作为授权协议；unlicensed
-        表示博客内容属于公有领域。如果填写其它内容，会将你所填写的内容作为博客的版权声明。
+        ${langdata.WHOLE_SITE_CONTENT_LICENSE_DESCRIPTION[lang_name]}
       </div>
 
       <div class="form-check">
@@ -105,7 +102,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="blog_content_license_enabled"
         />
         <label class="form-check-label" for="blog_content_license_enabled">
-          关闭“全站内容授权协议”功能
+          ${langdata.DISABLE_WHOLE_SITE_CONTENT_LICENSE_FUNCTION[lang_name]}
         </label>
       </div>
 
@@ -116,7 +113,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="enable_article_bottom_nav"
         />
         <label class="form-check-label" for="enable_article_bottom_nav">
-          文章页面显示“上一篇”“下一篇”文章导航按钮
+          ${langdata.DISPLAY_NAVIGATION_BUTTONS[lang_name]}
         </label>
       </div>
 
@@ -127,7 +124,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="enable_article_file_download"
         />
         <label class="form-check-label" for="enable_article_file_download">
-          在文章页提供文章文件下载按钮
+          ${langdata.DISPLAY_DOWNLOAD_MARKDOWN_BUTTON[lang_name]}
         </label>
       </div>
 
@@ -138,7 +135,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="enable_copy_full_article_to_clipboard"
         />
         <label class="form-check-label" for="enable_copy_full_article_to_clipboard">
-          在文章页提供复制全文到剪贴板的按钮
+          ${langdata.DISPLAY_COPY_TO_CLIPBOARD_BUTTON[lang_name]}
         </label>
       </div>
 
@@ -157,7 +154,7 @@ ${blog["底部信息（格式为markdown）"]}
 
       <div class="mb-3">
         <label class="form-label"
-          >文章列表每页文章数（此项必须是一个大于等于5的整数）</label
+          >${langdata.HOW_MANT_ARTICLE_IN_A_PAGE[lang_name]}</label
         >
         <input
           class="form-control"
@@ -168,7 +165,7 @@ ${blog["底部信息（格式为markdown）"]}
         />
         <br />
         <div class="alert alert-primary" role="alert">
-          置顶文章的显示不受“文章列表每页文章数”约束。实际的每页文章数不会少于你设置的这个数字，也不会超过“置顶文章数”和“你设置的每页文章数”数量的总和。无论如何，最终的文章列表中不会有文章被遗漏。
+          ${langdata.HOW_MANT_ARTICLE_IN_A_PAGE_DESCRIPTION[lang_name]}
         </div>
       </div>
 
@@ -199,8 +196,8 @@ ${blog["底部信息（格式为markdown）"]}
         ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
       </div>
       <br />
-      <h2>域名相关的功能</h2>
-      <p>域名填写不是必须的。但是，在下方的框中填写域名之后，你就可以启用站点地图和 RSS 生成功能了。注意域名应包含 https:// 或 http:// 部分，结尾不要有斜杠。</p>
+      <h2>${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</h2>
+      <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
       
       
       
@@ -213,7 +210,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="auto_rss_enabled"
         />
         <label class="form-check-label" for="auto_rss_enabled">
-          在文章列表更新时自动更新 RSS（atom.xml）
+          ${langdata.AUTO_UPDATE_ATOM_XML[lang_name]}
         </label>
       </div>
       <div class="form-check">
@@ -223,27 +220,27 @@ ${blog["底部信息（格式为markdown）"]}
           id="auto_sitemap_enabled"
         />
         <label class="form-check-label" for="auto_sitemap_enabled">
-          在文章列表或页面列表更新时自动更新站点地图 sitemap.txt
+          ${langdata.AUTO_UPDATE_SITEMAP[lang_name]}
         </label>
       </div>
       <br />
 
       
       <br />
-      <h3>检查博客数据一致性</h3>
+      <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
       <p>
-        此功能用于检查博客文章列表/页面列表的文章/页面的内容文件是否存在（没有丢失）。如果发现丢失，会弹出一个说明情况的对话框，并引导你下一步操作。
+        ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
       </p>
       <button
         class="fluentbtn fluentbtn-blue"
         onclick="check_data_consistency()"
       >
-        现在检查博客数据一致性
+      ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
       </button>
     </div>
 
     <div class="fluentinterface" id="announcement_board_navhash">
-      <h3>网站公告板</h3>
+      <h3>${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</h3>
 
       <div class="form-check">
         <input
@@ -252,7 +249,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="website_announcement_enabled"
         />
         <label class="form-check-label" for="website_announcement_enabled">
-          启用网站公告板功能
+          ${langdata.ENABLE_ANNOUNCEMENT_BOARD_FUNCTION[lang_name]}
         </label>
       </div>
 
@@ -263,13 +260,13 @@ ${blog["底部信息（格式为markdown）"]}
           id="website_announcement_indexonly"
         />
         <label class="form-check-label" for="website_announcement_indexonly">
-          若启用网站公告板，公告板内容仅在网站首页显示
+          ${langdata.ONLY_DISPLAY_ANNOUNCEMENT_IN_INDEX[lang_name]}
         </label>
       </div>
 
       <div class="mb-3">
         <label class="form-label"
-          >如果启用了网站公告板，其内容是：（内容将按照html格式解析）</label
+          >${langdata.CONTENT_OF_ANNOUNCEMENT_BOARD[lang_name]}</label
         >
         <br />
         <textarea class="form-control" id="website_announcement_content">
@@ -335,9 +332,11 @@ ${blog["网站公告"]}
       <button class="fluentbtn" onclick="reset_official_theme();">
         ${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}
       </button>
+      <!--
       <button class="fluentbtn" onclick="open_online_theme_dialog()">
         ${langdata["OPEN_THEME_STORE"][lang_name]}
       </button>
+      -->
       <br /><br />
       <button class="btn btn-link" onclick="apply_thirdparty_theme();">
         ${langdata["USE_3RD_THEME_FROM_FILE"][lang_name]}
@@ -466,8 +465,8 @@ ${blog["网站公告"]}
     </div>
 
     <div class="fluentinterface" id="advanced_navhash">
-      <h3>高级自定义</h3>
-      <p>以下选项仅供有能力的用户使用。</p>
+      <h3>${langdata.HIGH_ADVANCED[lang_name]}</h3>
+      <p>${langdata.HIGH_ADVANCED_DESCRIPTION[lang_name]}</p>
       <div class="form-check">
         <input
           class="form-check-input"
@@ -475,13 +474,12 @@ ${blog["网站公告"]}
           id="blog_settings_enable_custom_css"
         />
         <label class="form-check-label" for="blog_settings_enable_custom_css">
-          启用网站的自定义CSS支持
+          ${langdata.ENABLE_CUSTOMIZE_CSS[lang_name]}
         </label>
       </div>
 
       <p>
-        你可以为网站编写自定义 CSS 来改变其样式。如果这一项不打勾，自定义 CSS
-        样式将不会被解析。
+        ${langdata.ENABLE_CUSTOMIZE_CSS_DESCRIPTION[lang_name]}
       </p>
 
       <div class="form-check">
@@ -491,18 +489,16 @@ ${blog["网站公告"]}
           id="blog_settings_enable_custom_js"
         />
         <label class="form-check-label" for="blog_settings_enable_custom_js">
-          启用网站的自定义JavaScript支持
+          ${langdata.ENABLE_CUSTOMIZE_JS[lang_name]}
         </label>
       </div>
 
       <p>
-        你可以为网站编写自定义 JavaScript 代码。这些 JavaScript
-        代码将在整个博客被渲染完成之后执行，所以你有很大的自主权。如果这一项不打勾，自定义
-        JavaScript 代码将不会被解析。
+        ${langdata.ENABLE_CUSTOMIZE_JS_DESCRIPTION[lang_name]}
       </p>
 
       <div class="mb-3">
-        <label class="form-label">自定义 CSS 代码</label>
+        <label class="form-label">${langdata.CUSTOM_CSS_CODE[lang_name]}</label>
         <br />
         <textarea class="form-control" id="blog_settings_custom_css">
 ${blog["自定义CSS"]}
@@ -513,7 +509,7 @@ ${blog["自定义CSS"]}
       </div>
 
       <div class="mb-3">
-        <label class="form-label">自定义 JavaScript 代码</label>
+        <label class="form-label">${langdata.CUSTOM_JS_CODE[lang_name]}</label>
         <br />
         <textarea class="form-control" id="blog_settings_custom_js">
 ${blog["自定义JS"]}
@@ -534,16 +530,16 @@ ${blog["自定义JS"]}
       "
     >
       <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">
-        保存本次配置
+        ${langdata.SAVE_CONFIGURATION[lang_name]}
       </button>
       <button class="fluentbtn" onclick="window.location.reload()">
-        放弃本次对网站设置所作的更改
+        ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}
       </button>
       <button
         class="fluentbtn fluentbtn-blue"
         onclick="document.documentElement.scrollTop = 0;"
       >
-        返回顶部
+      ${langdata.BACK_TO_UP[lang_name]}
       </button>
     </div>
   </div>

@@ -224,7 +224,7 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_secondpart").innerHTML = `
             
             <button class="fluentbtn" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</button>
-            <button class="fluentbtn" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> 应用程序风格设置</button>
+            <button class="fluentbtn" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</button>
             <button class="fluentbtn" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTERS[lang_name]}</button>
             <br /><br />
             <button class="fluentbtn" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</button>

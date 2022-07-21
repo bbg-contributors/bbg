@@ -3,40 +3,40 @@ module.exports = function () {
   friendModal.toggle();
 
   document.getElementById("friend_book_content").innerHTML = `
-    
-    <p>友人帐是一个独立页面，组织和显示了友人帐中的友人信息。</p>
+  <div class="modal-body">
+    <p>${langdata.MANAGE_FREIND_BOOK_PAGE_DESCRIPTION[lang_name]}</p>
     <div class="form-check">
 <input class="form-check-input" type="checkbox" id="enableFriendBookFunction">
 <label class="form-check-label" for="enableFriendBookFunction">
-启用内建的网站友人帐页面
+${langdata.ENABLE_INITNAL_FRIEND_BOOK_PAGE[lang_name]}
 </label>
 </div>
 
 <div class="form-check">
 <input class="form-check-input" type="checkbox" id="enableFriendBookComment">
 <label class="form-check-label" for="enableFriendBookComment">
-允许在友人帐页面下评论
+${langdata.ALLOW_COMMENTS_IN_FRIEND_BOOK[lang_name]}
 </label>
 </div>
 
 <br />
-<p>显示在友人帐页面的附加信息（以html格式编写）</p>
+<p>${langdata.ADDITIONAL_INFORMATION_DISPLAY_IN_FRIEND_BOOK[lang_name]}</p>
 <textarea class="form-control" id="friend_book_additional_info">
 ${blog["友人帐页面附加信息"]}
 </textarea>
     
     <hr />
-    <p>以下是目前友人帐中的友人列表。</p>
+    <p>${langdata.CURRENT_FRIEND_LIST_DESCRIPTION[lang_name]}</p>
     
     
     
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">站点名称</th>
-      <th scope="col">链接</th>
-      <th scope="col">简介</th>
-      <th scope="col">站点图标URL</th>
+      <th scope="col">${langdata.SITE_NAME[lang_name]}</th>
+      <th scope="col">${langdata.SITE_LINK[lang_name]}</th>
+      <th scope="col">${langdata.SITE_INTRODUCTION[lang_name]}</th>
+      <th scope="col">${langdata.SITE_AVATAR_URL[lang_name]}</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -47,9 +47,13 @@ ${blog["友人帐页面附加信息"]}
   </tbody>
 </table>
 
-<button class="fluentbtn fluentbtn-blue" onclick="add_new_friend();">添加新友人信息</button>
+<button class="fluentbtn fluentbtn-blue" onclick="add_new_friend();">${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
 
-    
+    </div>
+    <div class="modal-footer" id="edit_friend_book_dialog_footer">
+    <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();">${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+    <button class="fluentbtn" onclick="window.location.reload();">${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+  </div>
     `;
 
   render_friend_book_list();

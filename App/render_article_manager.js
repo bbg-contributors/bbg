@@ -64,8 +64,8 @@ module.exports = function () {
     <button class="fluentbtn fluentbtn-blue" onclick="edit_article_meta(${i})"><i class="fa fa-info-circle"></i> ${langdata.EDIT_ARTICLE_META[lang_name]}</button>
     <button class="fluentbtn" onclick="delete_article(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_ARTICLE[lang_name]}</button>
     <br /><br />
-    <button class="fluentbtn" onclick="let_article_up(${i})"><i class="fa fa-arrow-up"></i> 上移一格</button>
-    <button class="fluentbtn" onclick="let_article_down(${i})"><i class="fa fa-arrow-down"></i> 下移一格</button>
+    <button class="fluentbtn" onclick="let_article_up(${i})"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
+    <button class="fluentbtn" onclick="let_article_down(${i})"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
     `;
   }
 
