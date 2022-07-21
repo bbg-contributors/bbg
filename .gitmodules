@@ -10,3 +10,6 @@
 [submodule "App/default_theme_src"]
 	path = App/default_theme_src
 	url = https://github.com/bbg-contributors/default_theme_src.git
+[submodule "App/i18n"]
+	path = App/i18n
+	url = https://github.com/bbg-contributors/bbg-lang.git
