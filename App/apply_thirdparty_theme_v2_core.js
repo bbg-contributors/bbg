@@ -1,6 +1,7 @@
 
 const {rmSync} = require("fs");
 const AdmZip = require("adm-zip");
+const e = require("express");
 
 module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",theme_date=""){
   console.log(third_party_theme_path);
@@ -9,6 +10,41 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
     window.location.reload();
   } else {
     const zip = new AdmZip(third_party_theme_path);
+
+    if (
+      blog["全局主题设置"]["第三方主题文件内容"] !== undefined
+      && blog["全局主题设置"]["第三方主题文件内容"] !== null
+      && blog["全局主题设置"]["第三方主题文件内容"] !== []
+      && blog["全局主题设置"]["第三方主题文件内容"] !== ""
+    ) {
+
+
+      try {
+        rmSync(`${rootDir}/index.html`);
+      } catch (error) {
+        
+      }
+
+      // 确保有东西可删
+      for (i in blog["全局主题设置"]["第三方主题文件内容"]) {
+        try {
+          rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true});
+        } catch (error) {
+
+        }
+        
+      }
+      
+
+    }else{
+      try {
+        rmSync(`${rootDir}/index.html`);
+      } catch(error){
+
+      }
+    }
+
+
     zip.extractAllTo(rootDir, true);
     const content = zip.getEntries();
     const wcontent = [];
