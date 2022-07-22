@@ -6,15 +6,15 @@ function view_current_icon () {
   if (existsSync(`${rootDir}/favicon.ico`))
     shell.openPath(`${rootDir}/favicon.ico`);
   else
-    window.alert("当前站点没有使用网页图标。");
+    window.alert(langdata.ALERT_NOT_USING_ICON[lang_name]);
 }
 
 function delete_current_icon () {
   if (existsSync(`${rootDir}/favicon.ico`)) {
     rmSync(`${rootDir}/favicon.ico`);
-    window.alert("当前站点的网页图标已经被成功清除。");
+    window.alert(langdata.ALERT_SUCCESSFUL_CLEARING[lang_name]);
   } else {
-    window.alert("当前站点没有使用网页图标。");
+    window.alert(langdata.ALERT_NOT_USING_ICON[lang_name]);
   }
 }
 
@@ -27,7 +27,7 @@ function select_a_favicon () {
     copyFileSync(`${iconPath}`, `${rootDir}/favicon.ico`, constants.COPYFILE_EXCL);
   } else {
     // 用户放鸽子的情况
-    window.alert("你没有选择任何网页图标，网页图标将不会变更。");
+    window.alert(langdata.ALERT_NOT_SELECT_ANY_ICON[lang_name]);
   }
 }
 

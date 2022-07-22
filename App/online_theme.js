@@ -42,16 +42,16 @@ function render_theme_detail(theme_id) {
 
   document.getElementById("download_online_theme_dialog_content").innerHTML += `
   <button class="fluentbtn" onclick="render_online_theme_list();"><i class="fa fa-arrow-left"></i> 返回主题列表</button><br /><br />
-  <h4> ${theme_list[theme_id]["name"]} 的主题信息</h4>
-  <p><i class="fa fa-user-o"></i> 主题作者：<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[theme_id]["author_url"]}')">${theme_list[theme_id]["author"]}</a></p>
+  <h4> ${theme_list[theme_id]["name"]} ${langdata.THEME_INFO_OF[lang_name]}</h4>
+  <p><i class="fa fa-user-o"></i> ${langdata.THEME_AUTHOR[lang_name]}<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[theme_id]["author_url"]}')">${theme_list[theme_id]["author"]}</a></p>
   <p>${theme_list[theme_id]["intro"]}</p>
   <hr />
-  <p><i class="fa fa-copyright"></i> 此主题使用许可证：${theme_list[theme_id]["license"]}</p>
+  <p><i class="fa fa-copyright"></i> ${langdata.THEME_IS_USING_LICENSE[lang_name]}${theme_list[theme_id]["license"]}</p>
   <div id="more_info_of_theme_detail">
   </div>
   <hr />
-  <button class="fluentbtn fluentbtn-blue" onclick="install_theme(${theme_id})"><i class="fa fa-download"></i> 安装该主题</button>
-  <button class="fluentbtn" onclick="render_online_theme_list();">返回主题列表</button><br /><br />
+  <button class="fluentbtn fluentbtn-blue" onclick="install_theme(${theme_id})"><i class="fa fa-download"></i> ${langdata.INSTALL_THIS_THEME[lang_name]}</button>
+  <button class="fluentbtn" onclick="render_online_theme_list();">${langdata.BACK_TO_THEME_LIST[lang_name]}</button><br /><br />
 
   `;
 
@@ -61,7 +61,7 @@ function render_theme_detail(theme_id) {
   ) {
     document.getElementById("more_info_of_theme_detail").innerHTML += `
     
-    <p><i class="fa fa-check"></i> 此主题的作者认为该版本的主题与你所使用的 BBG 版本相适配。</p>
+    <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
     `;
   } else if (
     theme_list[theme_id]["compatible_with_older_bbg_version"] &&
@@ -69,12 +69,12 @@ function render_theme_detail(theme_id) {
   ) {
     document.getElementById("more_info_of_theme_detail").innerHTML += `
     
-    <p><i class="fa fa-check"></i> 此主题的作者认为该版本的主题与你所使用的 BBG 版本相适配。</p>
+    <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
     `;
   } else {
     document.getElementById("more_info_of_theme_detail").innerHTML += `
     
-    <p><i class="fa fa-error"></i> 此主题的作者认为该版本的主题与你所使用的 BBG 版本不兼容。当然，你可以尝试安装该主题，但是如果遇到问题，请换用一个兼容的主题或者重置回官方主题。</p>
+    <p><i class="fa fa-error"></i> ${langdata.THEME_AUTHOR_THINKS_NOT_COMPATIBLE[lang_name]}</p>
     `;
   }
 }
@@ -85,7 +85,7 @@ function render_online_theme_list() {
   // todo
 
   document.getElementById("download_online_theme_dialog_content").innerHTML +=
-    "<h2>主题列表</h2><p>以下列出了主题商店中的主题。</p><hr />";
+    `<h2>${langdata.THEME_LIST[lang_name]}</h2><p>${langdata.THEME_LIST_DESCRIPTION[lang_name]}</p><hr />`;
 
   fetch("https://bbg-themes.nekomoe.xyz/index.json")
     .then((response) => response.json())
@@ -97,7 +97,7 @@ function render_online_theme_list() {
           "download_online_theme_dialog_content"
         ).innerHTML += `
         <a href="javascript:void(0)" onclick="render_theme_detail(${i})"><h5 id="theme_list_id_${i}">${theme_list[i]["name"]}</h5></a>
-        <p><i class="fa fa-user-o"></i> 主题作者：<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[i]["author_url"]}')">${theme_list[i]["author"]}</a></p>
+        <p><i class="fa fa-user-o"></i> ${langdata.THEME_AUTHOR[lang_name]}<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[i]["author_url"]}')">${theme_list[i]["author"]}</a></p>
         <p>${theme_list[i]["intro"]}</p>
 
         <hr />

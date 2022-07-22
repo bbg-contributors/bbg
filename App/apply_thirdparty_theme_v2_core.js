@@ -33,7 +33,7 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
     blog["全局主题设置"]["第三方主题版本"] = "v2";
     blog["全局主题设置"]["第三方主题文件内容"] = wcontent;
     BlogInstance.writeBlogData();
-    window.alert("已经更换为第三方主题。");
+    window.alert(langdata.OK[lang_name]);
     if(third_party_theme_path.indexOf("temp_theme_downloaded_by_bbg_online_theme_store.zip") !== -1){
       rmSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip");
     }

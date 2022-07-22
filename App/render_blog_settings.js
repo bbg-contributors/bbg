@@ -11,14 +11,14 @@ module.exports = function () {
   if (blog["全局主题设置"]["是否使用第三方主题"] === true) {
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === true) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
-    正在使用手动从本地文件安装的第三方主题。<br />如果可能的话建议你从主题商店安装，因为主题商店的主题通常都有更好的支持。
+    ${langdata.USING_3RD_PARTY_THEME_FROM_LOCAL_FILE_DESCRIPTION[lang_name]}
   
   `;
     }
 
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
-    正在使用第三方主题：${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}。<br />
+      ${langdata.CURRENTLY_USING_3RD_PARTY_THEME[lang_name]}${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}。<br />
     </b>
   
   `;
@@ -34,7 +34,7 @@ module.exports = function () {
     document.getElementById("blog_settings_is_using_acg_bg").checked = true;
 
   if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
-    document.getElementById("leancloud_settings_detail").innerHTML = "你正在使用公共评论服务，所以不能手动设置此项。<a href=\"#\" onclick=\"disable_puclic_comment_service()\">如果你不想继续使用公共评论服务了，请点击这里</a>";
+    document.getElementById("leancloud_settings_detail").innerHTML = `${langdata.HINT_USING_PUBLIC_COMMENT_SERVICE[lang_name]}<a href=\"#\" onclick=\"disable_puclic_comment_service()\">${langdata.LINK_ABANDON_PUBLIC_COMMENT_SERVICE[lang_name]}</a>`;
     document.getElementById("hint_of_use_public_comment_service").innerHTML = "";
   }
 
