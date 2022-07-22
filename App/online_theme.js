@@ -96,13 +96,16 @@ function render_online_theme_list() {
         document.getElementById(
           "download_online_theme_dialog_content"
         ).innerHTML += `
-        <a href="javascript:void(0)" onclick="render_theme_detail(${i})"><h5>${theme_list[i]["name"]}</h5></a>
+        <a href="javascript:void(0)" onclick="render_theme_detail(${i})"><h5 id="theme_list_id_${i}">${theme_list[i]["name"]}</h5></a>
         <p><i class="fa fa-user-o"></i> 主题作者：<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[i]["author_url"]}')">${theme_list[i]["author"]}</a></p>
         <p>${theme_list[i]["intro"]}</p>
 
         <hr />
 
         `;
+        if(theme_list[i]["is_example_theme"]){
+          document.getElementById(`theme_list_id_${i}`).innerHTML += ` <span style="font-size:12px" class="badge bg-danger">此主题仅用于功能测试，不建议使用</span>`;
+        }
       }
     })
     .catch((err) => {
