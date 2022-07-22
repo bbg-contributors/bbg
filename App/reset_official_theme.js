@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = () => {
   save_blog_settings();
   if (
-    blog["是否使用第三方主题"] === true
+    blog["全局主题设置"]["是否使用第三方主题"] === true
     && blog["全局主题设置"]["第三方主题版本"] === "v2"
   ) {
     // 正在使用第三方主题，并且是v2版本的
@@ -14,8 +14,25 @@ module.exports = () => {
       && blog["全局主题设置"]["第三方主题文件内容"] !== []
       && blog["全局主题设置"]["第三方主题文件内容"] !== ""
     ) {
+
+
+      try {
+        rmSync(`${rootDir}/index.html`);
+      } catch (error) {
+        
+      }
+
       // 确保有东西可删
-      for (i in blog["全局主题设置"]["第三方主题文件内容"]) rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]));
+      for (i in blog["全局主题设置"]["第三方主题文件内容"]) {
+        try {
+          rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true})
+        } catch (error) {
+
+        }
+        
+      };
+      
+
     }
   } else {
     // 正在使用v1版本的第三方主题或者没有在使用第三方主题
