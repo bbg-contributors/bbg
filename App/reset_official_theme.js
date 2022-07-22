@@ -25,12 +25,12 @@ module.exports = () => {
       // 确保有东西可删
       for (i in blog["全局主题设置"]["第三方主题文件内容"]) {
         try {
-          rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true})
+          rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true});
         } catch (error) {
 
         }
         
-      };
+      }
       
 
     }
