@@ -2,7 +2,7 @@
 const {rmSync} = require("fs");
 const AdmZip = require("adm-zip");
 
-module.exports = function(third_party_theme_path){
+module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",theme_date=""){
     console.log(third_party_theme_path);
     if (third_party_theme_path === undefined) {
         window.alert("你没有选择任何主题文件。博客的主题将不会改变。");
@@ -16,9 +16,20 @@ module.exports = function(third_party_theme_path){
           wcontent.push(entry.entryName);
         });
         blog["全局主题设置"]["是否使用第三方主题"] = true;
-        blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = true;
-        blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = "";
-        blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = "";
+
+
+        if(isFromLocalFile){
+            blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = true;
+            blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = "";
+            blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = "";
+        }else{
+            blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] = false;
+            blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"] = theme_name;
+            blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"] = theme_date;
+        }
+
+
+
         blog["全局主题设置"]["第三方主题版本"] = "v2";
         blog["全局主题设置"]["第三方主题文件内容"] = wcontent;
         BlogInstance.writeBlogData();

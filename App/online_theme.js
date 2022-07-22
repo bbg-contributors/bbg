@@ -30,7 +30,7 @@ function install_theme(theme_id) {
     // 上面的回调函数执行完成后主题文件已经正确完整的保存，可以开始安装主题了
     // 使用 downloadCompleted 变量判断上面的回调函数是否执行完成
     if(downloadCompleted){
-      apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip")
+      apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip",false,theme_list[theme_id]["name"],theme_list[theme_id]["last_tested_on_bbg_version"])
     }
   },2000);
 

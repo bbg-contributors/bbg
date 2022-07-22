@@ -19,7 +19,7 @@ module.exports = function () {
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
     目前此站点正在使用 <b>来自主题商店的第三方主题。</b>该主题的相关信息如下：<br /><br />主题名称：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</b><br />
-    主题版本：<b>${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]}</b>
+    </b>
   
   `;
     }
