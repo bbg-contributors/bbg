@@ -104,7 +104,7 @@ function render_online_theme_list() {
 
         `;
         if(theme_list[i]["is_example_theme"]){
-          document.getElementById(`theme_list_id_${i}`).innerHTML += ` <span style="font-size:12px" class="badge bg-danger">此主题仅用于功能测试，不建议使用</span>`;
+          document.getElementById(`theme_list_id_${i}`).innerHTML += " <span style=\"font-size:12px\" class=\"badge bg-danger\">此主题仅用于功能测试，不建议使用</span>";
         }
       }
     })
