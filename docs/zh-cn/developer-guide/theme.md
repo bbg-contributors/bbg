@@ -1,6 +1,6 @@
 # 第三方主题开发文档
 
-!> 这里的内容将会过时，下一版本的第三方主题文件'.bbgtheme2'已经开始实验性开发,Discussion详见[#13](https://github.com/bbg-contributors/bbg/discussions/13)。文档详见[新版主题开发文档](/zh-cn/developer-guide/thirdparty_theme.md)
+!> 这里的内容已经过时，下一版本的第三方主题文件'.bbgtheme2'已经开发完毕,Discussion详见[#13](https://github.com/bbg-contributors/bbg/discussions/13)。文档详见[新版主题开发文档](/zh-cn/developer-guide/thirdparty_theme.md)
 
 第三方主题文件实际上是一个```html```文件，并且需要完整地实现原有的```站点根目录/index.html```的功能，即：
 

@@ -15,6 +15,7 @@
 ```sh
 git clone --recursive https://github.com/bbg-contributors/bbg.git
 ```
+> 如果你嫌慢的话 可以添加`--depth=1`。
 
 然后转到项目根目录下执行以下命令安装依赖：
 
@@ -94,3 +95,9 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 `blog` 是将博客的数据文件转换后的 JavaScript 对象。注意程序中对此对象的修改不会反映到文件中。
 
 `BlogInstance.writeBlogData()` 用于将 blog 对象的内容保存到文件中。
+
+## 开发注意事项
+
+如果有涉及i18n的内容，请先在<https://github.com/bbg-contributors/bbg-lang>中编辑，后再使用`git submodule update --remote`进行更新
+
+涉及submodule的内容同理。
