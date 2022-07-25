@@ -18,8 +18,7 @@ module.exports = function () {
       修改日期: datenow,
       是否置顶: false,
       是否隐藏: false,
-      启用评论: true,
-      文章永久链接: tempString
+      启用评论: true
     });
 
     BlogInstance.writeBlogData();

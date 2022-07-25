@@ -14,10 +14,6 @@ module.exports = function (i) {
     <input class="form-control" placeholder="请输入文章标题" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
   </div>
   <div class="mb-3">
-  <label class="form-label">${langdata.ARTICLE_LINK[lang_name]}</label>
-  <input class="form-control" placeholder="请输入文章永久链接名称" value="${blog["文章列表"][i]["文章永久链接"]}" id="meta_article_link">
-</div>
-  <div class="mb-3">
     <label class="form-label">${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
     <textarea class="form-control" placeholder="请输入文章摘要" id="meta_article_description">${blog["文章列表"][i]["摘要"]}</textarea>
   </div>
