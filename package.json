@@ -1,6 +1,6 @@
 {
   "name": "bbg",
-  "version": "20220723.0.0",
+  "version": "20220804.0.0",
   "description": "A static blog generator based on Electron Technology.",
   "license": "UNLICENSED",
   "author": {
