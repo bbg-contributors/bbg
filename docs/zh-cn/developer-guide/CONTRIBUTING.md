@@ -101,3 +101,9 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 如果有涉及i18n的内容，请先在<https://github.com/bbg-contributors/bbg-lang>中编辑，后再使用`git submodule update --remote`进行更新
 
 涉及submodule的内容同理。
+
+如果有任何错误，请先执行`git submodule update`
+
+如果还是报错，请[新开issue](https://github.com/bbg-contributors/bbg/issues/new).
+
+如果你对这个bug有自己的解决方案，或者是有新的想法，欢迎[PR](https://github.com/bbg-contributors/bbg/pulls/)！
