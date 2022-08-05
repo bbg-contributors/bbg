@@ -12,6 +12,8 @@ const createWindow = () => {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    minWidth: 800,
+    minHeight: 600
   });
 
   require("@electron/remote/main").enable(win.webContents);

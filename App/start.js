@@ -197,8 +197,8 @@ storage.has("language", (error, hasKey) => {
 
            <br />
         <p>
-          <a href="#" class="fluentbtn fluentbtn-blue" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          <a href="#" class="fluentbtn fluentbtn-blue" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
+          <button class="fluentbtn fluentbtn-blue" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</button>
+          <button class="fluentbtn fluentbtn-blue" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</button>
   
         </p>
            `;
@@ -229,7 +229,7 @@ storage.has("language", (error, hasKey) => {
             <br /><br />
             <button class="fluentbtn" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</button>
             <button class="fluentbtn" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</button>
-            <a href="#" class="fluentbtn" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a>
+            <button class="fluentbtn" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</button>
             `;
 
       document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
