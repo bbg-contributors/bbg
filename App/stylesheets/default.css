@@ -487,3 +487,8 @@ a {
 #blog_setting_actual_content {
   z-index:10;
 }
+
+.friendbtn{
+  padding: 0px 6px 0px 6px;
+  margin:0px;
+}
