@@ -193,14 +193,13 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <p>${langdata.STARTPAGE_DESCRIPTION[0][lang_name]}</p>
-           <p>${langdata.STARTPAGE_DESCRIPTION[1][lang_name]}</p>
-
            <br />
         <p>
-          <button class="fluentbtn fluentbtn-start" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</button>
-          <button class="fluentbtn fluentbtn-start" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</button>
-  
-        </p>
+          <a class="btn btn-link" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
+          </p>
+          <p><a class="btn btn-link" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
+      </p>
+        
            `;
 
       document.getElementById("last_managed_site_link").innerHTML = `
@@ -222,14 +221,19 @@ storage.has("language", (error, hasKey) => {
             `;
 
       document.getElementById("interface_secondpart").innerHTML = `
-            
-            <button class="fluentbtn" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</button>
-            <button class="fluentbtn" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</button>
-            <button class="fluentbtn" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</button>
-            <br /><br />
-            <button class="fluentbtn" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</button>
-            <button class="fluentbtn" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</button>
-            <button class="fluentbtn" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</button>
+            <h5>${langdata.BBG_SETTINGS[lang_name]}</h5>
+
+            <a class="btn btn-link" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a>
+            <br />
+            <a class="btn btn-link" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a>
+            <br />
+            <a class="btn btn-link" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a>
+            <br />
+            <a class="btn btn-link" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</a>
+            <br />
+            <a class="btn btn-link" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</a>
+            <br />
+            <a class="btn btn-link" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a>
             `;
 
       document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
