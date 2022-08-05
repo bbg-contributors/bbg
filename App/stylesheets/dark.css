@@ -472,6 +472,7 @@ a {
 
 #blog_settings_list {
   position: fixed;
+  max-width: 20%;
 }
 
 .nav_title {
@@ -558,4 +559,22 @@ a:active {
 .page-item-sub i,
 .article-item-sub i {
   color: rgb(159, 252, 255) !important
+}
+
+#blog_settings_list .list-group-item{
+  border-left-style: solid;
+  border-left-color: #0d6efd;
+  border-left-width: 3px;
+  border-top: none;
+  border-bottom: none;
+  border-right:none;
+  padding-left: 4px;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 10px;
+}
+
+#blog_setting_actual_content {
+  z-index:10;
 }
