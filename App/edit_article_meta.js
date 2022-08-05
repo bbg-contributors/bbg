@@ -30,21 +30,21 @@ module.exports = function (i) {
     <input class="form-control"  placeholder="在这里填入标签（如果有的话）" id="meta_article_tags">
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_article_istop">
     <label class="form-check-label" for="meta_article_istop">
     ${langdata.ARTICLE_IS_TOP[lang_name]}
     </label>
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
     <label class="form-check-label" for="meta_article_is_comment_enabled">
     ${langdata.ENABLE_COMMENT[lang_name]}
     </label>
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
     <label class="form-check-label" for="meta_article_ishidden">
     ${langdata.HIDE_ARTICLE_IN_LIST[lang_name]}

@@ -5,14 +5,14 @@ module.exports = function () {
   document.getElementById("friend_book_content").innerHTML = `
   <div class="modal-body">
     <p>${langdata.MANAGE_FREIND_BOOK_PAGE_DESCRIPTION[lang_name]}</p>
-    <div class="form-check">
+    <div class="form-check form-switch">
 <input class="form-check-input" type="checkbox" id="enableFriendBookFunction">
 <label class="form-check-label" for="enableFriendBookFunction">
 ${langdata.ENABLE_INITNAL_FRIEND_BOOK_PAGE[lang_name]}
 </label>
 </div>
 
-<div class="form-check">
+<div class="form-check form-switch">
 <input class="form-check-input" type="checkbox" id="enableFriendBookComment">
 <label class="form-check-label" for="enableFriendBookComment">
 ${langdata.ALLOW_COMMENTS_IN_FRIEND_BOOK[lang_name]}

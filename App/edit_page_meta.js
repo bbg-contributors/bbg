@@ -13,7 +13,7 @@ module.exports = function (i) {
     <input class="form-control" placeholder="请输入页面标题" value="${blog["页面列表"][i]["页面标题"]}" id="meta_page_title">
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_page_isviewinmenu">
     <label class="form-check-label" for="meta_page_isviewinmenu">
     ${langdata.VIEW_IN_MENU[lang_name]}
@@ -27,14 +27,14 @@ module.exports = function (i) {
     <input class="form-control" value="${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}" id="meta_page_title_menu">
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_page_openinnewtab">
     <label class="form-check-label" for="meta_page_openinnewtab">
     ${langdata.OPEN_IN_NEW_TAB[lang_name]}
     </label>
   </div>
   
-  <div class="form-check">
+  <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_page_iscommentenabled">
     <label class="form-check-label" for="meta_page_iscommentenabled">
     ${langdata.ENABLE_COMMENT[lang_name]}
