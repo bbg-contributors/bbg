@@ -9,7 +9,7 @@ module.exports = function (i) {
 
   document.getElementById("page_meta_content").innerHTML += `
     <div class="mb-3">
-    <label class="form-label">${langdata.PAGE_TITLE[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-book"></i> ${langdata.PAGE_TITLE[lang_name]}</label>
     <input class="form-control" placeholder="请输入页面标题" value="${blog["页面列表"][i]["页面标题"]}" id="meta_page_title">
   </div>
   

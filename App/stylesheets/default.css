@@ -46,7 +46,7 @@ body:before {
 }
 
 .fluentbtn {
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: rgb(254, 254, 254);
   border-style: solid;
   border-width: 1px;
@@ -459,7 +459,7 @@ a {
 }
 
 #nav_list button.active {
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: #1d66b9;
 }
 
@@ -489,7 +489,6 @@ a {
   padding-bottom: 4px;
   margin-top: 4px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 8%), 0 1px 5px 0 rgb(0 0 0 / 4%);
-  border-radius: 4px;
 }
 
 #blog_setting_actual_content {
@@ -531,4 +530,20 @@ input.form-control:focus,textarea.form-control:focus{
   border-bottom: 2px solid #808080;
   box-shadow: none;
   background-color: white;
+}
+
+.fluentbtn-start {
+  border-radius: 24px;
+  background-color: #0199fa !important;
+  color: white !important
+}
+
+.fluentbtn-start:hover {
+  background-color: #168dd6 !important;
+  color: white !important
+}
+
+.fluentbtn-start:active {
+  background-color: rgb(39, 78, 175) !important;
+  color: rbg(218, 228, 255) !important
 }

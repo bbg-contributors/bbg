@@ -10,7 +10,7 @@
   <div class="col-3">
     
     <ul class="list-group" id="blog_settings_list">
-      <h6>目录 / Contents</h6>
+      <h6><i class="fa fa-book"></i> 目录 / Contents</h6>
       <li class="list-group-item">
         <a href="#basic_info_theme_config_navhash"
           >${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a
@@ -53,7 +53,7 @@
       </h2>
       <br />
       <div class="mb-3">
-        <label class="form-label">${langdata["BLOG_TITLE"][lang_name]}</label>
+        <label class="form-label"><i class="fa fa-book"></i> ${langdata["BLOG_TITLE"][lang_name]}</label>
         <input
           class="form-control"
           value="${blog['博客标题']}"
@@ -63,7 +63,7 @@
 
       <div class="mb-3">
         <label class="form-label"
-          >${langdata["BLOG_DESCRIPTION"][lang_name]}</label
+          ><i class="fa fa-file-text-o"></i> ${langdata["BLOG_DESCRIPTION"][lang_name]}</label
         >
         <input
           class="form-control"
@@ -74,7 +74,7 @@
 
       <div class="mb-3">
         <label class="form-label"
-          >${langdata["BOTTOM_INFORMATION"][lang_name]}</label
+          ><i class="fa fa-file-text-o"></i> ${langdata["BOTTOM_INFORMATION"][lang_name]}</label
         >
         <textarea class="form-control" id="blog_settings_bottom_information">
 ${blog["底部信息（格式为markdown）"]}
@@ -83,7 +83,7 @@ ${blog["底部信息（格式为markdown）"]}
       </div>
 
       <div class="mb-3">
-        <label class="form-label">${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]}</label>
+        <label class="form-label"><i class="fa fa-copyright"></i> ${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]}</label>
         <input
           class="form-control"
           value="${blog['全站内容授权协议']}"
@@ -142,7 +142,7 @@ ${blog["底部信息（格式为markdown）"]}
       <br />
 
       <div class="mb-3">
-        <label class="form-label">${langdata["SITE_LANG"][lang_name]}</label>
+        <label class="form-label"><i class="fa fa-globe"></i> ${langdata["SITE_LANG"][lang_name]}</label>
         <br />
         <select class="form-select">
           <option value="simplified_chinese" id="sitelang_simplified_chinese">
@@ -527,18 +527,18 @@ ${blog["自定义JS"]}
         box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),
           0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
       "
-    >
-      <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">
-        ${langdata.SAVE_CONFIGURATION[lang_name]}
-      </button>
-      <button class="fluentbtn" onclick="window.location.reload()">
-        ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}
-      </button>
+    >    
       <button
-        class="fluentbtn fluentbtn-blue"
+        class="fluentbtn"
         onclick="document.documentElement.scrollTop = 0;"
       >
       ${langdata.BACK_TO_UP[lang_name]}
+      </button>
+      <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">
+        <i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}
+      </button>
+      <button class="fluentbtn" onclick="window.location.reload()">
+        <i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}
       </button>
     </div>
   </div>

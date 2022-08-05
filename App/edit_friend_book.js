@@ -4,7 +4,7 @@ module.exports = function () {
 
   document.getElementById("friend_book_content").innerHTML = `
   <div class="modal-body">
-    <p>${langdata.MANAGE_FREIND_BOOK_PAGE_DESCRIPTION[lang_name]}</p>
+    <p><i class="fa fa-book"></i> ${langdata.MANAGE_FREIND_BOOK_PAGE_DESCRIPTION[lang_name]}</p>
     <div class="form-check form-switch">
 <input class="form-check-input" type="checkbox" id="enableFriendBookFunction">
 <label class="form-check-label" for="enableFriendBookFunction">
@@ -20,13 +20,13 @@ ${langdata.ALLOW_COMMENTS_IN_FRIEND_BOOK[lang_name]}
 </div>
 
 <br />
-<p>${langdata.ADDITIONAL_INFORMATION_DISPLAY_IN_FRIEND_BOOK[lang_name]}</p>
+<p><i class="fa fa-file-text-o"></i> ${langdata.ADDITIONAL_INFORMATION_DISPLAY_IN_FRIEND_BOOK[lang_name]}</p>
 <textarea class="form-control" id="friend_book_additional_info">
 ${blog["友人帐页面附加信息"]}
 </textarea>
     
     <hr />
-    <p>${langdata.CURRENT_FRIEND_LIST_DESCRIPTION[lang_name]}</p>
+    <p><i class="fa fa-users"></i> ${langdata.CURRENT_FRIEND_LIST_DESCRIPTION[lang_name]}</p>
     
     
     
@@ -47,12 +47,12 @@ ${blog["友人帐页面附加信息"]}
   </tbody>
 </table>
 
-<button class="fluentbtn fluentbtn-blue" onclick="add_new_friend();">${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
+<button class="fluentbtn fluentbtn-blue" onclick="add_new_friend();"><i class="fa fa-plus"></i> ${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
 
     </div>
     <div class="modal-footer" id="edit_friend_book_dialog_footer">
-    <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();">${langdata.SAVE_CONFIGURATION[lang_name]}</button>
-    <button class="fluentbtn" onclick="window.location.reload();">${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+    <button class="fluentbtn" onclick="window.location.reload();"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
   </div>
     `;
 

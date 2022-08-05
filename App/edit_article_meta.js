@@ -10,23 +10,23 @@ module.exports = function (i) {
 
   document.getElementById("article_meta_content").innerHTML += `
     <div class="mb-3">
-    <label class="form-label">${langdata.ARTICLE_TITLE[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-book"></i> ${langdata.ARTICLE_TITLE[lang_name]}</label>
     <input class="form-control" placeholder="请输入文章标题" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
   </div>
   <div class="mb-3">
-    <label class="form-label">${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
     <textarea class="form-control" placeholder="请输入文章摘要" id="meta_article_description">${blog["文章列表"][i]["摘要"]}</textarea>
   </div>
   <div class="mb-3">
-    <label class="form-label">${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
     <input class="form-control" placeholder="请输入创建日期" value="${blog["文章列表"][i]["创建日期"]}" id="meta_article_createdat">
   </div>
   <div class="mb-3">
-    <label class="form-label">${langdata.MODIFIEDAT_EDIT_META[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.MODIFIEDAT_EDIT_META[lang_name]}</label>
     <input class="form-control" placeholder="请输入修改日期" value="${blog["文章列表"][i]["修改日期"]}" id="meta_article_updatedat">
   </div>
   <div class="mb-3">
-    <label class="form-label">${langdata.TAGS_EDIT_META[lang_name]}</label>
+    <label class="form-label"><i class="fa fa-tags"></i> ${langdata.TAGS_EDIT_META[lang_name]}</label>
     <input class="form-control"  placeholder="在这里填入标签（如果有的话）" id="meta_article_tags">
   </div>
   
