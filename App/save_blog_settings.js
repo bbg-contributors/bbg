@@ -118,4 +118,7 @@ module.exports = function () {
   }
 
   BlogInstance.writeBlogData();
+  toast_creator("success","configuration saved!");
+  document.getElementById("container").innerHTML = "";
+  render_blog_settings();
 };

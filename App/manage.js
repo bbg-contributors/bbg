@@ -47,6 +47,7 @@ const let_article_up = require("./change_article_order.js").let_article_up;
 const let_article_down = require("./change_article_order.js").let_article_down;
 const let_friend_up = require("./change_friend_order.js").let_friend_up;
 const let_friend_down = require("./change_friend_order.js").let_friend_down;
+const toast_creator = require("./toast_creator.js");
 const save_blog_settings = require("./save_blog_settings.js");
 const reset_official_theme = require("./reset_official_theme.js");
 const apply_thirdparty_theme = require("./apply_thirdparty_theme.js");

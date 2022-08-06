@@ -449,8 +449,13 @@ body:before {
   padding-bottom: 80px;
 }
 
-a {
+a , .btn-link{
   text-decoration: none;
+  color: #196fd1;
+}
+
+.toast{
+  z-index:15;
 }
 
 #nav_list button {
