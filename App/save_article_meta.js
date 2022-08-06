@@ -37,5 +37,8 @@ module.exports = function (i) {
   rss_hook();
   sitemap_hook();
 
-  window.location.reload();
+  document.getElementById("container").innerHTML="";
+  renderArticleManager();
+
+  toast_creator("success","changes have been saved!");
 };

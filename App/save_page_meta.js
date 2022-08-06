@@ -15,5 +15,8 @@ module.exports = function (i) {
 
   sitemap_hook();
 
-  window.location.reload();
+  document.getElementById("container").innerHTML="";
+  render_page_manager();
+
+  toast_creator("success","changes have been saved!");
 };

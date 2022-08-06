@@ -13,4 +13,6 @@ module.exports = function () {
   blog["友人帐页面允许评论"] = document.getElementById("enableFriendBookComment").checked;
 
   BlogInstance.writeBlogData();
+
+  toast_creator("success","changes have been saved!");
 };

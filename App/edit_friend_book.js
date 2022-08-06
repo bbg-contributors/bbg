@@ -51,8 +51,8 @@ ${blog["友人帐页面附加信息"]}
 
     </div>
     <div class="modal-footer" id="edit_friend_book_dialog_footer">
-    <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();window.location.reload();"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
-    <button class="fluentbtn" onclick="window.location.reload();"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+    <button class="fluentbtn" onclick="window.location.reload();" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
   </div>
     `;
 

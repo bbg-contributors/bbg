@@ -1,6 +1,7 @@
 
 function let_friend_up (friend_id){
   if (friend_id !== 0) {
+    save_friend_book();
     const friendObj = blog["友人帐"][friend_id];
     blog["友人帐"].splice(friend_id - 1, 0, friendObj);
     blog["友人帐"].splice(friend_id + 1, 1);
@@ -11,6 +12,7 @@ function let_friend_up (friend_id){
 
 function let_friend_down(friend_id){
   if (friend_id !== blog["友人帐"].length - 1) {
+    save_friend_book();
     const friendObj = blog["友人帐"][friend_id];
     blog["友人帐"].splice(friend_id + 2, 0, friendObj);
     blog["友人帐"].splice(friend_id, 1);
