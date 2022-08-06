@@ -38,7 +38,84 @@ const getFullLangData = function () {
           lang_material[lang_meta["名称与文件名之间的映射关系"][i]["name"]][
             lang_meta["需要翻译的键值"][j]
           ];
-      } else {
+      } else if(
+        typeof lang_material[
+          lang_meta["名称与文件名之间的映射关系"][i]["name"]
+        ][lang_meta["需要翻译的键值"][j]] === "undefined"
+      ){
+
+        if(typeof lang_material["简体中文"][
+          lang_meta["需要翻译的键值"][j]
+        ] !== "string"){
+          // is array
+
+
+          if(typeof lang_material["English"][
+            lang_meta["需要翻译的键值"][j]
+          ] !== "undefined"){
+
+            for (
+              let k = 0;
+              k <
+              lang_material["English"][
+                lang_meta["需要翻译的键值"][j]
+              ].length;
+              k++
+            ) {
+              if (lang_current[lang_meta["需要翻译的键值"][j]][k] === undefined) {
+                lang_current[lang_meta["需要翻译的键值"][j]][k] = new Object();
+              }
+              lang_current[lang_meta["需要翻译的键值"][j]][k][
+                lang_meta["名称与文件名之间的映射关系"][i]["name"]
+              ] =
+                lang_material["English"][
+                  lang_meta["需要翻译的键值"][j]
+                ][k];
+            }
+
+          }else{
+
+
+            for (
+              let k = 0;
+              k <
+              lang_material["简体中文"][
+                lang_meta["需要翻译的键值"][j]
+              ].length;
+              k++
+            ) {
+              if (lang_current[lang_meta["需要翻译的键值"][j]][k] === undefined) {
+                lang_current[lang_meta["需要翻译的键值"][j]][k] = new Object();
+              }
+              lang_current[lang_meta["需要翻译的键值"][j]][k][
+                lang_meta["名称与文件名之间的映射关系"][i]["name"]
+              ] =
+                lang_material["简体中文"][
+                  lang_meta["需要翻译的键值"][j]
+                ][k];
+            }            
+          }
+        }else{
+          // is string
+          if(lang_material["English"][
+            lang_meta["需要翻译的键值"][j]
+          ] !== undefined){
+            lang_current[lang_meta["需要翻译的键值"][j]][
+              lang_meta["名称与文件名之间的映射关系"][i]["name"]
+            ] =
+              lang_material["English"][
+                lang_meta["需要翻译的键值"][j]
+              ];
+          }else{
+            lang_current[lang_meta["需要翻译的键值"][j]][
+              lang_meta["名称与文件名之间的映射关系"][i]["name"]
+            ] =
+              lang_material["简体中文"][
+                lang_meta["需要翻译的键值"][j]
+              ];
+          }
+        }        
+      } else{
         // is array
 
         for (
