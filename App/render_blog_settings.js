@@ -34,7 +34,7 @@ module.exports = function () {
     document.getElementById("blog_settings_is_using_acg_bg").checked = true;
 
   if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
-    document.getElementById("leancloud_settings_detail").innerHTML = `${langdata.HINT_USING_PUBLIC_COMMENT_SERVICE[lang_name]}<a href="#" onclick="disable_puclic_comment_service()">${langdata.LINK_ABANDON_PUBLIC_COMMENT_SERVICE[lang_name]}</a>`;
+    document.getElementById("leancloud_settings_detail").innerHTML = `${langdata.HINT_USING_PUBLIC_COMMENT_SERVICE[lang_name]}<a href="javascript:void(0)" onclick="disable_puclic_comment_service()">${langdata.LINK_ABANDON_PUBLIC_COMMENT_SERVICE[lang_name]}</a>`;
     document.getElementById("hint_of_use_public_comment_service").innerHTML = "";
   }
 

@@ -4,7 +4,8 @@ function let_article_up (article_id) {
     blog["文章列表"].splice(article_id - 1, 0, articleObj);
     blog["文章列表"].splice(article_id + 1, 1);
     BlogInstance.writeBlogData();
-    document.getElementById("container").innerHTML = "<br /><br /><br />";
+    toast_creator("success","done");
+    document.getElementById("container").innerHTML = "";
     renderArticleManager();
   }
 }
@@ -15,7 +16,8 @@ function let_article_down (article_id) {
     blog["文章列表"].splice(article_id + 2, 0, articleObj);
     blog["文章列表"].splice(article_id, 1);
     BlogInstance.writeBlogData();
-    document.getElementById("container").innerHTML = "<br /><br /><br />";
+    toast_creator("success","done");
+    document.getElementById("container").innerHTML = "";
     renderArticleManager();
   }
 }
