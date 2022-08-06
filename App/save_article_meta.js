@@ -1,6 +1,9 @@
-const { renameSync } = require("fs");
+const { renameSync,existsSync } = require("fs");
 
 module.exports = function (i) {
+
+  save_article_meta_operate_success = true;
+
   const meta_article_title = document.getElementById("meta_article_title").value;
   const meta_article_description = document.getElementById("meta_article_description").value;
   const meta_article_createdat = document.getElementById("meta_article_createdat").value;
@@ -38,9 +41,12 @@ module.exports = function (i) {
   else
     blog["文章列表"][i]["启用评论"] = false;
 
-  if(meta_article_filename !== blog["文章列表"][i]["文件名"]){
+  if(meta_article_filename !== blog["文章列表"][i]["文件名"] && existsSync(`${rootDir}/data/articles/${meta_article_filename}`) === false){
     renameSync(`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}`,`${rootDir}/data/articles/${meta_article_filename}`);
     blog["文章列表"][i]["文件名"] = meta_article_filename;
+  } else if(meta_article_filename !== blog["文章列表"][i]["文件名"] && existsSync(`${rootDir}/data/articles/${meta_article_filename}`) === true){
+    toast_creator("danger","the filename you specfied already exists in the folder");
+    save_article_meta_operate_success = false;
   }
 
   BlogInstance.writeBlogData();
@@ -50,6 +56,8 @@ module.exports = function (i) {
 
   document.getElementById("container").innerHTML="";
   renderArticleManager();
-
-  toast_creator("success","changes have been saved!");
+  if(save_article_meta_operate_success === true){
+    toast_creator("success","changes have been saved!");
+  }
+  
 };
