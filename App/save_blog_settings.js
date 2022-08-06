@@ -2,6 +2,9 @@
 const dialog = require("@electron/remote").dialog;
 
 module.exports = function () {
+
+  save_blog_settings_operate_success = true;
+
   const blog_settings_description = document.getElementById("blog_settings_description").value;
   const blog_settings_title = document.getElementById("blog_settings_title").value;
   const blog_settings_titlebar_bgcolor = document.getElementById("blog_settings_titlebar_bgcolor").value;
@@ -106,12 +109,14 @@ module.exports = function () {
   if (domain_string !== "" && domain_string.charAt(domain_string.length - 1) === "/") window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。");
 
   if (domain_string === "" && auto_rss_enabled === true) {
-    window.alert("在没有填写域名的情况下不能使用rss功能");
+    toast_creator("danger","you haven't specified a domain for the rss function.");
+    save_blog_settings_operate_success = false;
     auto_rss_enabled = false;
   }
 
   if (domain_string === "" && auto_sitemap_enabled === true) {
-    window.alert("在没有填写域名的情况下不能使用站点地图生成功能");
+    toast_creator("danger","you haven't specified a domain for the sitemap function.");
+    save_blog_settings_operate_success = false;
     auto_sitemap_enabled = false;
   }
 
@@ -119,7 +124,10 @@ module.exports = function () {
   blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
 
   BlogInstance.writeBlogData();
-  toast_creator("success","configuration saved!");
+  if(save_blog_settings_operate_success === true){
+    toast_creator("success","configuration saved!");
+  }
+  
   document.getElementById("container").innerHTML = "";
   render_blog_settings();
 };

@@ -6,15 +6,15 @@ function view_current_icon () {
   if (existsSync(`${rootDir}/favicon.ico`))
     shell.openPath(`${rootDir}/favicon.ico`);
   else
-    window.alert(langdata.ALERT_NOT_USING_ICON[lang_name]);
+    toast_creator("danger",langdata.ALERT_NOT_USING_ICON[lang_name]);
 }
 
 function delete_current_icon () {
   if (existsSync(`${rootDir}/favicon.ico`)) {
     rmSync(`${rootDir}/favicon.ico`);
-    window.alert(langdata.ALERT_SUCCESSFUL_CLEARING[lang_name]);
+    toast_creator("success",langdata.ALERT_SUCCESSFUL_CLEARING[lang_name]);
   } else {
-    window.alert(langdata.ALERT_NOT_USING_ICON[lang_name]);
+    toast_creator("danger",langdata.ALERT_NOT_USING_ICON[lang_name]);
   }
 }
 
@@ -27,7 +27,7 @@ function select_a_favicon () {
     copyFileSync(`${iconPath}`, `${rootDir}/favicon.ico`, constants.COPYFILE_EXCL);
   } else {
     // 用户放鸽子的情况
-    window.alert(langdata.ALERT_NOT_SELECT_ANY_ICON[lang_name]);
+    toast_creator("primary",langdata.ALERT_NOT_SELECT_ANY_ICON[lang_name]);
   }
 }
 

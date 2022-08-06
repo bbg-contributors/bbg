@@ -51,6 +51,7 @@ module.exports = () => {
   blog["全局主题设置"]["第三方主题版本"] = "";
   blog["全局主题设置"]["第三方主题文件内容"] = [];
   BlogInstance.writeBlogData();
-  window.alert(langdata.ALERT_RESET_THEME_OK[lang_name]);
-  window.location.reload();
+  toast_creator("success",langdata.ALERT_RESET_THEME_OK[lang_name]);
+  document.getElementById("container").innerHTML = "";
+  render_blog_settings();
 };

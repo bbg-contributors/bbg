@@ -33,7 +33,7 @@ module.exports = function () {
     }
   }
   if (not_consistency === true)
-    window.alert("检查已完成。");
+    toast_creator("primary","check completed with errors");
   else
-    window.alert("检查已结束，没有发现数据一致性问题。");
+    toast_creator("success","check completed successfully");
 };
