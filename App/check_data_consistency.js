@@ -32,8 +32,14 @@ module.exports = function () {
             `);
     }
   }
-  if (not_consistency === true)
+  if (not_consistency === true){
     toast_creator("primary","check completed with errors");
-  else
+    document.getElementById("container").innerHTML = "";
+    render_blog_settings();
+  }
+  else{
     toast_creator("success","check completed successfully");
+    document.getElementById("container").innerHTML = "";
+    render_blog_settings();
+  }
 };
