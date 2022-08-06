@@ -32,6 +32,9 @@ function select_a_favicon () {
       rmSync(`${rootDir}/favicon.ico`);
 
     copyFileSync(`${iconPath}`, `${rootDir}/favicon.ico`, constants.COPYFILE_EXCL);
+    toast_creator("success","done");
+    document.getElementById("container").innerHTML = "";
+    render_blog_settings();
   } else {
     // 用户放鸽子的情况
     toast_creator("primary",langdata.ALERT_NOT_SELECT_ANY_ICON[lang_name]);

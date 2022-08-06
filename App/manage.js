@@ -13,6 +13,7 @@ const migrate = require("./migrate_core.js");
 const check_migrate = require("./check_migrate.js");
 const randomString = require("./randomString.js");
 const { shell } = require("electron");
+const { rmSync } = require("fs");
 
 // 创建 blog 对象
 const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\","/");
