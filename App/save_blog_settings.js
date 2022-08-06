@@ -57,8 +57,6 @@ module.exports = function () {
   blog["提供复制全文到剪贴板的选项"] = enable_copy_full_article_to_clipboard;
 
   blog["网站域名（包括https://）"] = domain_string;
-  blog["在对文章列表进行修改后触发rss生成"] = auto_rss_enabled;
-  blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
 
   blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
 
@@ -116,6 +114,9 @@ module.exports = function () {
     window.alert("在没有填写域名的情况下不能使用站点地图生成功能");
     auto_sitemap_enabled = false;
   }
+
+  blog["在对文章列表进行修改后触发rss生成"] = auto_rss_enabled;
+  blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
 
   BlogInstance.writeBlogData();
   toast_creator("success","configuration saved!");
