@@ -21,6 +21,8 @@ module.exports=function(dialog_content,do_what_if_sure){
     `;
   const confirm_dialog = new bootstrap.Modal(document.getElementById(dialog_id));
   confirm_dialog.show();
+  document.getElementById("container").innerHTML = "";
+  render_blog_settings();
     
 
   document.getElementById(`${dialog_id}_sure`).setAttribute("onclick",do_what_if_sure);
