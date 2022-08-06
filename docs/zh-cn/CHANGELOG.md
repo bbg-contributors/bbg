@@ -1,5 +1,20 @@
 # 更新日志
 
+## 20220807
+
+**一般更新**
+
+* 现在支持修改文章的文件名
+* 现在支持调整友情链接的顺序
+* 现在模态框支持动画效果、在操作完成后会提供时长4秒的浮动提示、调整了开始页的布局、微调了样式和视觉效果
+* 新增对俄语的支持（感谢 [杨冬冬](https://github.com/yangdongstation) 的贡献！）
+
+**i18n 相关的技术性更新**
+
+* 现在在语言文件不完整时提供了 Fallback 机制
+* 支持反向检查 meta.json 的完整性（感谢 [Misaka13514](https://github.com/Misaka13514) 的贡献！）
+* 现在提供了一个脚本用于创建新的翻译文件和生成模板（感谢 [scientificworld](https://github.com/scientificworld) 的贡献！）
+
 ## 20220805
 * 更新博客使用的 valine 版本到 1.5.1，修复了可能存在的一处xss漏洞
 * 新增对繁体中文和日语的支持，感谢 [Misaka13514](https://github.com/Misaka13514) 的贡献！

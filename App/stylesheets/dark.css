@@ -1,13 +1,13 @@
 .article-item-sub,
 .article-content-sub,
 .page-item-sub {
-  color: lightslategray;
+  color: rgb(175, 188, 201);
 }
 
 .page-item,
 .article-item,
 .fluentinterface {
-  background-color: rgb(251, 252, 255);
+  background-color: rgb(61, 61, 61);
   padding: 24px;
 
   padding: 20px;
@@ -38,6 +38,15 @@ body:before {
   z-index: -1;
   content: "";
   position: fixed;
+  background-color: black;
+}
+
+body{
+  background-color: black;
+}
+
+* {
+  color:white
 }
 
 .modal-header,
@@ -47,7 +56,7 @@ body:before {
 
 .fluentbtn {
   border-radius: 8px;
-  background-color: rgb(254, 254, 254);
+  background-color: rgb(0, 0, 0);
   border-style: solid;
   border-width: 1px;
   border-color: rgb(235, 237, 238);
@@ -56,7 +65,7 @@ body:before {
   padding-right: 20px;
   padding-bottom: 8px;
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 110%;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 5%), 0 2px 2px 0 rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 6%);
 }
@@ -77,16 +86,16 @@ body:before {
 }
 
 .fluentbtn:hover {
-  background-color: rgb(250, 251, 251);
+  background-color: rgb(54, 54, 54);
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 
 }
 
 .fluentbtn:active {
-  background-color: rgb(250, 251, 251);
+  background-color: rgb(168, 168, 168);
   text-decoration: none;
-  color: grey;
+  color: rgb(255, 255, 255);
 
 }
 
@@ -451,7 +460,7 @@ body:before {
 
 a , .btn-link{
   text-decoration: none;
-  color: #196fd1;
+  color: #74b7ff;
 }
 
 .toast{
@@ -509,32 +518,34 @@ a , .btn-link{
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #0d6dfd27;
+    background-color: #003e5a;
     border-left: 0.25rem solid #0d6dfda1;;
   border-top: none;
   border-bottom: none;
   border-right: none;
   border-radius: 0;
-  
+  color:white
 }
 
 input.form-control, textarea.form-control{
   text-indent: 0px;
-  background-color: white;
+  background-color: rgb(49, 49, 49);
   margin: 0;
   border-bottom: 1px solid #808080;
-
+  color: white;
 }
 
 input.form-control:hover,textarea.form-control:hover{
-  background-color: #f8f8f8;
+  background-color: #292929;
+  color: white;
 }
 
 input.form-control:focus,textarea.form-control:focus{
   border-color: #808080;
   border-bottom: 2px solid #808080;
   box-shadow: none;
-  background-color: white;
+  background-color: rgb(32, 32, 32);
+  color: white;
 }
 
 .fluentbtn-start {
@@ -551,4 +562,41 @@ input.form-control:focus,textarea.form-control:focus{
 .fluentbtn-start:active {
   background-color: rgb(39, 78, 175) !important;
   color: rbg(218, 228, 255) !important
+}
+
+.modal-body,  .modal-footer{
+  background-color: rgb(41, 41, 41);
+}
+
+.modal-header{
+  background-color: #808080;
+}
+
+.bg-light,select, .card-img-top, .card-body{
+  background-color: #1f1f1f!important;
+  border-color: white!important;
+}
+
+nav div a,select,.card-img-top, .card-body{
+  color: white!important;
+}
+
+.list-group-item{
+  background-color: #1f1f1f;
+}
+
+.list-group-item:hover{
+  background-color: #5c5c5c;
+}
+
+.list-group-item:focus{
+  background-color: #9c9c9c;
+}
+
+a:hover,btn-link:hover{
+  color: #f3f9fd;
+}
+
+.card-img-top{
+  filter: brightness(0.50);
 }

@@ -124,7 +124,7 @@ function manageSiteByRootDir(rootDir) {
 }
 
 function displayContributers() {
-  shell.openExternal("https://github.com/bbg-contributors/bbg/graphs/contributors");
+  shell.openExternal("https://github.com/orgs/bbg-contributors/people");
 }
 
 function openGroupDialog() {
