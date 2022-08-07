@@ -1,4 +1,4 @@
-const { existsSync, appendFileSync } = require("fs");
+const { existsSync, appendFileSync, mkdirSync } = require("fs");
 
 module.exports = function () {
   const tempString = randomString(12);
@@ -6,6 +6,11 @@ module.exports = function () {
   if (existsSync(`${rootDir}/data/articles/${tempString}.md`)) {
     
   } else {
+
+    if(existsSync(`${rootDir}/data/articles/`) === false){
+      mkdirSync(`${rootDir}/data/articles/`);
+    }
+
     const dateobject = new Date();
     const datenow = dateobject.toLocaleDateString();
 

@@ -1,5 +1,5 @@
 
-const { existsSync, appendFileSync } = require("fs");
+const { existsSync, appendFileSync, mkdirSync } = require("fs");
 
 module.exports = function () {
   const tempString = randomString(12);
@@ -7,6 +7,9 @@ module.exports = function () {
   if (existsSync(`${rootDir}/data/pages/${tempString}.md`)) {
     
   } else {
+    if(existsSync(`${rootDir}/data/pages/`) === false){
+      mkdirSync(`${rootDir}/data/pages/`);
+    }
     blog["页面列表"].unshift({
       "页面标题": "",
       "是否显示在菜单中": true,
