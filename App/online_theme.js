@@ -71,10 +71,16 @@ function render_theme_detail(theme_id) {
     
     <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
     `;
-  } else {
+  } else if(currentProgramVersion === theme_list[theme_id]["last_tested_on_bbg_version"]){
     document.getElementById("more_info_of_theme_detail").innerHTML += `
     
-    <p><i class="fa fa-error"></i> ${langdata.THEME_AUTHOR_THINKS_NOT_COMPATIBLE[lang_name]}</p>
+    <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
+    `;
+
+  } else{
+    document.getElementById("more_info_of_theme_detail").innerHTML += `
+    
+    <p><i class="fa fa-times"></i> ${langdata.THEME_AUTHOR_THINKS_NOT_COMPATIBLE[lang_name]}</p>
     `;
   }
 }
