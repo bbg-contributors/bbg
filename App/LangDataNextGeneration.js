@@ -10,13 +10,13 @@ const getFullLangData = function () {
   lang_material = new Object();
   i18n_path = `${__dirname}/i18n/multi_language_next_generation`;
   files = readdirSync(i18n_path).filter(
-    item => item.endsWith('.json')
+    item => item.endsWith(".json")
   );
 
   for (file of files) {
     content = JSON.parse(
       readFileSync(
-	`${i18n_path}/${file}`, "utf8"
+        `${i18n_path}/${file}`, "utf8"
       )
     );
     lang_material[content["name"]] = {};
