@@ -1,7 +1,7 @@
 
 const {rmSync} = require("fs");
 const AdmZip = require("adm-zip");
-const e = require("express");
+const path = require("path");
 
 module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",theme_date=""){
   console.log(third_party_theme_path);
