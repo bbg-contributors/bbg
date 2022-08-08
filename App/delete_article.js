@@ -2,7 +2,7 @@ module.exports = function (i) {
 
   create_confirm_dialog(`
   
-  是否确认删除此文章？<b>此操作不可逆</b>
+  ${langdata.ARE_YOU_SURE_DELETE_ARTICLE[lang_name]}
   `,"",`
   try {
     rmSync(\`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}\`);

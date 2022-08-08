@@ -2,7 +2,7 @@ function render_friend_book_json_url_input(){
   document.getElementById("friend_list_json_input_container").innerHTML =`
   <br />
   <div class="mb-3">
-    <label class="form-label"><i class="fa fa-link"></i> 友人帐 json 文件的 URL（包含 http:// 或 https://）</label>
+    <label class="form-label"><i class="fa fa-link"></i> ${langdata.URL_OF_FRIEND_BOOK_JSON_DATA[lang_name]}</label>
     <input
       class="form-control"
       value="${blog["若友人帐来自json文件，则地址为"]}"
@@ -50,7 +50,7 @@ ${langdata.ALLOW_COMMENTS_IN_FRIEND_BOOK[lang_name]}
 <div class="form-check form-switch">
 <input class="form-check-input" type="checkbox" id="load_friend_from_external_json">
 <label class="form-check-label" for="load_friend_from_external_json">
-从外部 JSON 文件获取友人帐数据
+${langdata.GET_FRIEND_BOOK_DATA_FROM_EXTERNAL_LINK[lang_name]}
 </label>
 </div>
 <div id="friend_list_json_input_container"></div>

@@ -2,7 +2,7 @@ module.exports = function (i) {
 
   create_confirm_dialog(`
   
-  是否确认删除此页面？<b>此操作不可逆</b>
+  ${langdata.ARE_YOU_SURE_DELETE_PAGE[lang_name]}
   
   `,"",`
   

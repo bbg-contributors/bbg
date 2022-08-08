@@ -104,7 +104,7 @@ function generateNewBlog(rootDir) {
 
     BlogInstance.writeBlogData();
 
-    window.alert("博客站点初始化成功！接下来将进入博客设置页。");
+    window.alert(`${langdata.ALERT_SUCCESSFUL_INIT[lang_name]}`);
 
     window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
   } catch (error) {
@@ -257,29 +257,32 @@ storage.has("language", (error, hasKey) => {
           bbgvertype = readFileSync("/usr/share/bbg/bbgvertype", "utf8").replace("\n", "");
           switch (bbgvertype) {
           case "aur-bbg-git-misaka13514":
-            document.getElementById("check_update_interface").innerHTML = `
-                        <h5>版本信息</h5>
-                        安装通道：AUR（bbg-git）<br />
-                        打包者：Misaka13514<br />
-                        内部版本号：${currentProgramVersion}<br />
+            document.getElementById("interface_secondpart").innerHTML += `
+                        <br /><br />
+                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
+                        ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg-git）<br />
+                        ${langdata["PACKAGER"][lang_name]}：Misaka13514<br />
+                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
                         `;
             break;
           case "aur-bbg-zzjzxq33-misaka13514":
-            document.getElementById("check_update_interface").innerHTML = `
-                        <h5>版本信息</h5>
-                        安装通道：AUR（bbg）<br />
-                        打包者：zzjzxq33 和 Misaka13514<br />
-                        内部版本号：${currentProgramVersion}<br />
+            document.getElementById("interface_secondpart").innerHTML += `
+            <br /><br />
+                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
+                        ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg）<br />
+                        ${langdata["PACKAGER"][lang_name]}：zzjzxq33 ${langdata["AND"][lang_name]} Misaka13514<br />
+                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
                         `;
             break;
           case "debpkg-mzwing":
-            document.getElementById("check_update_interface").innerHTML = `
-                        <h5>版本信息</h5>
-                        安装通道：DEB 包<br />
-                        打包者：mzwing<br />
-                        内部版本号：${currentProgramVersion}<br />
+            document.getElementById("interface_secondpart").innerHTML += `
+            <br /><br />
+                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
+                        ${langdata["INSTALL_CHANNEL"][lang_name]}：DEB 包<br />
+                        ${langdata["PACKAGER"][lang_name]}：mzwing<br />
+                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
                         `;
             break;

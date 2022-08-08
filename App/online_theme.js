@@ -11,7 +11,7 @@ function install_theme(theme_id) {
   }
 
 
-  window.alert("下载已开始，请稍等。你现在可以关闭这个对话框了，但先不要退出博客设置界面。");
+  window.alert(`${langdata.ALERT_3RD_THEME_DOWNLOAD_STARTED[lang_name]}`);
 
   let req = request({
     method: "GET",

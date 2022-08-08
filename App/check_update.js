@@ -64,7 +64,7 @@ module.exports = function () {
             window.alert("你使用的是不受支持的操作系统。请自行前往 https://github.com/bbg-contributors/bbg 编译安装新版本。");
         }
       } else {
-        window.alert("当前已经是最新版本！");
+        window.alert(`${langdata.CURRENTLY_USING_LATEST_VERSION_ALREADY[lang_name]}`);
       }
     })
     .catch((err) => {
