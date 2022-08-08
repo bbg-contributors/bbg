@@ -5,3 +5,5 @@ bbg-darwin-x64
 bbg-win32-x64
 .vs
 dist
+.DS_Store
+*.sw?
