@@ -47,7 +47,7 @@
     "electron-builder": "^23.0.3",
     "eslint": "^8.18.0",
     "eslint-plugin-jsonc": "^2.3.1",
-    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-yml": "^1.0.0",
     "htmlhint": "^1.1.4"
   },
