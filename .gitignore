@@ -7,3 +7,4 @@ bbg-win32-x64
 dist
 .DS_Store
 *.sw?
+test.js
