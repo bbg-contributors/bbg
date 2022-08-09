@@ -1,3 +1,5 @@
+const evalFunc = require("./evalFunc.js");
+
 module.exports=function(dialog_content,js_to_reload,do_what_if_sure){
   let dialog_id = randomString(6);
   document.getElementById("root").innerHTML+=`
@@ -21,7 +23,7 @@ module.exports=function(dialog_content,js_to_reload,do_what_if_sure){
     `;
   const confirm_dialog = new bootstrap.Modal(document.getElementById(dialog_id));
   confirm_dialog.show();
-  eval(js_to_reload);
+  evalFunc(js_to_reload);
     
 
   document.getElementById(`${dialog_id}_sure`).setAttribute("onclick",do_what_if_sure);

@@ -1,10 +1,11 @@
 const { existsSync, appendFileSync, mkdirSync } = require("fs");
+const doNothing = require("./doNothing.js");
 
 module.exports = function () {
   const tempString = randomString(12);
 
   if (existsSync(`${rootDir}/data/articles/${tempString}.md`)) {
-    
+    doNothing();
   } else {
 
     if(existsSync(`${rootDir}/data/articles/`) === false){

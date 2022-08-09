@@ -6,6 +6,7 @@ const AppPath = require("@electron/remote").app.getPath("userData");
 
 const langdata = require("./LangData.js");
 const getUrlArgs = require("./getUrlArgs.js");
+const doNothing = require("./doNothing.js");
 const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\", "/");
 
 const loadUniStyle = require("./loadUniStyle.js");
@@ -76,7 +77,7 @@ function commit_and_push () {
       execSync(`cd ${rootDir} && git add . `);
       execSync(`cd ${rootDir} && git commit -m "site_update" `);
     } catch (error) {
-
+      doNothing();
     }
 
     try {
@@ -93,7 +94,7 @@ function commit_only () {
       execSync(`cd ${rootDir} && git add . `);
       execSync(`cd ${rootDir} && git commit -m "site_update" `);
     } catch (error) {
-
+      doNothing();
     }
     window.alert("操作完成。");
   }

@@ -1,5 +1,6 @@
 const { copyFileSync, rmSync, constants } = require("fs");
 const path = require("path");
+const doNothing = require("./doNothing.js");
 
 module.exports = () => {
   save_blog_settings();
@@ -19,7 +20,7 @@ module.exports = () => {
       try {
         rmSync(`${rootDir}/index.html`);
       } catch (error) {
-        
+        doNothing();
       }
 
       // 确保有东西可删
@@ -27,7 +28,7 @@ module.exports = () => {
         try {
           rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true});
         } catch (error) {
-
+          doNothing();
         }
         
       }

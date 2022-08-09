@@ -1,5 +1,6 @@
 
 const dialog = require("@electron/remote").dialog;
+const doNothing = require("./doNothing.js");
 
 module.exports = function () {
 
@@ -76,14 +77,14 @@ module.exports = function () {
     else
       blog["全局评论设置"]["启用valine评论"] = false;
   } catch (error) {
-
+    doNothing("TODO: handle exception");
   }
 
   try {
     blog["全局评论设置"]["valine设置"].leancloud_appid = blog_settings_valine_appid;
     blog["全局评论设置"]["valine设置"].leancloud_appkey = blog_settings_valine_appkey;
   } catch (error) {
-
+    doNothing("TODO: handle exception");
   }
 
   if (document.getElementById("sitelang_simplified_chinese").selected === true)

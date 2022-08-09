@@ -1,3 +1,5 @@
+const doNothing = require("./doNothing.js");
+
 module.exports = function () {
   document.getElementById("container").innerHTML += getUiFileContent(
     "article_manager_title_ui.html",
@@ -21,7 +23,7 @@ module.exports = function () {
 
   for (let i = 0; i < blog["文章列表"].length; i++) {
     if (blog["文章列表"][i]["是否置顶"]) {
-      
+      doNothing();
     } else {
       document.querySelector("#container").innerHTML += `
         <div class="article-item" id="article-item-${i}">
@@ -40,7 +42,7 @@ module.exports = function () {
             `;
 
       if (blog["文章列表"][i]["标签"].length === 0) {
-        
+        doNothing();
       } else {
         document.querySelector(`#article-item-sub-${i}`).innerHTML += `
         <i class="fa fa-tags"></i> ${langdata.TAGS[lang_name]}

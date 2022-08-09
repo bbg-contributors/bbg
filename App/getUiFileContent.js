@@ -1,6 +1,7 @@
 const { readFileSync } = require("fs");
 const path = require("path");
+const evalFunc = require("./evalFunc.js");
 
 module.exports = function (ui_filename) {
-  return eval(`\`${readFileSync(path.join(__dirname, "ui", ui_filename), "utf8")}\``);
+  return evalFunc(`\`${readFileSync(path.join(__dirname, "ui", ui_filename), "utf8")}\``);
 };

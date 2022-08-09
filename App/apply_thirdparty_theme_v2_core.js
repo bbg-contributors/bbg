@@ -2,6 +2,7 @@
 const {rmSync} = require("fs");
 const AdmZip = require("adm-zip");
 const path = require("path");
+const doNothing = require("./doNothing.js");
 
 module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",theme_date=""){
   console.log(third_party_theme_path);
@@ -22,7 +23,7 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
       try {
         rmSync(`${rootDir}/index.html`);
       } catch (error) {
-        
+        doNothing();
       }
 
       // 确保有东西可删
@@ -30,7 +31,7 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
         try {
           rmSync(path.join(rootDir, "/" + blog["全局主题设置"]["第三方主题文件内容"][i]),{recursive: true});
         } catch (error) {
-
+          doNothing();
         }
         
       }
@@ -40,7 +41,7 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
       try {
         rmSync(`${rootDir}/index.html`);
       } catch(error){
-
+        doNothing();
       }
     }
 

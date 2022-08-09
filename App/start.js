@@ -8,6 +8,8 @@ const shell = require("@electron/remote").shell;
 const AppPath = require("@electron/remote").app.getPath("userData");
 const storage = require("electron-json-storage");
 
+const doNothing = require("./doNothing.js");
+
 const langdata = require("./LangData.js");
 
 storage.setDataPath(AppPath);
@@ -248,7 +250,7 @@ storage.has("language", (error, hasKey) => {
             document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data.rootdir.replace(/\\/g, "/")}')`);
           });
         } else {
-          
+          doNothing();
         }
       });
 
