@@ -21,15 +21,15 @@ module.exports = function () {
     console.error(e);
   }
 
-  const blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value.replace(/(^\s*)|(\s*$)/g, "");
+  const blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value.replace(/(^\n*)|(\n*$)/g, "");
   const blog_settings_is_using_acg_bg = document.getElementById("blog_settings_is_using_acg_bg").checked;
   const website_announcement_enabled = document.getElementById("website_announcement_enabled").checked;
   const website_announcement_indexonly = document.getElementById("website_announcement_indexonly").checked;
-  const website_announcement_content = document.getElementById("website_announcement_content").value.replace(/(^\s*)|(\s*$)/g, "");
+  const website_announcement_content = document.getElementById("website_announcement_content").value.replace(/(^\n*)|(\n*$)/g, "");
   const blog_settings_enable_custom_css = document.getElementById("blog_settings_enable_custom_css").checked;
   const blog_settings_enable_custom_js = document.getElementById("blog_settings_enable_custom_js").checked;
-  const blog_settings_custom_css = document.getElementById("blog_settings_custom_css").value.replace(/(^\s*)|(\s*$)/g, "");
-  const blog_settings_custom_js = document.getElementById("blog_settings_custom_js").value.replace(/(^\s*)|(\s*$)/g, "");
+  const blog_settings_custom_css = document.getElementById("blog_settings_custom_css").value.replace(/(^\n*)|(\n*$)/g, "");
+  const blog_settings_custom_js = document.getElementById("blog_settings_custom_js").value.replace(/(^\n*)|(\n*$)/g, "");
   const blog_settings_content_license = document.getElementById("blog_settings_content_license").value;
   const blog_content_license_enabled = document.getElementById("blog_content_license_enabled").checked;
 
