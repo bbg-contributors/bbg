@@ -1,18 +1,23 @@
 # 下载 BBG
 
-## 官方下载源
+## 下载来自 GitHub Actions 的自动构建
 
-官方下载源提供最新版本的 BBG 程序包，支持常见的桌面平台，包括 Windows x64、macOS 和 Linux x64。
+每次发布新版本时，GitHub Actions 会自动构建最新的安装包，并可在 [GitHub Releases](https://github.com/bbg-contributors/bbg/releases/) 页面下载。
 
-| 下载通道 | 备注 |
-| --- | --- |
-| [GitHub Releases](https://github.com/bbg-contributors/bbg/releases) | 版本最新 |
+## AUR
 
-## 非官方下载源
+如果你是 Arch Linux 用户，推荐你从 AUR 安装。
 
-来自非官方下载源的 BBG 版本由社区用户贡献，为某些发行版 / OS 环境提供了更好的集成，但是版本可能不是最新的。
+这样 AUR 助手（比如 yay）可以确保软件包时刻处于最新状态。
 
-| 下载通道 | 提供者 |
-| --- | --- |
-| [AUR (Binary)](https://aur.archlinux.org/packages/bbg/) | zzjzxq33 |
-| [AUR (VCS Package)](https://aur.archlinux.org/packages/bbg-git/) | Misaka13514 |
+### [bbg](https://aur.archlinux.org/packages/bbg/)
+
+此包直接使用 GitHub Actions 生成的 ```app.asar```。
+
+维护者：Misaka13514、zzjzxq33
+
+### [bbg-git](https://aur.archlinux.org/packages/bbg-git/)
+
+此包从源代码编译。
+
+维护者：Misaka13514
