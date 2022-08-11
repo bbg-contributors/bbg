@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "@electron/remote": "^2.0.8",
-    "@popperjs/core": "^2.11.5",
+    "@popperjs/core": "^2.11.6",
     "adm-zip": "^0.5.9",
     "bootstrap": "5.2.0",
     "crypto-js": "^4.1.1",
