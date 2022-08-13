@@ -49,7 +49,9 @@ bbgtheme2版本采用的是zip文件压缩方式，因此你只需要把自己�
 
 ### 对公共评论服务的支持
 
-实际上就是内置了一个公共的 Leancloud 密钥，实现上仍然是 Valine 实现的。这个公共 API 密钥的信息如下：注意，此密钥仅限开发 BBG 第三方主题使用。
+实际上就是内置了一个公共的 Leancloud 密钥，实现上仍然是 Valine 实现的。这个公共 API 密钥的信息如下：
+
+!> 需要注意的是，此密钥仅限开发 BBG 第三方主题使用。
 
 ```
 appid: SykuVs4qcWMkl4RUtKEUlmog-gzGzoHsz
