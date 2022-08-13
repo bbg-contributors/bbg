@@ -132,7 +132,7 @@ function displayContributers() {
 function openGroupDialog() {
   createInfoDialog(langdata.JOIN_OUR_GROUP[lang_name], `
     
-    <p>${langdata.QQ_GROUP_NUMBER[lang_name]}</p>
+    <a onclick="shell.openExternal('https://qm.qq.com/cgi-bin/qm/qr?k=b0Q0ZdEnioDMxsOmhlpP_928Eq-rJsft&authKey=yiB+kzW4OP/TluIlnlJQzNxcuCjJCB+hqCWXYUVrKTaUdCkImrrCnbLMtK8Q/xc5&noverify=0')" href="">${langdata.QQ_GROUP_NUMBER[lang_name]}</a>
     <p>${langdata.QQ_GROUP_DESCRIPTION[lang_name]}</p>
     `);
 }
