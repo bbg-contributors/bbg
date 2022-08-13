@@ -5,26 +5,11 @@ const request = require("request");
 function install_theme(theme_id) {
 
   downloadCompleted = false;
-  let downloadStatus = new Proxy(
-    {
-      isCompleted: false
-    },
-    {
-      set: (target, prop, value, receiver) => {
-        target[prop] = value;
-        // 回调函数执行完成后主题文件已经正确完整的保存，可以开始安装主题了
-        // 使用 downloadStatus.isCompleted 响应式变量判断回调函数是否执行完成
-        if(value){
-          apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip",false,theme_list[theme_id]["name"],theme_list[theme_id]["last_tested_on_bbg_version"]);
-        }
-        return true;
-      }
-    }
-  );
 
   if(fs.existsSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip")){
     fs.rmSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip");
   }
+
 
   window.alert(`${langdata.ALERT_3RD_THEME_DOWNLOAD_STARTED[lang_name]}`);
 
@@ -38,8 +23,16 @@ function install_theme(theme_id) {
   req.on("end", () => {
     // 这个回调函数执行时request还没有退出和保存下载的文件，现在如果读取下载的主题文件，那么读取到的仍然是不完整的文件
     // 当这个回调函数完成后，request才会退出并保存下载的主题文件
-    downloadStatus.isCompleted = true;
+    downloadCompleted = true;
   });
+
+  setInterval(()=>{
+    // 上面的回调函数执行完成后主题文件已经正确完整的保存，可以开始安装主题了
+    // 使用 downloadCompleted 变量判断上面的回调函数是否执行完成
+    if(downloadCompleted){
+      apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip",false,theme_list[theme_id]["name"],theme_list[theme_id]["last_tested_on_bbg_version"]);
+    }
+  },2000);
 
 }
 
