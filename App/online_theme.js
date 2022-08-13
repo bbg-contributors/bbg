@@ -6,6 +6,15 @@ function install_theme(theme_id) {
 
   downloadCompleted = false;
 
+  document.getElementById("root").innerHTML+=` 
+  <div class="fluentinterface fixed-top" style="width:30%;left:20px;z-index:9999;">
+  <h5><i class="fa fa-fownload"></i> 正在下载主题（已完成<span id="download_theme_progress_percentage">0</span> %）</h5>
+    <div class="progress" style="height:10px">
+    
+      <div class="progress-bar bg-success" role="progressbar" style="width: 0%;height:50px;" id="download_theme_progress_width"></div>
+    </div>
+  </div>`;
+
   if(fs.existsSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip")){
     fs.rmSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip");
   }
@@ -19,6 +28,18 @@ function install_theme(theme_id) {
   });
   let out = fs.createWriteStream(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip");
   req.pipe(out);
+
+  req.on("response", (data) => {
+    tot = parseInt(data.headers["content-length"]);
+  });
+
+  let rec=0;
+
+  req.on("data", (chunk) => {
+    rec += chunk.length;
+    document.getElementById("download_theme_progress_width").setAttribute("style", `width:${(rec / tot) * 100}%`);
+    document.getElementById("download_theme_progress_percentage").innerHTML = (rec / tot) * 100;
+  });
 
   req.on("end", () => {
     // 这个回调函数执行时request还没有退出和保存下载的文件，现在如果读取下载的主题文件，那么读取到的仍然是不完整的文件
