@@ -30,7 +30,7 @@ After downloading the package, install it and execute the `bbg` to get started.
 
 ## Repobeats Data
 
-![Repobeats analytics image](https://repobeats.axiom.co/api/embed/867874b0e0263127ca6448651d4bc9358256bd4e.svg)
+![Alt](https://repobeats.axiom.co/api/embed/2b43688cbf52e138e774f5c9909c3bac3893390a.svg "Repobeats analytics image")
 
 ---
 
