@@ -51,7 +51,7 @@ function install_theme(theme_id) {
     // 上面的回调函数执行完成后主题文件已经正确完整的保存，可以开始安装主题了
     // 使用 downloadCompleted 变量判断上面的回调函数是否执行完成
     if(downloadCompleted){
-      apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip",false,theme_list[theme_id]["name"],theme_list[theme_id]["last_tested_on_bbg_version"]);
+      apply_thirdparty_theme_v2_core(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip",false,theme_list[theme_id]["name"],theme_list[theme_id]["last_update_date"]);
     }
   },2000);
 
@@ -106,6 +106,26 @@ function render_theme_detail(theme_id) {
   }
 }
 
+function check_thirdparty_theme_update(){
+  fetch("https://bbg-themes.nekomoe.xyz/index.json")
+    .then((response) => response.json())
+    .then((data) => {
+      theme_list = data["theme_list"];
+
+      for(let i=0;i<data["theme_list"].length;i++){
+        if(data.theme_list[i]["name"] === blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]){
+          if(data.theme_list[i]["last_update_date"] > blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]){
+            if(window.confirm(`A New Version of ${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]} (${data.theme_list[i][last_update_date]}) is currently available, upgrade it now?`)){
+              install_theme(i);
+            }
+          }else{
+            window.alert(langdata["CURRENTLY_USING_LATEST_VERSION_ALREADY"][lang_name]);
+          }
+        }
+      }
+    });
+}
+
 function render_online_theme_list() {
   document.getElementById("download_online_theme_dialog_content").innerHTML =
     "";
@@ -152,3 +172,4 @@ module.exports.open_online_theme_dialog = open_online_theme_dialog;
 module.exports.render_theme_detail = render_theme_detail;
 module.exports.render_online_theme_list = render_online_theme_list;
 module.exports.install_theme = install_theme;
+module.exports.check_thirdparty_theme_update = check_thirdparty_theme_update;

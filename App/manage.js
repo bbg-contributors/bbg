@@ -54,6 +54,7 @@ const save_blog_settings = require("./save_blog_settings.js");
 const reset_official_theme = require("./reset_official_theme.js");
 const apply_thirdparty_theme = require("./apply_thirdparty_theme.js");
 const apply_thirdparty_theme_v2_core = require("./apply_thirdparty_theme_v2_core.js");
+const check_thirdparty_theme_update = require("./online_theme").check_thirdparty_theme_update;
 const apply_thirdparty_theme_v2 = require("./apply_thirdparty_theme_v2.js");
 const open_online_theme_dialog = require("./online_theme.js").open_online_theme_dialog;
 const render_theme_detail = require("./online_theme.js").render_theme_detail;
