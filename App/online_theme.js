@@ -115,7 +115,7 @@ function check_thirdparty_theme_update(){
       for(let i=0;i<data["theme_list"].length;i++){
         if(data.theme_list[i]["name"] === blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]){
           if(data.theme_list[i]["last_update_date"] > blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]){
-            if(window.confirm(`A New Version of ${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]} (${data.theme_list[i][last_update_date]}) is currently available, upgrade it now?`)){
+            if(window.confirm(`A new version of theme ${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]} (${data.theme_list[i]["last_update_date"]}) is currently available, upgrade it now?`)){
               install_theme(i);
             }
           }else{
