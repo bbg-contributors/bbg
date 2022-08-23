@@ -8,9 +8,6 @@
     "App/**/*",
     "resources/**/*"
   ],
-  "electronDownload": {
-    "version": "19.0.2"
-  },
   "extraFiles": [
     "LICENSE"
   ],
