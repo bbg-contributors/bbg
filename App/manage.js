@@ -118,3 +118,25 @@ storage.has("language", (error, hasKey) => {
   }
   if (error) console.error(error);
 });
+
+// fix broken clipboard function on macOS
+
+if(process.platform === "darwin"){
+
+  const { clipboard } = require("electron");
+  const keyCodes = {
+    V: 86,
+  };
+  document.onkeydown = function(event){
+    let toReturn = true
+    if(event.ctrlKey || event.metaKey){  // detect ctrl or cmd
+      if(event.which == keyCodes.V){
+        document.activeElement.value += clipboard.readText();
+        document.activeElement.dispatchEvent(new Event("input"));
+        toReturn = false
+      }
+    }
+  
+    return toReturn;
+  };
+}
