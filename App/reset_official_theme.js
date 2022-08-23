@@ -4,6 +4,7 @@ const doNothing = require("./doNothing.js");
 
 module.exports = () => {
   save_blog_settings();
+  backup_themecfg();
   if (
     blog["全局主题设置"]["是否使用第三方主题"] === true
     && blog["全局主题设置"]["第三方主题版本"] === "v2"

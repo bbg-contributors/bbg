@@ -12,7 +12,7 @@ const BlogData = require("./BlogData.js");
 const migrate = require("./migrate_core.js");
 const check_migrate = require("./check_migrate.js");
 const randomString = require("./randomString.js");
-const { shell } = require("electron");
+const shell = require("@electron/remote").shell;
 const { rmSync } = require("fs");
 
 // 创建 blog 对象
@@ -69,6 +69,10 @@ const getUiFileContent = require("./getUiFileContent.js");
 const generate_rss = require("./generate_rss.js");
 const rss_hook = require("./rss_hook.js");
 const sitemap_hook = require("./sitemap_hook.js");
+
+const config_third_party_theme = require("./config_third_party_theme.js").config_third_party_theme;
+const save_config_of_third_party_theme = require("./config_third_party_theme.js").save_config_of_third_party_theme;
+const backup_themecfg = require("./backup_themecfg.js");
 
 // goto and menu functions
 const goto_article_manager = require("./gotoFx.js").goto_article_manager;

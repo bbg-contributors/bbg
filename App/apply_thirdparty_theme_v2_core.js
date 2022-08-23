@@ -12,6 +12,7 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
   } else {
     const zip = new AdmZip(third_party_theme_path);
 
+    backup_themecfg();
     if (
       blog["全局主题设置"]["第三方主题文件内容"] !== undefined
       && blog["全局主题设置"]["第三方主题文件内容"] !== null

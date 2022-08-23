@@ -24,6 +24,11 @@ module.exports = function () {
   
   `;
     }
+
+    document.getElementById("isUsingThirdPartyTheme").innerHTML += `
+    <button class="fluentbtn" onclick="config_third_party_theme();"><i class="fa fa-cogs"></i> 编辑主题配置文件</button>
+    `;
+
   } else {
     document.getElementById("isUsingThirdPartyTheme").innerHTML = `
   ${langdata.STATUS_USING_OFFICIAL_THEME[lang_name]}
