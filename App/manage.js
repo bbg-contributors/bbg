@@ -126,6 +126,7 @@ if(process.platform === "darwin"){
   const { clipboard } = require("electron");
   const keyCodes = {
     V: 86,
+    C: 67
   };
   document.onkeydown = function(event){
     let toReturn = true;
@@ -133,6 +134,10 @@ if(process.platform === "darwin"){
       if(event.which == keyCodes.V){
         document.activeElement.value += clipboard.readText();
         document.activeElement.dispatchEvent(new Event("input"));
+        toReturn = false;
+      }
+      if(event.which == keyCodes.C){
+        clipboard.writeText(window.getSelection().toString().replace(/^\s+/g, "").replace(/\s+$/g, ""));
         toReturn = false;
       }
     }
