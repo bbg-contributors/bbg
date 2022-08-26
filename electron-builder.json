@@ -1,6 +1,6 @@
 {
-  "productName": "Baiyang-lzy's Blog Generator",
-  "appId": "com.github.baiyang-lzy.bbg",
+  "productName": "Baiyuanneko's Blog Generator",
+  "appId": "com.github.baiyuanneko.bbg",
   "asar": true,
   "files": [
     "dist/electron/**/*",

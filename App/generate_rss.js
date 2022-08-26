@@ -23,7 +23,7 @@ module.exports = function () {
     <author>
         <name>${blog["博客标题"]}</name>
     </author>
-    <generator uri="https://bbg.nekomoe.xyz">Baiyang-lzy's Blog Generator</generator>
+    <generator uri="https://bbg.nekomoe.xyz">Baiyuanneko's Blog Generator</generator>
     `;
 
   for (let i = 0; i < blog["文章列表"].length; i++) {

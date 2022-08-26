@@ -1,8 +1,8 @@
 # BBG
 
-Hello here, this is the official document of BBG (Baiyang-lzy's Blog Generator). Please select a language to display the docs.
+Hello here, this is the official document of BBG (Baiyuanneko's Blog Generator). Please select a language to display the docs.
 
-这里是 BBG （Baiyang-lzy's Blog Generator）的官方文档。请从下方的列表中选择用于阅读文档的语言。
+这里是 BBG （Baiyuanneko's Blog Generator）的官方文档。请从下方的列表中选择用于阅读文档的语言。
 
 [English](/en/)
 

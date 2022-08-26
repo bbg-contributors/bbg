@@ -4,7 +4,7 @@
   "description": "A static blog generator based on Electron Technology.",
   "license": "UNLICENSED",
   "author": {
-    "name": "baiyang-lzy",
+    "name": "baiyuanneko",
     "email": "baiyuanneko@protonmail.com"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "lint:html": "htmlhint \"**/*.html\""
   },
   "maintainers": [
-    "baiyang-lzy",
+    "baiyuanneko",
     "chihuo2104",
     "mzwing",
     "Misaka13514",
