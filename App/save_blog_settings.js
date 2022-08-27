@@ -93,6 +93,9 @@ module.exports = function () {
   if (document.getElementById("sitelang_english").selected === true)
     blog["网站语言"] = "English";
 
+  if (document.getElementById("sitelang_japanese").selected === true)
+    blog["网站语言"] = "日本語";
+
   blog["启用网站公告"] = website_announcement_enabled;
   blog["网站公告仅在首页显示"] = website_announcement_indexonly;
   blog["网站公告"] = website_announcement_content;

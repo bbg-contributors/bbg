@@ -50,6 +50,9 @@ module.exports = function () {
   if (blog["网站语言"] === "English")
     document.getElementById("sitelang_english").selected = true;
 
+  if (blog["网站语言"] === "日本語")
+    document.getElementById("sitelang_japanese").selected = true;
+
   if (blog["启用网站公告"] === true)
     document.getElementById("website_announcement_enabled").checked = true;
 
