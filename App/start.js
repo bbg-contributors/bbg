@@ -82,8 +82,8 @@ function generateNewBlog(rootDir) {
 
     copyFileSync(path.join(__dirname, "default_theme_src/index.html"), path.join(rootDir, "index.html"), constants.COPYFILE_EXCL);
 
-    if (lang_name !== "简体中文") {
-      // en_US or other languages.
+    if (lang_name !== "简体中文" && lang_name !== "日本語") {
+      // languages other than zh_CN and ja_JP
       copyFileSync(path.join(__dirname, "blog_source/data/articles/first.english.md"), path.join(rootDir, "data/articles/first.md"), constants.COPYFILE_EXCL);
 
       copyFileSync(path.join(__dirname, "blog_indexjson_template/index.english.json"), path.join(rootDir, "data/index.json"), constants.COPYFILE_EXCL);
@@ -96,6 +96,14 @@ function generateNewBlog(rootDir) {
 
       copyFileSync(path.join(__dirname, "/blog_indexjson_template/index.zhcn.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
       copyFileSync(path.join(__dirname, "/blog_source/data/pages/about.zhcn.md"), path.join(rootDir, "/data/pages/about.md"), constants.COPYFILE_EXCL);
+    }
+
+    if (lang_name === "日本語") {
+      // ja_JP
+      copyFileSync(path.join(__dirname, "/blog_source/data/articles/first.japanese.md"), path.join(rootDir, "/data/articles/first.md"), constants.COPYFILE_EXCL);
+
+      copyFileSync(path.join(__dirname, "/blog_indexjson_template/index.japanese.json"), path.join(rootDir, "/data/index.json"), constants.COPYFILE_EXCL);
+      copyFileSync(path.join(__dirname, "/blog_source/data/pages/about.japanese.md"), path.join(rootDir, "/data/pages/about.md"), constants.COPYFILE_EXCL);
     }
 
     const BlogInstance = new BlogData(rootDir);
