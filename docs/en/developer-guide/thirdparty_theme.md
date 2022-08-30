@@ -42,9 +42,19 @@ This is an example of URLS.
 ```
 6. After developing, you can build this project. And you should zip package the dist and change the suffix to `.bbgtheme2`. You can use it by importing it in bbg.
 
+## How to let users configure (set up) your theme
+
+bbg wil check whether `themecfg.json` and `themecfg_manual.html` exist in `Your Theme Directory/themecfg/` when configuring a thirdparty theme.
+
+If `themecfg.json` is present, bbg will assume that your theme is supported to be configured and will provide an interface for users to edit the json file. On top of that, if `themecfg_manual.html` also exists, bbg will use it as a configuration document for your theme and will provide buttons for users to open it conveniently.
+
+There is no formatting requirements for `themecfg.json`, you can organize its object structure as you see fit. But it must be readable in json format, and bbg will check that when the users save configurations.
+
+If users change a thirdparty theme or reset it as an official theme, the original `themecfg.json` file will be backed up to `User's Site Root Directory/themecfg_backup/themecfg_<timestamp>.json`, and the original file will be deleted. When this operation occurs, users will be generally reminded that the configuration file is deleted and only the backup is kept.
+
 ## Something should be paid attention.
 
-In order to promise the compatibility. Now we should explain about something.
+In order to ensure the compatibility. Now we should explain about something.
 
 ### The support for public comment service
 
