@@ -112,12 +112,14 @@ jobs:
           draft: false
           prerelease: false
           body: |
-            The program package supports most desktop operating systems e.g, macOS, Windows and Linux. The current version supports English and Simplified Chinese as application language, despite the support for English language is currently experimental, so bugs may occur. If you have any suggestions or feedbacks, please send them to GitHub Issues. We will process them in our spare time.
+            The program package supports most desktop operating systems e.g., macOS, Windows, and Linux. The current version supports [many languages](https://github.com/bbg-contributors/bbg-lang) as application language, despite the support for languages other than Chinese is currently experimental, so bugs may occur. If you have any suggestions or feedback, please send them to [GitHub Issues](https://github.com/bbg-contributors/bbg/issues/new). We will process them in our spare time.
+
+            [Changelog](https://bbg.nekomoe.xyz/#/en/CHANGELOG)
 
             ---
 
-            本项目支持 macOS、Windows、Linux 等常见桌面平台。目前应用程序支持设定为英语和简体中文，但对英语的支持目前仍是实验性的，因而可能会出现 Bug。如果你有任何意见或建议，请将它们发送到 GitHub Issues 中。我们会在空余时间处理这些问题。
+            本项目支持 macOS、Windows、Linux 等常见桌面平台。目前应用程序支持[多种语言](https://github.com/bbg-contributors/bbg-lang)，但对中文以外的语言的支持目前仍是实验性的，因而可能会出现 Bug。如果你有任何意见或建议，请将它们发送到 [GitHub Issues](https://github.com/bbg-contributors/bbg/issues/new) 中。我们会在空余时间处理这些问题。
 
-            更新日志详见[链接](https://bbg.nekomoe.xyz/#/zh-cn/CHANGELOG)。
+            [更新日志](https://bbg.nekomoe.xyz/#/zh-cn/CHANGELOG)
           files: |
             dist/*

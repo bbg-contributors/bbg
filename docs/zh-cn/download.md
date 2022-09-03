@@ -12,7 +12,7 @@
 
 ### [bbg](https://aur.archlinux.org/packages/bbg/)
 
-此包直接使用 GitHub Actions 生成的 ```app.asar```。
+此包直接使用 GitHub Actions 生成的 `app.asar`。
 
 维护者：Misaka13514、zzjzxq33
 

@@ -4,17 +4,18 @@
 
 首先确保计算机上已经安装：
 
-* Git
-* Node.js >= 16
-* Yarn (可选*)
+- Git
+- Node.js >= 16
+- Yarn (可选\*)
 
-> *你可以使用任何你喜欢的包管理器来代替 Yarn，你也无需将其它包管理器生成的文件（比如```pnpm-lock.yaml```）添加到 `.gitignore` 中。
+> \*你可以使用任何你喜欢的包管理器来代替 Yarn，你也无需将其它包管理器生成的文件（比如`pnpm-lock.yaml`）添加到 `.gitignore` 中。
 
 然后获取源代码。
 
 ```sh
 git clone --recursive https://github.com/bbg-contributors/bbg.git
 ```
+
 > 如果你嫌慢的话 可以添加`--depth=1`。
 
 然后转到项目根目录下执行以下命令安装依赖：
@@ -49,14 +50,14 @@ yarn run build:linux
 yarn run build:mac
 ```
 
-由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 ```Unsupported `GLOBAL_AGENT.HTTP_PROXY` configuration```的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
+由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 `Unsupported 'GLOBAL_AGENT.HTTP_PROXY' configuration`的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
 
 ```sh
 export GLOBAL_AGENT_HTTPS_PROXY=http://host:port
 export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 ```
 
-其中，```host:port``` 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
+其中，`host:port` 的内容由你的本地 Proxy 相关配置决定。注意本地 Proxy 协议必须为 http。
 
 ### 在本地查看文档
 
@@ -82,7 +83,7 @@ yarn run lint:fix
 yarn run lint:html
 ```
 
-## 这些文件都是什么意思？/我想修改XXX功能，应该从哪里开始？
+## 这些文件都是什么意思？/我想修改 XXX 功能，应该从哪里开始？
 
 BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的框架，也可以用包管理器安装然后在此项目的对应位置引入并使用，只要它不破坏其它功能的运行即可。
 
@@ -98,12 +99,12 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 
 ## 开发注意事项
 
-如果有涉及i18n的内容，请先在<https://github.com/bbg-contributors/bbg-lang>中编辑，后再使用`git submodule update --remote`进行更新
+如果有涉及 i18n 的内容，请先在<https://github.com/bbg-contributors/bbg-lang>中编辑，后再使用`git submodule update --remote`进行更新
 
-涉及submodule的内容同理。
+涉及 submodule 的内容同理。
 
 如果有任何错误，请先执行`git submodule update`
 
-如果还是报错，请[新开issue](https://github.com/bbg-contributors/bbg/issues/new).
+如果还是报错，请[新开 issue](https://github.com/bbg-contributors/bbg/issues/new).
 
-如果你对这个bug有自己的解决方案，或者是有新的想法，欢迎[PR](https://github.com/bbg-contributors/bbg/pulls/)！
+如果你对这个 bug 有自己的解决方案，或者是有新的想法，欢迎[PR](https://github.com/bbg-contributors/bbg/pulls/)！

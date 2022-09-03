@@ -18,15 +18,15 @@ After downloading the package, install it and execute the `bbg` to get started.
 
 ## Sites built with BBG
 
-* [白羊李志远のBlog](https://nekomoe.xyz/)
-* [洛仙璃の幻梦](https://mzwing.eu.org/)
-* [季风](https://littlesunnybear.com/)
+- [白羊李志远のBlog](https://nekomoe.xyz/)
+- [洛仙璃の幻梦](https://mzwing.eu.org/)
+- [季风](https://littlesunnybear.com/)
 
 ## Developer reference documentation
 
 **The following documents are for reference by developers and packagers only. General users do not need to consult.**
 
-* [Contributing Guide](/zh-cn/developer-guide/CONTRIBUTING.md)
+- [Contributing Guide](/en/developer-guide/CONTRIBUTING.md)
 
 ## Repobeats Data
 

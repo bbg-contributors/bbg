@@ -5,7 +5,8 @@
     - [第三方主题开发文档](/zh-cn/developer-guide/thirdparty_theme.md)
     - [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
 - [English](/en/)
+  - [Changelog](/en/CHANGELOG.md)
   - [Download Guide](/en/download.md)
   - Developer Guide
     - [Contributing Guide](/en/developer-guide/CONTRIBUTING.md)
-    - [Thirdparty Theme Development Guide](/en/developer-guide/thirdparty_theme.md)
+    - [Third-party Theme Development Guide](/en/developer-guide/thirdparty_theme.md)

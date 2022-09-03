@@ -10,7 +10,7 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 点击[这里](/zh-cn/download.md)以查看可用的程序包下载地址。
 
-* [更新日志](/zh-cn/CHANGELOG.md)
+- [更新日志](/zh-cn/CHANGELOG.md)
 
 ## 如何使用
 
@@ -18,9 +18,9 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 ## 使用 BBG 构建的站点展示
 
-* [白羊李志远のBlog](https://nekomoe.xyz/)
-* [洛仙璃の幻梦](https://mzwing.eu.org/)
-* [季风](https://littlesunnybear.com/)
+- [白羊李志远のBlog](https://nekomoe.xyz/)
+- [洛仙璃の幻梦](https://mzwing.eu.org/)
+- [季风](https://littlesunnybear.com/)
 
 ---
 
@@ -28,8 +28,8 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 **以下文档仅供开发者和打包者参考使用。一般用户无需查阅。**
 
-* [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
-* [第三方主题开发文档](/zh-cn/developer-guide/theme.md)
+- [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
+- [第三方主题开发文档](/zh-cn/developer-guide/theme.md)
 
 ## Repobeats Data
 
