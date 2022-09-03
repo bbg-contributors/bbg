@@ -18,7 +18,7 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 ## 使用 BBG 构建的站点展示
 
-- [白羊李志远のBlog](https://nekomoe.xyz/)
+- [柏园猫のBlog](https://nekomoe.xyz/)
 - [洛仙璃の幻梦](https://mzwing.eu.org/)
 - [季风](https://littlesunnybear.com/)
 

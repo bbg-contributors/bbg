@@ -18,7 +18,7 @@ After downloading the package, install it and execute the `bbg` to get started.
 
 ## Sites built with BBG
 
-- [白羊李志远のBlog](https://nekomoe.xyz/)
+- [柏园猫のBlog](https://nekomoe.xyz/)
 - [洛仙璃の幻梦](https://mzwing.eu.org/)
 - [季风](https://littlesunnybear.com/)
 
