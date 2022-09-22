@@ -325,32 +325,21 @@ function openStylesheetDialog() {
   stylesheet_dialog.show();
   document.getElementById("stylesheet-dialog-content").innerHTML = `
     <div class="container-fluid">
+    <h3>${langdata["APPLICATION_STYLE_SETTING"][lang_name]}</h3>
+    <br />
       <div class="row">
-      
-      <div class="col">
-      
-      <div class="card" onclick="changeStylesheet('default.css')">
-    <img src="./res/light_theme.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <p class="card-text">Default Blue</p>
+      <div class="col" id="stylesheet_list">
+      </div>
+      </div>
     </div>
-  </div>
-      </div>
-      <div class="col">
-      
-      <div class="card" onclick="changeStylesheet('dark.css')">
-  <img src="./res/dark_theme.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Dark</p>
-  </div>
-</div>
-      
-      </div>
-      </div>
-    
-    </div>
-    
-
-  
     `;
+
+  let stylesheet_list = JSON.parse(readFileSync(`${__dirname}/stylesheets/meta.json`,"utf-8"));
+    
+  for(let i=0;i<stylesheet_list.length;i++){
+    document.getElementById("stylesheet_list").innerHTML+=`
+      <p><a href="javascript:void(0)" onclick="changeStylesheet('${stylesheet_list[i]["filename"]}')">${stylesheet_list[i]["display_name"]}</a></p>
+      `;
+  }
 }
+
