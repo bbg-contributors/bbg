@@ -74,6 +74,9 @@ module.exports = function () {
   if (blog["提供复制全文到剪贴板的选项"] === true)
     document.getElementById("enable_copy_full_article_to_clipboard").checked = true;
 
+  if (blog["提高JSON文件的可读性"] === true)
+    document.getElementById("format_json_enabled").checked = true;
+
   document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
   document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
 

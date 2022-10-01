@@ -36,6 +36,7 @@ module.exports = function () {
   const enable_article_bottom_nav = document.getElementById("enable_article_bottom_nav").checked;
   const enable_article_file_download = document.getElementById("enable_article_file_download").checked;
   const enable_copy_full_article_to_clipboard = document.getElementById("enable_copy_full_article_to_clipboard").checked;
+  const enable_format_json = document.getElementById("format_json_enabled").checked;
 
   let auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
   let auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
@@ -63,6 +64,8 @@ module.exports = function () {
   blog["网站域名（包括https://）"] = domain_string;
 
   blog["底部信息（格式为markdown）"] = blog_settings_bottom_information;
+
+  blog["提高JSON文件的可读性"] = enable_format_json;
 
   if (blog_settings_is_using_acg_bg === true) {
     blog["全局主题设置"]["是否使用背景图像"] = true;
