@@ -122,6 +122,10 @@ function addSupportForExternalFriendListJson(){
   blog["若友人帐来自json文件，则地址为"] = "";
 }
 
+function addSupportForFormattedJson(){
+  blog["提高JSON文件的可读性"] = true;
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -147,6 +151,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -165,6 +170,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (
@@ -187,6 +193,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20210925) {
@@ -202,6 +209,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
@@ -217,6 +225,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20211205) {
@@ -232,6 +241,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20220119) {
@@ -246,6 +256,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
   if (currentBlogVersion === 20220123) {
     check_third_party_theme_compatiblity();
@@ -258,6 +269,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20220202) {
@@ -270,6 +282,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
   if (currentBlogVersion === 20220210) {
     check_third_party_theme_compatiblity();
@@ -280,6 +293,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
   if (currentBlogVersion === 20220211 || currentBlogVersion === 20220212) {
     check_third_party_theme_compatiblity();
@@ -289,6 +303,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20220213) {
@@ -299,6 +314,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20220304) {
@@ -308,6 +324,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion >= 20220314 && currentBlogVersion <= 20220604) {
@@ -316,6 +333,7 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if (currentBlogVersion === 20220611 || currentBlogVersion === 20220624) {
@@ -323,11 +341,18 @@ module.exports = function () {
     addSupportForBBGthemev2();
     addSupportForDomainRelatedFunctions();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
   }
 
   if(currentBlogVersion > 20220624 && currentBlogVersion <= 20220807){
     check_third_party_theme_compatiblity();
     addSupportForExternalFriendListJson();
+    addSupportForFormattedJson();
+  }
+
+  if(currentBlogVersion >= 20220808 && currentBlogVersion <= 20220930){
+    check_third_party_theme_compatiblity();
+    addSupportForFormattedJson();
   }
 
   check_third_party_theme_compatiblity();
