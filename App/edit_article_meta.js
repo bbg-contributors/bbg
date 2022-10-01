@@ -33,6 +33,10 @@ module.exports = function (i) {
   <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.FILENAME[lang_name]}</label>
   <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
   </div>
+  <div class="mb-3">
+    <label class="form-label"><i class="fa fa-key"></i> ${langdata.ARTICLE_ENCRYPT_PASSWORD[lang_name]}</label>
+    <input class="form-control"  placeholder="${langdata.PLEASE_INPUT_PASSWORD[lang_name]}" id="meta_article_password">
+  </div>
   
   <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_article_istop">

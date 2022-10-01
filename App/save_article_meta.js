@@ -9,6 +9,7 @@ module.exports = function (i) {
   const meta_article_createdat = document.getElementById("meta_article_createdat").value;
   const meta_article_updatedat = document.getElementById("meta_article_updatedat").value;
   const meta_article_tags = document.getElementById("meta_article_tags").value;
+  const meta_article_password_status = document.getElementById("meta_article_password").value ? true : false;
   const meta_article_istop = document.getElementById("meta_article_istop").checked;
   const meta_article_is_comment_enabled = document.getElementById("meta_article_is_comment_enabled").checked;
   const meta_article_ishidden = document.getElementById("meta_article_ishidden").checked;
@@ -40,6 +41,10 @@ module.exports = function (i) {
     blog["文章列表"][i]["启用评论"] = true;
   else
     blog["文章列表"][i]["启用评论"] = false;
+  if (meta_article_password_status === true)
+    blog["文章列表"][i]["启用加密"] = true;
+  else
+    blog["文章列表"][i]["启用加密"] = false;
 
   if(meta_article_filename !== blog["文章列表"][i]["文件名"] && existsSync(`${rootDir}/data/articles/${meta_article_filename}`) === false){
     renameSync(`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}`,`${rootDir}/data/articles/${meta_article_filename}`);
