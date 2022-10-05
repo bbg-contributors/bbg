@@ -35,7 +35,7 @@ module.exports = function (i) {
   </div>
   <div class="mb-3">
     <label class="form-label"><i class="fa fa-key"></i> ${langdata.ARTICLE_ENCRYPT_PASSWORD[lang_name]}</label>
-    <input class="form-control"  placeholder="${langdata.PLEASE_INPUT_PASSWORD[lang_name]}" id="meta_article_password">
+    <input class="form-control"  placeholder="${langdata.PLEASE_INPUT_PASSWORD[lang_name]}" ${blog["文章列表"][i]["启用加密"] ? `value="${blog["文章列表"][i]["密码"]}"` : ""} id="meta_article_password">
   </div>
   
   <div class="form-check form-switch">
