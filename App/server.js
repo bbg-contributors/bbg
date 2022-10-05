@@ -130,9 +130,10 @@ EOF`;
 }
 
 async function secure_copy_key() {
-  var dest = (await Prompt("", "请输入服务器IP地址/SSH端口/用户名/要提交到的目录/密钥位置（用空格隔开，例如 127.0.0.1 22 root /root/ ~/.ssh/id_rsa）")).split(" ");
-  if (dest.length < 5) window.alert("错误：给定的参数不足。");
+  var dest = (await Prompt("", "请输入服务器IP地址/SSH端口/用户名/要提交到的目录/密钥位置（用空格隔开，例如 127.0.0.1 22 root /root/ ~/.ssh/id_rsa ，密钥位置可省略）")).split(" ");
+  if (dest.length < 4) window.alert("错误：给定的参数不足。");
   else {
+    if (dest.length == 4) dest[4] = "~/.ssh/id_rsa";
     var cmd = `expect <<- EOF
 spawn sh -c "scp -P ${dest[1]} -i ${dest[4]} -r ${rootDir}/* ${dest[2]}@${dest[0]}:${dest[3]}"
 expect {
