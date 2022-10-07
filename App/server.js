@@ -3,6 +3,7 @@ const shell = require("@electron/remote").shell;
 const express = require("express");
 const storage = require("electron-json-storage");
 const AppPath = require("@electron/remote").app.getPath("userData");
+const Prompt = require("native-prompt");
 
 const langdata = require("./LangData.js");
 const getUrlArgs = require("./getUrlArgs.js");
@@ -32,9 +33,14 @@ storage.get("language", (error, data) => {
     <hr />
     <h4>${langdata.PUSH_TO_REMOTE_TITLE[lang_name]} <span class="badge bg-info">Beta</span></h4>
     <p>${langdata.PUSH_TO_REMOTE_DESCRIPTION[lang_name]}</p>
-    <button class="fluentbtn fluentbtn-blue" onclick="commit_and_push();">提${langdata.PUSH_TO_REMOTE[lang_name]}</button>
+    <button class="fluentbtn fluentbtn-blue" onclick="commit_and_push();">${langdata.PUSH_TO_REMOTE[lang_name]}</button>
     <button class="fluentbtn" onclick="commit_only()">${langdata.PUSH_TO_REMOTE_WITHOUT_PUSH[lang_name]}</button>
     <br /><br />
+    <hr />
+    <h4>${langdata.COPY_TO_REMOTE_TITLE[lang_name]} <span class="badge bg-info">Beta</span></h4>
+    <p>${langdata.COPY_TO_REMOTE_DESCRIPTION[lang_name]}</p>
+    <button class="fluentbtn fluentbtn-blue" onclick="secure_copy_pass();">${langdata.COPY_TO_REMOTE_WITH_PASSWD[lang_name]}</button>
+    <button class="fluentbtn" onclick="secure_copy_key()">${langdata.COPY_TO_REMOTE_WITH_KEY[lang_name]}</button>
     <hr />
     <h4>${langdata.MANUALLY_UPLOAD_AND_PUBLISH[lang_name]}</h4>
     <p>${langdata.PUBLISH_SITE_CONTENT[0][lang_name]}</p>
@@ -97,5 +103,49 @@ function commit_only () {
       doNothing();
     }
     window.alert("操作完成。");
+  }
+}
+
+async function secure_copy_pass() {
+  var dest = (await Prompt("", "请输入服务器IP地址/SSH端口/用户名/要提交到的目录/密码（用空格隔开，例如 127.0.0.1 22 root /root/ password）")).split(" ");
+  if (dest.length < 5) window.alert("错误：给定的参数不足。");
+  else {
+    var cmd = `expect <<- EOF
+spawn sh -c "scp -P ${dest[1]} -r ${rootDir}/* ${dest[2]}@${dest[0]}:${dest[3]}"
+expect {
+"yes/no" { send "yes\\r"; exp_continue }
+"password:" { send "${dest[4]}\\r" }
+}
+expect eof
+EOF`;
+    if (window.confirm(`你选择了使用密码验证，将要执行的指令如下，请确认：\n${cmd}`)) {
+      try {
+        execSync(cmd);
+      } catch(error) {
+        doNothing();
+      }
+    }
+  }
+  // TODO: Check if arg is valid
+}
+
+async function secure_copy_key() {
+  var dest = (await Prompt("", "请输入服务器IP地址/SSH端口/用户名/要提交到的目录/密钥位置（用空格隔开，例如 127.0.0.1 22 root /root/ ~/.ssh/id_rsa）")).split(" ");
+  if (dest.length < 5) window.alert("错误：给定的参数不足。");
+  else {
+    var cmd = `expect <<- EOF
+spawn sh -c "scp -P ${dest[1]} -i ${dest[4]} -r ${rootDir}/* ${dest[2]}@${dest[0]}:${dest[3]}"
+expect {
+"yes/no" { send "yes\\r" }
+}
+expect eof
+EOF`;
+    if (window.confirm(`你选择了使用密钥验证，将要执行的指令如下，请确认：${cmd}`)) {
+      try {
+        execSync(cmd);
+      } catch(error) {
+        doNothing();
+      }
+    }
   }
 }
