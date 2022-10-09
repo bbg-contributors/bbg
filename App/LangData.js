@@ -5,6 +5,24 @@ lang_meta = JSON.parse(
   readFileSync(__dirname + "/i18n/meta.json", "utf8")
 );
 
+lang_meta["需要翻译的键值"] = new Array();
+
+const template_zh_CN = Object.keys(JSON.parse(readFileSync(`${__dirname}/i18n/multi_language/zh_CN.json`,"utf-8")));
+const template_en_US = Object.keys(JSON.parse(readFileSync(`${__dirname}/i18n/multi_language/en_US.json`,"utf-8")));
+
+for(let i=0;i<template_zh_CN.length;i++){
+  lang_meta["需要翻译的键值"].push(template_zh_CN[i])
+}
+
+for(let i=0;i<template_en_US.length;i++){
+  if(lang_meta["需要翻译的键值"].includes(template_en_US[i])){
+
+  }else{
+    lang_meta["需要翻译的键值"].push(template_en_US[i])
+  }
+
+}
+
 const getFullLangData = function () {
   lang_current = new Object();
   lang_material = new Object();
