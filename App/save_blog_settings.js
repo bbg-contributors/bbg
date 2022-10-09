@@ -37,6 +37,10 @@ module.exports = function () {
   const enable_article_file_download = document.getElementById("enable_article_file_download").checked;
   const enable_copy_full_article_to_clipboard = document.getElementById("enable_copy_full_article_to_clipboard").checked;
   const enable_format_json = document.getElementById("format_json_enabled").checked;
+  const disable_shadow_effect_of_navbar = document.getElementById("disable_shadow_effect_of_navbar").checked;
+  const set_search_button_outline_into_dark_mode = document.getElementById("set_search_button_outline_into_dark_mode").checked;
+  const increase_page_margin = document.getElementById("increase_page_margin").checked;
+  const use_serif_font = document.getElementById("use_serif_font").checked;
 
   let auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
   let auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
@@ -127,6 +131,11 @@ module.exports = function () {
 
   blog["在对文章列表进行修改后触发rss生成"] = auto_rss_enabled;
   blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
+
+  blog["优先使用衬线字体"] = use_serif_font;
+  blog["使版心宽度更窄（提高左右页边距）"] = increase_page_margin;
+  blog["搜索按钮边框颜色设置为暗色"] = set_search_button_outline_into_dark_mode;
+  blog["禁用导航栏的阴影效果"] = disable_shadow_effect_of_navbar;
 
   BlogInstance.writeBlogData();
   if(save_blog_settings_operate_success === true){

@@ -196,12 +196,56 @@ ${blog["底部信息（格式为markdown）"]}
         <i class="fa fa-smile-o"></i>
         ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
       </div>
+
+      <div class="form-check  form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="set_search_button_outline_into_dark_mode"
+        />
+        <label class="form-check-label" for="set_search_button_outline_into_dark_mode">
+          ${langdata.SET_SEARCH_BUTTON_OUTLINE_INTO_DARK_MODE[lang_name]}
+        </label>
+      </div>
+
+      <div class="form-check  form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="increase_page_margin"
+        />
+        <label class="form-check-label" for="increase_page_margin">
+          ${langdata.INCREASE_PAGE_MARGIN[lang_name]}
+        </label>
+      </div>
+      
+      <div class="form-check  form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="use_serif_font"
+        />
+        <label class="form-check-label" for="use_serif_font">
+          ${langdata.USE_SERIF_FONT[lang_name]}
+        </label>
+      </div>
+
+      <div class="form-check  form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="disable_shadow_effect_of_navbar"
+        />
+        <label class="form-check-label" for="disable_shadow_effect_of_navbar">
+          ${langdata.DISABLE_SHADOW_EFFECT_OF_NAV_BAR[lang_name]}
+        </label>
+      </div>
+
       <br />
       <h2>${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</h2>
       <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
       
-      
-      
+
       <input id="domain_string" class="form-control" placeholder="${langdata.DOMAIN_RELATED_FUNCTION_EXAMPLE[lang_name]}" value="${blog['网站域名（包括https://）']}">
 <br />
       <div class="form-check  form-switch">

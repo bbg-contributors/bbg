@@ -77,6 +77,22 @@ module.exports = function () {
   if (blog["提高JSON文件的可读性"] === true)
     document.getElementById("format_json_enabled").checked = true;
 
+  if(blog["禁用导航栏的阴影效果"]){
+    document.getElementById("disable_shadow_effect_of_navbar").checked = true;
+  }
+
+  if(blog["搜索按钮边框颜色设置为暗色"]){
+    document.getElementById("set_search_button_outline_into_dark_mode").checked = true;
+  }
+
+  if(blog["使版心宽度更窄（提高左右页边距）"]){
+    document.getElementById("increase_page_margin").checked = true;
+  }
+
+  if(blog["优先使用衬线字体"]){
+    document.getElementById("use_serif_font").checked = true;
+  }
+
   document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
   document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
 
