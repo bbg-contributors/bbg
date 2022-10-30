@@ -24,7 +24,7 @@ storage.get("language", (error, data) => {
     <p>${langdata.PREVIEW_SITE_CONTENT[0][lang_name]}</p>
     <p>${langdata.PREVIEW_SITE_CONTENT[1][lang_name]}<a class="btn btn-sm btn-link" onclick="shell.openExternal('http://localhost:41701')">http://localhost:41701</a>${langdata.PREVIEW_SITE_CONTENT[2][lang_name]}</p>
     
-    <button class="btn btn-outline-primary" onclick="openInBrowser()">${langdata.PREVIEW_SITE_IN_BROWSER[lang_name]}</button>
+    <button class="btn btn-outline-success" onclick="openInBrowser()">${langdata.PREVIEW_SITE_IN_BROWSER[lang_name]}</button>
     <button class="btn btn-outline-primary" onclick="exit_preview()">${langdata.EXIT_PREVIEW[lang_name]}</button>
     
     

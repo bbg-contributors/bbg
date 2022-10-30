@@ -92,8 +92,8 @@ ${blog["友人帐页面附加信息"]}
 </div>
     </div>
     <div class="modal-footer" id="edit_friend_book_dialog_footer">
-    <button class="btn btn-outline-primary" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
-    <button class="btn btn-outline-primary" onclick="window.location.reload();" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+    <button class="btn btn-outline-danger" onclick="window.location.reload();" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+    <button class="btn btn-outline-success" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
   </div>
     `;
     

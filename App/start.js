@@ -188,7 +188,7 @@ storage.has("language", (error, hasKey) => {
            
            <p>${langdata.CREATE_NEW_SITE_DESCRIPTION[0][lang_name]}</p>
            <p><b>${langdata.CREATE_NEW_SITE_DESCRIPTION[1][lang_name]}</b></p>
-           <button type="button" class="btn btn-outline-primary"
+           <button type="button" class="btn btn-outline-success"
              onclick="create_new_site_choose_root_dir();">${langdata.SELECT_SITE_ROOT_DIRECTORY[lang_name]}</button>
            
            `;

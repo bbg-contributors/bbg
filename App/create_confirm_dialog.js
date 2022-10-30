@@ -14,7 +14,7 @@ module.exports=function(dialog_content,js_to_reload,do_what_if_sure){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata["CANCEL"][lang_name]}</button>
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</button>
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</button>
       </div>
     </div>
   </div>

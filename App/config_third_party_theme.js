@@ -15,7 +15,7 @@ function config_third_party_theme() {
     }
 
     document.getElementById("config_thirdparty_theme_content").innerHTML += `
-      <button class="btn btn-outline-primary" onclick="save_config_of_third_party_theme()"><i class="fa fa-download"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+      <button class="btn btn-outline-success" onclick="save_config_of_third_party_theme()"><i class="fa fa-download"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
       <br /><br />
     `;
 
