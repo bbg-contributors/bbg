@@ -384,6 +384,10 @@ module.exports = function () {
     addSupportForSomeSmallUserInterfaceImprovement_First();
   }
 
+  if(currentBlogVersion === 20221030){
+    check_third_party_theme_compatiblity();
+  }
+
   check_third_party_theme_compatiblity();
   updateBlogIndexHtml();
 
