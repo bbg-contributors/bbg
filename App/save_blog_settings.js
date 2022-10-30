@@ -135,7 +135,7 @@ module.exports = function () {
   blog["优先使用衬线字体"] = use_serif_font;
   blog["使版心宽度更窄（提高左右页边距）"] = increase_page_margin;
   blog["搜索按钮边框颜色设置为暗色"] = set_search_button_outline_into_dark_mode;
-  blog["禁用导航栏的阴影效果"] = disable_shadow_effect_of_navbar;
+  blog["全局主题设置"]["禁用导航栏的阴影效果"] = disable_shadow_effect_of_navbar;
 
   BlogInstance.writeBlogData();
   if(save_blog_settings_operate_success === true){

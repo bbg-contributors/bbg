@@ -77,7 +77,7 @@ module.exports = function () {
   if (blog["提高JSON文件的可读性"] === true)
     document.getElementById("format_json_enabled").checked = true;
 
-  if(blog["禁用导航栏的阴影效果"]){
+  if(blog["全局主题设置"]["禁用导航栏的阴影效果"]){
     document.getElementById("disable_shadow_effect_of_navbar").checked = true;
   }
 
