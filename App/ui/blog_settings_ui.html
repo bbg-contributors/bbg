@@ -1,11 +1,11 @@
-<nav class="navbar navbar-toggler bg-light">
+<nav class="navbar navbar-toggler bg-light" >
   <div class="container-fluid">
     <a class="navbar-brand" href="#"
-      ><i class="fa fa-cogs"></i> ${langdata["BLOG_SETTINGS"][lang_name]}</a
+      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${langdata["BLOG_SETTINGS"][lang_name]}</a
     >
   </div>
 </nav>
-<br />
+<br /><br /><br />
 <div class="row">
   <div class="col-3">
     
@@ -277,7 +277,7 @@ ${blog["底部信息（格式为markdown）"]}
         ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
       </p>
       <button
-        class="fluentbtn fluentbtn-blue"
+        class="btn btn-outline-primary"
         onclick="check_data_consistency()"
       >
       ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
@@ -329,13 +329,13 @@ ${blog["网站公告"]}
       <p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
       <p>${langdata["FAVICON_DESCRIPTION"][1][lang_name]}</p>
       <p>${langdata["FAVICON_DESCRIPTION"][2][lang_name]}</p>
-      <button class="fluentbtn fluentbtn-blue" onclick="select_a_favicon()">
+      <button class="btn btn-outline-primary" onclick="select_a_favicon()">
         ${langdata["SELECT_FAVICON"][lang_name]}
       </button>
-      <button class="fluentbtn fluentbtn-blue" onclick="view_current_icon()">
+      <button class="btn btn-outline-primary" onclick="view_current_icon()">
         ${langdata["VIEW_FAVICON"][lang_name]}
       </button>
-      <button class="fluentbtn" onclick="delete_current_icon()">
+      <button class="btn btn-outline-primary" onclick="delete_current_icon()">
         ${langdata["DELETE_FAVICON"][lang_name]}
       </button>
     </div>
@@ -376,7 +376,7 @@ ${blog["网站公告"]}
 
       
 
-      <button class="fluentbtn" onclick="open_online_theme_dialog()">
+      <button class="btn btn-outline-primary" onclick="open_online_theme_dialog()">
         <i class="fa fa-external-link"></i> ${langdata["OPEN_THEME_STORE"][lang_name]}
       </button>
 
@@ -592,15 +592,15 @@ ${blog["自定义JS"]}
       "
     >    
       <button
-        class="fluentbtn"
+        class="btn btn-outline-primary"
         onclick="document.documentElement.scrollTop = 0;"
       >
         <i class="fa fa-arrow-up"></i> ${langdata.BACK_TO_UP[lang_name]}
       </button>
-      <button class="fluentbtn fluentbtn-blue" onclick="save_blog_settings();">
+      <button class="btn btn-outline-primary" onclick="save_blog_settings();">
         <i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}
       </button>
-      <button class="fluentbtn" onclick="window.location.reload()">
+      <button class="btn btn-outline-danger" onclick="window.location.reload()">
         <i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}
       </button>
     </div>

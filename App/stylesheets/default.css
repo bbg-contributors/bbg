@@ -1,3 +1,20 @@
+
+.navbar{
+  background-color: rgb(51,57,69) !important;
+  color: white !important;
+  position: absolute;
+  left:-60px;
+  width: 105%;
+  border-radius: 0;
+  border: 0;
+  padding: 7px;
+}
+
+.navbar .container-fluid a{
+  color: white !important;
+}
+
+
 .article-item-sub,
 .article-content-sub,
 .page-item-sub {
@@ -13,12 +30,10 @@
   padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-left: 4px solid #5c9af7a1;;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
-  border-radius: 0;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 16%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  border: solid;
+  border-color: #819baa;
+  border-radius: 10px;
+  border-width: 1px;
 }
 
 .fluenthint {
@@ -538,17 +553,52 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 .fluentbtn-start {
-  border-radius: 24px;
-  background-color: #0199fa !important;
-  color: white !important
+  background-color: rgb(136,164,199) !important;
+  color: black !important;
+  border-radius: 0px;
+  border: 0;
 }
 
 .fluentbtn-start:hover {
-  background-color: #168dd6 !important;
-  color: white !important
+  background-color: rgb(187, 210, 238) !important;
 }
 
 .fluentbtn-start:active {
-  background-color: rgb(39, 78, 175) !important;
-  color: rbg(218, 228, 255) !important
+  background-color: rgb(189, 213, 242) !important;
 }
+
+#startpage_container{
+  background-color: rgb(42,45,60);
+  color:white;
+  text-align: center;
+
+}
+
+#last_managed_site_link{
+  color: rgb(145,186,217);
+}
+
+#nav_container{
+  background-color: rgb(51,57,69);
+  position: fixed;
+  width: 54px;
+  height: 100%;
+  z-index: 1000;
+}
+
+#nav_container .list-group .list-group-item{
+  background-color: rgb(51,57,69);
+  color: white;
+}
+
+#nav_container .list-group .list-group-item.active{
+  background-color: rgb(146,186,221);
+  border-radius: 0;
+}
+
+#nav_container .list-group{
+  margin: 0 !important;
+  left: 0;
+  top: 0;
+}
+

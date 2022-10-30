@@ -188,14 +188,14 @@ storage.has("language", (error, hasKey) => {
            
            <p>${langdata.CREATE_NEW_SITE_DESCRIPTION[0][lang_name]}</p>
            <p><b>${langdata.CREATE_NEW_SITE_DESCRIPTION[1][lang_name]}</b></p>
-           <button type="button" class="fluentbtn fluentbtn-blue"
+           <button type="button" class="btn btn-outline-primary"
              onclick="create_new_site_choose_root_dir();">${langdata.SELECT_SITE_ROOT_DIRECTORY[lang_name]}</button>
            
            `;
 
       document.getElementById("create-new-site-dialog-footer").innerHTML = `
            
-           <button type="button" class="fluentbtn" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
+           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
            `;
 
       document.getElementsByTagName("title")[0].innerHTML = `${langdata.STARTPAGE_TITLE[lang_name]}`;
@@ -204,11 +204,8 @@ storage.has("language", (error, hasKey) => {
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <p>${langdata.STARTPAGE_DESCRIPTION[0][lang_name]}</p>
            <br />
-        <p>
-          <a class="btn btn-link" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          </p>
-          <p><a class="btn btn-link" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
-      </p>
+          <a class="fluentbtn fluentbtn-start" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
+          <a class="fluentbtn fluentbtn-start" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
         
            `;
 

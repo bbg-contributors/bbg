@@ -62,7 +62,7 @@ function render_theme_detail(theme_id) {
     "";
 
   document.getElementById("download_online_theme_dialog_content").innerHTML += `
-  <button class="fluentbtn" onclick="render_online_theme_list();"><i class="fa fa-arrow-left"></i> 返回主题列表</button><br /><br />
+  <button class="btn btn-outline-primary" onclick="render_online_theme_list();"><i class="fa fa-arrow-left"></i> 返回主题列表</button><br /><br />
   <h4> ${theme_list[theme_id]["name"]} ${langdata.THEME_INFO_OF[lang_name]}</h4>
   <p><i class="fa fa-user-o"></i> ${langdata.THEME_AUTHOR[lang_name]}<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[theme_id]["author_url"]}')">${theme_list[theme_id]["author"]}</a></p>
   <p>${theme_list[theme_id]["intro"]}</p>
@@ -71,8 +71,8 @@ function render_theme_detail(theme_id) {
   <div id="more_info_of_theme_detail">
   </div>
   <hr />
-  <button class="fluentbtn fluentbtn-blue" onclick="install_theme(${theme_id})"><i class="fa fa-download"></i> ${langdata.INSTALL_THIS_THEME[lang_name]}</button>
-  <button class="fluentbtn" onclick="render_online_theme_list();">${langdata.BACK_TO_THEME_LIST[lang_name]}</button><br /><br />
+  <button class="btn btn-outline-primary" onclick="install_theme(${theme_id})"><i class="fa fa-download"></i> ${langdata.INSTALL_THIS_THEME[lang_name]}</button>
+  <button class="btn btn-outline-primary" onclick="render_online_theme_list();">${langdata.BACK_TO_THEME_LIST[lang_name]}</button><br /><br />
 
   `;
 

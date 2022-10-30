@@ -9,9 +9,9 @@ module.exports = function () {
       <h2>${blog["页面列表"][i]["页面标题"]}</h2>
       <p id="if_view_in_menu_${i}"  class="page-item-sub"></p>
       <p>
-      <button class="fluentbtn fluentbtn-blue" onclick="edit_page('${blog["页面列表"][i]["文件名"]}')"><i class="fa fa-edit"></i> ${langdata.EDIT_PAGE_CONTENT[lang_name]}</button>
-      <button class="fluentbtn fluentbtn-blue" onclick="edit_page_meta(${i})"><i class="fa fa-cogs"></i> ${langdata.EDIT_PAGE_META[lang_name]}</button>
-      <button class="fluentbtn" onclick="delete_page(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_PAGE[lang_name]}</button>
+      <button class="btn btn-outline-primary" onclick="edit_page('${blog["页面列表"][i]["文件名"]}')"><i class="fa fa-edit"></i> ${langdata.EDIT_PAGE_CONTENT[lang_name]}</button>
+      <button class="btn btn-outline-primary" onclick="edit_page_meta(${i})"><i class="fa fa-cogs"></i> ${langdata.EDIT_PAGE_META[lang_name]}</button>
+      <button class="btn btn-outline-danger" onclick="delete_page(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_PAGE[lang_name]}</button>
       </p>
   
       </div>

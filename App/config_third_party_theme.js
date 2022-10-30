@@ -10,12 +10,12 @@ function config_third_party_theme() {
 
     if(existsSync(`${rootDir}/themecfg/themecfg_manual.html`)){
       document.getElementById("config_thirdparty_theme_content").innerHTML += `
-      <button class="fluentbtn" onclick="shell.openPath('${rootDir}/themecfg/themecfg_manual.html')"><i class="fa fa-book"></i> 此主题提供了配置文档，点击这里以查阅</button>
+      <button class="btn btn-outline-primary" onclick="shell.openPath('${rootDir}/themecfg/themecfg_manual.html')"><i class="fa fa-book"></i> 此主题提供了配置文档，点击这里以查阅</button>
     `;
     }
 
     document.getElementById("config_thirdparty_theme_content").innerHTML += `
-      <button class="fluentbtn fluentbtn-blue" onclick="save_config_of_third_party_theme()"><i class="fa fa-download"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+      <button class="btn btn-outline-primary" onclick="save_config_of_third_party_theme()"><i class="fa fa-download"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
       <br /><br />
     `;
 
