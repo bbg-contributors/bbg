@@ -114,7 +114,7 @@ function generateNewBlog(rootDir) {
 
     BlogInstance.writeBlogData();
 
-    window.alert(`${langdata.ALERT_SUCCESSFUL_INIT[lang_name]}`);
+    dialog.showMessageBox({message: langdata["ALERT_SUCCESSFUL_INIT"][lang_name]});
 
     window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
   } catch (error) {
