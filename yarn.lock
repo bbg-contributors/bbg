@@ -828,9 +828,9 @@ electron-publish@23.6.0:
     lazy-val "^1.0.5"
     mime "^2.5.2"
 
-electron@^21.2.1:
-  version "21.2.1"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-21.2.1.tgz#a6bbf4fee7ed985c739cc0d87fbef0ea4559da57"
+electron@^21.2.2:
+  version "21.2.2"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-21.2.2.tgz#e2f3dd014981df555d2cd1655590168b404edae4"
   dependencies:
     "@electron/get" "^1.14.1"
     "@types/node" "^16.11.26"
