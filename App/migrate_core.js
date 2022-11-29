@@ -134,6 +134,7 @@ function addSupportForSomeSmallUserInterfaceImprovement_First(){
 }
 
 function addSupportForOptionsOfMarkdownRendering(){
+  blog["Markdown渲染配置"] = new Object();
   blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"] = true;
   blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"] = true;
   blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = true;
