@@ -271,7 +271,7 @@ ${blog["底部信息（格式为markdown）"]}
       <br />
       <br />
       <h3>
-        Markdown 文档渲染和显示
+        ${langdata.MARKDOWN_RENDERING[lang_name]}
       </h3>
       <div class="form-check  form-switch">
         <input
@@ -280,7 +280,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="rewrite_baseurl"
         />
         <label class="form-check-label" for="rewrite_baseurl">
-          基准 URL 设置为 Markdown 文件所在目录
+          ${langdata.REWRITE_BASEURL[lang_name]}
         </label>
       </div>
       <div class="form-check  form-switch">
@@ -290,7 +290,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="enable_image_viewer"
         />
         <label class="form-check-label" for="enable_image_viewer">
-          在用户点击图片时显示图片查看器
+          ${langdata.ENABLE_IMAGE_VIEWER[lang_name]}
         </label>
       </div>
       <div class="form-check  form-switch">
@@ -300,7 +300,7 @@ ${blog["底部信息（格式为markdown）"]}
           id="resize_images"
         />
         <label class="form-check-label" for="resize_images">
-          根据用户屏幕尺寸渲染图片尺寸
+          ${langdata.RESIZE_IMAGES[lang_name]}
         </label>
       </div>
 
