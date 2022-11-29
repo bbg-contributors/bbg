@@ -133,6 +133,12 @@ function addSupportForSomeSmallUserInterfaceImprovement_First(){
   blog["优先使用衬线字体"] = false;
 }
 
+function addSupportForOptionsOfMarkdownRendering(){
+  blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"] = true;
+  blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"] = true;
+  blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = true;
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -160,6 +166,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion <= 20210817 && currentBlogVersion >= 20210813) {
@@ -180,6 +187,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (
@@ -204,6 +212,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20210925) {
@@ -221,6 +230,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20211002 || currentBlogVersion === 20211003 || currentBlogVersion === 20211016 || currentBlogVersion === 20211022 || currentBlogVersion === 20211106) {
@@ -238,6 +248,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20211205) {
@@ -255,6 +266,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20220119) {
@@ -271,6 +283,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
   if (currentBlogVersion === 20220123) {
     check_third_party_theme_compatiblity();
@@ -285,6 +298,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20220202) {
@@ -299,6 +313,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
   if (currentBlogVersion === 20220210) {
     check_third_party_theme_compatiblity();
@@ -311,6 +326,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
   if (currentBlogVersion === 20220211 || currentBlogVersion === 20220212) {
     check_third_party_theme_compatiblity();
@@ -322,6 +338,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20220213) {
@@ -334,6 +351,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20220304) {
@@ -345,6 +363,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion >= 20220314 && currentBlogVersion <= 20220604) {
@@ -355,6 +374,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if (currentBlogVersion === 20220611 || currentBlogVersion === 20220624) {
@@ -364,6 +384,7 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if(currentBlogVersion > 20220624 && currentBlogVersion <= 20220807){
@@ -371,21 +392,30 @@ module.exports = function () {
     addSupportForExternalFriendListJson();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if(currentBlogVersion >= 20220808 && currentBlogVersion <= 20220930){
     check_third_party_theme_compatiblity();
     addSupportForFormattedJson();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if(currentBlogVersion >= 20220931 && currentBlogVersion <= 20221029){
     check_third_party_theme_compatiblity();
     addSupportForSomeSmallUserInterfaceImprovement_First();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   if(currentBlogVersion === 20221030){
     check_third_party_theme_compatiblity();
+    addSupportForOptionsOfMarkdownRendering();
+  }
+
+  if(currentBlogVersion === 20221031){
+    check_third_party_theme_compatiblity();
+    addSupportForOptionsOfMarkdownRendering();
   }
 
   check_third_party_theme_compatiblity();
