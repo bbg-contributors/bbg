@@ -96,6 +96,10 @@ module.exports = function () {
   document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
   document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
 
+  document.getElementById("rewrite_baseurl").checked = blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"];
+  document.getElementById("enable_image_viewer").checked = blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"];
+  document.getElementById("resize_images").checked = blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"];
+
   if (blog["CDN选择"] === 1) {
     // 从列表中选择cdn地址
     document.getElementById("cdn_cho_1").checked = true;

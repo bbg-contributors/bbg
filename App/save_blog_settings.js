@@ -137,6 +137,10 @@ module.exports = function () {
   blog["搜索按钮边框颜色设置为暗色"] = set_search_button_outline_into_dark_mode;
   blog["全局主题设置"]["禁用导航栏的阴影效果"] = disable_shadow_effect_of_navbar;
 
+  blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"] = document.getElementById("rewrite_baseurl").checked;
+  blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"] = document.getElementById("enable_image_viewer").checked;
+  blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = document.getElementById("resize_images").checked;
+
   BlogInstance.writeBlogData();
   if(save_blog_settings_operate_success === true){
     toast_creator("success","configuration saved!");
