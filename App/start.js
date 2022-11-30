@@ -206,7 +206,7 @@ storage.has("language", (error, hasKey) => {
            <br />
           <a class="fluentbtn fluentbtn-start" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
           <a class="fluentbtn fluentbtn-start" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
-        
+        <br /><br />
            `;
 
       document.getElementById("last_managed_site_link").innerHTML = `
