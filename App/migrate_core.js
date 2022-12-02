@@ -419,6 +419,10 @@ module.exports = function () {
     addSupportForOptionsOfMarkdownRendering();
   }
 
+  if(currentBlogVersion === 20221130){
+    check_third_party_theme_compatiblity();
+  }
+
   check_third_party_theme_compatiblity();
   updateBlogIndexHtml();
 
