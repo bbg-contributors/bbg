@@ -27,9 +27,9 @@
   optionalDependencies:
     global-agent "^3.0.0"
 
-"@electron/remote@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.npmmirror.com/@electron/remote/-/remote-2.0.8.tgz"
+"@electron/remote@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@electron/remote/-/remote-2.0.9.tgz#092ff085407bc907f45b89a72c36faa773ccf2d9"
 
 "@electron/universal@1.2.1":
   version "1.2.1"
