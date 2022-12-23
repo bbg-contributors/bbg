@@ -419,7 +419,7 @@ module.exports = function () {
     addSupportForOptionsOfMarkdownRendering();
   }
 
-  if(currentBlogVersion === 20221130){
+  if(currentBlogVersion === 20221130 || currentBlogVersion == 20221202){
     check_third_party_theme_compatiblity();
   }
 
