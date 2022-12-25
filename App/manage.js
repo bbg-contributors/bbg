@@ -27,6 +27,7 @@ const render_container = require("./render_container.js");
 const render_blog_settings = require("./render_blog_settings.js");
 const renderArticleManager = require("./render_article_manager.js");
 const render_page_manager = require("./render_page_manager.js");
+const render_markdown_editor = require("./render_markdown_editor.js");
 
 // 管理功能
 const edit_article = require("./edit_article.js");
@@ -107,6 +108,11 @@ storage.has("language", (error, hasKey) => {
         } else {
           if (window.location.href.includes("blog_settings.html"))
             render_blog_settings();
+          else{
+            if(window.location.href.includes("markdown_editor.html")){
+              render_markdown_editor();
+            }
+          }
         }
       }
 
