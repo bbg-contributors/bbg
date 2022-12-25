@@ -36,7 +36,7 @@ module.exports = function () {
   document.getElementById("markdown_filename").innerHTML=`  <button id="btn_exit" class="btn btn-outline-primary">
   <i class="fa fa-arrow-left"></i>
 </button>
-正在编辑《${title}》`+document.getElementById("markdown_filename").innerHTML;
+${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
 
   var markdownEditor = new MarkdownPalettes("#editor");
   markdownEditor.content = original_content;
@@ -63,32 +63,25 @@ module.exports = function () {
     editor_status=0;
   },500);
   document.getElementById("btn_help").onclick=function(){
-    let text=`
-    【什么是 Markdown】\n
-    Markdown 是一个简单的标记语言，使用 BBG 创建的博客默认都使用 Markdown 作为博客文章或者页面所使用的格式。\n
-    【Markdown 编辑器使用说明】\n
-    这是一个简单的 Markdown 编辑器，基于 Markdown*Palettes 开发。\n
-    左边是编辑区，你可以在编辑区输入 Markdown 代码。\n
-    右边是预览区，你可以在预览区实时预览你所编写的 Markdown 代码经过渲染之后的效果。
-    `;
+    let text=langdata["MARKDOWN_EDITOR_USAGE_DETAIL"][lang_name];
     dialog.showMessageBoxSync({message: text});
   };
 
   const exit_markdown_editor=function(){
     if(editor_status === 0){
-      window.location.href=`./article_manager.html?rootdir=${rootDir}`;
-    }else if(dialog.showMessageBoxSync({buttons: ["确定","取消"],message:"确定退出吗？未保存的更改会丢失。"}) === 0){
-      window.location.href=`./article_manager.html?rootdir=${rootDir}`;
+      window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
+    }else if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]}) === 0){
+      window.location.href=`./${type}.html?rootdir=${rootDir}`;
     }
   };
   document.getElementById("btn_exit").onclick=exit_markdown_editor;
 
   const markdown_editor_save_changes=function(){
     writeFileSync(`${rootDir}/${path}`,markdownEditor.content);
-    document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> 已保存！";
+    document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["ALREADY_SAVED"][lang_name];
     editor_status=0;
     setTimeout(function(){
-      document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> 保存更改 (Ctrl + S)";
+      document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["SAVE_CHANGES_CTRL_S"][lang_name];
     },1200);
   };
 
@@ -96,7 +89,7 @@ module.exports = function () {
 
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     if(editor_status === 1){
-      if(dialog.showMessageBoxSync({buttons: ["确定","取消"],message:"你在当前编辑环境中还有未保存的更改，确定立刻切换到系统默认的编辑器吗？\n（如果立即切换，这些更改将会丢失）"}) === 0){
+      if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES_BEFORE_SWITCHING_TO_SYSTEM_DEFAULT_EDITOR"][lang_name]}) === 0){
         shell.openPath(`${rootDir}/${path}`);
         window.location.href=`./article_manager.html?rootdir=${rootDir}`;
       }
@@ -119,8 +112,17 @@ module.exports = function () {
   };
 
   for(let i=0;i<document.getElementsByClassName("list-group-item").length;i++){
+    let original_event = document.getElementsByClassName("list-group-item")[i].getAttribute("onclick");
     document.getElementsByClassName("list-group-item")[i].setAttribute("onclick","void(0)");
-    document.getElementsByClassName("list-group-item")[i].onclick = exit_markdown_editor;
+    document.getElementsByClassName("list-group-item")[i].onclick=function(){
+      if(editor_status === 0){
+        eval(original_event);
+      }else{
+        if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]}) === 0){
+          eval(original_event);
+        }
+      }
+    };
   }
 
 };
