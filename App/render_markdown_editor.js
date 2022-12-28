@@ -71,7 +71,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     if(editor_status === 0){
       window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
     }else if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]}) === 0){
-      window.location.href=`./${type}.html?rootdir=${rootDir}`;
+      window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
     }
   };
   document.getElementById("btn_exit").onclick=exit_markdown_editor;
