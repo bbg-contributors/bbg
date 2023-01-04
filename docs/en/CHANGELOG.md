@@ -1,5 +1,35 @@
 # CHANGE LOG
 
+## 20221202
+
+- Fixed the issue that the image path was parsed incorrectly
+
+## 20221130
+
+Official theme related updates are as follows:
+
+- Support resizing the image according to the user's screen size when rendering the image
+- The image viewer is enabled by default, making it easier for users to view large images in articles
+- For the parsing of the image path, the directory where Markdown is located is now used as the base URL by default
+
+## 20221031
+
+- Fixed the issue that the page style of the list of blog friends' accounts was wrong
+
+## 20221030
+
+- Support for uploading blog files to a remote server via SSH (Thanks to [@scientificworld] for the contribution!)
+- Redesigned UI
+- Support for disabling the shadow effect of the blog navigation bar
+- Support setting the blog search button border color to dark
+- Support setting to make the width of the blog version narrower (increase the left and right margins)
+- Support setting priority to use serif fonts in blog
+
+## 20221001
+
+- Support site search function
+- Add an option to improve the readability of blog data files
+
 ## 20220829
 
 - Support for checking third-party themes for updates
