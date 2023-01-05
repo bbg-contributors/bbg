@@ -10,11 +10,21 @@
 
 > \*你可以使用任何你喜欢的包管理器来代替 Yarn，你也无需将其它包管理器生成的文件（比如`pnpm-lock.yaml`）添加到 `.gitignore` 中。
 
-然后获取源代码。
+然后获取源代码。（你也可以fork到自己的账户中）
 
 ```sh
-git clone --recursive https://github.com/bbg-contributors/bbg.git
+git clone --recursive git@github.com:/bbg-contributors/bbg.git
 ```
+
+或
+
+```sh
+git clone --recursive git@github.com:/[your username]/bbg.git
+```
+
+!> 请注意！必须使用ssh方式clone仓库，因为bbg的大部分开发者位于中国大陆地区，众所周知由于某些原因，所以所以仓库的submodules都使用ssh方式进行拉取。
+
+!> 如果你的github 账户没有ssh key，请回炉重造或[RTFM](https://docs.github.com/zh/github/authenticating-to-github/connecting-to-github-with-ssh)。
 
 > 如果你嫌慢的话 可以添加`--depth=1`。
 
