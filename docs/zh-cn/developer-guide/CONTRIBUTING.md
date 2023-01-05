@@ -18,6 +18,59 @@ git clone --recursive https://github.com/bbg-contributors/bbg.git
 
 > 如果你嫌慢的话 可以添加`--depth=1`。
 
+> 如果你忘记了 `--recursive` 也没事，在clone后执行`git submodule update --init`就行了
+
+!> 如果你这两个都没有执行打开出现错误，请不要开issue，建议RTFM.
+
+submodule/clone出现以下问题：
+```sh
+PS C:\Users\chihuo2104\Desktop\workspace> git clone git@github.com:/bbg-contributors/bbg.git --recursive
+Cloning into 'bbg'...
+Enter passphrase for key '/c/Users/chihuo2104/.ssh/id_rsa':
+remote: Enumerating objects: 3141, done.
+remote: Counting objects: 100% (388/388), done.
+remote: Compressing objects: 100% (171/171), done.
+remote: Total 3141 (delta 282), reused 300 (delta 217), pack-reused 2753
+Receiving objects: 100% (3141/3141), 4.02 MiB | 2.44 MiB/s, done.
+Resolving deltas: 100% (2202/2202), done.
+Submodule 'App/blog_indexjson_template' (https://github.com/bbg-contributors/blog_indexjson_template.git) registered for path 'App/blog_indexjson_template'
+Submodule 'App/blog_source' (https://github.com/bbg-contributors/blog_source.git) registered for path 'App/blog_source'
+Submodule 'App/default_theme_src' (https://github.com/bbg-contributors/default_theme_src.git) registered for path 'App/default_theme_src'
+Submodule 'App/i18n' (https://github.com/bbg-contributors/bbg-lang.git) registered for path 'App/i18n'
+Submodule 'resources' (https://github.com/bbg-contributors/bbg-resources.git) registered for path 'resources'
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/blog_indexjson_template'...
+remote: Enumerating objects: 49, done.
+remote: Counting objects: 100% (49/49), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 49 (delta 26), reused 42 (delta 22), pack-reused 0
+Receiving objects: 100% (49/49), 9.27 KiB | 9.27 MiB/s, done.
+Resolving deltas: 100% (26/26), done.
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/blog_source'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 5), reused 21 (delta 2), pack-reused 0
+Receiving objects: 100% (27/27), 15.29 KiB | 15.29 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/default_theme_src'...
+fatal: unable to access 'https://github.com/bbg-contributors/default_theme_src.git/': Recv failure: Connection was reset
+fatal: clone of 'https://github.com/bbg-contributors/default_theme_src.git' into submodule path 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/default_theme_src' failed
+Failed to clone 'App/default_theme_src'. Retry scheduled
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/i18n'...
+fatal: unable to access 'https://github.com/bbg-contributors/bbg-lang.git/': Failed to connect to github.com port 443 after 21052 ms: Couldn't connect to server
+fatal: clone of 'https://github.com/bbg-contributors/bbg-lang.git' into submodule path 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/i18n' failed
+Failed to clone 'App/i18n'. Retry scheduled
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/resources'...
+fatal: unable to access 'https://github.com/bbg-contributors/bbg-resources.git/': Failed to connect to github.com port 443 after 21058 ms: Couldn't connect to server
+fatal: clone of 'https://github.com/bbg-contributors/bbg-resources.git' into submodule path 'C:/Users/chihuo2104/Desktop/workspace/bbg/resources' failed
+Failed to clone 'resources'. Retry scheduled
+Cloning into 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/default_theme_src'...
+fatal: unable to access 'https://github.com/bbg-contributors/default_theme_src.git/': Recv failure: Connection was reset
+fatal: clone of 'https://github.com/bbg-contributors/default_theme_src.git' into submodule path 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/default_theme_src' failed
+Failed to clone 'App/default_theme_src' a second time, aborting
+```
+目前还没有找到解法（全恼
+
 然后转到项目根目录下执行以下命令安装依赖：
 
 ```sh
@@ -103,8 +156,9 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 
 涉及 submodule 的内容同理。
 
-如果有任何错误，请先执行`git submodule update`
+如果有任何错误，一般都是submodule没更新，请先执行`git submodule update`
 
 如果还是报错，请[新开 issue](https://github.com/bbg-contributors/bbg/issues/new).
 
 如果你对这个 bug 有自己的解决方案，或者是有新的想法，欢迎[PR](https://github.com/bbg-contributors/bbg/pulls/)！
+
