@@ -47,6 +47,13 @@ module.exports = function (i) {
     ${langdata.ENABLE_COMMENT[lang_name]}
     </label>
   </div>
+
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="meta_article_is_encrypt_enabled">
+    <label class="form-check-label" for="meta_article_is_encrypt_enabled">
+    启用加密
+    </label>
+  </div>
   
   <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
@@ -76,4 +83,7 @@ module.exports = function (i) {
 
   if (blog["文章列表"][i]["启用评论"] === true)
     document.getElementById("meta_article_is_comment_enabled").checked = true;
+  
+  if (blog["文章列表"][i]["启用加密"] === true)
+    document.getElementById("meta_article_is_encrypt_enabled").checked = true;
 };
