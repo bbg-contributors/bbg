@@ -1,20 +1,20 @@
 [submodule "resources"]
 	path = resources
-	url = git@github.com:/bbg-contributors/bbg-resources.git
+	url = https://github.com/bbg-contributors/bbg-resources.git
 	branch = main
 [submodule "App/blog_source"]
 	path = App/blog_source
-	url = git@github.com:/bbg-contributors/blog_source.git
+	url = https://github.com/bbg-contributors/blog_source.git
 	branch = main
 [submodule "App/blog_indexjson_template"]
 	path = App/blog_indexjson_template
-	url = git@github.com:/bbg-contributors/blog_indexjson_template.git
+	url = https://github.com/bbg-contributors/blog_indexjson_template.git
 	branch = main
 [submodule "App/default_theme_src"]
 	path = App/default_theme_src
-	url = git@github.com:/bbg-contributors/default_theme_src.git
+	url = https://github.com/bbg-contributors/default_theme_src.git
 	branch = main
 [submodule "App/i18n"]
 	path = App/i18n
-	url = git@github.com:/bbg-contributors/bbg-lang.git
+	url = https://github.com/bbg-contributors/bbg-lang.git
 	branch = main

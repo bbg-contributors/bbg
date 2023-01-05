@@ -13,16 +13,16 @@
 然后获取源代码。（你也可以fork到自己的账户中）
 
 ```sh
-git clone --recursive git@github.com:/bbg-contributors/bbg.git
+git clone --recursive https://github.com/bbg-contributors/bbg.git
 ```
 
 或
 
 ```sh
-git clone --recursive git@github.com:/[your username]/bbg.git
+git clone --recursive https://github.com/[your username]/bbg.git
 ```
 
-!> 请注意！必须使用ssh方式clone仓库，因为bbg的大部分开发者位于中国大陆地区，众所周知由于某些原因，所以所以仓库的submodules都使用ssh方式进行拉取。
+!> ~~请注意！必须使用ssh方式clone仓库，因为bbg的大部分开发者位于中国大陆地区，众所周知由于某些原因，所以所以仓库的submodules都使用ssh方式进行拉取。~~
 
 !> 如果你的github 账户没有ssh key，请回炉重造或[RTFM](https://docs.github.com/zh/github/authenticating-to-github/connecting-to-github-with-ssh)。
 
