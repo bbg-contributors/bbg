@@ -53,6 +53,7 @@
     ]
   },
   "dmg": {
+    "sign": false,
     "artifactName": "bbg-${arch}.${ext}",
     "window": {
       "width": 540,
