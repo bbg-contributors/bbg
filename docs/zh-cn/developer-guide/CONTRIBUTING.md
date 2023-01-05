@@ -69,7 +69,8 @@ fatal: unable to access 'https://github.com/bbg-contributors/default_theme_src.g
 fatal: clone of 'https://github.com/bbg-contributors/default_theme_src.git' into submodule path 'C:/Users/chihuo2104/Desktop/workspace/bbg/App/default_theme_src' failed
 Failed to clone 'App/default_theme_src' a second time, aborting
 ```
-目前还没有找到解法（全恼
+~~目前还没有找到解法（全恼~~
+解决方法：多clone几次，实在不行善用搜索引擎
 
 然后转到项目根目录下执行以下命令安装依赖：
 
