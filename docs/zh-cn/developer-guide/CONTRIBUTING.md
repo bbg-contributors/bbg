@@ -8,9 +8,9 @@
 - Node.js >= 16
 - Yarn (可选\*)
 
-> \*你可以使用任何你喜欢的包管理器来代替 Yarn，你也无需将其它包管理器生成的文件（比如`pnpm-lock.yaml`）添加到 `.gitignore` 中。
+> \*当然，你也可以使用任何你喜欢的包管理器来代替 Yarn。
 
-然后获取源代码。（你也可以fork到自己的账户中）
+然后获取源代码。（你也可以fork bbg仓库到自己的账户中）
 
 ```sh
 git clone --recursive https://github.com/bbg-contributors/bbg.git
@@ -155,6 +155,8 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 
 `./App/*.js` 是用于实现 BBG 主要功能的文件，具体作用可以通过它们的文件名看出。由于 `./App/manage.js` 的存在，`./App/*.js` 内的所有函数和变量在 BBG 运行过程中都是可以相互调用的。
 
+`./App/manage.js`起到一个环境变量的作用。
+
 一些例子：
 
 `blog` 是将博客的数据文件转换后的 JavaScript 对象。注意程序中对此对象的修改不会反映到文件中。
@@ -167,7 +169,7 @@ BBG 使用原生 JS 编写。当然，如果你想使用 Vue 和 React 这样的
 
 涉及 submodule 的内容同理。
 
-如果有任何错误，一般都是submodule没更新，请先执行`git submodule update`
+如果有任何错误，一般都是submodule没更新，请先执行`git submodule update --remote`
 
 如果还是报错，请[新开 issue](https://github.com/bbg-contributors/bbg/issues/new).
 
