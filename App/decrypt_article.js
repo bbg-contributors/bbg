@@ -13,11 +13,13 @@ function content_decrypt(i, password) {
   };
   const data = fs.readFileSync(`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}`);
   const content = CryptoJS.enc.Utf8.parse(JSON.stringify(data).content).toString();
-  var result = CryptoJS.AES.encrypt(content, key, argument).toString();
+  try {
+    var result = CryptoJS.AES.decrypt(content, key, argument).toString();
+  } catch (e) {
+    toast_creator("error", e.message);
+  }
   // var verify = CryptoJS.SHA256(password).toString();
-  var result = CryptoJS.AES.decrypt(content, key, argument).toString();
   // return [result, verify];
-  return result;
-};
+}
 
-module.exports = content_decrypt
+module.exports = content_decrypt;

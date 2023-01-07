@@ -24,7 +24,7 @@ module.exports = function (i) {
 
   const tempTagArray = meta_article_tags.split(" ").filter(x => x !== "");
 
-  const old_encrypt_data = blog["文章列表"][i]["启用加密"]
+  const old_encrypt_data = blog["文章列表"][i]["启用加密"];
 
   blog["文章列表"][i]["标签"] = tempTagArray;
 
@@ -67,6 +67,6 @@ module.exports = function (i) {
     toast_creator("success","changes have been saved!");
   }
   
-  if(old_encrypt_data === false && blog["文章列表"][i]["启用加密"] === true) encrypt_article(i, document.getElementById('meta_article_encrypt_password').value)
+  if(old_encrypt_data === false && blog["文章列表"][i]["启用加密"] === true) encrypt_article(i, document.getElementById("meta_article_encrypt_password").value);
   
 };

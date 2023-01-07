@@ -40,52 +40,52 @@ module.exports = function (i) {
     </label>
   </div>
 `;
-if (blog["文章列表"][i]["启用加密"] === true) {
-  document.getElementById("article_meta_content").innerHTML +=`
-  <div class="mb-3">
-  <label class="form-label"><i class="fa fa-lock"></i> 原加密密码</label>
-  <input class="form-control"  placeholder="在这里填写原加密密码(关闭加密和更新加密密码时填写)" id="meta_article_encrypt_password" value="">
-  </div>
-  <div class="mb-3">
-  <label class="form-label"><i class="fa fa-lock"></i> 新加密密码</label>
-  <input class="form-control"  placeholder="在这里填写新加密密码(更新加密密码时填写)" id="meta_article_encrypt_update_password" value="">
-  </div>
-`;  
-} else {
-  document.getElementById("article_meta_content").innerHTML +=`
+  if (blog["文章列表"][i]["启用加密"] === true) {
+    document.getElementById("article_meta_content").innerHTML +=`
     <div class="mb-3">
-    <label class="form-label"><i class="fa fa-lock"></i> 加密密码</label>
-    <input class="form-control"  placeholder="在这里填写加密密码（如果需要加密请打开下面的启用加密按钮）" id="meta_article_encrypt_password" value="">
+    <label class="form-label"><i class="fa fa-lock"></i> 原加密密码</label>
+    <input class="form-control"  placeholder="在这里填写原加密密码(关闭加密和更新加密密码时填写)" id="meta_article_encrypt_password" value="">
+    </div>
+    <div class="mb-3">
+    <label class="form-label"><i class="fa fa-lock"></i> 新加密密码</label>
+    <input class="form-control"  placeholder="在这里填写新加密密码(更新加密密码时填写)" id="meta_article_encrypt_update_password" value="">
     </div>
   `;  
-}
+  } else {
+    document.getElementById("article_meta_content").innerHTML +=`
+      <div class="mb-3">
+      <label class="form-label"><i class="fa fa-lock"></i> 加密密码</label>
+      <input class="form-control"  placeholder="在这里填写加密密码（如果需要加密请打开下面的启用加密按钮）" id="meta_article_encrypt_password" value="">
+      </div>
+    `;  
+  }
 
 
-document.getElementById("article_meta_content").innerHTML += `
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="meta_article_istop">
-    <label class="form-check-label" for="meta_article_istop">
-    ${langdata.ARTICLE_IS_TOP[lang_name]}
-    </label>
-  </div>
-  
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
-    <label class="form-check-label" for="meta_article_is_comment_enabled">
-    ${langdata.ENABLE_COMMENT[lang_name]}
-    </label>
-  </div>
-  
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
-    <label class="form-check-label" for="meta_article_ishidden">
-    ${langdata.HIDE_ARTICLE_IN_LIST[lang_name]}
-    </label>
-  </div>
-  
-  
+  document.getElementById("article_meta_content").innerHTML += `
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="meta_article_istop">
+      <label class="form-check-label" for="meta_article_istop">
+      ${langdata.ARTICLE_IS_TOP[lang_name]}
+      </label>
+    </div>
     
-    `;
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
+      <label class="form-check-label" for="meta_article_is_comment_enabled">
+      ${langdata.ENABLE_COMMENT[lang_name]}
+      </label>
+    </div>
+    
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
+      <label class="form-check-label" for="meta_article_ishidden">
+      ${langdata.HIDE_ARTICLE_IN_LIST[lang_name]}
+      </label>
+    </div>
+    
+    
+      
+      `;
   if (blog["文章列表"][i]["标签"].length !== 0) {
     let tempTagString = "";
     for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++)
