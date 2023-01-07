@@ -1,7 +1,6 @@
 const { renameSync,existsSync } = require("fs");
 
 module.exports = function (i) {
-
   save_article_meta_operate_success = true;
 
   const meta_article_title = document.getElementById("meta_article_title").value;
@@ -24,6 +23,8 @@ module.exports = function (i) {
   blog["文章列表"][i]["修改日期"] = meta_article_updatedat;
 
   const tempTagArray = meta_article_tags.split(" ").filter(x => x !== "");
+
+  const old_encrypt_data = blog["文章列表"][i]["启用加密"]
 
   blog["文章列表"][i]["标签"] = tempTagArray;
 
@@ -65,5 +66,7 @@ module.exports = function (i) {
   if(save_article_meta_operate_success === true){
     toast_creator("success","changes have been saved!");
   }
+  
+  if(old_encrypt_data === false && blog["文章列表"][i]["启用加密"] === true) encrypt_article(i, document.getElementById('meta_article_encrypt_password').value)
   
 };

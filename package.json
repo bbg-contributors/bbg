@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bbg-contributors/bbg.git"
+    "url": "https://github.com/bbg-contributors/bbg.git"
   },
   "main": "main.js",
   "scripts": {
@@ -29,7 +29,9 @@
     "mzwing",
     "Misaka13514",
     "scientificworld",
-    "so1ve"
+    "so1ve",
+    "mujitogawa",
+    "JJ-Shep"
   ],
   "dependencies": {
     "@electron/remote": "^2.0.9",
