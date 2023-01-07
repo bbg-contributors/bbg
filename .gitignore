@@ -9,3 +9,6 @@ dist
 *.sw?
 test.js
 *.log
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package-lock.json
