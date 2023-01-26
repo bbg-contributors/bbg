@@ -7,7 +7,7 @@ const vi = CryptoJS.enc.Utf8.parse("bbg-by-bbg-contributors").toString();
 function content_encrypt(i, password) {
   var key = CryptoJS.enc.Utf8.parse(password).toString();
   var argument = {
-    iv: vi, // 之前的那个太恶臭了，改力，不愧是你，sci
+    iv: vi,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   };
