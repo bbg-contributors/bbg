@@ -134,13 +134,7 @@ async function secure_copy_key() {
   if (dest.length < 4) window.alert("错误：给定的参数不足。");
   else {
     if (dest.length == 4) dest[4] = "~/.ssh/id_rsa";
-    var cmd = `expect <<- EOF
-spawn sh -c "scp -P ${dest[1]} -i ${dest[4]} -r ${rootDir}/* ${dest[2]}@${dest[0]}:${dest[3]}"
-expect {
-"yes/no" { send "yes\\r" }
-}
-expect eof
-EOF`;
+    var cmd = `scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P ${dest[1]} -i ${dest[4]} -r ${rootDir}/* ${dest[2]}@${dest[0]}:${dest[3]}`;
     if (window.confirm(`你选择了使用密钥验证，将要执行的指令如下，请确认：${cmd}`)) {
       try {
         execSync(cmd);
