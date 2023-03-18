@@ -1,8 +1,35 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, shell } = require("electron");
 
 require("@electron/remote/main").initialize();
 
-Menu.setApplicationMenu(null);
+Menu.setApplicationMenu(Menu.buildFromTemplate([
+	// FIXME: Menu display is inconsistent on macOS
+	{
+		label: "File",
+		submenu: [
+			{
+				label: "Open existing site"
+			},
+			{
+				label: "Create new site"
+			}
+		]
+	},
+	{
+		label: "Help",
+		submenu: [
+			{
+				label: "Project homepage",
+				click: () => {
+					shell.openExternal("https://github.com/bbg-contributors/bbg");
+				}
+			},
+			{
+				label: "About"
+			}
+		]
+	}
+]));
 
 const createWindow = () => {
   const win = new BrowserWindow({
