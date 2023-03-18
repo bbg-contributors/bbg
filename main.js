@@ -1,35 +1,67 @@
-const { app, BrowserWindow, Menu, shell } = require("electron");
+const { app, dialog, shell, BrowserWindow, Menu } = require("electron");
+
+const getAppInfo = require("./App/getAppInfo.js");
+const appInfo = getAppInfo();
 
 require("@electron/remote/main").initialize();
 
-Menu.setApplicationMenu(Menu.buildFromTemplate([
-	// FIXME: Menu display is inconsistent on macOS
-	{
-		label: "File",
-		submenu: [
-			{
-				label: "Open existing site"
-			},
-			{
-				label: "Create new site"
-			}
-		]
-	},
-	{
-		label: "Help",
-		submenu: [
-			{
-				label: "Project homepage",
-				click: () => {
-					shell.openExternal("https://github.com/bbg-contributors/bbg");
-				}
-			},
-			{
-				label: "About"
-			}
-		]
-	}
-]));
+app.setAboutPanelOptions({
+  applicationName: appInfo.AppName,
+  applicationVersion: appInfo.currentProgramVersion.toString()
+});
+
+let menuTemplate = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Open existing site",
+        click: () => {
+
+        }
+      },
+      {
+        label: "Create new site",
+        click: () => {
+        }
+      }
+    ]
+  },
+  {
+    label: "Help",
+    submenu: [
+      {
+        label: "Project homepage",
+        click: () => {
+          shell.openExternal("https://github.com/bbg-contributors/bbg");
+        }
+      },
+      {
+        label: "About",
+        click: () => {
+          app.showAboutPanel();
+        }
+      }
+    ]
+  }
+];
+
+if (process.platform == "darwin") {
+  menuTemplate.unshift({
+    label: "",
+    submenu: [
+      {
+        label: "Quit",
+        click: () => {
+          app.quit();
+        },
+        accelerator: "command+q"
+      }
+    ]
+  });
+}
+
+Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 
 const createWindow = () => {
   const win = new BrowserWindow({

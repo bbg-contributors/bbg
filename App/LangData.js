@@ -16,7 +16,7 @@ for(let i=0;i<template_zh_CN.length;i++){
 
 for(let i=0;i<template_en_US.length;i++){
   if(lang_meta["需要翻译的键值"].includes(template_en_US[i])){
-
+    //pass
   }else{
     lang_meta["需要翻译的键值"].push(template_en_US[i]);
   }

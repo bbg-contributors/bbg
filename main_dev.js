@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require("electron");
 
 require("@electron/remote/main").initialize();
 
+app.commandLine.appendSwitch("remote-debugging-port", "9541");
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1200,
