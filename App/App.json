@@ -1,5 +1,17 @@
 {
   "currentProgramVersion": 20230219,
   "AppName": "Baiyuanneko's Blog Generator",
-  "officialWebsite": "https://bbg.nekomoe.xyz"
+  "officialWebsite": "https://bbg.nekomoe.xyz",
+  "contributors": [
+    "柏园猫 (baiyuanneko)",
+    "scientificworld",
+    "chihuo2104",
+    "zzjzxq33 (woshixxx)",
+    "欠陥電気 (Misaka13514)",
+    "ʀᴀʏ (so1ve)",
+    "Lockinwize Lolite (mzwing)",
+    "杨冬冬 (yangdongstation)",
+    "JJ-Shep",
+    "Muji Togawa"
+  ]
 }

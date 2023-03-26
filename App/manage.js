@@ -130,7 +130,8 @@ storage.has("language", (error, hasKey) => {
 });
 
 // fix broken clipboard function on macOS
-
+// update: add shortcuts to the menu, this code is no longer used
+/*
 if(process.platform === "darwin"){
 
   const { clipboard } = require("electron");
@@ -155,3 +156,4 @@ if(process.platform === "darwin"){
     return toReturn;
   };
 }
+*/
