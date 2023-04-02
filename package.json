@@ -14,6 +14,7 @@
   },
   "main": "main.js",
   "scripts": {
+    "preinstall": "npx only-allow yarn",
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
     "build:win": "electron-builder build --win --publish=never",
