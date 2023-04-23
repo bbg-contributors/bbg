@@ -1,7 +1,7 @@
 
-module.exports=function(dialog_content,js_to_reload,do_what_if_sure){
+module.exports=function(dialog_content,do_what_if_sure){
   let dialog_id = randomString(6);
-  document.getElementById("root").innerHTML+=`
+  document.getElementById("root").insertAdjacentHTML("beforeend",`
     <div class="modal" id="${dialog_id}" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -19,10 +19,10 @@ module.exports=function(dialog_content,js_to_reload,do_what_if_sure){
     </div>
   </div>
 </div>
-    `;
+    `);
   const confirm_dialog = new bootstrap.Modal(document.getElementById(dialog_id));
   confirm_dialog.show();
-  eval(js_to_reload);
+  //eval(js_to_reload);
     
 
   document.getElementById(`${dialog_id}_sure`).setAttribute("onclick",do_what_if_sure);

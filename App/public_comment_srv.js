@@ -4,10 +4,6 @@ module.exports = function () {
   <p>${langdata.PUBLIC_COMMENT_SERVICE_AGREEMENT[0][lang_name]}</p>
   <p>${langdata.PUBLIC_COMMENT_SERVICE_AGREEMENT[1][lang_name]}</p>
   
-  `,
-  `
-  document.getElementById("container").innerHTML = "";
-  render_blog_settings();
   `
   ,`
   save_blog_settings();

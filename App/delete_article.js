@@ -3,7 +3,7 @@ module.exports = function (i) {
   create_confirm_dialog(`
   
   ${langdata.ARE_YOU_SURE_DELETE_ARTICLE[lang_name]}
-  `,"",`
+  `,`
   try {
     rmSync(\`${rootDir}/data/articles/${blog["文章列表"][i]["文件名"]}\`);
   } catch (error) {
