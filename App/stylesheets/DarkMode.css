@@ -1,0 +1,654 @@
+
+.navbar{
+    background-color: rgb(51,57,69) !important;
+    color: white !important;
+    position: absolute;
+    left:-60px;
+    width: 105%;
+    border-radius: 0;
+    border: 0;
+    padding: 7px;
+  }
+  
+  .navbar .container-fluid a{
+    color: white !important;
+  }
+  
+  
+  .article-item-sub,
+  .article-content-sub,
+  .page-item-sub {
+    color: rgb(181, 197, 212);
+  }
+  
+  .page-item,
+  .article-item,
+  .fluentinterface {
+    background-color: rgb(62, 63, 67);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid;
+    border-color: #819baa;
+    border-radius: 10px;
+    border-width: 1px;
+    color: white;
+  }
+
+  .alert-info{
+    color:white;
+  }
+
+  .btn-outline-primary{
+    border-color: white;
+    color:white;
+  }
+
+  .btn-outline-danger{
+    border-color: rgb(237, 94, 94);
+    color:rgb(237, 94, 94)
+  }
+  
+  .fluenthint {
+    background-color: #cff4fc !important;
+  }
+  
+  .nav-item .nav-link {
+    color: grey !important;
+  }
+  
+  body:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    content: "";
+    position: fixed;
+    background-color: #201e1e;
+  }
+  
+  .modal-header,
+  .modal-footer {
+    background-color: #767474;
+    color: white;
+    border: none;
+  }
+
+  .modal-content{
+    background-color: #201e1e;
+    color: white;
+  }
+  
+  .btn-outline-success {
+    border-color: greenyellow;
+    color:greenyellow;
+  }
+  
+  .fluentbtn {
+    border-radius: 8px;
+    background-color: rgb(254, 254, 254);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(235, 237, 238);
+    padding-top: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 110%;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 5%), 0 2px 2px 0 rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 6%);
+  }
+  
+  .fluentbtn-blue {
+    background-color: rgba(3, 106, 196, 0.671) !important;
+    color: white !important
+  }
+  
+  .fluentbtn-blue:hover {
+    background-color: #168dd6 !important;
+    color: white !important
+  }
+  
+  .fluentbtn-blue:active {
+    background-color: rgb(39, 78, 175) !important;
+    color: rbg(218, 228, 255) !important
+  }
+  
+  .fluentbtn:hover {
+    background-color: rgb(250, 251, 251);
+    text-decoration: none;
+    color: black;
+  
+  }
+  
+  .fluentbtn:active {
+    background-color: rgb(250, 251, 251);
+    text-decoration: none;
+    color: grey;
+  
+  }
+  
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0
+    }
+  
+    to {
+      opacity: 1
+    }
+  }
+  
+  @-webkit-keyframes fade-in {
+    from {
+      opacity: 0
+    }
+  
+    to {
+      opacity: 1
+    }
+  }
+  
+  @keyframes fade-off {
+    from {
+      opacity: 1
+    }
+  
+    to {
+      opacity: 0
+    }
+  }
+  
+  @-webkit-keyframes fade-off {
+    from {
+      opacity: 1
+    }
+  
+    to {
+      opacity: 0
+    }
+  }
+  
+  @keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+  
+  @-webkit-keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+  
+  @keyframes fade-in-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(-20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+  
+  @-webkit-keyframes fade-in-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(-20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+  
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0)
+    }
+  }
+  
+  @-webkit-keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0)
+    }
+  }
+  
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0)
+    }
+  }
+  
+  @-webkit-keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-20px)
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0)
+    }
+  }
+  
+  @keyframes fade-small-large {
+    from {
+      opacity: 0;
+      transform: scale(.5, .5)
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  }
+  
+  @-webkit-keyframes fade-small-large {
+    from {
+      opacity: 0;
+      transform: scale(.5, .5)
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  }
+  
+  @keyframes fade-large-small {
+    from {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  
+    to {
+      opacity: 0;
+      transform: scale(.5, .5)
+    }
+  }
+  
+  @-webkit-keyframes fade-large-small {
+    from {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  
+    to {
+      opacity: 0;
+      transform: scale(.5, .5)
+    }
+  }
+  
+  @keyframes fade-larger-small {
+    from {
+      opacity: 0;
+      transform: scale(1.5, 1.5)
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  }
+  
+  @-webkit-keyframes fade-larger-small {
+    from {
+      opacity: 0;
+      transform: scale(1.5, 1.5)
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  }
+  
+  @keyframes fade-small-larger {
+    from {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  
+    to {
+      opacity: 0;
+      transform: scale(1.5, 1.5)
+    }
+  }
+  
+  @-webkit-keyframes fade-small-larger {
+    from {
+      opacity: 1;
+      transform: scale(1, 1)
+    }
+  
+    to {
+      opacity: 0;
+      transform: scale(1.5, 1.5)
+    }
+  }
+  
+  @keyframes scale-small-large {
+    from {
+      transform: scale(0, 0)
+    }
+  
+    to {
+      transform: scale(1, 1)
+    }
+  }
+  
+  @-webkit-keyframes scale-small-large {
+    from {
+      transform: scale(0, 0)
+    }
+  
+    to {
+      transform: scale(1, 1)
+    }
+  }
+  
+  @keyframes scale-large-small {
+    from {
+      transform: scale(1, 1)
+    }
+  
+    to {
+      transform: scale(0, 0)
+    }
+  }
+  
+  @-webkit-keyframes scale-large-small {
+    from {
+      transform: scale(1, 1)
+    }
+  
+    to {
+      transform: scale(0, 0)
+    }
+  }
+  
+  @keyframes up-and-down {
+    from {
+      transform: translateY(-20px)
+    }
+  
+    to {
+      transform: translateY(20px)
+    }
+  }
+  
+  @-webkit-keyframes up-and-down {
+    from {
+      transform: translateY(-20px)
+    }
+  
+    to {
+      transform: translateY(20px)
+    }
+  }
+  
+  @keyframes left-and-right {
+    from {
+      transform: translateX(-20px)
+    }
+  
+    to {
+      transform: translateX(20px)
+    }
+  }
+  
+  @-webkit-keyframes left-and-right {
+    from {
+      transform: translateX(-20px)
+    }
+  
+    to {
+      transform: translateX(20px)
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg)
+    }
+  
+    to {
+      transform: rotate(360deg)
+    }
+  }
+  
+  @-webkit-keyframes rotate {
+    from {
+      transform: rotate(0deg)
+    }
+  
+    to {
+      transform: rotate(360deg)
+    }
+  }
+  
+  @keyframes jump {
+    0% {
+      transform: translateY(0) scale(1.15, .8)
+    }
+  
+    20% {
+      transform: translateY(-35px) scaleY(1.1)
+    }
+  
+    50% {
+      transform: translateY(-50px) scale(1)
+    }
+  
+    80% {
+      transform: translateY(-35px) scale(1)
+    }
+  
+    to {
+      transform: translateY(0) scale(1.15, .8)
+    }
+  }
+  
+  #root {
+    padding-bottom: 80px;
+  }
+  
+  a , .btn-link{
+    text-decoration: none;
+    color: #196fd1;
+  }
+  
+  .toast{
+    z-index:15;
+  }
+  
+  #nav_list button {
+    font-size: 120%;
+    border: none;
+  }
+  
+  #nav_list button.active {
+    border-radius: 8px;
+    background-color: #1d66b9;
+  }
+  
+  #nav_list {
+    position: fixed;
+  }
+  
+  #blog_settings_list {
+    position: fixed;
+    max-width: 20%;
+  }
+  
+  .nav_title {
+    position: fixed;
+  }
+  
+  #blog_settings_list .list-group-item{
+    background-color: #363434;
+    border-left-style: solid;
+    border-left-color: #0d6dfda1;;
+    border-left-width: 3px;
+    border-top: none;
+    border-bottom: none;
+    border-right:none;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 8%), 0 1px 5px 0 rgb(0 0 0 / 4%);
+  }
+
+  .list-group-item a {
+    color: white;
+  }
+  
+  #blog_setting_actual_content {
+    z-index:10;
+  }
+  
+  .friendbtn{
+    padding: 0px 6px 0px 6px;
+    margin:0px;
+  }
+  
+  .alert-primary, .alert-info{
+      padding: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      background-color: #0d6dfd27;
+      border-left: 0.25rem solid #0d6dfda1;;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0;
+    
+  }
+
+  .alert-primary{
+    color: white;
+  }
+
+  .form-select {
+    background-color: #363434;
+    color: white;
+  }
+
+  .form-check-input {
+    background-color: #808080;
+  }
+  
+  #interface_secondpart * {
+    color: white;
+  }
+  
+  input.form-control, textarea.form-control{
+    text-indent: 0px;
+    background-color: rgb(52, 51, 51);
+    margin: 0;
+    border-bottom: 1px solid #808080;
+    color: white;
+  }
+  
+  input.form-control:hover,textarea.form-control:hover{
+    background-color: #373535;
+    color:white;
+  }
+  
+  input.form-control:focus,textarea.form-control:focus{
+    border-color: #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: none;
+    background-color: rgb(84, 80, 80);
+    color:white;
+  }
+  
+  .fluentbtn-start {
+    background-color: rgb(136,164,199) !important;
+    color: black !important;
+    border-radius: 0px;
+    border: 0;
+  }
+  
+  .fluentbtn-start:hover {
+    background-color: rgb(187, 210, 238) !important;
+  }
+  
+  .fluentbtn-start:active {
+    background-color: rgb(189, 213, 242) !important;
+  }
+  
+  #startpage_container{
+    background-color: rgb(42,45,60);
+    color:white;
+    text-align: center;
+  
+  }
+  
+  #last_managed_site_link{
+    color: rgb(145,186,217);
+  }
+  
+  #nav_container{
+    background-color: rgb(51,57,69);
+    position: fixed;
+    width: 54px;
+    height: 100%;
+    z-index: 1000;
+  }
+  
+  #nav_container .list-group .list-group-item{
+    background-color: rgb(51,57,69);
+    color: white;
+  }
+  
+  #nav_container .list-group .list-group-item.active{
+    background-color: rgb(146,186,221);
+    border-radius: 0;
+  }
+  
+  #nav_container .list-group{
+    margin: 0 !important;
+    left: 0;
+    top: 0;
+  }
+  
+  

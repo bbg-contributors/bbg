@@ -2,5 +2,9 @@
     {
         "display_name":"Default Blue",
         "filename":"default.css"
+    },
+    {
+        "display_name":"Dark Mode",
+        "filename":"DarkMode.css"
     }
 ]

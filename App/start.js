@@ -267,9 +267,9 @@ storage.has("language", (error, hasKey) => {
             document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
                         <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg-git）<br />
-                        ${langdata["PACKAGER"][lang_name]}：Misaka13514<br />
-                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
+                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg-git）</p>
+                        <p>${langdata["PACKAGER"][lang_name]}：Misaka13514</p>
+                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
 
                         `);
             break;
@@ -277,9 +277,9 @@ storage.has("language", (error, hasKey) => {
             document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
             <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg）<br />
-                        ${langdata["PACKAGER"][lang_name]}：zzjzxq33 ${langdata["AND"][lang_name]} Misaka13514<br />
-                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
+                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg）</p>
+                        <p>${langdata["PACKAGER"][lang_name]}：zzjzxq33 ${langdata["AND"][lang_name]} Misaka13514</p>
+                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
 
                         `);
             break;
@@ -287,9 +287,9 @@ storage.has("language", (error, hasKey) => {
             document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
             <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        ${langdata["INSTALL_CHANNEL"][lang_name]}：DEB 包<br />
-                        ${langdata["PACKAGER"][lang_name]}：mzwing<br />
-                        ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
+                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：DEB 包</p>
+                        <p>${langdata["PACKAGER"][lang_name]}：mzwing</p>
+                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
 
                         `);
             break;
