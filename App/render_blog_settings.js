@@ -1,6 +1,6 @@
 
 module.exports = function () {
-  document.getElementById("container").innerHTML += getUiFileContent("blog_settings_ui.html");
+  document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent("blog_settings_ui.html"));
 
   if (blog["全局评论设置"]["启用valine评论"] === true)
     document.getElementById("blog_settings_is_valine_enabled").checked = true;
@@ -25,9 +25,9 @@ module.exports = function () {
   `;
     }
 
-    document.getElementById("isUsingThirdPartyTheme").innerHTML += `
+    document.getElementById("isUsingThirdPartyTheme").insertAdjacentHTML("beforeend", `
     <button class="btn btn-outline-primary" onclick="config_third_party_theme();"><i class="fa fa-cogs"></i> 编辑主题配置文件</button>
-    `;
+    `);
 
   } else {
     document.getElementById("isUsingThirdPartyTheme").innerHTML = `

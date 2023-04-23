@@ -14,7 +14,7 @@ module.exports = function (i) {
     </div>
   `;
   if (blog["文章列表"][i]["启用加密"] === true) {
-    encrypt_options_content.innerHTML += `
+    encrypt_options_content.insertAdjacentHTML("beforeend",`
       <div class="mb-3">
         <label class="form-label"><i class="fa fa-lock"></i> 原加密密码</label>
         <input class="form-control"  placeholder="在这里填写原加密密码(关闭加密和更新加密密码时填写)" id="encrypt_password" value="">
@@ -23,15 +23,15 @@ module.exports = function (i) {
         <label class="form-label"><i class="fa fa-lock"></i> 新加密密码</label>
         <input class="form-control" placeholder="在这里填写新加密密码(更新加密密码时填写)" id="encrypt_update_password" value="">
       </div>
-    `;
+    `);
   }
   else {
-    encrypt_options_content.innerHTML += `
+    encrypt_options_content.insertAdjacentHTML("beforeend",`
       <div class="mb-3">
         <label class="form-label"><i class="fa fa-lock"></i> 加密密码</label>
         <input class="form-control"  placeholder="在这里填写加密密码（如果需要加密请打开下面的启用加密按钮）" id="encrypt_password" value="">
       </div>
-    `;
+    `);
   }
   if (blog["文章列表"][i]["启用加密"] === true)
     document.querySelector("is_encrypt_enabled").checked = true;

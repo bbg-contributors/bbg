@@ -7,7 +7,7 @@ require("@electron/remote/main").initialize();
 
 app.setAboutPanelOptions({
   applicationName: appInfo.AppName,
-  applicationVersion: appInfo.currentProgramVersion.toString(),
+  applicationVersion: appInfo.baseVersion.toString(),
   version: "Electron " + process.versions.electron,
   website: appInfo.officialWebsite
 });

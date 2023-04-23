@@ -1,7 +1,7 @@
 module.exports = function () {
   document.getElementById("friend_book_list").innerHTML = "";
   for (let i = 0; i < blog["友人帐"].length; i++) {
-    document.getElementById("friend_book_list").innerHTML += `
+    document.getElementById("friend_book_list").insertAdjacentHTML("beforeend",`
         <tr>
           <td><input class="form-control" placeholder="${langdata.SITE_NAME[lang_name]}" id="friend_book_list_${i}_name" value="${blog["友人帐"][i]["名称"]}"></input></td>
           <td><input class="form-control" placeholder="${langdata.SITE_LINK[lang_name]}" id="friend_book_list_${i}_link" value="${blog["友人帐"][i]["链接"]}"></input></td>
@@ -12,6 +12,6 @@ module.exports = function () {
           <td><button class="btn btn-outline-primary friendbtn" onclick="let_friend_down(${i})"><i class="fa fa-arrow-down"></i></button></td>
 
         </tr>
-        `;
+        `);
   }
 };

@@ -6,14 +6,14 @@ function install_theme(theme_id) {
 
   downloadCompleted = false;
 
-  document.getElementById("root").innerHTML+=` 
+  document.getElementById("root").insertAdjacentHTML("beforeend",` 
   <div class="fluentinterface fixed-top" style="width:30%;left:20px;z-index:9999;">
   <h5><i class="fa fa-fownload"></i> 正在下载主题（已完成<span id="download_theme_progress_percentage">0</span> %）</h5>
     <div class="progress" style="height:10px">
     
       <div class="progress-bar bg-success" role="progressbar" style="width: 0%;height:50px;" id="download_theme_progress_width"></div>
     </div>
-  </div>`;
+  </div>`);
 
   if(fs.existsSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip")){
     fs.rmSync(rootDir+"/temp_theme_downloaded_by_bbg_online_theme_store.zip");
@@ -61,7 +61,7 @@ function render_theme_detail(theme_id) {
   document.getElementById("download_online_theme_dialog_content").innerHTML =
     "";
 
-  document.getElementById("download_online_theme_dialog_content").innerHTML += `
+  document.getElementById("download_online_theme_dialog_content").insertAdjacentHTML("beforeend",`
   <button class="btn btn-outline-primary" onclick="render_online_theme_list();"><i class="fa fa-arrow-left"></i> 返回主题列表</button><br /><br />
   <h4> ${theme_list[theme_id]["name"]} ${langdata.THEME_INFO_OF[lang_name]}</h4>
   <p><i class="fa fa-user-o"></i> ${langdata.THEME_AUTHOR[lang_name]}<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[theme_id]["author_url"]}')">${theme_list[theme_id]["author"]}</a></p>
@@ -74,35 +74,35 @@ function render_theme_detail(theme_id) {
   <button class="btn btn-outline-primary" onclick="install_theme(${theme_id})"><i class="fa fa-download"></i> ${langdata.INSTALL_THIS_THEME[lang_name]}</button>
   <button class="btn btn-outline-primary" onclick="render_online_theme_list();">${langdata.BACK_TO_THEME_LIST[lang_name]}</button><br /><br />
 
-  `;
+  `);
 
   if (
     theme_list[theme_id]["compatible_with_newer_bbg_version"] &&
     currentProgramVersion >= theme_list[theme_id]["last_tested_on_bbg_version"]
   ) {
-    document.getElementById("more_info_of_theme_detail").innerHTML += `
+    document.getElementById("more_info_of_theme_detail").insertAdjacentHTML("beforeend",`
     
     <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
-    `;
+    `);
   } else if (
     theme_list[theme_id]["compatible_with_older_bbg_version"] &&
     currentProgramVersion <= theme_list[theme_id]["last_tested_on_bbg_version"]
   ) {
-    document.getElementById("more_info_of_theme_detail").innerHTML += `
+    document.getElementById("more_info_of_theme_detail").insertAdjacentHTML("beforeend",`
     
     <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
-    `;
+    `);
   } else if(currentProgramVersion === theme_list[theme_id]["last_tested_on_bbg_version"]){
-    document.getElementById("more_info_of_theme_detail").innerHTML += `
+    document.getElementById("more_info_of_theme_detail").insertAdjacentHTML("beforeend",`
     
     <p><i class="fa fa-check"></i> ${langdata.THEME_AUTHOR_THINKS_COMPATIBLE[lang_name]}</p>
-    `;
+    `);
 
   } else{
-    document.getElementById("more_info_of_theme_detail").innerHTML += `
+    document.getElementById("more_info_of_theme_detail").insertAdjacentHTML("beforeend",`
     
     <p><i class="fa fa-times"></i> ${langdata.THEME_AUTHOR_THINKS_NOT_COMPATIBLE[lang_name]}</p>
-    `;
+    `);
   }
 }
 
@@ -131,8 +131,8 @@ function render_online_theme_list() {
     "";
   // todo
 
-  document.getElementById("download_online_theme_dialog_content").innerHTML +=
-    `<h2>${langdata.THEME_LIST[lang_name]}</h2><p>${langdata.THEME_LIST_DESCRIPTION[lang_name]}</p><hr />`;
+  document.getElementById("download_online_theme_dialog_content").insertAdjacentHTML("beforeend",
+    `<h2>${langdata.THEME_LIST[lang_name]}</h2><p>${langdata.THEME_LIST_DESCRIPTION[lang_name]}</p><hr />`);
 
   fetch("https://bbg-themes.nekomoe.xyz/index.json")
     .then((response) => response.json())
@@ -142,16 +142,16 @@ function render_online_theme_list() {
       for (let i = 0; i < theme_list.length; i++) {
         document.getElementById(
           "download_online_theme_dialog_content"
-        ).innerHTML += `
+        ).insertAdjacentHTML("beforeend",`
         <a href="javascript:void(0)" onclick="render_theme_detail(${i})"><h5 id="theme_list_id_${i}">${theme_list[i]["name"]}</h5></a>
         <p><i class="fa fa-user-o"></i> ${langdata.THEME_AUTHOR[lang_name]}<a href="javascript:void(0)" onclick="shell.openExternal('${theme_list[i]["author_url"]}')">${theme_list[i]["author"]}</a></p>
         <p>${theme_list[i]["intro"]}</p>
 
         <hr />
 
-        `;
+        `);
         if(theme_list[i]["is_example_theme"]){
-          document.getElementById(`theme_list_id_${i}`).innerHTML += " <span style=\"font-size:12px\" class=\"badge bg-danger\">此主题仅用于功能测试，不建议使用</span>";
+          document.getElementById(`theme_list_id_${i}`).insertAdjacentHTML("beforeend", "<span style=\"font-size:12px\" class=\"badge bg-danger\">此主题仅用于功能测试，不建议使用</span>");
         }
       }
     })

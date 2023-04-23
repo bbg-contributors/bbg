@@ -8,7 +8,7 @@ module.exports = function (i) {
 
   document.getElementById("article_meta_content").innerHTML = "";
 
-  document.getElementById("article_meta_content").innerHTML += `
+  document.getElementById("article_meta_content").insertAdjacentHTML("beforeend", `
     <div class="mb-3">
     <label class="form-label"><i class="fa fa-book"></i> ${langdata.ARTICLE_TITLE[lang_name]}</label>
     <input class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_TITLE[lang_name]}" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
@@ -33,9 +33,9 @@ module.exports = function (i) {
   <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.FILENAME[lang_name]}</label>
   <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
   </div>
-`;
+`);
 
-  document.getElementById("article_meta_content").innerHTML += `
+  document.getElementById("article_meta_content").insertAdjacentHTML("beforeend", `
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" id="meta_article_istop">
       <label class="form-check-label" for="meta_article_istop">
@@ -59,7 +59,7 @@ module.exports = function (i) {
     
     
       
-      `;
+      `);
   if (blog["文章列表"][i]["标签"].length !== 0) {
     let tempTagString = "";
     for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++)

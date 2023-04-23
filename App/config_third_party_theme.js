@@ -9,19 +9,19 @@ function config_third_party_theme() {
     const themecfg_json = JSON.parse(readFileSync(`${rootDir}/themecfg/themecfg.json`,"utf-8"));
 
     if(existsSync(`${rootDir}/themecfg/themecfg_manual.html`)){
-      document.getElementById("config_thirdparty_theme_content").innerHTML += `
+      document.getElementById("config_thirdparty_theme_content").insertAdjacentHTML("beforeend",`
       <button class="btn btn-outline-primary" onclick="shell.openPath('${rootDir}/themecfg/themecfg_manual.html')"><i class="fa fa-book"></i> 此主题提供了配置文档，点击这里以查阅</button>
-    `;
+    `);
     }
 
-    document.getElementById("config_thirdparty_theme_content").innerHTML += `
+    document.getElementById("config_thirdparty_theme_content").insertAdjacentHTML("beforeend",`
       <button class="btn btn-outline-success" onclick="save_config_of_third_party_theme()"><i class="fa fa-download"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
       <br /><br />
-    `;
+    `);
 
-    document.getElementById("config_thirdparty_theme_content").innerHTML += `
+    document.getElementById("config_thirdparty_theme_content").insertAdjacentHTML("beforeend",`
     <textarea spellcheck="false" style="height:300px;font-family:monospace;color:blue" class="form-control" id="themecfg_rawinput">${readFileSync(`${rootDir}/themecfg/themecfg.json`,"utf-8")}</textarea>
-    `;
+    `);
   } else {
     document.getElementById("config_thirdparty_theme_content").innerHTML = `
             当前所使用的第三方主题不支持被配置。

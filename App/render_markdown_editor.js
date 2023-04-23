@@ -24,14 +24,14 @@ module.exports = function () {
       }
     }
   }
-  document.getElementById("container").innerHTML += getUiFileContent(
+  document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
     "markdown_editor_title_ui.html",
-  );
-  document.getElementById("container").innerHTML += `
+  ));
+  document.getElementById("container").insertAdjacentHTML("beforeend", `
   <div id="editor-container" style="position:fixed;height:70%;width:90%">
     <div id="editor"></div>
   </div>
-  `;
+  `);
 
   document.getElementById("markdown_filename").innerHTML=`  <button id="btn_exit" class="btn btn-outline-primary">
   <i class="fa fa-arrow-left"></i>

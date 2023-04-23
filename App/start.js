@@ -152,9 +152,9 @@ function openImageCopyrightDialog() {
 function render_language_selections() {
   document.getElementById("language-selection-list").innerHTML = "";
   for (let i = 0; i < lang_meta["名称与文件名之间的映射关系"].length; i++) {
-    document.getElementById("language-selection-list").innerHTML += `<p>
+    document.getElementById("language-selection-list").insertAdjacentHTML("beforeend",`<p>
     <a href="#" onclick="select_language('${lang_meta["名称与文件名之间的映射关系"][i]["name"]}')">${lang_meta["名称与文件名之间的映射关系"][i]["name"]}</a>
-  </p>`;
+  </p>`);
   }
 }
 
@@ -264,34 +264,34 @@ storage.has("language", (error, hasKey) => {
           bbgvertype = readFileSync("/usr/share/bbg/bbgvertype", "utf8").replace("\n", "");
           switch (bbgvertype) {
           case "aur-bbg-git-misaka13514":
-            document.getElementById("interface_secondpart").innerHTML += `
+            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
                         <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
                         ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg-git）<br />
                         ${langdata["PACKAGER"][lang_name]}：Misaka13514<br />
                         ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
-                        `;
+                        `);
             break;
           case "aur-bbg-zzjzxq33-misaka13514":
-            document.getElementById("interface_secondpart").innerHTML += `
+            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
             <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
                         ${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg）<br />
                         ${langdata["PACKAGER"][lang_name]}：zzjzxq33 ${langdata["AND"][lang_name]} Misaka13514<br />
                         ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
-                        `;
+                        `);
             break;
           case "debpkg-mzwing":
-            document.getElementById("interface_secondpart").innerHTML += `
+            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
             <br /><br />
                         <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
                         ${langdata["INSTALL_CHANNEL"][lang_name]}：DEB 包<br />
                         ${langdata["PACKAGER"][lang_name]}：mzwing<br />
                         ${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}<br />
 
-                        `;
+                        `);
             break;
           default:
             break;
@@ -334,9 +334,9 @@ function openStylesheetDialog() {
   let stylesheet_list = JSON.parse(readFileSync(`${__dirname}/stylesheets/meta.json`,"utf-8"));
     
   for(let i=0;i<stylesheet_list.length;i++){
-    document.getElementById("stylesheet_list").innerHTML+=`
+    document.getElementById("stylesheet_list").insertAdjacentHTML("beforeend",`
       <p><a href="javascript:void(0)" onclick="changeStylesheet('${stylesheet_list[i]["filename"]}')">${stylesheet_list[i]["display_name"]}</a></p>
-      `;
+      `);
   }
 }
 

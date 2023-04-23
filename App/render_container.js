@@ -1,3 +1,3 @@
 module.exports = function () {
-  document.getElementById("root").innerHTML += getUiFileContent("container_ui.html");
+  document.getElementById("root").insertAdjacentHTML("beforeend", getUiFileContent("container_ui.html"));
 };

@@ -1,10 +1,10 @@
 module.exports = function () {
-  document.getElementById("container").innerHTML += getUiFileContent("page_manager_titleui.html");
+  document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent("page_manager_titleui.html"));
 
   document.getElementById("edit_page_meta_dialog_footer").innerHTML = getUiFileContent("edit_page_meta_dialog_footer.html");
 
   for (let i = 0; i < blog["页面列表"].length; i++) {
-    document.getElementById("container").innerHTML += `
+    document.getElementById("container").insertAdjacentHTML("beforeend",`
       <div class="page-item">
       <h2>${blog["页面列表"][i]["页面标题"]}</h2>
       <p id="if_view_in_menu_${i}"  class="page-item-sub"></p>
@@ -16,7 +16,7 @@ module.exports = function () {
   
       </div>
       
-      `;
+      `);
 
     if (blog["页面列表"][i]["是否显示在菜单中"] === true)
       document.getElementById(`if_view_in_menu_${i}`).innerHTML = `<i class="fa fa-cogs"></i> ${langdata.PAGE_VIEWNAME[lang_name]}<b>${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}</b>`;

@@ -7,7 +7,7 @@ module.exports = function (i) {
 
   document.getElementById("page_meta_content").innerHTML = "";
 
-  document.getElementById("page_meta_content").innerHTML += `
+  document.getElementById("page_meta_content").insertAdjacentHTML("beforeend", `
     <div class="mb-3">
     <label class="form-label"><i class="fa fa-book"></i> ${langdata.PAGE_TITLE[lang_name]}</label>
     <input class="form-control" placeholder="${langdata.PLEASE_INPUT_PAGE_TITLE[lang_name]}" value="${blog["页面列表"][i]["页面标题"]}" id="meta_page_title">
@@ -41,7 +41,7 @@ module.exports = function (i) {
     </label>
   </div>
   
-  `;
+  `);
   if (blog["页面列表"][i]["是否显示在菜单中"] === true)
     document.getElementById("meta_page_isviewinmenu").checked = true;
 
