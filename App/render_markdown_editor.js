@@ -8,6 +8,8 @@ module.exports = function () {
   let title,type;
   let original_content = readFileSync(rootDir + path, "utf-8");
   var editor_status = 0;
+  var whoScrolling;
+
   if (path.indexOf("/data/articles/") !== -1) {
     // article
     type = "article";
@@ -73,12 +75,17 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   // 以下为新的实现方式
 
+  function scrollSyncChange(changeToWhat) {
+    whoScrolling = changeToWhat;
+  }
+
+
   document.getElementById("container").insertAdjacentHTML("beforeend", `
   <div id="editor-container" style="position:fixed;height:70%;width:35%">
     <textarea id="editor_textarea" placeholder="Input markdown source code here" class="form-control" style="width:110%;height:100%;font-family: monospace">
     </textarea>
   </div>
-  <div id="preview-section-container" style="position:fixed;height:70%;width:35%;margin-left:40%">
+  <div id="preview-section-container" style="position:fixed;height:70%;width:35%;margin-left:40%;overflow-y: scroll;overflow-x:auto;word-break:break-all">
   
   </div>
   `);
@@ -160,7 +167,16 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();
+    scrollSyncChange("preview跟着writing滚动");
   };
+
+  document.querySelector("#preview-section-container").onmousemove = () => {
+    scrollSyncChange("writing跟着preview滚动");
+  };
+  document.querySelector("#editor_textarea").onmousemove = () => {
+    scrollSyncChange("preview跟着writing滚动");
+  };
+
 
   document.getElementById("editor_textarea").onkeyup = ()=>{
     preview_markdown_content();
@@ -170,6 +186,45 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   document.getElementById("editor_textarea").value = original_content;
 
   preview_markdown_content();
+
+  // 同步滚动（类型1）
+  document.getElementById("editor_textarea").addEventListener("scroll",function(e){
+    if (whoScrolling !== "writing跟着preview滚动") {
+      whoScrolling = "preview跟着writing滚动";
+      console.log(whoScrolling);
+      var ih =
+        document.querySelector("#editor_textarea").scrollHeight -
+        document.getElementById("editor_textarea").clientHeight;
+      var oh =
+        document.querySelector("#preview-section-container").scrollHeight -
+        document.querySelector("#preview-section-container").clientHeight;
+      var ipn = document.querySelector("#editor_textarea").scrollTop;
+
+      // 滚动位置计算
+      // 此实现方式是按照滚动条的比例计算，不一定精确，但问题不大
+      document.querySelector("#preview-section-container").scrollTop = (ipn / ih) * oh;
+    }
+  });
+
+  // 同步滚动(类型2)
+
+  document.getElementById("preview-section-container").addEventListener("scroll",function(e){
+    if (whoScrolling !== "preview跟着writing滚动") {
+      whoScrolling = "writing跟着preview滚动";
+      console.log(whoScrolling);
+      var ih =
+        document.querySelector("#editor_textarea").scrollHeight -
+        document.getElementById("editor_textarea").clientHeight;
+      var oh =
+        document.querySelector("#preview-section-container").scrollHeight -
+        document.querySelector("#preview-section-container").clientHeight;
+      var ipn = document.querySelector("#preview-section-container").scrollTop;
+
+      document.querySelector("#editor_textarea").scrollTop = (ipn / oh) * ih;
+    }
+
+  });
+
 
   document.getElementById("btn_help").onclick=function(){
     let text=langdata["MARKDOWN_EDITOR_USAGE_DETAIL"][lang_name];
