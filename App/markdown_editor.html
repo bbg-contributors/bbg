@@ -6,7 +6,6 @@
 
   <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../node_modules/markdown-palettes/dist/markdown-palettes.css">
   <title>Baiyuanneko's Blog Generator</title>
 </head>
 
@@ -14,6 +13,83 @@
 
   <style id="uniform">
 
+  </style>
+  <style id="markdown_preview_stylesheet">
+    info-hint, warning-hint, success-hint, danger-hint {
+      display: block;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      background-color: rgb(235, 234, 234);
+    }
+
+    .hint-heading {
+      font-size: 110%;
+    }
+
+    info-hint .hint-heading {
+      color:#0550ae;
+    }
+
+    warning-hint .hint-heading {
+      color:#ae8105;
+    }
+
+    success-hint .hint-heading {
+      color:#1b6e08;
+    }
+
+    danger-hint .hint-heading {
+      color:#ae2105;
+    }
+
+    info-hint {
+      border-left: #0550ae solid 2px;
+    }
+
+    warning-hint {
+      border-left: #ae8105 solid 2px;
+    }
+
+    success-hint {
+      border-left: #1b6e08 solid 2px;
+    }
+
+    danger-hint {
+      border-left: #ae2105 solid 2px;
+    }
+
+    blockquote {
+      color: #666666;
+      margin: 0;
+      padding-left: 12px;
+      border-left: 4px #eee solid;
+    }
+
+    hr {
+      display: block;
+      border: 0;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #eee;
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    pre,
+    code,
+    kbd,
+    samp {
+      border-radius: 4px;
+      background-color: #f2f5f8;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-left: 12px;
+      padding-right: 12px;
+      color: #0550ae;
+      display: inline-block;
+      word-break: break-all !important;
+      white-space: pre-wrap;
+    }
   </style>
   <div id="loading" class="text-center" style="font-size: 200%;">
     <br />
@@ -24,7 +100,6 @@
   <div id="root"></div>
 
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../node_modules/markdown-palettes/dist/markdown-palettes.min.js"></script>
   <script src="./manage.js"></script>
 </body>
 
