@@ -1,5 +1,8 @@
 - [更新日志](/zh-cn/CHANGELOG.md)
-- [下载指南](/zh-cn/download.md)
+- [用户指南]
+  - [下载和安装 BBG](/zh-cn/user-guide/download.md)
+  - [在博客文章中添加参考来源和提示信息](/zh-cn/user-guide/ref_tags_and_hints.md)
+  - [在博客文章中添加数学公式](/zh-cn/user-guide/math_in_articles.md)
 - 开发指南
   - [第三方主题开发文档](/zh-cn/developer-guide/thirdparty_theme.md)
   - [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
