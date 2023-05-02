@@ -46,7 +46,8 @@
     "font-awesome": "4.7.0",
     "marked": "^4.3.0",
     "native-prompt": "^2.1.4",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "docsify": "^4.13.0",
