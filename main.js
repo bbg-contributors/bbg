@@ -12,6 +12,57 @@ app.setAboutPanelOptions({
   website: appInfo.officialWebsite
 });
 
+
+let menuTemplate = [
+  {
+    label: "编辑",
+    submenu: [
+      {
+        label: "撤销",
+        role: "undo"
+      },
+      {
+        label: "恢复",
+        role: "redo"
+      },
+      {
+        label: "剪切",
+        role: "cut"
+      },
+      {
+        label: "拷贝",
+        role: "copy"
+      },
+      {
+        label: "粘贴",
+        role: "paste"
+      },
+      {
+        label: "全选",
+        role: "selectAll"
+      }
+    ]
+  },
+  {
+    label: "帮助",
+    submenu: [
+      {
+        label: "项目主页",
+        click: () => {
+          shell.openExternal("https://github.com/bbg-contributors/bbg");
+        }
+      },
+      {
+        label: "关于",
+        click: () => {
+          app.showAboutPanel();
+        }
+      }
+    ]
+  }
+];
+
+/*
 let menuTemplate = [
   {
     label: "文件",
@@ -77,7 +128,7 @@ let menuTemplate = [
     ]
   }
 ];
-
+*/
 if (process.platform == "darwin") {
   menuTemplate.unshift({
     label: "",

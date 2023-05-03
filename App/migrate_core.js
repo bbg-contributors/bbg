@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { constants } = require("fs");
+const { constants, writeFileSync } = require("fs");
 const currentProgramVersion = require("./currentProgramVersion.js");
 
 function updateBlogIndexHtml() {
@@ -218,7 +218,11 @@ module.exports = function () {
   check_third_party_theme_compatiblity();
   updateBlogIndexHtml();
 
-  fs.writeFileSync(`${rootDir}/data/index.json`, JSON.stringify(blog));
+  if (blog["提高JSON文件的可读性"]) {
+    writeFileSync(path.join(this.rootDir, "data/index.json"), JSON.stringify(blog, null, 2));
+  }else{
+    writeFileSync(path.join(this.rootDir, "data/index.json"), JSON.stringify(blog));
+  }
 
   // console.log("博客数据更新成功。");
 };

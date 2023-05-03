@@ -13,8 +13,47 @@
   .navbar .container-fluid a{
     color: white !important;
   }
+
+  #preview-section-container *{
+    color: white;
+  }
+
+  #preview-section-container info-hint{
+    color:black;
+  }
   
+  #preview-section-container warning-hint{
+    color:black;
+  }
   
+  #preview-section-container danger-hint{
+    color:black;
+  }
+  
+  #preview-section-container success-hint{
+    color:black;
+  }
+
+  .hint-heading *{
+    color: black!important;
+  }
+
+  .hint-heading {
+    color: black!important;
+  }
+
+  #markdown_filename {
+    color:white;
+  }
+  
+  #preview_site_content {
+    color: white;
+  }
+
+  .container{
+    color: white;
+  }
+
   .article-item-sub,
   .article-content-sub,
   .page-item-sub {
