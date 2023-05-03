@@ -1,5 +1,16 @@
 # CHANGE LOG
 
+## 20230503
+
+- Supported adding reference sources and prompt information boxes in articles
+- Added menu bar
+- Re-added support for dark theme
+- Changed the implemention of built-in Markdown editor
+
+## 20230219
+
+- Add builtin Markdown editor
+
 ## 20221202
 
 - Fixed the issue that the image path was parsed incorrectly
