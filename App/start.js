@@ -158,6 +158,12 @@ function render_language_selections() {
   }
 }
 
+function learn_more_about_version(type){
+  const learn_more_about_version_dialog = new bootstrap.Modal(document.getElementById("learn_more_about_version-dialog"));
+  document.getElementById("learn_more_about_version-dialog-content").innerHTML = langdata[`${type}_VERSION_INFO`][lang_name];
+  learn_more_about_version_dialog.show();
+}
+
 render_language_selections();
 
 storage.has("language", (error, hasKey) => {
@@ -216,6 +222,9 @@ storage.has("language", (error, hasKey) => {
         <div id="check_update_interface">
         ${langdata.SOFTWARE_VERSION[lang_name]}<b><span id="current_program_version"></span></b> <br />
         </div>
+        <div id="current_program_version_additional_info">
+
+        </div>
         <br />
         <span>${langdata.UNLICENSED[lang_name]}</span><br />
         <br />
@@ -259,43 +268,13 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
-      if (os.platform() === "linux") {
-        if (existsSync("/usr/share/bbg/bbgvertype")) {
-          bbgvertype = readFileSync("/usr/share/bbg/bbgvertype", "utf8").replace("\n", "");
-          switch (bbgvertype) {
-          case "aur-bbg-git-misaka13514":
-            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
-                        <br /><br />
-                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg-git）</p>
-                        <p>${langdata["PACKAGER"][lang_name]}：Misaka13514</p>
-                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
-
-                        `);
-            break;
-          case "aur-bbg-zzjzxq33-misaka13514":
-            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
-            <br /><br />
-                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：AUR（bbg）</p>
-                        <p>${langdata["PACKAGER"][lang_name]}：zzjzxq33 ${langdata["AND"][lang_name]} Misaka13514</p>
-                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
-
-                        `);
-            break;
-          case "debpkg-mzwing":
-            document.getElementById("interface_secondpart").insertAdjacentHTML("beforeend",`
-            <br /><br />
-                        <h5>${langdata["VERSION_INFO"][lang_name]}</h5>
-                        <p>${langdata["INSTALL_CHANNEL"][lang_name]}：DEB 包</p>
-                        <p>${langdata["PACKAGER"][lang_name]}：mzwing</p>
-                        <p>${langdata["INTERNAL_VERSION_ID"][lang_name]}：${currentProgramVersion}</p>
-
-                        `);
-            break;
-          default:
-            break;
-          }
+      if(existsSync(`${__dirname}/is_released_version`) === false){
+        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]} (base_version = ${currentProgramVersion})`;
+      }else{
+        if (existsSync(`${__dirname}/is_aur_build`)){
+          document.getElementById("current_program_version_additional_info").innerHTML = `<br />
+          <button class="btn btn-sm btn-outline-light" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
+          `;
         }
       }
     });

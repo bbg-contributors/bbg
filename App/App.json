@@ -1,8 +1,7 @@
 {
-  "baseVersion": 20230219,
+  "VersionNumber": 20230219,
   "AppName": "Baiyuanneko's Blog Generator",
   "officialWebsite": "https://bbg.nekomoe.xyz",
-  "is_nightly_build": true,
   "contributors": [
     "柏园猫 (baiyuanneko)",
     "scientificworld",
