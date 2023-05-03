@@ -1,6 +1,7 @@
 {
   "productName": "Baiyuanneko's Blog Generator",
   "appId": "com.github.baiyuanneko.bbg",
+  "copyright": "Made with love by BBG contributors",
   "asar": true,
   "files": [
     "dist/electron/**/*",
