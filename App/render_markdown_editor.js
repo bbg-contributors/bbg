@@ -1,7 +1,7 @@
 const { readFileSync,writeFileSync } = require("fs");
 const { dialog } = require("@electron/remote");
 const marked = require("marked");
-const markdown_filter = require("xss");
+const xss_filter = require("xss");
 
 module.exports = function () {
   let path = getUrlArgs("path");
@@ -164,16 +164,15 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   const preview_markdown_content = () => {
     // 自定义过滤白名单
-    let filter_whiteList = markdown_filter.whiteList;
+    let filter_whiteList = xss_filter.whiteList;
     filter_whiteList.ref = ["url"];
     filter_whiteList["info-hint"] = [];
     filter_whiteList["warning-hint"] = [];
     filter_whiteList["danger-hint"] = [];
     filter_whiteList["success-hint"] = [];
 
-    const markdown_raw_content = document.getElementById("editor_textarea").value;
-    const markdown_content = markdown_filter(markdown_raw_content, {whiteList: filter_whiteList});
-    const html_content = marked.marked(markdown_content, { baseUrl: `${rootDir}/data/${type}s}` });
+    const markdown_content = document.getElementById("editor_textarea").value;
+    const html_content = xss_filter(marked.marked(markdown_content, { baseUrl: `${rootDir}/data/${type}s}` }), {whiteList: filter_whiteList});
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();
