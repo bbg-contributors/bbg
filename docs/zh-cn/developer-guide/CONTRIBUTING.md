@@ -65,17 +65,13 @@ export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 
 ### 在本地查看文档
 
-本项目使用 Docsify 来管理项目文档。
+本项目使用 Docsify 来管理项目文档。你可以使用如下命令打开文档。
 
-目前文档已经和 BBG 开发者面板 整合在一起，
-
-使用这个命令打开 BBG 开发者面板：
-
-```sh
-yarn run devpanel
+```
+yarn run read_doc
 ```
 
-你也可以访问 <http://localhost:23941>。
+然后访问 <http://localhost:23941>
 
 ## 语法检查和格式化
 
