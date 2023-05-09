@@ -1076,15 +1076,15 @@ eslint-plugin-markdown@^3.0.0:
   dependencies:
     mdast-util-from-markdown "^0.8.5"
 
-eslint-plugin-yml@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-yml/-/eslint-plugin-yml-1.5.0.tgz"
-  integrity sha512-iygN054g+ZrnYmtOXMnT+sx9iDNXt89/m0+506cQHeG0+5jJN8hY5iOPQLd3yfd50AfK/mSasajBWruf1SoHpQ==
+eslint-plugin-yml@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-yml/-/eslint-plugin-yml-1.6.0.tgz#e9e054b0b16395588d95e2fb99be666b84b87cf1"
+  integrity sha512-KK3tu8notai2l6BgMvK1yay6RW7FwVRqL48PlKI1AGEpQNwvq/OfNwPMmNWb4/Eu2X22FHUjCnCfCP+bc0pzLw==
   dependencies:
     debug "^4.3.2"
     lodash "^4.17.21"
     natural-compare "^1.4.0"
-    yaml-eslint-parser "^1.1.0"
+    yaml-eslint-parser "^1.2.1"
 
 eslint-scope@^7.2.0:
   version "7.2.0"
@@ -2888,10 +2888,10 @@ yallist@^4.0.0:
   resolved "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml-eslint-parser@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/yaml-eslint-parser/-/yaml-eslint-parser-1.1.0.tgz"
-  integrity sha512-b464Q1fYiX1oYx2kE8k4mEp6S9Prk+tfDsY/IPxQ0FCjEuj3AKko5Skf3/yQJeYTTDyjDE+aWIJemnv29HvEWQ==
+yaml-eslint-parser@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/yaml-eslint-parser/-/yaml-eslint-parser-1.2.1.tgz#a64a108ea2a1260be0217d2334d2b4b8b2188c45"
+  integrity sha512-XxLosxcDd0lBF1OEANOod8I/gn+VrYdSbUFAgfoYntY/vktK2V38Nknu4ZbQELTt38CJfxRlYOWYQC2kTytX8Q==
   dependencies:
     eslint-visitor-keys "^3.0.0"
     lodash "^4.17.21"
