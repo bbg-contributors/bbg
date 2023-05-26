@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 20230505
+
+- Urgent fix for a bug that prevented blog data files from being upgraded
+
 ## 20230503
 
 - Supported adding reference sources and prompt information boxes in articles
