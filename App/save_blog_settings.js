@@ -22,7 +22,6 @@ module.exports = function () {
   }
 
   const blog_settings_bottom_information = document.getElementById("blog_settings_bottom_information").value.replace(/(^\n*)|(\n*$)/g, "");
-  const blog_settings_is_using_acg_bg = document.getElementById("blog_settings_is_using_acg_bg").checked;
   const website_announcement_enabled = document.getElementById("website_announcement_enabled").checked;
   const website_announcement_indexonly = document.getElementById("website_announcement_indexonly").checked;
   const website_announcement_content = document.getElementById("website_announcement_content").value.replace(/(^\n*)|(\n*$)/g, "");
@@ -45,6 +44,7 @@ module.exports = function () {
   let auto_rss_enabled = document.getElementById("auto_rss_enabled").checked;
   let auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
   const domain_string = document.getElementById("domain_string").value.replaceAll(" ", "");
+  const blog_settings_background_setting = document.getElementById("blog_settings_background_setting").value;
 
   if (document.getElementById("cdn_cho_1").checked === true) {
     blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
@@ -71,13 +71,6 @@ module.exports = function () {
 
   blog["提高JSON文件的可读性"] = enable_format_json;
 
-  if (blog_settings_is_using_acg_bg === true) {
-    blog["全局主题设置"]["是否使用背景图像"] = true;
-    blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"] = true;
-  } else {
-    blog["全局主题设置"]["是否使用背景图像"] = false;
-    blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"] = false;
-  }
   try {
     if (blog_settings_is_valine_enabled === true)
       blog["全局评论设置"]["启用valine评论"] = true;
@@ -140,6 +133,41 @@ module.exports = function () {
   blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"] = document.getElementById("rewrite_baseurl").checked;
   blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"] = document.getElementById("enable_image_viewer").checked;
   blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = document.getElementById("resize_images").checked;
+
+  switch(blog_settings_background_setting){
+  case "bgimg_use_blank":
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = false;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = "";
+    blog["全局主题设置"]["是否使用背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = "";
+    break;
+  case "bgimg_use_pure_color":
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = true;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = document.getElementById("blog_settings_color_of_background").value;
+    blog["全局主题设置"]["是否使用背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = "";
+    break;
+  case "bgimg_use_url":
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = false;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = "";
+    blog["全局主题设置"]["是否使用背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = document.getElementById("blog_settings_url_of_background").value;
+    break;
+  case "bgimg_use_background_webp":
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = false;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = "";
+    blog["全局主题设置"]["是否使用背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = "";
+    break;
+  }
 
   BlogInstance.writeBlogData();
   if(save_blog_settings_operate_success === true){

@@ -140,6 +140,27 @@ function addSupportForOptionsOfMarkdownRendering() {
   blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = true;
 }
 
+function improveBackgroundImageSettings() {
+  if(blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"]) {
+    // 如果之前版本中启用了“将网站背景设置为随机二次元图片”则将背景图片配置转换为“将某个url作为背景图像”，url自动填入之前所使用的默认二次元图片api地址
+    delete blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"];
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = false;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = "";
+    blog["全局主题设置"]["是否使用背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = true;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = "https://api.paugram.com/wallpaper/";
+  } else {
+    delete blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"];
+    blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"] = false;
+    blog["全局主题设置"]["若使用纯色背景，颜色为"] = "";
+    blog["全局主题设置"]["是否使用背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] = false;
+    blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] = "";
+  }
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -213,6 +234,10 @@ module.exports = function () {
 
   if (currentBlogVersion <= 20221031) {
     addSupportForOptionsOfMarkdownRendering();
+  }
+
+  if (currentBlogVersion <= 20230526) {
+    improveBackgroundImageSettings();
   }
 
   check_third_party_theme_compatiblity();

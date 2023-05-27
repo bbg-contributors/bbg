@@ -380,25 +380,18 @@ ${blog["网站公告"]}
       </h2>
       <br />
 
-      <select class="form-select" style="display: none">
-        <option value="bgimg_use_random_acgnpic">
-          使用随机的 ACGN 插画作为网页背景
+      <select class="form-select" id="blog_settings_background_setting">
+        <option value="bgimg_use_blank">空白背景（不使用背景）</option>
+        <option value="bgimg_use_pure_color">
+          使用纯色背景
         </option>
-        <option value="bgimg_use_blank">空白背景</option>
         <option value="bgimg_use_url">将某个URL作为网页背景图像</option>
-        <option value="bgimg_use_file">选择一个图片文件作为网页背景图像</option>
+        <option value="bgimg_use_background_webp">将网站根目录下的background.webp作为网页背景图像</option>
       </select>
 
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="blog_settings_is_using_acg_bg"
-        />
-        <label class="form-check-label" for="blog_settings_is_using_acg_bg">
-          ${langdata["USE_RANDOM_ACG_PIC_AS_BGIMG"][lang_name]}
-        </label>
-      </div>
+      <input class="form-control" id="blog_settings_url_of_background" style="display: none;">
+      <input class="form-control" id="blog_settings_color_of_background" style="display: none;">
+
     </div>
     <div class="fluentinterface" id="thirdpartytheme_navhash">
       <h2>

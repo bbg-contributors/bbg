@@ -100,6 +100,45 @@ module.exports = function () {
   document.getElementById("enable_image_viewer").checked = blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"];
   document.getElementById("resize_images").checked = blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"];
 
+  function render_input_of_background(){
+    switch(document.getElementById("blog_settings_background_setting").value){
+    case "bgimg_use_pure_color":
+      document.getElementById("blog_settings_color_of_background").setAttribute("style", "");
+      document.getElementById("blog_settings_url_of_background").setAttribute("style", "display: none;");
+      document.getElementById("blog_settings_color_of_background").value = blog["全局主题设置"]["若使用纯色背景，颜色为"];
+      break;
+    case "bgimg_use_background_webp":
+      document.getElementById("blog_settings_color_of_background").setAttribute("style", "display: none;");
+      document.getElementById("blog_settings_url_of_background").setAttribute("style", "display: none;");
+      break;
+    case "bgimg_use_blank":
+      document.getElementById("blog_settings_color_of_background").setAttribute("style", "display: none;");
+      document.getElementById("blog_settings_url_of_background").setAttribute("style", "display: none;");
+      break;
+    case "bgimg_use_url":
+      document.getElementById("blog_settings_color_of_background").setAttribute("style", "display: none;");
+      document.getElementById("blog_settings_url_of_background").setAttribute("style", "");
+      document.getElementById("blog_settings_url_of_background").value = blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"];
+      break;
+    }
+  }
+
+  if (blog["全局主题设置"]["是否使用纯色背景（优先级高于背景图像）"]){
+    document.getElementById("blog_settings_background_setting").value = "bgimg_use_pure_color";
+  } else if (blog["全局主题设置"]["是否使用背景图像"]){
+    if(blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"]){
+      document.getElementById("blog_settings_background_setting").value = "bgimg_use_background_webp";
+    } else if(blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"]){
+      document.getElementById("blog_settings_background_setting").value = "bgimg_use_url";
+    }
+  }
+
+  render_input_of_background();
+
+  document.getElementById("blog_settings_background_setting").onchange = function(){
+    render_input_of_background();
+  };
+
   if (blog["CDN选择"] === 1) {
     // 从列表中选择cdn地址
     document.getElementById("cdn_cho_1").checked = true;
