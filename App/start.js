@@ -268,14 +268,12 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
-      if(existsSync(`${__dirname}/is_released_version`) === false){
+      if (existsSync(`${__dirname}/is_aur_build`)){
+        document.getElementById("current_program_version_additional_info").innerHTML = `<br />
+        <button class="btn btn-sm btn-outline-light" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
+        `;
+      } else if(existsSync(`${__dirname}/is_released_version`) === false){
         document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]} (base_version = ${currentProgramVersion})`;
-      }else{
-        if (existsSync(`${__dirname}/is_aur_build`)){
-          document.getElementById("current_program_version_additional_info").innerHTML = `<br />
-          <button class="btn btn-sm btn-outline-light" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
-          `;
-        }
       }
     });
   } else {
