@@ -2,6 +2,10 @@ const { app, dialog, shell, BrowserWindow, Menu, ipcMain } = require("electron")
 
 const getAppInfo = require("./App/getAppInfo.js");
 const appInfo = getAppInfo();
+const langdata = require("./App/LangData.js");
+const AppPath = require("electron").app.getPath("userData");
+const storage = require("electron-json-storage");
+storage.setDataPath(AppPath);
 
 require("@electron/remote/main").initialize();
 
@@ -20,84 +24,93 @@ function createNewSite() {
   win.webContents.send("createNewSite");
 }
 
-let menuTemplate = [
-  {
-    label: "文件",
-    submenu: [
-      {
-        label: "打开已有站点",
-        click: openExistingSite,
-        accelerator: "CmdOrCtrl+O"
-      },
-      {
-        label: "创建一个新站点",
-        click: createNewSite,
-        accelerator: "CmdOrCtrl+N"
-      }
-    ]
-  },
-  {
-    label: "编辑",
-    submenu: [
-      {
-        label: "撤销",
-        role: "undo"
-      },
-      {
-        label: "恢复",
-        role: "redo"
-      },
-      {
-        label: "剪切",
-        role: "cut"
-      },
-      {
-        label: "拷贝",
-        role: "copy"
-      },
-      {
-        label: "粘贴",
-        role: "paste"
-      },
-      {
-        label: "全选",
-        role: "selectAll"
-      }
-    ]
-  },
-  {
-    label: "帮助",
-    submenu: [
-      {
-        label: "项目主页",
-        click: () => {
-          shell.openExternal("https://github.com/bbg-contributors/bbg");
-        }
-      },
-      {
-        label: "关于",
-        click: app.showAboutPanel
-      }
-    ]
-  }
-];
-
-if (process.platform == "darwin") {
-  menuTemplate.unshift({
-    label: "",
-    submenu: [
-      {
-        label: "退出",
-        click: () => {
-          app.quit();
+function render_menu(){
+  storage.has("language", (error, hasKey) => {
+    if (hasKey) {
+      const lang_name = storage.getSync("language").name;
+      let menuTemplate = [
+        {
+          label: langdata.FILE[lang_name],
+          submenu: [
+            {
+              label: langdata.OPEN_EXISTING_SITE[lang_name],
+              click: openExistingSite,
+              accelerator: "CmdOrCtrl+O"
+            },
+            {
+              label: langdata.CREATE_NEW_SITE[lang_name],
+              click: createNewSite,
+              accelerator: "CmdOrCtrl+N"
+            }
+          ]
         },
-        accelerator: "Cmd+Q"
+        {
+          label: langdata.EDIT[lang_name],
+          submenu: [
+            {
+              label: langdata.UNDO[lang_name],
+              role: "undo"
+            },
+            {
+              label: langdata.REDO[lang_name],
+              role: "redo"
+            },
+            {
+              label: langdata.CUT[lang_name],
+              role: "cut"
+            },
+            {
+              label: langdata.CUT[lang_name],
+              role: "copy"
+            },
+            {
+              label: langdata.PASTE[lang_name],
+              role: "paste"
+            },
+            {
+              label: langdata.SELECT_ALL[lang_name],
+              role: "selectAll"
+            }
+          ]
+        },
+        {
+          label: langdata.HELP[lang_name],
+          submenu: [
+            {
+              label: langdata.PROJECT_WEBSITE[lang_name],
+              click: () => {
+                shell.openExternal("https://github.com/bbg-contributors/bbg");
+              }
+            },
+            {
+              label: langdata.ABOUT[lang_name],
+              click: app.showAboutPanel
+            }
+          ]
+        }
+      ];
+      
+      if (process.platform == "darwin") {
+        menuTemplate.unshift({
+          label: "",
+          submenu: [
+            {
+              label: langdata.EXIT[lang_name],
+              click: () => {
+                app.quit();
+              },
+              accelerator: "Cmd+Q"
+            }
+          ]
+        });
       }
-    ]
+      
+      Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
+    }
   });
 }
 
-Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
+render_menu();
 
 var win;
 
@@ -131,4 +144,8 @@ ipcMain.on("backToStartPageAndCreateNewSite", ()=>{
   win.webContents.once("dom-ready", ()=>{
     win.webContents.send("createNewSite");
   });
+});
+
+ipcMain.on("render_menu_again", ()=>{
+  render_menu();
 });

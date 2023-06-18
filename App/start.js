@@ -285,6 +285,7 @@ storage.has("language", (error, hasKey) => {
 function select_language(language_name) {
   storage.set("language", { name: language_name }, (err) => {
     if (err) console.error(err);
+    ipcRenderer.send("render_menu_again");
     window.location.reload();
   });
 }
