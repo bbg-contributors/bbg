@@ -7,6 +7,7 @@ const dialog = require("@electron/remote").dialog;
 const shell = require("@electron/remote").shell;
 const AppPath = require("@electron/remote").app.getPath("userData");
 const storage = require("electron-json-storage");
+const { ipcRenderer } = require("electron");
 
 const doNothing = require("./doNothing.js");
 
@@ -317,3 +318,10 @@ function openStylesheetDialog() {
   }
 }
 
+ipcRenderer.on("openExistingSite", ()=>{
+  open_site();
+});
+
+ipcRenderer.on("createNewSite", ()=>{
+  create_new_site_dialog_show();
+});

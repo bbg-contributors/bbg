@@ -14,6 +14,7 @@ const check_migrate = require("./check_migrate.js");
 const randomString = require("./randomString.js");
 const shell = require("@electron/remote").shell;
 const { rmSync } = require("fs");
+const { ipcRenderer } = require("electron");
 
 // 创建 blog 对象
 const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\","/");
@@ -157,3 +158,15 @@ if(process.platform === "darwin"){
   };
 }
 */
+
+ipcRenderer.on("openExistingSite", ()=>{
+  create_confirm_dialog("当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？", 
+    "ipcRenderer.send('backToStartPageAndOpenExistingSite')"
+  );
+});
+
+ipcRenderer.on("createNewSite", ()=>{
+  create_confirm_dialog("当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？", 
+    "ipcRenderer.send('backToStartPageAndCreateNewSite')"
+  );
+});
