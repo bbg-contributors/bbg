@@ -2,6 +2,7 @@ const { readFileSync,writeFileSync } = require("fs");
 const { dialog } = require("@electron/remote");
 const marked = require("marked");
 const xss_filter = require("xss");
+const toast_creator = require("./toast_creator.js");
 
 module.exports = function () {
   let path = getUrlArgs("path");
@@ -162,6 +163,16 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     }
   }
 
+  const prevent_goto_link = () => {
+    for(let i = 0; i < document.getElementsByTagName("a").length; i++){
+      let linkTarget = document.getElementsByTagName("a")[i].getAttribute("href");
+      document.getElementsByTagName("a")[i].onclick = () => {
+        toast_creator("warning", "For security reasons, this operation is not allowed.");
+      };
+      document.getElementsByTagName("a")[i].setAttribute("href","javascript:void(0)");
+    }
+  };
+
   const preview_markdown_content = () => {
     // 自定义过滤白名单
     let filter_whiteList = xss_filter.whiteList;
@@ -176,6 +187,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();
+    prevent_goto_link();
     scrollSyncChange("preview跟着writing滚动");
   };
 
