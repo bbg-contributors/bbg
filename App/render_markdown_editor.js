@@ -202,14 +202,14 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   document.getElementById("editor_textarea").onkeyup = ()=>{
     preview_markdown_content();
     editor_status = 1;
+    previewSectionSyncScrollStatusFromWritingSection();
   };
 
   document.getElementById("editor_textarea").value = original_content;
 
   preview_markdown_content();
 
-  // 同步滚动（类型1）
-  document.getElementById("editor_textarea").addEventListener("scroll",function(e){
+  function previewSectionSyncScrollStatusFromWritingSection (){
     if (whoScrolling !== "writing跟着preview滚动") {
       whoScrolling = "preview跟着writing滚动";
       console.log(whoScrolling);
@@ -225,6 +225,11 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
       // 此实现方式是按照滚动条的比例计算，不一定精确，但问题不大
       document.querySelector("#preview-section-container").scrollTop = (ipn / ih) * oh;
     }
+  }
+
+  // 同步滚动（类型1）
+  document.getElementById("editor_textarea").addEventListener("scroll",function(e){
+    previewSectionSyncScrollStatusFromWritingSection();
   });
 
   // 同步滚动(类型2)
