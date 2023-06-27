@@ -51,7 +51,7 @@
     "xss": "^1.0.14"
   },
   "devDependencies": {
-    "docsify": "^4.13.0",
+    "docsify": "^4.13.1",
     "electron": "^25.2.0",
     "electron-builder": "^24.4.0",
     "eslint": "^8.43.0",
