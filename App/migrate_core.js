@@ -161,6 +161,19 @@ function improveBackgroundImageSettings() {
   }
 }
 
+function fixBackgroundImageSettings() {
+  if (blog["全局主题设置"]["是否使用背景图像"] === true && blog["全局主题设置"]["若使用背景图像，设置为"]["将网站根目录下的background.webp作为背景图像"] === false && blog["全局主题设置"]["若使用背景图像，设置为"]["将某个url作为背景图像"] === false && blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"] === ""){
+    blog["全局主题设置"]["是否使用背景图像"] = false;
+  }
+}
+
+function addSupportToCustomizeI18nText(){
+  blog["自定义界面文本"] = {
+    "启用": false,
+    "列表": []
+  };
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -238,6 +251,11 @@ module.exports = function () {
 
   if (currentBlogVersion <= 20230526) {
     improveBackgroundImageSettings();
+  }
+
+  if (currentBlogVersion <= 20230703) {
+    fixBackgroundImageSettings();
+    addSupportToCustomizeI18nText();
   }
 
   check_third_party_theme_compatiblity();

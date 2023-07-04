@@ -1,5 +1,5 @@
 - [Changelog](/en/CHANGELOG.md)
-- [Download Guide](/en/download.md)
+- [Installation Guide](/en/installation_guide.md)
 - Developer Guide
   - [Contributing Guide](/en/developer-guide/CONTRIBUTING.md)
   - [Third-party Theme Development Guide](/en/developer-guide/thirdparty_theme.md)
