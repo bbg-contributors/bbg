@@ -38,12 +38,14 @@ jobs:
           yarn run build:linux
           mv dist/linux-unpacked/resources/app.asar dist/app.asar
           rm -rf dist/linux-unpacked
+          rm -rf dist/linux-arm64-unpacked
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
           yarn run build:win
           rm -r dist/win-unpacked
           rm -r dist/win-ia32-unpacked
+          rm -r dist/win-arm64-unpacked
           rm dist/bbg-ia32.exe
           rm dist/bbg-ia32.exe.blockmap
       - name: Build macOS
@@ -105,6 +107,8 @@ jobs:
           mv bbg.exe.blockmap bbg-${RELEASE_VERSION}-x86.exe.blockmap
           mv bbg-x64.dmg.blockmap bbg-${RELEASE_VERSION}-x64.dmg.blockmap
           mv bbg-x64.exe.blockmap bbg-${RELEASE_VERSION}-x64.exe.blockmap
+          mv bbg-arm64.deb bbg-${RELEASE_VERSION}-arm64.deb
+          mv bbg-arm64.exe bbg-${RELEASE_VERSION}-arm64.exe
           shasum -a 256 * > SHA256SUMS
           cd ..
       - name: Show file structure
