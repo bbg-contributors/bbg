@@ -9,7 +9,7 @@ module.exports = function () {
   let filename = path.replaceAll("/data/articles/", "").replaceAll("/data/pages/", "");
   let title,type;
   let original_content = readFileSync(rootDir + path, "utf-8");
-  var editor_status = 0;
+  var editor_status = 0, default_editor = false;
   var whoScrolling;
 
   if (path.indexOf("/data/articles/") !== -1) {
@@ -83,12 +83,16 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
 
   document.getElementById("container").insertAdjacentHTML("beforeend", `
-  <div id="editor-container" style="position:fixed;height:70%;width:35%">
-    <textarea id="editor_textarea" placeholder="Input markdown source code here" class="form-control" style="width:110%;height:100%;font-family: monospace">
-    </textarea>
+  <div id="first-wrapper">
+    <div id="editor-container" style="position:fixed;height:70vh;width:35vw">
+      <textarea id="editor_textarea" placeholder="Input markdown source code here" class="form-control" style="width:110%;height:100%;font-family: monospace">
+      </textarea>
+    </div>
+    <div id="preview-section-container" style="position:fixed;height:70vh;width:35vw;margin-left:40vw;overflow-y: scroll;overflow-x:auto;word-break:break-all">
+    </div>
   </div>
-  <div id="preview-section-container" style="position:fixed;height:70%;width:35%;margin-left:40%;overflow-y: scroll;overflow-x:auto;word-break:break-all">
-  
+  <div id="second-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
+    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
   </div>
   `);
 
@@ -278,15 +282,33 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
 
   document.getElementById("btn_change_to_default_editor").onclick=function(){
-    if(editor_status === 1){
-      if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES_BEFORE_SWITCHING_TO_SYSTEM_DEFAULT_EDITOR"][lang_name]}) === 0){
-        shell.openPath(`${rootDir}/${path}`);
-        window.location.href=`./article_manager.html?rootdir=${rootDir}`;
-      }
-    }else{
+    function to_default() {
       shell.openPath(`${rootDir}/${path}`);
-      window.location.href=`./article_manager.html?rootdir=${rootDir}`;
+      document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_BUILTIN_EDITOR"][lang_name];
+      document.getElementById("first-wrapper").style.filter = "blur(5px)";
+      document.getElementById("btn_save_changes").style.display = "none";
+      document.getElementById("second-wrapper").style.display = "";
     }
+    function to_builtin() {
+      document.getElementById("editor_textarea").value = readFileSync(rootDir + path, "utf-8");
+      preview_markdown_content();
+      document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_SYSTEM_DEFAULT_EDITOR"][lang_name];
+      document.getElementById("first-wrapper").style.filter = "";
+      document.getElementById("btn_save_changes").style.display = "";
+      document.getElementById("second-wrapper").style.display = "none";
+    }
+    if (default_editor) {
+      to_builtin();
+    } else {
+      if(editor_status === 1){
+        if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES_BEFORE_SWITCHING_TO_SYSTEM_DEFAULT_EDITOR"][lang_name]}) === 0){
+          to_default();
+        }
+      }else{
+        to_default();
+      }
+    }
+    default_editor = !default_editor;
   };
 
   document.onkeydown = function(event){
