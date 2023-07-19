@@ -1,6 +1,6 @@
 - [更新日志](/zh-cn/CHANGELOG.md)
 - 用户指南
-  - [安装指南](/zh-cn/user-guide/download.md)
+  - [安装指南](/zh-cn/user-guide/installation_guide.md)
   - [在博客文章中添加参考来源和提示信息](/zh-cn/user-guide/ref_tags_and_hints.md)
   - [在博客文章中添加数学公式](/zh-cn/user-guide/math_in_articles.md)
 - 开发指南

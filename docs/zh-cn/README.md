@@ -4,7 +4,7 @@ BBG 是一个基于 Electron 开发的静态博客生成器。
 
 你可以查阅以下文档来了解更多：
 
-- [安装指南](/zh-cn/user_guide/installation_guide.md)
+- [安装指南](/zh-cn/user-guide/installation_guide.md)
 - [更新日志](/zh-cn/CHANGELOG.md)
 - [代码贡献指南](/zh-cn/developer-guide/CONTRIBUTING.md)
 - [第三方主题开发文档](/zh-cn/developer-guide/theme.md)
