@@ -1,5 +1,9 @@
 const { app, BrowserWindow } = require("electron");
 
+try {
+  require("electron-reloader")(module);
+} catch {}
+
 require("@electron/remote/main").initialize();
 
 app.commandLine.appendSwitch("remote-debugging-port", "9541");

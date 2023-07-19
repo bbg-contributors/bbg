@@ -36,6 +36,12 @@ yarn install
 yarn run dev
 ```
 
+### 启动一个 BBG 实例（带有调试工具和热重载）
+
+```sh
+yarn run dev_with_hot_reload
+```
+
 ### 启动一个 BBG 实例（不带有调试工具，同生产环境一致）
 
 ```sh
