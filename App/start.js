@@ -186,6 +186,19 @@ storage.has("language", (error, hasKey) => {
           });
         }
       });
+      storage.has("ai_api", (error, hasKey) => {
+        if (error) {
+          console.error(error);
+        }
+        if (hasKey === false) {
+          storage.set("ai_api", {
+            enabled: false,
+            api_key: "",
+            api_request_url: "https://api.openai.com/v1/completions",
+            default_model_type: "text-davinci-003"
+          });
+        }
+      });
 
       lang_name = data.name;
       document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> ${langdata.OK[lang_name]}`;
