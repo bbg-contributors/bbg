@@ -13,6 +13,7 @@ module.exports = function () {
   var editor_status = 0, default_editor = false;
   var whoScrolling;
   var ai = "(not_enabled)";
+  var ai_task_list = new Object();
 
   if (path.indexOf("/data/articles/") !== -1) {
     // article
@@ -44,22 +45,71 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     ai = new ai_function();
   }
 
+  const ai_function_dialog = new bootstrap.Modal(document.getElementById("ai_function-dialog"), {
+    backdrop: "static",
+    keyboard: false,
+  });
+
   function requestTextCompletions() {
     const targetText = document.getElementById("preview-section-container").innerText;
-    disableEditing();
+    const ai_task_id = randomString(16);
+    ai_task_list[ai_task_id] = "waiting_response";
+    disableEditingWhenAiTaskIsExcuting();
+    document.getElementById("btn_terminate_text_completion_task").onclick = function(){
+      ai_task_list[ai_task_id] = "terminated";
+      enableEditingWhenAiTaskIsCompletedOrTerminated();
+      console.log(ai_task_list);
+    };
     ai.requestTextCompletions(targetText, function (response) {
-      const responseText = response.choices[0].message.content;
-      if(window.confirm("以下是续写的内容，是否添加到文章中：\n"+responseText)){
-        document.getElementById("editor_textarea").value += responseText;
-        enableEditing();
-        preview_markdown_content();
-      }else{
-        enableEditing();
-      };
+      if (ai_task_list[ai_task_id] !== "terminated"){
+        const responseText = response.choices[0].message.content;
+        document.getElementById("ai_function-dialog-content").innerHTML = "";
+        document.getElementById("ai_function-dialog-content").innerHTML = `
+          <p>${langdata["TEXT_CONTINUATION_COMPLETED_INFO"][lang_name]}</p>
+          <hr />
+          <pre>${responseText}</pre>
+          <hr />
+          <button class="btn btn-primary" id="btn_accept_text_completion_result">${langdata.OK[lang_name]}</button>
+          <button class="btn btn-primary" id="btn_abandon_text_completion_result">${langdata.CANCEL[lang_name]}</button>
+          `;
+        ai_function_dialog.show();
+        document.getElementById("btn_accept_text_completion_result").onclick = function () {
+          document.getElementById("editor_textarea").value += responseText;
+          preview_markdown_content();
+          editor_status = 1;
+          ai_function_dialog.hide();
+          enableEditingWhenAiTaskIsCompletedOrTerminated();
+        };
+        document.getElementById("btn_abandon_text_completion_result").onclick = function () {
+          ai_function_dialog.hide();
+          enableEditingWhenAiTaskIsCompletedOrTerminated();
+        };
+      }
+      ai_task_list[ai_task_id] = "completed";
     });
   }
 
   document.getElementById("btn_ai_text_completion").onclick = requestTextCompletions;
+
+  function disableEditingWhenAiTaskIsExcuting(){
+    document.getElementById("first-wrapper").style.filter = "blur(5px)";
+    document.getElementById("btn_save_changes").style.display = "none";
+    document.getElementById("third-wrapper").style.display = "";
+    document.getElementById("ai_related_functions_in_editor").style.display = "none";
+    document.getElementById("btn_help").style.display = "none";
+    document.getElementById("btn_change_to_default_editor").style.display = "none";
+    document.getElementById("btn_save_changes").style.display = "none";
+  }
+
+  function enableEditingWhenAiTaskIsCompletedOrTerminated(){
+    document.getElementById("first-wrapper").style.filter = "";
+    document.getElementById("btn_save_changes").style.display = "";
+    document.getElementById("third-wrapper").style.display = "none";
+    document.getElementById("ai_related_functions_in_editor").style.display = "";
+    document.getElementById("btn_help").style.display = "";
+    document.getElementById("btn_change_to_default_editor").style.display = "";
+    document.getElementById("btn_save_changes").style.display = "";
+  }
 
   /*
 
@@ -118,7 +168,11 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
   </div>
   <div id="third-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
-    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">正在续写</h4>
+    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["TEXT_CONTINUATION_TASK_IS_BEING_OPERATED"][lang_name]}
+    <br />
+    <button id="btn_terminate_text_completion_task" class="btn btn-primary">${langdata["TERMINATE_THE_TASK"][lang_name]}</button>
+    </h4>
+    
   </div>
   `);
 
@@ -307,18 +361,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
 
-  function disableEditing(){
-    document.getElementById("first-wrapper").style.filter = "blur(5px)";
-    document.getElementById("btn_save_changes").style.display = "none";
-    document.getElementById("third-wrapper").style.display = "";
-  }
-
-  function enableEditing(){
-    document.getElementById("first-wrapper").style.filter = "";
-    document.getElementById("btn_save_changes").style.display = "";
-    document.getElementById("third-wrapper").style.display = "none";
-  }
-
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {
       shell.openPath(`${rootDir}/${path}`);
@@ -326,6 +368,11 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
       document.getElementById("first-wrapper").style.filter = "blur(5px)";
       document.getElementById("btn_save_changes").style.display = "none";
       document.getElementById("second-wrapper").style.display = "";
+      document.getElementById("btn_help").style.display = "none";
+      if (storage.getSync("ai_api").enabled === true){
+        document.getElementById("ai_related_functions_in_editor").style.display = "none";
+      }
+      
     }
     function to_builtin() {
       document.getElementById("editor_textarea").value = readFileSync(rootDir + path, "utf-8");
@@ -334,6 +381,10 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
       document.getElementById("first-wrapper").style.filter = "";
       document.getElementById("btn_save_changes").style.display = "";
       document.getElementById("second-wrapper").style.display = "none";
+      document.getElementById("btn_help").style.display = "";
+      if (storage.getSync("ai_api").enabled === true){
+        document.getElementById("ai_related_functions_in_editor").style.display = "";
+      }
     }
     if (default_editor) {
       to_builtin();
