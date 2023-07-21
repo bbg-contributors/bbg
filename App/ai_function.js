@@ -8,6 +8,16 @@ module.exports = class {
     this.api_request_url = api_info["api_request_url"];
     this.api_key = api_info["api_key"];
     this.default_model_type = api_info["default_model_type"];
+    // set default value
+    if (this.api_request_url.trim() === "") {
+      this.api_request_url = "https://api.openai.com/v1/completions";
+    }
+    if (this.api_key.trim() === ""){
+      this.api_key = "";
+    }
+    if (this.default_model_type.trim() === ""){
+      this.default_model_type = "text-davinci-003";
+    }
     this.headers = new Headers();
     this.headers.append("Authorization", "Bearer " + this.api_key);
     this.headers.append("Content-Type", "application/json");
@@ -28,9 +38,11 @@ module.exports = class {
 
   requestTextCompletions(content, callback_func) {
     const messageContent = getAiPrompts("textCompletion", lang_name, content);
+    let bodyContent = this.bodyTemplate;
+    bodyContent.messages[0].content = messageContent;
     fetch(this.api_request_url, {
       method: "POST",
-      body: messageContent,
+      body: bodyContent,
       headers: this.headers
     }).then(response => {
       return response.json();
@@ -41,9 +53,11 @@ module.exports = class {
 
   requestTextImprove(content, callback_func) {
     const messageContent = getAiPrompts("textImprove", lang_name, content);
+    let bodyContent = this.bodyTemplate;
+    bodyContent.messages[0].content = messageContent;
     fetch(this.api_request_url, {
       method: "POST",
-      body: messageContent,
+      body: bodyContent,
       headers: this.headers
     }).then(response => {
       return response.json();
@@ -54,9 +68,11 @@ module.exports = class {
 
   requestTextSummary(content, callback_func) {
     const messageContent = getAiPrompts("textSummary", lang_name, content);
+    let bodyContent = this.bodyTemplate;
+    bodyContent.messages[0].content = messageContent;
     fetch(this.api_request_url, {
       method: "POST",
-      body: messageContent,
+      body: bodyContent,
       headers: this.headers
     }).then(response => {
       return response.json();

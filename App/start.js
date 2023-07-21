@@ -35,6 +35,8 @@ const stylesheet_dialog = new bootstrap.Modal(document.getElementById("styleshee
   keyboard: false,
 });
 
+const ai_assisted_writing_dialog = new bootstrap.Modal(document.getElementById("ai_assisted_writing-dialog"));
+
 function create_new_site_dialog_show() {
   create_new_site_dialog.show();
 }
@@ -150,6 +152,93 @@ function openImageCopyrightDialog() {
   createInfoDialog(langdata.ABOUT_IMAGE_COPYRIGHT[lang_name], langdata.ABOUT_IMAGE_COPYRIGHT_DESCRIPTION[lang_name]);
 }
 
+function openAiAssistedWritingConfigDialog(){
+  document.getElementById("ai_assisted_writing-dialog-content").innerHTML = `
+      <div class="alert alert-primary" role="alert">
+        ${langdata.AI_ASSISTED_WRITING_CONFIG_INFO[lang_name]}
+      </div>
+
+      <div class="form-check  form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="ai_assisted_writing_enabled"
+        />
+        <label class="form-check-label" for="ai_assisted_writing_enabled">
+          ${langdata.AI_ASSISTED_WRITING_ENABLE[lang_name]}
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">${langdata["OPENAI_API_KEY"][lang_name]}</label>
+        <input
+          class="form-control"
+          value="${storage.getSync("ai_api").api_key}"
+          id="openai_api_key"
+          placeholder=""
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">${langdata["OPENAI_API_REQUEST_URL"][lang_name]}</label>
+        <input
+          class="form-control"
+          value="${storage.getSync("ai_api").api_request_url}"
+          id="openai_api_request_url"
+          placeholder="https://api.openai.com/v1/completions"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">${langdata["OPENAI_API_MODEL_NAME"][lang_name]}</label>
+        <input
+          class="form-control"
+          value="${storage.getSync("ai_api").default_model_type}"
+          id="openai_default_model_type"
+          placeholder="text-davinci-003"
+        />
+      </div>
+
+      <button class="btn btn-primary" onclick="save_ai_api_settings()">${langdata.OK[lang_name]}</button>
+      <button class="btn btn-primary" onclick="window.location.reload()">${langdata.CANCEL[lang_name]}</button>
+  `;
+
+  document.getElementById("ai_assisted_writing_enabled").checked = storage.getSync("ai_api").enabled;
+  ai_assisted_writing_dialog.show();
+}
+
+function save_ai_api_settings(){
+  let ai_assisted_writing_enabled = document.getElementById("ai_assisted_writing_enabled").checked;
+  let openai_api_key = document.getElementById("openai_api_key").value;
+  let openai_api_request_url = document.getElementById("openai_api_request_url").value;
+  let openai_default_model_type = document.getElementById("openai_default_model_type").value;
+
+  if (ai_assisted_writing_enabled) {
+    if (openai_api_request_url.trim() === ""){
+      window.alert("you cannot leave 'request url' empty while you enable ai assisted writing function. configuration will not be saved.");
+      return;
+    } else if (openai_api_request_url.indexOf("http://") === -1 && openai_api_request_url.indexOf("https://") === -1){
+      window.alert("you cannot leave 'request url' empty while you enable ai assisted writing function. configuration will not be saved.");
+      return;
+    }
+
+    if (openai_default_model_type.trim() === ""){
+      window.alert("you cannot leave 'model type' empty while you enable ai assisted writing function. configuration will not be saved.");
+      return;
+    }
+  }
+  
+  
+  storage.set("ai_api", {
+    enabled: ai_assisted_writing_enabled,
+    api_key: openai_api_key,
+    api_request_url: openai_api_request_url,
+    default_model_type: openai_default_model_type
+  }, ()=>{
+    ai_assisted_writing_dialog.hide();
+  });
+}
+
 function render_language_selections() {
   document.getElementById("language-selection-list").innerHTML = "";
   for (let i = 0; i < lang_meta["名称与文件名之间的映射关系"].length; i++) {
@@ -262,6 +351,8 @@ storage.has("language", (error, hasKey) => {
             <a class="btn btn-link" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</a>
             <br />
             <a class="btn btn-link" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</a>
+            <br />
+            <a class="btn btn-link" onclick="openAiAssistedWritingConfigDialog()"><i class="fa fa-sliders" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a>
             <br />
             <a class="btn btn-link" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a>
             `;
