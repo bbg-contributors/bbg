@@ -211,23 +211,7 @@ function save_ai_api_settings(){
   let ai_assisted_writing_enabled = document.getElementById("ai_assisted_writing_enabled").checked;
   let openai_api_key = document.getElementById("openai_api_key").value;
   let openai_api_request_url = document.getElementById("openai_api_request_url").value;
-  let openai_default_model_type = document.getElementById("openai_default_model_type").value;
-
-  if (ai_assisted_writing_enabled) {
-    if (openai_api_request_url.trim() === ""){
-      window.alert("you cannot leave 'request url' empty while you enable ai assisted writing function. configuration will not be saved.");
-      return;
-    } else if (openai_api_request_url.indexOf("http://") === -1 && openai_api_request_url.indexOf("https://") === -1){
-      window.alert("you cannot leave 'request url' empty while you enable ai assisted writing function. configuration will not be saved.");
-      return;
-    }
-
-    if (openai_default_model_type.trim() === ""){
-      window.alert("you cannot leave 'model type' empty while you enable ai assisted writing function. configuration will not be saved.");
-      return;
-    }
-  }
-  
+  let openai_default_model_type = document.getElementById("openai_default_model_type").value;  
   
   storage.set("ai_api", {
     enabled: ai_assisted_writing_enabled,
