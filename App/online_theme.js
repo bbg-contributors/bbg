@@ -1,8 +1,9 @@
 const fs = require("fs");
 const currentProgramVersion = require("./currentProgramVersion.js");
 const request = require("request");
+const getSystemProxy = require("./getSystemProxy.js");
 
-function install_theme(theme_id) {
+async function install_theme(theme_id) {
 
   downloadCompleted = false;
 
@@ -25,6 +26,7 @@ function install_theme(theme_id) {
   let req = request({
     method: "GET",
     uri: theme_list[theme_id]["download_url"],
+    proxy: await getSystemProxy()
   });
   let out = fs.createWriteStream(rootDir + "/temp_theme_downloaded_by_bbg_online_theme_store.zip");
   req.pipe(out);

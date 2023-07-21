@@ -6,15 +6,16 @@ const win = require("@electron/remote").getCurrentWindow();
 const app = require("@electron/remote").app;
 // const os = require("os");
 const { shell } = require("electron");
+const getSystemProxy = require("./getSystemProxy.js");
 
-module.exports = function () {
+module.exports = async function () {
   const targetPath = path.join(app.getPath("downloads"), download_filename);
 
   progress_modal.show();
 
   let rec = 0; let tot;
   const req = request({
-    method: "GET", uri: download_url,
+    method: "GET", uri: download_url, proxy: await getSystemProxy()
   });
   const out = fs.createWriteStream(targetPath);
   req.pipe(out);
