@@ -3,6 +3,7 @@ const { dialog } = require("@electron/remote");
 const marked = require("marked");
 const xss_filter = require("xss");
 const toast_creator = require("./toast_creator.js");
+const ai_function = require("./ai_function.js");
 
 module.exports = function () {
   let path = getUrlArgs("path");
@@ -11,6 +12,7 @@ module.exports = function () {
   let original_content = readFileSync(rootDir + path, "utf-8");
   var editor_status = 0, default_editor = false;
   var whoScrolling;
+  var ai = "(not_enabled)";
 
   if (path.indexOf("/data/articles/") !== -1) {
     // article
@@ -37,6 +39,27 @@ module.exports = function () {
 </button>
 ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
 
+  if (storage.getSync("ai_api").enabled){
+    document.getElementById("ai_related_functions_in_editor").setAttribute("style","");
+    ai = new ai_function();
+  }
+
+  function requestTextCompletions() {
+    const targetText = document.getElementById("preview-section-container").innerText;
+    disableEditing();
+    ai.requestTextCompletions(targetText, function (response) {
+      const responseText = response.choices[0].message.content;
+      if(window.confirm("以下是续写的内容，是否添加到文章中：\n"+responseText)){
+        document.getElementById("editor_textarea").value += responseText;
+        enableEditing();
+        preview_markdown_content();
+      }else{
+        enableEditing();
+      };
+    });
+  }
+
+  document.getElementById("btn_ai_text_completion").onclick = requestTextCompletions;
 
   /*
 
@@ -93,6 +116,9 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   </div>
   <div id="second-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
     <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
+  </div>
+  <div id="third-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
+    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">正在续写</h4>
   </div>
   `);
 
@@ -280,6 +306,18 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
   document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
+
+  function disableEditing(){
+    document.getElementById("first-wrapper").style.filter = "blur(5px)";
+    document.getElementById("btn_save_changes").style.display = "none";
+    document.getElementById("third-wrapper").style.display = "";
+  }
+
+  function enableEditing(){
+    document.getElementById("first-wrapper").style.filter = "";
+    document.getElementById("btn_save_changes").style.display = "";
+    document.getElementById("third-wrapper").style.display = "none";
+  }
 
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {

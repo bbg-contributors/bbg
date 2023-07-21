@@ -18,9 +18,10 @@ module.exports = class {
     if (this.default_model_type.trim() === ""){
       this.default_model_type = "text-davinci-003";
     }
-    this.headers = new Headers();
-    this.headers.append("Authorization", "Bearer " + this.api_key);
-    this.headers.append("Content-Type", "application/json");
+    this.headers = new Headers({
+      "Authorization": "Bearer " + this.api_key,
+      "Content-Type": "application/json"
+    });
     this.bodyTemplate = {
       "messages": [
         {
@@ -29,10 +30,7 @@ module.exports = class {
         }
       ],
       "model": this.default_model_type,
-      "temperature": 1,
-      "presence_penalty": 0,
-      "top_p": 1,
-      "frequency_penalty": 0
+      "max_tokens": 1000
     };
   }
 
@@ -42,7 +40,7 @@ module.exports = class {
     bodyContent.messages[0].content = messageContent;
     fetch(this.api_request_url, {
       method: "POST",
-      body: bodyContent,
+      body: JSON.stringify(bodyContent),
       headers: this.headers
     }).then(response => {
       return response.json();
