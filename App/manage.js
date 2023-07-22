@@ -73,8 +73,8 @@ const getUiFileContent = require("./getUiFileContent.js");
 const generate_rss = require("./generate_rss.js");
 const rss_hook = require("./rss_hook.js");
 const sitemap_hook = require("./sitemap_hook.js");
-const encrypt_article = require("./encrypt_article.js");
-const decrypt_article = require("./decrypt_article.js");
+const encrypt_content = require("./encrypt_content.js");
+const decrypt_content = require("./decrypt_content.js");
 
 const config_third_party_theme = require("./config_third_party_theme.js").config_third_party_theme;
 const save_config_of_third_party_theme = require("./config_third_party_theme.js").save_config_of_third_party_theme;
