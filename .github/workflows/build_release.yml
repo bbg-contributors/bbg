@@ -39,6 +39,8 @@ jobs:
           mv dist/linux-unpacked/resources/app.asar dist/app.asar
           rm -rf dist/linux-unpacked
           rm -rf dist/linux-arm64-unpacked
+          node ./deb_build_files/ci_prepare.js
+          node ./deb_build_files/ci_build.js
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |

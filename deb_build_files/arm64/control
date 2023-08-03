@@ -1,0 +1,5 @@
+package: bbg
+version: modify_this_value_to_actual_bbg_version
+architecture: arm64
+maintainer: bbg_contributors
+description: A static blog generater made with Electron technology.
