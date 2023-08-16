@@ -332,12 +332,12 @@ storage.has("language", (error, hasKey) => {
             <br />
             <a class="btn btn-link" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a>
             <br />
-            <a class="btn btn-link" onclick="openGroupDialog()"><i class="fa fa-qq" aria-hidden="true"></i> ${langdata.JOIN_OUR_GROUP[lang_name]}</a>
-            <br />
             <a class="btn btn-link" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</a>
             <br />
+            <!--
             <a class="btn btn-link" onclick="openAiAssistedWritingConfigDialog()"><i class="fa fa-sliders" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a>
             <br />
+            -->
             <a class="btn btn-link" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a>
             `;
 
