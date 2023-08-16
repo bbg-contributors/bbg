@@ -38,7 +38,7 @@ copyFileSync(`${__dirname}/../resources/icon.png`, `${__dirname}/temp_folder_for
 
 copyFileSync(`${__dirname}/../dist/bbg-x86_64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg.AppImage`);
 
-execSync("dpkg -b . ../../../dist/bbg-x86_64.deb", {cwd: `${__dirname}/temp_folder_for_deb_build/bbg/`});
+execSync("dpkg -b . ../../../dist/bbg-amd64.deb", {cwd: `${__dirname}/temp_folder_for_deb_build/bbg/`});
 
 // build arm64 deb package
 
