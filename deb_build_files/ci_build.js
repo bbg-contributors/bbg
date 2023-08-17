@@ -20,6 +20,8 @@ mkdirSync(`${__dirname}/temp_folder_for_deb_build/bbg/DEBIAN/`);
 
 mkdirSync(`${__dirname}/temp_folder_for_deb_build/bbg/opt/`);
 
+mkdirSync(`${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg/`);
+
 mkdirSync(`${__dirname}/temp_folder_for_deb_build/bbg/usr/`);
 
 mkdirSync(`${__dirname}/temp_folder_for_deb_build/bbg/usr/share/`);
