@@ -36,7 +36,7 @@ copyFileSync(`${__dirname}/universal/bbg.desktop`, `${__dirname}/temp_folder_for
 
 copyFileSync(`${__dirname}/../resources/icon.png`, `${__dirname}/temp_folder_for_deb_build/bbg/usr/share/icons/bbg.png`);
 
-copyFileSync(`${__dirname}/../dist/bbg-x86_64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg.AppImage`);
+copyFileSync(`${__dirname}/../dist/bbg-x86_64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg/bbg.AppImage`);
 
 execSync("dpkg -b . ../../../dist/bbg-amd64.deb", {cwd: `${__dirname}/temp_folder_for_deb_build/bbg/`});
 
@@ -48,6 +48,6 @@ copyFileSync(`${__dirname}/arm64/control`,`${__dirname}/temp_folder_for_deb_buil
 
 rmSync(`${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg.AppImage`);
 
-copyFileSync(`${__dirname}/../dist/bbg-arm64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg.AppImage`);
+copyFileSync(`${__dirname}/../dist/bbg-arm64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg/bbg.AppImage`);
 
 execSync("dpkg -b . ../../../dist/bbg-arm64.deb", {cwd: `${__dirname}/temp_folder_for_deb_build/bbg/`});
