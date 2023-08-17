@@ -48,7 +48,7 @@ rmSync(`${__dirname}/temp_folder_for_deb_build/bbg/DEBIAN/control`);
 
 copyFileSync(`${__dirname}/arm64/control`,`${__dirname}/temp_folder_for_deb_build/bbg/DEBIAN/control`);
 
-rmSync(`${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg.AppImage`);
+rmSync(`${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg/bbg.AppImage`);
 
 copyFileSync(`${__dirname}/../dist/bbg-arm64.AppImage`, `${__dirname}/temp_folder_for_deb_build/bbg/opt/bbg/bbg.AppImage`);
 
