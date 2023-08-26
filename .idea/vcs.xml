@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/App/blog_indexjson_template" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/App/blog_source" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/App/default_theme_src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/App/i18n" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/resources" vcs="Git" />
+  </component>
+</project>
