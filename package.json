@@ -55,7 +55,7 @@
   "devDependencies": {
     "docsify": "^4.13.1",
     "electron": "^26.1.0",
-    "electron-builder": "^24.6.3",
+    "electron-builder": "^24.6.4",
     "eslint": "^8.48.0",
     "eslint-plugin-jsonc": "^2.9.0",
     "eslint-plugin-markdown": "^3.0.1",
