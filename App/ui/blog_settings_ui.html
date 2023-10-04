@@ -192,6 +192,17 @@ ${blog["底部信息（格式为markdown）"]}
         />
       </div>
 
+      <div class="mb-3">
+        <label class="form-label"
+          >${langdata["LINK_COLOR"][lang_name]}</label
+        >
+        <input
+          class="form-control"
+          value="${blog['全局主题设置']['链接颜色']}"
+          id="blog_settings_linkcolor"
+        />
+      </div>
+
       <div class="alert alert-primary" role="alert">
         <i class="fa fa-smile-o"></i>
         ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
@@ -610,29 +621,6 @@ ${blog["自定义JS"]}
         >
         <br />
       </div>
-    </div>
-    <div
-      class="fluentinterface"
-      style="
-        position: fixed;
-        bottom: 4px;
-        width: 60%;
-        box-shadow: 4px 3px 1px -2px rgb(0 0 0 / 20%),
-          0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-      "
-    >    
-      <button
-        class="btn btn-outline-primary"
-        onclick="document.documentElement.scrollTop = 0;"
-      >
-        <i class="fa fa-arrow-up"></i> ${langdata.BACK_TO_UP[lang_name]}
-      </button>
-      <button class="btn btn-outline-primary" onclick="save_blog_settings();">
-        <i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}
-      </button>
-      <button class="btn btn-outline-danger" onclick="window.location.reload()">
-        <i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}
-      </button>
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+const save_blog_settings = require("./save_blog_settings");
 
 module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent("blog_settings_ui.html"));
@@ -184,4 +185,29 @@ module.exports = function () {
   };
 
   document.getElementById("nav_to_blog_settings").classList.add("active");
+
+  window.addEventListener("keyup", ()=>{
+    save_blog_settings();
+  })
+  const selectElements = document.querySelectorAll("select");
+  selectElements.forEach(function(select) {
+    select.addEventListener('change', function() {
+      save_blog_settings();
+    });
+  });
+
+  const checkboxElements = document.querySelectorAll(".form-check");
+  checkboxElements.forEach(function(select) {
+    select.addEventListener('change', function() {
+      save_blog_settings();
+    });
+  });
+
+  var radioElements = document.querySelectorAll('input[type="radio"]');
+
+  radioElements.forEach(function(radio) {
+    radio.addEventListener('change', function(event) {
+      save_blog_settings();
+    });
+  });
 };

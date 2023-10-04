@@ -1,6 +1,7 @@
 
 const dialog = require("@electron/remote").dialog;
 const doNothing = require("./doNothing.js");
+const toast_creator = require("./toast_creator.js");
 
 module.exports = function () {
 
@@ -10,6 +11,7 @@ module.exports = function () {
   const blog_settings_title = document.getElementById("blog_settings_title").value;
   const blog_settings_titlebar_bgcolor = document.getElementById("blog_settings_titlebar_bgcolor").value;
   const blog_settings_titlebar_textcolor = document.getElementById("blog_settings_titlebar_textcolor").value;
+  const blog_settings_linkcolor = document.getElementById("blog_settings_linkcolor").value;
   const blog_settings_howmany_article_in_a_page = document.getElementById("blog_settings_howmany_article_in_a_page").value;
   let blog_settings_cdn_path;
   let blog_settings_cdn_mode;
@@ -58,6 +60,7 @@ module.exports = function () {
   blog["博客描述（副标题）"] = blog_settings_description;
   blog["全局主题设置"]["标题栏背景颜色"] = blog_settings_titlebar_bgcolor;
   blog["全局主题设置"]["标题栏文字颜色"] = blog_settings_titlebar_textcolor;
+  blog["全局主题设置"]["链接颜色"] = blog_settings_linkcolor;
   blog["文章列表中每页的文章数为"] = blog_settings_howmany_article_in_a_page;
   blog["全站内容授权协议"] = blog_settings_content_license;
   blog["不使用全站内容授权协议"] = blog_content_license_enabled;
@@ -108,9 +111,9 @@ module.exports = function () {
   blog["自定义CSS"] = blog_settings_custom_css;
   blog["自定义JS"] = blog_settings_custom_js;
 
-  if (domain_string !== "" && (domain_string.includes("http") === -1)) window.alert("尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
+  if (domain_string !== "" && (domain_string.includes("http") === -1)) toast_creator("danger","尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
 
-  if (domain_string !== "" && domain_string.charAt(domain_string.length - 1) === "/") window.alert("尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。");
+  if (domain_string !== "" && domain_string.charAt(domain_string.length - 1) === "/") toast_creator("danger","尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。");
 
   if (domain_string === "" && auto_rss_enabled === true) {
     save_blog_settings_operate_success = false;
@@ -171,11 +174,8 @@ module.exports = function () {
 
   BlogInstance.writeBlogData();
   if(save_blog_settings_operate_success === true){
-    toast_creator("success","configuration saved!");
+
   }else{
     toast_creator("danger","you haven't specified a domain for the sitemap or rss function.");
   }
-  
-  document.getElementById("container").innerHTML = "";
-  render_blog_settings();
 };
