@@ -188,25 +188,25 @@ module.exports = function () {
 
   window.addEventListener("keyup", ()=>{
     save_blog_settings();
-  })
+  });
   const selectElements = document.querySelectorAll("select");
   selectElements.forEach(function(select) {
-    select.addEventListener('change', function() {
+    select.addEventListener("change", function() {
       save_blog_settings();
     });
   });
 
   const checkboxElements = document.querySelectorAll(".form-check");
   checkboxElements.forEach(function(select) {
-    select.addEventListener('change', function() {
+    select.addEventListener("change", function() {
       save_blog_settings();
     });
   });
 
-  var radioElements = document.querySelectorAll('input[type="radio"]');
+  var radioElements = document.querySelectorAll("input[type=\"radio\"]");
 
   radioElements.forEach(function(radio) {
-    radio.addEventListener('change', function(event) {
+    radio.addEventListener("change", function(event) {
       save_blog_settings();
     });
   });
