@@ -13,4 +13,4 @@ You can learn more about this repository through the following links:
 
 ## License
 
-This repository is released into the public domain. Notice that the icon of the application which located at another repository ([bbg-contributors/bbg-resources](https://github.com/bbg-contributors/bbg-resources)) is generated from Crypko AI and can only be used for non-commercial use.
+This repository is released into the public domain.
