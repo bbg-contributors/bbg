@@ -174,6 +174,10 @@ function addSupportToCustomizeI18nText(){
   };
 }
 
+function addSupportForAdjustingLinkColor() {
+  blog["全局主题设置"]["链接颜色"] = "#0d6efd";
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -256,6 +260,10 @@ module.exports = function () {
   if (currentBlogVersion <= 20230703) {
     fixBackgroundImageSettings();
     addSupportToCustomizeI18nText();
+  }
+
+  if (currentBlogVersion <= 20231015) {
+    addSupportForAdjustingLinkColor();
   }
 
   check_third_party_theme_compatiblity();
