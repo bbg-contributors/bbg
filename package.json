@@ -38,7 +38,7 @@
     "JJ-Shep"
   ],
   "dependencies": {
-    "@electron/remote": "^2.0.12",
+    "@electron/remote": "^2.1.0",
     "@popperjs/core": "^2.11.8",
     "adm-zip": "^0.5.10",
     "bootstrap": "5.3.2",
