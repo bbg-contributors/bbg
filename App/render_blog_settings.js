@@ -1,10 +1,38 @@
 const save_blog_settings = require("./save_blog_settings");
 
+function render_comment_related(){
+  let current_selection = undefined;
+  if(document.getElementById("comment_select_to_use_valine").selected === true){
+    current_selection = "valine";
+  } else if(document.getElementById("comment_select_to_use_valine_with_public_apikey").selected === true){
+    current_selection = "valine_with_public_apikey";
+  } else if(document.getElementById("comment_select_to_use_disqus").selected === true){
+    current_selection = "disqus";
+  } else if(document.getElementById("comment_do_not_use_any_comment_system").selected === true){
+    current_selection = "none";
+  }
+
+  if(current_selection === "valine"){
+    document.getElementById("leancloud_settings_detail").setAttribute("style", "");
+    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
+    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+  } else if(current_selection === "valine_with_public_apikey"){
+    document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
+    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
+    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "");
+  } else if(current_selection === "disqus"){
+    document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
+    document.getElementById("disqus_settings_detail").setAttribute("style", "");
+    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+  } else if(current_selection === "none"){
+    document.getElementById("leancloud_settings_detail").setAttribute("style", "display:none");
+    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
+    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+  }
+}
+
 module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent("blog_settings_ui.html"));
-
-  if (blog["全局评论设置"]["启用valine评论"] === true)
-    document.getElementById("blog_settings_is_valine_enabled").checked = true;
 
   if (blog["不使用全站内容授权协议"] === true)
     document.getElementById("blog_content_license_enabled").checked = true;
@@ -39,11 +67,6 @@ module.exports = function () {
 
   if (blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"])
     document.getElementById("blog_settings_is_using_acg_bg").checked = true;
-
-  if (blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]) {
-    document.getElementById("leancloud_settings_detail").innerHTML = `${langdata.HINT_USING_PUBLIC_COMMENT_SERVICE[lang_name]}<a href="javascript:void(0)" onclick="disable_puclic_comment_service()">${langdata.LINK_ABANDON_PUBLIC_COMMENT_SERVICE[lang_name]}</a>`;
-    document.getElementById("hint_of_use_public_comment_service").innerHTML = "";
-  }
 
   if (blog["网站语言"] === "简体中文")
     document.getElementById("sitelang_simplified_chinese").selected = true;
@@ -138,6 +161,30 @@ module.exports = function () {
 
   document.getElementById("blog_settings_background_setting").onchange = function(){
     render_input_of_background();
+  };
+
+  // 不可以调换下面两个if条件的顺序 因为后面那个（valine+bbg公共评论服务）的这个需要覆盖前面那个（valine）
+
+  if(blog["全局评论设置"]["启用valine评论"]){
+    document.getElementById("comment_select_to_use_valine").selected = true;
+  }
+  
+  if(blog["全局评论设置"]["启用valine评论"] && blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]){
+    document.getElementById("comment_select_to_use_valine_with_public_apikey").selected = true;
+  }
+
+  if(blog["全局评论设置"]["启用disqus评论"]){
+    document.getElementById("comment_select_to_use_disqus").selected = true;
+  }
+
+  if(blog["全局评论设置"]["启用disqus评论"] === false && blog["全局评论设置"]["启用valine评论"] === false){
+    document.getElementById("comment_do_not_use_any_comment_system").selected = true;
+  }
+
+  render_comment_related();
+
+  document.getElementById("blog_settings_comment_system_setting").onchange = function(){
+    render_comment_related();
   };
 
   if (blog["CDN选择"] === 1) {

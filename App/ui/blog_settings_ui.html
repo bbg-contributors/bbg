@@ -435,35 +435,28 @@ ${blog["网站公告"]}
       </h2>
       <br />
 
-      <div id="hint_of_use_public_comment_service">
-        ${langdata["COMMENT_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}
-        <br /><br />
-        <li>
-          ${langdata["COMMENT_SETTINGS_WAY1_PART1"][lang_name]}<a
-            href="javascript:void(0)"
-            onclick="use_public_comment_service_offered_by_bbg();"
-          >
-            ${langdata["COMMENT_SETTINGS_WAY1_PART2"][lang_name]}</a
-          >${langdata["COMMENT_SETTINGS_WAY1_PART3"][lang_name]}
-        </li>
+      <div class="mb-3">
+        <label class="form-label"><i class="fa fa-comments-o"></i> ${langdata["TYPE_OF_COMMENT_SYSTEM"][lang_name]}</label>
         <br />
-        <li>${langdata["COMMENT_SETTINGS_WAY2"][lang_name]}</li>
-        <br />
+        <select class="form-select" id="blog_settings_comment_system_setting">
+          <option value="valine" id="comment_select_to_use_valine">
+            Valine
+          </option>
+          <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">Valine (使用公用 API Key)</option>
+          <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
+          <option value="none" id="comment_do_not_use_any_comment_system">不使用此功能</option>
+        </select>
       </div>
 
-      <div id="leancloud_settings_detail">
-        <p>${langdata["COMMENT_SETTINGS_FORM_HINT"][lang_name]}</p>
+      <!-- TODO: 添加说明性文字 -->
 
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="blog_settings_is_valine_enabled"
-          />
-          <label class="form-check-label" for="blog_settings_is_valine_enabled">
-            ${langdata["ENABLE_VALINE"][lang_name]}
-          </label>
-        </div>
+      <div id="hint_when_using_valine_with_public_apikey">
+
+
+      </div>
+
+      <div id="leancloud_settings_detail" style="display:none">
+
         <br />
         <div class="mb-3">
           <label class="form-label"
@@ -484,6 +477,21 @@ ${blog["网站公告"]}
             class="form-control"
             value="${blog['全局评论设置']['valine设置']['leancloud_appkey']}"
             id="blog_settings_valine_appkey"
+          />
+        </div>
+      </div>
+
+      <div id="disqus_settings_detail" style="display:none">
+
+        <br />
+        <div class="mb-3">
+          <label class="form-label"
+            >Disqus Shortname</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局评论设置']['disqus设置']['shortname']}"
+            id="blog_settings_disqus_shortname"
           />
         </div>
       </div>
