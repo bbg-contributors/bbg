@@ -442,20 +442,22 @@ ${blog["网站公告"]}
           <option value="valine" id="comment_select_to_use_valine">
             Valine
           </option>
-          <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">Valine (使用公用 API Key)</option>
           <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
+          <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">由 BBG 提供的公共评论服务</option>
           <option value="none" id="comment_do_not_use_any_comment_system">不使用此功能</option>
         </select>
       </div>
 
       <!-- TODO: 添加说明性文字 -->
 
-      <div id="hint_when_using_valine_with_public_apikey">
+      <div id="hint_when_using_valine_with_public_apikey" style="display: none;">
 
-
+        <p>${langdata["HINT_TEXT_WHEN_USING_VALINE_WITH_PUBLIC_APIKEY"][lang_name]}</p>
       </div>
 
       <div id="leancloud_settings_detail" style="display:none">
+
+        <p>${langdata["HINT_TEXT_WHEN_USING_VALINE"][lang_name]}</p>
 
         <br />
         <div class="mb-3">
@@ -482,6 +484,8 @@ ${blog["网站公告"]}
       </div>
 
       <div id="disqus_settings_detail" style="display:none">
+
+        <p>${langdata["HINT_TEXT_WHEN_USING_DISQUS"][lang_name]}</p>
 
         <br />
         <div class="mb-3">

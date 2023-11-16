@@ -1,6 +1,7 @@
-const save_blog_settings = require("./save_blog_settings");
 
-function render_comment_related(){
+const dialog = require("@electron/remote").dialog;
+
+function render_comment_related(trigger_by_change = false){
   let current_selection = undefined;
   if(document.getElementById("comment_select_to_use_valine").selected === true){
     current_selection = "valine";
@@ -16,10 +17,29 @@ function render_comment_related(){
     document.getElementById("leancloud_settings_detail").setAttribute("style", "");
     document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
     document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+    document.getElementById("blog_settings_valine_appid").value = "";
+    document.getElementById("blog_settings_valine_appkey").value = "";
+    save_blog_settings();
   } else if(current_selection === "valine_with_public_apikey"){
-    document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
-    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
-    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "");
+    let whether_confirm_to_use_valine_with_public_apikey;
+    if (trigger_by_change) {
+      whether_confirm_to_use_valine_with_public_apikey = dialog.showMessageBoxSync({
+        "message": langdata["CONFIRM_TEXT_WHEN_USING_VALINE_WITH_PUBLIC_APIKEY"][lang_name],
+        "buttons": [langdata["OK"][lang_name], langdata["CANCEL"][lang_name]]
+      });
+    } else {
+      whether_confirm_to_use_valine_with_public_apikey = 0;
+    }
+    
+    if(whether_confirm_to_use_valine_with_public_apikey === 0){
+      document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
+      document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
+      document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "");
+    }else {
+      document.getElementById("comment_select_to_use_valine").selected = true;
+      render_comment_related();
+    }
+    
   } else if(current_selection === "disqus"){
     document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
     document.getElementById("disqus_settings_detail").setAttribute("style", "");
@@ -184,7 +204,7 @@ module.exports = function () {
   render_comment_related();
 
   document.getElementById("blog_settings_comment_system_setting").onchange = function(){
-    render_comment_related();
+    render_comment_related(true);
   };
 
   if (blog["CDN选择"] === 1) {
