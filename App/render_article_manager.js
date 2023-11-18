@@ -66,12 +66,20 @@ module.exports = function () {
     <button class="btn btn-outline-primary" onclick="edit_article('${blog["文章列表"][i]["文件名"]}', ${i})"><i class="fa fa-edit"></i> ${langdata.EDIT_AND_PREVIEW_ARTICLE_CONTENT[lang_name]}</button>
     <button class="btn btn-outline-primary" onclick="edit_article_meta(${i})"><i class="fa fa-info-circle"></i> ${langdata.EDIT_ARTICLE_META[lang_name]}</button>
     <button class="btn btn-outline-danger" onclick="delete_article(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_ARTICLE[lang_name]}</button>
-    <!-- <button class=btn btn-outline-primary" onclick="encrypt_options(${i})"><i class="fa fa-lock"></i> 加密选项</button> -->
+    <span id="encryption_related_func"></span>
     <br /><br />
     <button class="btn btn-outline-primary" onclick="let_article_up(${i})"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
     <button class="btn btn-outline-primary" onclick="let_article_down(${i})"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
     `);
+    if (blog["文章列表"][i]["是否加密"]){
+      document.getElementById("encryption_related_func").insertAdjacentHTML("beforeend",`
+      <button class="btn btn-outline-warning" onclick="ui_decrypt_article(${i})"><i class="fa fa-unlock"></i> ${langdata.DECRYPT_ARTICLE[lang_name]}</button>
+      `);
+    } else {
+      document.getElementById("encryption_related_func").insertAdjacentHTML("beforeend",`
+      <button class="btn btn-outline-success" onclick="ui_encrypt_article(${i})"><i class="fa fa-lock"></i> ${langdata.ENCRYPT_ARTICLE[lang_name]}</button>
+      `);
+    }
   }
-
   document.getElementById("nav_to_article_manager").classList.add("active");
 };

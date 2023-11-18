@@ -14,6 +14,8 @@ module.exports = function () {
   var whoScrolling;
   var ai = "(not_enabled)";
   var ai_task_list = new Object();
+  var is_cnt_article_encrypted = false;
+  var password_if_enabled_encryption_for_article = "";
 
   if (path.indexOf("/data/articles/") !== -1) {
     // article
@@ -21,6 +23,30 @@ module.exports = function () {
     for (let i = 0; i < blog["文章列表"].length; i++) {
       if (blog["文章列表"][i]["文件名"] === filename) {
         title = blog["文章列表"][i]["文章标题"];
+        if(blog["文章列表"][i]["是否加密"] === true){
+          is_cnt_article_encrypted = true;
+          var encryptionOptionsModal = new bootstrap.Modal(document.getElementById("encryptionOptionsModal"), {
+            backdrop: "static",
+            keyboard: false,
+          });
+          encryptionOptionsModal.show();
+          document.getElementById("encryptionOptionsModalBody").innerHTML = `<div class="mb-3">
+          <label class="form-label"><i class="fa fa-password"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
+          <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="article_password_modal_value">
+        </div>
+        <button class="btn btn-outline-primary" id="encryptionOptionsModalStartEditingBtn">${langdata.START_EDITING[lang_name]}</button>
+        <button class="btn btn-outline-primary" onclick="window.location.href='./article_manager.html?rootdir=${rootDir}'">${langdata.CANCEL[lang_name]}</button>
+        `;
+        ;
+
+        document.getElementById("encryptionOptionsModalStartEditingBtn").addEventListener("click", () => {
+          password_if_enabled_encryption_for_article = document.getElementById("article_password_modal_value").value;
+          original_content = decrypt_content(original_content, password_if_enabled_encryption_for_article);
+          document.getElementById("editor_textarea").value = original_content;
+          encryptionOptionsModal.hide();
+          preview_markdown_content();
+        })
+      }
       }
     }
   } else {
@@ -351,7 +377,12 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   document.getElementById("btn_exit").onclick=exit_markdown_editor;
 
   const markdown_editor_save_changes=function(){
-    writeFileSync(`${rootDir}/${path}`,document.getElementById("editor_textarea").value);
+    if(is_cnt_article_encrypted === true){
+      writeFileSync(`${rootDir}/${path}`,encrypt_content(document.getElementById("editor_textarea").value,password_if_enabled_encryption_for_article));
+    }else {
+      writeFileSync(`${rootDir}/${path}`,document.getElementById("editor_textarea").value);
+    }
+    
     document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["ALREADY_SAVED"][lang_name];
     editor_status=0;
     setTimeout(function(){

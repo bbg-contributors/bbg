@@ -35,7 +35,6 @@ const edit_article = require("./edit_article.js");
 const edit_page = require("./edit_page.js");
 const edit_article_meta = require("./edit_article_meta.js");
 const edit_page_meta = require("./edit_page_meta.js");
-const encrypt_options = require("./encrypt_options.js");
 const save_article_meta = require("./save_article_meta.js");
 const save_page_meta = require("./save_page_meta.js");
 const save_encrypt = require("./save_encrypt.js");
@@ -75,6 +74,7 @@ const rss_hook = require("./rss_hook.js");
 const sitemap_hook = require("./sitemap_hook.js");
 const encrypt_content = require("./encrypt_content.js");
 const decrypt_content = require("./decrypt_content.js");
+const {ui_encrypt_article, ui_decrypt_article} = require("./encryption_decryption_ui.js");
 
 const config_third_party_theme = require("./config_third_party_theme.js").config_third_party_theme;
 const save_config_of_third_party_theme = require("./config_third_party_theme.js").save_config_of_third_party_theme;

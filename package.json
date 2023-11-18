@@ -50,6 +50,7 @@
     "marked": "^10.0.0",
     "native-prompt": "^2.1.4",
     "request": "^2.88.2",
+    "sjcl": "^1.0.8",
     "xss": "^1.0.14"
   },
   "devDependencies": {
