@@ -37,16 +37,16 @@ module.exports = function () {
         <button class="btn btn-outline-primary" id="encryptionOptionsModalStartEditingBtn">${langdata.START_EDITING[lang_name]}</button>
         <button class="btn btn-outline-primary" onclick="window.location.href='./article_manager.html?rootdir=${rootDir}'">${langdata.CANCEL[lang_name]}</button>
         `;
-        ;
+        
 
-        document.getElementById("encryptionOptionsModalStartEditingBtn").addEventListener("click", () => {
-          password_if_enabled_encryption_for_article = document.getElementById("article_password_modal_value").value;
-          original_content = decrypt_content(original_content, password_if_enabled_encryption_for_article);
-          document.getElementById("editor_textarea").value = original_content;
-          encryptionOptionsModal.hide();
-          preview_markdown_content();
-        })
-      }
+          document.getElementById("encryptionOptionsModalStartEditingBtn").addEventListener("click", () => {
+            password_if_enabled_encryption_for_article = document.getElementById("article_password_modal_value").value;
+            original_content = decrypt_content(original_content, password_if_enabled_encryption_for_article);
+            document.getElementById("editor_textarea").value = original_content;
+            encryptionOptionsModal.hide();
+            preview_markdown_content();
+          });
+        }
       }
     }
   } else {
