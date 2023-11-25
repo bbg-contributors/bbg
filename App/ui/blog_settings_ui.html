@@ -443,6 +443,7 @@ ${blog["网站公告"]}
             Valine
           </option>
           <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
+          <option value="waline" id="comment_select_to_use_waline">Waline</option>
           <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">由 BBG 提供的公共评论服务</option>
           <option value="none" id="comment_do_not_use_any_comment_system">不使用此功能</option>
         </select>
@@ -496,6 +497,23 @@ ${blog["网站公告"]}
             class="form-control"
             value="${blog['全局评论设置']['disqus设置']['shortname']}"
             id="blog_settings_disqus_shortname"
+          />
+        </div>
+      </div>
+
+      <div id="waline_settings_detail" style="display:none">
+
+        <p>${langdata["HINT_TEXT_WHEN_USING_WALINE"][lang_name]}</p>
+
+        <br />
+        <div class="mb-3">
+          <label class="form-label"
+            >Waline Server URL</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局评论设置']['waline设置']['serverurl']}"
+            id="blog_settings_waline_serverurl"
           />
         </div>
       </div>

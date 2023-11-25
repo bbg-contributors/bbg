@@ -3,20 +3,37 @@ const dialog = require("@electron/remote").dialog;
 
 function render_comment_related(trigger_by_change = false){
   let current_selection = undefined;
-  if(document.getElementById("comment_select_to_use_valine").selected === true){
-    current_selection = "valine";
-  } else if(document.getElementById("comment_select_to_use_valine_with_public_apikey").selected === true){
-    current_selection = "valine_with_public_apikey";
-  } else if(document.getElementById("comment_select_to_use_disqus").selected === true){
-    current_selection = "disqus";
-  } else if(document.getElementById("comment_do_not_use_any_comment_system").selected === true){
+  if (document.getElementById("comment_do_not_use_any_comment_system").selected === true) {
     current_selection = "none";
+  } else {
+    for (let t of [
+      "valine",
+      "valine_with_public_apikey",
+      "disqus",
+      "waline"
+    ]) {
+      if (document.getElementById(`comment_select_to_use_${t}`).selected === true) {
+        current_selection = t;
+        break;
+      }
+    }
+  }
+
+  function show_specified_detail(name) {
+    const mapping_table = {
+      "valine": "leancloud_settings_detail",
+      "valine_with_public_apikey": "hint_when_using_valine_with_public_apikey",
+      "disqus": "disqus_settings_detail",
+      "waline": "waline_settings_detail"
+    };
+    for (let k in mapping_table) {
+      if (k == name) document.getElementById(mapping_table[k]).setAttribute("style", "");
+      else document.getElementById(mapping_table[k]).setAttribute("style", "display: none;");
+    }
   }
 
   if(current_selection === "valine"){
-    document.getElementById("leancloud_settings_detail").setAttribute("style", "");
-    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
-    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+    show_specified_detail("valine");
     document.getElementById("blog_settings_valine_appid").value = "";
     document.getElementById("blog_settings_valine_appkey").value = "";
     save_blog_settings();
@@ -32,22 +49,18 @@ function render_comment_related(trigger_by_change = false){
     }
     
     if(whether_confirm_to_use_valine_with_public_apikey === 0){
-      document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
-      document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
-      document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "");
+      show_specified_detail("valine_with_public_apikey");
     }else {
       document.getElementById("comment_select_to_use_valine").selected = true;
       render_comment_related();
     }
     
   } else if(current_selection === "disqus"){
-    document.getElementById("leancloud_settings_detail").setAttribute("style", "display: none;");
-    document.getElementById("disqus_settings_detail").setAttribute("style", "");
-    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+    show_specified_detail("disqus");
+  } else if(current_selection === "waline"){
+    show_specified_detail("waline");
   } else if(current_selection === "none"){
-    document.getElementById("leancloud_settings_detail").setAttribute("style", "display:none");
-    document.getElementById("disqus_settings_detail").setAttribute("style", "display: none;");
-    document.getElementById("hint_when_using_valine_with_public_apikey").setAttribute("style", "display: none;");
+    show_specified_detail("none");
   }
 }
 
@@ -187,17 +200,20 @@ module.exports = function () {
 
   if(blog["全局评论设置"]["启用valine评论"]){
     document.getElementById("comment_select_to_use_valine").selected = true;
-  }
-  
-  if(blog["全局评论设置"]["启用valine评论"] && blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"]){
-    document.getElementById("comment_select_to_use_valine_with_public_apikey").selected = true;
+
+    if(blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"])
+      document.getElementById("comment_select_to_use_valine_with_public_apikey").selected = true;
   }
 
-  if(blog["全局评论设置"]["启用disqus评论"]){
+  else if(blog["全局评论设置"]["启用disqus评论"]){
     document.getElementById("comment_select_to_use_disqus").selected = true;
   }
 
-  if(blog["全局评论设置"]["启用disqus评论"] === false && blog["全局评论设置"]["启用valine评论"] === false){
+  else if(blog["全局评论设置"]["启用waline评论"]){
+    document.getElementById("comment_select_to_use_waline").selected = true;
+  }
+
+  else {
     document.getElementById("comment_do_not_use_any_comment_system").selected = true;
   }
 

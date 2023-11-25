@@ -149,6 +149,7 @@ module.exports = function () {
     break;
   }
 
+  // TODO: simplify code
   let current_selection_for_comment_sys = undefined;
   if(document.getElementById("comment_select_to_use_valine").selected === true){
     current_selection_for_comment_sys = "valine";
@@ -156,41 +157,40 @@ module.exports = function () {
     current_selection_for_comment_sys = "valine_with_public_apikey";
   } else if(document.getElementById("comment_select_to_use_disqus").selected === true){
     current_selection_for_comment_sys = "disqus";
+  } else if(document.getElementById("comment_select_to_use_waline").selected === true){
+    current_selection_for_comment_sys = "waline";
   } else if(document.getElementById("comment_do_not_use_any_comment_system").selected === true){
     current_selection_for_comment_sys = "none";
   }
+
+  blog["全局评论设置"]["启用valine评论"] = false;
+  blog["全局评论设置"]["启用disqus评论"] = false;
+  blog["全局评论设置"]["启用waline评论"] = false;
+  blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
+  blog["全局评论设置"]["valine设置"]["leancloud_appid"] = "";
+  blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = "";
+  blog["全局评论设置"]["disqus设置"]["shortname"] = "";
+  blog["全局评论设置"]["waline设置"]["serverurl"] = "";
 
   if(current_selection_for_comment_sys === "valine") {
     let lc_appid = document.getElementById("blog_settings_valine_appid").value;
     let lc_appkey = document.getElementById("blog_settings_valine_appkey").value;
     blog["全局评论设置"]["启用valine评论"] = true;
-    blog["全局评论设置"]["启用disqus评论"] = false;
-    blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
     blog["全局评论设置"]["valine设置"]["leancloud_appid"] = lc_appid;
     blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = lc_appkey;
-    blog["全局评论设置"]["disqus设置"]["shortname"] = "";
   } else if(current_selection_for_comment_sys === "valine_with_public_apikey") {
     blog["全局评论设置"]["启用valine评论"] = true;
-    blog["全局评论设置"]["启用disqus评论"] = false;
     blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = true;
     blog["全局评论设置"]["valine设置"]["leancloud_appid"] = "SykuVs4qcWMkl4RUtKEUlmog-gzGzoHsz";
     blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = "0jowkR4ct0lJbWcvocymEkKw";
-    blog["全局评论设置"]["disqus设置"]["shortname"] = "";
   } else if(current_selection_for_comment_sys === "disqus") {
     let disqus_shortname = document.getElementById("blog_settings_disqus_shortname").value;
-    blog["全局评论设置"]["启用valine评论"] = false;
     blog["全局评论设置"]["启用disqus评论"] = true;
-    blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
-    blog["全局评论设置"]["valine设置"]["leancloud_appid"] = "";
-    blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = "";
     blog["全局评论设置"]["disqus设置"]["shortname"] = disqus_shortname;
-  } else if (current_selection_for_comment_sys === "none") {
-    blog["全局评论设置"]["启用valine评论"] = false;
-    blog["全局评论设置"]["启用disqus评论"] = false;
-    blog["全局评论设置"]["valine设置"]["是否使用bbg公共评论服务"] = false;
-    blog["全局评论设置"]["valine设置"]["leancloud_appid"] = "";
-    blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = "";
-    blog["全局评论设置"]["disqus设置"]["shortname"] = "";
+  } else if (current_selection_for_comment_sys === "waline") {
+    let waline_server_url = document.getElementById("blog_settings_waline_serverurl").value;
+    blog["全局评论设置"]["启用waline评论"] = true;
+    blog["全局评论设置"]["waline设置"]["serverurl"] = waline_server_url;
   }
 
 
