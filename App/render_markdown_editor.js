@@ -462,6 +462,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     if (is_cnt_article_encrypted && default_editor) {
       writeFileSync(`${rootDir}/${path}`, encrypt_content(readFileSync(rootDir + path, "utf-8"), password_if_enabled_encryption_for_article));
     }
-  }
+  };
 
 };
