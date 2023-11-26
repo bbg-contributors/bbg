@@ -394,6 +394,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {
+      writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
       shell.openPath(`${rootDir}/${path}`);
       document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_BUILTIN_EDITOR"][lang_name];
       document.getElementById("first-wrapper").style.filter = "blur(5px)";
@@ -403,11 +404,11 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
       if (storage.getSync("ai_api").enabled === true){
         document.getElementById("ai_related_functions_in_editor").style.display = "none";
       }
-      
     }
     function to_builtin() {
       document.getElementById("editor_textarea").value = readFileSync(rootDir + path, "utf-8");
       preview_markdown_content();
+      writeFileSync(`${rootDir}/${path}`, encrypt_content(document.getElementById("editor_textarea").value, password_if_enabled_encryption_for_article));
       document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_SYSTEM_DEFAULT_EDITOR"][lang_name];
       document.getElementById("first-wrapper").style.filter = "";
       document.getElementById("btn_save_changes").style.display = "";
@@ -455,6 +456,12 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
         }
       }
     };
+  }
+
+  window.onbeforeunload = () => {
+    if (is_cnt_article_encrypted && default_editor) {
+      writeFileSync(`${rootDir}/${path}`, encrypt_content(readFileSync(rootDir + path, "utf-8"), password_if_enabled_encryption_for_article));
+    }
   }
 
 };
