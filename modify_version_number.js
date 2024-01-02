@@ -12,13 +12,13 @@ function getyyyymmdd() {
   return yyyyMMdd;
 }
 
-let appjson = JSON.parse(readFileSync(`${__dirname}/../App/App.json`), "utf8");
-let packagejson = JSON.parse(readFileSync(`${__dirname}/../package.json`), "utf8");
+let appjson = JSON.parse(readFileSync(`${__dirname}/App/App.json`), "utf8");
+let packagejson = JSON.parse(readFileSync(`${__dirname}/package.json`), "utf8");
 
 let newversion = parseInt(getyyyymmdd(), 10);
 
 appjson["currentProgramVersion"] = newversion;
 packagejson["version"] = `${getyyyymmdd()}.0.0`;
 
-writeFileSync(`${__dirname}/../App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
-writeFileSync(`${__dirname}/../package.json`, JSON.stringify(packagejson, null, 2), "utf8");
+writeFileSync(`${__dirname}/App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
+writeFileSync(`${__dirname}/package.json`, JSON.stringify(packagejson, null, 2), "utf8");
