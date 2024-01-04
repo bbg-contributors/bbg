@@ -393,7 +393,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
   document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
-/*
+  /*
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {
       writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
