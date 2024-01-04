@@ -140,6 +140,19 @@ function addSupportForOptionsOfMarkdownRendering() {
   blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = true;
 }
 
+function addSupportForWalineAndDisqus() {
+  if (blog["全局评论设置"]["启用waline评论"] === undefined || blog["全局评论设置"]["启用waline评论"] === null) {
+    blog["全局评论设置"]["启用waline评论"] = false;
+    blog["全局评论设置"]["waline设置"] = new Object();
+    blog["全局评论设置"]["waline设置"]["serverurl"] = "";
+  }
+  if (blog["全局评论设置"]["启用disqus评论"] === undefined || blog["全局评论设置"]["启用disqus评论"] === null) {
+    blog["全局评论设置"]["启用disqus评论"] = false;
+    blog["全局评论设置"]["disqus设置"] = new Object();
+    blog["全局评论设置"]["disqus设置"]["shortname"] = "";
+  }
+}
+
 function improveBackgroundImageSettings() {
   if(blog["全局主题设置"]["是否使用背景图像"] && blog["全局主题设置"]["若使用背景图像，设置为"]["使用随机二次元图片作为背景图像（浅色背景）"]) {
     // 如果之前版本中启用了“将网站背景设置为随机二次元图片”则将背景图片配置转换为“将某个url作为背景图像”，url自动填入之前所使用的默认二次元图片api地址
@@ -264,6 +277,10 @@ module.exports = function () {
 
   if (currentBlogVersion <= 20231015) {
     addSupportForAdjustingLinkColor();
+  }
+
+  if (currentBlogVersion <= 20240103) {
+    addSupportForWalineAndDisqus();
   }
 
   check_third_party_theme_compatiblity();

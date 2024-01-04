@@ -33,10 +33,12 @@ function render_comment_related(trigger_by_change = false){
   }
 
   if(current_selection === "valine"){
+    if(trigger_by_change){
+      document.getElementById("blog_settings_valine_appid").value = "";
+      document.getElementById("blog_settings_valine_appkey").value = "";
+      save_blog_settings();
+    }
     show_specified_detail("valine");
-    document.getElementById("blog_settings_valine_appid").value = "";
-    document.getElementById("blog_settings_valine_appkey").value = "";
-    save_blog_settings();
   } else if(current_selection === "valine_with_public_apikey"){
     let whether_confirm_to_use_valine_with_public_apikey;
     if (trigger_by_change) {

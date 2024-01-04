@@ -16,6 +16,7 @@ module.exports = function () {
   var ai_task_list = new Object();
   var is_cnt_article_encrypted = false;
   var password_if_enabled_encryption_for_article = "";
+  let encrypted_orginal_content_if_encrypted;
 
   if (path.indexOf("/data/articles/") !== -1) {
     // article
@@ -30,6 +31,8 @@ module.exports = function () {
             keyboard: false,
           });
           encryptionOptionsModal.show();
+          encrypted_orginal_content_if_encrypted = original_content;
+          original_content = "";
           document.getElementById("encryptionOptionsModalBody").innerHTML = `<div class="mb-3">
           <label class="form-label"><i class="fa fa-password"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
           <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="article_password_modal_value">
@@ -41,6 +44,7 @@ module.exports = function () {
 
           document.getElementById("encryptionOptionsModalStartEditingBtn").addEventListener("click", () => {
             password_if_enabled_encryption_for_article = document.getElementById("article_password_modal_value").value;
+            original_content = encrypted_orginal_content_if_encrypted;
             original_content = decrypt_content(original_content, password_if_enabled_encryption_for_article);
             document.getElementById("editor_textarea").value = original_content;
             encryptionOptionsModal.hide();
@@ -123,7 +127,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     document.getElementById("third-wrapper").style.display = "";
     document.getElementById("ai_related_functions_in_editor").style.display = "none";
     document.getElementById("btn_help").style.display = "none";
-    document.getElementById("btn_change_to_default_editor").style.display = "none";
     document.getElementById("btn_save_changes").style.display = "none";
   }
 
@@ -133,7 +136,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     document.getElementById("third-wrapper").style.display = "none";
     document.getElementById("ai_related_functions_in_editor").style.display = "";
     document.getElementById("btn_help").style.display = "";
-    document.getElementById("btn_change_to_default_editor").style.display = "";
     document.getElementById("btn_save_changes").style.display = "";
   }
 
@@ -391,7 +393,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
   document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
-
+/*
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {
       writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
@@ -431,7 +433,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     }
     default_editor = !default_editor;
   };
-
+*/
   document.onkeydown = function(event){
     let toReturn = true;
     if(event.ctrlKey || event.metaKey){  // detect ctrl or cmd
