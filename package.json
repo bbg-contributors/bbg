@@ -14,8 +14,8 @@
   },
   "main": "main.js",
   "scripts": {
+    "prepare": "husky install",
     "preinstall": "npx only-allow yarn",
-    "precommit": "lint-staged",
     "start": "electron ./main.js",
     "dev": "electron ./main_dev.js",
     "dev_with_hot_reload": "electron ./main_dev.js --hot-reload",
@@ -69,15 +69,7 @@
   "bugs": {
     "url": "https://github.com/bbg-contributors/bbg/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
-  },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "git add"
-    ]
+    "*.js": "eslint --fix"
   }
 }
