@@ -6,7 +6,7 @@ const toast_creator = require("./toast_creator.js");
 const ai_function = require("./ai_function.js");
 
 module.exports = function () {
-  let path = getUrlArgs("path");
+  let path = decodeURIComponent(getUrlArgs("path"));
   let filename = path.replaceAll("/data/articles/", "").replaceAll("/data/pages/", "");
   let title,type;
   let original_content = readFileSync(rootDir + path, "utf-8");

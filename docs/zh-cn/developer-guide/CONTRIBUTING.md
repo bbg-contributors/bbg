@@ -6,7 +6,7 @@
 
 - Git
 - Node.js >= 18
-- Yarn （如果没有的话可以在安装了Node.js和NPM之后使用`npm install -g yarn`安装）
+- Yarn（我们推荐使用 1.22.19 版本，可以在安装 Node.js 和 NPM 之后使用`npm install -g yarn`安装）
 
 然后使用 Git 获取源代码。
 
@@ -27,6 +27,8 @@ git clone --recursive --depth=1 https://github.com/[your username]/bbg.git
 ```sh
 yarn install
 ```
+
+如果遇到 Electron 不能正常下载的问题，请尝试使用 `ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"` 环境变量。
 
 ## 常用命令
 
