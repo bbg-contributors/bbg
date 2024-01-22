@@ -153,74 +153,11 @@ function openImageCopyrightDialog() {
 }
 
 function openAiAssistedWritingConfigDialog(){
-  document.getElementById("ai_assisted_writing-dialog-content").innerHTML = `
-      <div class="alert alert-primary" role="alert">
-        ${langdata.AI_ASSISTED_WRITING_CONFIG_INFO[lang_name]}
-      </div>
 
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="ai_assisted_writing_enabled"
-        />
-        <label class="form-check-label" for="ai_assisted_writing_enabled">
-          ${langdata.AI_ASSISTED_WRITING_ENABLE[lang_name]}
-        </label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">${langdata["OPENAI_API_KEY"][lang_name]}</label>
-        <input
-          class="form-control"
-          value="${storage.getSync("ai_api").api_key}"
-          id="openai_api_key"
-          placeholder=""
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">${langdata["OPENAI_API_REQUEST_URL"][lang_name]}</label>
-        <input
-          class="form-control"
-          value="${storage.getSync("ai_api").api_request_url}"
-          id="openai_api_request_url"
-          placeholder="https://api.openai.com/v1/completions"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">${langdata["OPENAI_API_MODEL_NAME"][lang_name]}</label>
-        <input
-          class="form-control"
-          value="${storage.getSync("ai_api").default_model_type}"
-          id="openai_default_model_type"
-          placeholder="text-davinci-003"
-        />
-      </div>
-
-      <button class="btn btn-primary" onclick="save_ai_api_settings()">${langdata.OK[lang_name]}</button>
-      <button class="btn btn-primary" onclick="window.location.reload()">${langdata.CANCEL[lang_name]}</button>
-  `;
-
-  document.getElementById("ai_assisted_writing_enabled").checked = storage.getSync("ai_api").enabled;
-  ai_assisted_writing_dialog.show();
 }
 
 function save_ai_api_settings(){
-  let ai_assisted_writing_enabled = document.getElementById("ai_assisted_writing_enabled").checked;
-  let openai_api_key = document.getElementById("openai_api_key").value;
-  let openai_api_request_url = document.getElementById("openai_api_request_url").value;
-  let openai_default_model_type = document.getElementById("openai_default_model_type").value;  
   
-  storage.set("ai_api", {
-    enabled: ai_assisted_writing_enabled,
-    api_key: openai_api_key,
-    api_request_url: openai_api_request_url,
-    default_model_type: openai_default_model_type
-  }, ()=>{
-    ai_assisted_writing_dialog.hide();
-  });
 }
 
 function render_language_selections() {
@@ -259,16 +196,24 @@ storage.has("language", (error, hasKey) => {
           });
         }
       });
-      storage.has("ai_api", (error, hasKey) => {
+      storage.has("ai_api_enabled", (error, hasKey) => {
         if (error) {
           console.error(error);
         }
         if (hasKey === false) {
-          storage.set("ai_api", {
-            enabled: false,
-            api_key: "",
-            api_request_url: "https://api.openai.com/v1/completions",
-            default_model_type: "text-davinci-003"
+          storage.set("ai_api_enabled", {
+            enabled: false
+          });
+        }
+      });
+
+      storage.has("ai_api_type", (error, hasKey) => {
+        if (error) {
+          console.error(error);
+        }
+        if (hasKey === false) {
+          storage.set("ai_api_type", {
+            type: "none"
           });
         }
       });
