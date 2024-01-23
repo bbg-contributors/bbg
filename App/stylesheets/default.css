@@ -567,7 +567,7 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #startpage_container{
-  padding-left: 100px;
+  text-align: center;
 }
 
 #last_managed_site_link{
