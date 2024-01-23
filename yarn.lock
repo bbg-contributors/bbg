@@ -1828,6 +1828,10 @@ ipaddr.js@1.9.1:
   resolved "https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.9.1.tgz"
   integrity sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
 
+"ipinyinjs@https://github.com/bbg-contributors/pinyinjs.git":
+  version "1.0.0"
+  resolved "https://github.com/bbg-contributors/pinyinjs.git#04bfb2aab96c3382c0b69de7f9789129800712d9"
+
 is-alphabetical@^1.0.0:
   version "1.0.4"
   resolved "https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-1.0.4.tgz"
