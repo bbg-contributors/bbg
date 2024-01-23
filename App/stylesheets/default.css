@@ -466,7 +466,6 @@ body:before {
 
 a , .btn-link{
   text-decoration: none;
-  color: #196fd1;
 }
 
 .toast{
@@ -568,10 +567,7 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #startpage_container{
-  background-color: rgb(42,45,60);
-  color:white;
-  text-align: center;
-
+  padding-left: 100px;
 }
 
 #last_managed_site_link{

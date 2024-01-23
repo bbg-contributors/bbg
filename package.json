@@ -54,7 +54,8 @@
     "native-prompt": "^2.1.4",
     "request": "^2.88.2",
     "sjcl": "^1.0.8",
-    "xss": "^1.0.14"
+    "xss": "^1.0.14",
+    "xterm": "^5.3.0"
   },
   "devDependencies": {
     "docsify": "^4.13.1",

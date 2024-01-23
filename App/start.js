@@ -148,10 +148,6 @@ function openGroupDialog() {
     `);
 }
 
-function openImageCopyrightDialog() {
-  createInfoDialog(langdata.ABOUT_IMAGE_COPYRIGHT[lang_name], langdata.ABOUT_IMAGE_COPYRIGHT_DESCRIPTION[lang_name]);
-}
-
 function openAiAssistedWritingConfigDialog(){
 
 }
@@ -240,15 +236,29 @@ storage.has("language", (error, hasKey) => {
 
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
-           <p>${langdata.STARTPAGE_DESCRIPTION[0][lang_name]}</p>
            <br />
-          <a class="fluentbtn fluentbtn-start" id="open_site_btn" onclick="open_site()"><i class="fa fa-folder-open-o"></i> ${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          <a class="fluentbtn fluentbtn-start" id="create_site_btn" onclick="create_new_site_dialog_show()"><i class="fa fa-plus"></i> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
-        <br /><br />
-           `;
+          <a class="btn btn-outline-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
+          <a class="btn btn-outline-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
+          <div class="btn-group" role="group">
+          <a class="btn btn-outline-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
+          <ul class="dropdown-menu">
+          <li><a class="dropdown-item" id="last_managed_site"></a></li>
+          </ul>
+          
+          </div>
+          <div class="btn-group" role="group">
+          <a class="btn btn-outline-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
+          <ul class="dropdown-menu">
+      <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
+      <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
+      <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
+      <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
 
-      document.getElementById("last_managed_site_link").innerHTML = `
-           ${langdata.LAST_MANAGED_SITE[lang_name]}<span style="font-weight: bold;"  id="last_managed_site_title"></span>`;
+      </ul>
+
+          </div>
+          <br /><br /><br /><br />
+           `;
 
       document.getElementById("bbg_settings").innerHTML = `
         <div id="check_update_interface">
@@ -268,24 +278,6 @@ storage.has("language", (error, hasKey) => {
             
             `;
 
-      document.getElementById("interface_secondpart").innerHTML = `
-            <h5>${langdata.BBG_SETTINGS[lang_name]}</h5>
-
-            <a class="btn btn-link" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a>
-            <br />
-            <a class="btn btn-link" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a>
-            <br />
-            <a class="btn btn-link" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a>
-            <br />
-            <a class="btn btn-link" onclick="openImageCopyrightDialog()"><i class="fa fa-copyright" aria-hidden="true"></i> ${langdata.ABOUT_IMAGE_COPYRIGHT[lang_name]}</a>
-            <br />
-            <!--
-            <a class="btn btn-link" onclick="openAiAssistedWritingConfigDialog()"><i class="fa fa-sliders" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a>
-            <br />
-            -->
-            <a class="btn btn-link" id="check_update_btn" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a>
-            `;
-
       document.getElementById("current_program_version").innerHTML = `${currentProgramVersion}`;
 
       storage.has("last_managed_site", (error, hasKey) => {
@@ -293,21 +285,25 @@ storage.has("language", (error, hasKey) => {
         if (hasKey) {
           storage.get("last_managed_site", (error, data) => {
             if (error) console.error(error);
-            document.getElementById("last_managed_site").setAttribute("style", "display:block");
-            document.getElementById("last_managed_site_title").innerHTML = data.title;
+            document.getElementById("last_managed_site").innerHTML = `${data.title} (${data.rootdir})`;
             document.getElementById("last_managed_site").setAttribute("onclick", `manageSiteByRootDir('${data.rootdir.replace(/\\/g, "/")}')`);
           });
         } else {
-          doNothing();
+          document.getElementById("last_managed_site").innerText = `(${langdata["NONE"][lang_name]})`;
         }
       });
 
       if (existsSync(`${__dirname}/is_aur_build`)){
         document.getElementById("current_program_version_additional_info").innerHTML = `<br />
-        <button class="btn btn-sm btn-outline-light" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
+        <button class="btn btn-outline-primary" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
         `;
       } else if(existsSync(`${__dirname}/is_released_version`) === false){
-        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]} (base_version = ${currentProgramVersion})`;
+        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion})">
+        <i class="fa fa-info-circle" style="color:grey"></i>
+      </span>
+      `;
+        const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
       }
     });
   } else {
