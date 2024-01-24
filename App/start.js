@@ -214,6 +214,18 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
+      storage.has("builtin_ime_status", (error, hasKey) => {
+        if (error) {
+          console.error(error);
+        }
+        if (hasKey === false) {
+          storage.set("builtin_ime_status", {
+            enabled: "auto",
+            ime: "auto"
+          });
+        }
+      });
+
       lang_name = data.name;
       document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> ${langdata.OK[lang_name]}`;
       document.getElementById("create-new-site-dialog-title").innerHTML = langdata.CREATE_NEW_SITE[lang_name];

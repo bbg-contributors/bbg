@@ -11,6 +11,7 @@ function render_friend_book_json_url_input(){
   </div>
   
   `;
+  loadIME("#friend_book_json_url");
 }
 
 function render_friend_book_to_container(){
@@ -113,4 +114,6 @@ ${blog["友人帐页面附加信息"]}
 
   if (blog["友人帐页面允许评论"] === true)
     document.getElementById("enableFriendBookComment").checked = true;
+
+  loadIME("#friend_book_additional_info");
 };

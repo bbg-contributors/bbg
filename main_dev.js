@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+const {ipcMain} = require("electron");
 
 if (process.argv.includes("--hot-reload")) {
   try {
@@ -9,6 +10,8 @@ if (process.argv.includes("--hot-reload")) {
 require("@electron/remote/main").initialize();
 
 app.commandLine.appendSwitch("remote-debugging-port", "9541");
+
+let CurrentStatusOfIME = "en";
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -30,3 +33,15 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => createWindow());
+
+ipcMain.on("ime_setToEnglishMode", () => {
+  CurrentStatusOfIME = "en";
+});
+
+ipcMain.on("ime_setToInputMode", () => {
+  CurrentStatusOfIME = "input";
+});
+
+ipcMain.on("ime_getCurrentStatus", (event) => {
+  event.returnValue = CurrentStatusOfIME;
+});

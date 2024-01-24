@@ -91,6 +91,7 @@ const open_blog_dir = require("./menuFx.js").open_blog_dir;
 
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
+const loadIME = require("./loadIME.js");
 
 storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir });
 
@@ -122,6 +123,10 @@ storage.has("language", (error, hasKey) => {
       }
 
       ui_hook_load_finished();
+      loadIME(".form-control");
+      if(ipcRenderer.sendSync("ime_getCurrentStatus") === "input"){
+        SimpleInputMethod.isInEnglishMode = false;
+      }
     },
     );
   } else {

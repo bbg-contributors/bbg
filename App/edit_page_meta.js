@@ -50,4 +50,7 @@ module.exports = function (i) {
 
   if (blog["页面列表"][i]["启用评论"] === true)
     document.getElementById("meta_page_iscommentenabled").checked = true;
+
+  loadIME("#meta_page_title");
+  loadIME("#meta_page_title_menu");
 };

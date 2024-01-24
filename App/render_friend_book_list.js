@@ -13,5 +13,9 @@ module.exports = function () {
 
         </tr>
         `);
+    loadIME(`#friend_book_list_${i}_name`);
+    loadIME(`#friend_book_list_${i}_link`);
+    loadIME(`#friend_book_list_${i}_description`);
+    loadIME(`#friend_book_list_${i}_icon`);
   }
 };

@@ -10,6 +10,11 @@
   padding: 7px;
 }
 
+.simple-input-method {
+  z-index: 1145!important;
+  position: fixed!important;
+}
+
 .navbar .container-fluid a{
   color: white !important;
 }

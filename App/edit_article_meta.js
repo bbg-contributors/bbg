@@ -1,3 +1,5 @@
+const loadIME = require("./loadIME");
+
 module.exports = function (i) {
   const metaModal = new bootstrap.Modal(document.getElementById("edit_article_meta_dialog"));
   metaModal.toggle();
@@ -34,6 +36,13 @@ module.exports = function (i) {
   <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
   </div>
 `);
+
+  loadIME("#meta_article_title");
+  loadIME("#meta_article_description");
+  loadIME("#meta_article_createdat");
+  loadIME("#meta_article_updatedat");
+  loadIME("#meta_article_tags");
+  loadIME("#meta_article_filename");
 
   document.getElementById("article_meta_content").insertAdjacentHTML("beforeend", `
     <div class="form-check form-switch">
