@@ -1,6 +1,7 @@
 
 const getAiPrompts = require("./getAiPrompts.js");
 const ai_function_openai = require("./ai_function_openai.js");
+const ai_function_baiduqianfan = require("./ai_function_baiduqianfan.js");
 
 module.exports = class {
   constructor() {
@@ -8,7 +9,7 @@ module.exports = class {
     if(api_type === "openai"){
       this.aiFunctionInstance = new ai_function_openai();
     }else if(api_type === "baiduqianfan"){
-      // wait for implementation
+      this.aiFunctionInstance = new ai_function_baiduqianfan();
     }else if(api_type === "xunfeixinghuo"){
       // wait for implementation
     }else if(api_type === "none"){
