@@ -16,6 +16,8 @@ app.setAboutPanelOptions({
   website: appInfo.officialWebsite
 });
 
+let CurrentStatusOfIME = "en";
+
 function openExistingSite() {
   win.webContents.send("openExistingSite");
 }
@@ -132,20 +134,32 @@ const createWindow = () => {
 
 app.whenReady().then(() => createWindow());
 
-ipcMain.on("backToStartPageAndOpenExistingSite", ()=>{
+ipcMain.on("backToStartPageAndOpenExistingSite", () => {
   win.loadFile("./App/start.html");
-  win.webContents.once("dom-ready", ()=>{
+  win.webContents.once("dom-ready", () => {
     win.webContents.send("openExistingSite");
   });
 });
 
-ipcMain.on("backToStartPageAndCreateNewSite", ()=>{
+ipcMain.on("backToStartPageAndCreateNewSite", () => {
   win.loadFile("./App/start.html");
-  win.webContents.once("dom-ready", ()=>{
+  win.webContents.once("dom-ready", () => {
     win.webContents.send("createNewSite");
   });
 });
 
-ipcMain.on("render_menu_again", ()=>{
+ipcMain.on("render_menu_again", () => {
   render_menu();
+});
+
+ipcMain.on("ime_setToEnglishMode", () => {
+  CurrentStatusOfIME = "en";
+});
+
+ipcMain.on("ime_setToInputMode", () => {
+  CurrentStatusOfIME = "input";
+});
+
+ipcMain.on("ime_getCurrentStatus", (event) => {
+  event.returnValue = CurrentStatusOfIME;
 });

@@ -1,5 +1,4 @@
-const { app, BrowserWindow } = require("electron");
-const {ipcMain} = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 
 if (process.argv.includes("--hot-reload")) {
   try {
