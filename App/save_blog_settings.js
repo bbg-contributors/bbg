@@ -40,6 +40,17 @@ module.exports = function () {
   let auto_sitemap_enabled = document.getElementById("auto_sitemap_enabled").checked;
   const domain_string = document.getElementById("domain_string").value.replaceAll(" ", "");
   const blog_settings_background_setting = document.getElementById("blog_settings_background_setting").value;
+  const live2d_widget_enabled = document.getElementById("live2d_widget_enabled").checked;
+  const blog_settings_live2d_widget_path = document.getElementById("blog_settings_live2d_widget_path").value;
+  const blog_settings_live2d_widget_tips_path = document.getElementById("blog_settings_live2d_widget_tips_path").value;
+  const blog_settings_live2d_widget_api_path = document.getElementById("blog_settings_live2d_widget_api_path").value;
+  const live2d_widget_hitokoto_enabled = document.getElementById("live2d_widget_hitokoto_enabled").checked;
+  const live2d_widget_asteroids_enabled = document.getElementById("live2d_widget_asteroids_enabled").checked;
+  const live2d_widget_switch_model_enabled = document.getElementById("live2d_widget_switch_model_enabled").checked;
+  const live2d_widget_switch_texture_enabled = document.getElementById("live2d_widget_switch_texture_enabled").checked;
+  const live2d_widget_photo_enabled = document.getElementById("live2d_widget_photo_enabled").checked;
+  const live2d_widget_info_enabled = document.getElementById("live2d_widget_info_enabled").checked;
+  const live2d_widget_quit_enabled = document.getElementById("live2d_widget_quit_enabled").checked;
 
   if (document.getElementById("cdn_cho_1").checked === true) {
     blog_settings_cdn_path = document.getElementById("blog_setting_cdn_frm_1").value;
@@ -113,6 +124,19 @@ module.exports = function () {
   blog["Markdown渲染配置"]["使用markdown文件所在目录作为baseurl"] = document.getElementById("rewrite_baseurl").checked;
   blog["Markdown渲染配置"]["在用户点击图片时显示图片查看器"] = document.getElementById("enable_image_viewer").checked;
   blog["Markdown渲染配置"]["根据用户屏幕尺寸渲染图片尺寸"] = document.getElementById("resize_images").checked;
+
+  blog["全局主题设置"]["是否启用live2d-widget"] = live2d_widget_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["widget路径"] = blog_settings_live2d_widget_path;
+  blog["全局主题设置"]["live2d-widget设置"]["tips路径"] = blog_settings_live2d_widget_tips_path;
+  blog["全局主题设置"]["live2d-widget设置"]["api路径"] = blog_settings_live2d_widget_api_path;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["hitokoto"] = live2d_widget_hitokoto_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["asteroids"] = live2d_widget_asteroids_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["switch-model"] = live2d_widget_switch_model_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["switch-texture"] = live2d_widget_switch_texture_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["photo"] = live2d_widget_photo_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["info"] = live2d_widget_info_enabled;
+  blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["quit"] = live2d_widget_quit_enabled;
+
 
   switch(blog_settings_background_setting){
   case "bgimg_use_blank":

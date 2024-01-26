@@ -404,6 +404,130 @@ ${blog["网站公告"]}
       <input class="form-control" id="blog_settings_color_of_background" style="display: none;">
 
     </div>
+
+    <div class="fluentinterface" id="live2dwidget_navhash">
+      <h2>
+        ${langdata["LIVE2D_WIDGET_SETTINGS"][lang_name]}
+      </h2>
+      <br />
+
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_enabled">
+          ${langdata.ENABLE_LIVE2d_WIDGET[lang_name]}
+        </label>
+      </div>
+      <br />
+      <div class="mb-3">
+        <label class="form-label"
+          >${langdata["WIDGET_PATH"][lang_name]}</label
+        >
+        <input
+          class="form-control"
+          value="${blog['全局主题设置']['live2d-widget设置']['widget路径']}"
+          id="blog_settings_live2d_widget_path"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label"
+          >${langdata["TIPS_PATH"][lang_name]}</label
+        >
+        <input
+          class="form-control"
+          value="${blog['全局主题设置']['live2d-widget设置']['tips路径']}"
+          id="blog_settings_live2d_widget_tips_path"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label"
+          >${langdata["API_PATH"][lang_name]}</label
+        >
+        <input
+          class="form-control"
+          value="${blog['全局主题设置']['live2d-widget设置']['api路径']}"
+          id="blog_settings_live2d_widget_api_path"
+        />
+      </div>
+
+      <h3>
+        ${langdata["FUNCTIONS_SWITCH"][lang_name]}
+      </h3>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_hitokoto_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_hitokoto_enabled">
+          ${langdata.HITOKOTO[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_asteroids_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_asteroids_enabled">
+          ${langdata.ASTEROIDS[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_switch_model_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_switch_model_enabled">
+          ${langdata.SWITCH_MODEL[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_switch_texture_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_switch_texture_enabled">
+          ${langdata.SWITCH_TEXTURE[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_photo_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_photo_enabled">
+          ${langdata.PHOTO[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_info_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_info_enabled">
+          ${langdata.INFO[lang_name]}
+        </label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="live2d_widget_quit_enabled"
+        />
+        <label class="form-check-label" for="live2d_widget_quit_enabled">
+          ${langdata.ALLOW_QUIT[lang_name]}
+        </label>
+      </div>
+    </div>
+
     <div class="fluentinterface" id="thirdpartytheme_navhash">
       <h2>
         <i class="fa fa-paint-brush"></i>

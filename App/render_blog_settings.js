@@ -152,6 +152,34 @@ module.exports = function () {
     document.getElementById("use_serif_font").checked = true;
   }
 
+  if(blog["全局主题设置"]["是否启用live2d-widget"]){
+    document.getElementById("live2d_widget_enabled").checked = true;
+  }
+
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["hitokoto"]){
+    document.getElementById("live2d_widget_hitokoto_enabled").checked = true;
+  }
+
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["asteroids"]){
+    document.getElementById("live2d_widget_asteroids_enabled").checked = true;
+  }
+
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["switch-model"]){
+    document.getElementById("live2d_widget_switch_model_enabled").checked = true;
+  }
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["switch-texture"]){
+    document.getElementById("live2d_widget_switch_texture_enabled").checked = true;
+  }
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["photo"]){
+    document.getElementById("live2d_widget_photo_enabled").checked = true;
+  }
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["info"]){
+    document.getElementById("live2d_widget_info_enabled").checked = true;
+  }
+  if(blog["全局主题设置"]["live2d-widget设置"]["功能设置"]["quit"]){
+    document.getElementById("live2d_widget_quit_enabled").checked = true;
+  }
+
   document.getElementById("auto_rss_enabled").checked = blog["在对文章列表进行修改后触发rss生成"];
   document.getElementById("auto_sitemap_enabled").checked = blog["在对文章或页面列表进行修改后触发sitemap.txt生成"];
 
