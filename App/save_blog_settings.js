@@ -99,20 +99,6 @@ module.exports = function () {
   blog["自定义CSS"] = blog_settings_custom_css;
   blog["自定义JS"] = blog_settings_custom_js;
 
-  if (domain_string !== "" && (domain_string.includes("http") === -1)) toast_creator("danger","尽管设置已经保存，但是你所填写的域名没有包含https://或http://字段，可能无法正常工作。");
-
-  if (domain_string !== "" && domain_string.charAt(domain_string.length - 1) === "/") toast_creator("danger","尽管设置已经保存，但是你所填写的域名末尾包含了斜杠。为了避免生成的 RSS 或站点地图地址添加重复的斜杠，请删除域名字段末尾的斜杠，然后再次保存。");
-
-  if (domain_string === "" && auto_rss_enabled === true) {
-    save_blog_settings_operate_success = false;
-    auto_rss_enabled = false;
-  }
-
-  if (domain_string === "" && auto_sitemap_enabled === true) {
-    save_blog_settings_operate_success = false;
-    auto_sitemap_enabled = false;
-  }
-
   blog["在对文章列表进行修改后触发rss生成"] = auto_rss_enabled;
   blog["在对文章或页面列表进行修改后触发sitemap.txt生成"] = auto_sitemap_enabled;
 

@@ -4,6 +4,7 @@ const marked = require("marked");
 const xss_filter = require("xss");
 const toast_creator = require("./toast_creator.js");
 const ai_function = require("./ai_function.js");
+const rss_hook = require("./rss_hook.js");
 
 module.exports = function () {
   let path = decodeURIComponent(getUrlArgs("path"));
@@ -384,6 +385,8 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     }else {
       writeFileSync(`${rootDir}/${path}`,document.getElementById("editor_textarea").value);
     }
+
+    rss_hook();
     
     document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["ALREADY_SAVED"][lang_name];
     editor_status=0;

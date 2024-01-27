@@ -1,4 +1,6 @@
-const { writeFileSync } = require("fs");
+const { writeFileSync, readFileSync } = require("fs");
+const xss_filter = require("xss");
+const { marked } = require("marked");
 
 module.exports = function () {
   let rss_content = "";
@@ -32,9 +34,11 @@ module.exports = function () {
       <link href="${blog["网站域名（包括https://）"]}/index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}"/>
       <id>${blog["网站域名（包括https://）"]}/index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}</id>
       <content type="html">
-          ${blog["文章列表"][i]["摘要"]}
+          ${blog["文章列表"][i]["是否加密"]===true?blog["文章列表"][i]["摘要"]:xss_filter(marked(readFileSync(rootDir+"/data/articles/"+blog["文章列表"][i]["文件名"],"utf-8")))}
       </content>
       <summary type="html">${blog["文章列表"][i]["摘要"]}</summary>
+      <updated>${new Date(blog["文章列表"][i]["修改日期"]).toISOString()}</updated>
+      <published>${new Date(blog["文章列表"][i]["创建日期"]).toISOString()}</published>
       </entry>`;
   }
 
