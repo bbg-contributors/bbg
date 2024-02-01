@@ -1831,7 +1831,7 @@ ipaddr.js@1.9.1:
 
 "ipinyinjs@https://github.com/bbg-contributors/pinyinjs.git":
   version "1.0.0"
-  resolved "https://github.com/bbg-contributors/pinyinjs.git#04bfb2aab96c3382c0b69de7f9789129800712d9"
+  resolved "https://github.com/bbg-contributors/pinyinjs.git#33b9c0fa5bfda948cf72be8ade6ecff5358ea8c8"
 
 is-alphabetical@^1.0.0:
   version "1.0.4"
