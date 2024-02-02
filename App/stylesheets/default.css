@@ -1,10 +1,10 @@
 
 .navbar{
-  background-color: rgb(51,57,69) !important;
-  color: white !important;
+  background-color: rgb(233,233,233) !important;
+  color: rgb(51,57,69) !important;
   position: absolute;
   left:-60px;
-  width: 105%;
+  width: 1145%;
   border-radius: 0;
   border: 0;
   padding: 7px;
@@ -16,29 +16,27 @@
 }
 
 .navbar .container-fluid a{
-  color: white !important;
+  color: rgb(51,57,69) !important;
 }
 
 
 .article-item-sub,
 .article-content-sub,
 .page-item-sub {
-  color: lightslategray;
+  color: #999;
 }
 
 .page-item,
 .article-item,
 .fluentinterface {
-  background-color: rgb(251, 252, 255);
+  background-color: white;
   padding: 24px;
 
   padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-  border: solid;
-  border-color: #819baa;
-  border-radius: 10px;
-  border-width: 1px;
+  border-radius: 0px;
+  box-shadow: 0 1px 1px -2px rgb(0 0 0 / 60%), 0 2px 1px 0 rgb(0 0 0 / 36%), 0 1px 2px 1px rgb(0 0 0 / 32%);
 }
 
 .fluenthint {
@@ -580,7 +578,7 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #nav_container{
-  background-color: rgb(51,57,69);
+  background-color: rgb(233,233,233);
   position: fixed;
   width: 54px;
   height: 100%;
@@ -588,9 +586,20 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #nav_container .list-group .list-group-item{
-  background-color: rgb(51,57,69);
-  color: white;
+  background-color: rgb(233,233,233);
+  color: rgb(51,57,69);
 }
+
+#nav_container .list-group .list-group-item:hover{
+  background-color: white;
+  color: rgb(51,57,69);
+}
+
+#nav_container .list-group .list-group-item:active{
+  background-color: rgba(51, 57, 69, 0.5);
+  color: rgb(51,57,69);
+}
+
 
 #nav_container .list-group .list-group-item.active{
   background-color: rgb(146,186,221);

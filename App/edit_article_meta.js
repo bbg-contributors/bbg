@@ -11,31 +11,64 @@ module.exports = function (i) {
   document.getElementById("article_meta_content").innerHTML = "";
 
   document.getElementById("article_meta_content").insertAdjacentHTML("beforeend", `
-    <div class="mb-3">
-    <label class="form-label"><i class="fa fa-book"></i> ${langdata.ARTICLE_TITLE[lang_name]}</label>
-    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_TITLE[lang_name]}" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
-  </div>
-  <div class="mb-3">
-    <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
-    <textarea class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_ABSTRACT[lang_name]}" id="meta_article_description">${blog["文章列表"][i]["摘要"]}</textarea>
-  </div>
-  <div class="mb-3">
-    <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
-    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_CREATEDAT[lang_name]}" value="${blog["文章列表"][i]["创建日期"]}" id="meta_article_createdat">
-  </div>
-  <div class="mb-3">
-    <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.MODIFIEDAT_EDIT_META[lang_name]}</label>
-    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_UPDATEDDAT[lang_name]}" value="${blog["文章列表"][i]["修改日期"]}" id="meta_article_updatedat">
-  </div>
-  <div class="mb-3">
-    <label class="form-label"><i class="fa fa-tags"></i> ${langdata.TAGS_EDIT_META[lang_name]}</label>
-    <input class="form-control"  placeholder="${langdata.PLEASE_INPUT_TAGS[lang_name]}" id="meta_article_tags">
-  </div>
-  <div class="mb-3">
-  <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.FILENAME[lang_name]}</label>
-  <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-7">
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-book"></i> ${langdata.ARTICLE_TITLE[lang_name]}</label>
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_TITLE[lang_name]}" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
+          <textarea class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_ABSTRACT[lang_name]}" id="meta_article_description">${blog["文章列表"][i]["摘要"]}</textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_CREATEDAT[lang_name]}" value="${blog["文章列表"][i]["创建日期"]}" id="meta_article_createdat">
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.MODIFIEDAT_EDIT_META[lang_name]}</label>
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_UPDATEDDAT[lang_name]}" value="${blog["文章列表"][i]["修改日期"]}" id="meta_article_updatedat">
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-tags"></i> ${langdata.TAGS_EDIT_META[lang_name]}</label>
+          <input class="form-control"  placeholder="${langdata.PLEASE_INPUT_TAGS[lang_name]}" id="meta_article_tags">
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.FILENAME[lang_name]}</label>
+          <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
+          <label class="form-check-label" for="meta_article_is_comment_enabled">
+          ${langdata.ENABLE_COMMENT[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="meta_article_istop">
+          <label class="form-check-label" for="meta_article_istop">
+          ${langdata.ARTICLE_IS_TOP[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
+          <label class="form-check-label" for="meta_article_ishidden">
+          ${langdata.HIDE_ARTICLE_IN_LIST[lang_name]}
+          </label>
+          
+          <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="${langdata["HINT_OF_HIDE_ARTICLE_OPTION"][lang_name]}">
+            <i class="fa fa-exclamation-triangle " style="color:grey"></i>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 `);
+
+  const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
   loadIME("#meta_article_title");
   loadIME("#meta_article_description");
@@ -44,31 +77,6 @@ module.exports = function (i) {
   loadIME("#meta_article_tags");
   loadIME("#meta_article_filename");
 
-  document.getElementById("article_meta_content").insertAdjacentHTML("beforeend", `
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="meta_article_istop">
-      <label class="form-check-label" for="meta_article_istop">
-      ${langdata.ARTICLE_IS_TOP[lang_name]}
-      </label>
-    </div>
-    
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
-      <label class="form-check-label" for="meta_article_is_comment_enabled">
-      ${langdata.ENABLE_COMMENT[lang_name]}
-      </label>
-    </div>
-    
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="meta_article_ishidden">
-      <label class="form-check-label" for="meta_article_ishidden">
-      ${langdata.HIDE_ARTICLE_IN_LIST[lang_name]}
-      </label>
-    </div>
-    
-    
-      
-      `);
   if (blog["文章列表"][i]["标签"].length !== 0) {
     let tempTagString = "";
     for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++)
