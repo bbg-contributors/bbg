@@ -31,7 +31,7 @@ module.exports = function (selector) {
               builtin_ime_type = "none";
             }
           } else {
-            builtin_ime_type = data.type;
+            builtin_ime_type = data.ime;
             if (builtin_ime_type !== "pinyin" && builtin_ime_type !== "none" && builtin_ime_type !== "xiaohe_doublepinyin"){
               builtin_ime_type = "none";
             }

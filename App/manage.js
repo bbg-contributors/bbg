@@ -127,6 +127,13 @@ storage.has("language", (error, hasKey) => {
       if(ipcRenderer.sendSync("ime_getCurrentStatus") === "input"){
         SimpleInputMethod.isInEnglishMode = false;
       }
+      SimpleInputMethod.callbackFuncWhenChangeEnglishMode = function(isCurrentModeEnglishMode){
+        if(isCurrentModeEnglishMode === true){
+          ipcRenderer.send("ime_setToEnglishMode");
+        }else{
+          ipcRenderer.send("ime_setToInputMode");
+        }
+      };
     },
     );
   } else {
