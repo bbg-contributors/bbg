@@ -2,8 +2,8 @@
 .navbar{
   background-color: rgb(233,233,233) !important;
   color: rgb(51,57,69) !important;
-  position: absolute;
-  left:-60px;
+  position: fixed;
+  left: 0px;
   width: 1145%;
   border-radius: 0;
   border: 0;
