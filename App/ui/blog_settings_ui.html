@@ -83,7 +83,9 @@ ${blog["底部信息（格式为markdown）"]}
       </div>
 
       <div class="mb-3">
-        <label class="form-label"><i class="fa fa-copyright"></i> ${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]}</label>
+        <label class="form-label"><i class="fa fa-copyright"></i> ${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]} <span data-bs-toggle="tooltip" data-bs-title="${langdata.WHOLE_SITE_CONTENT_LICENSE_DESCRIPTION[lang_name]}">
+          <i class="fa fa-info-circle" style="color:grey"></i>
+        </span></label>
         <input
           class="form-control"
           value="${blog['全站内容授权协议']}"
@@ -91,53 +93,7 @@ ${blog["底部信息（格式为markdown）"]}
         />
       </div>
 
-      <div class="alert alert-primary" role="alert">
-        ${langdata.WHOLE_SITE_CONTENT_LICENSE_DESCRIPTION[lang_name]}
-      </div>
-
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="blog_content_license_enabled"
-        />
-        <label class="form-check-label" for="blog_content_license_enabled">
-          ${langdata.DISABLE_WHOLE_SITE_CONTENT_LICENSE_FUNCTION[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="enable_article_bottom_nav"
-        />
-        <label class="form-check-label" for="enable_article_bottom_nav">
-          ${langdata.DISPLAY_NAVIGATION_BUTTONS[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="enable_article_file_download"
-        />
-        <label class="form-check-label" for="enable_article_file_download">
-          ${langdata.DISPLAY_DOWNLOAD_MARKDOWN_BUTTON[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="enable_copy_full_article_to_clipboard"
-        />
-        <label class="form-check-label" for="enable_copy_full_article_to_clipboard">
-          ${langdata.DISPLAY_COPY_TO_CLIPBOARD_BUTTON[lang_name]}
-        </label>
-      </div>
+      
 
       <br />
 
@@ -152,107 +108,199 @@ ${blog["底部信息（格式为markdown）"]}
           <option value="japanese" id="sitelang_japanese">日本語</option>
         </select>
       </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata.HOW_MANT_ARTICLE_IN_A_PAGE[lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['文章列表中每页的文章数为']}"
-          type="number"
-          min="5"
-          id="blog_settings_howmany_article_in_a_page"
-        />
-        <br />
-        <div class="alert alert-primary" role="alert">
-          ${langdata.HOW_MANT_ARTICLE_IN_A_PAGE_DESCRIPTION[lang_name]}
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['标题栏背景颜色']}"
-          id="blog_settings_titlebar_bgcolor"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["BLOG_NAVBAR_TEXTCOLOR"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['标题栏文字颜色']}"
-          id="blog_settings_titlebar_textcolor"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["LINK_COLOR"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['链接颜色']}"
-          id="blog_settings_linkcolor"
-        />
-      </div>
-
-      <div class="alert alert-primary" role="alert">
-        <i class="fa fa-smile-o"></i>
-        ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="set_search_button_outline_into_dark_mode"
-        />
-        <label class="form-check-label" for="set_search_button_outline_into_dark_mode">
-          ${langdata.SET_SEARCH_BUTTON_OUTLINE_INTO_DARK_MODE[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="increase_page_margin"
-        />
-        <label class="form-check-label" for="increase_page_margin">
-          ${langdata.INCREASE_PAGE_MARGIN[lang_name]}
-        </label>
-      </div>
-      
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="use_serif_font"
-        />
-        <label class="form-check-label" for="use_serif_font">
-          ${langdata.USE_SERIF_FONT[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="disable_shadow_effect_of_navbar"
-        />
-        <label class="form-check-label" for="disable_shadow_effect_of_navbar">
-          ${langdata.DISABLE_SHADOW_EFFECT_OF_NAV_BAR[lang_name]}
-        </label>
-      </div>
-
+     
       <br />
+      
+      <details>
+        <summary>${langdata["CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS"][lang_name]}</summary>
+
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="blog_content_license_enabled"
+          />
+          <label class="form-check-label" for="blog_content_license_enabled">
+            ${langdata.DISABLE_WHOLE_SITE_CONTENT_LICENSE_FUNCTION[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="enable_article_bottom_nav"
+          />
+          <label class="form-check-label" for="enable_article_bottom_nav">
+            ${langdata.DISPLAY_NAVIGATION_BUTTONS[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="enable_article_file_download"
+          />
+          <label class="form-check-label" for="enable_article_file_download">
+            ${langdata.DISPLAY_DOWNLOAD_MARKDOWN_BUTTON[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="enable_copy_full_article_to_clipboard"
+          />
+          <label class="form-check-label" for="enable_copy_full_article_to_clipboard">
+            ${langdata.DISPLAY_COPY_TO_CLIPBOARD_BUTTON[lang_name]}
+          </label>
+        </div>
+
+
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="set_search_button_outline_into_dark_mode"
+          />
+          <label class="form-check-label" for="set_search_button_outline_into_dark_mode">
+            ${langdata.SET_SEARCH_BUTTON_OUTLINE_INTO_DARK_MODE[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="increase_page_margin"
+          />
+          <label class="form-check-label" for="increase_page_margin">
+            ${langdata.INCREASE_PAGE_MARGIN[lang_name]}
+          </label>
+        </div>
+        
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="use_serif_font"
+          />
+          <label class="form-check-label" for="use_serif_font">
+            ${langdata.USE_SERIF_FONT[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="disable_shadow_effect_of_navbar"
+          />
+          <label class="form-check-label" for="disable_shadow_effect_of_navbar">
+            ${langdata.DISABLE_SHADOW_EFFECT_OF_NAV_BAR[lang_name]}
+          </label>
+        </div>
+
+        
+
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata.HOW_MANT_ARTICLE_IN_A_PAGE[lang_name]}
+            <span data-bs-toggle="tooltip" data-bs-title="${langdata.HOW_MANT_ARTICLE_IN_A_PAGE_DESCRIPTION[lang_name]}">
+              <i class="fa fa-info-circle" style="color:grey"></i>
+            </span>
+            </label
+          >
+          <input
+            class="form-control"
+            value="${blog['文章列表中每页的文章数为']}"
+            type="number"
+            min="5"
+            id="blog_settings_howmany_article_in_a_page"
+          />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局主题设置']['标题栏背景颜色']}"
+            id="blog_settings_titlebar_bgcolor"
+          />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["BLOG_NAVBAR_TEXTCOLOR"][lang_name]}</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局主题设置']['标题栏文字颜色']}"
+            id="blog_settings_titlebar_textcolor"
+          />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["LINK_COLOR"][lang_name]}</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局主题设置']['链接颜色']}"
+            id="blog_settings_linkcolor"
+          />
+        </div>
+  
+        <div class="alert alert-primary" role="alert">
+          <i class="fa fa-smile-o"></i>
+          ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
+        </div>
+  
+  
+
+        <h5>
+          ${langdata.MARKDOWN_RENDERING[lang_name]}
+        </h5>
+
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="rewrite_baseurl"
+          />
+          <label class="form-check-label" for="rewrite_baseurl">
+            ${langdata.REWRITE_BASEURL[lang_name]}
+          </label>
+        </div>
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="enable_image_viewer"
+          />
+          <label class="form-check-label" for="enable_image_viewer">
+            ${langdata.ENABLE_IMAGE_VIEWER[lang_name]}
+          </label>
+        </div>
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="resize_images"
+          />
+          <label class="form-check-label" for="resize_images">
+            ${langdata.RESIZE_IMAGES[lang_name]}
+          </label>
+        </div>
+        
+      </details>
+    </div>
+
+    <div class="fluentinterface" id="domain_related_function_navhash">
       <h2>${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</h2>
       <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
       
@@ -279,55 +327,9 @@ ${blog["底部信息（格式为markdown）"]}
           ${langdata.AUTO_UPDATE_SITEMAP[lang_name]}
         </label>
       </div>
-      <br />
-      <br />
-      <h3>
-        ${langdata.MARKDOWN_RENDERING[lang_name]}
-      </h3>
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="rewrite_baseurl"
-        />
-        <label class="form-check-label" for="rewrite_baseurl">
-          ${langdata.REWRITE_BASEURL[lang_name]}
-        </label>
-      </div>
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="enable_image_viewer"
-        />
-        <label class="form-check-label" for="enable_image_viewer">
-          ${langdata.ENABLE_IMAGE_VIEWER[lang_name]}
-        </label>
-      </div>
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="resize_images"
-        />
-        <label class="form-check-label" for="resize_images">
-          ${langdata.RESIZE_IMAGES[lang_name]}
-        </label>
-      </div>
-
-      
-      <br />
-      <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
-      <p>
-        ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
-      </p>
-      <button
-        class="btn btn-outline-primary"
-        onclick="check_data_consistency()"
-      >
-      ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
-      </button>
     </div>
+
+    
 
     <div class="fluentinterface" id="announcement_board_navhash">
       <h3>${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</h3>
@@ -775,6 +777,18 @@ ${blog["自定义JS"]}
         >
         <br />
       </div>
+    </div>
+    <div class="fluentinterface" id="check_data_consistency_navhash">
+      <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
+      <p>
+        ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
+      </p>
+      <button
+        class="btn btn-outline-primary"
+        onclick="check_data_consistency()"
+      >
+      ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
+      </button>
     </div>
   </div>
 </div>

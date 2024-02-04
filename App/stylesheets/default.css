@@ -8,6 +8,7 @@
   border-radius: 0;
   border: 0;
   padding: 7px;
+  z-index: 1145;
 }
 
 .simple-input-method {
@@ -47,6 +48,10 @@
   color: grey !important;
 }
 
+#nav_container {
+  z-index: 1919!important;
+}
+
 body:before {
   top: 0;
   left: 0;
@@ -61,6 +66,22 @@ body:before {
 .modal-header,
 .modal-footer {
   border: none;
+}
+
+.modal {
+  z-index: 2200;
+}
+
+.modal-backdrop {
+  z-index: 2000;
+}
+
+.tooltip {
+  z-index: 2400;
+}
+
+.toast {
+  z-index: 2500;
 }
 
 .fluentbtn {
@@ -469,10 +490,6 @@ body:before {
 
 a , .btn-link{
   text-decoration: none;
-}
-
-.toast{
-  z-index:15;
 }
 
 #nav_list button {
