@@ -455,79 +455,85 @@ ${blog["网站公告"]}
         />
       </div>
 
-      <h3>
-        ${langdata["FUNCTIONS_SWITCH"][lang_name]}
-      </h3>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_hitokoto_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_hitokoto_enabled">
-          ${langdata.HITOKOTO[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_asteroids_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_asteroids_enabled">
-          ${langdata.ASTEROIDS[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_switch_model_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_switch_model_enabled">
-          ${langdata.SWITCH_MODEL[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_switch_texture_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_switch_texture_enabled">
-          ${langdata.SWITCH_TEXTURE[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_photo_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_photo_enabled">
-          ${langdata.PHOTO[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_info_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_info_enabled">
-          ${langdata.INFO[lang_name]}
-        </label>
-      </div>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_quit_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_quit_enabled">
-          ${langdata.ALLOW_QUIT[lang_name]}
-        </label>
-      </div>
+      <details>
+        <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
+        <h3>
+          ${langdata["FUNCTIONS_SWITCH"][lang_name]}
+        </h3>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_hitokoto_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_hitokoto_enabled">
+            ${langdata.HITOKOTO[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_asteroids_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_asteroids_enabled">
+            ${langdata.ASTEROIDS[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_switch_model_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_switch_model_enabled">
+            ${langdata.SWITCH_MODEL[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_switch_texture_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_switch_texture_enabled">
+            ${langdata.SWITCH_TEXTURE[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_photo_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_photo_enabled">
+            ${langdata.PHOTO[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_info_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_info_enabled">
+            ${langdata.INFO[lang_name]}
+          </label>
+        </div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_quit_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_quit_enabled">
+            ${langdata.ALLOW_QUIT[lang_name]}
+          </label>
+        </div>
+
+      </details>
+
+      
     </div>
 
     <div class="fluentinterface" id="thirdpartytheme_navhash">
@@ -707,38 +713,7 @@ ${blog["网站公告"]}
 
     <div class="fluentinterface" id="advanced_navhash">
       <h3>${langdata.HIGH_ADVANCED[lang_name]}</h3>
-      <p>${langdata.HIGH_ADVANCED_DESCRIPTION[lang_name]}</p>
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="blog_settings_enable_custom_css"
-        />
-        <label class="form-check-label" for="blog_settings_enable_custom_css">
-          ${langdata.ENABLE_CUSTOMIZE_CSS[lang_name]}
-        </label>
-      </div>
 
-      <p>
-        ${langdata.ENABLE_CUSTOMIZE_CSS_DESCRIPTION[lang_name]}
-      </p>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="blog_settings_enable_custom_js"
-        />
-        <label class="form-check-label" for="blog_settings_enable_custom_js">
-          ${langdata.ENABLE_CUSTOMIZE_JS[lang_name]}
-        </label>
-      </div>
-
-      <p>
-        ${langdata.ENABLE_CUSTOMIZE_JS_DESCRIPTION[lang_name]}
-      </p>
-
-      
       <div class="form-check form-switch">
         <input
           class="form-check-input"
@@ -754,29 +729,76 @@ ${blog["网站公告"]}
         ${langdata.FORMAT_JSON_ENABLED_DESCRIPTION[lang_name]}
       </p>
 
+      <details>
+        <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
+
+
+      <p>${langdata.HIGH_ADVANCED_DESCRIPTION[lang_name]}</p>
+
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="blog_settings_enable_custom_css"
+          />
+          <label class="form-check-label" for="blog_settings_enable_custom_css">
+            ${langdata.ENABLE_CUSTOMIZE_CSS[lang_name]}
+          </label>
+        </div>
+  
+        <p>
+          ${langdata.ENABLE_CUSTOMIZE_CSS_DESCRIPTION[lang_name]}
+        </p>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="blog_settings_enable_custom_js"
+          />
+          <label class="form-check-label" for="blog_settings_enable_custom_js">
+            ${langdata.ENABLE_CUSTOMIZE_JS[lang_name]}
+          </label>
+        </div>
+  
+        <p>
+          ${langdata.ENABLE_CUSTOMIZE_JS_DESCRIPTION[lang_name]}
+        </p>
+
+        <div class="mb-3">
+          <label class="form-label">${langdata.CUSTOM_CSS_CODE[lang_name]}</label>
+          <br />
+          <textarea class="form-control" id="blog_settings_custom_css">
+  ${blog["自定义CSS"]}
+  
+  </textarea
+          >
+          <br />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">${langdata.CUSTOM_JS_CODE[lang_name]}</label>
+          <br />
+          <textarea class="form-control" id="blog_settings_custom_js">
+  ${blog["自定义JS"]}
+  
+  </textarea
+          >
+          <br />
+        </div>
+  
+      </details>
+
+
+      
+      
+
+
+      
+
       <br />
 
-      <div class="mb-3">
-        <label class="form-label">${langdata.CUSTOM_CSS_CODE[lang_name]}</label>
-        <br />
-        <textarea class="form-control" id="blog_settings_custom_css">
-${blog["自定义CSS"]}
-
-</textarea
-        >
-        <br />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">${langdata.CUSTOM_JS_CODE[lang_name]}</label>
-        <br />
-        <textarea class="form-control" id="blog_settings_custom_js">
-${blog["自定义JS"]}
-
-</textarea
-        >
-        <br />
-      </div>
+     
     </div>
     <div class="fluentinterface" id="check_data_consistency_navhash">
       <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
