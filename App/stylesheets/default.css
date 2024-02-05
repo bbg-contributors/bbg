@@ -48,6 +48,15 @@
   color: grey !important;
 }
 
+.nav-tabs .nav-item .nav-link {
+  color: #168dd6!important;
+}
+
+.nav-tabs .nav-link.active {
+  border-color: #168dd6 #168dd6 #fff;
+  color: black!important;
+}
+
 #nav_container {
   z-index: 1919!important;
 }

@@ -6,813 +6,819 @@
   </div>
 </nav>
 <br /><br /><br />
+
 <div class="row">
-  <div class="col-3">
-    
-    <ul class="list-group" id="blog_settings_list">
-      <h6><i class="fa fa-book"></i> 目录 / Contents</h6>
-      <li class="list-group-item">
-        <a href="#basic_info_theme_config_navhash"
-          >${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a
-        >
+  <div class="col-1"></div>
+  <div class="col-10">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="basic_info_theme_config_navitem" onclick="enterBlogSettingInterfaceOf('basic_info_theme_config')">${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#announcement_board_navhash">${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="domain_related_function_navitem" onclick="enterBlogSettingInterfaceOf('domain_related_function')">${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#favicon_navhash">${langdata["FAVICON"][lang_name]}</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="announcement_board_navitem" onclick="enterBlogSettingInterfaceOf('announcement_board')">${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#bgimage_navhash">${langdata["SITE_BGIMAGE"][lang_name]}</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="favicon_navitem" onclick="enterBlogSettingInterfaceOf('favicon')">${langdata["FAVICON"][lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#thirdpartytheme_navhash"
-          >${langdata["USE_3RD_THEME"][lang_name]}</a
-        >
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="bgimage_navitem" onclick="enterBlogSettingInterfaceOf('bgimage')">${langdata["SITE_BGIMAGE"][lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#comment_settings_navhash"
-          >${langdata["COMMENT_SETTINGS"][lang_name]}</a
-        >
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="live2dwidget_navitem" onclick="enterBlogSettingInterfaceOf('live2dwidget')">${langdata["LIVE2D_WIDGET_SETTINGS"][lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#cdn_settings_navhash"
-          >${langdata["CDN_SETTINGS"][lang_name]}</a
-        >
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="thirdpartytheme_navitem" onclick="enterBlogSettingInterfaceOf('thirdpartytheme')">${langdata["USE_3RD_THEME"][lang_name]}</a>
       </li>
-      <li class="list-group-item">
-        <a href="#advanced_navhash">${langdata.HIGH_ADVANCED[lang_name]}</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="comment_settings_navitem" onclick="enterBlogSettingInterfaceOf('comment_settings')">${langdata["COMMENT_SETTINGS"][lang_name]}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="cdn_settings_navitem" onclick="enterBlogSettingInterfaceOf('cdn_settings')">${langdata["CDN_SETTINGS"][lang_name]}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="advanced_navitem" onclick="enterBlogSettingInterfaceOf('advanced')">${langdata.HIGH_ADVANCED[lang_name]}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="check_data_consistency_navitem" onclick="enterBlogSettingInterfaceOf('check_data_consistency')">${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</a>
       </li>
     </ul>
-  </div>
-  <div class="col-9" id="blog_setting_actual_content">
-    <div class="fluentinterface" id="basic_info_theme_config_navhash">
-      <h2>
-        <i class="fa fa-paint-brush"></i>
-        ${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}
-      </h2>
-      <br />
-      <div class="mb-3">
-        <label class="form-label"><i class="fa fa-book"></i> ${langdata["BLOG_TITLE"][lang_name]}</label>
-        <input
-          class="form-control"
-          value="${blog['博客标题']}"
-          id="blog_settings_title"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          ><i class="fa fa-file-text-o"></i> ${langdata["BLOG_DESCRIPTION"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['博客描述（副标题）']}"
-          id="blog_settings_description"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          ><i class="fa fa-file-text-o"></i> ${langdata["BOTTOM_INFORMATION"][lang_name]}</label
-        >
-        <textarea class="form-control" id="blog_settings_bottom_information">
-${blog["底部信息（格式为markdown）"]}
-</textarea
-        >
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"><i class="fa fa-copyright"></i> ${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]} <span data-bs-toggle="tooltip" data-bs-title="${langdata.WHOLE_SITE_CONTENT_LICENSE_DESCRIPTION[lang_name]}">
-          <i class="fa fa-info-circle" style="color:grey"></i>
-        </span></label>
-        <input
-          class="form-control"
-          value="${blog['全站内容授权协议']}"
-          id="blog_settings_content_license"
-        />
-      </div>
-
-      
-
-      <br />
-
-      <div class="mb-3">
-        <label class="form-label"><i class="fa fa-globe"></i> ${langdata["SITE_LANG"][lang_name]}</label>
+    <div id="blog_setting_actual_content">
+      <div class="fluentinterface" id="basic_info_theme_config_navhash" style="display: none;">
+        <h2>
+          <i class="fa fa-paint-brush"></i>
+          ${langdata["BASIC_INFO_THEME_CONFIG"][lang_name]}
+        </h2>
         <br />
-        <select class="form-select">
-          <option value="simplified_chinese" id="sitelang_simplified_chinese">
-            简体中文
-          </option>
-          <option value="english" id="sitelang_english">English</option>
-          <option value="japanese" id="sitelang_japanese">日本語</option>
-        </select>
-      </div>
-     
-      <br />
-      
-      <details>
-        <summary>${langdata["CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS"][lang_name]}</summary>
-
-        <div class="form-check form-switch">
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-book"></i> ${langdata["BLOG_TITLE"][lang_name]}</label>
           <input
-            class="form-check-input"
-            type="checkbox"
-            id="blog_content_license_enabled"
+            class="form-control"
+            value="${blog['博客标题']}"
+            id="blog_settings_title"
           />
-          <label class="form-check-label" for="blog_content_license_enabled">
-            ${langdata.DISABLE_WHOLE_SITE_CONTENT_LICENSE_FUNCTION[lang_name]}
-          </label>
         </div>
   
-        <div class="form-check form-switch">
+        <div class="mb-3">
+          <label class="form-label"
+            ><i class="fa fa-file-text-o"></i> ${langdata["BLOG_DESCRIPTION"][lang_name]}</label
+          >
           <input
-            class="form-check-input"
-            type="checkbox"
-            id="enable_article_bottom_nav"
+            class="form-control"
+            value="${blog['博客描述（副标题）']}"
+            id="blog_settings_description"
           />
-          <label class="form-check-label" for="enable_article_bottom_nav">
-            ${langdata.DISPLAY_NAVIGATION_BUTTONS[lang_name]}
-          </label>
         </div>
   
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="enable_article_file_download"
-          />
-          <label class="form-check-label" for="enable_article_file_download">
-            ${langdata.DISPLAY_DOWNLOAD_MARKDOWN_BUTTON[lang_name]}
-          </label>
+        <div class="mb-3">
+          <label class="form-label"
+            ><i class="fa fa-file-text-o"></i> ${langdata["BOTTOM_INFORMATION"][lang_name]}</label
+          >
+          <textarea class="form-control" id="blog_settings_bottom_information">
+  ${blog["底部信息（格式为markdown）"]}
+  </textarea
+          >
         </div>
   
-        <div class="form-check  form-switch">
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-copyright"></i> ${langdata.WHOLE_SITE_CONTENT_LICENSE[lang_name]} <span data-bs-toggle="tooltip" data-bs-title="${langdata.WHOLE_SITE_CONTENT_LICENSE_DESCRIPTION[lang_name]}">
+            <i class="fa fa-info-circle" style="color:grey"></i>
+          </span></label>
           <input
-            class="form-check-input"
-            type="checkbox"
-            id="enable_copy_full_article_to_clipboard"
+            class="form-control"
+            value="${blog['全站内容授权协议']}"
+            id="blog_settings_content_license"
           />
-          <label class="form-check-label" for="enable_copy_full_article_to_clipboard">
-            ${langdata.DISPLAY_COPY_TO_CLIPBOARD_BUTTON[lang_name]}
-          </label>
-        </div>
-
-
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="set_search_button_outline_into_dark_mode"
-          />
-          <label class="form-check-label" for="set_search_button_outline_into_dark_mode">
-            ${langdata.SET_SEARCH_BUTTON_OUTLINE_INTO_DARK_MODE[lang_name]}
-          </label>
         </div>
   
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="increase_page_margin"
-          />
-          <label class="form-check-label" for="increase_page_margin">
-            ${langdata.INCREASE_PAGE_MARGIN[lang_name]}
-          </label>
-        </div>
         
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="use_serif_font"
-          />
-          <label class="form-check-label" for="use_serif_font">
-            ${langdata.USE_SERIF_FONT[lang_name]}
-          </label>
-        </div>
   
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="disable_shadow_effect_of_navbar"
-          />
-          <label class="form-check-label" for="disable_shadow_effect_of_navbar">
-            ${langdata.DISABLE_SHADOW_EFFECT_OF_NAV_BAR[lang_name]}
-          </label>
-        </div>
-
-        
-
-        <div class="mb-3">
-          <label class="form-label"
-            >${langdata.HOW_MANT_ARTICLE_IN_A_PAGE[lang_name]}
-            <span data-bs-toggle="tooltip" data-bs-title="${langdata.HOW_MANT_ARTICLE_IN_A_PAGE_DESCRIPTION[lang_name]}">
-              <i class="fa fa-info-circle" style="color:grey"></i>
-            </span>
-            </label
-          >
-          <input
-            class="form-control"
-            value="${blog['文章列表中每页的文章数为']}"
-            type="number"
-            min="5"
-            id="blog_settings_howmany_article_in_a_page"
-          />
-        </div>
+        <br />
   
         <div class="mb-3">
-          <label class="form-label"
-            >${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局主题设置']['标题栏背景颜色']}"
-            id="blog_settings_titlebar_bgcolor"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label class="form-label"
-            >${langdata["BLOG_NAVBAR_TEXTCOLOR"][lang_name]}</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局主题设置']['标题栏文字颜色']}"
-            id="blog_settings_titlebar_textcolor"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label class="form-label"
-            >${langdata["LINK_COLOR"][lang_name]}</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局主题设置']['链接颜色']}"
-            id="blog_settings_linkcolor"
-          />
-        </div>
-  
-        <div class="alert alert-primary" role="alert">
-          <i class="fa fa-smile-o"></i>
-          ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
-        </div>
-  
-  
-
-        <h5>
-          ${langdata.MARKDOWN_RENDERING[lang_name]}
-        </h5>
-
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="rewrite_baseurl"
-          />
-          <label class="form-check-label" for="rewrite_baseurl">
-            ${langdata.REWRITE_BASEURL[lang_name]}
-          </label>
-        </div>
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="enable_image_viewer"
-          />
-          <label class="form-check-label" for="enable_image_viewer">
-            ${langdata.ENABLE_IMAGE_VIEWER[lang_name]}
-          </label>
-        </div>
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="resize_images"
-          />
-          <label class="form-check-label" for="resize_images">
-            ${langdata.RESIZE_IMAGES[lang_name]}
-          </label>
-        </div>
-        
-      </details>
-    </div>
-
-    <div class="fluentinterface" id="domain_related_function_navhash">
-      <h2>${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</h2>
-      <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
-      
-
-      <input id="domain_string" class="form-control" placeholder="${langdata.DOMAIN_RELATED_FUNCTION_EXAMPLE[lang_name]}" value="${blog['网站域名（包括https://）']}">
-<br />
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="auto_rss_enabled"
-        />
-        <label class="form-check-label" for="auto_rss_enabled">
-          ${langdata.AUTO_UPDATE_ATOM_XML[lang_name]}
-        </label>
-      </div>
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="auto_sitemap_enabled"
-        />
-        <label class="form-check-label" for="auto_sitemap_enabled">
-          ${langdata.AUTO_UPDATE_SITEMAP[lang_name]}
-        </label>
-      </div>
-    </div>
-
-    
-
-    <div class="fluentinterface" id="announcement_board_navhash">
-      <h3>${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</h3>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="website_announcement_enabled"
-        />
-        <label class="form-check-label" for="website_announcement_enabled">
-          ${langdata.ENABLE_ANNOUNCEMENT_BOARD_FUNCTION[lang_name]}
-        </label>
-      </div>
-
-      <div class="form-check  form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="website_announcement_indexonly"
-        />
-        <label class="form-check-label" for="website_announcement_indexonly">
-          ${langdata.ONLY_DISPLAY_ANNOUNCEMENT_IN_INDEX[lang_name]}
-        </label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata.CONTENT_OF_ANNOUNCEMENT_BOARD[lang_name]}</label
-        >
-        <br />
-        <textarea class="form-control" id="website_announcement_content">
-${blog["网站公告"]}
-
-</textarea
-        >
-        <br />
-      </div>
-    </div>
-
-    <div class="fluentinterface" id="favicon_navhash">
-      <h2><i class="fa fa-smile-o"></i> ${langdata["FAVICON"][lang_name]}</h2>
-      <br />
-      <p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
-      <p>${langdata["FAVICON_DESCRIPTION"][1][lang_name]}</p>
-      <p>${langdata["FAVICON_DESCRIPTION"][2][lang_name]}</p>
-      <button class="btn btn-outline-primary" onclick="select_a_favicon()">
-        ${langdata["SELECT_FAVICON"][lang_name]}
-      </button>
-      <button class="btn btn-outline-primary" onclick="view_current_icon()">
-        ${langdata["VIEW_FAVICON"][lang_name]}
-      </button>
-      <button class="btn btn-outline-primary" onclick="delete_current_icon()">
-        ${langdata["DELETE_FAVICON"][lang_name]}
-      </button>
-    </div>
-    <div class="fluentinterface" id="bgimage_navhash">
-      <h2>
-        <i class="fa fa-file-image-o"></i>
-        ${langdata["SITE_BGIMAGE"][lang_name]}
-      </h2>
-      <br />
-
-      <select class="form-select" id="blog_settings_background_setting">
-        <option value="bgimg_use_blank">空白背景（不使用背景）</option>
-        <option value="bgimg_use_pure_color">
-          使用纯色背景
-        </option>
-        <option value="bgimg_use_url">将某个URL作为网页背景图像</option>
-        <option value="bgimg_use_background_webp">将网站根目录下的background.webp作为网页背景图像</option>
-      </select>
-
-      <input class="form-control" id="blog_settings_url_of_background" style="display: none;">
-      <input class="form-control" id="blog_settings_color_of_background" style="display: none;">
-
-    </div>
-
-    <div class="fluentinterface" id="live2dwidget_navhash">
-      <h2>
-        ${langdata["LIVE2D_WIDGET_SETTINGS"][lang_name]}
-      </h2>
-      <br />
-
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="live2d_widget_enabled"
-        />
-        <label class="form-check-label" for="live2d_widget_enabled">
-          ${langdata.ENABLE_LIVE2d_WIDGET[lang_name]}
-        </label>
-      </div>
-      <br />
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["WIDGET_PATH"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['live2d-widget设置']['widget路径']}"
-          id="blog_settings_live2d_widget_path"
-        />
-      </div>
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["TIPS_PATH"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['live2d-widget设置']['tips路径']}"
-          id="blog_settings_live2d_widget_tips_path"
-        />
-      </div>
-      <div class="mb-3">
-        <label class="form-label"
-          >${langdata["API_PATH"][lang_name]}</label
-        >
-        <input
-          class="form-control"
-          value="${blog['全局主题设置']['live2d-widget设置']['api路径']}"
-          id="blog_settings_live2d_widget_api_path"
-        />
-      </div>
-
-      <details>
-        <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
-        <h3>
-          ${langdata["FUNCTIONS_SWITCH"][lang_name]}
-        </h3>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_hitokoto_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_hitokoto_enabled">
-            ${langdata.HITOKOTO[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_asteroids_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_asteroids_enabled">
-            ${langdata.ASTEROIDS[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_switch_model_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_switch_model_enabled">
-            ${langdata.SWITCH_MODEL[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_switch_texture_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_switch_texture_enabled">
-            ${langdata.SWITCH_TEXTURE[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_photo_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_photo_enabled">
-            ${langdata.PHOTO[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_info_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_info_enabled">
-            ${langdata.INFO[lang_name]}
-          </label>
-        </div>
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="live2d_widget_quit_enabled"
-          />
-          <label class="form-check-label" for="live2d_widget_quit_enabled">
-            ${langdata.ALLOW_QUIT[lang_name]}
-          </label>
-        </div>
-
-      </details>
-
-      
-    </div>
-
-    <div class="fluentinterface" id="thirdpartytheme_navhash">
-      <h2>
-        <i class="fa fa-paint-brush"></i>
-        ${langdata["USE_3RD_THEME"][lang_name]}
-      </h2>
-      <br />
-      <p id="isUsingThirdPartyTheme"></p>
-
-      
-
-      <button class="btn btn-outline-primary" onclick="open_online_theme_dialog()">
-        <i class="fa fa-external-link"></i> ${langdata["OPEN_THEME_STORE"][lang_name]}
-      </button>
-
-      <br /><br />
-
-      <button class="btn btn-link" onclick="reset_official_theme();">
-        ${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}
-      </button>
-      <button class="btn btn-link" onclick="apply_thirdparty_theme_v2();">
-        ${langdata["USE_3RD_THEME_FROM_FILE_V2"][lang_name]}
-      </button>
-    </div>
-
-    <div class="fluentinterface" id="comment_settings_navhash">
-      <h2>
-        <i class="fa fa-comments-o"></i>
-        ${langdata["COMMENT_SETTINGS"][lang_name]}
-      </h2>
-      <br />
-
-      <div class="mb-3">
-        <label class="form-label"><i class="fa fa-comments-o"></i> ${langdata["TYPE_OF_COMMENT_SYSTEM"][lang_name]}</label>
-        <br />
-        <select class="form-select" id="blog_settings_comment_system_setting">
-          <option value="valine" id="comment_select_to_use_valine">
-            Valine
-          </option>
-          <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
-          <option value="waline" id="comment_select_to_use_waline">Waline</option>
-          <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">由 BBG 提供的公共评论服务</option>
-          <option value="none" id="comment_do_not_use_any_comment_system">不使用此功能</option>
-        </select>
-      </div>
-
-      <!-- TODO: 添加说明性文字 -->
-
-      <div id="hint_when_using_valine_with_public_apikey" style="display: none;">
-
-        <p>${langdata["HINT_TEXT_WHEN_USING_VALINE_WITH_PUBLIC_APIKEY"][lang_name]}</p>
-      </div>
-
-      <div id="leancloud_settings_detail" style="display:none">
-
-        <p>${langdata["HINT_TEXT_WHEN_USING_VALINE"][lang_name]}</p>
-
-        <br />
-        <div class="mb-3">
-          <label class="form-label"
-            >${langdata["VALINE_APPID"][lang_name]}</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局评论设置']['valine设置']['leancloud_appid']}"
-            id="blog_settings_valine_appid"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label"
-            >${langdata["VALINE_APPKEY"][lang_name]}</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局评论设置']['valine设置']['leancloud_appkey']}"
-            id="blog_settings_valine_appkey"
-          />
-        </div>
-      </div>
-
-      <div id="disqus_settings_detail" style="display:none">
-
-        <p>${langdata["HINT_TEXT_WHEN_USING_DISQUS"][lang_name]}</p>
-
-        <br />
-        <div class="mb-3">
-          <label class="form-label"
-            >Disqus Shortname</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局评论设置']['disqus设置']['shortname']}"
-            id="blog_settings_disqus_shortname"
-          />
-        </div>
-      </div>
-
-      <div id="waline_settings_detail" style="display:none">
-
-        <p>${langdata["HINT_TEXT_WHEN_USING_WALINE"][lang_name]}</p>
-
-        <br />
-        <div class="mb-3">
-          <label class="form-label"
-            >Waline Server URL</label
-          >
-          <input
-            class="form-control"
-            value="${blog['全局评论设置']['waline设置']['serverurl']}"
-            id="blog_settings_waline_serverurl"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="fluentinterface" id="cdn_settings_navhash">
-      <h2><i class="fa fa-bolt"></i> ${langdata["CDN_SETTINGS"][lang_name]}</h2>
-      <br />
-      <div id="cdn_settings_desc">
-        ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}
-      </div>
-      <div class="mb-3">
-        <br />
-        <label class="form-label">
-          ${langdata["CDN_SETTINGS_METHOD"][lang_name]}
-        </label>
-        <br />
-        <input
-          type="radio"
-          id="cdn_cho_1"
-          name="cdn_choose"
-        />&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br />
-        <input
-          type="radio"
-          id="cdn_cho_2"
-          name="cdn_choose"
-        />&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
-        <div id="cdn_cho" style="display: none">
-          <select
-            name="cdn_path"
-            class="form-control"
-            id="blog_setting_cdn_frm_1"
-          >
-            <option value="https://unpkg.com">
-              https://unpkg.com
+          <label class="form-label"><i class="fa fa-globe"></i> ${langdata["SITE_LANG"][lang_name]}</label>
+          <br />
+          <select class="form-select">
+            <option value="simplified_chinese" id="sitelang_simplified_chinese">
+              简体中文
             </option>
-            <option value="https://cdn.jsdelivr.net/npm" selected>
-              https://cdn.jsdelivr.net/npm
-            </option>
-            <option value="https://unpkg.zhimg.com">
-              https://unpkg.zhimg.com
-            </option>
-            <option value="https://services.21042104.xyz/unpkg">
-              https://services.21042104.xyz/unpkg
-            </option>
-            <option value="https://cdn.koishi514.moe/npm">
-              https://cdn.koishi514.moe/npm
-            </option>
+            <option value="english" id="sitelang_english">English</option>
+            <option value="japanese" id="sitelang_japanese">日本語</option>
           </select>
         </div>
-        <div id="cdn_manual" style="display: none">
-          <br />
-          <label class="form-label" for="cdn_path">
-            ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label
-          ><br />
+       
+        <br />
+        
+        <details>
+          <summary>${langdata["CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS"][lang_name]}</summary>
+  
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="blog_content_license_enabled"
+            />
+            <label class="form-check-label" for="blog_content_license_enabled">
+              ${langdata.DISABLE_WHOLE_SITE_CONTENT_LICENSE_FUNCTION[lang_name]}
+            </label>
+          </div>
+    
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="enable_article_bottom_nav"
+            />
+            <label class="form-check-label" for="enable_article_bottom_nav">
+              ${langdata.DISPLAY_NAVIGATION_BUTTONS[lang_name]}
+            </label>
+          </div>
+    
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="enable_article_file_download"
+            />
+            <label class="form-check-label" for="enable_article_file_download">
+              ${langdata.DISPLAY_DOWNLOAD_MARKDOWN_BUTTON[lang_name]}
+            </label>
+          </div>
+    
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="enable_copy_full_article_to_clipboard"
+            />
+            <label class="form-check-label" for="enable_copy_full_article_to_clipboard">
+              ${langdata.DISPLAY_COPY_TO_CLIPBOARD_BUTTON[lang_name]}
+            </label>
+          </div>
+  
+  
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="set_search_button_outline_into_dark_mode"
+            />
+            <label class="form-check-label" for="set_search_button_outline_into_dark_mode">
+              ${langdata.SET_SEARCH_BUTTON_OUTLINE_INTO_DARK_MODE[lang_name]}
+            </label>
+          </div>
+    
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="increase_page_margin"
+            />
+            <label class="form-check-label" for="increase_page_margin">
+              ${langdata.INCREASE_PAGE_MARGIN[lang_name]}
+            </label>
+          </div>
+          
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="use_serif_font"
+            />
+            <label class="form-check-label" for="use_serif_font">
+              ${langdata.USE_SERIF_FONT[lang_name]}
+            </label>
+          </div>
+    
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="disable_shadow_effect_of_navbar"
+            />
+            <label class="form-check-label" for="disable_shadow_effect_of_navbar">
+              ${langdata.DISABLE_SHADOW_EFFECT_OF_NAV_BAR[lang_name]}
+            </label>
+          </div>
+  
+          
+  
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata.HOW_MANT_ARTICLE_IN_A_PAGE[lang_name]}
+              <span data-bs-toggle="tooltip" data-bs-title="${langdata.HOW_MANT_ARTICLE_IN_A_PAGE_DESCRIPTION[lang_name]}">
+                <i class="fa fa-info-circle" style="color:grey"></i>
+              </span>
+              </label
+            >
+            <input
+              class="form-control"
+              value="${blog['文章列表中每页的文章数为']}"
+              type="number"
+              min="5"
+              id="blog_settings_howmany_article_in_a_page"
+            />
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata["BLOG_NAVBAR_BGCOLOR"][lang_name]}</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局主题设置']['标题栏背景颜色']}"
+              id="blog_settings_titlebar_bgcolor"
+            />
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata["BLOG_NAVBAR_TEXTCOLOR"][lang_name]}</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局主题设置']['标题栏文字颜色']}"
+              id="blog_settings_titlebar_textcolor"
+            />
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata["LINK_COLOR"][lang_name]}</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局主题设置']['链接颜色']}"
+              id="blog_settings_linkcolor"
+            />
+          </div>
+    
+          <div class="alert alert-primary" role="alert">
+            <i class="fa fa-smile-o"></i>
+            ${langdata["HINT_NAVBAR_COLOR"][lang_name]}
+          </div>
+    
+    
+  
+          <h5>
+            ${langdata.MARKDOWN_RENDERING[lang_name]}
+          </h5>
+  
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="rewrite_baseurl"
+            />
+            <label class="form-check-label" for="rewrite_baseurl">
+              ${langdata.REWRITE_BASEURL[lang_name]}
+            </label>
+          </div>
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="enable_image_viewer"
+            />
+            <label class="form-check-label" for="enable_image_viewer">
+              ${langdata.ENABLE_IMAGE_VIEWER[lang_name]}
+            </label>
+          </div>
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="resize_images"
+            />
+            <label class="form-check-label" for="resize_images">
+              ${langdata.RESIZE_IMAGES[lang_name]}
+            </label>
+          </div>
+          
+        </details>
+      </div>
+  
+      <div class="fluentinterface" id="domain_related_function_navhash" style="display: none;">
+        <h2>${langdata.DOMAIN_RELATED_FUNCTION[lang_name]}</h2>
+        <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
+        
+  
+        <input id="domain_string" class="form-control" placeholder="${langdata.DOMAIN_RELATED_FUNCTION_EXAMPLE[lang_name]}" value="${blog['网站域名（包括https://）']}">
+  <br />
+        <div class="form-check  form-switch">
           <input
-            name="cdn_path"
+            class="form-check-input"
+            type="checkbox"
+            id="auto_rss_enabled"
+          />
+          <label class="form-check-label" for="auto_rss_enabled">
+            ${langdata.AUTO_UPDATE_ATOM_XML[lang_name]}
+          </label>
+        </div>
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="auto_sitemap_enabled"
+          />
+          <label class="form-check-label" for="auto_sitemap_enabled">
+            ${langdata.AUTO_UPDATE_SITEMAP[lang_name]}
+          </label>
+        </div>
+      </div>
+  
+      
+  
+      <div class="fluentinterface" id="announcement_board_navhash" style="display: none;">
+        <h3>${langdata.SITE_ANNOUNCEMENT_BOARD[lang_name]}</h3>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="website_announcement_enabled"
+          />
+          <label class="form-check-label" for="website_announcement_enabled">
+            ${langdata.ENABLE_ANNOUNCEMENT_BOARD_FUNCTION[lang_name]}
+          </label>
+        </div>
+  
+        <div class="form-check  form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="website_announcement_indexonly"
+          />
+          <label class="form-check-label" for="website_announcement_indexonly">
+            ${langdata.ONLY_DISPLAY_ANNOUNCEMENT_IN_INDEX[lang_name]}
+          </label>
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata.CONTENT_OF_ANNOUNCEMENT_BOARD[lang_name]}</label
+          >
+          <br />
+          <textarea class="form-control" id="website_announcement_content">
+  ${blog["网站公告"]}
+  
+  </textarea
+          >
+          <br />
+        </div>
+      </div>
+  
+      <div class="fluentinterface" id="favicon_navhash" style="display: none;">
+        <h2><i class="fa fa-smile-o"></i> ${langdata["FAVICON"][lang_name]}</h2>
+        <br />
+        <p>${langdata["FAVICON_DESCRIPTION"][0][lang_name]}</p>
+        <p>${langdata["FAVICON_DESCRIPTION"][1][lang_name]}</p>
+        <p>${langdata["FAVICON_DESCRIPTION"][2][lang_name]}</p>
+        <button class="btn btn-outline-primary" onclick="select_a_favicon()">
+          ${langdata["SELECT_FAVICON"][lang_name]}
+        </button>
+        <button class="btn btn-outline-primary" onclick="view_current_icon()">
+          ${langdata["VIEW_FAVICON"][lang_name]}
+        </button>
+        <button class="btn btn-outline-primary" onclick="delete_current_icon()">
+          ${langdata["DELETE_FAVICON"][lang_name]}
+        </button>
+      </div>
+      <div class="fluentinterface" id="bgimage_navhash" style="display: none;">
+        <h2>
+          <i class="fa fa-file-image-o"></i>
+          ${langdata["SITE_BGIMAGE"][lang_name]}
+        </h2>
+        <br />
+  
+        <select class="form-select" id="blog_settings_background_setting">
+          <option value="bgimg_use_blank">空白背景（不使用背景）</option>
+          <option value="bgimg_use_pure_color">
+            使用纯色背景
+          </option>
+          <option value="bgimg_use_url">将某个URL作为网页背景图像</option>
+          <option value="bgimg_use_background_webp">将网站根目录下的background.webp作为网页背景图像</option>
+        </select>
+  
+        <input class="form-control" id="blog_settings_url_of_background" style="display: none;">
+        <input class="form-control" id="blog_settings_color_of_background" style="display: none;">
+  
+      </div>
+  
+      <div class="fluentinterface" id="live2dwidget_navhash" style="display: none;">
+        <h2>
+          ${langdata["LIVE2D_WIDGET_SETTINGS"][lang_name]}
+        </h2>
+        <br />
+  
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="live2d_widget_enabled"
+          />
+          <label class="form-check-label" for="live2d_widget_enabled">
+            ${langdata.ENABLE_LIVE2d_WIDGET[lang_name]}
+          </label>
+        </div>
+        <br />
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["WIDGET_PATH"][lang_name]}</label
+          >
+          <input
             class="form-control"
-            type="text"
-            id="blog_setting_cdn_frm_2"
+            value="${blog['全局主题设置']['live2d-widget设置']['widget路径']}"
+            id="blog_settings_live2d_widget_path"
           />
         </div>
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["TIPS_PATH"][lang_name]}</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局主题设置']['live2d-widget设置']['tips路径']}"
+            id="blog_settings_live2d_widget_tips_path"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label"
+            >${langdata["API_PATH"][lang_name]}</label
+          >
+          <input
+            class="form-control"
+            value="${blog['全局主题设置']['live2d-widget设置']['api路径']}"
+            id="blog_settings_live2d_widget_api_path"
+          />
+        </div>
+  
+        <details>
+          <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
+          <h3>
+            ${langdata["FUNCTIONS_SWITCH"][lang_name]}
+          </h3>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_hitokoto_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_hitokoto_enabled">
+              ${langdata.HITOKOTO[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_asteroids_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_asteroids_enabled">
+              ${langdata.ASTEROIDS[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_switch_model_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_switch_model_enabled">
+              ${langdata.SWITCH_MODEL[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_switch_texture_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_switch_texture_enabled">
+              ${langdata.SWITCH_TEXTURE[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_photo_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_photo_enabled">
+              ${langdata.PHOTO[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_info_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_info_enabled">
+              ${langdata.INFO[lang_name]}
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="live2d_widget_quit_enabled"
+            />
+            <label class="form-check-label" for="live2d_widget_quit_enabled">
+              ${langdata.ALLOW_QUIT[lang_name]}
+            </label>
+          </div>
+  
+        </details>
+  
+        
       </div>
-    </div>
-
-    <div class="fluentinterface" id="advanced_navhash">
-      <h3>${langdata.HIGH_ADVANCED[lang_name]}</h3>
-
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="format_json_enabled"
-        />
-        <label class="form-check-label" for="format_json_enabled">
-          ${langdata.FORMAT_JSON_ENABLED[lang_name]}
-        </label>
+  
+      <div class="fluentinterface" id="thirdpartytheme_navhash" style="display: none;">
+        <h2>
+          <i class="fa fa-paint-brush"></i>
+          ${langdata["USE_3RD_THEME"][lang_name]}
+        </h2>
+        <br />
+        <p id="isUsingThirdPartyTheme"></p>
+  
+        
+  
+        <button class="btn btn-outline-primary" onclick="open_online_theme_dialog()">
+          <i class="fa fa-external-link"></i> ${langdata["OPEN_THEME_STORE"][lang_name]}
+        </button>
+  
+        <br /><br />
+  
+        <button class="btn btn-link" onclick="reset_official_theme();">
+          ${langdata["RESET_TO_OFFICIAL_THEME"][lang_name]}
+        </button>
+        <button class="btn btn-link" onclick="apply_thirdparty_theme_v2();">
+          ${langdata["USE_3RD_THEME_FROM_FILE_V2"][lang_name]}
+        </button>
       </div>
-
-      <p>
-        ${langdata.FORMAT_JSON_ENABLED_DESCRIPTION[lang_name]}
-      </p>
-
-      <details>
-        <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
-
-
-      <p>${langdata.HIGH_ADVANCED_DESCRIPTION[lang_name]}</p>
-
-        <div class="form-check  form-switch">
+  
+      <div class="fluentinterface" id="comment_settings_navhash" style="display: none;">
+        <h2>
+          <i class="fa fa-comments-o"></i>
+          ${langdata["COMMENT_SETTINGS"][lang_name]}
+        </h2>
+        <br />
+  
+        <div class="mb-3">
+          <label class="form-label"><i class="fa fa-comments-o"></i> ${langdata["TYPE_OF_COMMENT_SYSTEM"][lang_name]}</label>
+          <br />
+          <select class="form-select" id="blog_settings_comment_system_setting">
+            <option value="valine" id="comment_select_to_use_valine">
+              Valine
+            </option>
+            <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
+            <option value="waline" id="comment_select_to_use_waline">Waline</option>
+            <option value="valine_with_public_apikey" id="comment_select_to_use_valine_with_public_apikey">由 BBG 提供的公共评论服务</option>
+            <option value="none" id="comment_do_not_use_any_comment_system">不使用此功能</option>
+          </select>
+        </div>
+  
+        <!-- TODO: 添加说明性文字 -->
+  
+        <div id="hint_when_using_valine_with_public_apikey" style="display: none;">
+  
+          <p>${langdata["HINT_TEXT_WHEN_USING_VALINE_WITH_PUBLIC_APIKEY"][lang_name]}</p>
+        </div>
+  
+        <div id="leancloud_settings_detail" style="display:none">
+  
+          <p>${langdata["HINT_TEXT_WHEN_USING_VALINE"][lang_name]}</p>
+  
+          <br />
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata["VALINE_APPID"][lang_name]}</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局评论设置']['valine设置']['leancloud_appid']}"
+              id="blog_settings_valine_appid"
+            />
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label"
+              >${langdata["VALINE_APPKEY"][lang_name]}</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局评论设置']['valine设置']['leancloud_appkey']}"
+              id="blog_settings_valine_appkey"
+            />
+          </div>
+        </div>
+  
+        <div id="disqus_settings_detail" style="display:none">
+  
+          <p>${langdata["HINT_TEXT_WHEN_USING_DISQUS"][lang_name]}</p>
+  
+          <br />
+          <div class="mb-3">
+            <label class="form-label"
+              >Disqus Shortname</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局评论设置']['disqus设置']['shortname']}"
+              id="blog_settings_disqus_shortname"
+            />
+          </div>
+        </div>
+  
+        <div id="waline_settings_detail" style="display:none">
+  
+          <p>${langdata["HINT_TEXT_WHEN_USING_WALINE"][lang_name]}</p>
+  
+          <br />
+          <div class="mb-3">
+            <label class="form-label"
+              >Waline Server URL</label
+            >
+            <input
+              class="form-control"
+              value="${blog['全局评论设置']['waline设置']['serverurl']}"
+              id="blog_settings_waline_serverurl"
+            />
+          </div>
+        </div>
+      </div>
+  
+      <div class="fluentinterface" id="cdn_settings_navhash" style="display: none;">
+        <h2><i class="fa fa-bolt"></i> ${langdata["CDN_SETTINGS"][lang_name]}</h2>
+        <br />
+        <div id="cdn_settings_desc">
+          ${langdata["CDN_SETTINGS_SIMPLE_DESCRIPTION"][lang_name]}
+        </div>
+        <div class="mb-3">
+          <br />
+          <label class="form-label">
+            ${langdata["CDN_SETTINGS_METHOD"][lang_name]}
+          </label>
+          <br />
+          <input
+            type="radio"
+            id="cdn_cho_1"
+            name="cdn_choose"
+          />&nbsp;&nbsp;${langdata["CDN_SETTINGS_LIST"][lang_name]}<br />
+          <input
+            type="radio"
+            id="cdn_cho_2"
+            name="cdn_choose"
+          />&nbsp;&nbsp;${langdata["CDN_SETTINGS_MANUAL"][lang_name]}
+          <div id="cdn_cho" style="display: none">
+            <select
+              name="cdn_path"
+              class="form-control"
+              id="blog_setting_cdn_frm_1"
+            >
+              <option value="https://unpkg.com">
+                https://unpkg.com
+              </option>
+              <option value="https://cdn.jsdelivr.net/npm" selected>
+                https://cdn.jsdelivr.net/npm
+              </option>
+              <option value="https://unpkg.zhimg.com">
+                https://unpkg.zhimg.com
+              </option>
+              <option value="https://services.21042104.xyz/unpkg">
+                https://services.21042104.xyz/unpkg
+              </option>
+              <option value="https://cdn.koishi514.moe/npm">
+                https://cdn.koishi514.moe/npm
+              </option>
+            </select>
+          </div>
+          <div id="cdn_manual" style="display: none">
+            <br />
+            <label class="form-label" for="cdn_path">
+              ${langdata["CDN_SETTINGS_MANUAL_SET"][lang_name]} </label
+            ><br />
+            <input
+              name="cdn_path"
+              class="form-control"
+              type="text"
+              id="blog_setting_cdn_frm_2"
+            />
+          </div>
+        </div>
+      </div>
+  
+      <div class="fluentinterface" id="advanced_navhash" style="display: none;">
+        <h3>${langdata.HIGH_ADVANCED[lang_name]}</h3>
+  
+        <div class="form-check form-switch">
           <input
             class="form-check-input"
             type="checkbox"
-            id="blog_settings_enable_custom_css"
+            id="format_json_enabled"
           />
-          <label class="form-check-label" for="blog_settings_enable_custom_css">
-            ${langdata.ENABLE_CUSTOMIZE_CSS[lang_name]}
+          <label class="form-check-label" for="format_json_enabled">
+            ${langdata.FORMAT_JSON_ENABLED[lang_name]}
           </label>
         </div>
   
         <p>
-          ${langdata.ENABLE_CUSTOMIZE_CSS_DESCRIPTION[lang_name]}
+          ${langdata.FORMAT_JSON_ENABLED_DESCRIPTION[lang_name]}
         </p>
   
-        <div class="form-check  form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="blog_settings_enable_custom_js"
-          />
-          <label class="form-check-label" for="blog_settings_enable_custom_js">
-            ${langdata.ENABLE_CUSTOMIZE_JS[lang_name]}
-          </label>
-        </div>
+        <details>
+          <summary>${langdata.CLICK_HERE_TO_EXPAND_ADVANCED_OPTIONS[lang_name]}</summary>
   
+  
+        <p>${langdata.HIGH_ADVANCED_DESCRIPTION[lang_name]}</p>
+  
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="blog_settings_enable_custom_css"
+            />
+            <label class="form-check-label" for="blog_settings_enable_custom_css">
+              ${langdata.ENABLE_CUSTOMIZE_CSS[lang_name]}
+            </label>
+          </div>
+    
+          <p>
+            ${langdata.ENABLE_CUSTOMIZE_CSS_DESCRIPTION[lang_name]}
+          </p>
+    
+          <div class="form-check  form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="blog_settings_enable_custom_js"
+            />
+            <label class="form-check-label" for="blog_settings_enable_custom_js">
+              ${langdata.ENABLE_CUSTOMIZE_JS[lang_name]}
+            </label>
+          </div>
+    
+          <p>
+            ${langdata.ENABLE_CUSTOMIZE_JS_DESCRIPTION[lang_name]}
+          </p>
+  
+          <div class="mb-3">
+            <label class="form-label">${langdata.CUSTOM_CSS_CODE[lang_name]}</label>
+            <br />
+            <textarea class="form-control" id="blog_settings_custom_css">
+    ${blog["自定义CSS"]}
+    
+    </textarea
+            >
+            <br />
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label">${langdata.CUSTOM_JS_CODE[lang_name]}</label>
+            <br />
+            <textarea class="form-control" id="blog_settings_custom_js">
+    ${blog["自定义JS"]}
+    
+    </textarea
+            >
+            <br />
+          </div>
+    
+        </details>
+  
+  
+        
+        
+  
+  
+        
+  
+        <br />
+  
+       
+      </div>
+      <div class="fluentinterface" id="check_data_consistency_navhash" style="display: none;">
+        <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
         <p>
-          ${langdata.ENABLE_CUSTOMIZE_JS_DESCRIPTION[lang_name]}
+          ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
         </p>
-
-        <div class="mb-3">
-          <label class="form-label">${langdata.CUSTOM_CSS_CODE[lang_name]}</label>
-          <br />
-          <textarea class="form-control" id="blog_settings_custom_css">
-  ${blog["自定义CSS"]}
-  
-  </textarea
-          >
-          <br />
-        </div>
-  
-        <div class="mb-3">
-          <label class="form-label">${langdata.CUSTOM_JS_CODE[lang_name]}</label>
-          <br />
-          <textarea class="form-control" id="blog_settings_custom_js">
-  ${blog["自定义JS"]}
-  
-  </textarea
-          >
-          <br />
-        </div>
-  
-      </details>
-
-
-      
-      
-
-
-      
-
-      <br />
-
-     
+        <button
+          class="btn btn-outline-primary"
+          onclick="check_data_consistency()"
+        >
+        ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
+        </button>
+      </div>
     </div>
-    <div class="fluentinterface" id="check_data_consistency_navhash">
-      <h3>${langdata.CHECK_DATA_CONSISTENCY[lang_name]}</h3>
-      <p>
-        ${langdata.CHECK_DATA_CONSISTENCY_DESCRIPTION[lang_name]}
-      </p>
-      <button
-        class="btn btn-outline-primary"
-        onclick="check_data_consistency()"
-      >
-      ${langdata.CHECK_DATA_CONSISTENCY[lang_name]}
-      </button>
-    </div>
+  
+
   </div>
+  <div class="col-1"></div>
 </div>
+  
 
 <br />

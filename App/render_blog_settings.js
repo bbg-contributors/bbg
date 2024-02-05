@@ -327,4 +327,6 @@ module.exports = function () {
 
   const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+  enterBlogSettingInterfaceOf("basic_info_theme_config");
 };

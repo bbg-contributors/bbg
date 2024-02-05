@@ -75,6 +75,7 @@ const sitemap_hook = require("./sitemap_hook.js");
 const encrypt_content = require("./encrypt_content.js");
 const decrypt_content = require("./decrypt_content.js");
 const {ui_encrypt_article, ui_decrypt_article} = require("./encryption_decryption_ui.js");
+const enterBlogSettingInterfaceOf = require("./navToSectionOfBlogSetting.js");
 
 const config_third_party_theme = require("./config_third_party_theme.js").config_third_party_theme;
 const save_config_of_third_party_theme = require("./config_third_party_theme.js").save_config_of_third_party_theme;
