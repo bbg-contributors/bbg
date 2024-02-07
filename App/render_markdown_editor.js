@@ -72,7 +72,7 @@ module.exports = function () {
 ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
 
   if (storage.getSync("ai_api_enabled").enabled){
-    document.getElementById("ai_related_functions_in_editor").setAttribute("style","");
+    // document.getElementById("ai_related_functions_in_editor").setAttribute("style","");
     ai = new ai_function();
   }
 

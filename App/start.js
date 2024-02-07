@@ -153,7 +153,133 @@ function openAiAssistedWritingConfigDialog(){
 }
 
 function save_ai_api_settings(){
-  
+  const ai_api_enabled = document.getElementById("enable_ai_assisted_writing_option").selected;
+  let ai_api_type;
+  if(document.getElementById("ai_api_use_openai_option").selected){
+    ai_api_type = "openai";
+  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
+    ai_api_type = "baiduqianfan";
+  } else if(document.getElementById("ai_api_use_none").selected){
+    ai_api_type = "none";
+  }
+  storage.set("ai_api_enabled", {enabled: ai_api_enabled});
+  storage.set("ai_api_type", {type: ai_api_type});
+  if(ai_api_type === "openai"){
+    storage.set("ai_api_info", {
+      enabled: true,
+      api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
+      api_key: document.getElementById("api_key_for_ai_assisted_writing").value,
+      default_model_type: document.getElementById("default_model_type_for_ai_assisted_writing").value
+    });
+  } else if(ai_api_type === "baiduqianfan"){
+    storage.set("ai_api_info", {
+      enabled: true,
+      api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
+      api_key: document.getElementById("api_key_for_ai_assisted_writing").value,
+      secret_key: document.getElementById("api_secret_key_for_ai_assisted_writing").value
+    });
+  }
+}
+
+function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage = false){
+  let ai_api_type;
+  if(document.getElementById("ai_api_use_openai_option").selected){
+    ai_api_type = "openai";
+  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
+    ai_api_type = "baiduqianfan";
+  } else if(document.getElementById("ai_api_use_none").selected){
+    ai_api_type = "none";
+  }
+  let data;
+  if (isFromStorage){
+    data = storage.getSync("ai_api_type");
+  } else {
+    data = {
+      "type": ai_api_type
+    };
+  }
+  console.log(data);
+  if(data["type"] === "openai"){
+    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
+    <br />
+      <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
+      <input type="text" class="form-control" id="api_req_url_for_ai_assisted_writing" placeholder="${langdata["API_REQUEST_URL"][lang_name]}">
+      <br />
+      <p>${langdata["API_KEY"][lang_name]}</p>
+      <input type="text" class="form-control" id="api_key_for_ai_assisted_writing" placeholder="${langdata["API_KEY"][lang_name]}">
+      <br />
+      <p>${langdata["DEFAULT_MODEL_TYPE"][lang_name]}</p>
+      <input type="text" class="form-control" id="default_model_type_for_ai_assisted_writing" placeholder="${langdata["DEFAULT_MODEL_TYPE"][lang_name]}">
+      `;
+  } else if(data["type"] === "baiduqianfan"){
+    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
+    <br />
+      <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
+      <input type="text" class="form-control" id="api_req_url_for_ai_assisted_writing" placeholder="${langdata["API_REQUEST_URL"][lang_name]}">
+      <br />
+      <p>${langdata["API_KEY"][lang_name]}</p>
+      <input type="text" class="form-control" id="api_key_for_ai_assisted_writing" placeholder="${langdata["API_KEY"][lang_name]}">
+      <br />
+      <p>${langdata["API_SECRET_KEY"][lang_name]}</p>
+      <input type="text" class="form-control" id="api_secret_key_for_ai_assisted_writing" placeholder="${langdata["API_SECRET_KEY"][lang_name]}">
+      `;
+
+  } else {
+    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = "";
+  }
+
+  document.getElementById("api_setting_for_ai_assisted_writing").insertAdjacentHTML("beforeend",`
+    <br />
+    <button class="btn btn-outline-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+  `);
+}
+
+function open_ai_assisted_writing_setting_dialog(){
+  document.getElementById("ai_assisted_writing-dialog-content").innerHTML = `
+    <p>${langdata["AI_ASSISTED_WRITING_ENABLE"][lang_name]}</p>
+    <select class="form-select">
+      <option id="enable_ai_assisted_writing_option">${langdata["ENABLE"][lang_name]}</option>
+      <option id="disable_ai_assisted_writing_option">${langdata["DISABLE"][lang_name]}</option>
+    </select>
+    <br />
+    <p>${langdata["API_TYPE"][lang_name]}</p>
+    <select class="form-select" id="ai_assisted_writing_api_type_choose">
+      <option id="ai_api_use_openai_option">${langdata["OPENAI_API"][lang_name]}</option>
+      <option id="ai_api_use_baidu_qianfan_option">${langdata["BAIDU_QIANFAN"][lang_name]}</option>
+      <option id="ai_api_use_none">${langdata["NONE"][lang_name]}</option>
+    </select>
+    <div id="api_setting_for_ai_assisted_writing">
+
+    </div>
+  `;
+
+  storage.get("ai_api_enabled", function(err, data){
+    if(data.enabled === true){
+      document.getElementById("enable_ai_assisted_writing_option").selected = true;
+    } else {
+      document.getElementById("disable_ai_assisted_writing_option").selected = true;
+    }
+    console.log(data);
+  });
+
+  storage.get("ai_api_type", function(err, data){
+    if(data.type === "openai"){
+      document.getElementById("ai_api_use_openai_option").selected = true;
+    } else if(data.type === "baiduqianfan"){
+      document.getElementById("ai_api_use_baidu_qianfan_option").selected = true;
+    } else {
+      document.getElementById("ai_api_use_none").selected = true;
+    }
+
+    console.log(data);
+  });
+
+  render_ai_assisted_writing_setting_specific_api_setting(true);
+
+  ai_assisted_writing_dialog.show();
+
+  document.getElementById("ai_assisted_writing_api_type_choose").onchange = function(){render_ai_assisted_writing_setting_specific_api_setting();};
 }
 
 function render_language_selections() {
@@ -368,6 +494,7 @@ storage.has("language", (error, hasKey) => {
       <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="open_builtin_ime_setting_dialog()"><i class="fa fa-keyboard-o" aria-hidden="true"></i> ${langdata.SETTING_OF_BUILTIN_IME[lang_name]}</a></li>
+      <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li>
 
       </ul>
 

@@ -16,16 +16,18 @@
     <i class="fa fa-info-circle"></i> ${langdata["MARKDOWN_EDITOR_USAGE"][lang_name]}
   </button>
   <span id="ai_related_functions_in_editor" style="display: none;">
-  <button id="btn_ai_text_completion" class="btn btn-sm btn-outline-primary">
-    <i class="fa fa-pencil"></i> ${langdata["AI_TEXT_COMPLETION"][lang_name]}
-  </button>
-  <button id="btn_ai_text_improve" class="btn btn-sm btn-outline-primary">
-    ${langdata["AI_TEXT_IMPROVE"][lang_name]}
-  </button>
-  <button id="btn_ai_text_summary" class="btn btn-sm btn-outline-primary">
-    ${langdata["AI_TEXT_SUMMARY"][lang_name]}
-  </button>
-</span>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-lightbulb-o"></i>
+        ${langdata["AI_RELATED_FUNCTIONS"][lang_name]}
+      </button>
+      <ul class="dropdown-menu">
+        <li><button class="dropdown-item" href="#" id="btn_ai_text_completion">${langdata["AI_TEXT_COMPLETION"][lang_name]}</a></li>
+        <li><button class="dropdown-item" href="#">${langdata["AI_TEXT_IMPROVE"][lang_name]}</a></li>
+        <li><button class="dropdown-item" href="#">${langdata["AI_TEXT_SUMMARY"][lang_name]}</a></li>
+      </ul>
+    </div>  
+  </span>
   <button onclick="shell.openExternal('https://bbg.nekomoe.xyz/#/zh-cn/user-guide/ref_tags_and_hints')" class="btn btn-link">
     ${langdata["LEARN_ABOUT_HOW_TO_ADD_REF_AND_INFO_HINT_TO_ARTICLE"][lang_name]}
   </button>
