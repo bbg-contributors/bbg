@@ -93,6 +93,9 @@ const open_blog_dir = require("./menuFx.js").open_blog_dir;
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
 const loadIME = require("./loadIME.js");
+const render_preview_and_publish_page = require("./render_preview_and_publish_page.js");
+const preview_and_publish = require("./preview_and_publish.js");
+const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPublish.js");
 
 storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir });
 
@@ -118,6 +121,10 @@ storage.has("language", (error, hasKey) => {
           else{
             if(window.location.href.includes("markdown_editor.html")){
               render_markdown_editor();
+            } else {
+              if(window.location.href.includes("server.html")){
+                render_preview_and_publish_page();
+              }
             }
           }
         }
