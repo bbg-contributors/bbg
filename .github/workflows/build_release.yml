@@ -35,9 +35,7 @@ jobs:
       - name: Get version
         if: matrix.os == 'ubuntu-latest'
         id: get_version
-        run: |
-          node deb_build_files/ci_prepare.js
-          echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
+        run: echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -67,7 +65,7 @@ jobs:
           package: bbg
           package_root: dist/deb_temp_amd64/
           maintainer: bbg_contributors
-          version: ${{ needs.get_version.version }}
+          version: ${{ steps.get_version.outputs.version }}
           arch: amd64
           desc: 'A static blog generater made with Electron technology.'
       - name: Pack arm64 deb
@@ -78,7 +76,7 @@ jobs:
           package: bbg
           package_root: build/
           maintainer: bbg_contributors
-          version: ${{ needs.get_version.version }}
+          version: ${{ steps.get_version.outputs.version }}
           arch: arm64
           desc: 'A static blog generater made with Electron technology.'
       - name: Clean
