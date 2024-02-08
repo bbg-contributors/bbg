@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=BBG
-Exec=/opt/bbg/bbg.AppImage
+Exec=/opt/bbg/bbg
 Icon=/usr/share/icons/bbg.png
 Terminal=false
 Type=Application
