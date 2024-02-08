@@ -35,7 +35,9 @@ jobs:
       - name: Get version
         if: matrix.os == 'ubuntu-latest'
         id: get_version
-        run: echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
+        run: |
+          node deb_build_files/ci_prepare.js
+          echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
