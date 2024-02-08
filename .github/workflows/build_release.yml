@@ -32,6 +32,10 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           echo "" > ./App/is_released_version
+      - name: Get version
+        if: matrix.os == 'ubuntu-latest'
+        id: get_version
+        run: echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -61,7 +65,7 @@ jobs:
           package: bbg
           package_root: dist/deb_temp_amd64/
           maintainer: bbg_contributors
-          version: ${{ env.RELEASE_VERSION }}
+          version: ${{ needs.get_version.version }}
           arch: amd64
           desc: 'A static blog generater made with Electron technology.'
       - name: Pack arm64 deb
@@ -72,7 +76,7 @@ jobs:
           package: bbg
           package_root: build/
           maintainer: bbg_contributors
-          version: ${{ env.RELEASE_VERSION }}
+          version: ${{ needs.get_version.version }}
           arch: arm64
           desc: 'A static blog generater made with Electron technology.'
       - name: Clean
