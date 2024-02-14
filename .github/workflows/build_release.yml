@@ -32,15 +32,60 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           echo "" > ./App/is_released_version
+      - name: Get version
+        if: matrix.os == 'ubuntu-latest'
+        id: get_version
+        run: echo "version=$(node deb_build_files/ci_prepare.js)" >> $GITHUB_OUTPUT
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
           yarn run build:linux
-          mv dist/linux-unpacked/resources/app.asar dist/app.asar
-          rm -rf dist/linux-unpacked
-          rm -rf dist/linux-arm64-unpacked
-          node ./deb_build_files/ci_prepare.js
-          node ./deb_build_files/ci_build.js
+          cp dist/linux-unpacked/resources/app.asar dist/app.asar
+
+          # prepare for amd64 deb
+          mkdir -p dist/deb_temp_amd64/opt/
+          mkdir -p dist/deb_temp_amd64/usr/share/applications/
+          mkdir -p dist/deb_temp_amd64/usr/share/icons/
+          mv dist/linux-unpacked dist/deb_temp_amd64/opt/bbg
+          cp deb_build_files/bbg.desktop dist/deb_temp_amd64/usr/share/applications/
+          cp resources/icon.png dist/deb_temp_amd64/usr/share/icons/bbg.png
+
+          # prepare for arm64 deb
+          mkdir -p dist/deb_temp_arm64/opt/
+          mkdir -p dist/deb_temp_arm64/usr/share/applications/
+          mkdir -p dist/deb_temp_arm64/usr/share/icons/
+          mv dist/linux-arm64-unpacked dist/deb_temp_arm64/opt/bbg
+          cp deb_build_files/bbg.desktop dist/deb_temp_arm64/usr/share/applications/
+          cp resources/icon.png dist/deb_temp_arm64/usr/share/icons/bbg.png
+      - name: Pack amd64 deb
+        if: matrix.os == 'ubuntu-latest'
+        id: pack_amd64_deb
+        uses: jiro4989/build-deb-action@v3
+        with:
+          package: bbg
+          package_root: dist/deb_temp_amd64/
+          maintainer: bbg_contributors
+          version: ${{ steps.get_version.outputs.version }}
+          arch: amd64
+          desc: "A static blog generater made with Electron technology."
+      - name: Pack arm64 deb
+        if: matrix.os == 'ubuntu-latest'
+        id: pack_arm64_deb
+        uses: jiro4989/build-deb-action@v3
+        with:
+          package: bbg
+          package_root: dist/deb_temp_arm64/
+          maintainer: bbg_contributors
+          version: ${{ steps.get_version.outputs.version }}
+          arch: arm64
+          desc: "A static blog generater made with Electron technology."
+      - name: Clean
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          mv ${{ steps.pack_amd64_deb.outputs.file_name }} dist/bbg-amd64.deb
+          mv ${{ steps.pack_arm64_deb.outputs.file_name }} dist/bbg-arm64.deb
+          sudo rm -rf dist/deb_temp_amd64
+          sudo rm -rf dist/deb_temp_arm64
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
