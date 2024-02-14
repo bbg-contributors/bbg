@@ -84,8 +84,8 @@ jobs:
         run: |
           mv ${{ steps.pack_amd64_deb.outputs.file_name }} dist/bbg-amd64.deb
           mv ${{ steps.pack_arm64_deb.outputs.file_name }} dist/bbg-arm64.deb
-          rm -rf dist/deb_temp_amd64
-          rm -rf dist/deb_temp_arm64
+          sudo rm -rf dist/deb_temp_amd64
+          sudo rm -rf dist/deb_temp_arm64
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
