@@ -1,5 +1,29 @@
 # CHANGE LOG
 
+## 20240104
+
+- Added support for [Disqus](https://disqus.com/) and [Waline](https://waline.js.org/)
+- Added support for setting passwords for articles
+
+## 20231016
+
+- Optimized display effects of the default theme
+
+## 20230820
+
+- Updated to use system proxy by default when checking for updates (Thanks to [@scientificworld] for your contribution!)
+- Fixed the issue where deb package installation would fail
+
+## 20230704
+
+- Support for changing a wider range of webpage backgrounds
+- Fixed the issue where the preview area of the Markdown editor would not synchronize scrolling status when starting a new line of editing
+- Fixed the issue where some Markdown formats couldn't be previewed in the editor
+- Added packaging for Linux ARM64 (Thanks to [@mzwing] for your contribution!)
+- Added an application menu
+- The blog navigation bar now always displays the site name
+- Fixed the issue in Firefox where automatic scrolling to the top of the page wouldn't occur when navigating between different blog interfaces
+
 ## 20230505
 
 - Urgent fix for a bug that prevented blog data files from being upgraded
