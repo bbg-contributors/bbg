@@ -67,18 +67,18 @@ jobs:
           maintainer: bbg_contributors
           version: ${{ steps.get_version.outputs.version }}
           arch: amd64
-          desc: 'A static blog generater made with Electron technology.'
+          desc: "A static blog generater made with Electron technology."
       - name: Pack arm64 deb
         if: matrix.os == 'ubuntu-latest'
         id: pack_arm64_deb
         uses: jiro4989/build-deb-action@v3
         with:
           package: bbg
-          package_root: build/
+          package_root: dist/deb_temp_arm64/
           maintainer: bbg_contributors
           version: ${{ steps.get_version.outputs.version }}
           arch: arm64
-          desc: 'A static blog generater made with Electron technology.'
+          desc: "A static blog generater made with Electron technology."
       - name: Clean
         if: matrix.os == 'ubuntu-latest'
         run: |
