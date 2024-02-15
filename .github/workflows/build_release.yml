@@ -48,7 +48,9 @@ jobs:
           mkdir -p dist/deb_temp_amd64/usr/share/icons/
           mkdir -p dist/deb_temp_amd64/DEBIAN/
           echo -e "ln -s /opt/bbg/bbg /usr/bin/bbg" > dist/deb_temp_amd64/DEBIAN/postinst
+          chmod +x dist/deb_temp_amd64/DEBIAN/postinst
           echo -e "rm -f /usr/bin/bbg" > dist/deb_temp_amd64/DEBIAN/prerm
+          chmod +x dist/deb_temp_amd64/DEBIAN/prerm
           mv dist/linux-unpacked dist/deb_temp_amd64/opt/bbg
           cp deb_build_files/bbg.desktop dist/deb_temp_amd64/usr/share/applications/
           cp resources/icon.png dist/deb_temp_amd64/usr/share/icons/bbg.png
@@ -59,7 +61,9 @@ jobs:
           mkdir -p dist/deb_temp_arm64/usr/share/icons/
           mkdir -p dist/deb_temp_arm64/DEBIAN/
           echo -e "ln -s /opt/bbg/bbg /usr/bin/bbg" > dist/deb_temp_arm64/DEBIAN/postinst
+          chmod +x dist/deb_temp_arm64/DEBIAN/postinst
           echo -e "rm -f /usr/bin/bbg" > dist/deb_temp_arm64/DEBIAN/prerm
+          chmod +x dist/deb_temp_arm64/DEBIAN/prerm
           mv dist/linux-arm64-unpacked dist/deb_temp_arm64/opt/bbg
           cp deb_build_files/bbg.desktop dist/deb_temp_arm64/usr/share/applications/
           cp resources/icon.png dist/deb_temp_arm64/usr/share/icons/bbg.png
