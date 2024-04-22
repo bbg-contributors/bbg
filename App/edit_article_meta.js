@@ -24,11 +24,11 @@ module.exports = function (i) {
         </div>
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
-          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_CREATEDAT[lang_name]}" value="${blog["文章列表"][i]["创建日期"]}" id="meta_article_createdat">
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_CREATEDAT[lang_name]}" value="${new Date(blog["文章列表"][i]["创建时间（时间戳）"]).toISOString()}" id="meta_article_createdat">
         </div>
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.MODIFIEDAT_EDIT_META[lang_name]}</label>
-          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_UPDATEDDAT[lang_name]}" value="${blog["文章列表"][i]["修改日期"]}" id="meta_article_updatedat">
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_UPDATEDDAT[lang_name]}" value="${new Date(blog["文章列表"][i]["修改时间（时间戳）"]).toISOString()}" id="meta_article_updatedat">
         </div>
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-tags"></i> ${langdata.TAGS_EDIT_META[lang_name]}</label>

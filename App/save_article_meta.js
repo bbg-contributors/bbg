@@ -18,8 +18,8 @@ module.exports = function (i) {
 
   blog["文章列表"][i]["文章标题"] = meta_article_title;
   blog["文章列表"][i]["摘要"] = meta_article_description;
-  blog["文章列表"][i]["创建日期"] = meta_article_createdat;
-  blog["文章列表"][i]["修改日期"] = meta_article_updatedat;
+  blog["文章列表"][i]["创建时间（时间戳）"] = new Date(meta_article_createdat).getTime();
+  blog["文章列表"][i]["修改时间（时间戳）"] = new Date(meta_article_updatedat).getTime();
 
   const tempTagArray = meta_article_tags.split(" ").filter(x => x !== "");
 

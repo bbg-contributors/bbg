@@ -38,7 +38,7 @@ module.exports = function () {
                 `);
 
       document.querySelector(`#article-item-sub-${i}`).insertAdjacentHTML("beforeend",`
-      <i class="fa fa-calendar"></i> ${langdata.ARTICLE_CREATEDAT[lang_name]} <span style="border-bottom: 1px dashed #676161;">${blog["文章列表"][i]["创建日期"]}</span>，${langdata.LASTMODIFIEDAT[lang_name]} <span style="border-bottom: 1px dashed #676161;">${blog["文章列表"][i]["修改日期"]}</span><br />
+      <i class="fa fa-calendar"></i> ${langdata.ARTICLE_CREATEDAT[lang_name]} <span style="border-bottom: 1px dashed #676161;">${convertTimeStampToLocalTime(blog["文章列表"][i]["创建时间（时间戳）"])}</span>，${langdata.LASTMODIFIEDAT[lang_name]} <span style="border-bottom: 1px dashed #676161;">${convertTimeStampToLocalTime(blog["文章列表"][i]["修改时间（时间戳）"])}</span><br />
             `);
 
       if (blog["文章列表"][i]["标签"].length === 0) {

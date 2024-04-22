@@ -30,6 +30,8 @@ const renderArticleManager = require("./render_article_manager.js");
 const render_page_manager = require("./render_page_manager.js");
 const render_markdown_editor = require("./render_markdown_editor.js");
 
+const convertTimeStampToLocalTime = require("./timestamp_converter.js");
+
 // 管理功能
 const edit_article = require("./edit_article.js");
 const edit_page = require("./edit_page.js");
