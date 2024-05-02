@@ -26,6 +26,12 @@
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('sw.js')
     }
+    document.body.onload = function () {
+      const img = document.getElementById('icon')
+      if (location.search === '?uwu=true') {
+        img.src = 'bbg_uwu_icon.png'
+      }
+    }
   </script>
   <!-- Docsify v4 -->
   <script src="docsify.js"></script>
