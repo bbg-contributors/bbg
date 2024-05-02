@@ -1,4 +1,4 @@
-<img src="bbg_icon.png" style="max-width:25%" id="icon"/>
+<img src="bbg_icon.png" style="max-width:25%" id="icon2"/>
 
 # BBG
 
