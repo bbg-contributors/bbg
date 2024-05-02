@@ -1,3 +1,5 @@
+<img src="bbg_icon.png" style="max-width:25%" id="icon"/>
+
 # BBG
 
 Hello here, this is the official document of BBG (Baiyuanneko's Blog Generator). Please select a language to display the docs.
