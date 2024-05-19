@@ -1169,10 +1169,10 @@ eslint-plugin-jsonc@^2.15.1:
     natural-compare "^1.4.0"
     synckit "^0.6.0"
 
-eslint-plugin-markdown@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-markdown/-/eslint-plugin-markdown-4.0.1.tgz#f5a574498d378da54bf2aea940d41a74e1f2dcb4"
-  integrity sha512-5/MnGvYU0i8MbHH5cg8S+Vl3DL+bqRNYshk1xUO86DilNBaxtTkhH+5FD0/yO03AmlI6+lfNFdk2yOw72EPzpA==
+eslint-plugin-markdown@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-markdown/-/eslint-plugin-markdown-5.0.0.tgz#a2b69bce83e85838111d44c84b2d6721452dbb73"
+  integrity sha512-kY2u9yDhzvfZ0kmRTsvgm3mTnvZgTSGIIPeHg3yesSx4R5CTCnITUjCPhzCD1MUhNcqHU5Tr6lzx+02EclVPbw==
   dependencies:
     mdast-util-from-markdown "^0.8.5"
 
