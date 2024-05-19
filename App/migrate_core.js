@@ -191,6 +191,41 @@ function addSupportForAdjustingLinkColor() {
   blog["全局主题设置"]["链接颜色"] = "#0d6efd";
 }
 
+function addTimestampPropertyToEveryArticle() {
+  for (let i = 0; i < blog["文章列表"].length; i++) {
+    try {
+      blog["文章列表"][i]["创建时间（时间戳）"] = new Date(blog["文章列表"][i]["创建日期"]).getTime() + 28800000;
+      delete blog["文章列表"][i]["创建日期"];
+    } catch (e) {
+      blog["文章列表"][i]["创建时间（时间戳）"] = 0;
+    }
+
+    try {
+      blog["文章列表"][i]["修改时间（时间戳）"] = new Date(blog["文章列表"][i]["修改日期"]).getTime() + 28800000;
+      delete blog["文章列表"][i]["修改日期"];
+    } catch (e) {
+      blog["文章列表"][i]["修改时间（时间戳）"] = 0;
+    }
+  }
+}
+    
+function addLive2DWidgetSupport() {
+  blog["全局主题设置"]["是否启用live2d-widget"] = false;
+  blog["全局主题设置"]["live2d-widget设置"] = {
+    "widget路径": "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/",
+    "tips路径": "",
+    "api路径": "",
+    "功能设置": {
+      "hitokoto": true,
+      "asteroids": false,
+      "switch-model": false,
+      "switch-texture": false,
+      "photo": false,
+      "info": true,
+      "quit": true
+    }};
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -281,6 +316,11 @@ module.exports = function () {
 
   if (currentBlogVersion <= 20240103) {
     addSupportForWalineAndDisqus();
+  }
+
+  if (currentBlogVersion <= 20240518) {
+    addTimestampPropertyToEveryArticle();
+    addLive2DWidgetSupport();
   }
 
   check_third_party_theme_compatiblity();
