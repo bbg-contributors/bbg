@@ -12,9 +12,7 @@
   "extraFiles": [
     "LICENSE"
   ],
-  "asarUnpack": [
-    "**node_modules/native-prompt/**"
-  ],
+  "asarUnpack": [],
   "fileAssociations": [
     {
       "name": "BBGThemeFile",
