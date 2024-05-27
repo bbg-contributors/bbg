@@ -52,7 +52,7 @@
     "font-awesome": "4.7.0",
     "husky": "^9.0.11",
     "ipinyinjs": "https://github.com/bbg-contributors/pinyinjs.git",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.5",
     "marked": "^12.0.2",
     "native-prompt": "^2.1.4",
     "request": "^2.88.2",
