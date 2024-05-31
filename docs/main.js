@@ -105,12 +105,12 @@ fetch("./i18n.json")
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.html"><i class="bi bi-house"></i> ${langData["indexPage"][userLanguage]}</a>
+                    <a class="nav-link ${websiteCurrentPage==="indexPage"?"active":""}" aria-current="page" href="./index.html"><i class="bi bi-house"></i> ${langData["indexPage"][userLanguage]}</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="./download.html"><i class="bi bi-cloud-arrow-down"></i> ${langData["downloadPage"][userLanguage]}</a>
+                  <li class="nav-item"><a class="nav-link ${websiteCurrentPage==="downloadPage"?"active":""}" href="./download.html"><i class="bi bi-cloud-arrow-down"></i> ${langData["downloadPage"][userLanguage]}</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle ${websiteCurrentPage==="docPage"?"active":""}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-book"></i> ${langData["docAndGuidePage"][userLanguage]}
                     </a>
                     <ul class="dropdown-menu">
@@ -129,10 +129,6 @@ fetch("./i18n.json")
                     </ul>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
               </div>
             </div>
             </nav>`;
@@ -148,8 +144,8 @@ fetch("./i18n.json")
                 <h1>${langData["indexPageTitle"][userLanguage]}</h1>
                 <p>${langData["indexPageDescription"][userLanguage]}</p>
     
-                <button type="button" class="btn btn-outline-danger" style="border-radius:40px"><i class="bi bi-cloud-arrow-down"></i> ${langData["indexPageDownloadBtn"][userLanguage]}</button>
-                <button type="button" class="btn btn-outline-dark" style="border-radius:40px"><i class="bi bi-github"></i> ${langData["indexPageEnterGitHubBtn"][userLanguage]}</button>
+                <button type="button" class="btn btn-outline-danger" style="border-radius:40px" onclick="window.location='download.html'"><i class="bi bi-cloud-arrow-down"></i> ${langData["indexPageDownloadBtn"][userLanguage]}</button>
+                <button type="button" class="btn btn-outline-dark" style="border-radius:40px" onclick="window.open('https://github.com/bbg-contributors/bbg')"><i class="bi bi-github"></i> ${langData["indexPageEnterGitHubBtn"][userLanguage]}</button>
                 <br /><br />
     
               </div>
