@@ -1,0 +1,25 @@
+{
+    "contents":{
+        "简体中文": [
+            ["<i class=\"bi bi-person\"></i> 用户指南", "zh-cn/user-guide/installation_guide.md", [
+                ["安装指南", "zh-cn/user-guide/installation_guide.md"],
+                ["在博客文章中添加数学公式", "zh-cn/user-guide/math_in_articles.md"],
+                ["在博客文章中添加参考来源和提示信息", "zh-cn/user-guide/ref_tags_and_hints.md"]
+            ]],
+            ["<i class=\"bi bi-terminal\"></i> 开发者指南", "zh-cn/developer-guide/CONTRIBUTING.md", [
+                ["代码贡献指南", "zh-cn/developer-guide/CONTRIBUTING.md"],
+                ["如何发布新版本", "zh-cn/developer-guide/publish_new_version.md"],
+                ["第三方主题开发指南", "zh-cn/developer-guide/thirdparty_theme.md"]
+            ]],
+            ["<i class=\"bi bi-arrow-up-circle\"></i> 更新日志", "zh-cn/CHANGELOG.md"]
+        ],
+        "English": [
+            ["<i class=\"bi bi-person\"></i> User Guide", "en/installation_guide.md"],
+            ["<i class=\"bi bi-terminal\"></i> Developer Guide", "en/developer-guide/CONTRIBUTING.md", [
+                ["Developer Guide", "en/developer-guide/CONTRIBUTING.md"],
+                ["Guide to develop third-party themes", "en/developer-guide/thirdparty_theme.md"]
+            ]],
+            ["<i class=\"bi bi-arrow-up-circle\"></i> Changelog", "en/CHANGELOG.md"]
+        ]
+    }
+}

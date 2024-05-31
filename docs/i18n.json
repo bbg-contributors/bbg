@@ -1,0 +1,121 @@
+{
+    "_supportedLanguages": [
+        "English", "简体中文"
+    ],
+    "indexPage": {
+        "English": "Index",
+        "简体中文": "首页"
+    },
+    "downloadPage": {
+        "English": "Download",
+        "简体中文": "下载"
+    },
+    "docAndGuidePage": {
+        "English": "Docs & Guides",
+        "简体中文": "文档与指南"
+    },
+    "languageChoose": {
+        "English": "Languages",
+        "简体中文": "语言"
+    },
+    "userGuide": {
+        "English": "User Guide",
+        "简体中文": "用户指南"
+    },
+    "developerGuide": {
+        "English": "Developer Guide",
+        "简体中文": "开发者指南"
+    },
+    "changeLog": {
+        "English": "Changelog",
+        "简体中文": "更新日志"
+    },
+    "indexPageTitle": {
+        "English": "Blog source files are build products",
+        "简体中文": "博客源文件即构建产物"
+    },
+    "indexPageDescription": {
+        "English": "BBG is a free, open source, cross-platform, Electron-based static blog generator. Compared with other static blog generators, BBG uses a design in which the blog source file is the build product, making the build overhead almost zero and suitable for version management software such as Git.",
+        "简体中文": "BBG 是免费开源的、跨平台的、基于 Electron 技术开发的静态博客生成器。相比其它静态博客生成器，BBG 在架构上采用了博客源文件即构建产物的设计，使得构建开销几乎为零，且适合 Git 等版本管理软件。"
+    },
+    "indexPageDownloadBtn": {
+        "English": "Download BBG",
+        "简体中文": "下载 BBG"
+    },
+    "indexPageEnterGitHubBtn": {
+        "English": "Enter GitHub page of this project",
+        "简体中文": "转到 GitHub 页面"
+    },
+    "bottomInformation": {
+        "English": "The source code of the software is released into the public domain.",
+        "简体中文": "本软件的源代码属于公有领域。"
+    },
+    "downloadForWin": {
+        "English": "Download for Windows",
+        "简体中文": "为 Windows 安装"
+    },
+    "downloadForMacOS": {
+        "English": "Download for macOS",
+        "简体中文": "为 macOS 安装"
+    },
+    "downloadForLinux": {
+        "English": "Download for Linux",
+        "简体中文": "为 Linux 安装"
+    },
+    "downloadDebPackage": {
+        "English": "Download DEB Package",
+        "简体中文": "下载 DEB 包"
+    },
+    "downloadAppImagePackage": {
+        "English": "Download AppImage Package",
+        "简体中文": "下载 AppImage 包"
+    },
+    "getFromAUR": {
+        "English": "Get From AUR",
+        "简体中文": "从 AUR 获取"
+    },
+    "displayAllDownloads": {
+        "English": "Display all downloads",
+        "简体中文": "显示全部下载"
+    },
+    "thanksForContributorsOfLinuxPackages": {
+        "English": "The AUR version is maintained by @Misaka13514 and @zzjzxq33; the DEB package build process is written by @mzwing. Many thanks to them for their contributions!",
+        "简体中文": "AUR 上的版本由 @Misaka13514 和 @zzjzxq33 负责维护；DEB 包的构建流程由 @mzwing 编写。十分感谢他们的贡献！"
+    },
+    "downloadPageTitleWin": {
+        "English": "Download for Windows",
+        "简体中文": "下载适用于 Windows 的 BBG"
+    },
+    "downloadPageTitleMacOS": {
+        "English": "Download for macOS",
+        "简体中文": "下载适用于 macOS 的 BBG"
+    },
+    "downloadPageTitleLinux": {
+        "English": "Download for Linux",
+        "简体中文": "下载适用于 Linux 的 BBG"
+    },
+    "downloadPageTitleUniversal": {
+        "English": "Download BBG",
+        "简体中文": "下载 BBG"
+    },
+    "pathOfUserGuide": {
+        "English": "en/installation_guide.md",
+        "简体中文": "zh-cn/user-guide/installation_guide.md"
+    },
+    "pathOfDeveloperGuide": {
+        "English": "en/developer-guide/CONTRIBUTING.md",
+        "简体中文": "zh-cn/developer-guide/CONTRIBUTING.md"
+    },
+    "pathOfChangeLog": {
+        "English": "en/CHANGELOG.md",
+        "简体中文": "zh-cn/CHANGELOG.md"
+    },
+    "thankyouTitle": {
+        "English": "Thanks for downloading!",
+        "简体中文": "感谢你的下载！"
+    },
+    "thankyouDescription": {
+        "English": "Your download should start in 10 seconds. If not, <a href=\"#\" onclick=\"window.location.reload()\">Click here</a>.",
+        "简体中文": "你的下载应在 10 秒内自动开始。否则，请<a href=\"#\" onclick=\"window.location.reload();\">点击此处</a>。"
+    }
+}

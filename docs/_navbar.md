@@ -1,2 +1,0 @@
-- [Index](/)
-- [Docs](/README.md)
