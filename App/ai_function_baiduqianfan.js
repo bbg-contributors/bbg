@@ -3,7 +3,7 @@ const getAiPrompts = require("./getAiPrompts.js");
 
 module.exports = class {
   constructor() {
-    const api_info = storage.getSync("ai_api_baiduqianfan");
+    const api_info = storage.getSync("ai_api_info");
     this.enabled = api_info["enabled"];
     // 由于百度千帆大语言模型的每个模型的调用地址都不同且其模型数量极多，使用时请自己填写要用的模型相应的API地址
     this.api_request_url = api_info["api_request_url"];

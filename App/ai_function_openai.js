@@ -3,7 +3,7 @@ const getAiPrompts = require("./getAiPrompts.js");
 
 module.exports = class {
   constructor() {
-    const api_info = storage.getSync("ai_api_openai");
+    const api_info = storage.getSync("ai_api_info");
     this.enabled = api_info["enabled"];
     this.api_request_url = api_info["api_request_url"];
     this.api_key = api_info["api_key"];
