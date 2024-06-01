@@ -211,6 +211,16 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
       <p>${langdata["DEFAULT_MODEL_TYPE"][lang_name]}</p>
       <input type="text" class="form-control" id="default_model_type_for_ai_assisted_writing" placeholder="${langdata["DEFAULT_MODEL_TYPE"][lang_name]}">
       `;
+
+    let apiInfoInStorage = storage.getSync("ai_api_info");
+
+    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("default_model_type")){
+      document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
+      document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
+      document.getElementById("default_model_type_for_ai_assisted_writing").value = apiInfoInStorage["default_model_type"];
+    }
+
+      
   } else if(data["type"] === "baiduqianfan"){
     document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
     <br />
@@ -223,6 +233,15 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
       <p>${langdata["API_SECRET_KEY"][lang_name]}</p>
       <input type="text" class="form-control" id="api_secret_key_for_ai_assisted_writing" placeholder="${langdata["API_SECRET_KEY"][lang_name]}">
       `;
+
+    let apiInfoInStorage = storage.getSync("ai_api_info");
+
+    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("secret_key")){
+      document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
+      document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
+      document.getElementById("api_secret_key_for_ai_assisted_writing").value = apiInfoInStorage["secret_key"];
+    }
+
 
   } else {
     document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = "";
