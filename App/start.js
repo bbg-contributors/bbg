@@ -37,6 +37,9 @@ const stylesheet_dialog = new bootstrap.Modal(document.getElementById("styleshee
 
 const ai_assisted_writing_dialog = new bootstrap.Modal(document.getElementById("ai_assisted_writing-dialog"));
 
+const customize_bbg_ui_dialog = new bootstrap.Modal(document.getElementById("customize-bbg-ui-dialog"));
+
+
 function create_new_site_dialog_show() {
   create_new_site_dialog.show();
 }
@@ -514,7 +517,7 @@ storage.has("language", (error, hasKey) => {
       <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="open_builtin_ime_setting_dialog()"><i class="fa fa-keyboard-o" aria-hidden="true"></i> ${langdata.SETTING_OF_BUILTIN_IME[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li>
-
+      <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
       </ul>
 
           </div>
@@ -609,10 +612,49 @@ function openStylesheetDialog() {
   }
 }
 
+function open_customize_bbg_ui_dialog() {
+  customize_bbg_ui_dialog.show();
+  document.getElementById("customize-bbg-ui-dialog-content").innerHTML = `
+    <div class="container-fluid">
+    <h3>${langdata["SETTING_OF_CUSTOM_UI"][lang_name]}</h3>
+    <br />
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="enable_custom_ui">
+      <label class="form-check-label" for="enable_custom_ui">
+        ${langdata["ENABLE_CUSTOM_UI"][lang_name]}
+      </label>
+    </div>
+
+    <br />
+
+    <div class="mb-3">
+      <label for="custom_ui_bg_img_path" class="form-label">${langdata["BACKGROUND_IMAGE_PATH"][lang_name]}</label>
+      <input class="form-control" id="custom_ui_bg_img_path" placeholder="${langdata["BACKGROUND_IMAGE_PATH"][lang_name]}">
+    </div>
+
+    <div class="mb-3">
+      <label for="custom_ui_primary_color" class="form-label">${langdata["PRIMARY_COLOR"][lang_name]}</label>
+      <input class="form-control" id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}">
+    </div>
+  
+    </div>
+    `;
+}
+
 ipcRenderer.on("openExistingSite", ()=>{
   open_site();
 });
 
 ipcRenderer.on("createNewSite", ()=>{
   create_new_site_dialog_show();
+});
+
+storage.has("custom_ui_v1", (error, hasKey) => {
+  if (error) console.error(error);
+  if (hasKey) {
+  } else {
+    storage.set("custom_ui_v1", { enable_custom_ui: false, bg_img: "", primary_color: "" }, (err) => {
+      if (err) console.error(err);
+    });
+  }
 });
