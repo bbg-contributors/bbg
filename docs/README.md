@@ -1,19 +1,9 @@
-<img src="bbg_icon.png" style="max-width:25%" id="icon2"/>
-
 # BBG
 
-Hello here, this is the official document of BBG (Baiyuanneko's Blog Generator). Please select a language to display the docs.
+BBG is a free, open source, cross-platform, Electron-based static blog generator. Compared with other static blog generators, BBG uses a design in which the blog source file is the build product, making the build overhead almost zero and suitable for version management software such as Git.
 
-这里是 BBG （Baiyuanneko's Blog Generator）的官方文档。请从下方的列表中选择用于阅读文档的语言。
-
-[English](/en/)
-
-[简体中文](/zh-cn/)
+* [Official Website](https://bbg.nekomoe.xyz/)
 
 ## License
 
 This repository is released into the public domain.
-
-此仓库代码属于公有领域。
-
-<!-- TODO: use package manager -->
