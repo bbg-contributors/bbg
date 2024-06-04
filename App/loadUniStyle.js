@@ -31,7 +31,7 @@ module.exports = function () {
           }
 
           .container, .container-fluid, #container, #preview-section-container, #editor_textarea, .model-body, .modal-content {
-            background-color: rgba(255, 255, 255, 0.7)!important;
+            background-color: rgba(255, 255, 255, 0.8)!important;
           }
 
           #nav_list, #nav_container, .article-item, .page-item, .fluentinterface, .modal-header {
