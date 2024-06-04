@@ -612,6 +612,18 @@ function openStylesheetDialog() {
   }
 }
 
+function save_custom_ui_settings() {
+  const enable_custom_ui = document.getElementById("enable_custom_ui").checked;
+  const bg_img = document.getElementById("custom_ui_bg_img_path").value;
+  const primary_color = document.getElementById("custom_ui_primary_color").value;
+
+  storage.set("custom_ui_v1", { enable_custom_ui: enable_custom_ui, bg_img: bg_img, primary_color: primary_color }, (err) => {
+    if (err) console.error(err);
+    window.location.reload();
+  });
+}
+
+
 function open_customize_bbg_ui_dialog() {
   customize_bbg_ui_dialog.show();
   document.getElementById("customize-bbg-ui-dialog-content").innerHTML = `
@@ -636,9 +648,24 @@ function open_customize_bbg_ui_dialog() {
       <label for="custom_ui_primary_color" class="form-label">${langdata["PRIMARY_COLOR"][lang_name]}</label>
       <input class="form-control" id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}">
     </div>
+
+    <button class="btn btn-outline-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
   
     </div>
     `;
+
+  storage.has("custom_ui_v1", (error, hasKey) => {
+    if (error) console.error(error);
+    if (hasKey) {
+      storage.get("custom_ui_v1", (error, data) => {
+        if (error) console.error(error);
+        document.getElementById("enable_custom_ui").checked = data.enable_custom_ui;
+        document.getElementById("custom_ui_bg_img_path").value = data.bg_img;
+        document.getElementById("custom_ui_primary_color").value = data.primary_color;
+      });
+    }
+  });
 }
 
 ipcRenderer.on("openExistingSite", ()=>{
