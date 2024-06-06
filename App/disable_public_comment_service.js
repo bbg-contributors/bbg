@@ -7,4 +7,5 @@ module.exports = function () {
   toast_creator("success","done");
   document.getElementById("container").innerHTML = "";
   render_blog_settings();
+  enterBlogSettingInterfaceOf("comment_settings");
 };

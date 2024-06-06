@@ -36,10 +36,12 @@ module.exports = function () {
     toast_creator("primary","check completed with errors");
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("check_data_consistency");
   }
   else{
     toast_creator("success","check completed successfully");
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("check_data_consistency");
   }
 };

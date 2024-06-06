@@ -17,6 +17,7 @@ module.exports = function () {
   toast_creator("success",langdata.ALERT_SUCCESSFUL_REGISTER[lang_name]);
   document.getElementById("container").innerHTML = "";
   render_blog_settings();
+  enterBlogSettingInterfaceOf('favicon');
   
   
   `);

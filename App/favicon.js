@@ -9,6 +9,7 @@ function view_current_icon () {
     toast_creator("danger",langdata.ALERT_NOT_USING_ICON[lang_name]);
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("favicon");
   }
 }
 
@@ -18,10 +19,12 @@ function delete_current_icon () {
     toast_creator("success",langdata.ALERT_SUCCESSFUL_CLEARING[lang_name]);
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("favicon");
   } else {
     toast_creator("danger",langdata.ALERT_NOT_USING_ICON[lang_name]);
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("favicon");
   }
 }
 
@@ -35,11 +38,13 @@ function select_a_favicon () {
     toast_creator("success","done");
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("favicon");
   } else {
     // 用户放鸽子的情况
     toast_creator("primary",langdata.ALERT_NOT_SELECT_ANY_ICON[lang_name]);
     document.getElementById("container").innerHTML = "";
     render_blog_settings();
+    enterBlogSettingInterfaceOf("favicon");
   }
 }
 

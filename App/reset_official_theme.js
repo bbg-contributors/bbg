@@ -56,4 +56,5 @@ module.exports = () => {
   toast_creator("success",langdata.ALERT_RESET_THEME_OK[lang_name]);
   document.getElementById("container").innerHTML = "";
   render_blog_settings();
+  enterBlogSettingInterfaceOf("thirdpartytheme");
 };
