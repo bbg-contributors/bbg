@@ -13,15 +13,15 @@ module.exports = function () {
     }
 
     const dateobject = new Date();
-    const datenow = dateobject.toLocaleDateString();
+    const timestampnow = dateobject.getTime();
 
     blog["文章列表"].unshift({
       文章标题: "",
       文件名: `${tempString}.md`,
       标签: [],
       摘要: "",
-      创建日期: datenow,
-      修改日期: datenow,
+      "创建时间（时间戳）": timestampnow,
+      "修改时间（时间戳）": timestampnow,
       是否置顶: false,
       是否隐藏: false,
       是否加密: false,
