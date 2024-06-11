@@ -35,6 +35,7 @@ module.exports = function(){
       <br /><br />
     </div>
     <div id="publish_navhash" style="display:none;">
+    <button class="btn btn-primary" style="display: none;" onclick="preview_and_publish.open_terminal_emulator_dialog(preview_and_publish.test_terminal_emulator);">test: open terminal emulator</button>
     <h4>${langdata.PUSH_TO_REMOTE_TITLE[lang_name]} <span class="badge bg-info">Beta</span></h4>
     <p>${langdata.PUSH_TO_REMOTE_DESCRIPTION[lang_name]}</p>
     <button class="btn btn-outline-primary" onclick="preview_and_publish.commit_and_push();">${langdata.PUSH_TO_REMOTE[lang_name]}</button>
@@ -69,4 +70,5 @@ module.exports = function(){
   document.getElementById("nav_to_preview_and_publish_page").classList.add("active");
 
   enterPreviewAndPublishInterfaceOf("preview");
+  var xtermInstance = null;
 };
