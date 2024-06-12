@@ -14,7 +14,7 @@
   },
   "main": "main.js",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "preinstall": "npx only-allow yarn",
     "start": "electron ./main.js",
     "start_in_native_wayland_mode": "electron ./main.js --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland",
