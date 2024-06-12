@@ -101,10 +101,7 @@ jobs:
         run: |
           yarn run build:win
           rm -r dist/win-unpacked
-          rm -r dist/win-ia32-unpacked
           rm -r dist/win-arm64-unpacked
-          rm dist/bbg-ia32.exe
-          rm dist/bbg-ia32.exe.blockmap
       - name: Build macOS
         if: matrix.os == 'macos-latest'
         run: |
@@ -157,11 +154,9 @@ jobs:
           mv bbg-arm64.dmg bbg-${RELEASE_VERSION}-arm64.dmg
           mv bbg-x64.dmg bbg-${RELEASE_VERSION}-x64.dmg
           mv bbg-x64.exe bbg-${RELEASE_VERSION}-setup-x64.exe
-          mv bbg.exe bbg-${RELEASE_VERSION}-setup-x86.exe
           mv bbg-x64.tar.gz bbg-${RELEASE_VERSION}-x64-linux.tar.gz
           mv bbg-x86_64.AppImage bbg-${RELEASE_VERSION}-x86_64.AppImage
           mv bbg-arm64.dmg.blockmap bbg-${RELEASE_VERSION}-arm64.dmg.blockmap
-          mv bbg.exe.blockmap bbg-${RELEASE_VERSION}-x86.exe.blockmap
           mv bbg-x64.dmg.blockmap bbg-${RELEASE_VERSION}-x64.dmg.blockmap
           mv bbg-x64.exe.blockmap bbg-${RELEASE_VERSION}-x64.exe.blockmap
           mv bbg-arm64.deb bbg-${RELEASE_VERSION}-arm64.deb
