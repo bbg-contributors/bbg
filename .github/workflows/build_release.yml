@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ">=18.16.0"
+          node-version: "21.x"
           check-latest: true
           cache: yarn
       - name: Install dependencies
