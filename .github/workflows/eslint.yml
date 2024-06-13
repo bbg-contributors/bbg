@@ -25,6 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          git config --global url."https://github.com/".insteadOf ssh://git@github.com/
           yarn install --frozen-lockfile
 
       - name: Run ESLint
