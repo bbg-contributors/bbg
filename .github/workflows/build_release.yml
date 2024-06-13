@@ -27,6 +27,7 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: |
+          git config --global url."https://github.com/".insteadOf ssh://git@github.com/
           yarn install --frozen-lockfile
       - name: Inject release info to the program
         if: startsWith(github.ref, 'refs/tags/')
