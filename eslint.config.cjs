@@ -15,7 +15,7 @@ const compat = new FlatCompat({
 module.exports = [{
     ignores: [
         "**/*.min.*",
-        "**/CHANGELOG.md",
+        "**/*.md",
         "**/dist",
         "**/LICENSE*",
         "**/output",

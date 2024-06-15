@@ -16,7 +16,8 @@ module.exports = function(third_party_theme_path,isFromLocalFile,theme_name="",t
     if (
       blog["全局主题设置"]["第三方主题文件内容"] !== undefined
       && blog["全局主题设置"]["第三方主题文件内容"] !== null
-      && blog["全局主题设置"]["第三方主题文件内容"] !== []
+      && Array.isArray(blog["全局主题设置"]["第三方主题文件内容"])
+      && blog["全局主题设置"]["第三方主题文件内容"].length !== 0
       && blog["全局主题设置"]["第三方主题文件内容"] !== ""
     ) {
 
