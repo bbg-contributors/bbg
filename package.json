@@ -24,6 +24,7 @@
     "build:win": "electron-builder build --win --publish=never",
     "build:linux": "electron-builder build --linux --publish=never",
     "build:mac": "electron-builder build --mac --publish=never",
+    "rebuild-node-pty": "electron-rebuild -f -w node-pty",
     "modify_version_number": "node ./modify_version_number.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
