@@ -7,12 +7,15 @@
     "dist/electron/**/*",
     "./main.js",
     "App/**/*",
-    "resources/**/*"
+    "resources/**/*",
+    ".git/refs/heads/*"
   ],
   "extraFiles": [
     "LICENSE"
   ],
-  "asarUnpack": [],
+  "asarUnpack": [
+    "**node_modules/native-prompt/**"
+  ],
   "fileAssociations": [
     {
       "name": "BBGThemeFile",

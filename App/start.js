@@ -20,6 +20,7 @@ const loadUniStyle = require("./loadUniStyle.js");
 const getAppInfo = require("./getAppInfo.js");
 const AppInfo = getAppInfo();
 const currentProgramVersion = require("./currentProgramVersion.js");
+const currentCommitID = require("./currentCommitID.js");
 const check_update = require("./check_update.js");
 
 const BlogData = require("./BlogData.js");
@@ -562,7 +563,7 @@ storage.has("language", (error, hasKey) => {
         <button class="btn btn-outline-primary" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
         `;
       } else if(existsSync(`${__dirname}/is_released_version`) === false){
-        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion})">
+        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion}, commit-id = ${currentCommitID.slice(0, 7)})">
         <i class="fa fa-info-circle" style="color:grey"></i>
       </span>
       `;
