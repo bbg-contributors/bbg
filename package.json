@@ -53,7 +53,7 @@
     "electron-reloader": "^1.2.3",
     "express": "^4.19.2",
     "font-awesome": "4.7.0",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "ipinyinjs": "https://github.com/bbg-contributors/pinyinjs.git",
     "lint-staged": "^15.2.5",
     "marked": "^13.0.2",
