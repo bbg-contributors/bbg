@@ -56,7 +56,7 @@
     "husky": "^9.1.1",
     "ipinyinjs": "https://github.com/bbg-contributors/pinyinjs.git",
     "lint-staged": "^15.2.5",
-    "marked": "^13.0.2",
+    "marked": "^13.0.3",
     "native-prompt": "^2.1.4",
     "node-pty": "^1.0.0",
     "request": "^2.88.2",
