@@ -1283,10 +1283,10 @@ electron-reloader@^1.2.3:
     electron-is-dev "^1.2.0"
     find-up "^5.0.0"
 
-electron@^32.0.1:
-  version "32.0.1"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-32.0.1.tgz#8bfc186b81a645c6b3b12f91e71db4231fd0c934"
-  integrity sha512-5Hd5Jaf9niYVR2hZxoRd3gOrcxPOxQV1XPV5WaoSfT9jLJHFadhlKtuSDIk3U6rQZke+aC7GqPPAv55nWFCMsA==
+electron@^32.1.0:
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-32.1.0.tgz#e736cb6f25a1ba15fffbd25e92a847485dc0ed8b"
+  integrity sha512-4etE3K6vPUkHihf7nvawngbB5+jLuUJgZh31f9ki1Gfveo0qwNDkLv/doabw+4zFFWKUXI+uFUpyOpL5+RwS+Q==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^20.9.0"
