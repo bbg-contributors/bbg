@@ -42,7 +42,7 @@
     "JJ-Shep"
   ],
   "dependencies": {
-    "@electron/rebuild": "^3.6.0",
+    "@electron/rebuild": "^3.6.2",
     "@electron/remote": "^2.1.2",
     "@popperjs/core": "^2.11.8",
     "@xterm/xterm": "^5.5.0",
