@@ -25,6 +25,11 @@ jobs:
           node-version: "22.x"
           check-latest: true
           cache: yarn
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
       - name: Install dependencies
         run: |
           git config --global url."https://github.com/".insteadOf ssh://git@github.com/
