@@ -1,0 +1,188 @@
+
+@import url("https://unpkg.com/flatpickr@4.6.13/dist/flatpickr.min.css");
+
+
+* {
+    font-family: "Noto Sans CJK SC", "Microsoft YaHei", "微软雅黑", "Arial", sans-serif;
+}
+
+mdui-icon {
+    font-family: "Material Icons" !important;
+}
+
+.titlebar_browser {
+    background-color: rgb(var(--mdui-color-primary-container));
+    box-shadow: var(--mdui-elevation-level2);
+    position: fixed;
+}
+
+#start_page_center_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+}
+
+#start_page_center_container_content {
+    background-color: rgb(var(--mdui-color-on-primary));
+    box-shadow: var(--mdui-elevation-level2);
+    min-width: 60vh;
+}
+
+#failure_to_route_page_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+#failure_to_route_page_card {
+    background-color: rgb(var(--mdui-color-on-primary));
+    padding: 20px;
+    box-shadow: var(--mdui-elevation-level2);
+}
+
+#blog_manager_page_card, #blog_manager_mdeditor_page_card, #blog_manager_settings_page_card {
+    background-color: rgb(var(--mdui-color-on-primary));
+    padding: 40px;
+    box-shadow: var(--mdui-elevation-level2);
+    width: 100%;
+    margin-top: 70px;
+}
+
+#blog_manager_top_app_bar {
+    background-color: rgb(var(--mdui-color-primary-container));
+    box-shadow: var(--mdui-elevation-level2);
+}
+
+#blog_manager_nav_rail mdui-navigation-rail {
+    margin-top: 70px;
+    overflow-y: auto;
+}
+
+.palatte_color_block {
+    width: 55px;
+    height: 55px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.blog_manager_articles_article_card {
+    display: block;
+    padding: 20px;
+
+    margin-bottom: 50px;
+}
+
+.blog_manager_pages_page_card {
+    display: block;
+    padding: 20px;
+
+    margin-bottom: 50px;
+}
+
+.blog_manager_settings_page_card {
+    display: block;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+
+.titlebar_pwa {
+    position: fixed;
+    left: env(titlebar-area-x, 0);
+    top: env(titlebar-area-y, 0);
+    width: env(titlebar-area-width, 100%);
+    height: env(titlebar-area-height, 33px);
+    -webkit-app-region: drag;
+    app-region: drag;
+    display: none;
+    background-color: rgb(var(--mdui-color-primary-container));
+    align-items: center;
+    z-index: 9999;
+    
+}
+
+@media (display-mode: window-controls-overlay) {
+    .titlebar_browser {
+        display: none;
+    }
+
+    .titlebar_pwa {
+        display: flex;
+    }
+
+    #blog_manager_page_card {
+        margin-top: calc(env(titlebar-area-height, 33px) + 10px);
+    }
+
+    #blog_manager_nav_rail mdui-navigation-rail {
+        margin-top: calc(env(titlebar-area-height, 33px) + 10px);
+    }
+}
+
+@media (display-mode: standalone) {
+    .titlebar_browser {
+        display: none;
+    }
+
+    .titlebar_pwa {
+        display: none;
+    }
+
+    #blog_manager_page_card {
+        margin-top: 10px;
+    }
+
+    #blog_manager_nav_rail mdui-navigation-rail {
+        margin-top: 10px;
+    }
+}
+
+.border_in_titlebar {
+    border:1px solid rgb(var(--mdui-color-primary));
+    padding-left: 6px;
+    padding-right: 10px;
+    border-radius: 4px;
+}
+
+#mdeditor_editing_area, #mdeditor_editing_area:active, #mdeditor_editing_area:focus, #mdeditor_editing_area:hover {
+    padding: 20px;
+    border-radius: 12px;
+    height: 50vh;
+    width: 35vw;
+    position: absolute;
+    display: block;
+    
+    border: 1px solid rgb(var(--mdui-color-primary));
+}
+
+#mdeditor_preview_area{
+    padding: 20px;
+    border-radius: 12px;
+    height: 50vh;
+    width: 35vw;
+    position: absolute;
+    left: 45vw;
+    display: block;
+    background-color: rgb(247, 245, 245);
+    overflow-y: auto;
+}
+
+#blog_manager_mdeditor_page_card {
+    height: 88vh;
+    padding-top: 20px;
+}
+
+.flatpickr-input {
+    color: rgb(var(--mdui-color-on-surface));
+    caret-color: rgb(var(--mdui-color-primary));
+    background-color: rgb(var(--mdui-color-surface-container-highest));
+    border: 0;
+    height: 1.5rem;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(var(--mdui-color-primary));
+    padding: 10px 15px;
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Baiyuanneko's Blog Generator",
+    "start_url": ".",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay"],
+    "theme_color": "#cc3366",
+    "description": "A static blog generator that runs directly on your browser.",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
