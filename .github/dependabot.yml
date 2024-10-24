@@ -10,7 +10,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   # Maintain dependencies for git submodules
   - package-ecosystem: "gitsubmodule"
