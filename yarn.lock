@@ -1298,10 +1298,10 @@ electron-reloader@^1.2.3:
     electron-is-dev "^1.2.0"
     find-up "^5.0.0"
 
-electron@^33.0.1:
-  version "33.0.1"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-33.0.1.tgz#6e990077eb27d0d3dc9a0c424271a2f10c202263"
-  integrity sha512-PipPnWH4gvf7o+P8jlKQZGgPfb5eHcLgTrnKkFzb98MXhyPjVJYCR7YWqcawZ8IfyJCut8vMxLuBFLT1Ag8TSQ==
+electron@^33.1.0:
+  version "33.1.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-33.1.0.tgz#c86042e71fa964a054b3306810a3c451aada98f7"
+  integrity sha512-7KiY6MtRo1fVFLPGyHS7Inh8yZfrbUTy43nNwUgMD2CBk729BgSwOC2WhmcptNJVlzHJpVxSWkiVi2hp9mH/bw==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^20.9.0"
