@@ -1,4 +1,5 @@
 const doNothing = require("./doNothing.js");
+const xssStrict = require("xss");
 
 module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
@@ -13,8 +14,7 @@ module.exports = function () {
       document.querySelector("#container").insertAdjacentHTML("beforeend",`
         <div class="article-item" id="article-item-${i}">
             <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> ${langdata.ARTICLE_IS_TOP[lang_name]}</div>
-            <h2>${blog["文章列表"][i]["文章标题"]}</h2>
-           
+            <h2>${xssStrict(blog["文章列表"][i]["文章标题"])}</h2>
             
         </div>
             `);
@@ -27,7 +27,7 @@ module.exports = function () {
     } else {
       document.querySelector("#container").insertAdjacentHTML("beforeend",`
         <div class="article-item" id="article-item-${i}">
-            <h2>${blog["文章列表"][i]["文章标题"]}</h2>
+            <h2>${xssStrict(blog["文章列表"][i]["文章标题"])}</h2>
            
             
         </div>
@@ -50,27 +50,49 @@ module.exports = function () {
 
         for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++) {
           document.querySelector(`#article-item-sub-${i}`).insertAdjacentHTML("beforeend",`
-                    <button class="btn btn-light btn-sm">${blog["文章列表"][i]["标签"][k]}</button>
+                    <button class="btn btn-light btn-sm">${xssStrict(blog["文章列表"][i]["标签"][k])}</button>
                     `);
         }
       }
 
       document.querySelector(`#article-item-${i}`).insertAdjacentHTML("beforeend",`
-            <br /><p>${blog["文章列表"][i]["摘要"]}</p>
+            <br /><p>${xssStrict(blog["文章列表"][i]["摘要"])}</p>
                 `);
     }
 
     // TODO: i18n encrypt_options
     document.querySelector(`#article-item-${i}`).insertAdjacentHTML("beforeend", `
     
-    <button class="btn btn-outline-primary" onclick="edit_article('${blog["文章列表"][i]["文件名"]}', ${i})"><i class="fa fa-edit"></i> ${langdata.EDIT_AND_PREVIEW_ARTICLE_CONTENT[lang_name]}</button>
-    <button class="btn btn-outline-primary" onclick="edit_article_meta(${i})"><i class="fa fa-info-circle"></i> ${langdata.EDIT_ARTICLE_META[lang_name]}</button>
-    <button class="btn btn-outline-danger" onclick="delete_article(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_ARTICLE[lang_name]}</button>
+    <button class="btn btn-outline-primary" id="article_item_${i}_edit_article_btn"><i class="fa fa-edit"></i> ${langdata.EDIT_AND_PREVIEW_ARTICLE_CONTENT[lang_name]}</button>
+    <button class="btn btn-outline-primary" id="article_item_${i}_edit_article_meta_btn"><i class="fa fa-info-circle"></i> ${langdata.EDIT_ARTICLE_META[lang_name]}</button>
+    <button class="btn btn-outline-danger" id="article_item_${i}_delete_article_btn"><i class="fa fa-trash-o"></i> ${langdata.DELETE_ARTICLE[lang_name]}</button>
     <span id="encryption_related_func_${i}"></span>
     <br /><br />
-    <button class="btn btn-outline-primary" onclick="let_article_up(${i})"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
-    <button class="btn btn-outline-primary" onclick="let_article_down(${i})"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
+    <button class="btn btn-outline-primary" id="article_item_${i}_let_article_up_btn"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
+    <button class="btn btn-outline-primary" id="article_item_${i}_let_article_down_btn"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
     `);
+
+    document.querySelector(`#article_item_${i}_edit_article_btn`).onclick = function () {
+      edit_article(xssStrict(blog["文章列表"][i]["文件名"]), i);
+    };
+
+    document.querySelector(`#article_item_${i}_edit_article_meta_btn`).onclick = function () {
+      edit_article_meta(i);
+    };
+
+    document.querySelector(`#article_item_${i}_delete_article_btn`).onclick = function () {
+      delete_article(i);
+    };
+
+
+    document.querySelector(`#article_item_${i}_let_article_up_btn`).onclick = function () {
+      let_article_up(i);
+    };
+
+    document.querySelector(`#article_item_${i}_let_article_down_btn`).onclick = function () {
+      let_article_down(i);
+    };
+
     if (blog["文章列表"][i]["是否加密"]){
       document.querySelector(`#encryption_related_func_${i}`).insertAdjacentHTML("beforeend",`
       <button class="btn btn-outline-warning" onclick="ui_decrypt_article(${i})"><i class="fa fa-unlock"></i> ${langdata.DECRYPT_ARTICLE[lang_name]}</button>

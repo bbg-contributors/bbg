@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
-const pty = require("node-pty");
 
 const guess_shell_path = function(){
   if (process.platform == "win32") {
@@ -53,27 +52,4 @@ ipcMain.on("ime_setToInputMode", () => {
 
 ipcMain.on("ime_getCurrentStatus", (event) => {
   event.returnValue = CurrentStatusOfIME;
-});
-
-/**
-  @type { import("node-pty").IPty | null }
-*/
-let shellInstanceObject = null;
-
-ipcMain.on("spawnShell", () => {
-  const shell_path = guess_shell_path();
-  const ptyProcess = pty.spawn(shell_path);
-
-  if (shellInstanceObject !== null) {
-    shellInstanceObject.kill();
-  }
-  
-  shellInstanceObject = ptyProcess;
-  shellInstanceObject.on("data", (/** @type {string} */ data) => {
-    win.webContents.send("shellInstanceData", data);
-  });
-});
-
-ipcMain.on("shellInstanceWrite", (event, /** @type {string} */ data) => {
-  shellInstanceObject.write(data);
 });

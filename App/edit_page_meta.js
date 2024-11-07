@@ -1,3 +1,6 @@
+
+const xssStrict = require("xss");
+
 module.exports = function (i) {
   const metaModal = new bootstrap.Modal(document.getElementById("edit_page_meta_dialog"));
   metaModal.toggle();
@@ -10,7 +13,7 @@ module.exports = function (i) {
   document.getElementById("page_meta_content").insertAdjacentHTML("beforeend", `
     <div class="mb-3">
     <label class="form-label"><i class="fa fa-book"></i> ${langdata.PAGE_TITLE[lang_name]}</label>
-    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_PAGE_TITLE[lang_name]}" value="${blog["页面列表"][i]["页面标题"]}" id="meta_page_title">
+    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_PAGE_TITLE[lang_name]}" id="meta_page_title">
   </div>
   
   <div class="form-check form-switch">
@@ -24,7 +27,7 @@ module.exports = function (i) {
   
   <div class="mb-3">
     <label class="form-label">${langdata.MENU_VIEWNAME_EDIT_META[lang_name]}</label>
-    <input class="form-control" value="${blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"]}" id="meta_page_title_menu">
+    <input class="form-control" id="meta_page_title_menu">
   </div>
   
   <div class="form-check form-switch">
@@ -53,4 +56,7 @@ module.exports = function (i) {
 
   loadIME("#meta_page_title");
   loadIME("#meta_page_title_menu");
+
+  document.getElementById("meta_page_title").value = xssStrict(blog["页面列表"][i]["页面标题"]);
+  document.getElementById("meta_page_title_menu").value = blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"];
 };

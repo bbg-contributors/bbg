@@ -99,7 +99,9 @@ const render_preview_and_publish_page = require("./render_preview_and_publish_pa
 const preview_and_publish = require("./preview_and_publish.js");
 const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPublish.js");
 
-storage.set("last_managed_site", { title: blog["博客标题"], rootdir: rootDir });
+const xssStirct = require("xss");
+
+storage.set("last_managed_site", { title: xssStirct(blog["博客标题"]), rootdir: rootDir });
 
 // 初始化界面
 

@@ -1,3 +1,6 @@
+
+const xssStrict = require("xss");
+
 function render_friend_book_json_url_input(){
   document.getElementById("friend_list_json_input_container").innerHTML =`
   <br />
@@ -5,13 +8,15 @@ function render_friend_book_json_url_input(){
     <label class="form-label"><i class="fa fa-link"></i> ${langdata.URL_OF_FRIEND_BOOK_JSON_DATA[lang_name]}</label>
     <input
       class="form-control"
-      value="${blog["若友人帐来自json文件，则地址为"]}"
       id="friend_book_json_url"
     />
   </div>
   
   `;
   loadIME("#friend_book_json_url");
+
+  document.getElementById("friend_book_json_url").value = xssStrict(blog["若友人帐来自json文件，则地址为"]);
+
 }
 
 function render_friend_book_to_container(){
@@ -59,7 +64,6 @@ ${langdata.GET_FRIEND_BOOK_DATA_FROM_EXTERNAL_LINK[lang_name]}
 <br />
 <p><i class="fa fa-file-text-o"></i> ${langdata.ADDITIONAL_INFORMATION_DISPLAY_IN_FRIEND_BOOK[lang_name]}</p>
 <textarea class="form-control" id="friend_book_additional_info">
-${blog["友人帐页面附加信息"]}
 </textarea>
     <hr />
     <div id="friend_list_normal_container">
@@ -97,6 +101,8 @@ ${blog["友人帐页面附加信息"]}
     <button class="btn btn-outline-success" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
   </div>
     `;
+
+  document.getElementById("friend_book_additional_info").value = blog["友人帐页面附加信息"];
     
   if(blog["友人帐来自json文件"]){
     document.getElementById("load_friend_from_external_json").checked = true;

@@ -1,4 +1,5 @@
 const loadIME = require("./loadIME");
+const xssStrict = require("xss");
 
 module.exports = function (i) {
   const metaModal = new bootstrap.Modal(document.getElementById("edit_article_meta_dialog"));
@@ -16,11 +17,11 @@ module.exports = function (i) {
       <div class="col-7">
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-book"></i> ${langdata.ARTICLE_TITLE[lang_name]}</label>
-          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_TITLE[lang_name]}" value="${blog["文章列表"][i]["文章标题"]}" id="meta_article_title">
+          <input class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_TITLE[lang_name]}" id="meta_article_title">
         </div>
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.ARTICLE_ABSTRACT[lang_name]}</label>
-          <textarea class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_ABSTRACT[lang_name]}" id="meta_article_description">${blog["文章列表"][i]["摘要"]}</textarea>
+          <textarea class="form-control" placeholder="${langdata.PLEASE_INPUT_ARTICLE_ABSTRACT[lang_name]}" id="meta_article_description">${xssStrict(blog["文章列表"][i]["摘要"])}</textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-calendar"></i> ${langdata.CREATEDAT_EDIT_META[lang_name]}</label>
@@ -38,7 +39,7 @@ module.exports = function (i) {
       <div class="col-5">
         <div class="mb-3">
           <label class="form-label"><i class="fa fa-file-text-o"></i> ${langdata.FILENAME[lang_name]}</label>
-          <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename" value="${blog["文章列表"][i]["文件名"]}">
+          <input class="form-control"  placeholder=" ${langdata.FILENAME[lang_name]}" id="meta_article_filename">
         </div>
         <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="meta_article_is_comment_enabled">
@@ -67,6 +68,9 @@ module.exports = function (i) {
   </div>
 `);
 
+  document.getElementById("meta_article_title").value = xssStrict(blog["文章列表"][i]["文章标题"]);
+  document.getElementById("meta_article_filename").value = xssStrict(blog["文章列表"][i]["文件名"]);
+
   const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
@@ -80,7 +84,7 @@ module.exports = function (i) {
   if (blog["文章列表"][i]["标签"].length !== 0) {
     let tempTagString = "";
     for (let k = 0; k < blog["文章列表"][i]["标签"].length; k++)
-      tempTagString += `${blog["文章列表"][i]["标签"][k]} `;
+      tempTagString += `${xssStrict(blog["文章列表"][i]["标签"][k])} `;
 
     tempTagString = tempTagString.slice(0, tempTagString.length - 1);
 

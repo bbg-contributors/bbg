@@ -57,7 +57,6 @@
           <label class="form-label"><i class="fa fa-book"></i> ${langdata["BLOG_TITLE"][lang_name]}</label>
           <input
             class="form-control"
-            value="${blog['博客标题']}"
             id="blog_settings_title"
           />
         </div>
@@ -68,7 +67,6 @@
           >
           <input
             class="form-control"
-            value="${blog['博客描述（副标题）']}"
             id="blog_settings_description"
           />
         </div>
@@ -86,7 +84,6 @@
           </span></label>
           <input
             class="form-control"
-            value="${blog['全站内容授权协议']}"
             id="blog_settings_content_license"
           />
         </div>
@@ -213,7 +210,6 @@
             >
             <input
               class="form-control"
-              value="${blog['文章列表中每页的文章数为']}"
               type="number"
               min="5"
               id="blog_settings_howmany_article_in_a_page"
@@ -226,7 +222,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局主题设置']['标题栏背景颜色']}"
               id="blog_settings_titlebar_bgcolor"
             />
           </div>
@@ -237,7 +232,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局主题设置']['标题栏文字颜色']}"
               id="blog_settings_titlebar_textcolor"
             />
           </div>
@@ -248,7 +242,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局主题设置']['链接颜色']}"
               id="blog_settings_linkcolor"
             />
           </div>
@@ -303,7 +296,7 @@
         <p>${langdata.DOMAIN_RELATED_FUNCTION_DESCRIPTION[lang_name]}</p>
         
   
-        <input id="domain_string" class="form-control" placeholder="${langdata.DOMAIN_RELATED_FUNCTION_EXAMPLE[lang_name]}" value="${blog['网站域名（包括https://）']}">
+        <input id="domain_string" class="form-control" placeholder="${langdata.DOMAIN_RELATED_FUNCTION_EXAMPLE[lang_name]}">
   <br />
         <div class="form-check  form-switch">
           <input
@@ -424,7 +417,6 @@
           >
           <input
             class="form-control"
-            value="${blog['全局主题设置']['live2d-widget设置']['widget路径']}"
             id="blog_settings_live2d_widget_path"
           />
         </div>
@@ -434,7 +426,6 @@
           >
           <input
             class="form-control"
-            value="${blog['全局主题设置']['live2d-widget设置']['tips路径']}"
             id="blog_settings_live2d_widget_tips_path"
           />
         </div>
@@ -444,7 +435,6 @@
           >
           <input
             class="form-control"
-            value="${blog['全局主题设置']['live2d-widget设置']['api路径']}"
             id="blog_settings_live2d_widget_api_path"
           />
         </div>
@@ -593,7 +583,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局评论设置']['valine设置']['leancloud_appid']}"
               id="blog_settings_valine_appid"
             />
           </div>
@@ -604,7 +593,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局评论设置']['valine设置']['leancloud_appkey']}"
               id="blog_settings_valine_appkey"
             />
           </div>
@@ -621,7 +609,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局评论设置']['disqus设置']['shortname']}"
               id="blog_settings_disqus_shortname"
             />
           </div>
@@ -638,7 +625,6 @@
             >
             <input
               class="form-control"
-              value="${blog['全局评论设置']['waline设置']['serverurl']}"
               id="blog_settings_waline_serverurl"
             />
           </div>

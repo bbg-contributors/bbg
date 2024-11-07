@@ -1,5 +1,6 @@
 
 const dialog = require("@electron/remote").dialog;
+const xssStrict = require("xss");
 
 function render_comment_related(trigger_by_change = false){
   let current_selection = undefined;
@@ -68,6 +69,27 @@ function render_comment_related(trigger_by_change = false){
 
 module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent("blog_settings_ui.html"));
+
+  document.getElementById("blog_settings_title").value = xssStrict(blog["博客标题"]);
+  document.getElementById("blog_settings_description").value = xssStrict(blog["博客描述（副标题）"]);
+  document.getElementById("blog_settings_content_license").value = xssStrict(blog["全站内容授权协议"]);
+  document.getElementById("blog_settings_howmany_article_in_a_page"). value = xssStrict(blog["文章列表中每页的文章数为"]);
+  document.getElementById("blog_settings_titlebar_bgcolor").value = xssStrict(blog["全局主题设置"]["标题栏背景颜色"]);
+  document.getElementById("blog_settings_titlebar_textcolor").value = xssStrict(blog["全局主题设置"]["标题栏文字颜色"]);
+  document.getElementById("blog_settings_linkcolor").value = xssStrict(blog["全局主题设置"]["链接颜色"]);
+  document.getElementById("domain_string").value = xssStrict(blog["网站域名（包括https://）"]);
+  document.getElementById("website_announcement_content").value = xssStrict(blog["网站公告"]);
+  document.getElementById("blog_settings_url_of_background").value = xssStrict(blog["全局主题设置"]["若使用背景图像，设置为"]["若将某个url作为背景图像，这个url是"]);
+  document.getElementById("blog_settings_color_of_background").value = xssStrict(blog["全局主题设置"]["若使用纯色背景，颜色为"]);
+  document.getElementById("blog_settings_live2d_widget_path").value = xssStrict(blog["全局主题设置"]["live2d-widget设置"]["widget路径"]);
+  document.getElementById("blog_settings_live2d_widget_tips_path").value = xssStrict(blog["全局主题设置"]["live2d-widget设置"]["tips路径"]);
+  document.getElementById("blog_settings_live2d_widget_api_path").value = xssStrict(blog["全局主题设置"]["live2d-widget设置"]["api路径"]);
+  document.getElementById("blog_settings_valine_appid").value = xssStrict(blog["全局评论设置"]["valine设置"]["appid"]);
+  document.getElementById("blog_settings_valine_appkey").value = xssStrict(blog["全局评论设置"]["valine设置"]["appkey"]);
+  document.getElementById("blog_settings_disqus_shortname").value = xssStrict(blog["全局评论设置"]["disqus设置"]["shortname"]);
+  document.getElementById("blog_settings_waline_serverurl").value = xssStrict(blog["全局评论设置"]["waline设置"]["serverurl"]);
+  document.getElementById("blog_setting_cdn_frm_2").value = xssStrict(blog["CDN路径"]);
+
 
   if (blog["不使用全站内容授权协议"] === true)
     document.getElementById("blog_content_license_enabled").checked = true;
