@@ -73,6 +73,13 @@ function create_new_site_choose_root_dir() {
 }
 
 function open_site() {
+  const alertResult = dialog.showMessageBoxSync({
+    message: langdata["ALERT_OPEN_SITE"][lang_name],
+    buttons: [langdata["I_UNDERSTAND"][lang_name], langdata["CANCEL"][lang_name]],
+  });
+  if (alertResult === 1){
+    return;
+  }
   const rootDir = dialog.showOpenDialogSync({
     properties: ["openDirectory"],
   });
