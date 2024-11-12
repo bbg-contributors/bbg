@@ -1,6 +1,6 @@
 {
   "name": "bbg",
-  "version": "20240613.0.0",
+  "version": "20241113.0.0",
   "packageManager": "yarn@1.22.19",
   "description": "A static blog generator based on Electron Technology.",
   "license": "UNLICENSED",
