@@ -226,6 +226,10 @@ function addLive2DWidgetSupport() {
     }};
 }
 
+function addSupportForSiteTheme() {
+  blog["站点主题"] = "default";
+}
+
 module.exports = function () {
   const currentBlogVersion = parseInt(
     blog["博客程序版本（禁止修改此值，否则会导致跨版本升级异常）"],
@@ -321,6 +325,10 @@ module.exports = function () {
   if (currentBlogVersion <= 20240518) {
     addTimestampPropertyToEveryArticle();
     addLive2DWidgetSupport();
+  }
+
+  if (currentBlogVersion <= 20241111) {
+    addSupportForSiteTheme();
   }
 
   check_third_party_theme_compatiblity();

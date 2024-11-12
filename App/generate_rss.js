@@ -25,7 +25,10 @@ module.exports = function () {
       <link href="${blog["网站域名（包括https://）"]}/index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}"/>
       <id>${blog["网站域名（包括https://）"]}/index.html?type=article&filename=${blog["文章列表"][i]["文件名"]}</id>
       <content type="html">
+        <![CDATA[
           ${blog["文章列表"][i]["是否加密"]===true?blog["文章列表"][i]["摘要"]:xss_filter(marked(readFileSync(rootDir+"/data/articles/"+blog["文章列表"][i]["文件名"],"utf-8")))}
+
+        ]]>
       </content>
       <summary type="html">${blog["文章列表"][i]["摘要"]}</summary>
       <updated>${new Date(blog["文章列表"][i]["修改时间（时间戳）"]).toISOString()}</updated>
