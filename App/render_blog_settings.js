@@ -119,10 +119,10 @@ module.exports = function () {
   document.getElementById("blog_settings_live2d_widget_api_path").value =
     xssStrict(blog["全局主题设置"]["live2d-widget设置"]["api路径"]);
   document.getElementById("blog_settings_valine_appid").value = xssStrict(
-    blog["全局评论设置"]["valine设置"]["appid"]
+    blog["全局评论设置"]["valine设置"]["leancloud_appid"]
   );
   document.getElementById("blog_settings_valine_appkey").value = xssStrict(
-    blog["全局评论设置"]["valine设置"]["appkey"]
+    blog["全局评论设置"]["valine设置"]["leancloud_appkey"]
   );
   document.getElementById("blog_settings_disqus_shortname").value = xssStrict(
     blog["全局评论设置"]["disqus设置"]["shortname"]
