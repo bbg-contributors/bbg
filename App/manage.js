@@ -17,7 +17,7 @@ const { rmSync } = require("fs");
 const { ipcRenderer } = require("electron");
 
 // 创建 blog 对象
-const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\","/");
+const rootDir = decodeURIComponent(getUrlArgs("rootdir")).replaceAll("\\", "/");
 const BlogInstance = new BlogData(rootDir);
 
 const blog = BlogInstance.getBlogData();
@@ -59,13 +59,20 @@ const save_blog_settings = require("./save_blog_settings.js");
 const reset_official_theme = require("./reset_official_theme.js");
 const apply_thirdparty_theme = require("./apply_thirdparty_theme.js");
 const apply_thirdparty_theme_v2_core = require("./apply_thirdparty_theme_v2_core.js");
-const check_thirdparty_theme_update = require("./online_theme").check_thirdparty_theme_update;
+const check_thirdparty_theme_update =
+  require("./online_theme").check_thirdparty_theme_update;
 const apply_thirdparty_theme_v2 = require("./apply_thirdparty_theme_v2.js");
-const open_online_theme_dialog = require("./online_theme.js").open_online_theme_dialog;
+const open_online_theme_dialog =
+  require("./online_theme.js").open_online_theme_dialog;
 const render_theme_detail = require("./online_theme.js").render_theme_detail;
-const render_online_theme_list = require("./online_theme.js").render_online_theme_list;
+const render_online_theme_list =
+  require("./online_theme.js").render_online_theme_list;
 const install_theme = require("./online_theme.js").install_theme;
-const { view_current_icon, delete_current_icon, select_a_favicon } = require("./favicon.js");
+const {
+  view_current_icon,
+  delete_current_icon,
+  select_a_favicon,
+} = require("./favicon.js");
 const use_public_comment_service_offered_by_bbg = require("./public_comment_srv.js");
 const disable_puclic_comment_service = require("./disable_public_comment_service.js");
 const generate_sitemap = require("./generate_sitemap.js");
@@ -76,21 +83,26 @@ const rss_hook = require("./rss_hook.js");
 const sitemap_hook = require("./sitemap_hook.js");
 const encrypt_content = require("./encrypt_content.js");
 const decrypt_content = require("./decrypt_content.js");
-const {ui_encrypt_article, ui_decrypt_article} = require("./encryption_decryption_ui.js");
+const {
+  ui_encrypt_article,
+  ui_decrypt_article,
+} = require("./encryption_decryption_ui.js");
 const enterBlogSettingInterfaceOf = require("./navToSectionOfBlogSetting.js");
 
-const config_third_party_theme = require("./config_third_party_theme.js").config_third_party_theme;
-const save_config_of_third_party_theme = require("./config_third_party_theme.js").save_config_of_third_party_theme;
+const config_third_party_theme =
+  require("./config_third_party_theme.js").config_third_party_theme;
+const save_config_of_third_party_theme =
+  require("./config_third_party_theme.js").save_config_of_third_party_theme;
 const backup_themecfg = require("./backup_themecfg.js");
 
 // goto and menu functions
 const goto_article_manager = require("./gotoFx.js").goto_article_manager;
 const goto_page_manager = require("./gotoFx.js").goto_page_manager;
 const goto_blog_settings = require("./gotoFx.js").goto_blog_settings;
-const goto_manage_index = require("./gotoFx.js").goto_manage_index;
 const exitThisSite = require("./menuFx.js").exitThisSite;
 const preview_site = require("./menuFx.js").preview_site;
 const open_blog_dir = require("./menuFx.js").open_blog_dir;
+const tooltip_load = require("./tooltip_load.js");
 
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
@@ -101,55 +113,66 @@ const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPub
 
 const xssStirct = require("xss");
 
-storage.set("last_managed_site", { title: xssStirct(blog["博客标题"]), rootdir: rootDir });
+storage.set("last_managed_site", {
+  title: xssStirct(blog["博客标题"]),
+  rootdir: rootDir,
+});
 
 // 初始化界面
+
+function init_ui() {
+  document.querySelector("#root").innerHTML = "";
+  check_migrate();
+  render_container();
+  if (currentPage !== "markdown_editor"){
+    render_nav();
+  }
+  loadUniStyle();
+  if (currentPage === "article_manager") {
+    renderArticleManager();
+  } else {
+    if (currentPage === "page_manager") {
+      render_page_manager();
+    } else {
+      if (currentPage === "blog_settings") render_blog_settings();
+      else {
+        if (currentPage === "markdown_editor") {
+          render_markdown_editor();
+        } else {
+          if (currentPage === "server") {
+            render_preview_and_publish_page();
+          }
+        }
+      }
+    }
+  }
+
+  ui_hook_load_finished();
+  loadIME(".form-control");
+  if (ipcRenderer.sendSync("ime_getCurrentStatus") === "input") {
+    SimpleInputMethod.isInEnglishMode = false;
+  }
+  SimpleInputMethod.callbackFuncWhenChangeEnglishMode = function (
+    isCurrentModeEnglishMode
+  ) {
+    if (isCurrentModeEnglishMode === true) {
+      ipcRenderer.send("ime_setToEnglishMode");
+    } else {
+      ipcRenderer.send("ime_setToInputMode");
+    }
+  };
+}
 
 storage.has("language", (error, hasKey) => {
   if (hasKey) {
     storage.get("language", (error, data) => {
       if (error) console.error(error);
       lang_name = data.name;
-      check_migrate();
-      render_container();
-      render_nav();
-      loadUniStyle();
-      if (window.location.href.includes("article_manager.html")) {
-        renderArticleManager();
-      } else {
-        if (window.location.href.includes("page_manager.html")) {
-          render_page_manager();
-        } else {
-          if (window.location.href.includes("blog_settings.html"))
-            render_blog_settings();
-          else{
-            if(window.location.href.includes("markdown_editor.html")){
-              render_markdown_editor();
-            } else {
-              if(window.location.href.includes("server.html")){
-                render_preview_and_publish_page();
-              }
-            }
-          }
-        }
-      }
-
-      ui_hook_load_finished();
-      loadIME(".form-control");
-      if(ipcRenderer.sendSync("ime_getCurrentStatus") === "input"){
-        SimpleInputMethod.isInEnglishMode = false;
-      }
-      SimpleInputMethod.callbackFuncWhenChangeEnglishMode = function(isCurrentModeEnglishMode){
-        if(isCurrentModeEnglishMode === true){
-          ipcRenderer.send("ime_setToEnglishMode");
-        }else{
-          ipcRenderer.send("ime_setToInputMode");
-        }
-      };
-    },
-    );
+      init_ui();
+    });
   } else {
     lang_name = "English";
+    init_ui();
   }
   if (error) console.error(error);
 });
@@ -183,14 +206,16 @@ if(process.platform === "darwin"){
 }
 */
 
-ipcRenderer.on("openExistingSite", ()=>{
-  create_confirm_dialog("当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？", 
+ipcRenderer.on("openExistingSite", () => {
+  create_confirm_dialog(
+    "当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？",
     "ipcRenderer.send('backToStartPageAndOpenExistingSite')"
   );
 });
 
-ipcRenderer.on("createNewSite", ()=>{
-  create_confirm_dialog("当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？", 
+ipcRenderer.on("createNewSite", () => {
+  create_confirm_dialog(
+    "当前窗口已经打开了一个站点，如果继续，则当前窗口将被关闭，未保存的更改会丢失。是否继续？",
     "ipcRenderer.send('backToStartPageAndCreateNewSite')"
   );
 });

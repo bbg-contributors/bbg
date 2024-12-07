@@ -37,6 +37,20 @@ const createWindow = () => {
 
   require("@electron/remote/main").enable(win.webContents);
   win.loadFile("./App/start.html");
+  win.webContents.setWindowOpenHandler(({ url }) => {
+    let new_win = new BrowserWindow({
+      width: 1200,
+      height: 600,
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      },
+      minWidth: 800,
+      minHeight: 600
+    });
+    require("@electron/remote/main").enable(new_win.webContents);
+    new_win.loadURL(url);
+  });
   win.webContents.openDevTools();
 };
 

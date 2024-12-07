@@ -71,8 +71,7 @@ module.exports = function (i) {
   document.getElementById("meta_article_title").value = xssStrict(blog["文章列表"][i]["文章标题"]);
   document.getElementById("meta_article_filename").value = xssStrict(blog["文章列表"][i]["文件名"]);
 
-  const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  tooltip_load();
 
   loadIME("#meta_article_title");
   loadIME("#meta_article_description");

@@ -141,7 +141,7 @@ function generateNewBlog(rootDir) {
 function manageSiteByRootDir(rootDir) {
   try {
     JSON.parse(readFileSync(`${rootDir}/data/index.json`, "utf8"));
-    window.location.href = `./article_manager.html?rootdir=${rootDir}`;
+    window.location.href = `./manage.html?rootdir=${rootDir}`;
   } catch (error) {
     createErrDialog("此站点不是有效的博客站点（ERR_CANNOT_PARSE_DATA）", `博客数据文件解析失败。<br />请确保你打开了正确的博客根目录，并且博客数据文件没有损坏。<br />以下是错误日志，请将此信息报告给开发者：<br /><br />${error}`);
   }

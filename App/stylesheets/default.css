@@ -2,13 +2,15 @@
 .navbar{
   background-color: rgb(233,233,233) !important;
   color: rgb(51,57,69) !important;
-  position: fixed;
-  left: 0px;
-  width: 1145%;
-  border-radius: 0;
-  border: 0;
-  padding: 7px;
+  position: absolute;
+  left: -5%;
+  width: 150%;
   z-index: 1145;
+  height: 45px;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .simple-input-method {
@@ -34,10 +36,10 @@
   padding: 24px;
 
   padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  border-radius: 0px;
-  box-shadow: 0 1px 1px -2px rgb(0 0 0 / 60%), 0 2px 1px 0 rgb(0 0 0 / 36%), 0 1px 2px 1px rgb(0 0 0 / 32%);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid #114091;
 }
 
 .fluenthint {
@@ -492,6 +494,7 @@ body:before {
     transform: translateY(0) scale(1.15, .8)
   }
 }
+
 
 #root {
   padding-bottom: 80px;

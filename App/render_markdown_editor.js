@@ -66,9 +66,7 @@ module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
     "markdown_editor_title_ui.html",
   ));
-  document.getElementById("markdown_filename").innerHTML=`  <button id="btn_exit" class="btn btn-outline-primary">
-  <i class="fa fa-arrow-left"></i>
-</button>
+  document.getElementById("markdown_filename").innerHTML=`
 ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
 
   if (storage.getSync("ai_api_enabled").enabled){
@@ -312,7 +310,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
 
-  document.getElementById("editor_textarea").onkeyup = ()=>{
+  document.getElementById("editor_textarea").onkeydown = ()=>{
     preview_markdown_content();
     editor_status = 1;
     previewSectionSyncScrollStatusFromWritingSection();
@@ -377,8 +375,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
       window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
     }
   };
-  document.getElementById("btn_exit").onclick=exit_markdown_editor;
-
   const markdown_editor_save_changes=function(){
     if(is_cnt_article_encrypted === true){
       writeFileSync(`${rootDir}/${path}`,encrypt_content(document.getElementById("editor_textarea").value,password_if_enabled_encryption_for_article));

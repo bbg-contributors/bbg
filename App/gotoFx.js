@@ -1,23 +1,20 @@
 
 function goto_article_manager () {
-  window.location.href = `./article_manager.html?rootdir=${rootDir}`;
-}
-
-function goto_manage_index () {
-  window.location.href = `./manage.html?rootdir=${rootDir}`;
+  currentPage = "article_manager";
+  init_ui();
 }
 
 function goto_page_manager () {
-  window.location.href = `./page_manager.html?rootdir=${rootDir}`;
+  currentPage = "page_manager";
+  init_ui();
 }
 
 function goto_blog_settings () {
-  window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
+  currentPage = "blog_settings";
+  init_ui();
 }
 
 module.exports.goto_article_manager = goto_article_manager;
-
-module.exports.goto_manage_index = goto_manage_index;
 
 module.exports.goto_blog_settings = goto_blog_settings;
 
