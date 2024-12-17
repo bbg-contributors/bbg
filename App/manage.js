@@ -110,6 +110,8 @@ const loadIME = require("./loadIME.js");
 const render_preview_and_publish_page = require("./render_preview_and_publish_page.js");
 const preview_and_publish = require("./preview_and_publish.js");
 const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPublish.js");
+const preview_and_publish_dialog = require("./preview_and_publish_dialog.js");
+const express = require("express");
 
 const xssStirct = require("xss");
 
@@ -118,13 +120,21 @@ storage.set("last_managed_site", {
   rootdir: rootDir,
 });
 
+const server = express();
+
+server.use(express.static(rootDir));
+
+server.listen(41701, "localhost", () => {
+  // console.log("live server listening at http://localhost:41701");
+});
+
 // 初始化界面
 
 function init_ui() {
   document.querySelector("#root").innerHTML = "";
   check_migrate();
   render_container();
-  if (currentPage !== "markdown_editor"){
+  if (currentPage !== "markdown_editor") {
     render_nav();
   }
   loadUniStyle();
