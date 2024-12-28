@@ -50,6 +50,7 @@ const createWindow = () => {
     });
     require("@electron/remote/main").enable(new_win.webContents);
     new_win.loadURL(url);
+    new_win.webContents.openDevTools();
   });
   win.webContents.openDevTools();
 };
