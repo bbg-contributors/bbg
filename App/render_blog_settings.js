@@ -426,9 +426,6 @@ module.exports = function () {
     break;
   }
 
-  window.addEventListener("keyup", () => {
-    save_blog_settings();
-  });
   const selectElements = document.querySelectorAll("select");
   selectElements.forEach(function (select) {
     select.addEventListener("change", function () {

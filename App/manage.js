@@ -120,15 +120,21 @@ storage.set("last_managed_site", {
   rootdir: rootDir,
 });
 
-const server = express();
+if (currentPage !== "markdown_editor") {
+  const server = express();
 
-server.use(express.static(rootDir));
+  server.use(express.static(rootDir));
 
-server.listen(41701, "localhost", () => {
-  // console.log("live server listening at http://localhost:41701");
-});
-
+  server.listen(41701, "localhost", () => {
+    // console.log("live server listening at http://localhost:41701");
+  });
+}
 // 初始化界面
+
+
+window.addEventListener("keyup", () => {
+  save_blog_settings();
+});
 
 function init_ui() {
   document.querySelector("#root").innerHTML = "";
@@ -186,35 +192,6 @@ storage.has("language", (error, hasKey) => {
   }
   if (error) console.error(error);
 });
-
-// fix broken clipboard function on macOS
-// update: add shortcuts to the menu, this code is no longer used
-/*
-if(process.platform === "darwin"){
-
-  const { clipboard } = require("electron");
-  const keyCodes = {
-    V: 86,
-    C: 67
-  };
-  document.onkeydown = function(event){
-    let toReturn = true;
-    if(event.ctrlKey || event.metaKey){  // detect ctrl or cmd
-      if(event.which == keyCodes.V){
-        document.activeElement.value += clipboard.readText();
-        document.activeElement.dispatchEvent(new Event("input"));
-        toReturn = false;
-      }
-      if(event.which == keyCodes.C){
-        clipboard.writeText(window.getSelection().toString().replace(/^\s+/g, "").replace(/\s+$/g, ""));
-        toReturn = false;
-      }
-    }
-  
-    return toReturn;
-  };
-}
-*/
 
 ipcRenderer.on("openExistingSite", () => {
   create_confirm_dialog(
