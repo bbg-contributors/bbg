@@ -18,8 +18,6 @@ require("@electron/remote/main").initialize();
 
 app.commandLine.appendSwitch("remote-debugging-port", "9541");
 
-/** @type {string} */
-let CurrentStatusOfIME = "en";
 /** @type {BrowserWindow | null | undefined} */
 let win;
 
@@ -56,15 +54,3 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => createWindow());
-
-ipcMain.on("ime_setToEnglishMode", () => {
-  CurrentStatusOfIME = "en";
-});
-
-ipcMain.on("ime_setToInputMode", () => {
-  CurrentStatusOfIME = "input";
-});
-
-ipcMain.on("ime_getCurrentStatus", (event) => {
-  event.returnValue = CurrentStatusOfIME;
-});

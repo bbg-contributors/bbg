@@ -13,7 +13,6 @@ function render_friend_book_json_url_input(){
   </div>
   
   `;
-  loadIME("#friend_book_json_url");
 
   document.getElementById("friend_book_json_url").value = xssStrict(blog["若友人帐来自json文件，则地址为"]);
 
@@ -121,5 +120,4 @@ ${langdata.GET_FRIEND_BOOK_DATA_FROM_EXTERNAL_LINK[lang_name]}
   if (blog["友人帐页面允许评论"] === true)
     document.getElementById("enableFriendBookComment").checked = true;
 
-  loadIME("#friend_book_additional_info");
 };

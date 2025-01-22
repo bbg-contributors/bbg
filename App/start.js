@@ -327,108 +327,6 @@ function learn_more_about_version(type){
   learn_more_about_version_dialog.show();
 }
 
-function open_builtin_ime_setting_dialog(){
-  const builtin_ime_setting_dialog = new bootstrap.Modal(document.getElementById("builtin-ime-dialog"));
-  document.getElementById("builtin-ime-dialog-content").innerHTML = `
-  <h3>${langdata.SETTING_OF_BUILTIN_IME[lang_name]}</h3>
-  <br />
-  <p>${langdata.ENABLE_BUILTIN_IME[lang_name]}</p>
-  <select class="form-select">
-    <option id="builtin_ime_enabled_auto_choose">${langdata.AUTO_CHOOSE[lang_name]}</option>
-    <option id="builtin_ime_enabled_true">${langdata.ENABLE[lang_name]}</option>
-    <option id="builtin_ime_enabled_false">${langdata.DISABLE[lang_name]}</option>
-  </select>
-  <br />
-  <p>${langdata.MODE[lang_name]}</p>
-  <select class="form-select">
-    <option id="builtin_ime_type_auto_choose">${langdata.AUTO_CHOOSE[lang_name]}</option>
-    <option id="builtin_ime_type_pinyin">${langdata.BUILTIN_IME_PATTERN_PINYIN[lang_name]}</option>
-    <option id="builtin_ime_type_xiaohe_doublepinyin">${langdata.BUILTIN_IME_PATTERN_XIAOHE_DOUBLEPINYIN[lang_name]}</option>
-    <option id="builtin_ime_type_none">${langdata.NONE[lang_name]}</option>
-  </select>
-  <br />
-  <p>${langdata.HINT_OF_AUTO_CHOOSE_OPTION_IN_BUILTIN_IME[lang_name]}</p>
-  <p><b>${langdata.BUILTIN_IME_KEYBOARD_SHORTCUT_TO_SWITCH_BETWEEN_CHINESE_AND_ENGLISH[lang_name]}</b></p>
-  <br />
-  <button class="btn btn-outline-success" id="btn_save_builtin_ime_settings"><i class="fa fa-check"></i> ${langdata.OK[lang_name]}</button>
-  <button class="btn btn-outline-secondary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL[lang_name]}</button>
-  `;
-
-  storage.has("builtin_ime_status", (error, hasKey) => {
-    if (error) {
-      console.error(error);
-    }
-    if (hasKey === true) {
-      storage.get("builtin_ime_status", (error, data) => {
-        if (error) {
-          console.error(error);
-        }
-        if (data.enabled === "auto") {
-          document.getElementById("builtin_ime_enabled_auto_choose").selected = true;
-        } else if (data.enabled === "true") {
-          document.getElementById("builtin_ime_enabled_true").selected = true;
-        } else {
-          document.getElementById("builtin_ime_enabled_false").selected = true;
-        }
-
-        if (data.ime === "auto") {
-          document.getElementById("builtin_ime_type_auto_choose").selected = true;
-        } else if (data.ime === "pinyin") {
-          document.getElementById("builtin_ime_type_pinyin").selected = true;
-        } else if (data.ime === "xiaohe_doublepinyin") {
-          document.getElementById("builtin_ime_type_xiaohe_doublepinyin").selected = true;
-        } else {
-          document.getElementById("builtin_ime_type_none").selected = true;
-        }
-      
-      });
-    }
-  });
-
-  document.getElementById("btn_save_builtin_ime_settings").addEventListener("click", ()=>{
-    const builtin_ime_enabled_auto_choose_ui = document.getElementById("builtin_ime_enabled_auto_choose");
-    const builtin_ime_enabled_true_ui = document.getElementById("builtin_ime_enabled_true");
-    const builtin_ime_enabled_false_ui = document.getElementById("builtin_ime_enabled_false");
-    const builtin_ime_type_auto_choose_ui = document.getElementById("builtin_ime_type_auto_choose");
-    const builtin_ime_type_pinyin_ui = document.getElementById("builtin_ime_type_pinyin");
-    const builtin_ime_type_xiaohe_doublepinyin_ui = document.getElementById("builtin_ime_type_xiaohe_doublepinyin");
-    const builtin_ime_type_none_ui = document.getElementById("builtin_ime_type_none");
-
-    let builtin_ime_enabled;
-    let builtin_ime_type;
-
-    if(builtin_ime_enabled_auto_choose_ui.selected === true){
-      builtin_ime_enabled = "auto";
-    }else if(builtin_ime_enabled_true_ui.selected === true){
-      builtin_ime_enabled = "true";
-    }else{
-      builtin_ime_enabled = "false";
-    }
-
-    if(builtin_ime_type_auto_choose_ui.selected === true){
-      builtin_ime_type = "auto";
-    }else if(builtin_ime_type_pinyin_ui.selected === true){
-      builtin_ime_type = "pinyin";
-    }else if(builtin_ime_type_xiaohe_doublepinyin_ui.selected === true){
-      builtin_ime_type = "xiaohe_doublepinyin";
-    }else{
-      builtin_ime_type = "none";
-    }
-
-    storage.set("builtin_ime_status", {
-      enabled: builtin_ime_enabled,
-      ime: builtin_ime_type
-    }, (error)=>{
-      if(error){
-        console.error(error);
-      }
-      builtin_ime_setting_dialog.hide();
-    });
-  });
-
-  builtin_ime_setting_dialog.show();
-}
-
 render_language_selections();
 
 storage.has("language", (error, hasKey) => {
@@ -472,17 +370,6 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
-      storage.has("builtin_ime_status", (error, hasKey) => {
-        if (error) {
-          console.error(error);
-        }
-        if (hasKey === false) {
-          storage.set("builtin_ime_status", {
-            enabled: "auto",
-            ime: "auto"
-          });
-        }
-      });
 
       lang_name = data.name;
       document.getElementById("info-dialog-ok").innerHTML = `<i class="fa fa-check" aria-hidden="true"></i> ${langdata.OK[lang_name]}`;
@@ -523,7 +410,6 @@ storage.has("language", (error, hasKey) => {
       <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
-      <li><a class="dropdown-item" onclick="open_builtin_ime_setting_dialog()"><i class="fa fa-keyboard-o" aria-hidden="true"></i> ${langdata.SETTING_OF_BUILTIN_IME[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
       </ul>

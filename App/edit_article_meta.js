@@ -1,4 +1,4 @@
-const loadIME = require("./loadIME");
+
 const xssStrict = require("xss");
 
 module.exports = function (i) {
@@ -72,13 +72,6 @@ module.exports = function (i) {
   document.getElementById("meta_article_filename").value = xssStrict(blog["文章列表"][i]["文件名"]);
 
   tooltip_load();
-
-  loadIME("#meta_article_title");
-  loadIME("#meta_article_description");
-  loadIME("#meta_article_createdat");
-  loadIME("#meta_article_updatedat");
-  loadIME("#meta_article_tags");
-  loadIME("#meta_article_filename");
 
   if (blog["文章列表"][i]["标签"].length !== 0) {
     let tempTagString = "";

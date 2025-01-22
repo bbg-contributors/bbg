@@ -16,7 +16,6 @@ app.setAboutPanelOptions({
   website: appInfo.officialWebsite
 });
 
-let CurrentStatusOfIME = "en";
 
 function openExistingSite() {
   win.webContents.send("openExistingSite");
@@ -164,16 +163,4 @@ ipcMain.on("backToStartPageAndCreateNewSite", () => {
 
 ipcMain.on("render_menu_again", () => {
   render_menu();
-});
-
-ipcMain.on("ime_setToEnglishMode", () => {
-  CurrentStatusOfIME = "en";
-});
-
-ipcMain.on("ime_setToInputMode", () => {
-  CurrentStatusOfIME = "input";
-});
-
-ipcMain.on("ime_getCurrentStatus", (event) => {
-  event.returnValue = CurrentStatusOfIME;
 });

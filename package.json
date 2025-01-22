@@ -52,7 +52,6 @@
     "express": "^4.21.2",
     "font-awesome": "4.7.0",
     "husky": "^9.1.7",
-    "ipinyinjs": "https://github.com/bbg-contributors/pinyinjs.git",
     "lint-staged": "^15.2.10",
     "marked": "^15.0.5",
     "native-prompt": "^2.1.4",

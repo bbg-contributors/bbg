@@ -106,7 +106,6 @@ const tooltip_load = require("./tooltip_load.js");
 
 const loadUniStyle = require("./loadUniStyle.js");
 const ui_hook_load_finished = require("./ui_hook_load_finished.js");
-const loadIME = require("./loadIME.js");
 const render_preview_and_publish_page = require("./render_preview_and_publish_page.js");
 const preview_and_publish = require("./preview_and_publish.js");
 const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPublish.js");
@@ -164,19 +163,6 @@ function init_ui() {
   }
 
   ui_hook_load_finished();
-  loadIME(".form-control");
-  if (ipcRenderer.sendSync("ime_getCurrentStatus") === "input") {
-    SimpleInputMethod.isInEnglishMode = false;
-  }
-  SimpleInputMethod.callbackFuncWhenChangeEnglishMode = function (
-    isCurrentModeEnglishMode
-  ) {
-    if (isCurrentModeEnglishMode === true) {
-      ipcRenderer.send("ime_setToEnglishMode");
-    } else {
-      ipcRenderer.send("ime_setToInputMode");
-    }
-  };
 }
 
 storage.has("language", (error, hasKey) => {

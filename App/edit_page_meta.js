@@ -54,9 +54,6 @@ module.exports = function (i) {
   if (blog["页面列表"][i]["启用评论"] === true)
     document.getElementById("meta_page_iscommentenabled").checked = true;
 
-  loadIME("#meta_page_title");
-  loadIME("#meta_page_title_menu");
-
   document.getElementById("meta_page_title").value = xssStrict(blog["页面列表"][i]["页面标题"]);
   document.getElementById("meta_page_title_menu").value = blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"];
 };
