@@ -410,7 +410,7 @@ storage.has("language", (error, hasKey) => {
       <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
       <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
-      <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li>
+      <!-- <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li> -->
       <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
       </ul>
 

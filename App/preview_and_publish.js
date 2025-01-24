@@ -2,9 +2,6 @@
 const Prompt = require("native-prompt");
 const execSync = require("child_process").execSync;
 
-const { ipcRenderer } = require("electron");
-const {createRequire} = require("module");
-
 module.exports = {
   "openInBrowser": function(){
     shell.openExternal("http://localhost:41701");
@@ -72,30 +69,4 @@ module.exports = {
       }
     }
   },
-  "open_terminal_emulator_dialog": function(callback_func = ()=>{}){
-    const terminal_dialog = new bootstrap.Modal(document.getElementById("terminal_emulator_dialog"));
-    terminal_dialog.show();
-  
-    if (alreadyOpenedTerminal === false){
-      xtermInstance = new Terminal();
-      xtermInstance.open(document.getElementById("terminal"));
-      
-      ipcRenderer.send("spawnShell");
-      ipcRenderer.on("shellInstanceData", (event, data) => {
-        xtermInstance.write(data);
-      });
-  
-      xtermInstance.onData(data => {
-        ipcRenderer.send("shellInstanceWrite", data);
-      });
-      alreadyOpenedTerminal = true;
-    }
-      
-    callback_func();
-  },
-  
-  "test_terminal_emulator": function(){
-    xtermInstance.input("echo Hello, World!\r\n");
-    
-  }
 };
