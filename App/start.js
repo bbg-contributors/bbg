@@ -451,15 +451,18 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
-      if (existsSync(`${__dirname}/is_aur_build`)){
-        document.getElementById("current_program_version_additional_info").innerHTML = `<br />
-        <button class="btn btn-outline-primary" onclick="learn_more_about_version('AUR')"><i class="fa fa-info-circle"></i> ${langdata["LEARN_ABOUT_AUR_VERSION"][lang_name]}</button>
-        `;
-      } else if(existsSync(`${__dirname}/is_released_version`) === false){
-        document.getElementById("current_program_version").innerHTML = `${langdata.UNRELEASED_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion}, commit-id = ${currentCommitID.slice(0, 7)})">
+      if(existsSync(`${__dirname}/is_released_version`) === false){
+        document.getElementById("current_program_version").innerHTML = `${langdata.DEVELOPING_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion}, commit-id = ${currentCommitID.slice(0, 7)})">
         <i class="fa fa-info-circle" style="color:grey"></i>
       </span>
       `;
+        document.getElementById("current_program_version_additional_info").innerHTML = `<br /><center>
+        <div class="alert alert-warning" role="alert" style="width: 50vw">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+${langdata["DEVELOPING_VERSION_HINT"][lang_name]}
+</div></center>
+
+        `;
         const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
       }
