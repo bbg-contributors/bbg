@@ -89,15 +89,15 @@ module.exports = function () {
   );
   document.getElementById("blog_settings_howmany_article_in_a_page").value =
     xssStrict(blog["文章列表中每页的文章数为"]);
-  document.getElementById("blog_settings_titlebar_bgcolor").value = xssStrict(
+  document.getElementById("blog_settings_titlebar_bgcolor").value = tinycolor(xssStrict(
     blog["全局主题设置"]["标题栏背景颜色"]
-  );
-  document.getElementById("blog_settings_titlebar_textcolor").value = xssStrict(
+  )).toHexString();
+  document.getElementById("blog_settings_titlebar_textcolor").value = tinycolor(xssStrict(
     blog["全局主题设置"]["标题栏文字颜色"]
-  );
-  document.getElementById("blog_settings_linkcolor").value = xssStrict(
+  )).toHexString();
+  document.getElementById("blog_settings_linkcolor").value = tinycolor(xssStrict(
     blog["全局主题设置"]["链接颜色"]
-  );
+  )).toHexString();
   document.getElementById("domain_string").value = xssStrict(
     blog["网站域名（包括https://）"]
   );
@@ -444,6 +444,14 @@ module.exports = function () {
 
   radioElements.forEach(function (radio) {
     radio.addEventListener("change", function (event) {
+      save_blog_settings();
+    });
+  });
+
+  var colorSelectionElements = document.querySelectorAll("input[type=\"color\"]");
+
+  colorSelectionElements.forEach(function (elem) {
+    elem.addEventListener("change", function (event) {
       save_blog_settings();
     });
   });

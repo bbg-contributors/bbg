@@ -57,6 +57,7 @@
     "native-prompt": "^2.1.4",
     "request": "^2.88.2",
     "sjcl": "^1.0.8",
+    "tinycolor2": "^1.6.0",
     "xss": "^1.0.15"
   },
   "devDependencies": {

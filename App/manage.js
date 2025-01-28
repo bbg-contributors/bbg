@@ -113,6 +113,19 @@ const preview_and_publish_dialog = require("./preview_and_publish_dialog.js");
 const express = require("express");
 
 const xssStirct = require("xss");
+const tinycolor = require("tinycolor2");
+
+function convertTimeStampToDatetimeString(timestamp) {
+  const date = new Date(timestamp);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // 月份从 0 开始
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return datetimeLocalValue = `${year}-${month}-${day}T${hours}:${minutes}`;
+}
 
 storage.set("last_managed_site", {
   title: xssStirct(blog["博客标题"]),
