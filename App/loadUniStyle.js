@@ -18,10 +18,11 @@ module.exports = function () {
           let cssContent = "";
           let bg_img = data.bg_img;
           let primary_color = data.primary_color;
-          if(primary_color === ""){
+          if (primary_color === "") {
             primary_color = "#0d6efd";
           }
           cssContent += `
+          ${bg_img.trim() === "" ? "" : `
           body {
             background-image: url("data:image/jpeg;base64,${readFileSync(bg_img).toString("base64")}")!important;
             background-postion: center center!important;
@@ -41,6 +42,7 @@ module.exports = function () {
           #nav_list button, .navbar .container-fluid, .modal-dialog, .modal-body .container-fluid {
             background: transparent!important;
           }
+        }`}
           `;
 
           document.getElementById("custom_ui").innerHTML = cssContent;
@@ -53,13 +55,13 @@ module.exports = function () {
     }
   });
 
-  function loadBasicStyle(force_light = false){
+  function loadBasicStyle(force_light = false) {
 
-    if(force_light){
+    if (force_light) {
       const cssContent = readFileSync(path.join(__dirname, "/stylesheets/default.css"));
       document.getElementById("uniform").innerHTML = cssContent;
     }
-    else{
+    else {
       storage.has("stylesheet", (err, hasKey) => {
         if (err) console.error(err);
         if (hasKey) {
@@ -82,7 +84,7 @@ module.exports = function () {
       });
     }
 
-    
+
   }
 
 };

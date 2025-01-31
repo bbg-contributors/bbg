@@ -2590,6 +2590,11 @@ make-fetch-happen@^10.0.3:
     socks-proxy-agent "^7.0.0"
     ssri "^9.0.0"
 
+marked-base-url@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.npmmirror.com/marked-base-url/-/marked-base-url-1.1.6.tgz#1bf31a7f8328dd45d36234a42c6c12c086330949"
+  integrity sha512-STFGZN1kBZIWaw5RGwY63mSCwUXUmUDOAPRMAuPkg2Iou4ZWUsd7nFqvh0ifMYekqKuHHdmqJUqCl0HUakBbMQ==
+
 marked@^1.2.9:
   version "1.2.9"
   resolved "https://registry.yarnpkg.com/marked/-/marked-1.2.9.tgz#53786f8b05d4c01a2a5a76b7d1ec9943d29d72dc"

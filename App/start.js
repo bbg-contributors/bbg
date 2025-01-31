@@ -131,7 +131,7 @@ function generateNewBlog(rootDir) {
 
     dialog.showMessageBox({message: langdata["ALERT_SUCCESSFUL_INIT"][lang_name]});
 
-    window.location.href = `./blog_settings.html?rootdir=${rootDir}`;
+    window.location.href = `./manage.html?rootdir=${rootDir}`;
   } catch (error) {
     create_new_site_dialog_hide();
     console.error(error);

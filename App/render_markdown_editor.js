@@ -5,6 +5,8 @@ const xss_filter = require("xss");
 const toast_creator = require("./toast_creator.js");
 const ai_function = require("./ai_function.js");
 const rss_hook = require("./rss_hook.js");
+const {baseUrl} = require("marked-base-url");
+
 
 module.exports = function () {
   let path = decodeURIComponent(getUrlArgs("path"));
@@ -63,6 +65,8 @@ module.exports = function () {
       }
     }
   }
+
+  marked.use(baseUrl(`${rootDir}/data/${type}s/`));
   document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
     "markdown_editor_title_ui.html",
   ));
@@ -184,11 +188,11 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   document.getElementById("container").insertAdjacentHTML("beforeend", `
   <div id="first-wrapper">
-    <div id="editor-container" style="position:fixed;height:70vh;width:35vw">
+    <div id="editor-container" style="position:fixed;height:85vh;width:40vw">
       <textarea id="editor_textarea" placeholder="Input markdown source code here" class="form-control" style="width:110%;height:100%;font-family: monospace">
       </textarea>
     </div>
-    <div id="preview-section-container" style="position:fixed;height:70vh;width:35vw;margin-left:40vw;overflow-y: scroll;overflow-x:auto;word-break:break-all">
+    <div id="preview-section-container" style="position:fixed;height:85vh;width:40vw;margin-left:45vw;overflow-y: scroll;overflow-x:auto;word-break:break-all">
     </div>
   </div>
   <div id="second-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
@@ -294,7 +298,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     filter_whiteList["success-hint"] = [];
 
     const markdown_content = document.getElementById("editor_textarea").value;
-    const html_content = xss_filter(marked.marked(markdown_content, { baseUrl: `${rootDir}/data/${type}s}` }), {whiteList: filter_whiteList});
+    const html_content = xss_filter(marked.parse(markdown_content));
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();
@@ -310,7 +314,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
 
-  document.getElementById("editor_textarea").onkeydown = ()=>{
+  document.getElementById("editor_textarea").onkeyup = ()=>{
     preview_markdown_content();
     editor_status = 1;
     previewSectionSyncScrollStatusFromWritingSection();
@@ -459,9 +463,16 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     };
   }
 
-  window.onbeforeunload = () => {
+  window.onbeforeunload = (e) => {
     if (is_cnt_article_encrypted && default_editor) {
       writeFileSync(`${rootDir}/${path}`, encrypt_content(readFileSync(rootDir + path, "utf-8"), password_if_enabled_encryption_for_article));
+    }
+    if(editor_status === 1){
+      e.preventDefault();
+      const result = dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]});
+      if(result === 0){
+        window.close();
+      }
     }
   };
 
