@@ -17,4 +17,12 @@ module.exports = function () {
         </tr>
         `);
   }
+  if (blog["友人帐"].length === 0){
+    document.getElementById("friend_book_list").insertAdjacentHTML("afterend",`
+            <div class="alert alert-primary" role="alert">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    ${langdata["CURRENTLY_NONE"][lang_name]}
+    </div>
+        `);
+  }
 };

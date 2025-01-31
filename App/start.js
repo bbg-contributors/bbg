@@ -8,6 +8,7 @@ const shell = require("@electron/remote").shell;
 const AppPath = require("@electron/remote").app.getPath("userData");
 const storage = require("electron-json-storage");
 const { ipcRenderer } = require("electron");
+const tinycolor = require("tinycolor2");
 
 const doNothing = require("./doNothing.js");
 
@@ -520,6 +521,19 @@ function save_custom_ui_settings() {
   });
 }
 
+function custom_ui_bg_img_browse() {
+  const bg_img_path = dialog.showOpenDialogSync({
+    properties: ["openFile"],
+  });
+  if (bg_img_path !== undefined) {
+    document.getElementById("custom_ui_bg_img_path").value = bg_img_path[0];
+  }
+}
+
+function custom_ui_bg_img_clear() {
+  document.getElementById("custom_ui_bg_img_path").value = "";
+}
+
 
 function open_customize_bbg_ui_dialog() {
   customize_bbg_ui_dialog.show();
@@ -537,13 +551,13 @@ function open_customize_bbg_ui_dialog() {
     <br />
 
     <div class="mb-3">
-      <label for="custom_ui_bg_img_path" class="form-label">${langdata["BACKGROUND_IMAGE_PATH"][lang_name]}</label>
-      <input class="form-control" id="custom_ui_bg_img_path" placeholder="${langdata["BACKGROUND_IMAGE_PATH"][lang_name]}">
+      <label for="custom_ui_bg_img_path" class="form-label">${langdata["BACKGROUND_IMAGE_PATH"][lang_name]} <a href="javascript:void(0)" onclick="custom_ui_bg_img_browse()"><i class="fa fa-folder-open"></i> ${langdata["BROWSE"][lang_name]}</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="custom_ui_bg_img_clear()"><i class="fa fa-close"></i> ${langdata["CLEAR"][lang_name]}</a></label>
+      <input class="form-control" id="custom_ui_bg_img_path" placeholder="${langdata["BACKGROUND_IMAGE_PATH"][lang_name]}" disabled>
     </div>
-
     <div class="mb-3">
       <label for="custom_ui_primary_color" class="form-label">${langdata["PRIMARY_COLOR"][lang_name]}</label>
-      <input class="form-control" id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}">
+  <br />
+      <input id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}" type="color">
     </div>
 
     <button class="btn btn-outline-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
@@ -559,7 +573,7 @@ function open_customize_bbg_ui_dialog() {
         if (error) console.error(error);
         document.getElementById("enable_custom_ui").checked = data.enable_custom_ui;
         document.getElementById("custom_ui_bg_img_path").value = data.bg_img;
-        document.getElementById("custom_ui_primary_color").value = data.primary_color;
+        document.getElementById("custom_ui_primary_color").value = tinycolor(data.primary_color).toHexString();
       });
     }
   });
