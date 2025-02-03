@@ -424,6 +424,9 @@ module.exports = function () {
       "site_theme_choose_solarized_pink"
     ).selected = true;
     break;
+  case "Miracle":
+    document.getElementById("site_theme_choose_miracle").selected = true;
+    break;
   }
 
   const selectElements = document.querySelectorAll("select");

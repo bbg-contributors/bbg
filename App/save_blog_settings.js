@@ -213,6 +213,10 @@ module.exports = function () {
       "site_theme_choose_default_theme"
     ).selected === true) {
       blog["站点主题"] = "default";
+    } else if (document.getElementById(
+      "site_theme_choose_miracle"
+    ).selected === true) {
+      blog["站点主题"] = "Miracle";
     }
 
     BlogInstance.writeBlogData();
