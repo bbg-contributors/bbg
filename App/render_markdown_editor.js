@@ -298,7 +298,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     filter_whiteList["success-hint"] = [];
 
     const markdown_content = document.getElementById("editor_textarea").value;
-    const html_content = xss_filter(marked.parse(markdown_content));
+    const html_content = xss_filter(marked.parse(markdown_content), {whiteList: filter_whiteList});
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();

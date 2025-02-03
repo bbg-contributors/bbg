@@ -17,7 +17,7 @@ let packagejson = JSON.parse(readFileSync(`${__dirname}/package.json`), "utf8");
 
 let newversion = parseInt(getyyyymmdd(), 10);
 
-appjson["currentProgramVersion"] = newversion;
+appjson["VersionNumber"] = newversion;
 packagejson["version"] = `${getyyyymmdd()}.0.0`;
 
 writeFileSync(`${__dirname}/App/App.json`, JSON.stringify(appjson, null, 2), "utf8");
