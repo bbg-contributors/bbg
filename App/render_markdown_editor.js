@@ -296,6 +296,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     filter_whiteList["warning-hint"] = [];
     filter_whiteList["danger-hint"] = [];
     filter_whiteList["success-hint"] = [];
+    filter_whiteList["input"] = ["disabled", "type", "checked"];
 
     const markdown_content = document.getElementById("editor_textarea").value;
     const html_content = xss_filter(marked.parse(markdown_content), {whiteList: filter_whiteList});
