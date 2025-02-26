@@ -1,19 +1,28 @@
-
+const { existsSync, appendFileSync, mkdirSync } = require("fs");
 const xssStrict = require("xss");
+const doNothing = require("./doNothing.js");
 
 module.exports = function (i) {
-  const metaModal = new bootstrap.Modal(document.getElementById("edit_page_meta_dialog"));
+  const metaModal = new bootstrap.Modal(
+    document.getElementById("edit_page_meta_dialog")
+  );
   metaModal.toggle();
 
-  document.getElementById("edit_page_meta_dialog_title").innerHTML = langdata.EDIT_PAGE_META[lang_name];
-  document.getElementById("save_page_meta_btn").setAttribute("onclick", `save_page_meta(${i})`);
+  document.getElementById("edit_page_meta_dialog_title").innerHTML =
+    langdata.EDIT_PAGE_META[lang_name];
 
   document.getElementById("page_meta_content").innerHTML = "";
 
-  document.getElementById("page_meta_content").insertAdjacentHTML("beforeend", `
+  document.getElementById("page_meta_content").insertAdjacentHTML(
+    "beforeend",
+    `
     <div class="mb-3">
-    <label class="form-label"><i class="fa fa-book"></i> ${langdata.PAGE_TITLE[lang_name]}</label>
-    <input class="form-control" placeholder="${langdata.PLEASE_INPUT_PAGE_TITLE[lang_name]}" id="meta_page_title">
+    <label class="form-label"><i class="fa fa-book"></i> ${
+  langdata.PAGE_TITLE[lang_name]
+}</label>
+    <input class="form-control" placeholder="${
+  langdata.PLEASE_INPUT_PAGE_TITLE[lang_name]
+}" id="meta_page_title">
   </div>
   
   <div class="form-check form-switch">
@@ -26,7 +35,9 @@ module.exports = function (i) {
   <hr />
   
   <div class="mb-3">
-    <label class="form-label">${langdata.MENU_VIEWNAME_EDIT_META[lang_name]}</label>
+    <label class="form-label">${
+  langdata.MENU_VIEWNAME_EDIT_META[lang_name]
+}</label>
     <input class="form-control" id="meta_page_title_menu">
   </div>
   
@@ -44,16 +55,40 @@ module.exports = function (i) {
     </label>
   </div>
   
-  `);
-  if (blog["页面列表"][i]["是否显示在菜单中"] === true)
-    document.getElementById("meta_page_isviewinmenu").checked = true;
+  `
+  );
+  if (i === -1) {
+    // if i = -1, create new page
+    document
+      .getElementById("save_page_meta_btn")
+      .setAttribute("onclick", "save_page_meta(-1)");
+    document.getElementById("meta_page_isviewinmenu").checked = false;
+    document.getElementById("meta_page_openinnewtab").checked = false;
+    document.getElementById("meta_page_iscommentenabled").checked = false;
+    document.getElementById("meta_page_title").value = "";
+    document.getElementById("meta_page_title_menu").value = "";
+  } else {
+    // if i != -1, edit the page
+    document
+      .getElementById("save_page_meta_btn")
+      .setAttribute("onclick", `save_page_meta(${i})`);
 
-  if (blog["页面列表"][i]["是否在新标签页打开"] === true)
-    document.getElementById("meta_page_openinnewtab").checked = true;
+    if (blog["页面列表"][i]["是否显示在菜单中"] === true)
+      document.getElementById("meta_page_isviewinmenu").checked = true;
+    else document.getElementById("meta_page_isviewinmenu").checked = false;
 
-  if (blog["页面列表"][i]["启用评论"] === true)
-    document.getElementById("meta_page_iscommentenabled").checked = true;
+    if (blog["页面列表"][i]["是否在新标签页打开"] === true)
+      document.getElementById("meta_page_openinnewtab").checked = true;
+    else document.getElementById("meta_page_openinnewtab").checked = false;
 
-  document.getElementById("meta_page_title").value = xssStrict(blog["页面列表"][i]["页面标题"]);
-  document.getElementById("meta_page_title_menu").value = blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"];
+    if (blog["页面列表"][i]["启用评论"] === true)
+      document.getElementById("meta_page_iscommentenabled").checked = true;
+    else document.getElementById("meta_page_iscommentenabled").checked = false;
+
+    document.getElementById("meta_page_title").value = xssStrict(
+      blog["页面列表"][i]["页面标题"]
+    );
+    document.getElementById("meta_page_title_menu").value =
+      blog["页面列表"][i]["若显示在菜单中，则在菜单中显示为"];
+  }
 };
