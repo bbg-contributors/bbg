@@ -15,6 +15,9 @@ module.exports = function () {
       <button class="btn btn-outline-primary" id="page_item_${i}_edit_page_btn"><i class="fa fa-edit"></i> ${langdata.EDIT_AND_PREVIEW_PAGE_CONTENT[lang_name]}</button>
       <button class="btn btn-outline-primary" onclick="edit_page_meta(${i})"><i class="fa fa-cogs"></i> ${langdata.EDIT_PAGE_META[lang_name]}</button>
       <button class="btn btn-outline-danger" onclick="delete_page(${i})"><i class="fa fa-trash-o"></i> ${langdata.DELETE_PAGE[lang_name]}</button>
+      <button class="btn btn-outline-primary" onclick="let_page_up(${i})"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
+      <button class="btn btn-outline-primary" onclick="let_page_down(${i})"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
+
       </p>
   
       </div>

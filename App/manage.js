@@ -115,6 +115,9 @@ const express = require("express");
 const xssStirct = require("xss");
 const tinycolor = require("tinycolor2");
 const edit_external_links = require("./edit_external_links.js");
+const let_page_up = require("./change_page_order.js").let_page_up;
+const let_page_down = require("./change_page_order.js").let_page_down;
+
 
 
 function convertTimeStampToDatetimeString(timestamp) {
