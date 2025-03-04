@@ -1,6 +1,26 @@
 
+const { exec } = require("child_process");
 const Prompt = require("native-prompt");
 const execSync = require("child_process").execSync;
+
+const terminalEmulators = {
+  "linux": ["konsole --noclose -e bash -c", "gnome-terminal -- bash -c ", "xterm -hold -e bash -c"],
+  "darwin": ["Terminal.app", "iTerm.app"],
+  "win32": ["wt", "cmd.exe"]
+};
+
+const getCurrentPlatform = () => {
+  const platform = process.platform;
+  if (platform === "linux") {
+    return "linux";
+  } else if (platform === "darwin") {
+    return "darwin";
+  } else if (platform === "win32") {
+    return "win32";
+  } else {
+    throw new Error("Unsupported platform");
+  }
+};
 
 module.exports = {
   "openInBrowser": function(){
