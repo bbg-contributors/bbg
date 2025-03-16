@@ -92,12 +92,12 @@ ${langdata.GET_FRIEND_BOOK_DATA_FROM_EXTERNAL_LINK[lang_name]}
     
     
 
-<button class="btn btn-outline-primary" onclick="add_new_friend();"><i class="fa fa-plus"></i> ${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
+<button class="btn btn-primary" onclick="add_new_friend();"><i class="fa fa-plus"></i> ${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
 </div>
     </div>
     <div class="modal-footer" id="edit_friend_book_dialog_footer">
-    <button class="btn btn-outline-danger" onclick="window.location.reload();" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
-    <button class="btn btn-outline-success" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
+    <button class="btn btn-danger" onclick="window.location.reload();" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata.CANCEL_THIS_TIME_CONFIGURATION[lang_name]}</button>
+    <button class="btn btn-success" onclick="save_friend_book();" data-bs-dismiss="modal"><i class="fa fa-check"></i> ${langdata.SAVE_CONFIGURATION[lang_name]}</button>
   </div>
     `;
 

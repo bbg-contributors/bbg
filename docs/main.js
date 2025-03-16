@@ -144,8 +144,8 @@ fetch("./i18n.json")
                 <h1>${langData["indexPageTitle"][userLanguage]}</h1>
                 <p>${langData["indexPageDescription"][userLanguage]}</p>
     
-                <button type="button" class="btn btn-outline-danger" style="border-radius:40px" onclick="window.location='download.html'"><i class="bi bi-cloud-arrow-down"></i> ${langData["indexPageDownloadBtn"][userLanguage]}</button>
-                <button type="button" class="btn btn-outline-dark" style="border-radius:40px" onclick="window.open('https://github.com/bbg-contributors/bbg')"><i class="bi bi-github"></i> ${langData["indexPageEnterGitHubBtn"][userLanguage]}</button>
+                <button type="button" class="btn btn-danger" style="border-radius:40px" onclick="window.location='download.html'"><i class="bi bi-cloud-arrow-down"></i> ${langData["indexPageDownloadBtn"][userLanguage]}</button>
+                <button type="button" class="btn btn-dark" style="border-radius:40px" onclick="window.open('https://github.com/bbg-contributors/bbg')"><i class="bi bi-github"></i> ${langData["indexPageEnterGitHubBtn"][userLanguage]}</button>
                 <br /><br />
     
               </div>
@@ -186,9 +186,9 @@ fetch("./i18n.json")
                     <h2 id="download_page_title"></h2>
                     <br />
                     <button class="btn btn-danger btn-lg" id="download_for_windows_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=win'"><i class="bi bi-windows"></i> ${langData["downloadForWin"][userLanguage]}</button>
-                    <button class="btn btn-outline-danger btn-lg" id="download_for_ubuntu_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=deb'"><i class="bi bi-ubuntu"></i> ${langData["downloadDebPackage"][userLanguage]}</button>
-                    <button class="btn btn-outline-danger btn-lg" id="download_appimage_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=appimage'"><i class="bi bi-window"></i> ${langData["downloadAppImagePackage"][userLanguage]}</button>
-                    <button class="btn btn-outline-primary btn-lg" id="download_for_archlinux_btn" style="display:none;" onclick="window.open('https://aur.archlinux.org/packages/bbg')"><i class="bi bi-box-arrow-up-left"></i> ${langData["getFromAUR"][userLanguage]}</button>
+                    <button class="btn btn-danger btn-lg" id="download_for_ubuntu_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=deb'"><i class="bi bi-ubuntu"></i> ${langData["downloadDebPackage"][userLanguage]}</button>
+                    <button class="btn btn-danger btn-lg" id="download_appimage_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=appimage'"><i class="bi bi-window"></i> ${langData["downloadAppImagePackage"][userLanguage]}</button>
+                    <button class="btn btn-primary btn-lg" id="download_for_archlinux_btn" style="display:none;" onclick="window.open('https://aur.archlinux.org/packages/bbg')"><i class="bi bi-box-arrow-up-left"></i> ${langData["getFromAUR"][userLanguage]}</button>
                     <button class="btn btn-danger btn-lg" id="download_for_macos_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=macos'"><i class="bi bi-apple"></i> ${langData["downloadForMacOS"][userLanguage]}</button>
                     <button class="btn btn-danger btn-lg" id="download_for_linux_btn" style="display:none;" onclick="window.location.href='thankyou.html?platform=appimage'"><i class="bi bi-window"></i> ${langData["downloadForLinux"][userLanguage]}</button>
                     <br /><br />

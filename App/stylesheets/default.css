@@ -595,18 +595,20 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #nav_container{
-  background-color: rgb(233,233,233);
+  background-color: white;
   position: fixed;
   width: 54px;
   height: 100%;
   z-index: 1000;
+  border-right: 1px solid #3b71ca;
 }
 
 #nav_container .list-group .list-group-item{
-  background-color: rgb(233,233,233);
+  background-color: white;
   color: rgb(51,57,69);
   padding: 10px;
   width: 54px;
+  border-right: 1px solid #3b71ca;
 }
 
 #nav_container .list-group .list-group-item:hover{
@@ -621,8 +623,9 @@ input.form-control:focus,textarea.form-control:focus{
 
 
 #nav_container .list-group .list-group-item.active{
-  background-color: rgb(146,186,221);
+  background-color: #3b71ca;
   border-radius: 0;
+  color: white
 }
 
 #nav_container .list-group{
@@ -631,3 +634,6 @@ input.form-control:focus,textarea.form-control:focus{
   top: 0;
 }
 
+.btn {
+  font-size: 100%;
+}

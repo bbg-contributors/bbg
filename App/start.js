@@ -261,8 +261,8 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
 
   document.getElementById("api_setting_for_ai_assisted_writing").insertAdjacentHTML("beforeend",`
     <br />
-    <button class="btn btn-outline-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
-    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+    <button class="btn btn-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
   `);
 }
 
@@ -380,14 +380,14 @@ storage.has("language", (error, hasKey) => {
            
            <p>${langdata.CREATE_NEW_SITE_DESCRIPTION[0][lang_name]}</p>
            <p><b>${langdata.CREATE_NEW_SITE_DESCRIPTION[1][lang_name]}</b></p>
-           <button type="button" class="btn btn-outline-success"
+           <button type="button" class="btn btn-success"
              onclick="create_new_site_choose_root_dir();">${langdata.SELECT_SITE_ROOT_DIRECTORY[lang_name]}</button>
            
            `;
 
       document.getElementById("create-new-site-dialog-footer").innerHTML = `
            
-           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
+           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
            `;
 
       document.getElementsByTagName("title")[0].innerHTML = `${langdata.STARTPAGE_TITLE[lang_name]}`;
@@ -395,17 +395,17 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <br />
-          <a class="btn btn-outline-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          <a class="btn btn-outline-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
+          <a class="btn btn-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
+          <a class="btn btn-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
           <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
+          <a class="btn btn-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" id="last_managed_site"></a></li>
           </ul>
           
           </div>
           <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
+          <a class="btn btn-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
           <ul class="dropdown-menu">
       <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
       <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
@@ -560,8 +560,8 @@ function open_customize_bbg_ui_dialog() {
       <input id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}" type="color">
     </div>
 
-    <button class="btn btn-outline-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
-    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+    <button class="btn btn-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
   
     </div>
     `;
