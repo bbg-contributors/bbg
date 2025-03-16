@@ -605,6 +605,8 @@ input.form-control:focus,textarea.form-control:focus{
 #nav_container .list-group .list-group-item{
   background-color: rgb(233,233,233);
   color: rgb(51,57,69);
+  padding: 10px;
+  width: 54px;
 }
 
 #nav_container .list-group .list-group-item:hover{
