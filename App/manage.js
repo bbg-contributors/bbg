@@ -182,7 +182,7 @@ function init_ui() {
 
   ui_hook_load_finished();
 
-  const buttons = document.getElementsByTagName("button");
+  const buttons = document.getElementsByClassName("btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].setAttribute("data-mdb-ripple-init", "");
   }

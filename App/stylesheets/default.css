@@ -638,6 +638,7 @@ input.form-control:focus,textarea.form-control:focus{
 
 .btn {
   font-size: 95%;
+  text-transform: none!important;
 }
 
 .nav-tabs .nav-item .nav-link {

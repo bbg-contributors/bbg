@@ -5,6 +5,7 @@
   <meta charset="utf-8">
 
   <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../node_modules/mdb-ui-kit/css/mdb.min.css">
   <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
   <title>BBG Markdown Editor</title>
 </head>
@@ -97,6 +98,10 @@
       margin-bottom: 0;
       margin-block-end: 0
     }
+
+    .btn {
+      font-size: 80%;
+    }
   </style>
   <div id="loading" class="text-center" style="font-size: 200%;">
     <br />
@@ -137,10 +142,12 @@
   </div>
 
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../node_modules/mdb-ui-kit/js/mdb.umd.min.js"></script>
   <script>
     var currentPage = "markdown_editor";
   </script>
   <script src="./manage.js"></script>
+  
 </body>
 
 </html>
