@@ -12,10 +12,12 @@ module.exports = function () {
   for (let i = 0; i < blog["文章列表"].length; i++) {
     if (blog["文章列表"][i]["是否置顶"]) {
       document.querySelector("#container").insertAdjacentHTML("beforeend",`
-        <div class="article-item" id="article-item-${i}">
+        <div class="card">
+        <div class="card-body" id="article-item-${i}">
             <div class="article-item-sub"><i class="fa fa-thumb-tack"></i> ${langdata.ARTICLE_IS_TOP[lang_name]}</div>
             <h2>${xssStrict(blog["文章列表"][i]["文章标题"])}</h2>
             
+        </div>
         </div>
             `);
     }
@@ -26,10 +28,12 @@ module.exports = function () {
       doNothing();
     } else {
       document.querySelector("#container").insertAdjacentHTML("beforeend",`
-        <div class="article-item" id="article-item-${i}">
+        <div class="card">
+        <div class="card-body" id="article-item-${i}">
             <h2>${xssStrict(blog["文章列表"][i]["文章标题"])}</h2>
            
             
+        </div>
         </div>
             `);
 

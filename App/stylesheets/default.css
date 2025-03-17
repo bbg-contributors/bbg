@@ -601,6 +601,7 @@ input.form-control:focus,textarea.form-control:focus{
   height: 100%;
   z-index: 1000;
   border-right: 1px solid #3b71ca;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #nav_container .list-group .list-group-item{
@@ -609,10 +610,11 @@ input.form-control:focus,textarea.form-control:focus{
   padding: 10px;
   width: 54px;
   border-right: 1px solid #3b71ca;
+  border-radius: 0;
 }
 
 #nav_container .list-group .list-group-item:hover{
-  background-color: white;
+  background-color: rgb(212, 212, 212);
   color: rgb(51,57,69);
 }
 
@@ -635,5 +637,9 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 .btn {
-  font-size: 100%;
+  font-size: 95%;
+}
+
+.nav-tabs .nav-item .nav-link {
+  font-size: 80%;
 }
