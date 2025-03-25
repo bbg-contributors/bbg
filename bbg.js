@@ -1,9 +1,10 @@
-import * as mdui from "https://unpkg.com/mdui@2/mdui.esm.js";
-import xss from "https://esm.sh/xss@1.0.15";
-import localforage from "https://esm.sh/localforage@1.10.0";
-import { marked } from "https://unpkg.com/marked@7.0.5/lib/marked.esm.js";
-import flatpickr from "https://unpkg.com/flatpickr@4.6.13/dist/esm/index.js";
-import sjcl from "https://esm.sh/sjcl@1.0.8";
+
+import imports from "./imports.js";
+import utils from "./utils.js";
+import FileSystem from "./fs.js";
+
+const { mdui, xss, localforage, marked, flatpickr } = imports;
+const { generateRandomString, content_encrypt, content_decrypt } = utils;
 
 const bbg = new Object();
 
@@ -450,7 +451,7 @@ bbg.openCreateNewPageDialog = async () => {
     const dialog = mdui.dialog({
         headline: bbg.i18n("blogmanager_pages_add_new_page"),
         body: /* html */ `
-                <mdui-text-field label="${bbg.i18n("blogmanager_pages_create_new_page_filename")}" id="create_new_page_filename" value="${bbg.generateRandomString(12)}.md"></mdui-text-field>
+                <mdui-text-field label="${bbg.i18n("blogmanager_pages_create_new_page_filename")}" id="create_new_page_filename" value="${generateRandomString(12)}.md"></mdui-text-field>
                 <br /><br />
                 <mdui-text-field label="${bbg.i18n("blogmanager_pages_create_new_page_title")}" id="create_new_page_title"></mdui-text-field>
                 <br /><br />
@@ -879,7 +880,7 @@ bbg.openCreateNewArticleDialog = async () => {
     const dialog = mdui.dialog({
         headline: bbg.i18n("blogmanager_articles_newarticle_title"),
         body: /* html */ `
-                <mdui-text-field label="${bbg.i18n("blogmanager_articles_editmeta_filename")}" id="new_article_filename" value="${bbg.generateRandomString(12)}.md"></mdui-text-field>
+                <mdui-text-field label="${bbg.i18n("blogmanager_articles_editmeta_filename")}" id="new_article_filename" value="${generateRandomString(12)}.md"></mdui-text-field>
                 <br /><br />
                 <mdui-text-field label="${bbg.i18n("blogmanager_articles_editmeta_article_title")}" id="new_article_title"></mdui-text-field>
                 <br /><br />
@@ -967,7 +968,7 @@ bbg.openEncryptArticleDialog = async (articleId) => {
     document.querySelector("#encrypt_article_confirm").addEventListener("click", async () => {
         const password = document.querySelector("#encrypt_article_password").value;
         const original_content = await bbg.fs.readFile(await bbg.fs.getFileHandle(bbg.blogArticlesDirHandle, articleData["文件名"]));
-        const encryptedContent = await bbg.content_encrypt(original_content, password);
+        const encryptedContent = await content_encrypt(original_content, password);
         await bbg.fs.writeFile(await bbg.fs.getFileHandle(await bbg.blogArticlesDirHandle, articleData["文件名"]), encryptedContent);
         bbg.blogData["文章列表"][articleId]["是否加密"] = true;
         await bbg.saveBlogDataFile();
@@ -1001,14 +1002,14 @@ bbg.openModifyEncryptionDialog = async (articleId) => {
         const new_password = document.querySelector("#modify_encrypt_article_new_password").value;
         const original_content = await bbg.fs.readFile(await bbg.fs.getFileHandle(bbg.blogArticlesDirHandle, articleData["文件名"]));
         try {
-            const decryptedContent = await bbg.content_decrypt(original_content, original_password);
+            const decryptedContent = await content_decrypt(original_content, original_password);
             if (new_password.trim() === "") {
                 await bbg.fs.writeFile(await bbg.fs.getFileHandle(bbg.blogArticlesDirHandle, articleData["文件名"]), decryptedContent);
                 bbg.blogData["文章列表"][articleId]["是否加密"] = false;
                 await bbg.saveBlogDataFile();
                 bbg.routePage();
             } else {
-                const encryptedContent = await bbg.content_encrypt(decryptedContent, new_password);
+                const encryptedContent = await content_encrypt(decryptedContent, new_password);
                 await bbg.fs.writeFile(await bbg.fs.getFileHandle(bbg.blogArticlesDirHandle, articleData["文件名"]), encryptedContent);
             }
             dialog.open = false;
@@ -1248,106 +1249,7 @@ bbg.openCustomizeThemeDialog = () => {
     );
 }
 
-// fs abstract
-
-bbg.fs = new Object();
-
-bbg.fs.pickDirectory = async () => {
-    const dir = await window.showDirectoryPicker({
-        "mode": "readwrite"
-    });
-
-    return dir;
-}
-
-bbg.fs.getDirHandle = async (fromDirHandle, targetDirName) => {
-    return await fromDirHandle.getDirectoryHandle(targetDirName);
-}
-
-bbg.fs.getFileHandle = async (fromDirHandle, targetFileName) => {
-    return await fromDirHandle.getFileHandle(targetFileName);
-}
-
-bbg.fs.existsDir = async (fromDirHandle, targetDirName) => {
-    try {
-        await fromDirHandle.getDirectoryHandle(targetDirName);
-    } catch (error) {
-        if (error.name === "NotFoundError") {
-            return false;
-        } else {
-            throw error;
-        }
-    }
-    return true;
-}
-
-bbg.fs.existsFile = async (fromDirHandle, targetFileName) => {
-    try {
-        await fromDirHandle.getFileHandle(targetFileName);
-    } catch (error) {
-        if (error.name === "NotFoundError") {
-            return false;
-        } else {
-            throw error;
-        }
-    }
-    return true;
-}
-
-bbg.fs.readFile = async (fileHandle) => {
-
-    function readFileAsText(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsText(file);
-        });
-    }
-
-    const file = await fileHandle.getFile();
-    return await readFileAsText(file);
-}
-
-bbg.fs.writeFile = async (fileHandle, content) => {
-    const writable = await fileHandle.createWritable();
-    await writable.write(content);
-    await writable.close();
-}
-
-bbg.fs.createFile = async (dirHandle, fileName) => {
-    return await dirHandle.getFileHandle(fileName, { create: true });
-}
-
-bbg.fs.renameFile = async (fromDirHandle, oldFileName, newFileName) => {
-    const oldFileHandle = await fromDirHandle.getFileHandle(oldFileName);
-    const oldFileContent = await bbg.fs.readFile(oldFileHandle);
-    await bbg.fs.writeFile(await bbg.fs.createFile(fromDirHandle, newFileName), oldFileContent);
-    await bbg.fs.removeFile(fromDirHandle, oldFileName);
-}
-
-bbg.fs.removeFile = async (fromDirHandle, targetFileName) => {
-    await fromDirHandle.removeEntry(targetFileName);
-}
-
-// functions
-
-bbg.generateRandomString = (length) => {
-    const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let result = "";
-    for (let i = 0; i < length; i++) {
-        result += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
-    }
-    return result;
-}
-
-bbg.content_encrypt = (content, password) => {
-    return sjcl.encrypt(password, content);
-}
-
-bbg.content_decrypt = (content, password) => {
-    return sjcl.decrypt(password, content);
-}
+bbg.fs = new FileSystem();
 
 bbg.isValidBlogDirectory = async (dirHandle) => {
 
