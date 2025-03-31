@@ -39,7 +39,7 @@ module.exports = function () {
   langdata.OPEN_IN_NEW_TAB[lang_name]
 }</label>
         </div>
-        <button class="btn btn-outline-primary" id="add_external_link_btn"><i class="fa fa-plus"></i> ${
+        <button class="btn btn-primary" id="add_external_link_btn"><i class="fa fa-plus"></i> ${
   langdata.ADD_EXTERNAL_LINK[lang_name]
 }</button>
         <hr />
@@ -91,7 +91,7 @@ module.exports = function () {
 
       const actionsCell = row.insertCell();
       const deleteButton = document.createElement("button");
-      deleteButton.className = "btn btn-outline-danger btn-sm";
+      deleteButton.className = "btn btn-danger btn-sm";
       deleteButton.innerHTML = `<i class="fa fa-trash-o"></i> ${langdata.DELETE_EXTERNAL_LINK[lang_name]}`;
       deleteButton.onclick = () => delete_external_link(index);
       actionsCell.appendChild(deleteButton);
@@ -100,12 +100,12 @@ module.exports = function () {
       // Add up and down buttons
       const moveCell = row.insertCell();
       const upButton = document.createElement("button");
-      upButton.className = "btn btn-outline-secondary btn-sm";
+      upButton.className = "btn btn-secondary btn-sm";
       upButton.innerHTML = "<i class=\"fa fa-arrow-up\"></i>";
       upButton.onclick = () => move_external_link_up(index);
 
       const downButton = document.createElement("button");
-      downButton.className = "btn btn-outline-secondary btn-sm";
+      downButton.className = "btn btn-secondary btn-sm";
       downButton.innerHTML = "<i class=\"fa fa-arrow-down\"></i>";
       downButton.onclick = () => move_external_link_down(index);
 

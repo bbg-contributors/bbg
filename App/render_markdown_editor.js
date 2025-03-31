@@ -40,8 +40,8 @@ module.exports = function () {
           <label class="form-label"><i class="fa fa-password"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
           <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="article_password_modal_value">
         </div>
-        <button class="btn btn-outline-primary" id="encryptionOptionsModalStartEditingBtn">${langdata.START_EDITING[lang_name]}</button>
-        <button class="btn btn-outline-primary" onclick="window.location.href='./article_manager.html?rootdir=${rootDir}'">${langdata.CANCEL[lang_name]}</button>
+        <button class="btn btn-primary" id="encryptionOptionsModalStartEditingBtn">${langdata.START_EDITING[lang_name]}</button>
+        <button class="btn btn-primary" onclick="window.location.href='./article_manager.html?rootdir=${rootDir}'">${langdata.CANCEL[lang_name]}</button>
         `;
         
 

@@ -78,7 +78,7 @@ function open_site() {
     message: langdata["ALERT_OPEN_SITE"][lang_name],
     buttons: [langdata["I_UNDERSTAND"][lang_name], langdata["CANCEL"][lang_name]],
   });
-  if (alertResult === 1){
+  if (alertResult === 1) {
     return;
   }
   const rootDir = dialog.showOpenDialogSync({
@@ -129,7 +129,7 @@ function generateNewBlog(rootDir) {
 
     BlogInstance.writeBlogData();
 
-    dialog.showMessageBox({message: langdata["ALERT_SUCCESSFUL_INIT"][lang_name]});
+    dialog.showMessageBox({ message: langdata["ALERT_SUCCESSFUL_INIT"][lang_name] });
 
     window.location.href = `./manage.html?rootdir=${rootDir}`;
   } catch (error) {
@@ -160,30 +160,30 @@ function openGroupDialog() {
     `);
 }
 
-function openAiAssistedWritingConfigDialog(){
+function openAiAssistedWritingConfigDialog() {
 
 }
 
-function save_ai_api_settings(){
+function save_ai_api_settings() {
   const ai_api_enabled = document.getElementById("enable_ai_assisted_writing_option").selected;
   let ai_api_type;
-  if(document.getElementById("ai_api_use_openai_option").selected){
+  if (document.getElementById("ai_api_use_openai_option").selected) {
     ai_api_type = "openai";
-  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
+  } else if (document.getElementById("ai_api_use_baidu_qianfan_option").selected) {
     ai_api_type = "baiduqianfan";
-  } else if(document.getElementById("ai_api_use_none").selected){
+  } else if (document.getElementById("ai_api_use_none").selected) {
     ai_api_type = "none";
   }
-  storage.set("ai_api_enabled", {enabled: ai_api_enabled});
-  storage.set("ai_api_type", {type: ai_api_type});
-  if(ai_api_type === "openai"){
+  storage.set("ai_api_enabled", { enabled: ai_api_enabled });
+  storage.set("ai_api_type", { type: ai_api_type });
+  if (ai_api_type === "openai") {
     storage.set("ai_api_info", {
       enabled: true,
       api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
       api_key: document.getElementById("api_key_for_ai_assisted_writing").value,
       default_model_type: document.getElementById("default_model_type_for_ai_assisted_writing").value
     });
-  } else if(ai_api_type === "baiduqianfan"){
+  } else if (ai_api_type === "baiduqianfan") {
     storage.set("ai_api_info", {
       enabled: true,
       api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
@@ -193,17 +193,17 @@ function save_ai_api_settings(){
   }
 }
 
-function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage = false){
+function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage = false) {
   let ai_api_type;
-  if(document.getElementById("ai_api_use_openai_option").selected){
+  if (document.getElementById("ai_api_use_openai_option").selected) {
     ai_api_type = "openai";
-  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
+  } else if (document.getElementById("ai_api_use_baidu_qianfan_option").selected) {
     ai_api_type = "baiduqianfan";
-  } else if(document.getElementById("ai_api_use_none").selected){
+  } else if (document.getElementById("ai_api_use_none").selected) {
     ai_api_type = "none";
   }
   let data;
-  if (isFromStorage){
+  if (isFromStorage) {
     data = storage.getSync("ai_api_type");
   } else {
     data = {
@@ -211,7 +211,7 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
     };
   }
   console.log(data);
-  if(data["type"] === "openai"){
+  if (data["type"] === "openai") {
     document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
     <br />
       <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
@@ -226,14 +226,14 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
 
     let apiInfoInStorage = storage.getSync("ai_api_info");
 
-    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("default_model_type")){
+    if (Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("default_model_type")) {
       document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
       document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
       document.getElementById("default_model_type_for_ai_assisted_writing").value = apiInfoInStorage["default_model_type"];
     }
 
-      
-  } else if(data["type"] === "baiduqianfan"){
+
+  } else if (data["type"] === "baiduqianfan") {
     document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
     <br />
       <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
@@ -248,7 +248,7 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
 
     let apiInfoInStorage = storage.getSync("ai_api_info");
 
-    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("secret_key")){
+    if (Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("secret_key")) {
       document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
       document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
       document.getElementById("api_secret_key_for_ai_assisted_writing").value = apiInfoInStorage["secret_key"];
@@ -259,14 +259,14 @@ function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage =
     document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = "";
   }
 
-  document.getElementById("api_setting_for_ai_assisted_writing").insertAdjacentHTML("beforeend",`
+  document.getElementById("api_setting_for_ai_assisted_writing").insertAdjacentHTML("beforeend", `
     <br />
-    <button class="btn btn-outline-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
-    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+    <button class="btn btn-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
   `);
 }
 
-function open_ai_assisted_writing_setting_dialog(){
+function open_ai_assisted_writing_setting_dialog() {
   document.getElementById("ai_assisted_writing-dialog-content").innerHTML = `
     <p>${langdata["AI_ASSISTED_WRITING_ENABLE"][lang_name]}</p>
     <select class="form-select">
@@ -285,8 +285,8 @@ function open_ai_assisted_writing_setting_dialog(){
     </div>
   `;
 
-  storage.get("ai_api_enabled", function(err, data){
-    if(data.enabled === true){
+  storage.get("ai_api_enabled", function (err, data) {
+    if (data.enabled === true) {
       document.getElementById("enable_ai_assisted_writing_option").selected = true;
     } else {
       document.getElementById("disable_ai_assisted_writing_option").selected = true;
@@ -294,10 +294,10 @@ function open_ai_assisted_writing_setting_dialog(){
     console.log(data);
   });
 
-  storage.get("ai_api_type", function(err, data){
-    if(data.type === "openai"){
+  storage.get("ai_api_type", function (err, data) {
+    if (data.type === "openai") {
       document.getElementById("ai_api_use_openai_option").selected = true;
-    } else if(data.type === "baiduqianfan"){
+    } else if (data.type === "baiduqianfan") {
       document.getElementById("ai_api_use_baidu_qianfan_option").selected = true;
     } else {
       document.getElementById("ai_api_use_none").selected = true;
@@ -310,19 +310,19 @@ function open_ai_assisted_writing_setting_dialog(){
 
   ai_assisted_writing_dialog.show();
 
-  document.getElementById("ai_assisted_writing_api_type_choose").onchange = function(){render_ai_assisted_writing_setting_specific_api_setting();};
+  document.getElementById("ai_assisted_writing_api_type_choose").onchange = function () { render_ai_assisted_writing_setting_specific_api_setting(); };
 }
 
 function render_language_selections() {
   document.getElementById("language-selection-list").innerHTML = "";
   for (let i = 0; i < lang_meta["名称与文件名之间的映射关系"].length; i++) {
-    document.getElementById("language-selection-list").insertAdjacentHTML("beforeend",`<p>
+    document.getElementById("language-selection-list").insertAdjacentHTML("beforeend", `<p>
     <a href="#" onclick="select_language('${lang_meta["名称与文件名之间的映射关系"][i]["name"]}')">${lang_meta["名称与文件名之间的映射关系"][i]["name"]}</a>
   </p>`);
   }
 }
 
-function learn_more_about_version(type){
+function learn_more_about_version(type) {
   const learn_more_about_version_dialog = new bootstrap.Modal(document.getElementById("learn_more_about_version-dialog"));
   document.getElementById("learn_more_about_version-dialog-content").innerHTML = langdata[`${type}_VERSION_INFO`][lang_name];
   learn_more_about_version_dialog.show();
@@ -380,14 +380,14 @@ storage.has("language", (error, hasKey) => {
            
            <p>${langdata.CREATE_NEW_SITE_DESCRIPTION[0][lang_name]}</p>
            <p><b>${langdata.CREATE_NEW_SITE_DESCRIPTION[1][lang_name]}</b></p>
-           <button type="button" class="btn btn-outline-success"
+           <button type="button" class="btn btn-success"
              onclick="create_new_site_choose_root_dir();">${langdata.SELECT_SITE_ROOT_DIRECTORY[lang_name]}</button>
            
            `;
 
       document.getElementById("create-new-site-dialog-footer").innerHTML = `
            
-           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
+           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">${langdata.CANCEL[lang_name]}</button>
            `;
 
       document.getElementsByTagName("title")[0].innerHTML = `${langdata.STARTPAGE_TITLE[lang_name]}`;
@@ -395,17 +395,17 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <br />
-          <a class="btn btn-outline-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          <a class="btn btn-outline-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
+          <a class="btn btn-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
+          <a class="btn btn-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
           <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
+          <a class="btn btn-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" id="last_managed_site"></a></li>
           </ul>
           
           </div>
           <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
+          <a class="btn btn-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
           <ul class="dropdown-menu">
       <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
       <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
@@ -452,7 +452,7 @@ storage.has("language", (error, hasKey) => {
         }
       });
 
-      if(existsSync(`${__dirname}/is_released_version`) === false){
+      if (existsSync(`${__dirname}/is_released_version`) === false) {
         document.getElementById("current_program_version").innerHTML = `${langdata.DEVELOPING_VERSION[lang_name]}  <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="(base_version = ${currentProgramVersion}, commit-id = ${currentCommitID.slice(0, 7)})">
         <i class="fa fa-info-circle" style="color:grey"></i>
       </span>
@@ -466,6 +466,13 @@ ${langdata["DEVELOPING_VERSION_HINT"][lang_name]}
         `;
         const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+
+        const buttons = document.getElementsByClassName("btn");
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].setAttribute("data-mdb-ripple-init", "");
+        }
+        mdb.initMDB({ Ripple: mdb.Ripple });
       }
     });
   } else {
@@ -501,10 +508,10 @@ function openStylesheetDialog() {
     </div>
     `;
 
-  let stylesheet_list = JSON.parse(readFileSync(`${__dirname}/stylesheets/meta.json`,"utf-8"));
-    
-  for(let i=0;i<stylesheet_list.length;i++){
-    document.getElementById("stylesheet_list").insertAdjacentHTML("beforeend",`
+  let stylesheet_list = JSON.parse(readFileSync(`${__dirname}/stylesheets/meta.json`, "utf-8"));
+
+  for (let i = 0; i < stylesheet_list.length; i++) {
+    document.getElementById("stylesheet_list").insertAdjacentHTML("beforeend", `
       <p><a href="javascript:void(0)" onclick="changeStylesheet('${stylesheet_list[i]["filename"]}')">${stylesheet_list[i]["display_name"]}</a></p>
       `);
   }
@@ -560,8 +567,8 @@ function open_customize_bbg_ui_dialog() {
       <input id="custom_ui_primary_color" placeholder="${langdata["PRIMARY_COLOR"][lang_name]}" type="color">
     </div>
 
-    <button class="btn btn-outline-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
-    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
+    <button class="btn btn-success" onclick="save_custom_ui_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <button class="btn btn-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
   
     </div>
     `;
@@ -579,11 +586,11 @@ function open_customize_bbg_ui_dialog() {
   });
 }
 
-ipcRenderer.on("openExistingSite", ()=>{
+ipcRenderer.on("openExistingSite", () => {
   open_site();
 });
 
-ipcRenderer.on("createNewSite", ()=>{
+ipcRenderer.on("createNewSite", () => {
   create_new_site_dialog_show();
 });
 
