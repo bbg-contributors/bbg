@@ -66,7 +66,7 @@
     "@eslint/js": "^9.21.0",
     "docsify": "^4.13.1",
     "electron": "^34.3.0",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^26.0.12",
     "eslint": "^9.4.0",
     "eslint-plugin-jsonc": "^2.19.1",
     "eslint-plugin-markdown": "^5.1.0",
