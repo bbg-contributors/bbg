@@ -148,7 +148,7 @@ module.exports = function () {
     if (blog["全局主题设置"]["若使用第三方主题，是否来自本地文件"] === false) {
       document.getElementById("isUsingThirdPartyTheme").innerHTML = `
       ${langdata.CURRENTLY_USING_3RD_PARTY_THEME[lang_name]}${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]} (${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题的更新发布日期为"]})。<br /><br />
-      <button class="btn btn-outline-primary" onclick="check_thirdparty_theme_update();"><i class="fa fa-refresh"></i> ${langdata["CHECK_UPDATE"][lang_name]}: ${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</button>
+      <button class="btn btn-primary" onclick="check_thirdparty_theme_update();"><i class="fa fa-refresh"></i> ${langdata["CHECK_UPDATE"][lang_name]}: ${blog["全局主题设置"]["若使用来自主题商店的第三方主题，则主题名为"]}</button>
     </b>
   
   `;
@@ -157,7 +157,7 @@ module.exports = function () {
     document.getElementById("isUsingThirdPartyTheme").insertAdjacentHTML(
       "beforeend",
       `
-    <button class="btn btn-outline-primary" onclick="config_third_party_theme();"><i class="fa fa-cogs"></i> 编辑主题配置文件</button>
+    <button class="btn btn-primary" onclick="config_third_party_theme();"><i class="fa fa-cogs"></i> 编辑主题配置文件</button>
     `
     );
   } else {
