@@ -26,20 +26,19 @@ body {
 .article-item-sub,
 .article-content-sub,
 .page-item-sub {
-  color: #999;
+  color: #979797;
+  line-height: 36px;
 }
 
 .page-item,
 .article-item,
 .fluentinterface {
   background-color: white;
-  padding: 24px;
-
-  padding: 20px;
+  padding: 28px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 20px;
-  border: 1px solid grey;
+  border: 1px solid rgb(234, 234, 234);
 }
 
 .fluenthint {
@@ -539,19 +538,6 @@ a , .btn-link{
   margin:0px;
 }
 
-.alert-primary, .alert-info{
-    padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #0d6dfd27;
-    border-left: 0.25rem solid #0d6dfda1;;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
-  border-radius: 0;
-  
-}
-
 input.form-control, textarea.form-control{
   text-indent: 0px;
   background-color: white;
@@ -643,4 +629,66 @@ input.form-control:focus,textarea.form-control:focus{
 .startpage_btn_icon {
   font-size: 33px;
   margin-bottom: 10px;
+}
+
+#container {
+  padding-left: 40px;
+}
+
+.add_item_btn {
+  padding: 10px 18px 10px 18px;
+  margin: 0px;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(38, 107, 196);
+  border: none;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 5%), 0 2px 2px 0 rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 6%);
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.primary_btn {
+  border: 1px solid rgb(53, 107, 194);
+  background-color: rgb(248, 251, 255);
+  color: rgb(20, 70, 151);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.danger_btn {
+  border: 1px solid rgb(255, 178, 178);
+  background-color: rgb(253, 245, 246);
+  color: rgb(186, 35, 33);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.success_btn {
+  border: 1px solid rgb(170, 187, 175);
+  background-color: rgb(249, 253, 253);
+  color: rgb(26, 132, 95);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.warning_btn {
+  border: 1px solid rgb(255, 255, 178);
+  background-color: rgb(253, 253, 246);
+  color: rgb(186, 186, 33);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.secondary_btn {
+  border: 1px solid rgb(194, 199, 202);
+  background-color: rgb(250, 251, 252);
+  color: rgb(85, 108, 124);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
 }

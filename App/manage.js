@@ -118,6 +118,10 @@ const edit_external_links = require("./edit_external_links.js");
 const let_page_up = require("./change_page_order.js").let_page_up;
 const let_page_down = require("./change_page_order.js").let_page_down;
 
+const import_fluent_ui = require("./import_fluent_ui.js");
+
+import_fluent_ui();
+
 
 
 function convertTimeStampToDatetimeString(timestamp) {

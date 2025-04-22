@@ -1,18 +1,13 @@
-<nav class="navbar navbar-toggler bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"
-      >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      
-      ${langdata["ARTICLE_MANAGEMENT"][lang_name]}</a
-    >
-  </div>
-</nav>
-<br /><br /><br />
-<button onclick="add_a_article();" class="btn btn-outline-primary">
-  <i class="fa fa-plus"></i> ${langdata["ADD_AN_ARTICLE"][lang_name]}
-</button>
-<hr />
-<div class="alert alert-info" role="alert">
+<br />
+<h2>${langdata["ARTICLE_MANAGEMENT"][lang_name]}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button onclick="add_a_article();" class="add_item_btn">
+    <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;${langdata["ADD_AN_ARTICLE"][lang_name]}
+  </button>
+</h2>
+
+<br />
+<div class="alert alert-primary" role="alert">
   <i class="fa fa-info-circle" aria-hidden="true"></i>
 
   ${langdata["HINT_USING_MD_IN_ARTICLES"][lang_name]}

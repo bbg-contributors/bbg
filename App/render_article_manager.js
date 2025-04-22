@@ -62,14 +62,16 @@ module.exports = function () {
 
     // TODO: i18n encrypt_options
     document.querySelector(`#article-item-${i}`).insertAdjacentHTML("beforeend", `
-    
-    <button class="btn btn-outline-primary" id="article_item_${i}_edit_article_btn"><i class="fa fa-edit"></i> ${langdata.EDIT_AND_PREVIEW_ARTICLE_CONTENT[lang_name]}</button>
-    <button class="btn btn-outline-primary" id="article_item_${i}_edit_article_meta_btn"><i class="fa fa-info-circle"></i> ${langdata.EDIT_ARTICLE_META[lang_name]}</button>
-    <button class="btn btn-outline-danger" id="article_item_${i}_delete_article_btn"><i class="fa fa-trash-o"></i> ${langdata.DELETE_ARTICLE[lang_name]}</button>
+    <button class="primary_btn" id="article_item_${i}_edit_article_btn"><i class="fa fa-edit"></i>&nbsp;&nbsp;${langdata.EDIT_AND_PREVIEW_ARTICLE_CONTENT[lang_name]}</button>
+    &nbsp;
+    <button class="primary_btn" id="article_item_${i}_edit_article_meta_btn"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;${langdata.EDIT_ARTICLE_META[lang_name]}</button>
+    &nbsp;
+    <button class="danger_btn" id="article_item_${i}_delete_article_btn"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;${langdata.DELETE_ARTICLE[lang_name]}</button>
     <span id="encryption_related_func_${i}"></span>
     <br /><br />
-    <button class="btn btn-outline-primary" id="article_item_${i}_let_article_up_btn"><i class="fa fa-arrow-up"></i> ${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
-    <button class="btn btn-outline-primary" id="article_item_${i}_let_article_down_btn"><i class="fa fa-arrow-down"></i> ${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
+    <button class="secondary_btn" id="article_item_${i}_let_article_up_btn"><i class="fa fa-arrow-up"></i>&nbsp;&nbsp;${langdata.LET_ARTICLE_GO_UP[lang_name]}</button>
+    &nbsp;
+    <button class="secondary_btn" id="article_item_${i}_let_article_down_btn"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;${langdata.LET_ARTICLE_GO_DOWN[lang_name]}</button>
     `);
 
     document.querySelector(`#article_item_${i}_edit_article_btn`).onclick = function () {
@@ -95,11 +97,13 @@ module.exports = function () {
 
     if (blog["文章列表"][i]["是否加密"]){
       document.querySelector(`#encryption_related_func_${i}`).insertAdjacentHTML("beforeend",`
-      <button class="btn btn-outline-warning" onclick="ui_decrypt_article(${i})"><i class="fa fa-unlock"></i> ${langdata.DECRYPT_ARTICLE[lang_name]}</button>
+        &nbsp;
+      <button class="warning_btn" onclick="ui_decrypt_article(${i})"><i class="fa fa-unlock"></i>&nbsp;&nbsp;${langdata.DECRYPT_ARTICLE[lang_name]}</button>
       `);
     } else {
       document.querySelector(`#encryption_related_func_${i}`).insertAdjacentHTML("beforeend",`
-      <button class="btn btn-outline-success" onclick="ui_encrypt_article(${i})"><i class="fa fa-lock"></i> ${langdata.ENCRYPT_ARTICLE[lang_name]}</button>
+        &nbsp;
+      <button class="success_btn" onclick="ui_encrypt_article(${i})"><i class="fa fa-lock"></i>&nbsp;&nbsp;${langdata.ENCRYPT_ARTICLE[lang_name]}</button>
       `);
     }
   }
