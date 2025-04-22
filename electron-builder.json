@@ -44,10 +44,7 @@
     "artifactName": "bbg-${arch}.${ext}",
     "executableName": "bbg",
     "description": "A static blog generator based on Electron Technology.",
-    "desktop": {
-      "StartupWMClass": "bbg",
-      "Keywords": "bbg;"
-    },
+    "desktop": {},
     "target": [
       {
         "target": "tar.gz",
