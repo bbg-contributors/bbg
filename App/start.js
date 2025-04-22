@@ -1,4 +1,3 @@
-
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
@@ -25,6 +24,11 @@ const currentCommitID = require("./currentCommitID.js");
 const check_update = require("./check_update.js");
 
 const BlogData = require("./BlogData.js");
+
+const import_fluent_ui = require("./import_fluent_ui.js");
+const icon = require("./icon.js");
+
+import_fluent_ui();
 
 const create_new_site_dialog = new bootstrap.Modal(document.getElementById("create-new-site-dialog"));
 const err_dialog = new bootstrap.Modal(document.getElementById("err-dialog"));
@@ -395,26 +399,42 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <br />
-          <a class="btn btn-outline-primary" id="open_site_btn" onclick="open_site()"><span style="font-size: 33px"><i class="fa fa-folder-open-o"></i></span> <br />${langdata.OPEN_EXISTING_SITE[lang_name]}</a>
-          <a class="btn btn-outline-primary" id="create_site_btn" onclick="create_new_site_dialog_show()"><span style="font-size: 33px"><i class="fa fa-plus"></i></span><br /> ${langdata.CREATE_NEW_SITE[lang_name]}</a>
-          <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary dropdown-toggle"  data-bs-toggle="dropdown" id="recent_open_btn" onclick=""><span style="font-size: 33px"><i class="fa fa-clock-o"></i></span><br /> ${langdata.RECENT_OPEN[lang_name]}</a>
+           <fluent-button class="startpage_btn_container" id="open_site_btn" onclick="open_site()">
+           <div class="startpage_btn_inner">
+           <div class="startpage_btn_icon">${icon("folder-svgrepo-com")}</div>
+           
+           ${langdata.OPEN_EXISTING_SITE[lang_name]}
+           </div>
+           </fluent-button>
+          
+          <fluent-button class="startpage_btn_container" id="create_site_btn" onclick="create_new_site_dialog_show()">
+          <div class="startpage_btn_inner">
+          <div class="startpage_btn_icon">${icon("add-folder-svgrepo-com")}</div>
+          ${langdata.CREATE_NEW_SITE[lang_name]}
+          </div>
+          </fluent-button>
+          <div class="dropdown" style="display: inline-block">
+          <fluent-button class="startpage_btn_container" id="recent_open_btn"  data-bs-toggle="dropdown"><div class="startpage_btn_inner"><div class="startpage_btn_icon">${icon("clock-time-and-date-svgrepo-com")}</div>${langdata.RECENT_OPEN[lang_name]}</div></fluent-button>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" id="last_managed_site"></a></li>
           </ul>
           
           </div>
-          <div class="btn-group" role="group">
-          <a class="btn btn-outline-primary  dropdown-toggle" id="application_settings_btn" onclick="" data-bs-toggle="dropdown" aria-expanded="false"><span style="font-size: 33px"><i class="fa fa-cog"></i></span><br /> ${langdata.APPLICATION_SETTINGS[lang_name]}</a>
+          <div class="dropdown" style="display: inline-block">
+          <fluent-button class="startpage_btn_container" id="application_settings_btn" data-bs-toggle="dropdown">
+          <div class="startpage_btn_inner">
+          <div class="startpage_btn_icon">${icon("cog-svgrepo-com")}</div>
+          ${langdata.APPLICATION_SETTINGS[lang_name]}
+          </div>
+          </fluent-button>
           <ul class="dropdown-menu">
-      <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
-      <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
-      <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
-      <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
-      <!-- <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li> -->
-      <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
-      </ul>
-
+          <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
+          <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
+          <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
+          <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
+          <!-- <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li> -->
+          <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
+          </ul>
           </div>
           <br /><br /><br /><br />
            `;

@@ -7,3 +7,5 @@ BBG is a free, open source, cross-platform, Electron-based static blog generator
 ## License
 
 This repository is released into the public domain.
+
+Icons in `/App/icons` has their own copyrights.
