@@ -12,3 +12,4 @@ test.js
 pnpm-lock.yaml
 pnpm-workspace.yaml
 package-lock.json
+yarn.lock
