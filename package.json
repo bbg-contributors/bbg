@@ -1,7 +1,6 @@
 {
   "name": "bbg",
   "version": "20250311.0.0",
-  "packageManager": "yarn@1.22.19",
   "description": "A static blog generator based on Electron Technology.",
   "license": "UNLICENSED",
   "author": {
@@ -15,7 +14,6 @@
   "main": "main.js",
   "scripts": {
     "prepare": "husky",
-    "preinstall": "npx only-allow yarn",
     "start": "electron ./main.js",
     "start_in_native_wayland_mode": "electron ./main.js --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland --enable-wayland-ime --wayland-text-input-version=3",
     "dev": "electron ./main_dev.js",
