@@ -10,7 +10,7 @@ const ui_encrypt_article = (article_id) => {
     <label class="form-label"><i class="fa fa-password"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
     <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="article_password_modal_value">
   </div>
-  <button class="btn btn-outline-primary" id="encryptionOptionsModalEncryptBtn">${langdata.ENCRYPT_ARTICLE[lang_name]}</button>
+  <fluent-button appearance="accent" id="encryptionOptionsModalEncryptBtn">${langdata.ENCRYPT_ARTICLE[lang_name]}</fluent-button>
     `;
   document.getElementById("encryptionOptionsModalEncryptBtn").addEventListener("click", () => {
     let password = document.getElementById("article_password_modal_value").value;
@@ -35,7 +35,7 @@ const ui_decrypt_article = (article_id) => {
     <label class="form-label"><i class="fa fa-password"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
     <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="article_password_modal_value">
   </div>
-  <button class="btn btn-outline-primary" id="encryptionOptionsModalDecryptBtn">${langdata.DECRYPT_ARTICLE[lang_name]}</button>
+  <fluent-button appearance="accent" id="encryptionOptionsModalDecryptBtn">${langdata.DECRYPT_ARTICLE[lang_name]}</fluent-button>
     `;
   document.getElementById("encryptionOptionsModalDecryptBtn").addEventListener("click", () => {
     let password = document.getElementById("article_password_modal_value").value;

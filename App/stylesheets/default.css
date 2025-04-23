@@ -581,7 +581,7 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #nav_container{
-  background-color: rgb(233,233,233);
+  background-color: rgb(251,252,254);
   position: fixed;
   width: 54px;
   height: 100%;
@@ -589,8 +589,11 @@ input.form-control:focus,textarea.form-control:focus{
 }
 
 #nav_container .list-group .list-group-item{
-  background-color: rgb(233,233,233);
+  background-color: rgb(251,252,254);
   color: rgb(51,57,69);
+  margin-left: 14px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #nav_container .list-group .list-group-item:hover{
@@ -605,8 +608,9 @@ input.form-control:focus,textarea.form-control:focus{
 
 
 #nav_container .list-group .list-group-item.active{
-  background-color: rgb(146,186,221);
-  border-radius: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px -2px rgb(0 0 0 / 12%), 0 2px 8px 0 rgb(0 0 0 / 10%), 0 1px 10px 0 rgb(0 0 0 / 10%);
 }
 
 #nav_container .list-group{
@@ -757,4 +761,39 @@ input.form-control:focus,textarea.form-control:focus{
 
 .nav-tabs .nav-item .nav-link {
   color: rgb(87, 108, 163);
+}
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+summary::marker {
+  display: none;
+}
+
+summary::before {
+  content: "▶";
+  transition: transform 0.2s ease;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details > *:not(summary) {
+  margin-top: 0.5em;
+  padding-bottom: 0.5em;
 }

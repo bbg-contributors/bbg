@@ -70,7 +70,7 @@ module.exports = function () {
   document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
     "markdown_editor_title_ui.html",
   ));
-  document.getElementById("markdown_filename").innerHTML=`
+  document.getElementById("markdown_filename").innerHTML=`${icon("edit-svgrepo-com")}
 ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
 
   if (storage.getSync("ai_api_enabled").enabled){

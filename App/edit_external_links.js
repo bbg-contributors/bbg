@@ -39,7 +39,7 @@ module.exports = function () {
   langdata.OPEN_IN_NEW_TAB[lang_name]
 }</label>
         </div>
-        <button class="btn btn-outline-primary" id="add_external_link_btn"><i class="fa fa-plus"></i> ${
+        <button class="primary_btn" id="add_external_link_btn"><i class="fa fa-plus"></i> ${
   langdata.ADD_EXTERNAL_LINK[lang_name]
 }</button>
         <hr />
