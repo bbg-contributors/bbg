@@ -2,7 +2,7 @@
 module.exports=function(dialog_content,do_what_if_sure){
   let dialog_id = randomString(6);
   document.getElementById("root").insertAdjacentHTML("beforeend",`
-    <div class="modal" id="${dialog_id}" tabindex="-1">
+    <div class="modal fade" id="${dialog_id}" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,8 +13,8 @@ module.exports=function(dialog_content,do_what_if_sure){
         <p>${dialog_content}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata["CANCEL"][lang_name]}</button>
-        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</button>
+        <fluent-button appearance="accent" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata["CANCEL"][lang_name]}</fluent-button>
+        <fluent-button appearance="accent" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</fluent-button>
       </div>
     </div>
   </div>

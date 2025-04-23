@@ -89,6 +89,8 @@ const {
 } = require("./encryption_decryption_ui.js");
 const enterBlogSettingInterfaceOf = require("./navToSectionOfBlogSetting.js");
 
+const icon = require("./icon.js");
+
 const config_third_party_theme =
   require("./config_third_party_theme.js").config_third_party_theme;
 const save_config_of_third_party_theme =

@@ -1,27 +1,20 @@
-<nav class="navbar navbar-toggler bg-light">
-  <div class="container-fluid">
-    
-    <a class="navbar-brand" href="#"
-      >
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      ${langdata["PAGE_MANAGEMENT"][lang_name]}</a
-    >
-  </div>
-</nav>
-<br /><br /><br />
-<button class="btn btn-outline-primary" onclick="add_a_page()">
-  <i class="fa fa-plus"></i> ${langdata["ADD_A_PAGE"][lang_name]}
-</button>
-<button class="btn btn-outline-primary" onclick="edit_friend_book();">
-  <i class="fa fa-cogs"></i> ${langdata.MANAGE_FRIEND_BOOK_PAGE[lang_name]}
-</button>
+<br />
+<h2>${langdata["PAGE_MANAGEMENT"][lang_name]}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="add_item_btn" onclick="add_a_page()">
+    <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;${langdata["ADD_A_PAGE"][lang_name]}
+  </button>
+  <button class="add_item_btn" onclick="edit_friend_book();">
+    <i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp;${langdata.MANAGE_FRIEND_BOOK_PAGE[lang_name]}
+  </button>
+  <button class="add_item_btn" onclick="edit_external_links();">
+    <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;${langdata.MANAGE_EXTERNAL_LINKS[lang_name]}
+  </button>
+</h2>
 
-<button class="btn btn-outline-primary" onclick="edit_external_links();">
-  <i class="fa fa-link"></i> ${langdata.MANAGE_EXTERNAL_LINKS[lang_name]}
-</button>
+<br />
 
-<hr />
-<div class="alert alert-info" role="alert">
+<div class="alert alert-primary" role="alert">
   <i class="fa fa-info-circle" aria-hidden="true"></i>
   ${langdata["HINT_USING_MD_IN_PAGES"][lang_name]}
 </div>
