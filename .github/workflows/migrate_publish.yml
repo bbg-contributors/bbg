@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           git config --global url."https://github.com/".insteadOf ssh://git@github.com/
-          yarn install --frozen-lockfile
+          yarn install --no-lockfile
 
       - name: Configure environment
         run: |
