@@ -24,11 +24,10 @@ jobs:
         with:
           node-version: "22.x"
           check-latest: true
-          cache: yarn
       - name: Install dependencies
         run: |
           git config --global url."https://github.com/".insteadOf ssh://git@github.com/
-          yarn install --no-lockfile
+          npm install
       - name: Inject release info to the program
         if: startsWith(github.ref, 'refs/tags/')
         run: |

@@ -21,13 +21,12 @@ jobs:
         with:
           node-version: ">=18.16.0"
           check-latest: true
-          cache: yarn
 
       - name: Install dependencies
         run: |
           git config --global url."https://github.com/".insteadOf ssh://git@github.com/
-          yarn install --no-lockfile
+          npm install
 
       - name: Run ESLint
         run: |
-          yarn run lint
+          npm run lint
