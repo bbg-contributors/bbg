@@ -48,7 +48,7 @@
     "crypto-js": "^4.2.0",
     "electron-json-storage": "^4.5.0",
     "electron-reloader": "^1.2.3",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "font-awesome": "4.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
