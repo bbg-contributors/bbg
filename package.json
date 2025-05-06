@@ -44,7 +44,7 @@
     "@popperjs/core": "^2.11.8",
     "@xterm/xterm": "^5.5.0",
     "adm-zip": "^0.5.16",
-    "bootstrap": "5.3.3",
+    "bootstrap": "5.3.5",
     "crypto-js": "^4.2.0",
     "electron-json-storage": "^4.5.0",
     "electron-reloader": "^1.2.3",
