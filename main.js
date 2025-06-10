@@ -16,6 +16,8 @@ app.setAboutPanelOptions({
   website: appInfo.officialWebsite
 });
 
+app.commandLine.appendSwitch("gtk-version", "3");
+
 
 function openExistingSite() {
   win.webContents.send("openExistingSite");

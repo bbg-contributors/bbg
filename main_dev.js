@@ -16,6 +16,7 @@ if (process.argv.includes("--hot-reload")) {
 
 require("@electron/remote/main").initialize();
 
+app.commandLine.appendSwitch("gtk-version", "3");
 app.commandLine.appendSwitch("remote-debugging-port", "9541");
 
 /** @type {BrowserWindow | null | undefined} */
@@ -52,5 +53,6 @@ const createWindow = () => {
   });
   win.webContents.openDevTools();
 };
+
 
 app.whenReady().then(() => createWindow());
