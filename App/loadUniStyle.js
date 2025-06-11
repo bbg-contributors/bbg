@@ -35,12 +35,20 @@ module.exports = function () {
             background-color: rgba(255, 255, 255, 0.8)!important;
           }
 
-          #nav_list, #nav_container, .article-item, .page-item, .fluentinterface, .modal-header {
+          .article-item, .page-item, .fluentinterface, .modal-header {
             background-color: rgba(255, 255, 255, 0.5)!important;
+          }
+
+          #nav_list, #nav_container {
+            background: none!important;
           }
 
           #nav_list button, .navbar .container-fluid, .modal-dialog, .modal-body .container-fluid {
             background: transparent!important;
+          }
+
+          #nav_list button {
+            background: rgba(255, 255, 255, 0.5)!important;
           }
         }`}
           `;
