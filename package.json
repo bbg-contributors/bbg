@@ -52,7 +52,7 @@
     "font-awesome": "4.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
-    "marked": "^15.0.7",
+    "marked": "^16.0.0",
     "marked-base-url": "^1.1.6",
     "native-prompt": "^2.1.4",
     "request": "^2.88.2",
