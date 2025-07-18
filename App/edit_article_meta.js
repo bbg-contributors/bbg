@@ -70,7 +70,7 @@ module.exports = function (i) {
 
   if (i === -1) { //If creating new article, set default values
     document.getElementById("meta_article_title").value = "";
-    document.getElementById("meta_article_filename").value = "";
+    document.getElementById("meta_article_filename").value = randomString(8) + ".md";
     document.getElementById("meta_article_description").value = "";
     document.getElementById("meta_article_tags").value = "";
     document.getElementById("meta_article_createdat").value = convertTimeStampToDatetimeString(Date.now()); //Set to current time
