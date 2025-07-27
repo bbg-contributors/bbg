@@ -413,22 +413,6 @@ module.exports = function () {
 
   document.getElementById("nav_to_blog_settings").classList.add("active");
 
-  switch (blog["站点主题"]) {
-  case "default":
-    document.getElementById(
-      "site_theme_choose_default_theme"
-    ).selected = true;
-    break;
-  case "Solarized_Pink":
-    document.getElementById(
-      "site_theme_choose_solarized_pink"
-    ).selected = true;
-    break;
-  case "Miracle":
-    document.getElementById("site_theme_choose_miracle").selected = true;
-    break;
-  }
-
   const selectElements = document.querySelectorAll("select");
   selectElements.forEach(function (select) {
     select.addEventListener("change", function () {

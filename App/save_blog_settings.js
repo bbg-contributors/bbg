@@ -205,20 +205,6 @@ module.exports = function () {
       blog["全局评论设置"]["waline设置"]["serverurl"] = waline_server_url;
     }
 
-    if (document.getElementById(
-      "site_theme_choose_solarized_pink"
-    ).selected === true) {
-      blog["站点主题"] = "Solarized_Pink";
-    } else if (document.getElementById(
-      "site_theme_choose_default_theme"
-    ).selected === true) {
-      blog["站点主题"] = "default";
-    } else if (document.getElementById(
-      "site_theme_choose_miracle"
-    ).selected === true) {
-      blog["站点主题"] = "Miracle";
-    }
-
     BlogInstance.writeBlogData();
     if (save_blog_settings_operate_success === true) {
 
