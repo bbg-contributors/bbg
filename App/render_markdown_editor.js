@@ -1,17 +1,17 @@
-const { readFileSync,writeFileSync } = require("fs");
+const { readFileSync, writeFileSync } = require("fs");
 const { dialog } = require("@electron/remote");
 const marked = require("marked");
 const xss_filter = require("xss");
 const toast_creator = require("./toast_creator.js");
 const ai_function = require("./ai_function.js");
 const rss_hook = require("./rss_hook.js");
-const {baseUrl} = require("marked-base-url");
+const { baseUrl } = require("marked-base-url");
 
 
 module.exports = function () {
   let path = decodeURIComponent(getUrlArgs("path"));
   let filename = path.replaceAll("/data/articles/", "").replaceAll("/data/pages/", "");
-  let title,type;
+  let title, type;
   let original_content = readFileSync(rootDir + path, "utf-8");
   var editor_status = 0, default_editor = false;
   var whoScrolling;
@@ -27,7 +27,7 @@ module.exports = function () {
     for (let i = 0; i < blog["文章列表"].length; i++) {
       if (blog["文章列表"][i]["文件名"] === filename) {
         title = blog["文章列表"][i]["文章标题"];
-        if(blog["文章列表"][i]["是否加密"] === true){
+        if (blog["文章列表"][i]["是否加密"] === true) {
           is_cnt_article_encrypted = true;
           var encryptionOptionsModal = new bootstrap.Modal(document.getElementById("encryptionOptionsModal"), {
             backdrop: "static",
@@ -43,7 +43,7 @@ module.exports = function () {
         <button class="btn btn-outline-primary" id="encryptionOptionsModalStartEditingBtn">${langdata.START_EDITING[lang_name]}</button>
         <button class="btn btn-outline-primary" onclick="window.location.href='./article_manager.html?rootdir=${rootDir}'">${langdata.CANCEL[lang_name]}</button>
         `;
-        
+
 
           document.getElementById("encryptionOptionsModalStartEditingBtn").addEventListener("click", () => {
             password_if_enabled_encryption_for_article = document.getElementById("article_password_modal_value").value;
@@ -66,14 +66,14 @@ module.exports = function () {
     }
   }
 
-  marked.use(baseUrl(`${rootDir}/data/${type}s/`));
-  document.getElementById("container").insertAdjacentHTML("beforeend",getUiFileContent(
+  // marked.use(baseUrl(`file://${rootDir}/data/${type}s/`));
+  document.getElementById("container").insertAdjacentHTML("beforeend", getUiFileContent(
     "markdown_editor_title_ui.html",
   ));
-  document.getElementById("markdown_filename").innerHTML=`${icon("edit-svgrepo-com")}
-${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementById("markdown_filename").innerHTML;
+  document.getElementById("markdown_filename").innerHTML = `${icon("edit-svgrepo-com")}
+${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”` + document.getElementById("markdown_filename").innerHTML;
 
-  if (storage.getSync("ai_api_enabled").enabled){
+  if (storage.getSync("ai_api_enabled").enabled) {
     // document.getElementById("ai_related_functions_in_editor").setAttribute("style","");
     ai = new ai_function();
   }
@@ -88,13 +88,13 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     const ai_task_id = randomString(16);
     ai_task_list[ai_task_id] = "waiting_response";
     disableEditingWhenAiTaskIsExcuting();
-    document.getElementById("btn_terminate_text_completion_task").onclick = function(){
+    document.getElementById("btn_terminate_text_completion_task").onclick = function () {
       ai_task_list[ai_task_id] = "terminated";
       enableEditingWhenAiTaskIsCompletedOrTerminated();
       console.log(ai_task_list);
     };
     ai.requestTextCompletions(targetText, function (response) {
-      if (ai_task_list[ai_task_id] !== "terminated"){
+      if (ai_task_list[ai_task_id] !== "terminated") {
         const responseText = response.choices[0].message.content;
         document.getElementById("ai_function-dialog-content").innerHTML = "";
         document.getElementById("ai_function-dialog-content").innerHTML = `
@@ -124,7 +124,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   document.getElementById("btn_ai_text_completion").onclick = requestTextCompletions;
 
-  function disableEditingWhenAiTaskIsExcuting(){
+  function disableEditingWhenAiTaskIsExcuting() {
     document.getElementById("first-wrapper").style.filter = "blur(5px)";
     document.getElementById("btn_save_changes").style.display = "none";
     document.getElementById("third-wrapper").style.display = "";
@@ -133,7 +133,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     document.getElementById("btn_save_changes").style.display = "none";
   }
 
-  function enableEditingWhenAiTaskIsCompletedOrTerminated(){
+  function enableEditingWhenAiTaskIsCompletedOrTerminated() {
     document.getElementById("first-wrapper").style.filter = "";
     document.getElementById("btn_save_changes").style.display = "";
     document.getElementById("third-wrapper").style.display = "none";
@@ -154,28 +154,6 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   var markdownEditor = new MarkdownPalettes("#editor");
   markdownEditor.content = original_content;
-  // 监听markdown预览区域的变化情况
-  // 如果图片的相对路径错误则进行修复
-  // 如果编辑区有更改则记录
-  let MutationObserver = window.MutationObserver;
-  let observer = new MutationObserver(function () {
-    for (let i = 0; i < document.getElementsByTagName("img").length; i++) {
-      let original_src = document.getElementsByTagName("img")[i].getAttribute("src");
-      if (original_src.includes(`${rootDir}/data/${type}s/`) === false) {
-        // 已经修复过的相对路径
-        if (original_src.includes("http://") === false && original_src.includes("https://") === false) {
-          // 来自网络的图片不属于相对路径
-          let src = `${rootDir}/data/${type}s/${original_src}`;
-          document.getElementsByTagName("img")[i].setAttribute("src", src);
-        }
-      }
-    }
-    editor_status=1;
-  });
-  observer.observe(document.getElementsByClassName("mp-preview-area")[0], { characterData: true, subtree: true, childList: true });
-  setTimeout(function(){
-    editor_status=0;
-  },500);
 
   */
 
@@ -207,7 +185,31 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   </div>
   `);
 
-  function render_hint_tags(){
+  // 监听markdown预览区域的变化情况
+  // 如果图片的相对路径错误则进行修复
+  // 如果编辑区有更改则记录
+  let MutationObserver = window.MutationObserver;
+  let previewContainer = document.getElementById("preview-section-container");
+  let observer = new MutationObserver(function () {
+    for (let i = 0; i < previewContainer.getElementsByTagName("img").length; i++) {
+      let original_src = previewContainer.getElementsByTagName("img")[i].getAttribute("src");
+      if (original_src.includes(`${rootDir}/data/${type}s/`) === false) {
+        // 已经修复过的相对路径
+        if (original_src.includes("http://") === false && original_src.includes("https://") === false) {
+          // 来自网络的图片不属于相对路径
+          let src = `${rootDir}/data/${type}s/${original_src}`;
+          previewContainer.getElementsByTagName("img")[i].setAttribute("src", src);
+        }
+      }
+    }
+    editor_status = 1;
+  });
+  observer.observe(previewContainer, { characterData: true, subtree: true, childList: true });
+  setTimeout(function () {
+    editor_status = 0;
+  }, 500);
+
+  function render_hint_tags() {
     const langdata = {
       "INFO": {
         "简体中文": "提示",
@@ -230,48 +232,50 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
         "日本語": "Danger"
       }
     };
-    for(let i = 0; i < document.getElementsByTagName("info-hint").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("info-hint").length; i++) {
       document.getElementsByTagName("info-hint")[i].innerHTML = `<span class="hint-heading"><i class="fa fa-info-circle"></i> ${langdata["INFO"][lang_name]} </span><br />` + document.getElementsByTagName("info-hint")[i].innerHTML;
     }
-    for(let i = 0; i < document.getElementsByTagName("warning-hint").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("warning-hint").length; i++) {
       document.getElementsByTagName("warning-hint")[i].innerHTML = `<span class="hint-heading"><i class="fa fa-exclamation-circle"></i> ${langdata["WARNING"][lang_name]} </span><br />` + document.getElementsByTagName("warning-hint")[i].innerHTML;
     }
-    for(let i = 0; i < document.getElementsByTagName("danger-hint").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("danger-hint").length; i++) {
       document.getElementsByTagName("danger-hint")[i].innerHTML = `<span class="hint-heading"><i class="fa fa-exclamation-triangle"></i> ${langdata["DANGER"][lang_name]} </span><br />` + document.getElementsByTagName("danger-hint")[i].innerHTML;
     }
-    for(let i = 0; i < document.getElementsByTagName("success-hint").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("success-hint").length; i++) {
       document.getElementsByTagName("success-hint")[i].innerHTML = `<span class="hint-heading"><i class="fa fa-check-circle-o"></i> ${langdata["SUCCESS"][lang_name]} </span><br />` + document.getElementsByTagName("success-hint")[i].innerHTML;
     }
   }
 
-  function render_ref_tags(){
-    const langdata = {"REFERENCE": {
-      "简体中文": "参考",
-      "English": "References",
-      "日本語": "References"
-    }};
+  function render_ref_tags() {
+    const langdata = {
+      "REFERENCE": {
+        "简体中文": "参考",
+        "English": "References",
+        "日本語": "References"
+      }
+    };
     let ref_tags = [];
     let current_number = 1;
-    for(let i = 0; i < document.getElementsByTagName("ref").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("ref").length; i++) {
       let ref = document.getElementsByTagName("ref")[i];
       ref_tags.push({
         "ref_name": ref.innerText,
         "ref_id": current_number,
-        "ref_has_target": ref.getAttribute("url")!==undefined&&ref.getAttribute("url")!==null&&ref.getAttribute("url")!==""
+        "ref_has_target": ref.getAttribute("url") !== undefined && ref.getAttribute("url") !== null && ref.getAttribute("url") !== ""
       });
       document.getElementsByTagName("ref")[i].innerHTML = `<sup style="font-size: 14px;"><a href="#reference_list_id_${current_number}">[${current_number}]</a></sup>`;
-      document.getElementsByTagName("ref")[i].setAttribute("style","display:inline");
-      document.getElementsByTagName("ref")[i].setAttribute("id",`reference_id_${current_number}`);
-      if(ref_tags[ref_tags.length-1].ref_has_target === true){
-        ref_tags[ref_tags.length-1].ref_target = ref.getAttribute("url");
+      document.getElementsByTagName("ref")[i].setAttribute("style", "display:inline");
+      document.getElementsByTagName("ref")[i].setAttribute("id", `reference_id_${current_number}`);
+      if (ref_tags[ref_tags.length - 1].ref_has_target === true) {
+        ref_tags[ref_tags.length - 1].ref_target = ref.getAttribute("url");
       }
       current_number += 1;
     }
 
-    if(ref_tags.length !== 0){
+    if (ref_tags.length !== 0) {
       let ref_html = `<div id="content_reference_list"><h3>${langdata.REFERENCE[lang_name]}</h3><hr />`;
-      for(const ref of ref_tags){
-        ref_html += `<div id="reference_list_id_${ref.ref_id}"><b>${ref.ref_id}.<a href="#reference_id_${ref.ref_id}">^</a></b>&nbsp;  ${ref.ref_has_target === false?ref.ref_name:`<a href="javascript:void(0)">${ref.ref_name}</a>`} </div>`;
+      for (const ref of ref_tags) {
+        ref_html += `<div id="reference_list_id_${ref.ref_id}"><b>${ref.ref_id}.<a href="#reference_id_${ref.ref_id}">^</a></b>&nbsp;  ${ref.ref_has_target === false ? ref.ref_name : `<a href="javascript:void(0)">${ref.ref_name}</a>`} </div>`;
       }
       ref_html += "</div>";
       document.getElementById("preview-section-container").innerHTML += ref_html;
@@ -279,12 +283,12 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   }
 
   const prevent_goto_link = () => {
-    for(let i = 0; i < document.getElementsByTagName("a").length; i++){
+    for (let i = 0; i < document.getElementsByTagName("a").length; i++) {
       let linkTarget = document.getElementsByTagName("a")[i].getAttribute("href");
       document.getElementsByTagName("a")[i].onclick = () => {
         toast_creator("warning", "For security reasons, this operation is not allowed.");
       };
-      document.getElementsByTagName("a")[i].setAttribute("href","javascript:void(0)");
+      document.getElementsByTagName("a")[i].setAttribute("href", "javascript:void(0)");
     }
   };
 
@@ -299,7 +303,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     filter_whiteList["input"] = ["disabled", "type", "checked"];
 
     const markdown_content = document.getElementById("editor_textarea").value;
-    const html_content = xss_filter(marked.parse(markdown_content), {whiteList: filter_whiteList});
+    const html_content = xss_filter(marked.parse(markdown_content), { whiteList: filter_whiteList });
     document.getElementById("preview-section-container").innerHTML = html_content;
     render_hint_tags();
     render_ref_tags();
@@ -315,7 +319,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   };
 
 
-  document.getElementById("editor_textarea").onkeyup = ()=>{
+  document.getElementById("editor_textarea").onkeyup = () => {
     preview_markdown_content();
     editor_status = 1;
     previewSectionSyncScrollStatusFromWritingSection();
@@ -325,7 +329,7 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
 
   preview_markdown_content();
 
-  function previewSectionSyncScrollStatusFromWritingSection (){
+  function previewSectionSyncScrollStatusFromWritingSection() {
     if (whoScrolling !== "writing跟着preview滚动") {
       whoScrolling = "preview跟着writing滚动";
       console.log(whoScrolling);
@@ -344,13 +348,13 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   }
 
   // 同步滚动（类型1）
-  document.getElementById("editor_textarea").addEventListener("scroll",function(e){
+  document.getElementById("editor_textarea").addEventListener("scroll", function (e) {
     previewSectionSyncScrollStatusFromWritingSection();
   });
 
   // 同步滚动(类型2)
 
-  document.getElementById("preview-section-container").addEventListener("scroll",function(e){
+  document.getElementById("preview-section-container").addEventListener("scroll", function (e) {
     if (whoScrolling !== "preview跟着writing滚动") {
       whoScrolling = "writing跟着preview滚动";
       console.log(whoScrolling);
@@ -368,35 +372,35 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
   });
 
 
-  document.getElementById("btn_help").onclick=function(){
-    let text=langdata["MARKDOWN_EDITOR_USAGE_DETAIL"][lang_name];
-    dialog.showMessageBoxSync({message: text});
+  document.getElementById("btn_help").onclick = function () {
+    let text = langdata["MARKDOWN_EDITOR_USAGE_DETAIL"][lang_name];
+    dialog.showMessageBoxSync({ message: text });
   };
 
-  const exit_markdown_editor=function(){
-    if(editor_status === 0){
-      window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
-    }else if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]}) === 0){
-      window.location.href=`./${type}_manager.html?rootdir=${rootDir}`;
+  const exit_markdown_editor = function () {
+    if (editor_status === 0) {
+      window.location.href = `./${type}_manager.html?rootdir=${rootDir}`;
+    } else if (dialog.showMessageBoxSync({ buttons: [langdata["OK"][lang_name], langdata["CANCEL"][lang_name]], message: langdata["WARN_UNSAVED_CHANGES"][lang_name] }) === 0) {
+      window.location.href = `./${type}_manager.html?rootdir=${rootDir}`;
     }
   };
-  const markdown_editor_save_changes=function(){
-    if(is_cnt_article_encrypted === true){
-      writeFileSync(`${rootDir}/${path}`,encrypt_content(document.getElementById("editor_textarea").value,password_if_enabled_encryption_for_article));
-    }else {
-      writeFileSync(`${rootDir}/${path}`,document.getElementById("editor_textarea").value);
+  const markdown_editor_save_changes = function () {
+    if (is_cnt_article_encrypted === true) {
+      writeFileSync(`${rootDir}/${path}`, encrypt_content(document.getElementById("editor_textarea").value, password_if_enabled_encryption_for_article));
+    } else {
+      writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
     }
 
     rss_hook();
-    
-    document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["ALREADY_SAVED"][lang_name];
-    editor_status=0;
-    setTimeout(function(){
-      document.getElementById("btn_save_changes").innerHTML="<i class=\"fa fa-check\"></i> "+langdata["SAVE_CHANGES_CTRL_S"][lang_name];
-    },1200);
+
+    document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["ALREADY_SAVED"][lang_name];
+    editor_status = 0;
+    setTimeout(function () {
+      document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["SAVE_CHANGES_CTRL_S"][lang_name];
+    }, 1200);
   };
 
-  document.getElementById("btn_save_changes").onclick=markdown_editor_save_changes;
+  document.getElementById("btn_save_changes").onclick = markdown_editor_save_changes;
   /*
   document.getElementById("btn_change_to_default_editor").onclick=function(){
     function to_default() {
@@ -438,26 +442,26 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     default_editor = !default_editor;
   };
 */
-  document.onkeydown = function(event){
+  document.onkeydown = function (event) {
     let toReturn = true;
-    if(event.ctrlKey || event.metaKey){  // detect ctrl or cmd
-      if(event.which == 83){
+    if (event.ctrlKey || event.metaKey) {  // detect ctrl or cmd
+      if (event.which == 83) {
         markdown_editor_save_changes();
         toReturn = false;
       }
     }
-  
+
     return toReturn;
   };
 
-  for(let i=0;i<document.getElementsByClassName("list-group-item").length;i++){
+  for (let i = 0; i < document.getElementsByClassName("list-group-item").length; i++) {
     let original_event = document.getElementsByClassName("list-group-item")[i].getAttribute("onclick");
-    document.getElementsByClassName("list-group-item")[i].setAttribute("onclick","void(0)");
-    document.getElementsByClassName("list-group-item")[i].onclick=function(){
-      if(editor_status === 0){
+    document.getElementsByClassName("list-group-item")[i].setAttribute("onclick", "void(0)");
+    document.getElementsByClassName("list-group-item")[i].onclick = function () {
+      if (editor_status === 0) {
         eval(original_event);
-      }else{
-        if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]}) === 0){
+      } else {
+        if (dialog.showMessageBoxSync({ buttons: [langdata["OK"][lang_name], langdata["CANCEL"][lang_name]], message: langdata["WARN_UNSAVED_CHANGES"][lang_name] }) === 0) {
           eval(original_event);
         }
       }
@@ -468,10 +472,10 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”`+document.getElementBy
     if (is_cnt_article_encrypted && default_editor) {
       writeFileSync(`${rootDir}/${path}`, encrypt_content(readFileSync(rootDir + path, "utf-8"), password_if_enabled_encryption_for_article));
     }
-    if(editor_status === 1){
+    if (editor_status === 1) {
       e.preventDefault();
-      const result = dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES"][lang_name]});
-      if(result === 0){
+      const result = dialog.showMessageBoxSync({ buttons: [langdata["OK"][lang_name], langdata["CANCEL"][lang_name]], message: langdata["WARN_UNSAVED_CHANGES"][lang_name] });
+      if (result === 0) {
         window.close();
       }
     }
