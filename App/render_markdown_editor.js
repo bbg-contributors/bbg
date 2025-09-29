@@ -83,6 +83,73 @@ ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”` + document.getElement
     keyboard: false,
   });
 
+  const insertModal = new bootstrap.Modal(document.querySelector("#insertModal"));
+  const insertModalBody = document.querySelector("#insertModalBody");
+
+  document.querySelector("#btn_insert_partial_encryption").addEventListener("click", function () {
+    insertModalBody.innerHTML = `<div class="mb-3">
+      <label class="form-label"><i class="fa fa-lock"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
+      <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="partial_encryption_modal_value_pswd">
+      
+      <br />
+      <label class="form-label"><i class="fa fa-lock"></i> ${langdata.ENCRYPT_CONTENT[lang_name]}</label>
+      <textarea class="form-control" placeholder="${langdata.ENCRYPT_CONTENT[lang_name]}" id="partial_encryption_modal_value_txt" rows="5"></textarea>
+      <br />
+      <button id="insert_partial_encryption_confirmbtn" class="primary_btn">${langdata.OK[lang_name]}</button>
+      <button data-bs-dismiss="modal" class="primary_btn">${langdata.CANCEL[lang_name]}</button>
+    </div>`;
+
+    insertModal.show();
+    document.getElementById("insert_partial_encryption_confirmbtn").addEventListener("click", insert_partial_encryption);
+  });
+
+  function insert_partial_encryption() {
+    const pswd = document.getElementById("partial_encryption_modal_value_pswd").value;
+    const txt = document.getElementById("partial_encryption_modal_value_txt").value;
+
+    const encrypted_content = encrypt_content(txt, pswd);
+
+    document.querySelector("#editor_textarea").value += `\n<partial_encrypted>
+${encrypted_content}
+</partial_encrypted>\n`;
+
+    insertModal.hide();
+  }
+
+  document.querySelector("#btn_decrypt_partial_encryption").addEventListener("click", function () {
+    insertModalBody.innerHTML = `<div class="mb-3">
+      <label class="form-label"><i class="fa fa-lock"></i> ${langdata.INPUT_A_PASSWORD[lang_name]}</label>
+      <input class="form-control" placeholder="${langdata.INPUT_A_PASSWORD[lang_name]}" value="" id="partial_encryption_modal_value_pswd">
+      
+      <br />
+      <label class="form-label"><i class="fa fa-lock"></i> ${langdata.PLEASE_COPY_PARTIAL_ENCRYPTION[lang_name]}</label>
+      <textarea class="form-control" placeholder="${langdata.PLEASE_INPUT_CONTENT[lang_name]}" id="partial_encryption_modal_value_txt" rows="5"></textarea>
+      <br />
+      <label class="form-label"><i class="fa fa-lock"></i> ${langdata.DECRYPT_RESULT[lang_name]}</label>
+      <div>
+      <textarea disabled id="decryptResultTextarea" class="form-control"></textarea>
+      </div>
+      
+      <button id="decrypt_partial_encryption_confirmbtn" class="primary_btn">${langdata.OK[lang_name]}</button>
+      <button data-bs-dismiss="modal" class="primary_btn">${langdata.CANCEL[lang_name]}</button>
+    </div>`;
+
+    insertModal.show();
+    document.getElementById("decrypt_partial_encryption_confirmbtn").addEventListener("click", decrypt_partial_encryption);
+  });
+
+  function decrypt_partial_encryption() {
+    const pswd = document.getElementById("partial_encryption_modal_value_pswd").value;
+    const txt = document.getElementById("partial_encryption_modal_value_txt").value.replaceAll("<partial_encrypted>", "").replaceAll("</partial_encrypted>", "");
+
+    console.log(11111);
+    console.log(txt);
+
+    const decrypted_content = decrypt_content(txt, pswd);
+    document.getElementById("decryptResultTextarea").value = decrypted_content;
+  }
+
+
   function requestTextCompletions() {
     const targetText = document.getElementById("preview-section-container").innerText;
     const ai_task_id = randomString(16);
