@@ -81,6 +81,19 @@
 - `App/BlogData.js`
   - `getBlogData()` 从 `rootDir/data/index.json` 读取数据
   - `writeBlogData()` 将当前全局 `blog` 对象写回磁盘
+- 应用级设置
+  - 通过 `electron-json-storage` 持久化，不写入站点目录
+  - `App/start.js` 和 `App/manage.js` 都会先调用 `storage.setDataPath(app.getPath("userData"))`
+  - 当前常见 key：
+    - `language`：应用语言
+    - `stylesheet`：应用界面样式文件名
+    - `custom_ui_v1`：应用自定义 UI 配置（如背景图）
+    - `last_managed_site`：最近一次打开的站点
+    - `ai_api_enabled`、`ai_api_type`、`ai_api_info`：AI 辅助写作相关配置
+  - `App/start.js` 是应用级设置的主要入口：
+    - 负责初始化默认值
+    - 提供语言、样式、自定义 UI、AI 配置等设置入口
+  - `App/loadUniStyle.js` 负责读取 `stylesheet` 和 `custom_ui_v1`，并把样式直接注入启动页和管理页
 - 很多模块默认假设以下变量已经在渲染进程全局作用域中存在：
   - `blog`
   - `rootDir`
