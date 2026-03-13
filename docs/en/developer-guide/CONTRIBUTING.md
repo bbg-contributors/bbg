@@ -6,7 +6,6 @@ First make sure you have installed these below on your computer:
 
 - Git
 - Node.js >= 18
-- Yarn (our recommended version is 1.22.19, and it can be installed with `npm install -g yarn`)
 
 Then get the source code.
 
@@ -25,7 +24,7 @@ git clone --recursive --depth=1 https://github.com/[your username]/bbg.git
 Then go to the project root directory and execute command below to install dependencies:
 
 ```sh
-yarn install
+npm install
 ```
 
 ## Commonly used commands
@@ -33,19 +32,19 @@ yarn install
 ### Start a BBG instance (with debugging tools)
 
 ```sh
-yarn run dev
+npm run dev
 ```
 
 ### Start a BBG instance (with debugging tools and hot reload)
 
 ```sh
-yarn run dev_with_hot_reload
+npm run dev_with_hot_reload
 ```
 
 ### Start a BBG instance (without debugging tools, the same as the production environment)
 
 ```sh
-yarn run start
+npm run start
 ```
 
 ### Build packages
@@ -55,9 +54,9 @@ yarn run start
 > If you are building a package for Windows on the Linux platform, you need to install Wine.
 
 ```sh
-yarn run build:win
-yarn run build:linux
-yarn run build:mac
+npm run build:win
+npm run build:linux
+npm run build:mac
 ```
 
 ### View documents locally
@@ -67,7 +66,7 @@ This project uses Docsify to manage documentation.
 You can use the following command to open the documentation.
 
 ```sh
-yarn run read_doc
+npm run read_doc
 ```
 
 You can also visit <http://localhost:23941>.
@@ -77,9 +76,9 @@ You can also visit <http://localhost:23941>.
 You can use ESLint in the project：
 
 ```sh
-yarn run lint
-yarn run lint:fix
-yarn run lint:html
+npm run lint
+npm run lint:fix
+npm run lint:html
 ```
 
 ## What do these files mean? / I want to modify a function, where should I start?

@@ -6,7 +6,6 @@
 
 - Git
 - Node.js >= 18
-- Yarn（我们推荐使用 1.22.19 版本，可以在安装 Node.js 和 NPM 之后使用`npm install -g yarn`安装）
 
 然后使用 Git 获取源代码。
 
@@ -25,7 +24,7 @@ git clone --recursive --depth=1 https://github.com/[your username]/bbg.git
 然后转到项目根目录下执行以下命令安装依赖：
 
 ```sh
-yarn install
+npm install
 ```
 
 如果遇到 Electron 不能正常下载的问题，请尝试使用 `ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"` 环境变量。
@@ -35,19 +34,19 @@ yarn install
 ### 启动一个 BBG 实例（带有调试工具）
 
 ```sh
-yarn run dev
+npm run dev
 ```
 
 ### 启动一个 BBG 实例（带有调试工具和热重载）
 
 ```sh
-yarn run dev_with_hot_reload
+npm run dev_with_hot_reload
 ```
 
 ### 启动一个 BBG 实例（不带有调试工具，同生产环境一致）
 
 ```sh
-yarn run start
+npm run start
 ```
 
 ### 生成软件包
@@ -57,9 +56,9 @@ yarn run start
 > 如果你在 Linux 平台生成适用于 Windows 的软件包，需要提前安装 Wine。
 
 ```sh
-yarn run build:win
-yarn run build:linux
-yarn run build:mac
+npm run build:win
+npm run build:linux
+npm run build:mac
 ```
 
 由于 global-agent 的一个问题，部分系统配置下打包时可能会遇到 `Unsupported 'GLOBAL_AGENT.HTTP_PROXY' configuration`的错误，解决方法是执行以下命令来重新指定正确的 Proxy 配置：
@@ -76,7 +75,7 @@ export GLOBAL_AGENT_HTTP_PROXY=http://host:port
 本项目使用 Docsify 来管理项目文档。你可以使用如下命令打开文档。
 
 ```
-yarn run read_doc
+npm run read_doc
 ```
 
 然后访问 <http://localhost:23941>
@@ -86,9 +85,9 @@ yarn run read_doc
 你可以在本项目中使用 ESLint：
 
 ```sh
-yarn run lint
-yarn run lint:fix
-yarn run lint:html
+npm run lint
+npm run lint:fix
+npm run lint:html
 ```
 
 ## 这些文件都是什么意思？/我想修改 XXX 功能，应该从哪里开始？
