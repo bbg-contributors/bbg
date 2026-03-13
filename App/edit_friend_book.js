@@ -92,7 +92,7 @@ ${langdata.GET_FRIEND_BOOK_DATA_FROM_EXTERNAL_LINK[lang_name]}
     
     
 
-<fluent-button appearance="accent" onclick="add_new_friend();"><i class="fa fa-plus"></i> ${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</fluent-button>
+<button type="button" class="success_btn" onclick="add_new_friend();"><i class="fa fa-plus"></i> ${langdata.ADD_NEW_FRIEND_BOOK_INFO[lang_name]}</button>
 </div>
     </div>
     <div class="modal-footer" id="edit_friend_book_dialog_footer">

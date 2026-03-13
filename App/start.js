@@ -25,10 +25,7 @@ const check_update = require("./check_update.js");
 
 const BlogData = require("./BlogData.js");
 
-const import_fluent_ui = require("./import_fluent_ui.js");
 const icon = require("./icon.js");
-
-import_fluent_ui();
 
 const create_new_site_dialog = new bootstrap.Modal(document.getElementById("create-new-site-dialog"));
 const err_dialog = new bootstrap.Modal(document.getElementById("err-dialog"));
@@ -399,34 +396,34 @@ storage.has("language", (error, hasKey) => {
       document.getElementById("interface_firstpart").innerHTML = `
            <h1>${langdata.STARTPAGE_TITLE[lang_name]}</h1><br />
            <br />
-           <fluent-button class="startpage_btn_container" id="open_site_btn" onclick="open_site()">
-           <div class="startpage_btn_inner">
-           <div class="startpage_btn_icon">${icon("folder-svgrepo-com")}</div>
+           <button type="button" class="startpage_btn_container startpage_action_btn" id="open_site_btn" onclick="open_site()">
+           <span class="startpage_btn_inner">
+           <span class="startpage_btn_icon">${icon("folder-svgrepo-com")}</span>
            
            ${langdata.OPEN_EXISTING_SITE[lang_name]}
-           </div>
-           </fluent-button>
+           </span>
+           </button>
           
-          <fluent-button class="startpage_btn_container" id="create_site_btn" onclick="create_new_site_dialog_show()">
-          <div class="startpage_btn_inner">
-          <div class="startpage_btn_icon">${icon("add-folder-svgrepo-com")}</div>
+          <button type="button" class="startpage_btn_container startpage_action_btn" id="create_site_btn" onclick="create_new_site_dialog_show()">
+          <span class="startpage_btn_inner">
+          <span class="startpage_btn_icon">${icon("add-folder-svgrepo-com")}</span>
           ${langdata.CREATE_NEW_SITE[lang_name]}
-          </div>
-          </fluent-button>
+          </span>
+          </button>
           <div class="dropdown" style="display: inline-block">
-          <fluent-button class="startpage_btn_container" id="recent_open_btn"  data-bs-toggle="dropdown"><div class="startpage_btn_inner"><div class="startpage_btn_icon">${icon("clock-time-and-date-svgrepo-com")}</div>${langdata.RECENT_OPEN[lang_name]}</div></fluent-button>
+          <button type="button" class="startpage_btn_container startpage_action_btn" id="recent_open_btn" data-bs-toggle="dropdown"><span class="startpage_btn_inner"><span class="startpage_btn_icon">${icon("clock-time-and-date-svgrepo-com")}</span>${langdata.RECENT_OPEN[lang_name]}</span></button>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" id="last_managed_site"></a></li>
           </ul>
           
           </div>
           <div class="dropdown" style="display: inline-block">
-          <fluent-button class="startpage_btn_container" id="application_settings_btn" data-bs-toggle="dropdown">
-          <div class="startpage_btn_inner">
-          <div class="startpage_btn_icon">${icon("cog-svgrepo-com")}</div>
+          <button type="button" class="startpage_btn_container startpage_action_btn" id="application_settings_btn" data-bs-toggle="dropdown">
+          <span class="startpage_btn_inner">
+          <span class="startpage_btn_icon">${icon("cog-svgrepo-com")}</span>
           ${langdata.APPLICATION_SETTINGS[lang_name]}
-          </div>
-          </fluent-button>
+          </span>
+          </button>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" onclick="language_dialog.show();"><i class="fa fa-flag" aria-hidden="true"></i> Language Settings / 语言设定</a></li>
           <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>

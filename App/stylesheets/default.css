@@ -82,52 +82,6 @@ body:before {
   z-index: 2500;
 }
 
-.fluentbtn {
-  border-radius: 8px;
-  background-color: rgb(254, 254, 254);
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(235, 237, 238);
-  padding-top: 8px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 8px;
-  text-decoration: none;
-  color: black;
-  font-size: 110%;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 5%), 0 2px 2px 0 rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 6%);
-}
-
-.fluentbtn-blue {
-  background-color: rgba(3, 106, 196, 0.671) !important;
-  color: white !important
-}
-
-.fluentbtn-blue:hover {
-  background-color: #168dd6 !important;
-  color: white !important
-}
-
-.fluentbtn-blue:active {
-  background-color: rgb(39, 78, 175) !important;
-  color: rbg(218, 228, 255) !important
-}
-
-.fluentbtn:hover {
-  background-color: rgb(250, 251, 251);
-  text-decoration: none;
-  color: black;
-
-}
-
-.fluentbtn:active {
-  background-color: rgb(250, 251, 251);
-  text-decoration: none;
-  color: grey;
-
-}
-
-
 @keyframes fade-in {
   from {
     opacity: 0
@@ -557,21 +511,6 @@ input.form-control:focus,textarea.form-control:focus{
   background-color: white;
 }
 
-.fluentbtn-start {
-  background-color: rgb(136,164,199) !important;
-  color: black !important;
-  border-radius: 0px;
-  border: 0;
-}
-
-.fluentbtn-start:hover {
-  background-color: rgb(187, 210, 238) !important;
-}
-
-.fluentbtn-start:active {
-  background-color: rgb(189, 213, 242) !important;
-}
-
 #startpage_container{
   text-align: center;
 }
@@ -622,18 +561,42 @@ input.form-control:focus,textarea.form-control:focus{
 
 .startpage_btn_container {
   height: fit-content;
+  margin: 4px 5px;
 }
 
 .startpage_btn_inner {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .startpage_btn_icon {
-  font-size: 33px;
-  margin-bottom: 10px;
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.startpage_action_btn {
+  border: 1px solid rgb(228, 232, 238);
+  background: rgb(255, 255, 255);
+  color: rgb(39, 52, 67);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.startpage_action_btn:hover {
+  background: rgb(255, 255, 255);
+  border-color: rgb(204, 216, 230);
+  transform: translateY(-1px);
+}
+
+.startpage_action_btn:active {
+  background: rgb(249, 250, 252);
+  border-color: rgb(190, 202, 217);
+  transform: translateY(0);
 }
 
 #container {
@@ -646,10 +609,28 @@ input.form-control:focus,textarea.form-control:focus{
   border-radius: 8px;
   background-color: rgb(255, 255, 255);
   color: rgb(38, 107, 196);
-  border: none;
+  border: 1px solid rgb(214, 221, 230);
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 5%), 0 2px 2px 0 rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 6%);
   font-size: 16px;
   vertical-align: top;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.add_item_btn:hover {
+  background-color: rgb(248, 251, 255);
+  color: rgb(26, 88, 168);
+  border-color: rgb(191, 202, 216);
+  box-shadow: 0 6px 14px -10px rgb(0 0 0 / 12%), 0 3px 8px -6px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
+}
+
+.add_item_btn:active {
+  background-color: rgb(243, 247, 252);
+  color: rgb(20, 70, 151);
+  border-color: rgb(174, 188, 205);
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 12%);
+  transform: translateY(0);
 }
 
 .primary_btn {
@@ -660,16 +641,24 @@ input.form-control:focus,textarea.form-control:focus{
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 10%);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .primary_btn:hover {
   background-color: rgb(250, 253, 255);
-  border-color: rgb(134, 166, 218)
+  border-color: rgb(134, 166, 218);
+  color: rgb(17, 63, 137);
+  box-shadow: 0 6px 14px -10px rgb(0 0 0 / 12%), 0 3px 8px -6px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
 }
 
 .primary_btn:active {
   background-color: rgb(255, 255, 255);
-  border-color: rgb(45, 83, 143)
+  border-color: rgb(45, 83, 143);
+  color: rgb(15, 57, 124);
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 12%);
+  transform: translateY(0);
 }
 
 .danger_btn {
@@ -679,16 +668,25 @@ input.form-control:focus,textarea.form-control:focus{
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 10%);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .danger_btn:hover {
   background-color: rgb(255, 250, 250);
   border-color: rgb(255, 134, 134);
+  color: rgb(165, 29, 27);
+  box-shadow: 0 6px 14px -10px rgb(0 0 0 / 12%), 0 3px 8px -6px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
 }
 
 .danger_btn:active {
   background-color: rgb(255, 255, 255);
   border-color: rgb(186, 35, 33);
+  color: rgb(146, 24, 23);
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 12%);
+  transform: translateY(0);
 }
 
 .success_btn {
@@ -698,16 +696,25 @@ input.form-control:focus,textarea.form-control:focus{
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 10%);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .success_btn:hover {
   background-color: rgb(250, 253, 250);
   border-color: rgb(134, 218, 134);
+  color: rgb(22, 112, 81);
+  box-shadow: 0 6px 14px -10px rgb(0 0 0 / 12%), 0 3px 8px -6px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
 }
 
 .success_btn:active {
   background-color: rgb(255, 255, 255);
   border-color: rgb(26, 132, 95);
+  color: rgb(19, 95, 69);
+  box-shadow: 0 3px 8px -8px rgb(0 0 0 / 12%);
+  transform: translateY(0);
 }
 
 .warning_btn {

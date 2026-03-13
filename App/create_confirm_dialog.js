@@ -13,8 +13,8 @@ module.exports=function(dialog_content,do_what_if_sure){
         <p>${dialog_content}</p>
       </div>
       <div class="modal-footer">
-        <fluent-button appearance="accent" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata["CANCEL"][lang_name]}</fluent-button>
-        <fluent-button appearance="accent" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</fluent-button>
+        <button type="button" class="danger_btn" data-bs-dismiss="modal"><i class="fa fa-ban"></i> ${langdata["CANCEL"][lang_name]}</button>
+        <button type="button" class="success_btn" data-bs-dismiss="modal" id="${dialog_id}_sure"><i class="fa fa-check"></i> ${langdata["OK"][lang_name]}</button>
       </div>
     </div>
   </div>
