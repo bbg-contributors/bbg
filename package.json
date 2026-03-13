@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/bbg-contributors/bbg.git"
   },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
   "main": "main.js",
   "scripts": {
     "prepare": "husky",
@@ -61,12 +64,11 @@
     "xss": "^1.0.15"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^10.0.1",
     "docsify": "^4.13.1",
     "electron": "^40.1.0",
     "electron-builder": "^26.0.12",
-    "eslint": "^9.4.0",
+    "eslint": "^10.0.3",
     "eslint-plugin-jsonc": "^3.1.1",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-yml": "^3.0.0",

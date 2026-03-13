@@ -1,16 +1,9 @@
 const globals = require("globals");
 const parser = require("jsonc-eslint-parser");
 const js = require("@eslint/js");
-
-const {
-    FlatCompat,
-} = require("@eslint/eslintrc");
-
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
+const jsonc = require("eslint-plugin-jsonc");
+const markdown = require("eslint-plugin-markdown");
+const yml = require("eslint-plugin-yml");
 
 module.exports = [{
     ignores: [
@@ -35,12 +28,10 @@ module.exports = [{
         "**/test.js",
         "**/eslint.config.cjs"
     ],
-}, ...compat.extends(
-    "eslint:recommended",
-    "plugin:jsonc/recommended-with-jsonc",
-    "plugin:yml/standard",
-    "plugin:markdown/recommended-legacy",
-), {
+}, js.configs.recommended,
+...jsonc.configs["flat/recommended-with-jsonc"],
+...yml.configs["flat/standard"],
+...markdown.configs.recommended, {
     languageOptions: {
         globals: {
             ...globals.browser,
@@ -89,6 +80,7 @@ module.exports = [{
                 "license",
                 "author",
                 "repository",
+                "engines",
                 "funding",
                 "main",
                 "module",

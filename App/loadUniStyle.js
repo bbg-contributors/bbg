@@ -17,10 +17,6 @@ module.exports = function () {
           loadBasicStyle(true);
           let cssContent = "";
           let bg_img = data.bg_img;
-          let primary_color = data.primary_color;
-          if (primary_color === "") {
-            primary_color = "#0d6efd";
-          }
           cssContent += `
           ${bg_img.trim() === "" ? "" : `
           body {
