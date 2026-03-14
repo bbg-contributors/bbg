@@ -558,7 +558,7 @@ function open_customize_bbg_ui_dialog() {
     <div class="container-fluid">
     <h3>${langdata["SETTING_OF_CUSTOM_UI"][lang_name]}</h3>
     <br />
-    <div class="form-check">
+    <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" value="" id="enable_custom_ui">
       <label class="form-check-label" for="enable_custom_ui">
         ${langdata["ENABLE_CUSTOM_UI"][lang_name]}

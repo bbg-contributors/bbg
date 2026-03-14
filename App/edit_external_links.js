@@ -33,7 +33,7 @@ module.exports = function () {
   langdata.PLEASE_INPUT_EXTERNAL_LINK_URL[lang_name]
 }" id="external_link_url">
         </div>
-        <div class="mb-3 form-check">
+        <div class="mb-3 form-check form-switch">
           <input type="checkbox" class="form-check-input" id="external_link_open_in_new_tab">
           <label class="form-check-label" for="external_link_open_in_new_tab">${
   langdata.OPEN_IN_NEW_TAB[lang_name]
