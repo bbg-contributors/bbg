@@ -1,9 +1,10 @@
 const { readFileSync, writeFileSync } = require("fs");
 const { dialog } = require("@electron/remote");
+const { clipboard } = require("electron");
 const marked = require("marked");
 const xss_filter = require("xss");
 const toast_creator = require("./toast_creator.js");
-const ai_function = require("./ai_function.js");
+const oai_function = require("./oai_function.js");
 const rss_hook = require("./rss_hook.js");
 const { baseUrl } = require("marked-base-url");
 
@@ -15,11 +16,12 @@ module.exports = function () {
   let original_content = readFileSync(rootDir + path, "utf-8");
   var editor_status = 0, default_editor = false;
   var whoScrolling;
-  var ai = "(not_enabled)";
+  var ai = new oai_function();
   var ai_task_list = new Object();
   var is_cnt_article_encrypted = false;
   var password_if_enabled_encryption_for_article = "";
   let encrypted_orginal_content_if_encrypted;
+  let saved_editor_content = original_content;
 
   if (path.indexOf("/data/articles/") !== -1) {
     // article
@@ -72,11 +74,6 @@ module.exports = function () {
   ));
   document.getElementById("markdown_filename").innerHTML = `${icon("edit-svgrepo-com")}
 ${langdata["CURRENTLY_EDITING"][lang_name]}“${title}”` + document.getElementById("markdown_filename").innerHTML;
-
-  if (storage.getSync("ai_api_enabled").enabled) {
-    // document.getElementById("ai_related_functions_in_editor").setAttribute("style","");
-    ai = new ai_function();
-  }
 
   const ai_function_dialog = new bootstrap.Modal(document.getElementById("ai_function-dialog"), {
     backdrop: "static",
@@ -149,62 +146,248 @@ ${encrypted_content}
     document.getElementById("decryptResultTextarea").value = decrypted_content;
   }
 
+  function refreshEditorStatus() {
+    const textarea = document.getElementById("editor_textarea");
+    if (textarea === null) {
+      return;
+    }
+    editor_status = textarea.value === saved_editor_content ? 0 : 1;
+  }
 
-  function requestTextCompletions() {
-    const targetText = document.getElementById("preview-section-container").innerText;
-    const ai_task_id = randomString(16);
-    ai_task_list[ai_task_id] = "waiting_response";
-    disableEditingWhenAiTaskIsExcuting();
-    document.getElementById("btn_terminate_text_completion_task").onclick = function () {
-      ai_task_list[ai_task_id] = "terminated";
-      enableEditingWhenAiTaskIsCompletedOrTerminated();
-      console.log(ai_task_list);
-    };
-    ai.requestTextCompletions(targetText, function (response) {
-      if (ai_task_list[ai_task_id] !== "terminated") {
-        const responseText = response.choices[0].message.content;
-        document.getElementById("ai_function-dialog-content").innerHTML = "";
-        document.getElementById("ai_function-dialog-content").innerHTML = `
-          <p>${langdata["TEXT_CONTINUATION_COMPLETED_INFO"][lang_name]}</p>
-          <hr />
-          <pre>${responseText}</pre>
-          <hr />
-          <button class="btn btn-primary" id="btn_accept_text_completion_result">${langdata.OK[lang_name]}</button>
-          <button class="btn btn-primary" id="btn_abandon_text_completion_result">${langdata.CANCEL[lang_name]}</button>
-          `;
-        ai_function_dialog.show();
-        document.getElementById("btn_accept_text_completion_result").onclick = function () {
-          document.getElementById("editor_textarea").value += responseText;
-          preview_markdown_content();
-          editor_status = 1;
-          ai_function_dialog.hide();
-          enableEditingWhenAiTaskIsCompletedOrTerminated();
-        };
-        document.getElementById("btn_abandon_text_completion_result").onclick = function () {
-          ai_function_dialog.hide();
-          enableEditingWhenAiTaskIsCompletedOrTerminated();
-        };
-      }
-      ai_task_list[ai_task_id] = "completed";
+
+  function getAiTaskExecutingText(taskType) {
+    if (taskType === "textImprove") {
+      return langdata["POLISHING_TEXT"][lang_name];
+    }
+    if (taskType === "textSummary") {
+      return langdata["SUMMARIZING_TEXT"][lang_name];
+    }
+    return langdata["TEXT_CONTINUATION_TASK_IS_BEING_OPERATED"][lang_name];
+  }
+
+  function showAiConfigRequiredDialog() {
+    dialog.showMessageBoxSync({
+      message: lang_name === "简体中文"
+        ? "请先回到开始界面的“应用设置”里配置 OpenAI API。"
+        : "Please configure OpenAI API from Application Settings on the start page first."
     });
   }
 
-  document.getElementById("btn_ai_text_completion").onclick = requestTextCompletions;
+  function showAiFailureDialog(message) {
+    dialog.showMessageBoxSync({
+      message: `${lang_name === "简体中文" ? "AI 请求失败：" : "AI request failed: "}${message}`
+    });
+  }
 
-  function disableEditingWhenAiTaskIsExcuting() {
+  function getAiAmountLabel(taskType, amount) {
+    const labels = {
+      "textCompletion": {
+        "简体中文": ["很短", "偏短", "适中", "偏长", "很长"],
+        "default": ["Very Short", "Short", "Medium", "Long", "Very Long"]
+      },
+      "textSummary": {
+        "简体中文": ["极简", "简短", "适中", "详细", "很详细"],
+        "default": ["Minimal", "Brief", "Medium", "Detailed", "Very Detailed"]
+      }
+    };
+    const languageKey = lang_name === "简体中文" ? "简体中文" : "default";
+    return labels[taskType][languageKey][amount - 1];
+  }
+
+  function getAiCustomRequirementTitle() {
+    return lang_name === "简体中文" ? "自定义要求" : "Custom Requirements";
+  }
+
+  function getAiCustomRequirementPlaceholder(taskType) {
+    if (lang_name === "简体中文") {
+      if (taskType === "textCompletion") {
+        return "例如：延续当前论证方向，补一个带小标题的段落";
+      }
+      if (taskType === "textImprove") {
+        return "例如：保留口语化语气，不要改动 Markdown 标题层级";
+      }
+      return "例如：重点概括结论部分，使用 3 条项目符号";
+    }
+    if (taskType === "textCompletion") {
+      return "Example: continue the current argument and add one subsection";
+    }
+    if (taskType === "textImprove") {
+      return "Example: keep the casual tone and preserve Markdown headings";
+    }
+    return "Example: focus on the conclusion and use 3 bullet points";
+  }
+
+  function getAiDialogTitle(taskType) {
+    if (taskType === "textImprove") {
+      return lang_name === "简体中文" ? "AI 润色设置" : "AI Polishing Settings";
+    }
+    if (taskType === "textSummary") {
+      return lang_name === "简体中文" ? "AI 摘要设置" : "AI Summary Settings";
+    }
+    return lang_name === "简体中文" ? "AI 续写设置" : "AI Completion Settings";
+  }
+
+  function openAiTaskOptionsDialog(taskType) {
+    const defaultAmount = taskType === "textSummary" ? 2 : 3;
+    let dialogContent = `
+      <h5>${getAiDialogTitle(taskType)}</h5>
+      <br />
+    `;
+    if (taskType !== "textImprove") {
+      const amountTitle = taskType === "textSummary"
+        ? (lang_name === "简体中文" ? "摘要详细度" : "Summary Detail")
+        : (lang_name === "简体中文" ? "生成量" : "Generation Amount");
+      dialogContent += `
+      <label class="form-label">${amountTitle}: <span id="ai_amount_value">${getAiAmountLabel(taskType, defaultAmount)}</span></label>
+      <input type="range" class="form-range" min="1" max="5" step="1" value="${defaultAmount}" id="ai_amount_range">
+      <br />
+      `;
+    }
+    dialogContent += `
+      <label class="form-label">${getAiCustomRequirementTitle()}</label>
+      <textarea class="form-control" rows="5" id="ai_custom_requirement_input" placeholder="${getAiCustomRequirementPlaceholder(taskType)}"></textarea>
+      <br />
+      <button class="btn btn-primary" id="btn_confirm_ai_task_options">${lang_name === "简体中文" ? "开始生成" : "Generate"}</button>
+      <button class="btn btn-secondary" id="btn_cancel_ai_task_options">${langdata.CANCEL[lang_name]}</button>
+    `;
+    document.getElementById("ai_function-dialog-content").innerHTML = dialogContent;
+    ai_function_dialog.show();
+    if (taskType !== "textImprove") {
+      document.getElementById("ai_amount_range").oninput = function () {
+        document.getElementById("ai_amount_value").innerText = getAiAmountLabel(taskType, Number(this.value));
+      };
+    }
+    document.getElementById("btn_cancel_ai_task_options").onclick = function () {
+      ai_function_dialog.hide();
+    };
+    document.getElementById("btn_confirm_ai_task_options").onclick = function () {
+      const options = {
+        amount: taskType === "textImprove" ? null : Number(document.getElementById("ai_amount_range").value),
+        customRequirement: document.getElementById("ai_custom_requirement_input").value
+      };
+      ai_function_dialog.hide();
+      runAiTask(taskType, options);
+    };
+  }
+
+  function showAiResultDialog(taskType, responseText) {
+    let descriptionText = langdata["TEXT_CONTINUATION_COMPLETED_INFO"][lang_name];
+    let confirmButtonText = langdata["OK"][lang_name];
+
+    if (taskType === "textImprove") {
+      descriptionText = langdata["TEXT_POLISHMENT_COMPLETED_INFO"][lang_name];
+    } else if (taskType === "textSummary") {
+      descriptionText = langdata["TEXT_SUMMARY_COMPLETED_INFO"][lang_name];
+      confirmButtonText = lang_name === "简体中文" ? "复制到剪贴板" : "Copy to Clipboard";
+    }
+
+    document.getElementById("ai_function-dialog-content").innerHTML = `
+      <p>${descriptionText}</p>
+      <hr />
+      <pre>${responseText}</pre>
+      <hr />
+      <button class="btn btn-primary" id="btn_accept_ai_result">${confirmButtonText}</button>
+      <button class="btn btn-primary" id="btn_abandon_ai_result">${langdata.CANCEL[lang_name]}</button>
+    `;
+    ai_function_dialog.show();
+
+    document.getElementById("btn_accept_ai_result").onclick = function () {
+      if (taskType === "textCompletion") {
+        document.getElementById("editor_textarea").value += responseText;
+      } else if (taskType === "textImprove") {
+        document.getElementById("editor_textarea").value = responseText;
+      } else if (taskType === "textSummary") {
+        clipboard.writeText(responseText);
+      }
+      if (taskType !== "textSummary") {
+        preview_markdown_content();
+        refreshEditorStatus();
+      }
+      ai_function_dialog.hide();
+      enableEditingWhenAiTaskIsCompletedOrTerminated();
+    };
+
+    document.getElementById("btn_abandon_ai_result").onclick = function () {
+      ai_function_dialog.hide();
+      enableEditingWhenAiTaskIsCompletedOrTerminated();
+    };
+  }
+
+  function runAiTask(taskType, options) {
+    if (ai.isConfigured() === false) {
+      showAiConfigRequiredDialog();
+      return;
+    }
+
+    const taskMap = {
+      "textCompletion": ai.requestTextCompletions.bind(ai),
+      "textImprove": ai.requestTextImprove.bind(ai),
+      "textSummary": ai.requestTextSummary.bind(ai)
+    };
+    const targetText = document.getElementById("editor_textarea").value;
+    const ai_task_id = randomString(16);
+    ai_task_list[ai_task_id] = "waiting_response";
+    disableEditingWhenAiTaskIsExcuting(getAiTaskExecutingText(taskType));
+
+    document.getElementById("btn_terminate_text_completion_task").onclick = function () {
+      ai_task_list[ai_task_id] = "terminated";
+      enableEditingWhenAiTaskIsCompletedOrTerminated();
+    };
+
+    taskMap[taskType](targetText, options, function (response) {
+      if (ai_task_list[ai_task_id] === "terminated") {
+        ai_task_list[ai_task_id] = "completed";
+        return;
+      }
+
+      ai_task_list[ai_task_id] = "completed";
+
+      if (response.error !== undefined) {
+        showAiFailureDialog(response.error.message);
+        enableEditingWhenAiTaskIsCompletedOrTerminated();
+        return;
+      }
+
+      showAiResultDialog(taskType, response.text);
+    });
+  }
+
+  document.getElementById("btn_ai_text_completion").onclick = function (event) {
+    event.preventDefault();
+    openAiTaskOptionsDialog("textCompletion");
+  };
+  document.getElementById("btn_ai_text_improve").onclick = function (event) {
+    event.preventDefault();
+    openAiTaskOptionsDialog("textImprove");
+  };
+  document.getElementById("btn_ai_text_summary").onclick = function (event) {
+    event.preventDefault();
+    openAiTaskOptionsDialog("textSummary");
+  };
+
+  function disableEditingWhenAiTaskIsExcuting(taskText) {
     document.getElementById("first-wrapper").style.filter = "blur(5px)";
     document.getElementById("btn_save_changes").style.display = "none";
     document.getElementById("third-wrapper").style.display = "";
-    document.getElementById("ai_related_functions_in_editor").style.display = "none";
+    document.getElementById("btn_insert_partial_encryption").disabled = true;
+    document.getElementById("btn_decrypt_partial_encryption").disabled = true;
+    document.getElementById("btn_ai_text_completion").disabled = true;
+    document.getElementById("btn_ai_text_improve").disabled = true;
+    document.getElementById("btn_ai_text_summary").disabled = true;
     document.getElementById("btn_help").style.display = "none";
     document.getElementById("btn_save_changes").style.display = "none";
+    document.getElementById("ai_task_status_text").innerText = taskText;
   }
 
   function enableEditingWhenAiTaskIsCompletedOrTerminated() {
     document.getElementById("first-wrapper").style.filter = "";
     document.getElementById("btn_save_changes").style.display = "";
     document.getElementById("third-wrapper").style.display = "none";
-    document.getElementById("ai_related_functions_in_editor").style.display = "";
+    document.getElementById("btn_insert_partial_encryption").disabled = false;
+    document.getElementById("btn_decrypt_partial_encryption").disabled = false;
+    document.getElementById("btn_ai_text_completion").disabled = false;
+    document.getElementById("btn_ai_text_improve").disabled = false;
+    document.getElementById("btn_ai_text_summary").disabled = false;
     document.getElementById("btn_help").style.display = "";
     document.getElementById("btn_save_changes").style.display = "";
   }
@@ -244,7 +427,7 @@ ${encrypted_content}
     <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
   </div>
   <div id="third-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
-    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["TEXT_CONTINUATION_TASK_IS_BEING_OPERATED"][lang_name]}
+    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"><span id="ai_task_status_text">${langdata["TEXT_CONTINUATION_TASK_IS_BEING_OPERATED"][lang_name]}</span>
     <br />
     <button id="btn_terminate_text_completion_task" class="btn btn-primary">${langdata["TERMINATE_THE_TASK"][lang_name]}</button>
     </h4>
@@ -269,12 +452,8 @@ ${encrypted_content}
         }
       }
     }
-    editor_status = 1;
   });
   observer.observe(previewContainer, { characterData: true, subtree: true, childList: true });
-  setTimeout(function () {
-    editor_status = 0;
-  }, 500);
 
   function render_hint_tags() {
     const langdata = {
@@ -388,13 +567,15 @@ ${encrypted_content}
 
   document.getElementById("editor_textarea").onkeyup = () => {
     preview_markdown_content();
-    editor_status = 1;
+    refreshEditorStatus();
     previewSectionSyncScrollStatusFromWritingSection();
   };
 
   document.getElementById("editor_textarea").value = original_content;
+  saved_editor_content = original_content;
 
   preview_markdown_content();
+  refreshEditorStatus();
 
   function previewSectionSyncScrollStatusFromWritingSection() {
     if (whoScrolling !== "writing跟着preview滚动") {
@@ -452,16 +633,18 @@ ${encrypted_content}
     }
   };
   const markdown_editor_save_changes = function () {
+    const currentContent = document.getElementById("editor_textarea").value;
     if (is_cnt_article_encrypted === true) {
-      writeFileSync(`${rootDir}/${path}`, encrypt_content(document.getElementById("editor_textarea").value, password_if_enabled_encryption_for_article));
+      writeFileSync(`${rootDir}/${path}`, encrypt_content(currentContent, password_if_enabled_encryption_for_article));
     } else {
-      writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
+      writeFileSync(`${rootDir}/${path}`, currentContent);
     }
+    saved_editor_content = currentContent;
 
     rss_hook();
 
     document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["ALREADY_SAVED"][lang_name];
-    editor_status = 0;
+    refreshEditorStatus();
     setTimeout(function () {
       document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["SAVE_CHANGES_CTRL_S"][lang_name];
     }, 1200);

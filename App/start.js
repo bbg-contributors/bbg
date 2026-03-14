@@ -161,157 +161,99 @@ function openGroupDialog() {
     `);
 }
 
-function openAiAssistedWritingConfigDialog(){
-
+function get_default_oai_settings() {
+  return {
+    enabled: false,
+    api_mode: "chat_completions",
+    api_request_url: "",
+    api_key: "",
+    default_model_type: "gpt-4.1-mini"
+  };
 }
 
-function save_ai_api_settings(){
-  const ai_api_enabled = document.getElementById("enable_ai_assisted_writing_option").selected;
-  let ai_api_type;
-  if(document.getElementById("ai_api_use_openai_option").selected){
-    ai_api_type = "openai";
-  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
-    ai_api_type = "baiduqianfan";
-  } else if(document.getElementById("ai_api_use_none").selected){
-    ai_api_type = "none";
+function get_oai_settings() {
+  const settings = storage.getSync("oai_api_settings");
+  if (settings === undefined || settings === null || typeof settings !== "object") {
+    return get_default_oai_settings();
   }
-  storage.set("ai_api_enabled", {enabled: ai_api_enabled});
-  storage.set("ai_api_type", {type: ai_api_type});
-  if(ai_api_type === "openai"){
-    storage.set("ai_api_info", {
-      enabled: true,
-      api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
-      api_key: document.getElementById("api_key_for_ai_assisted_writing").value,
-      default_model_type: document.getElementById("default_model_type_for_ai_assisted_writing").value
-    });
-  } else if(ai_api_type === "baiduqianfan"){
-    storage.set("ai_api_info", {
-      enabled: true,
-      api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value,
-      api_key: document.getElementById("api_key_for_ai_assisted_writing").value,
-      secret_key: document.getElementById("api_secret_key_for_ai_assisted_writing").value
-    });
-  }
+  return Object.assign(get_default_oai_settings(), settings);
 }
 
-function render_ai_assisted_writing_setting_specific_api_setting(isFromStorage = false){
-  let ai_api_type;
-  if(document.getElementById("ai_api_use_openai_option").selected){
-    ai_api_type = "openai";
-  } else if(document.getElementById("ai_api_use_baidu_qianfan_option").selected){
-    ai_api_type = "baiduqianfan";
-  } else if(document.getElementById("ai_api_use_none").selected){
-    ai_api_type = "none";
-  }
-  let data;
-  if (isFromStorage){
-    data = storage.getSync("ai_api_type");
-  } else {
-    data = {
-      "type": ai_api_type
-    };
-  }
-  console.log(data);
-  if(data["type"] === "openai"){
-    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
+function save_oai_api_settings() {
+  const settings = {
+    enabled: document.getElementById("enable_ai_assisted_writing_option").selected,
+    api_mode: document.getElementById("oai_api_mode_choose").value,
+    api_request_url: document.getElementById("api_req_url_for_ai_assisted_writing").value.trim(),
+    api_key: document.getElementById("api_key_for_ai_assisted_writing").value.trim(),
+    default_model_type: document.getElementById("default_model_type_for_ai_assisted_writing").value.trim()
+  };
+  storage.set("oai_api_settings", Object.assign(get_default_oai_settings(), settings));
+}
+
+function render_oai_setting_specific_fields(settings = get_oai_settings()) {
+  const mode = document.getElementById("oai_api_mode_choose").value;
+  const defaultRequestUrl = mode === "responses"
+    ? "https://api.openai.com/v1/responses"
+    : "https://api.openai.com/v1/chat/completions";
+  const modeDescription = lang_name === "简体中文"
+    ? (mode === "responses" ? "使用 Responses API，请求体会按 Responses 接口格式发送。" : "使用 Chat Completions API，请求体会按 chat completions 接口格式发送。")
+    : (mode === "responses" ? "Use the Responses API payload format." : "Use the Chat Completions payload format.");
+
+  document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
     <br />
-      <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
-      <input type="text" class="form-control" id="api_req_url_for_ai_assisted_writing" placeholder="${langdata["API_REQUEST_URL"][lang_name]}">
-      <br />
-      <p>${langdata["API_KEY"][lang_name]}</p>
-      <input type="text" class="form-control" id="api_key_for_ai_assisted_writing" placeholder="${langdata["API_KEY"][lang_name]}">
-      <br />
-      <p>${langdata["DEFAULT_MODEL_TYPE"][lang_name]}</p>
-      <input type="text" class="form-control" id="default_model_type_for_ai_assisted_writing" placeholder="${langdata["DEFAULT_MODEL_TYPE"][lang_name]}">
-      `;
-
-    let apiInfoInStorage = storage.getSync("ai_api_info");
-
-    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("default_model_type")){
-      document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
-      document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
-      document.getElementById("default_model_type_for_ai_assisted_writing").value = apiInfoInStorage["default_model_type"];
-    }
-
-      
-  } else if(data["type"] === "baiduqianfan"){
-    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = `
+    <p class="text-muted">${modeDescription}</p>
+    <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
+    <input type="text" class="form-control" id="api_req_url_for_ai_assisted_writing" placeholder="${defaultRequestUrl}">
     <br />
-      <p>${langdata["API_REQUEST_URL"][lang_name]}</p>
-      <input type="text" class="form-control" id="api_req_url_for_ai_assisted_writing" placeholder="${langdata["API_REQUEST_URL"][lang_name]}">
-      <br />
-      <p>${langdata["API_KEY"][lang_name]}</p>
-      <input type="text" class="form-control" id="api_key_for_ai_assisted_writing" placeholder="${langdata["API_KEY"][lang_name]}">
-      <br />
-      <p>${langdata["API_SECRET_KEY"][lang_name]}</p>
-      <input type="text" class="form-control" id="api_secret_key_for_ai_assisted_writing" placeholder="${langdata["API_SECRET_KEY"][lang_name]}">
-      `;
-
-    let apiInfoInStorage = storage.getSync("ai_api_info");
-
-    if(Object.keys(apiInfoInStorage).includes("api_request_url") && Object.keys(apiInfoInStorage).includes("api_key") && Object.keys(apiInfoInStorage).includes("secret_key")){
-      document.getElementById("api_req_url_for_ai_assisted_writing").value = apiInfoInStorage["api_request_url"];
-      document.getElementById("api_key_for_ai_assisted_writing").value = apiInfoInStorage["api_key"];
-      document.getElementById("api_secret_key_for_ai_assisted_writing").value = apiInfoInStorage["secret_key"];
-    }
-
-
-  } else {
-    document.getElementById("api_setting_for_ai_assisted_writing").innerHTML = "";
-  }
-
-  document.getElementById("api_setting_for_ai_assisted_writing").insertAdjacentHTML("beforeend",`
+    <p>${langdata["API_KEY"][lang_name]}</p>
+    <input type="text" class="form-control" id="api_key_for_ai_assisted_writing" placeholder="${langdata["API_KEY"][lang_name]}">
     <br />
-    <button class="btn btn-outline-success" onclick="save_ai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
+    <p>${langdata["DEFAULT_MODEL_TYPE"][lang_name]}</p>
+    <input type="text" class="form-control" id="default_model_type_for_ai_assisted_writing" placeholder="gpt-4.1-mini">
+    <br />
+    <button class="btn btn-outline-success" onclick="save_oai_api_settings();" data-bs-dismiss="modal">${langdata["OK"][lang_name]}</button>
     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">${langdata["CANCEL"][lang_name]}</button>
-  `);
+  `;
+
+  document.getElementById("api_req_url_for_ai_assisted_writing").value = settings.api_request_url;
+  document.getElementById("api_key_for_ai_assisted_writing").value = settings.api_key;
+  document.getElementById("default_model_type_for_ai_assisted_writing").value = settings.default_model_type;
 }
 
-function open_ai_assisted_writing_setting_dialog(){
+function open_ai_assisted_writing_setting_dialog() {
+  const settings = get_oai_settings();
+  const enableLabel = langdata["AI_ASSISTED_WRITING_ENABLE"][lang_name];
+  const infoText = langdata["AI_ASSISTED_WRITING_CONFIG_INFO"][lang_name];
+
   document.getElementById("ai_assisted_writing-dialog-content").innerHTML = `
-    <p>${langdata["AI_ASSISTED_WRITING_ENABLE"][lang_name]}</p>
+    <h5>${langdata["AI_ASSISTED_WRITING_CONFIG"][lang_name]}</h5>
+    <p class="text-muted">${infoText}</p>
+    <p>${enableLabel}</p>
     <select class="form-select">
       <option id="enable_ai_assisted_writing_option">${langdata["ENABLE"][lang_name]}</option>
       <option id="disable_ai_assisted_writing_option">${langdata["DISABLE"][lang_name]}</option>
     </select>
     <br />
     <p>${langdata["API_TYPE"][lang_name]}</p>
-    <select class="form-select" id="ai_assisted_writing_api_type_choose">
-      <option id="ai_api_use_openai_option">${langdata["OPENAI_API"][lang_name]}</option>
-      <option id="ai_api_use_baidu_qianfan_option">${langdata["BAIDU_QIANFAN"][lang_name]}</option>
-      <option id="ai_api_use_none">${langdata["NONE"][lang_name]}</option>
+    <select class="form-select" id="oai_api_mode_choose">
+      <option value="chat_completions">Chat Completions API</option>
+      <option value="responses">Responses API</option>
     </select>
-    <div id="api_setting_for_ai_assisted_writing">
-
-    </div>
+    <div id="api_setting_for_ai_assisted_writing"></div>
   `;
 
-  storage.get("ai_api_enabled", function(err, data){
-    if(data.enabled === true){
-      document.getElementById("enable_ai_assisted_writing_option").selected = true;
-    } else {
-      document.getElementById("disable_ai_assisted_writing_option").selected = true;
-    }
-    console.log(data);
-  });
+  if (settings.enabled === true) {
+    document.getElementById("enable_ai_assisted_writing_option").selected = true;
+  } else {
+    document.getElementById("disable_ai_assisted_writing_option").selected = true;
+  }
 
-  storage.get("ai_api_type", function(err, data){
-    if(data.type === "openai"){
-      document.getElementById("ai_api_use_openai_option").selected = true;
-    } else if(data.type === "baiduqianfan"){
-      document.getElementById("ai_api_use_baidu_qianfan_option").selected = true;
-    } else {
-      document.getElementById("ai_api_use_none").selected = true;
-    }
-
-    console.log(data);
-  });
-
-  render_ai_assisted_writing_setting_specific_api_setting(true);
-
+  document.getElementById("oai_api_mode_choose").value = settings.api_mode;
+  render_oai_setting_specific_fields(settings);
   ai_assisted_writing_dialog.show();
-
-  document.getElementById("ai_assisted_writing_api_type_choose").onchange = function(){render_ai_assisted_writing_setting_specific_api_setting();};
+  document.getElementById("oai_api_mode_choose").onchange = function () {
+    render_oai_setting_specific_fields(get_oai_settings());
+  };
 }
 
 function render_language_selections() {
@@ -350,25 +292,12 @@ storage.has("language", (error, hasKey) => {
           });
         }
       });
-      storage.has("ai_api_enabled", (error, hasKey) => {
+      storage.has("oai_api_settings", (error, hasKey) => {
         if (error) {
           console.error(error);
         }
         if (hasKey === false) {
-          storage.set("ai_api_enabled", {
-            enabled: false
-          });
-        }
-      });
-
-      storage.has("ai_api_type", (error, hasKey) => {
-        if (error) {
-          console.error(error);
-        }
-        if (hasKey === false) {
-          storage.set("ai_api_type", {
-            type: "none"
-          });
+          storage.set("oai_api_settings", get_default_oai_settings());
         }
       });
 
@@ -429,7 +358,7 @@ storage.has("language", (error, hasKey) => {
           <li><a class="dropdown-item" onclick="openStylesheetDialog()"><i class="fa fa-paint-brush" aria-hidden="true"></i> ${langdata.APPLICATION_STYLE_SETTING[lang_name]}</a></li>
           <li><a class="dropdown-item" onclick="displayContributers()"><i class="fa fa-users" aria-hidden="true"></i> ${langdata.DISPLAY_CONTRIBUTORS[lang_name]}</a></li>
           <li><a class="dropdown-item" onclick="check_update()"><i class="fa fa-refresh" aria-hidden="true"></i> ${langdata.CHECK_UPDATE[lang_name]}</a></li>
-          <!-- <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li> -->
+          <li><a class="dropdown-item" onclick="open_ai_assisted_writing_setting_dialog()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> ${langdata.AI_ASSISTED_WRITING_CONFIG[lang_name]}</a></li>
           <li><a class="dropdown-item" onclick="open_customize_bbg_ui_dialog()"><i class="fa fa-paw" aria-hidden="true"></i> ${langdata.SETTING_OF_CUSTOM_UI[lang_name]}</a></li>
           </ul>
           </div>
