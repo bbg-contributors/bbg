@@ -1,5 +1,4 @@
-
-const express = require("express");
+const preview_server_ipc = require("./preview_server_ipc.js");
 
 module.exports = function(){
 
@@ -28,7 +27,7 @@ module.exports = function(){
     <br />
     <div id="preview_navhash" style="display:none">
       <p>${langdata.PREVIEW_SITE_CONTENT[0][lang_name]}</p>
-      <p>${langdata.PREVIEW_SITE_CONTENT[1][lang_name]}<a class="btn btn-sm btn-link" onclick="shell.openExternal('http://localhost:41701')">http://localhost:41701</a>${langdata.PREVIEW_SITE_CONTENT[2][lang_name]}</p>
+      <p>${langdata.PREVIEW_SITE_CONTENT[1][lang_name]}<a class="btn btn-sm btn-link" id="preview_site_link" href="#" target="_blank" rel="noreferrer">Loading...</a>${langdata.PREVIEW_SITE_CONTENT[2][lang_name]}</p>
       
       <button class="btn btn-outline-success" onclick="preview_and_publish.openInBrowser()">${langdata.PREVIEW_SITE_IN_BROWSER[lang_name]}</button>
 
@@ -59,12 +58,12 @@ module.exports = function(){
     </div>
   `);
 
-  const server = express();
-
-  server.use(express.static(rootDir));
-
-  server.listen(41701, () => {
-    // console.log("live server listening at http://localhost:41701");
+  preview_server_ipc.getPreviewUrl(rootDir).then((previewUrl) => {
+    const previewLink = document.getElementById("preview_site_link");
+    previewLink.href = previewUrl;
+    previewLink.textContent = previewUrl;
+  }).catch((error) => {
+    console.error(error);
   });
 
   document.getElementById("nav_to_preview_and_publish_page").classList.add("active");

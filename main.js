@@ -8,6 +8,7 @@ const storage = require("electron-json-storage");
 storage.setDataPath(AppPath);
 
 require("@electron/remote/main").initialize();
+const previewServer = require("./preview_server_main.js");
 
 app.setAboutPanelOptions({
   applicationName: appInfo.AppName,
@@ -131,6 +132,11 @@ const createWindow = () => {
 
   require("@electron/remote/main").enable(win.webContents);
   win.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      shell.openExternal(url);
+      return { action: "deny" };
+    }
+
     let new_win = new BrowserWindow({
       width: 1200,
       height: 600,
@@ -143,11 +149,24 @@ const createWindow = () => {
     });
     require("@electron/remote/main").enable(new_win.webContents);
     new_win.loadURL(url);
+    return { action: "deny" };
   });
   win.loadFile("./App/start.html");
 };
 
-app.whenReady().then(() => createWindow());
+ipcMain.handle("preview-server:get-info", async () => {
+  await previewServer.initPreviewPort();
+  return previewServer.getPreviewServerInfo();
+});
+
+ipcMain.handle("preview-server:serve-directory", async (event, rootDir) => {
+  return previewServer.serveDirectory(rootDir);
+});
+
+app.whenReady().then(async () => {
+  await previewServer.initPreviewPort();
+  createWindow();
+});
 
 ipcMain.on("backToStartPageAndOpenExistingSite", () => {
   win.loadFile("./App/start.html");

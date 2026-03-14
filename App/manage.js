@@ -3,8 +3,6 @@ const AppPath = require("@electron/remote").app.getPath("userData");
 const storage = require("electron-json-storage");
 storage.setDataPath(AppPath);
 
-const e = require("express");
-
 const langdata = require("./LangData.js");
 
 const getUrlArgs = require("./getUrlArgs.js");
@@ -112,7 +110,7 @@ const render_preview_and_publish_page = require("./render_preview_and_publish_pa
 const preview_and_publish = require("./preview_and_publish.js");
 const enterPreviewAndPublishInterfaceOf = require("./navToSectionOfPreviewAndPublish.js");
 const preview_and_publish_dialog = require("./preview_and_publish_dialog.js");
-const express = require("express");
+const preview_server_ipc = require("./preview_server_ipc.js");
 
 const xssStirct = require("xss");
 const tinycolor = require("tinycolor2");
@@ -138,12 +136,8 @@ storage.set("last_managed_site", {
 });
 
 if (currentPage !== "markdown_editor") {
-  const server = express();
-
-  server.use(express.static(rootDir));
-
-  server.listen(41701, "localhost", () => {
-    // console.log("live server listening at http://localhost:41701");
+  preview_server_ipc.servePreviewDirectory(rootDir).catch((error) => {
+    console.error(error);
   });
 }
 // 初始化界面

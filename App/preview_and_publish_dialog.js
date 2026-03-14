@@ -1,4 +1,4 @@
-
+const preview_server_ipc = require("./preview_server_ipc.js");
 
 module.exports = function(){
   const preview_and_publish_dialog = new bootstrap.Modal(document.getElementById("preview_and_publish_dialog"));
@@ -14,7 +14,7 @@ module.exports = function(){
   </ul>
   <br />
   <div id="preview_site_content" style="display: block;">
-    <p>${langdata.PREVIEW_SITE_CONTENT[0][lang_name]}<a class="btn btn-sm btn-link" onclick="shell.openExternal('http://localhost:41701')">http://localhost:41701</a>${langdata.PREVIEW_SITE_CONTENT[1][lang_name]}</p>
+    <p>${langdata.PREVIEW_SITE_CONTENT[0][lang_name]}<a class="btn btn-sm btn-link" id="preview_site_dialog_link" href="#" target="_blank" rel="noreferrer">Loading...</a>${langdata.PREVIEW_SITE_CONTENT[1][lang_name]}</p>
     <button class="btn btn-outline-success" onclick="preview_and_publish.openInBrowser()">${langdata.PREVIEW_SITE_IN_BROWSER[lang_name]}</button>
   </div>
   <div id="publish_site_content" style="display: none;">
@@ -39,6 +39,13 @@ module.exports = function(){
     <br /><br />
   </div>
   `;
+  preview_server_ipc.getPreviewUrl(rootDir).then((previewUrl) => {
+    const previewLink = document.querySelector("#preview_site_dialog_link");
+    previewLink.href = previewUrl;
+    previewLink.textContent = previewUrl;
+  }).catch((error) => {
+    console.error(error);
+  });
   document.querySelector("#preview_site_tab").addEventListener("click", function(){
     document.querySelector("#preview_site_content").style.display = "block";
     document.querySelector("#publish_site_content").style.display = "none";

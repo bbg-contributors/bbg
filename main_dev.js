@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const previewServer = require("./preview_server_main.js");
 
 const guess_shell_path = function(){
   if (process.platform == "win32") {
@@ -37,6 +38,11 @@ const createWindow = () => {
   require("@electron/remote/main").enable(win.webContents);
   win.loadFile("./App/start.html");
   win.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      shell.openExternal(url);
+      return { action: "deny" };
+    }
+
     let new_win = new BrowserWindow({
       width: 1200,
       height: 600,
@@ -50,9 +56,21 @@ const createWindow = () => {
     require("@electron/remote/main").enable(new_win.webContents);
     new_win.loadURL(url);
     new_win.webContents.openDevTools();
+    return { action: "deny" };
   });
   win.webContents.openDevTools();
 };
 
+ipcMain.handle("preview-server:get-info", async () => {
+  await previewServer.initPreviewPort();
+  return previewServer.getPreviewServerInfo();
+});
 
-app.whenReady().then(() => createWindow());
+ipcMain.handle("preview-server:serve-directory", async (event, rootDir) => {
+  return previewServer.serveDirectory(rootDir);
+});
+
+app.whenReady().then(async () => {
+  await previewServer.initPreviewPort();
+  createWindow();
+});

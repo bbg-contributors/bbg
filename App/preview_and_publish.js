@@ -1,6 +1,7 @@
-
 const { exec } = require("child_process");
+const shell = require("@electron/remote").shell;
 const Prompt = require("native-prompt");
+const preview_server_ipc = require("./preview_server_ipc.js");
 
 const terminalEmulators = {
   "linux": {
@@ -82,7 +83,11 @@ const runInTerminal = (command) => {
 
 module.exports = {
   "openInBrowser": function () {
-    shell.openExternal("http://localhost:41701");
+    preview_server_ipc.getPreviewUrl(rootDir).then((previewUrl) => {
+      shell.openExternal(previewUrl);
+    }).catch((error) => {
+      alert(error);
+    });
   },
   "commit_and_push": function () {
     if (window.confirm("你选择了提交更改并推送到远程仓库，将要执行的指令如下，请确认：\n git add . \n git commit -m \"site_update\" \n git push ")) {
