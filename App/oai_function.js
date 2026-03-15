@@ -124,8 +124,8 @@ module.exports = class {
     };
     const promptMap = {
       "textCompletion": {
-        "zh-CN": "下面会给出一篇尚未写完的 Markdown 文章，请保持原文语言、语气和 Markdown 风格继续写完后续内容。只输出你续写的部分，不要重复原文，不要解释。",
-        "en-US": "You will receive an unfinished Markdown article. Continue writing it in the same language, tone, and Markdown style. Output only the continuation, without repeating the original text or adding explanations."
+        "zh-CN": "下面会给出一篇 Markdown 文章，其中 `[[BBG_CURSOR_HERE]]` 表示当前编辑器的光标插入位置。请结合光标前后的上下文，在该位置自然地补写一小段后续内容，保持原文语言、语气和 Markdown 风格。只输出需要插入的新增内容，不要重复原文，不要输出标记，不要解释。",
+        "en-US": "You will receive a Markdown article where `[[BBG_CURSOR_HERE]]` marks the current insertion point in the editor. Based on the surrounding context before and after that marker, write a natural continuation to be inserted at that exact position, keeping the same language, tone, and Markdown style. Output only the new text to insert, without repeating the original text, without the marker, and without explanations."
       },
       "textImprove": {
         "zh-CN": "下面会给出一篇 Markdown 文章，请在不改变原意的前提下润色，使其更通顺清晰，并尽量保留 Markdown 结构。直接输出润色后的完整文本，不要解释。",

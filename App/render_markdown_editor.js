@@ -1,5 +1,6 @@
 const { readFileSync, writeFileSync } = require("fs");
 const { dialog } = require("@electron/remote");
+const shell = require("@electron/remote").shell;
 const { clipboard } = require("electron");
 const marked = require("marked");
 const xss_filter = require("xss");
@@ -227,6 +228,25 @@ ${encrypted_content}
     return lang_name === "简体中文" ? "AI 续写设置" : "AI Completion Settings";
   }
 
+  function insertTextAtCursor(textarea, text, start, end) {
+    const insertStart = typeof start === "number" ? start : textarea.selectionStart;
+    const insertEnd = typeof end === "number" ? end : textarea.selectionEnd;
+    textarea.value = textarea.value.slice(0, insertStart) + text + textarea.value.slice(insertEnd);
+    const nextCaretPosition = insertStart + text.length;
+    textarea.focus();
+    textarea.setSelectionRange(nextCaretPosition, nextCaretPosition);
+  }
+
+  function buildCompletionContentFromCursor(textarea) {
+    const cursorStart = textarea.selectionStart;
+    const cursorEnd = textarea.selectionEnd;
+    return {
+      cursorStart,
+      cursorEnd,
+      targetText: `${textarea.value.slice(0, cursorStart)}[[BBG_CURSOR_HERE]]${textarea.value.slice(cursorEnd)}`
+    };
+  }
+
   function openAiTaskOptionsDialog(taskType) {
     const defaultAmount = taskType === "textSummary" ? 2 : 3;
     let dialogContent = `
@@ -265,12 +285,15 @@ ${encrypted_content}
         amount: taskType === "textImprove" ? null : Number(document.getElementById("ai_amount_range").value),
         customRequirement: document.getElementById("ai_custom_requirement_input").value
       };
+      const runtimeOptions = taskType === "textCompletion"
+        ? buildCompletionContentFromCursor(document.getElementById("editor_textarea"))
+        : {};
       ai_function_dialog.hide();
-      runAiTask(taskType, options);
+      runAiTask(taskType, options, runtimeOptions);
     };
   }
 
-  function showAiResultDialog(taskType, responseText) {
+  function showAiResultDialog(taskType, responseText, runtimeOptions = {}) {
     let descriptionText = langdata["TEXT_CONTINUATION_COMPLETED_INFO"][lang_name];
     let confirmButtonText = langdata["OK"][lang_name];
 
@@ -293,7 +316,12 @@ ${encrypted_content}
 
     document.getElementById("btn_accept_ai_result").onclick = function () {
       if (taskType === "textCompletion") {
-        document.getElementById("editor_textarea").value += responseText;
+        insertTextAtCursor(
+          document.getElementById("editor_textarea"),
+          responseText,
+          runtimeOptions.cursorStart,
+          runtimeOptions.cursorEnd
+        );
       } else if (taskType === "textImprove") {
         document.getElementById("editor_textarea").value = responseText;
       } else if (taskType === "textSummary") {
@@ -313,7 +341,7 @@ ${encrypted_content}
     };
   }
 
-  function runAiTask(taskType, options) {
+  function runAiTask(taskType, options, runtimeOptions = {}) {
     if (ai.isConfigured() === false) {
       showAiConfigRequiredDialog();
       return;
@@ -324,7 +352,7 @@ ${encrypted_content}
       "textImprove": ai.requestTextImprove.bind(ai),
       "textSummary": ai.requestTextSummary.bind(ai)
     };
-    const targetText = document.getElementById("editor_textarea").value;
+    const targetText = runtimeOptions.targetText || document.getElementById("editor_textarea").value;
     const ai_task_id = randomString(16);
     ai_task_list[ai_task_id] = "waiting_response";
     disableEditingWhenAiTaskIsExcuting(getAiTaskExecutingText(taskType));
@@ -348,7 +376,7 @@ ${encrypted_content}
         return;
       }
 
-      showAiResultDialog(taskType, response.text);
+      showAiResultDialog(taskType, response.text, runtimeOptions);
     });
   }
 
@@ -368,6 +396,7 @@ ${encrypted_content}
   function disableEditingWhenAiTaskIsExcuting(taskText) {
     document.getElementById("first-wrapper").style.filter = "blur(5px)";
     document.getElementById("btn_save_changes").style.display = "none";
+    document.getElementById("btn_change_to_default_editor").disabled = true;
     document.getElementById("third-wrapper").style.display = "";
     document.getElementById("btn_insert_partial_encryption").disabled = true;
     document.getElementById("btn_decrypt_partial_encryption").disabled = true;
@@ -382,6 +411,7 @@ ${encrypted_content}
   function enableEditingWhenAiTaskIsCompletedOrTerminated() {
     document.getElementById("first-wrapper").style.filter = "";
     document.getElementById("btn_save_changes").style.display = "";
+    document.getElementById("btn_change_to_default_editor").disabled = false;
     document.getElementById("third-wrapper").style.display = "none";
     document.getElementById("btn_insert_partial_encryption").disabled = false;
     document.getElementById("btn_decrypt_partial_encryption").disabled = false;
@@ -423,8 +453,12 @@ ${encrypted_content}
     <div id="preview-section-container" style="position:fixed;height:85vh;width:40vw;margin-left:45vw;overflow-y: scroll;overflow-x:auto;word-break:break-all">
     </div>
   </div>
-  <div id="second-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
-    <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
+  <div id="second-wrapper" style="position:fixed;top:0;left:0;height:100vh;width:100vw;display:none;z-index:20;background:rgba(251,252,254,0.85)">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:720px;width:calc(100vw - 80px);text-align:center">
+      <h4>${langdata["EDITOR_WRAPPER_HINT"][lang_name]}</h4>
+      <p style="margin:20px 0;color:#555">${langdata["EXTERNAL_EDITOR_SYNC_HINT"][lang_name]}</p>
+      <button id="btn_confirm_exit_default_editor" class="success_btn">${langdata["EXITED_EXTERNAL_EDITOR"][lang_name]}</button>
+    </div>
   </div>
   <div id="third-wrapper" style="position:relative;height:70vh;width:75vw;display:none">
     <h4 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"><span id="ai_task_status_text">${langdata["TEXT_CONTINUATION_TASK_IS_BEING_OPERATED"][lang_name]}</span>
@@ -634,69 +668,103 @@ ${encrypted_content}
   };
   const markdown_editor_save_changes = function () {
     const currentContent = document.getElementById("editor_textarea").value;
-    if (is_cnt_article_encrypted === true) {
-      writeFileSync(`${rootDir}/${path}`, encrypt_content(currentContent, password_if_enabled_encryption_for_article));
-    } else {
-      writeFileSync(`${rootDir}/${path}`, currentContent);
-    }
-    saved_editor_content = currentContent;
-
-    rss_hook();
-
-    document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["ALREADY_SAVED"][lang_name];
-    refreshEditorStatus();
-    setTimeout(function () {
-      document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["SAVE_CHANGES_CTRL_S"][lang_name];
-    }, 1200);
+    writeContentToDisk(currentContent);
+    runSaveSideEffects(currentContent, true);
   };
 
   document.getElementById("btn_save_changes").onclick = markdown_editor_save_changes;
-  /*
-  document.getElementById("btn_change_to_default_editor").onclick=function(){
-    function to_default() {
-      writeFileSync(`${rootDir}/${path}`, document.getElementById("editor_textarea").value);
-      shell.openPath(`${rootDir}/${path}`);
-      document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_BUILTIN_EDITOR"][lang_name];
-      document.getElementById("first-wrapper").style.filter = "blur(5px)";
-      document.getElementById("btn_save_changes").style.display = "none";
-      document.getElementById("second-wrapper").style.display = "";
-      document.getElementById("btn_help").style.display = "none";
-      if (storage.getSync("ai_api").enabled === true){
-        document.getElementById("ai_related_functions_in_editor").style.display = "none";
+  function updateArticleModifiedTime() {
+    if (type !== "article") {
+      return;
+    }
+    const currentTimestamp = Date.now();
+    for (let i = 0; i < blog["文章列表"].length; i++) {
+      if (blog["文章列表"][i]["文件名"] === filename) {
+        blog["文章列表"][i]["修改时间（时间戳）"] = currentTimestamp;
+        break;
       }
     }
-    function to_builtin() {
-      document.getElementById("editor_textarea").value = readFileSync(rootDir + path, "utf-8");
-      preview_markdown_content();
-      writeFileSync(`${rootDir}/${path}`, encrypt_content(document.getElementById("editor_textarea").value, password_if_enabled_encryption_for_article));
-      document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_SYSTEM_DEFAULT_EDITOR"][lang_name];
-      document.getElementById("first-wrapper").style.filter = "";
-      document.getElementById("btn_save_changes").style.display = "";
-      document.getElementById("second-wrapper").style.display = "none";
-      document.getElementById("btn_help").style.display = "";
-      if (storage.getSync("ai_api").enabled === true){
-        document.getElementById("ai_related_functions_in_editor").style.display = "";
-      }
+  }
+
+  function writeContentToDisk(content, preservePlainTextForExternalEditor = false) {
+    if (is_cnt_article_encrypted === true && preservePlainTextForExternalEditor === false) {
+      writeFileSync(`${rootDir}/${path}`, encrypt_content(content, password_if_enabled_encryption_for_article));
+      return;
+    }
+    writeFileSync(`${rootDir}/${path}`, content);
+  }
+
+  function runSaveSideEffects(content, showSaveFeedback = false) {
+    updateArticleModifiedTime();
+    BlogInstance.writeBlogData();
+    rss_hook();
+    saved_editor_content = content;
+    refreshEditorStatus();
+    if (showSaveFeedback) {
+      document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["ALREADY_SAVED"][lang_name];
+      setTimeout(function () {
+        document.getElementById("btn_save_changes").innerHTML = "<i class=\"fa fa-check\"></i> " + langdata["SAVE_CHANGES_CTRL_S"][lang_name];
+      }, 1200);
+    }
+  }
+
+  function switchToDefaultEditor() {
+    const currentContent = document.getElementById("editor_textarea").value;
+    writeContentToDisk(currentContent, true);
+    saved_editor_content = currentContent;
+    refreshEditorStatus();
+    shell.openPath(`${rootDir}/${path}`);
+    document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_BUILTIN_EDITOR"][lang_name];
+    document.getElementById("first-wrapper").style.filter = "blur(5px)";
+    document.getElementById("btn_save_changes").style.display = "none";
+    document.getElementById("second-wrapper").style.display = "";
+    document.getElementById("btn_help").style.display = "none";
+    default_editor = true;
+  }
+
+  function switchBackToBuiltinEditor() {
+    const latestContent = readFileSync(rootDir + path, "utf-8");
+    document.getElementById("editor_textarea").value = latestContent;
+    preview_markdown_content();
+    writeContentToDisk(latestContent);
+    runSaveSideEffects(latestContent, true);
+    document.getElementById("editor_switch").innerHTML = langdata["SWITCH_TO_SYSTEM_DEFAULT_EDITOR"][lang_name];
+    document.getElementById("first-wrapper").style.filter = "";
+    document.getElementById("btn_save_changes").style.display = "";
+    document.getElementById("second-wrapper").style.display = "none";
+    document.getElementById("btn_help").style.display = "";
+    default_editor = false;
+  }
+
+  document.getElementById("btn_change_to_default_editor").onclick = function () {
+    if (document.getElementById("third-wrapper").style.display !== "none") {
+      return;
     }
     if (default_editor) {
-      to_builtin();
-    } else {
-      if(editor_status === 1){
-        if(dialog.showMessageBoxSync({buttons: [langdata["OK"][lang_name],langdata["CANCEL"][lang_name]],message:langdata["WARN_UNSAVED_CHANGES_BEFORE_SWITCHING_TO_SYSTEM_DEFAULT_EDITOR"][lang_name]}) === 0){
-          to_default();
-        }
-      }else{
-        to_default();
-      }
+      switchBackToBuiltinEditor();
+      return;
     }
-    default_editor = !default_editor;
+    if (editor_status === 1) {
+      if (dialog.showMessageBoxSync({ buttons: [langdata["OK"][lang_name], langdata["CANCEL"][lang_name]], message: langdata["WARN_UNSAVED_CHANGES_BEFORE_SWITCHING_TO_SYSTEM_DEFAULT_EDITOR"][lang_name] }) === 0) {
+        switchToDefaultEditor();
+      }
+      return;
+    }
+    switchToDefaultEditor();
   };
-*/
+
+  document.getElementById("btn_confirm_exit_default_editor").onclick = function () {
+    switchBackToBuiltinEditor();
+  };
   document.onkeydown = function (event) {
     let toReturn = true;
     if (event.ctrlKey || event.metaKey) {  // detect ctrl or cmd
       if (event.which == 83) {
         markdown_editor_save_changes();
+        toReturn = false;
+      } else if (event.which == 74) {
+        event.preventDefault();
+        openAiTaskOptionsDialog("textCompletion");
         toReturn = false;
       }
     }
