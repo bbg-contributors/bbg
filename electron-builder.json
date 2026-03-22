@@ -95,7 +95,8 @@
       }
     ],
     "type": "distribution",
-    "darkModeSupport": true
+    "darkModeSupport": true,
+    "identity": null
   },
   "directories": {
     "buildResources": "resources"
