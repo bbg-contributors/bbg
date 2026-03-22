@@ -1,13 +1,16 @@
 module.exports = function (item) {
-  if(item === "preview"){
-    document.getElementById("preview_navhash").setAttribute("style", "display:block;");
-    document.getElementById("publish_navhash").setAttribute("style", "display:none");
-    document.getElementById("preview_navitem").setAttribute("class", "nav-link active");
-    document.getElementById("publish_navitem").setAttribute("class", "nav-link");
-  } else if(item === "publish"){
-    document.getElementById("preview_navhash").setAttribute("style", "display:none;");
-    document.getElementById("publish_navhash").setAttribute("style", "display:block;");
-    document.getElementById("preview_navitem").setAttribute("class", "nav-link");
-    document.getElementById("publish_navitem").setAttribute("class", "nav-link active");
-  }
+  const sections = ["preview", "git_publish", "scp_publish", "manual_publish"];
+
+  sections.forEach((section) => {
+    const content = document.getElementById(`${section}_navhash`);
+    const navItem = document.getElementById(`${section}_navitem`);
+
+    if (content !== null) {
+      content.style.display = section === item ? "block" : "none";
+    }
+
+    if (navItem !== null) {
+      navItem.setAttribute("class", section === item ? "nav-link active" : "nav-link");
+    }
+  });
 };
