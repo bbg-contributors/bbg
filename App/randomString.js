@@ -6,7 +6,7 @@ module.exports = function (len) {
   const maxPos = $chars.length;
   let pwd = "";
   let a;
-  // eslint-disable-next-line no-unmodified-loop-condition
+   
   for (i = 0; i < len; i++) pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
   return pwd;
 };
