@@ -6,6 +6,7 @@
   "files": [
     "dist/electron/**/*",
     "./main.js",
+    "./preview_server_main.js",
     "App/**/*",
     "resources/**/*",
     ".git/refs/heads/*"
