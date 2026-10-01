@@ -9,7 +9,7 @@ function render_comment_related(trigger_by_change = false) {
   ) {
     current_selection = "none";
   } else {
-    for (let t of ["valine", "valine_with_public_apikey", "disqus", "waline"]) {
+    for (let t of ["valine", "valine_with_public_apikey", "disqus", "waline", "rustaline"]) {
       if (
         document.getElementById(`comment_select_to_use_${t}`).selected === true
       ) {
@@ -25,6 +25,7 @@ function render_comment_related(trigger_by_change = false) {
       valine_with_public_apikey: "hint_when_using_valine_with_public_apikey",
       disqus: "disqus_settings_detail",
       waline: "waline_settings_detail",
+      rustaline: "rustaline_settings_detail",
     };
     for (let k in mapping_table) {
       if (k == name)
@@ -68,6 +69,8 @@ function render_comment_related(trigger_by_change = false) {
     show_specified_detail("disqus");
   } else if (current_selection === "waline") {
     show_specified_detail("waline");
+  } else if (current_selection === "rustaline") {
+    show_specified_detail("rustaline");
   } else if (current_selection === "none") {
     show_specified_detail("none");
   }
@@ -129,6 +132,12 @@ module.exports = function () {
   );
   document.getElementById("blog_settings_waline_serverurl").value = xssStrict(
     blog["全局评论设置"]["waline设置"]["serverurl"]
+  );
+  // 站点数据尚未迁移出 rustaline 字段时（程序版本号未提升），此处不能直接读取
+  document.getElementById("blog_settings_rustaline_serverurl").value = xssStrict(
+    blog["全局评论设置"]["rustaline设置"] === undefined
+      ? ""
+      : blog["全局评论设置"]["rustaline设置"]["serverurl"]
   );
   document.getElementById("blog_setting_cdn_frm_2").value = xssStrict(
     blog["CDN路径"]
@@ -354,6 +363,8 @@ module.exports = function () {
     document.getElementById("comment_select_to_use_disqus").selected = true;
   } else if (blog["全局评论设置"]["启用waline评论"]) {
     document.getElementById("comment_select_to_use_waline").selected = true;
+  } else if (blog["全局评论设置"]["启用rustaline评论"]) {
+    document.getElementById("comment_select_to_use_rustaline").selected = true;
   } else {
     document.getElementById(
       "comment_do_not_use_any_comment_system"

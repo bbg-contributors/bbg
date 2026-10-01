@@ -549,6 +549,7 @@
           <br />
           <select class="form-select" id="blog_settings_comment_system_setting">
             <option value="waline" id="comment_select_to_use_waline">Waline</option>
+            <option value="rustaline" id="comment_select_to_use_rustaline">Rustaline</option>
             <option value="disqus" id="comment_select_to_use_disqus">Disqus</option>
             <option value="valine" id="comment_select_to_use_valine">
               Valine（不建议）
@@ -562,7 +563,7 @@
   
         <div id="hint_when_using_valine_with_public_apikey" style="display: none;">
           <div class="alert alert-danger" role="alert">
-            <strong>此选项依赖 Leancloud。Leancloud将于2027年1月12日正式停止服务，请在此之前提前备份数据并切换到 Waline、Disqus等其他服务，谢谢！</strong>
+            <strong>此选项依赖 Leancloud。Leancloud将于2027年1月12日正式停止服务，请在此之前提前备份数据并切换到 Waline、Rustaline、Disqus等其他服务，谢谢！</strong>
           </div>
 
           <p>${langdata["HINT_TEXT_WHEN_USING_VALINE_WITH_PUBLIC_APIKEY"][lang_name]}</p>
@@ -570,7 +571,7 @@
 
         <div id="leancloud_settings_detail" style="display:none">
           <div class="alert alert-danger" role="alert">
-            <strong>此选项依赖 Leancloud。Leancloud将于2027年1月12日正式停止服务，请在此之前提前备份数据并切换到 Waline、Disqus等其他服务，谢谢！</strong>
+            <strong>此选项依赖 Leancloud。Leancloud将于2027年1月12日正式停止服务，请在此之前提前备份数据并切换到 Waline、Rustaline、Disqus等其他服务，谢谢！</strong>
           </div>
 
           <p>${langdata["HINT_TEXT_WHEN_USING_VALINE"][lang_name]}</p>
@@ -625,6 +626,22 @@
             <input
               class="form-control"
               id="blog_settings_waline_serverurl"
+            />
+          </div>
+        </div>
+
+        <div id="rustaline_settings_detail" style="display:none">
+
+          <p>${langdata["HINT_TEXT_WHEN_USING_RUSTALINE"][lang_name]}</p>
+
+          <br />
+          <div class="mb-3">
+            <label class="form-label"
+              >Rustaline Server URL</label
+            >
+            <input
+              class="form-control"
+              id="blog_settings_rustaline_serverurl"
             />
           </div>
         </div>

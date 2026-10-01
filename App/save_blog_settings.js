@@ -171,6 +171,8 @@ module.exports = function () {
       current_selection_for_comment_sys = "disqus";
     } else if (document.getElementById("comment_select_to_use_waline").selected === true) {
       current_selection_for_comment_sys = "waline";
+    } else if (document.getElementById("comment_select_to_use_rustaline").selected === true) {
+      current_selection_for_comment_sys = "rustaline";
     } else if (document.getElementById("comment_do_not_use_any_comment_system").selected === true) {
       current_selection_for_comment_sys = "none";
     }
@@ -183,6 +185,11 @@ module.exports = function () {
     blog["全局评论设置"]["valine设置"]["leancloud_appkey"] = "";
     blog["全局评论设置"]["disqus设置"]["shortname"] = "";
     blog["全局评论设置"]["waline设置"]["serverurl"] = "";
+    blog["全局评论设置"]["启用rustaline评论"] = false;
+    // 站点数据尚未迁移出 rustaline 字段时（程序版本号未提升），需要先补齐结构
+    if (blog["全局评论设置"]["rustaline设置"] === undefined)
+      blog["全局评论设置"]["rustaline设置"] = new Object();
+    blog["全局评论设置"]["rustaline设置"]["serverurl"] = "";
 
     if (current_selection_for_comment_sys === "valine") {
       let lc_appid = document.getElementById("blog_settings_valine_appid").value;
@@ -203,6 +210,10 @@ module.exports = function () {
       let waline_server_url = document.getElementById("blog_settings_waline_serverurl").value;
       blog["全局评论设置"]["启用waline评论"] = true;
       blog["全局评论设置"]["waline设置"]["serverurl"] = waline_server_url;
+    } else if (current_selection_for_comment_sys === "rustaline") {
+      let rustaline_server_url = document.getElementById("blog_settings_rustaline_serverurl").value;
+      blog["全局评论设置"]["启用rustaline评论"] = true;
+      blog["全局评论设置"]["rustaline设置"]["serverurl"] = rustaline_server_url;
     }
 
     BlogInstance.writeBlogData();
